@@ -1,0 +1,76 @@
+// ── Main Entry ──
+// Note: @tailwind directives are handled by @nuxtjs/tailwindcss module
+
+// Animations
+@use "./animations";
+
+// ── Base Styles ──
+@layer base {
+  html {
+    font-family: "Inter", "Noto Sans SC", system-ui, sans-serif;
+    scroll-behavior: smooth;
+    scrollbar-gutter: stable;
+  }
+
+  body {
+    @apply bg-surface text-text-primary;
+    @apply dark:bg-dark-bg dark:text-dark-text;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  // Focus visible ring for keyboard navigation
+  *:focus-visible {
+    @apply outline-2 outline-brand outline-offset-2;
+  }
+}
+
+// ── Component Layer ──
+@layer components {
+  // Primary button
+  .btn-primary {
+    @apply inline-flex items-center justify-center
+           px-6 py-3 rounded-btn
+           bg-brand text-white font-medium
+           transition-all duration-150
+           hover:bg-brand-dark
+           active:scale-95
+           disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed;
+  }
+
+  // Secondary button
+  .btn-secondary {
+    @apply inline-flex items-center justify-center
+           px-6 py-3 rounded-btn
+           bg-transparent text-brand border-2 border-brand font-medium
+           transition-all duration-150
+           hover:bg-brand-50
+           active:scale-95;
+  }
+
+  // Text button
+  .btn-text {
+    @apply inline-flex items-center
+           text-brand font-medium
+           hover:underline
+           transition-colors duration-150;
+  }
+
+  // Card container
+  .card {
+    @apply bg-surface-card dark:bg-dark-card
+           border border-surface-border dark:border-dark-border
+           rounded-card shadow-low
+           transition-shadow duration-200
+           hover:shadow-mid;
+  }
+
+  // Max-width content wrapper
+  .content-wrapper {
+    @apply w-full max-w-content mx-auto px-4;
+
+    @screen md {
+      @apply px-6;
+    }
+  }
+}

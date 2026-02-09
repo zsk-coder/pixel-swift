@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PixelSwift - Precision Image Resizer</title>
+<!-- Fonts and Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#f8f9fc",
+                        "background-dark": "#111621",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a202e",
+                        "border-light": "#e7ebf3",
+                        "border-dark": "#2d3748",
+                        "text-main": "#0e121b",
+                        "text-sub": "#4d6599",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col overflow-x-hidden text-text-main dark:text-white">
+<!-- Top Navigation -->
+<header class="w-full bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark px-6 py-4 sticky top-0 z-50">
+<div class="max-w-[1280px] mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="text-primary size-8">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-xl font-bold tracking-tight text-text-main dark:text-white">PixelSwift</h2>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-text-sub dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Tools</a>
+<a class="text-text-sub dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Pricing</a>
+<a class="text-text-sub dark:text-gray-400 hover:text-primary dark:hover:text-primary text-sm font-medium transition-colors" href="#">Docs</a>
+</nav>
+<div class="flex items-center gap-4">
+<a class="text-text-main dark:text-white text-sm font-medium hidden sm:block" href="#">Login</a>
+<button class="bg-primary hover:bg-primary/90 transition-colors text-white text-sm font-bold px-5 py-2.5 rounded-lg shadow-sm">
+                    Sign Up
+                </button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 w-full max-w-[1280px] mx-auto p-4 md:p-8 flex flex-col gap-8">
+<!-- Breadcrumb & Title -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2 text-sm text-text-sub dark:text-gray-400">
+<a class="hover:text-primary" href="#">Home</a>
+<span class="material-symbols-outlined text-base">chevron_right</span>
+<span class="text-text-main dark:text-white font-medium">Image Resizer</span>
+</div>
+<h1 class="text-3xl font-bold text-text-main dark:text-white tracking-tight">Precision Image Resizer</h1>
+<p class="text-text-sub dark:text-gray-400 max-w-2xl">Resize your images quickly while maintaining the highest quality. Secure, client-side processing.</p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+<!-- Left Column: Image Preview Stage -->
+<div class="lg:col-span-7 flex flex-col gap-4">
+<div class="w-full bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-6 shadow-sm flex flex-col items-center justify-center min-h-[500px] relative overflow-hidden group">
+<!-- Background Pattern for transparency indication -->
+<div class="absolute inset-0 z-0 opacity-40" style="background-image: radial-gradient(#cbd5e1 1px, transparent 1px); background-size: 20px 20px;"></div>
+<!-- Image Preview -->
+<div class="relative z-10 w-full h-full flex items-center justify-center p-4">
+<img alt="Mountain landscape preview being resized" class="max-w-full max-h-[400px] object-contain rounded-lg shadow-lg border border-white/20" data-alt="Mountain landscape preview being resized" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDVjp7_Ijl4l7I-ttw6Dg5CWqpJ4tSFYKVcWppG1-Zbs5LfokKipP_hkbntyuvDFLT1z9cGivLqOl0yma40pbf1ny2oJpxDD40dA0KfvX7QZmpAIKYnG08Y2HOYNbJE4jERWSZORbCl5CGHGResNc100CO8CL5sJE6m1W9nwmLXRSkMZunYKoR5l2lIVYrJVIW8TNt2zwyqK3qFCQHX1WljcZCvTJsm7MOiKCZNQstLsU1AvNPo6MLaC-Evv6LaW0MjlPv4DMlsdZ4"/>
+<!-- Image Info Overlay Badge -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/75 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-medium flex items-center gap-3 shadow-lg whitespace-nowrap">
+<span>mountain_view.jpg</span>
+<span class="w-px h-3 bg-white/20"></span>
+<span>1920 x 1080 px</span>
+<span class="w-px h-3 bg-white/20"></span>
+<span>1.2 MB</span>
+</div>
+</div>
+<!-- Hover Overlay for upload change -->
+<div class="absolute inset-0 bg-primary/5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity z-20 pointer-events-none">
+<div class="bg-white dark:bg-surface-dark text-text-main dark:text-white px-4 py-2 rounded-lg shadow-lg font-medium text-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">upload</span>
+                            Click to replace image
+                        </div>
+</div>
+</div>
+<!-- Secondary Actions (Rotate/Flip) -->
+<div class="flex gap-2 justify-center">
+<button class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-sub dark:text-gray-400 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg hover:text-primary hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-lg">rotate_left</span> Rotate Left
+                    </button>
+<button class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-sub dark:text-gray-400 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg hover:text-primary hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-lg">rotate_right</span> Rotate Right
+                    </button>
+<button class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-text-sub dark:text-gray-400 bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-lg hover:text-primary hover:border-primary/30 transition-all">
+<span class="material-symbols-outlined text-lg">flip</span> Flip H
+                    </button>
+</div>
+</div>
+<!-- Right Column: Control Panel -->
+<div class="lg:col-span-5 flex flex-col gap-6">
+<!-- Resize Settings Card -->
+<div class="bg-surface-light dark:bg-surface-dark border border-border-light dark:border-border-dark rounded-xl p-6 shadow-sm">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-bold text-lg text-text-main dark:text-white">Resize Settings</h3>
+<button class="text-xs font-medium text-primary hover:underline">Reset to Original</button>
+</div>
+<!-- Resize Mode -->
+<div class="mb-6">
+<label class="block text-xs font-bold text-text-sub uppercase tracking-wider mb-3">Resize By</label>
+<div class="flex p-1 bg-background-light dark:bg-background-dark border border-border-light dark:border-border-dark rounded-lg">
+<button class="flex-1 py-1.5 px-3 rounded text-sm font-medium bg-white dark:bg-surface-dark shadow-sm text-primary transition-all">Pixels</button>
+<button class="flex-1 py-1.5 px-3 rounded text-sm font-medium text-text-sub hover:text-text-main transition-all">Percentage</button>
+<button class="flex-1 py-1.5 px-3 rounded text-sm font-medium text-text-sub hover:text-text-main transition-all">Ratio</button>
+</div>
+</div>
+<!-- Dimension Inputs -->
+<div class="flex items-end gap-3 mb-6 relative">
+<div class="flex-1">
+<label class="block text-xs font-semibold text-text-sub mb-2">WIDTH (PX)</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-background-dark border border-border-light dark:border-border-dark rounded-lg px-4 py-3 text-lg font-display text-text-main dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-shadow" type="number" value="1280"/>
+</div>
+</div>
+<!-- Link Icon -->
+<div class="flex flex-col items-center justify-center pb-3 pt-6">
+<button class="bg-primary/10 text-primary p-1.5 rounded-full hover:bg-primary/20 transition-colors" title="Unlock Aspect Ratio">
+<span class="material-symbols-outlined text-xl">link</span>
+</button>
+</div>
+<div class="flex-1">
+<label class="block text-xs font-semibold text-text-sub mb-2">HEIGHT (PX)</label>
+<div class="relative">
+<input class="w-full bg-white dark:bg-background-dark border border-border-light dark:border-border-dark rounded-lg px-4 py-3 text-lg font-display text-text-main dark:text-white focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-shadow" type="number" value="720"/>
+</div>
+</div>
+</div>
+<!-- Lock Aspect Ratio Checkbox -->
+<div class="mb-6 flex items-center gap-2">
+<input checked="" class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary" id="lockRatio" type="checkbox"/>
+<label class="text-sm text-text-main dark:text-white select-none cursor-pointer" for="lockRatio">Lock Aspect Ratio</label>
+</div>
+<!-- Quick Ratios -->
+<div class="mb-8">
+<label class="block text-xs font-bold text-text-sub uppercase tracking-wider mb-3">Quick Presets</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 border border-border-light dark:border-border-dark rounded-full text-xs font-medium text-text-sub hover:bg-background-light dark:hover:bg-background-dark hover:border-primary hover:text-primary transition-colors">1:1 Square</button>
+<button class="px-3 py-1.5 border border-border-light dark:border-border-dark rounded-full text-xs font-medium text-text-sub hover:bg-background-light dark:hover:bg-background-dark hover:border-primary hover:text-primary transition-colors">4:3 Standard</button>
+<button class="px-3 py-1.5 border border-primary bg-primary/5 rounded-full text-xs font-medium text-primary transition-colors">16:9 HD</button>
+<button class="px-3 py-1.5 border border-border-light dark:border-border-dark rounded-full text-xs font-medium text-text-sub hover:bg-background-light dark:hover:bg-background-dark hover:border-primary hover:text-primary transition-colors">9:16 Story</button>
+<button class="px-3 py-1.5 border border-border-light dark:border-border-dark rounded-full text-xs font-medium text-text-sub hover:bg-background-light dark:hover:bg-background-dark hover:border-primary hover:text-primary transition-colors">Cover Photo</button>
+</div>
+</div>
+<div class="h-px w-full bg-border-light dark:bg-border-dark mb-6"></div>
+<!-- Output Info -->
+<div class="flex items-center justify-between mb-6 p-4 bg-background-light dark:bg-background-dark rounded-lg border border-border-light dark:border-border-dark/50">
+<div>
+<p class="text-xs text-text-sub mb-1">Estimated New Size</p>
+<p class="font-bold text-text-main dark:text-white">~450 KB <span class="text-green-600 text-xs font-normal ml-1">(-62%)</span></p>
+</div>
+<div class="text-right">
+<p class="text-xs text-text-sub mb-1">Output Format</p>
+<div class="flex items-center gap-1 text-sm font-medium text-text-main dark:text-white justify-end">
+<span class="material-symbols-outlined text-base">image</span> JPG
+                             </div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3.5 px-4 rounded-lg shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-all transform active:scale-[0.99]">
+<span class="material-symbols-outlined">download</span>
+                            Resize &amp; Download Image
+                        </button>
+<button class="w-full bg-transparent hover:bg-background-light dark:hover:bg-background-dark text-text-sub font-medium py-3 px-4 rounded-lg border border-transparent hover:border-border-light dark:hover:border-border-dark transition-all">
+                            Save as New Project
+                        </button>
+</div>
+</div>
+<!-- Trust/Security Micro-copy -->
+<div class="flex items-center justify-center gap-2 text-xs text-text-sub opacity-70">
+<span class="material-symbols-outlined text-sm">lock</span>
+                    Files are processed locally and are secure.
+                </div>
+</div>
+</div>
+</main>
+<!-- Simple Footer -->
+<footer class="mt-auto border-t border-border-light dark:border-border-dark py-8 bg-surface-light dark:bg-surface-dark">
+<div class="max-w-[1280px] mx-auto px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+<p class="text-sm text-text-sub">© 2024 PixelSwift Inc. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="text-sm text-text-sub hover:text-primary" href="#">Privacy Policy</a>
+<a class="text-sm text-text-sub hover:text-primary" href="#">Terms of Service</a>
+<a class="text-sm text-text-sub hover:text-primary" href="#">Contact</a>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mobile Image Resizer - PixelSwift</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#ffffff",
+                        "background-dark": "#111621",
+                        "surface-light": "#f8fafc",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-surface-light dark:bg-background-dark text-slate-900 dark:text-white font-sans transition-colors duration-200">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden max-w-md mx-auto bg-white dark:bg-background-dark shadow-2xl border-x border-slate-200 dark:border-slate-800">
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-background-dark/95 backdrop-blur-md">
+<div class="flex h-16 items-center justify-between px-4">
+<div class="flex items-center gap-2">
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-[20px]">auto_fix</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">PixelSwift</span>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex h-8 w-8 items-center justify-center rounded-full text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">menu</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 pb-24">
+<div class="relative bg-slate-100 dark:bg-surface-dark aspect-[4/3] w-full flex items-center justify-center overflow-hidden border-b border-slate-200 dark:border-slate-700">
+<div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1621600411688-4be93cd68504?q=80&amp;w=2080&amp;auto=format&amp;fit=crop')] bg-cover bg-center opacity-100"></div>
+<div class="absolute inset-0 bg-black/0 hover:bg-black/10 transition-colors"></div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 bg-white/90 dark:bg-surface-dark/90 backdrop-blur rounded-full p-1 shadow-lg border border-slate-200 dark:border-slate-600">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Rotate Left">
+<span class="material-symbols-outlined text-[20px]">rotate_left</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Rotate Right">
+<span class="material-symbols-outlined text-[20px]">rotate_right</span>
+</button>
+<div class="w-px bg-slate-200 dark:bg-slate-600 my-1"></div>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Flip Horizontal">
+<span class="material-symbols-outlined text-[20px]">flip</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300" title="Flip Vertical">
+<span class="material-symbols-outlined text-[20px] -rotate-90">flip</span>
+</button>
+</div>
+<div class="absolute top-4 right-4 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded">
+                    1920 x 1080
+                </div>
+</div>
+<div class="p-4 space-y-6">
+<section>
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white">Resize Settings</h2>
+<button class="text-sm text-primary font-medium">Reset</button>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-1 rounded-lg flex mb-6 border border-slate-200 dark:border-slate-700">
+<button class="flex-1 py-1.5 text-sm font-medium rounded-md bg-white dark:bg-slate-600 text-slate-900 dark:text-white shadow-sm transition-all">Pixels</button>
+<button class="flex-1 py-1.5 text-sm font-medium rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Percent</button>
+<button class="flex-1 py-1.5 text-sm font-medium rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all">Ratio</button>
+</div>
+<div class="flex items-end gap-3 mb-4">
+<div class="flex-1 space-y-1.5">
+<label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Width</label>
+<div class="relative">
+<input class="block w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark py-2.5 px-3 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm shadow-sm" type="number" value="1920"/>
+<span class="absolute right-3 top-2.5 text-xs text-slate-400 font-medium">px</span>
+</div>
+</div>
+<div class="flex h-[42px] items-center justify-center text-slate-400">
+<button class="p-1.5 rounded-md hover:bg-slate-100 dark:hover:bg-slate-800 text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">link</span>
+</button>
+</div>
+<div class="flex-1 space-y-1.5">
+<label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">Height</label>
+<div class="relative">
+<input class="block w-full rounded-lg border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark py-2.5 px-3 text-slate-900 dark:text-white focus:border-primary focus:ring-primary sm:text-sm shadow-sm" type="number" value="1080"/>
+<span class="absolute right-3 top-2.5 text-xs text-slate-400 font-medium">px</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2 mb-6">
+<input checked="" class="h-4 w-4 rounded border-slate-300 text-primary focus:ring-primary bg-slate-100 dark:bg-slate-800 dark:border-slate-600" id="aspect-ratio" type="checkbox"/>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300" for="aspect-ratio">Lock Aspect Ratio</label>
+</div>
+<div>
+<label class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3 block">Quick Presets</label>
+<div class="flex flex-wrap gap-2">
+<button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                1:1 Square
+                            </button>
+<button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                4:3 Standard
+                            </button>
+<button class="px-3 py-1.5 rounded-full border border-primary bg-blue-50 dark:bg-blue-900/20 text-sm font-medium text-primary transition-colors">
+                                16:9 HD
+                            </button>
+<button class="px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-700 bg-white dark:bg-surface-dark text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                                Social Story
+                            </button>
+</div>
+</div>
+</section>
+<hr class="border-slate-100 dark:border-slate-800 my-6"/>
+<div class="bg-blue-50 dark:bg-blue-900/10 rounded-lg p-4 border border-blue-100 dark:border-blue-900/30">
+<div class="flex items-center justify-between mb-1">
+<span class="text-sm text-slate-600 dark:text-slate-400">Estimated Size</span>
+<span class="text-sm font-bold text-slate-900 dark:text-white">~1.2 MB</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="text-sm text-slate-600 dark:text-slate-400">Format</span>
+<span class="text-sm font-medium text-slate-900 dark:text-white">JPG (85% Quality)</span>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-0 z-40 w-full max-w-md border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark p-4 safe-area-pb">
+<button class="w-full flex items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3.5 text-base font-bold text-white shadow-lg hover:bg-blue-700 active:scale-[0.98] transition-all duration-200">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                Resize &amp; Download Image
+            </button>
+</div>
+</div>
+
+</body></html>

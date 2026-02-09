@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Smart Image Compressor - PixelSwift</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2463eb",
+                        "background-light": "#ffffff",
+                        "background-dark": "#111621",
+                        "surface-light": "#f8fafc",
+                        "surface-dark": "#1e293b",
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "display": ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "3xl": "2rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-100 dark:bg-black text-slate-900 dark:text-white font-sans transition-colors duration-200 flex justify-center min-h-screen py-8">
+<div class="relative w-full max-w-md bg-background-light dark:bg-background-dark shadow-2xl overflow-hidden sm:rounded-3xl border border-slate-200 dark:border-slate-800 flex flex-col h-[850px]">
+<header class="sticky top-0 z-50 w-full border-b border-slate-100 dark:border-slate-800 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md">
+<div class="flex h-16 items-center justify-between px-5">
+<div class="flex items-center gap-2">
+<div class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white">
+<span class="material-symbols-outlined text-[20px]">auto_fix</span>
+</div>
+<span class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">PixelSwift</span>
+</div>
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto no-scrollbar">
+<div class="px-5 py-6">
+<div class="text-center mb-6">
+<h1 class="text-2xl font-bold text-slate-900 dark:text-white">Smart Image Compressor</h1>
+<p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Optimize your images intelligently</p>
+</div>
+<div class="relative w-full aspect-[4/3] bg-surface-light dark:bg-surface-dark rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 mb-6 group">
+<div class="absolute inset-0 flex">
+<div class="w-1/2 h-full bg-[url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=80')] bg-cover bg-center bg-no-repeat relative border-r-2 border-white/50">
+<div class="absolute top-3 left-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-medium text-white uppercase tracking-wider">Original</div>
+<div class="absolute bottom-3 left-3 bg-black/60 backdrop-blur-sm px-2 py-1 rounded text-[10px] text-white">2.4 MB</div>
+</div>
+<div class="w-1/2 h-full bg-[url('https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=40')] bg-cover bg-center bg-no-repeat relative">
+<div class="absolute top-3 right-3 bg-primary/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] font-medium text-white uppercase tracking-wider">Compressed</div>
+<div class="absolute bottom-3 right-3 bg-primary/90 backdrop-blur-sm px-2 py-1 rounded text-[10px] text-white">480 KB</div>
+</div>
+</div>
+<div class="absolute bottom-4 left-1/2 -translate-x-1/2 bg-white dark:bg-surface-dark rounded-full shadow-lg p-1 flex gap-1 border border-slate-100 dark:border-slate-600">
+<button class="px-3 py-1.5 rounded-full text-xs font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white">Original</button>
+<button class="px-3 py-1.5 rounded-full bg-primary text-white shadow-sm text-xs font-medium">Result</button>
+</div>
+<div class="absolute inset-y-0 left-1/2 -translate-x-1/2 w-8 flex items-center justify-center pointer-events-none">
+<div class="h-8 w-8 bg-white rounded-full shadow-lg flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-lg">code</span>
+</div>
+</div>
+</div>
+<div class="space-y-6">
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<label class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">tune</span>
+                            Quality
+                        </label>
+<span class="text-sm font-bold text-primary bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded">80%</span>
+</div>
+<input class="w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="1" type="range" value="80"/>
+<div class="flex justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wide">
+<span>Low Size</span>
+<span>High Quality</span>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">temp_preferences_custom</span>
+                        Compression Level
+                    </label>
+<div class="grid grid-cols-2 gap-2">
+<button class="flex flex-col items-start p-3 rounded-xl border-2 border-transparent bg-surface-light dark:bg-surface-dark hover:bg-slate-100 dark:hover:bg-slate-700 transition-all text-left">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Maximum</span>
+<span class="text-[10px] text-slate-500 mt-1">-80% size</span>
+</button>
+<button class="flex flex-col items-start p-3 rounded-xl border-2 border-primary bg-blue-50 dark:bg-blue-900/20 text-left relative overflow-hidden">
+<div class="absolute top-0 right-0 p-[2px] bg-primary rounded-bl-lg">
+<span class="material-symbols-outlined text-white text-[10px] block">check</span>
+</div>
+<span class="text-xs font-bold text-primary">Recommended</span>
+<span class="text-[10px] text-slate-500 dark:text-blue-200 mt-1">-60% size</span>
+</button>
+<button class="flex flex-col items-start p-3 rounded-xl border-2 border-transparent bg-surface-light dark:bg-surface-dark hover:bg-slate-100 dark:hover:bg-slate-700 transition-all text-left">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Light</span>
+<span class="text-[10px] text-slate-500 mt-1">-30% size</span>
+</button>
+<button class="flex flex-col items-start p-3 rounded-xl border-2 border-transparent bg-surface-light dark:bg-surface-dark hover:bg-slate-100 dark:hover:bg-slate-700 transition-all text-left">
+<span class="text-xs font-bold text-slate-900 dark:text-white">Near Lossless</span>
+<span class="text-[10px] text-slate-500 mt-1">-10% size</span>
+</button>
+</div>
+</div>
+<div class="space-y-3">
+<label class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-lg">image</span>
+                        Output Format
+                    </label>
+<div class="relative">
+<select class="w-full appearance-none rounded-xl border border-slate-200 dark:border-slate-700 bg-surface-light dark:bg-surface-dark py-3 pl-4 pr-10 text-sm font-medium text-slate-900 dark:text-white focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary">
+<option>Keep Original (JPG)</option>
+<option>Convert to PNG</option>
+<option>Convert to WEBP (Best Web)</option>
+<option>Convert to AVIF (Smallest)</option>
+</select>
+<div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-500">
+<span class="material-symbols-outlined">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="sticky bottom-0 w-full bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 p-5 pb-8">
+<div class="flex flex-col gap-3">
+<div class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1">
+<span>Total Savings: <span class="text-green-600 font-bold">1.92 MB (80%)</span></span>
+<span>Format: <span class="font-medium text-slate-700 dark:text-slate-300">JPG</span></span>
+</div>
+<button class="w-full flex items-center justify-center gap-2 rounded-xl bg-primary py-4 text-sm font-bold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined">download</span>
+                Download Image
+            </button>
+<button class="w-full py-2 text-xs font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white transition-colors">
+                Compress Another Image
+            </button>
+</div>
+</div>
+</div>
+
+</body></html>

@@ -1,0 +1,223 @@
+{
+  "nav": {
+    "home": "Home",
+    "converter": "Converter",
+    "compressor": "Compressor",
+    "resizer": "Resize",
+    "tools": "Tools",
+    "about": "About",
+    "contact": "Contact",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "home": {
+    "title": "Free Online Image Tool",
+    "subtitle": "Convert, compress, and resize images instantly — right in your browser. No uploads, no sign-ups, 100% private.",
+    "converter": {
+      "title": "Converter",
+      "desc": "Seamlessly convert between JPG, PNG, WEBP, HEIC, and more with one click.",
+      "btn": "Open Converter"
+    },
+    "compressor": {
+      "title": "Compressor",
+      "desc": "Shrink file sizes by up to 90% while keeping images crystal clear.",
+      "btn": "Open Compressor"
+    },
+    "resizer": {
+      "title": "Resizer",
+      "desc": "Resize to exact dimensions for any platform — social media, web, or print.",
+      "btn": "Open Resizer"
+    },
+    "features": {
+      "title": "Core Features",
+      "subtitle": "Everything you need to manage your images in one place."
+    },
+    "cta": {
+      "start": "Get Started — It's Free",
+      "learn": "Learn more",
+      "title": "Ready to supercharge your images?",
+      "desc": "No downloads, no sign-ups. Start processing images in seconds.",
+      "button": "Try It Now — Free"
+    },
+    "why": {
+      "title": "Why PixelSwift?",
+      "fast": "Lightning Fast",
+      "fastDesc": "Powered by WebAssembly — images are processed instantly in your browser. No uploads, no queues.",
+      "secure": "100% Private",
+      "secureDesc": "Your files stay on your device. Nothing is uploaded to any server, ever.",
+      "free": "Forever Free",
+      "freeDesc": "All features, no limits, no watermarks. Free today, free tomorrow, free forever."
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "How to convert HEIC to JPG?",
+      "a1": "Select \"Converter\", upload your HEIC file, choose JPG format, and download.",
+      "q2": "Are my images uploaded to a server?",
+      "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
+      "q3": "Is there a file size limit?",
+      "a3": "Each file can be up to 50MB. You can process up to 20 images at once."
+    }
+  },
+  "upload": {
+    "dragText": "Drag & drop images here, or click to upload",
+    "dragTitle": "Drag & Drop files here",
+    "orBrowse": "or click to browse from your computer",
+    "tapToUpload": "Tap to Upload",
+    "orDragDrop": "or drag and drop here",
+    "selectImages": "Select Images",
+    "supportedFormats": "Supports JPG, PNG, WEBP, HEIC up to 25MB",
+    "releaseToUpload": "Release to upload",
+    "supportFormats": "Supports: JPG, PNG, WebP, HEIC, BMP, TIFF",
+    "maxFiles": "Up to {count} images, max {size}MB each",
+    "pasteHint": "You can also paste from clipboard (Ctrl+V)",
+    "selectFromAlbum": "Select from your photo album"
+  },
+  "converter": {
+    "title": "Universal Image Converter",
+    "subtitle": "Fast, clean, and secure online image processing. Convert your images to any format in seconds.",
+    "subtitleMobile": "Convert your images in seconds.",
+    "settingsTitle": "Conversion Settings",
+    "settingsDesc": "Customize output format and quality",
+    "settingsMobile": "Settings",
+    "outputFormat": "Output Format",
+    "quality": "Quality",
+    "lowSize": "Low Size",
+    "bestQuality": "Best Quality",
+    "queue": "Queue",
+    "clearAll": "Clear All",
+    "converting": "Converting...",
+    "complete": "Complete",
+    "waiting": "Waiting",
+    "totalSavings": "Total size savings:",
+    "downloadAllZip": "Download All (ZIP)",
+    "progressive": "Progressive JPEG (recommended)",
+    "lossless": "Lossless",
+    "losslessHint": "Lossless conversion, full quality preserved",
+    "pdfMode": "PDF Mode",
+    "pdfSingle": "One PDF per image",
+    "pdfMerge": "Merge all into one PDF",
+    "pageOrientation": "Page Orientation",
+    "autoOrientation": "Auto",
+    "portrait": "Portrait",
+    "landscape": "Landscape",
+    "pageSize": "Page Size",
+    "formats": {
+      "jpg": "Joint Photographic Experts Group",
+      "png": "Portable Network Graphics",
+      "webp": "Web Picture Format"
+    }
+  },
+  "compressor": {
+    "title": "Smart Image Compressor",
+    "subtitle": "Reduce file size while maintaining quality. Perfect for PNG, JPG, and WEBP.",
+    "subtitleMobile": "Optimize your images intelligently",
+    "original": "Original",
+    "compressed": "Compressed",
+    "result": "Result",
+    "settings": "Settings",
+    "reset": "Reset",
+    "quality": "Quality",
+    "lowSize": "Low",
+    "highQuality": "High",
+    "compressionLevel": "Compression Level",
+    "savedSpace": "Saved: {size} ({percent}%)",
+    "presets": {
+      "extreme": "Maximum",
+      "extremeHint": "-80% size",
+      "recommended": "Recommended",
+      "recommendedHint": "-60% size",
+      "light": "Light",
+      "lightHint": "-30% size",
+      "lossless": "Near Lossless",
+      "losslessHint": "-10% size"
+    },
+    "outputFormat": "Output Format",
+    "keepOriginal": "Original ({format})",
+    "convertTo": "Convert to {format}",
+    "downloadImage": "Download Image",
+    "startOver": "Start Over",
+    "processAnother": "Process Another Image",
+    "compressAnother": "Compress Another Image",
+    "originalFile": "Original File",
+    "compressedFile": "Compressed File",
+    "readyToDownload": "Ready to download",
+    "totalSavings": "Total Savings:",
+    "format": "Format:",
+    "proTip": "Did you know?",
+    "proTipText": "WebP format can reduce file size by an additional 30% compared to JPG without noticeable quality loss.",
+    "compareMode": "Compare Mode",
+    "sideBySide": "Side by Side",
+    "slider": "Slider",
+    "compressing": "Compressing..."
+  },
+  "resizer": {
+    "title": "Resize Image",
+    "mode": {
+      "pixel": "By Pixels",
+      "percent": "By Percentage",
+      "ratio": "By Aspect Ratio"
+    },
+    "width": "Width",
+    "height": "Height",
+    "scale": "Scale",
+    "keepRatio": "Keep aspect ratio",
+    "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
+    "presets": {
+      "1:1": "Square (1:1)",
+      "4:3": "Photo (4:3)",
+      "16:9": "Widescreen (16:9)",
+      "3:2": "Camera (3:2)",
+      "9:16": "Phone (9:16)",
+      "custom": "Custom"
+    }
+  },
+  "common": {
+    "download": "Download",
+    "downloadAll": "Download All",
+    "preview": "Preview",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "reset": "Reset",
+    "process": "Process",
+    "processing": "Processing...",
+    "done": "Done",
+    "error": "Error",
+    "pending": "Waiting",
+    "retry": "Retry",
+    "close": "Close",
+    "fileSize": "File size",
+    "dimensions": "Dimensions"
+  },
+  "errors": {
+    "formatNotSupported": "Unsupported format. Please upload {formats}",
+    "fileTooLarge": "File exceeds {size}MB limit. Please try compressing it first.",
+    "fileCorrupted": "This file appears to be corrupted and cannot be read.",
+    "processFailed": "Processing failed. Please refresh the page and try again.",
+    "browserNotSupported": "Your browser doesn't support this feature. We recommend using Chrome.",
+    "maxFilesExceeded": "Maximum {count} files allowed. Only the first {count} will be processed."
+  },
+  "footer": {
+    "copyright": "© {year} PixelSwift. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact Us"
+  },
+  "seo": {
+    "home": {
+      "title": "PixelSwift - Free Online Image Converter, Compressor & Resizer",
+      "description": "Convert, compress, and resize images online for free. No upload needed - all processing happens in your browser. Fast, secure, unlimited."
+    },
+    "converter": {
+      "title": "Free Online Image Format Converter - PixelSwift",
+      "description": "Convert images between JPG, PNG, WebP, HEIC, BMP, TIFF formats. Free, fast, and secure - no upload required."
+    },
+    "compressor": {
+      "title": "Compress Images Online Free - Reduce File Size | PixelSwift",
+      "description": "Compress JPG, PNG, WebP images online. Reduce file size up to 90% while maintaining quality. Free and private."
+    },
+    "resizer": {
+      "title": "Resize Image Online Free - PixelSwift",
+      "description": "Resize images by pixels, percentage, or aspect ratio. Free online tool with no limits."
+    }
+  }
+}

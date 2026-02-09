@@ -1,0 +1,206 @@
+{
+  "nav": {
+    "home": "Home",
+    "converter": "Converter",
+    "compressor": "Compressor",
+    "resizer": "Resize",
+    "language": "Language",
+    "theme": "Theme"
+  },
+  "home": {
+    "title": "Free Online Image Tool",
+    "subtitle": "Convert, compress, and resize images instantly in your browser",
+    "converter": {
+      "title": "Format Converter",
+      "desc": "Convert images between formats"
+    },
+    "compressor": {
+      "title": "Image Compressor",
+      "desc": "Reduce file size"
+    },
+    "resizer": {
+      "title": "Resize Image",
+      "desc": "Adjust dimensions"
+    },
+    "why": {
+      "title": "Why PixelSwift?",
+      "fast": "Lightning Fast",
+      "fastDesc": "Process images locally in your browser",
+      "secure": "Privacy First",
+      "secureDesc": "Images never leave your device",
+      "free": "100% Free",
+      "freeDesc": "No watermarks, no limits, no signup"
+    },
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "q1": "How to convert HEIC to JPG?",
+      "a1": "Select \"Converter\", upload your HEIC file, choose JPG format, and download.",
+      "q2": "Are my images uploaded to a server?",
+      "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
+      "q3": "Is there a file size limit?",
+      "a3": "Each file can be up to 50MB. You can process up to 20 images at once."
+    }
+  },
+  "upload": {
+    "dragText": "Drag & drop images here, or click to upload",
+    "dragTitle": "Drag & Drop files here",
+    "orBrowse": "or click to browse from your computer",
+    "tapToUpload": "Tap to Upload",
+    "orDragDrop": "or drag and drop here",
+    "selectImages": "Select Images",
+    "supportedFormats": "Supports JPG, PNG, WEBP, HEIC up to 25MB",
+    "releaseToUpload": "Release to upload",
+    "supportFormats": "Supports: JPG, PNG, WebP, HEIC, BMP, TIFF",
+    "maxFiles": "Up to {count} images, max {size}MB each",
+    "pasteHint": "You can also paste from clipboard (Ctrl+V)",
+    "selectFromAlbum": "Select from your photo album"
+  },
+  "converter": {
+    "title": "Universal Image Converter",
+    "subtitle": "Fast, clean, and secure online image processing. Convert your images to any format in seconds.",
+    "subtitleMobile": "Convert your images in seconds.",
+    "settingsTitle": "Conversion Settings",
+    "settingsDesc": "Customize output format and quality",
+    "settingsMobile": "Settings",
+    "outputFormat": "Output Format",
+    "quality": "Quality",
+    "lowSize": "Low Size",
+    "bestQuality": "Best Quality",
+    "queue": "Queue",
+    "clearAll": "Clear All",
+    "converting": "Converting...",
+    "complete": "Complete",
+    "waiting": "Waiting",
+    "totalSavings": "Total size savings:",
+    "downloadAllZip": "Download All (ZIP)",
+    "progressive": "Progressive JPEG (recommended)",
+    "lossless": "Lossless",
+    "losslessHint": "무손실 변환, 원본 화질 유지",
+    "pdfMode": "PDF Mode",
+    "pdfSingle": "One PDF per image",
+    "pdfMerge": "Merge all into one PDF",
+    "pageOrientation": "Page Orientation",
+    "autoOrientation": "Auto",
+    "portrait": "Portrait",
+    "landscape": "Landscape",
+    "pageSize": "Page Size",
+    "formats": {
+      "jpg": "Joint Photographic Experts Group",
+      "png": "Portable Network Graphics",
+      "webp": "Web Picture Format"
+    }
+  },
+  "compressor": {
+    "title": "스마트 이미지 압축기",
+    "subtitle": "화질을 유지하면서 파일 크기를 줄입니다. PNG, JPG, WEBP에 최적화.",
+    "subtitleMobile": "이미지를 지능적으로 최적화",
+    "original": "원본",
+    "compressed": "압축 후",
+    "result": "결과",
+    "settings": "설정",
+    "reset": "초기화",
+    "quality": "품질",
+    "lowSize": "저용량",
+    "highQuality": "고화질",
+    "compressionLevel": "압축 수준",
+    "savedSpace": "절약: {size} ({percent}%)",
+    "presets": {
+      "extreme": "최대 압축",
+      "extremeHint": "-80% 크기",
+      "recommended": "권장",
+      "recommendedHint": "-60% 크기",
+      "light": "가볍게",
+      "lightHint": "-30% 크기",
+      "lossless": "거의 무손실",
+      "losslessHint": "-10% 크기"
+    },
+    "outputFormat": "출력 형식",
+    "keepOriginal": "원본 형식 ({format})",
+    "convertTo": "{format}으로 변환",
+    "downloadImage": "이미지 다운로드",
+    "startOver": "다시 시작",
+    "processAnother": "다른 이미지 처리",
+    "compressAnother": "다른 이미지 압축",
+    "originalFile": "원본 파일",
+    "compressedFile": "압축 파일",
+    "readyToDownload": "다운로드 가능",
+    "totalSavings": "총 절약:",
+    "format": "형식:",
+    "proTip": "알고 계셨나요?",
+    "proTipText": "WebP 형식은 눈에 띄는 화질 저하 없이 JPG 대비 파일 크기를 30% 더 줄일 수 있습니다.",
+    "compareMode": "비교 모드",
+    "sideBySide": "나란히 비교",
+    "slider": "슬라이더",
+    "compressing": "압축 중..."
+  },
+  "resizer": {
+    "title": "Resize Image",
+    "mode": {
+      "pixel": "By Pixels",
+      "percent": "By Percentage",
+      "ratio": "By Aspect Ratio"
+    },
+    "width": "Width",
+    "height": "Height",
+    "scale": "Scale",
+    "keepRatio": "Keep aspect ratio",
+    "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
+    "presets": {
+      "1:1": "Square (1:1)",
+      "4:3": "Photo (4:3)",
+      "16:9": "Widescreen (16:9)",
+      "3:2": "Camera (3:2)",
+      "9:16": "Phone (9:16)",
+      "custom": "Custom"
+    }
+  },
+  "common": {
+    "download": "Download",
+    "downloadAll": "Download All",
+    "preview": "Preview",
+    "delete": "Delete",
+    "cancel": "Cancel",
+    "reset": "Reset",
+    "process": "Process",
+    "processing": "Processing...",
+    "done": "Done",
+    "error": "Error",
+    "pending": "Waiting",
+    "retry": "Retry",
+    "close": "Close",
+    "fileSize": "File size",
+    "dimensions": "Dimensions"
+  },
+  "errors": {
+    "formatNotSupported": "Unsupported format. Please upload {formats}",
+    "fileTooLarge": "File exceeds {size}MB limit. Please try compressing it first.",
+    "fileCorrupted": "This file appears to be corrupted and cannot be read.",
+    "processFailed": "Processing failed. Please refresh the page and try again.",
+    "browserNotSupported": "Your browser doesn't support this feature. We recommend using Chrome.",
+    "maxFilesExceeded": "Maximum {count} files allowed. Only the first {count} will be processed."
+  },
+  "footer": {
+    "copyright": "© {year} PixelSwift. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Use",
+    "contact": "Contact Us"
+  },
+  "seo": {
+    "home": {
+      "title": "PixelSwift - Free Online Image Converter, Compressor & Resizer",
+      "description": "Convert, compress, and resize images online for free. No upload needed - all processing happens in your browser. Fast, secure, unlimited."
+    },
+    "converter": {
+      "title": "Free Online Image Format Converter - PixelSwift",
+      "description": "Convert images between JPG, PNG, WebP, HEIC, BMP, TIFF formats. Free, fast, and secure - no upload required."
+    },
+    "compressor": {
+      "title": "Compress Images Online Free - Reduce File Size | PixelSwift",
+      "description": "Compress JPG, PNG, WebP images online. Reduce file size up to 90% while maintaining quality. Free and private."
+    },
+    "resizer": {
+      "title": "Resize Image Online Free - PixelSwift",
+      "description": "Resize images by pixels, percentage, or aspect ratio. Free online tool with no limits."
+    }
+  }
+}

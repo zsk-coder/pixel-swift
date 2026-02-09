@@ -1,0 +1,80 @@
+// ── Animation Keyframes ──
+
+// Logo breathing animation (page loading)
+@keyframes breathe {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+// Skeleton shimmer
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+// Drag-and-drop border pulse
+@keyframes border-pulse {
+  0%,
+  100% {
+    border-color: #2563eb;
+  }
+  50% {
+    border-color: #93c5fd;
+  }
+}
+
+// Bounce-in for dropped items
+@keyframes bounce-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+// ── Utility Classes ──
+.animate-breathe {
+  animation: breathe 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s ease-in-out infinite;
+}
+
+.animate-border-pulse {
+  animation: border-pulse 1.5s ease-in-out infinite;
+}
+
+.animate-bounce-in {
+  animation: bounce-in 300ms ease-out;
+}
+
+// ── Reduced Motion ──
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

@@ -1,0 +1,24 @@
+// ── Design Token Variables ──
+// Primary design tokens are in tailwind.config.ts
+// This file contains SCSS-specific variables for mixins and animations
+
+// Responsive breakpoints (synced with Tailwind)
+$bp-xs: 576px;
+$bp-sm: 768px;
+$bp-md: 1024px;
+$bp-lg: 1280px;
+
+// Transition durations
+$transition-fast: 150ms;
+$transition-normal: 200ms;
+$transition-slow: 300ms;
+
+// Z-index scale
+$z-dropdown: 100;
+$z-sticky: 200;
+$z-overlay: 300;
+$z-modal: 400;
+$z-toast: 500;
+
+// Content max-width
+$content-max-width: 1200px;

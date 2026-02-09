@@ -1,0 +1,59 @@
+// ── Responsive Mixin ──
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "xs" {
+    @media (min-width: $bp-xs) {
+      @content;
+    }
+  } @else if $breakpoint == "sm" {
+    @media (min-width: $bp-sm) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (min-width: $bp-md) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media (min-width: $bp-lg) {
+      @content;
+    }
+  }
+}
+
+// ── Mobile-first "down" mixin ──
+@mixin respond-down($breakpoint) {
+  @if $breakpoint == "sm" {
+    @media (max-width: ($bp-sm - 1)) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (max-width: ($bp-md - 1)) {
+      @content;
+    }
+  }
+}
+
+// ── Hover lift effect ──
+@mixin hover-lift {
+  transition:
+    box-shadow $transition-normal ease-out,
+    transform $transition-normal ease-out;
+  &:hover {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
+  }
+}
+
+// ── Focus ring ──
+@mixin focus-ring {
+  &:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+  }
+}
+
+// ── Truncate text ──
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
