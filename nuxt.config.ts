@@ -3,6 +3,11 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
+  // ── Cloudflare Pages 部署 ──
+  nitro: {
+    preset: "cloudflare-pages",
+  },
+
   // ── 站点 URL（sitemap 和 SEO 需要） ──
   site: {
     url: "https://pixelswift.site",
