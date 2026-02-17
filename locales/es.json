@@ -1,89 +1,105 @@
 {
   "nav": {
-    "home": "Home",
-    "converter": "Converter",
-    "compressor": "Compressor",
-    "resizer": "Resize",
-    "language": "Language",
-    "theme": "Theme"
+    "home": "Inicio",
+    "converter": "Convertidor",
+    "compressor": "Compresor",
+    "resizer": "Redimensionar",
+    "tools": "Herramientas",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "language": "Idioma",
+    "theme": "Tema"
   },
   "home": {
-    "title": "Free Online Image Tool",
-    "subtitle": "Convert, compress, and resize images instantly in your browser",
+    "title": "Herramienta de imágenes en línea gratuita",
+    "subtitle": "Convertir · Comprimir · Redimensionar — todo en uno, procesado localmente en tu navegador. Tus archivos nunca salen de tu dispositivo.",
+    "badges": {
+      "local": "🔒 Procesamiento local",
+      "batch": "📦 Procesamiento por lotes",
+      "limit": "📐 50MB / archivo"
+    },
     "converter": {
-      "title": "Format Converter",
-      "desc": "Convert images between formats"
+      "title": "Convertidor de formato",
+      "desc": "Convierte entre JPG, PNG, WEBP y más con un solo clic.",
+      "btn": "Abrir convertidor"
     },
     "compressor": {
-      "title": "Image Compressor",
-      "desc": "Reduce file size"
+      "title": "Compresor de imágenes",
+      "desc": "Reduce el tamaño hasta un 90% manteniendo la calidad impecable.",
+      "btn": "Abrir compresor"
     },
     "resizer": {
-      "title": "Resize Image",
-      "desc": "Adjust dimensions"
+      "title": "Redimensionar imagen",
+      "desc": "Ajusta a las dimensiones exactas para redes sociales, web o impresión.",
+      "btn": "Abrir redimensionador"
+    },
+    "features": {
+      "title": "Funciones principales",
+      "subtitle": "Todo lo que necesitas para gestionar tus imágenes, en un solo lugar."
+    },
+    "cta": {
+      "start": "Empezar gratis",
+      "learn": "Saber más",
+      "title": "¿Listo para optimizar tus imágenes?",
+      "desc": "Sin descargas, sin registro. Empieza a procesar imágenes en segundos.",
+      "button": "Pruébalo ahora — Gratis"
     },
     "why": {
-      "title": "Why PixelSwift?",
-      "fast": "Lightning Fast",
-      "fastDesc": "Process images locally in your browser",
-      "secure": "Privacy First",
-      "secureDesc": "Images never leave your device",
-      "free": "100% Free",
-      "freeDesc": "No watermarks, no limits, no signup"
+      "title": "¿Por qué PixelSwift?",
+      "fast": "Ultrarrápido",
+      "fastDesc": "Gracias a la tecnología moderna del navegador, las imágenes se procesan al instante en tu dispositivo. Sin subir y volver a descargar. 5× más rápido que herramientas en línea tradicionales.",
+      "secure": "100% privado",
+      "secureDesc": "Tus archivos permanecen en tu dispositivo. Nunca se suben a ningún servidor — a diferencia de las herramientas tradicionales que requieren subidas a la nube.",
+      "free": "Gratis para siempre",
+      "freeDesc": "Todas las funciones, sin límites, sin marcas de agua. Gratis hoy, mañana y siempre.",
+      "batch": "Procesamiento por lotes",
+      "batchDesc": "Procesa hasta 20 imágenes a la vez, hasta 50MB cada una — 10× el límite de herramientas gratuitas similares."
     },
     "faq": {
-      "title": "Frequently Asked Questions",
-      "q1": "How to convert HEIC to JPG?",
-      "a1": "Select \"Converter\", upload your HEIC file, choose JPG format, and download.",
-      "q2": "Are my images uploaded to a server?",
-      "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
-      "q3": "Is there a file size limit?",
-      "a3": "Each file can be up to 50MB. You can process up to 20 images at once."
+      "title": "Preguntas frecuentes",
+      "q1": "¿Qué formatos de imagen son compatibles?",
+      "a1": "PixelSwift es compatible con JPG, PNG, WebP, BMP y TIFF para conversión, compresión y redimensionamiento.",
+      "q2": "¿Se suben mis imágenes a un servidor?",
+      "a2": "No. Todo el procesamiento se realiza localmente en tu navegador. Tus imágenes nunca salen de tu dispositivo.",
+      "q3": "¿Hay un límite de tamaño de archivo?",
+      "a3": "Cada archivo puede ser de hasta 50 MB. Puedes procesar hasta 20 imágenes a la vez."
     }
   },
   "upload": {
-    "dragText": "Drag & drop images here, or click to upload",
-    "dragTitle": "Drag & Drop files here",
-    "orBrowse": "or click to browse from your computer",
-    "tapToUpload": "Tap to Upload",
-    "orDragDrop": "or drag and drop here",
-    "selectImages": "Select Images",
-    "supportedFormats": "Supports JPG, PNG, WEBP, HEIC up to 25MB",
-    "releaseToUpload": "Release to upload",
-    "supportFormats": "Supports: JPG, PNG, WebP, HEIC, BMP, TIFF",
-    "maxFiles": "Up to {count} images, max {size}MB each",
-    "pasteHint": "You can also paste from clipboard (Ctrl+V)",
-    "selectFromAlbum": "Select from your photo album"
+    "dragText": "Arrastra y suelta imágenes aquí o haz clic para subir",
+    "dragTitle": "Arrastra y suelta archivos aquí",
+    "orBrowse": "o haz clic para explorar tu ordenador",
+    "tapToUpload": "Toca para subir",
+    "orDragDrop": "o arrastra y suelta aquí",
+    "selectImages": "Seleccionar imágenes",
+    "supportedFormats": "Compatible con JPG, PNG, WEBP, BMP, TIFF hasta 50MB",
+    "releaseToUpload": "Suelta para subir",
+    "supportFormats": "Formatos compatibles: JPG, PNG, WebP, BMP, TIFF",
+    "maxFiles": "Hasta {count} imágenes, máximo {size} MB cada una",
+    "pasteHint": "También puedes pegar desde el portapapeles (Ctrl+V)",
+    "selectFromAlbum": "Seleccionar desde tu álbum de fotos"
   },
   "converter": {
-    "title": "Universal Image Converter",
-    "subtitle": "Fast, clean, and secure online image processing. Convert your images to any format in seconds.",
-    "subtitleMobile": "Convert your images in seconds.",
-    "settingsTitle": "Conversion Settings",
-    "settingsDesc": "Customize output format and quality",
-    "settingsMobile": "Settings",
-    "outputFormat": "Output Format",
-    "quality": "Quality",
-    "lowSize": "Low Size",
-    "bestQuality": "Best Quality",
-    "queue": "Queue",
-    "clearAll": "Clear All",
-    "converting": "Converting...",
-    "complete": "Complete",
-    "waiting": "Waiting",
-    "totalSavings": "Total size savings:",
-    "downloadAllZip": "Download All (ZIP)",
-    "progressive": "Progressive JPEG (recommended)",
-    "lossless": "Lossless",
-    "losslessHint": "Conversión sin pérdida, calidad original preservada",
-    "pdfMode": "PDF Mode",
-    "pdfSingle": "One PDF per image",
-    "pdfMerge": "Merge all into one PDF",
-    "pageOrientation": "Page Orientation",
-    "autoOrientation": "Auto",
-    "portrait": "Portrait",
-    "landscape": "Landscape",
-    "pageSize": "Page Size",
+    "title": "Convertidor de imágenes",
+    "subtitle": "Procesamiento de imágenes rápido y seguro. Convierte entre JPG, PNG y WebP.",
+    "subtitleMobile": "Convierte tus imágenes al instante.",
+    "uploadHint": "Compatible con JPG, PNG, WEBP, BMP, TIFF hasta 50MB · Carga por lotes disponible",
+    "settingsTitle": "Ajustes de conversión",
+    "settingsDesc": "Seleccionar formato de salida",
+    "settingsMobile": "Ajustes",
+    "outputFormat": "Formato de salida",
+    "quality": "Calidad",
+    "lowSize": "Menor tamaño",
+    "bestQuality": "Mejor calidad",
+    "queue": "Cola",
+    "clearAll": "Borrar todo",
+    "converting": "Convirtiendo...",
+    "complete": "Completado",
+    "waiting": "En espera",
+    "totalSavings": "Ahorro total:",
+    "downloadAllZip": "Descargar todo (ZIP)",
+    "lossless": "Sin pérdida",
+    "losslessHint": "Conversión sin pérdida, calidad completa preservada",
     "formats": {
       "jpg": "Joint Photographic Experts Group",
       "png": "Portable Network Graphics",
@@ -94,6 +110,7 @@
     "title": "Compresor de imágenes inteligente",
     "subtitle": "Reduce el tamaño del archivo manteniendo la calidad. Perfecto para PNG, JPG y WEBP.",
     "subtitleMobile": "Optimiza tus imágenes de forma inteligente",
+    "uploadHint": "Compatible con JPG, PNG, WEBP hasta 50MB · Carga por lotes disponible",
     "original": "Original",
     "compressed": "Comprimido",
     "result": "Resultado",
@@ -115,7 +132,7 @@
       "losslessHint": "-10% tamaño"
     },
     "outputFormat": "Formato de salida",
-    "keepOriginal": "Original ({format})",
+    "keepOriginal": "Formato original ({format})",
     "convertTo": "Convertir a {format}",
     "downloadImage": "Descargar imagen",
     "startOver": "Empezar de nuevo",
@@ -127,80 +144,138 @@
     "totalSavings": "Ahorro total:",
     "format": "Formato:",
     "proTip": "¿Sabías que?",
-    "proTipText": "El formato WebP puede reducir el tamaño del archivo un 30% más que JPG sin pérdida de calidad notable.",
-    "compareMode": "Modo comparación",
-    "sideBySide": "Lado a lado",
-    "slider": "Deslizador",
+    "proTipText": "El formato WebP puede reducir el tamaño del archivo un 30% más que JPG sin pérdida de calidad visible.",
     "compressing": "Comprimiendo..."
   },
   "resizer": {
-    "title": "Resize Image",
+    "title": "Redimensionador de imágenes",
+    "uploadHint": "Compatible con JPG, PNG, WEBP, BMP, TIFF hasta 50MB",
+    "settings": "Ajustes de redimensión",
+    "resetToOriginal": "Restaurar original",
+    "resizeBy": "Redimensionar por",
     "mode": {
-      "pixel": "By Pixels",
-      "percent": "By Percentage",
-      "ratio": "By Aspect Ratio"
+      "pixel": "Píxeles",
+      "percent": "Porcentaje"
     },
-    "width": "Width",
-    "height": "Height",
-    "scale": "Scale",
-    "keepRatio": "Keep aspect ratio",
-    "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
+    "width": "Ancho",
+    "height": "Alto",
+    "scale": "Escala",
+    "keepRatio": "Mantener proporción",
+    "lockRatio": "Bloquear proporción",
+    "rotateLeft": "Girar a la izquierda",
+    "rotateRight": "Girar a la derecha",
+    "flipH": "Voltear H",
+    "flipV": "Voltear V",
+    "quickPresets": "Preajustes rápidos",
     "presets": {
-      "1:1": "Square (1:1)",
-      "4:3": "Photo (4:3)",
-      "16:9": "Widescreen (16:9)",
-      "3:2": "Camera (3:2)",
-      "9:16": "Phone (9:16)",
-      "custom": "Custom"
-    }
+      "square": "1:1 Cuadrado",
+      "standard": "4:3 Estándar",
+      "hd": "16:9 HD",
+      "story": "9:16 Historia",
+      "cover": "Foto de portada"
+    },
+    "estimatedSize": "Tamaño estimado",
+    "outputFormat": "Formato de salida",
+    "outputPreview": "Tamaño de salida: {width} × {height} px ({percent}% del original)",
+    "resizeAndDownload": "Redimensionar y descargar",
+    "replaceImage": "Haz clic para reemplazar imagen",
+    "startOver": "Subir otra imagen",
+    "securityNote": "Archivos procesados localmente, de forma segura."
   },
   "common": {
-    "download": "Download",
-    "downloadAll": "Download All",
-    "preview": "Preview",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "reset": "Reset",
-    "process": "Process",
-    "processing": "Processing...",
-    "done": "Done",
+    "download": "Descargar",
+    "downloadAll": "Descargar todo",
+    "preview": "Vista previa",
+    "delete": "Eliminar",
+    "cancel": "Cancelar",
+    "reset": "Restablecer",
+    "process": "Procesar",
+    "processing": "Procesando...",
+    "done": "Hecho",
     "error": "Error",
-    "pending": "Waiting",
-    "retry": "Retry",
-    "close": "Close",
-    "fileSize": "File size",
-    "dimensions": "Dimensions"
+    "pending": "En espera",
+    "retry": "Reintentar",
+    "close": "Cerrar",
+    "fileSize": "Tamaño del archivo",
+    "dimensions": "Dimensiones"
   },
   "errors": {
-    "formatNotSupported": "Unsupported format. Please upload {formats}",
-    "fileTooLarge": "File exceeds {size}MB limit. Please try compressing it first.",
-    "fileCorrupted": "This file appears to be corrupted and cannot be read.",
-    "processFailed": "Processing failed. Please refresh the page and try again.",
-    "browserNotSupported": "Your browser doesn't support this feature. We recommend using Chrome.",
-    "maxFilesExceeded": "Maximum {count} files allowed. Only the first {count} will be processed."
+    "formatNotSupported": "Formato no compatible. Por favor, sube un archivo {formats}",
+    "fileTooLarge": "El archivo supera el límite de {size} MB. Intenta comprimirlo primero.",
+    "fileCorrupted": "Este archivo parece estar dañado y no se puede leer.",
+    "processFailed": "Error en el procesamiento. Actualiza la página e inténtalo de nuevo.",
+    "browserNotSupported": "Tu navegador no es compatible con esta función. Recomendamos usar Chrome.",
+    "maxFilesExceeded": "Máximo {count} archivos permitidos. Solo se procesarán los primeros {count}."
   },
   "footer": {
-    "copyright": "© {year} PixelSwift. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Use",
-    "contact": "Contact Us"
+    "copyright": "© {year} PixelSwift. Todos los derechos reservados.",
+    "privacy": "Política de privacidad",
+    "terms": "Términos de uso",
+    "contact": "Contacto"
+  },
+  "legal": {
+    "privacy": {
+      "title": "Política de privacidad",
+      "lastUpdated": "Última actualización: {date}",
+      "overviewTitle": "Resumen",
+      "overviewText": "PixelSwift es una herramienta de procesamiento de imágenes en línea que funciona completamente en su navegador. Nos tomamos su privacidad en serio.",
+      "dataTitle": "Recopilación de datos",
+      "dataText": "PixelSwift no recopila, almacena ni transmite ninguno de sus datos personales o archivos de imagen.",
+      "dataItem1": "Sus imágenes nunca se cargan en ningún servidor",
+      "dataItem2": "Todo el procesamiento de imágenes se realiza localmente en su navegador",
+      "dataItem3": "No recopilamos información de identificación personal",
+      "localTitle": "Procesamiento local",
+      "localText": "Todas las funciones de conversión, compresión y redimensionamiento de PixelSwift se ejecutan completamente en su navegador. Sus archivos nunca salen de su dispositivo.",
+      "cookiesTitle": "Cookies",
+      "cookiesText": "PixelSwift solo utiliza cookies funcionales esenciales para guardar sus preferencias de idioma y tema. No utilizamos cookies de seguimiento.",
+      "thirdPartyTitle": "Servicios de terceros",
+      "thirdPartyText": "PixelSwift no comparte sus datos con terceros.",
+      "contactTitle": "Contacto",
+      "contactText": "Si tiene preguntas sobre esta política de privacidad, contáctenos en: "
+    },
+    "terms": {
+      "title": "Términos de uso",
+      "lastUpdated": "Última actualización: {date}",
+      "acceptTitle": "Aceptación de los términos",
+      "acceptText": "Al usar PixelSwift, usted acepta estos términos de uso.",
+      "serviceTitle": "Descripción del servicio",
+      "serviceText": "PixelSwift proporciona herramientas gratuitas de procesamiento de imágenes en línea. Todo el procesamiento se realiza localmente en su navegador sin necesidad de registro.",
+      "usageTitle": "Reglas de uso",
+      "usageItem1": "Puede usar PixelSwift con fines personales o comerciales",
+      "usageItem2": "No use esta herramienta para procesar contenido ilegal",
+      "usageItem3": "No intente interferir con el funcionamiento normal de este servicio",
+      "ipTitle": "Propiedad intelectual",
+      "ipText": "El nombre, logotipo y diseño de PixelSwift están protegidos por derechos de propiedad intelectual. Las imágenes procesadas a través de esta herramienta siguen siendo suyas.",
+      "disclaimerTitle": "Descargo de responsabilidad",
+      "disclaimerText": "PixelSwift se proporciona \"tal cual\" sin garantía alguna. Recomendamos conservar copias de seguridad antes de procesar imágenes importantes.",
+      "changesTitle": "Cambios en los términos",
+      "changesText": "Nos reservamos el derecho de modificar estos términos en cualquier momento. Los cambios entran en vigor inmediatamente después de su publicación.",
+      "contactTitle": "Contacto",
+      "contactText": "Si tiene preguntas sobre estos términos de uso, contáctenos en: "
+    },
+    "contact": {
+      "desc": "Si tiene preguntas, sugerencias o comentarios, no dude en contactarnos.",
+      "emailTitle": "Correo electrónico",
+      "copy": "Copiar",
+      "copied": "¡Copiado!"
+    }
   },
   "seo": {
     "home": {
-      "title": "PixelSwift - Free Online Image Converter, Compressor & Resizer",
-      "description": "Convert, compress, and resize images online for free. No upload needed - all processing happens in your browser. Fast, secure, unlimited."
+      "title": "PixelSwift – Convertidor, compresor y redimensionador de imágenes en línea gratis",
+      "description": "Convierte, comprime y redimensiona imágenes gratis en línea. 100% en el navegador, sin subidas. ¡Pruébalo ahora!"
     },
     "converter": {
-      "title": "Free Online Image Format Converter - PixelSwift",
-      "description": "Convert images between JPG, PNG, WebP, HEIC, BMP, TIFF formats. Free, fast, and secure - no upload required."
+      "title": "Convertidor de imágenes en línea gratis – JPG PNG WebP | PixelSwift",
+      "description": "Convierte imágenes JPG, PNG, WebP, BMP, TIFF al instante. Gratis, rápido y seguro – sin subidas. ¡Pruébalo!"
     },
     "compressor": {
-      "title": "Compress Images Online Free - Reduce File Size | PixelSwift",
-      "description": "Compress JPG, PNG, WebP images online. Reduce file size up to 90% while maintaining quality. Free and private."
+      "title": "Comprimir imágenes en línea – Reduce hasta un 90% | PixelSwift",
+      "description": "Comprime imágenes JPG, PNG y WebP hasta un 90%. Mantén la calidad, ahorra espacio. ¡Gratis y privado!"
     },
     "resizer": {
-      "title": "Resize Image Online Free - PixelSwift",
-      "description": "Resize images by pixels, percentage, or aspect ratio. Free online tool with no limits."
+      "title": "Redimensionar imágenes en línea gratis – Píxeles y porcentaje | PixelSwift",
+      "description": "Redimensiona imágenes por píxeles o porcentaje. Rotación y volteo incluidos. Herramienta gratuita sin límites."
     }
   }
 }

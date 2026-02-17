@@ -29,8 +29,6 @@ const DEFAULT_CONFIG: UploadConfig = {
     "image/jpeg",
     "image/png",
     "image/webp",
-    "image/heic",
-    "image/heif",
     "image/bmp",
     "image/tiff",
   ],
@@ -72,15 +70,13 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
       };
     }
 
-    // Check by extension since HEIC may not have correct MIME
+    // Check by extension
     const ext = getExtension(file.name).toLowerCase();
     const validExtensions = [
       "jpg",
       "jpeg",
       "png",
       "webp",
-      "heic",
-      "heif",
       "bmp",
       "tif",
       "tiff",

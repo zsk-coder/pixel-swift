@@ -3,9 +3,15 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
 
+  // ── 站点 URL（sitemap 和 SEO 需要） ──
+  site: {
+    url: "https://pixelswift.site",
+  },
+
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/i18n",
+    "@nuxtjs/sitemap",
     "@nuxtjs/color-mode",
     "nuxt-schema-org",
     "@element-plus/nuxt",
@@ -26,6 +32,7 @@ export default defineNuxtConfig({
 
   // ── i18n ──
   i18n: {
+    baseUrl: "https://pixelswift.site",
     locales: [
       { code: "en", language: "en-US", file: "en.json", name: "English" },
       { code: "zh", language: "zh-CN", file: "zh.json", name: "简体中文" },
@@ -36,7 +43,6 @@ export default defineNuxtConfig({
       { code: "pt", language: "pt-BR", file: "pt.json", name: "Português" },
       { code: "ko", language: "ko-KR", file: "ko.json", name: "한국어" },
     ],
-    lazy: true,
     langDir: "../locales",
     defaultLocale: "en",
     strategy: "prefix_except_default",
@@ -86,6 +92,8 @@ export default defineNuxtConfig({
           content:
             "Free online image converter, compressor, and resizer. No upload needed - process images in your browser.",
         },
+        { property: "og:site_name", content: "PixelSwift" },
+        { property: "og:locale", content: "en_US" },
       ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
@@ -104,6 +112,26 @@ export default defineNuxtConfig({
           href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap",
         },
       ],
+    },
+  },
+
+  // ── 性能优化：禁用资源预加载 ──
+  experimental: {
+    payloadExtraction: false,
+  },
+
+  // 移除所有 prefetch/preload 提示，按需加载
+  hooks: {
+    "build:manifest"(manifest) {
+      for (const key in manifest) {
+        const file = manifest[key];
+        if (file?.prefetch) {
+          file.prefetch = false;
+        }
+        if (file?.preload) {
+          file.preload = false;
+        }
+      }
     },
   },
 });

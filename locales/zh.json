@@ -12,10 +12,15 @@
   },
   "home": {
     "title": "免费在线图片工具",
-    "subtitle": "在浏览器中即时转换、压缩、调整图片 —— 无需上传，无需注册，100% 隐私保护。",
+    "subtitle": "转换 · 压缩 · 调整大小 —— 三合一，全部在浏览器本地完成，文件绝不上传到任何服务器。",
+    "badges": {
+      "local": "🔒 本地处理",
+      "batch": "📦 批量处理",
+      "limit": "📐 50MB / 文件"
+    },
     "converter": {
       "title": "格式转换",
-      "desc": "一键在 JPG、PNG、WEBP、HEIC 等格式间自由转换。",
+      "desc": "一键在 JPG、PNG、WEBP 等格式间自由转换。",
       "btn": "打开转换器"
     },
     "compressor": {
@@ -42,16 +47,18 @@
     "why": {
       "title": "为什么选择 PixelSwift？",
       "fast": "闪电般快速",
-      "fastDesc": "基于 WebAssembly 技术，图片在浏览器中即时处理，无需上传，无需等待。",
+      "fastDesc": "基于现代浏览器技术，图片在本地即时处理，无需上传再下载，比传统在线工具快 5 倍以上。",
       "secure": "100% 隐私保护",
-      "secureDesc": "文件始终留在你的设备上，不会上传到任何服务器。",
+      "secureDesc": "文件始终留在你的设备上，不会上传到任何服务器 —— 区别于需要上传到云端的传统工具。",
       "free": "永久免费",
-      "freeDesc": "所有功能、无限使用、无水印。今天免费，明天免费，永远免费。"
+      "freeDesc": "所有功能、无限使用、无水印。今天免费，明天免费，永远免费。",
+      "batch": "批量处理",
+      "batchDesc": "一次处理多达 20 张图片，单文件最大 50MB —— 是同类免费工具文件上限的 10 倍。"
     },
     "faq": {
       "title": "常见问题",
-      "q1": "如何将 HEIC 转换为 JPG？",
-      "a1": "选择\"转换器\"，上传 HEIC 文件，选择 JPG 格式，点击下载即可。",
+      "q1": "支持哪些图片格式？",
+      "a1": "PixelSwift 支持 JPG、PNG、WebP、BMP、TIFF 格式的转换、压缩和调整大小。",
       "q2": "图片会被上传到服务器吗？",
       "a2": "不会。所有处理都在您的浏览器本地完成，图片不会离开您的设备。",
       "q3": "有文件大小限制吗？",
@@ -65,19 +72,20 @@
     "tapToUpload": "点击上传",
     "orDragDrop": "或拖放到此处",
     "selectImages": "选择图片",
-    "supportedFormats": "支持 JPG, PNG, WEBP, HEIC，最大 25MB",
+    "supportedFormats": "支持 JPG, PNG, WEBP, BMP, TIFF，最大 50MB",
     "releaseToUpload": "释放以上传",
-    "supportFormats": "支持: JPG, PNG, WebP, HEIC, BMP, TIFF",
+    "supportFormats": "支持: JPG, PNG, WebP, BMP, TIFF",
     "maxFiles": "最多 {count} 张图片，每张不超过 {size}MB",
     "pasteHint": "也可以从剪贴板粘贴 (Ctrl+V)",
     "selectFromAlbum": "从相册中选择图片"
   },
   "converter": {
     "title": "通用图片转换器",
-    "subtitle": "快速、简洁、安全的在线图片处理。一键转换为任意格式。",
+    "subtitle": "快速、简洁、安全的在线图片处理。支持 JPG、PNG、WebP 格式互转。",
     "subtitleMobile": "一键转换你的图片。",
+    "uploadHint": "支持 JPG, PNG, WEBP, BMP, TIFF，最大 50MB · 可批量上传多张",
     "settingsTitle": "转换设置",
-    "settingsDesc": "自定义输出格式与质量",
+    "settingsDesc": "自定义输出格式",
     "settingsMobile": "设置",
     "outputFormat": "输出格式",
     "quality": "质量",
@@ -90,17 +98,8 @@
     "waiting": "等待中",
     "totalSavings": "总节省空间:",
     "downloadAllZip": "下载全部 (ZIP)",
-    "progressive": "渐进式JPEG (推荐)",
     "lossless": "无损",
     "losslessHint": "将以无损模式转换，保留完整画质",
-    "pdfMode": "PDF模式",
-    "pdfSingle": "每张图片生成单独PDF",
-    "pdfMerge": "合并为一个PDF",
-    "pageOrientation": "页面方向",
-    "autoOrientation": "自动",
-    "portrait": "竖向",
-    "landscape": "横向",
-    "pageSize": "页面尺寸",
     "formats": {
       "jpg": "联合图像专家组格式",
       "png": "便携式网络图形格式",
@@ -111,6 +110,7 @@
     "title": "智能图片压缩器",
     "subtitle": "在保持画质的同时减小文件体积，完美适配 PNG、JPG 和 WEBP。",
     "subtitleMobile": "智能优化你的图片",
+    "uploadHint": "支持 JPG, PNG, WEBP，最大 50MB · 可批量上传多张",
     "original": "原图",
     "compressed": "压缩后",
     "result": "效果",
@@ -145,31 +145,42 @@
     "format": "格式:",
     "proTip": "你知道吗？",
     "proTipText": "WebP 格式比 JPG 可以额外减少 30% 的文件体积，且画质损失几乎不可察觉。",
-    "compareMode": "对比模式",
-    "sideBySide": "并排对比",
-    "slider": "滑动对比",
     "compressing": "压缩中..."
   },
   "resizer": {
-    "title": "调整图片尺寸",
+    "title": "精准图片缩放",
+    "uploadHint": "支持 JPG, PNG, WEBP, BMP, TIFF，最大 50MB",
+    "settings": "缩放设置",
+    "resetToOriginal": "恢复原始尺寸",
+    "resizeBy": "缩放方式",
     "mode": {
-      "pixel": "按像素",
-      "percent": "按百分比",
-      "ratio": "按宽高比"
+      "pixel": "像素",
+      "percent": "百分比"
     },
     "width": "宽度",
     "height": "高度",
     "scale": "缩放比例",
     "keepRatio": "保持宽高比",
-    "outputPreview": "输出尺寸: {width} × {height} px (原图的 {percent}%)",
+    "lockRatio": "锁定宽高比",
+    "rotateLeft": "向左旋转",
+    "rotateRight": "向右旋转",
+    "flipH": "水平翻转",
+    "flipV": "垂直翻转",
+    "quickPresets": "快捷预设",
     "presets": {
-      "1:1": "正方形 (1:1)",
-      "4:3": "传统照片 (4:3)",
-      "16:9": "宽屏 (16:9)",
-      "3:2": "相机照片 (3:2)",
-      "9:16": "手机壁纸 (9:16)",
-      "custom": "自定义"
-    }
+      "square": "1:1 正方形",
+      "standard": "4:3 标准",
+      "hd": "16:9 高清",
+      "story": "9:16 竖屏",
+      "cover": "封面图"
+    },
+    "estimatedSize": "预估文件大小",
+    "outputFormat": "输出格式",
+    "outputPreview": "输出尺寸: {width} × {height} px (原图的 {percent}%)",
+    "resizeAndDownload": "缩放并下载图片",
+    "replaceImage": "点击更换图片",
+    "startOver": "上传其他图片",
+    "securityNote": "文件在本地处理，安全可靠。"
   },
   "common": {
     "download": "下载",
@@ -202,22 +213,69 @@
     "terms": "使用条款",
     "contact": "联系我们"
   },
+  "legal": {
+    "privacy": {
+      "title": "隐私政策",
+      "lastUpdated": "最后更新：{date}",
+      "overviewTitle": "概述",
+      "overviewText": "PixelSwift 是一款完全在浏览器中运行的在线图片处理工具。我们高度重视您的隐私，本政策说明了我们如何处理您的数据。",
+      "dataTitle": "数据收集",
+      "dataText": "PixelSwift 不会收集、存储或传输您的任何个人数据或图片文件。具体而言：",
+      "dataItem1": "您的图片永远不会上传到任何服务器",
+      "dataItem2": "所有图片处理均在您的浏览器本地完成",
+      "dataItem3": "我们不会收集任何个人身份信息",
+      "localTitle": "本地处理",
+      "localText": "PixelSwift 的所有图片转换、压缩和缩放功能均完全在您的浏览器中执行。您的文件不会离开您的设备，这意味着您可以完全掌控自己的数据。",
+      "cookiesTitle": "Cookies",
+      "cookiesText": "PixelSwift 仅使用必要的功能性 Cookie 来保存您的语言偏好和主题设置。我们不会使用任何跟踪 Cookie 或第三方分析工具。",
+      "thirdPartyTitle": "第三方服务",
+      "thirdPartyText": "PixelSwift 不会与任何第三方共享您的数据。我们不使用第三方分析、广告或跟踪服务。",
+      "contactTitle": "联系我们",
+      "contactText": "如果您对本隐私政策有任何疑问，请通过以下邮箱联系我们："
+    },
+    "terms": {
+      "title": "使用条款",
+      "lastUpdated": "最后更新：{date}",
+      "acceptTitle": "接受条款",
+      "acceptText": "使用 PixelSwift 即表示您同意接受本使用条款。如果您不同意这些条款，请停止使用本服务。",
+      "serviceTitle": "服务描述",
+      "serviceText": "PixelSwift 提供免费的在线图片处理工具，包括格式转换、图片压缩和尺寸调整。所有处理均在您的浏览器本地完成，不需要注册或登录。",
+      "usageTitle": "使用规范",
+      "usageItem1": "您可以将 PixelSwift 用于个人或商业用途",
+      "usageItem2": "请勿将本工具用于处理非法内容",
+      "usageItem3": "请勿尝试干扰、破坏本服务的正常运行",
+      "ipTitle": "知识产权",
+      "ipText": "PixelSwift 的品牌名称、标识和界面设计受知识产权保护。您通过本工具处理的图片归您所有，我们不会对其主张任何权利。",
+      "disclaimerTitle": "免责声明",
+      "disclaimerText": "PixelSwift 按「现状」提供服务，不做任何明示或暗示的保证。我们尽力确保工具的可靠性和准确性，但不对因使用本工具造成的任何数据丢失或损坏承担责任。建议您在处理重要图片前保留原始备份。",
+      "changesTitle": "条款变更",
+      "changesText": "我们保留随时修改本使用条款的权利。任何变更将在本页面发布后立即生效。继续使用 PixelSwift 即表示您接受修改后的条款。",
+      "contactTitle": "联系我们",
+      "contactText": "如果您对本使用条款有任何疑问，请通过以下邮箱联系我们："
+    },
+    "contact": {
+      "desc": "如果您有任何问题、建议或反馈，欢迎通过以下方式联系我们。",
+      "emailTitle": "电子邮箱",
+      "copy": "复制",
+      "copied": "已复制!"
+    }
+  },
   "seo": {
     "home": {
-      "title": "PixelSwift - 免费在线图片转换、压缩、调整工具",
-      "description": "免费在线转换、压缩、调整图片。无需上传，所有处理在浏览器本地完成。极速、安全、无限制。"
+      "title": "PixelSwift – 免费在线图片转换、压缩、调整大小工具",
+      "description": "免费在线转换、压缩、调整图片。100% 浏览器本地处理，无需上传，隐私安全。立即体验！"
     },
     "converter": {
-      "title": "免费在线图片格式转换器 - PixelSwift",
-      "description": "在线转换 JPG、PNG、WebP、HEIC、BMP、TIFF 格式。免费、快速、安全，无需上传。"
+      "title": "免费在线图片格式转换器 – JPG PNG WebP 互转 | PixelSwift",
+      "description": "在线转换 JPG、PNG、WebP、BMP、TIFF 图片格式。免费、极速、无需上传。立即使用！"
     },
     "compressor": {
-      "title": "在线图片压缩 - 免费减小文件大小 | PixelSwift",
-      "description": "在线压缩 JPG、PNG、WebP 图片。最高减小 90% 文件体积，同时保持画质。免费且隐私安全。"
+      "title": "在线图片压缩工具 – 最高缩小90%体积 | PixelSwift",
+      "description": "免费在线压缩 JPG、PNG、WebP 图片，最高减小 90% 体积，画质几乎无损。立即压缩！"
     },
     "resizer": {
-      "title": "免费在线调整图片大小 - PixelSwift",
-      "description": "按像素、百分比或宽高比调整图片大小。免费在线工具，无限制使用。"
+      "title": "免费在线调整图片大小 – 像素/百分比调整 | PixelSwift",
+      "description": "按像素或百分比精确调整图片尺寸，支持旋转翻转。免费在线工具，无限制。立即调整！"
     }
   }
 }

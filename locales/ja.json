@@ -1,89 +1,105 @@
 {
   "nav": {
-    "home": "Home",
-    "converter": "Converter",
-    "compressor": "Compressor",
-    "resizer": "Resize",
-    "language": "Language",
-    "theme": "Theme"
+    "home": "ホーム",
+    "converter": "変換",
+    "compressor": "圧縮",
+    "resizer": "リサイズ",
+    "tools": "ツール",
+    "about": "概要",
+    "contact": "お問い合わせ",
+    "language": "言語",
+    "theme": "テーマ"
   },
   "home": {
-    "title": "Free Online Image Tool",
-    "subtitle": "Convert, compress, and resize images instantly in your browser",
+    "title": "無料オンライン画像ツール",
+    "subtitle": "変換 · 圧縮 · リサイズ — オールインワン、ブラウザローカルで完結。ファイルはデバイスから出ません。",
+    "badges": {
+      "local": "🔒 ローカル処理",
+      "batch": "📦 バッチ処理",
+      "limit": "📐 50MB / ファイル"
+    },
     "converter": {
-      "title": "Format Converter",
-      "desc": "Convert images between formats"
+      "title": "フォーマット変換",
+      "desc": "JPG、PNG、WEBPなどをワンクリックで自由に変換。",
+      "btn": "変換ツールを開く"
     },
     "compressor": {
-      "title": "Image Compressor",
-      "desc": "Reduce file size"
+      "title": "画像圧縮",
+      "desc": "画質を維持したままファイルサイズを最大90%削減。",
+      "btn": "圧縮ツールを開く"
     },
     "resizer": {
-      "title": "Resize Image",
-      "desc": "Adjust dimensions"
+      "title": "画像リサイズ",
+      "desc": "SNS、Web、印刷などあらゆるプラットフォームに正確にサイズを調整。",
+      "btn": "リサイズツールを開く"
+    },
+    "features": {
+      "title": "主な機能",
+      "subtitle": "画像管理に必要なすべてが、ここに。"
+    },
+    "cta": {
+      "start": "無料で始める",
+      "learn": "詳細を見る",
+      "title": "画像処理を効率化する準備はできましたか？",
+      "desc": "ダウンロード不要、登録不要。数秒で画像処理を開始。",
+      "button": "今すぐ無料で試す"
     },
     "why": {
-      "title": "Why PixelSwift?",
-      "fast": "Lightning Fast",
-      "fastDesc": "Process images locally in your browser",
-      "secure": "Privacy First",
-      "secureDesc": "Images never leave your device",
-      "free": "100% Free",
-      "freeDesc": "No watermarks, no limits, no signup"
+      "title": "PixelSwiftが選ばれる理由",
+      "fast": "超高速処理",
+      "fastDesc": "最新のブラウザ技術でデバイス上で即座に処理。アップロード後ダウンロード不要。従来のオンラインツールより5倍高速。",
+      "secure": "100%プライバシー保護",
+      "secureDesc": "ファイルは常にデバイスに留まります。どのサーバーにもアップロードされません — クラウドへのアップロードが必要な従来のツールとは異なります。",
+      "free": "永久無料",
+      "freeDesc": "全機能・無制限・透かしなし。今日も、明日も、ずっと無料。",
+      "batch": "バッチ処理",
+      "batchDesc": "一度に最大20枚、ファイルあたり最大50MB — 同種の無料ツールのファイル制限の10倍。"
     },
     "faq": {
-      "title": "Frequently Asked Questions",
-      "q1": "How to convert HEIC to JPG?",
-      "a1": "Select \"Converter\", upload your HEIC file, choose JPG format, and download.",
-      "q2": "Are my images uploaded to a server?",
-      "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
-      "q3": "Is there a file size limit?",
-      "a3": "Each file can be up to 50MB. You can process up to 20 images at once."
+      "title": "よくある質問",
+      "q1": "対応している画像フォーマットは？",
+      "a1": "PixelSwiftはJPG、PNG、WebP、BMP、TIFF形式の変換・圧縮・リサイズに対応しています。",
+      "q2": "画像はサーバーにアップロードされますか？",
+      "a2": "いいえ。すべての処理はブラウザ内でローカルに行われます。画像がデバイスから外に出ることはありません。",
+      "q3": "ファイルサイズに制限はありますか？",
+      "a3": "1ファイルあたり最大50MBまで対応。一度に最大20枚の画像を処理できます。"
     }
   },
   "upload": {
-    "dragText": "Drag & drop images here, or click to upload",
-    "dragTitle": "Drag & Drop files here",
-    "orBrowse": "or click to browse from your computer",
-    "tapToUpload": "Tap to Upload",
-    "orDragDrop": "or drag and drop here",
-    "selectImages": "Select Images",
-    "supportedFormats": "Supports JPG, PNG, WEBP, HEIC up to 25MB",
-    "releaseToUpload": "Release to upload",
-    "supportFormats": "Supports: JPG, PNG, WebP, HEIC, BMP, TIFF",
-    "maxFiles": "Up to {count} images, max {size}MB each",
-    "pasteHint": "You can also paste from clipboard (Ctrl+V)",
-    "selectFromAlbum": "Select from your photo album"
+    "dragText": "画像をここにドラッグ＆ドロップ、またはクリックしてアップロード",
+    "dragTitle": "ファイルをここにドラッグ＆ドロップ",
+    "orBrowse": "またはクリックしてファイルを選択",
+    "tapToUpload": "タップしてアップロード",
+    "orDragDrop": "またはここにドラッグ＆ドロップ",
+    "selectImages": "画像を選択",
+    "supportedFormats": "JPG, PNG, WEBP, BMP, TIFF に対応、最大 50MB",
+    "releaseToUpload": "離すとアップロードされます",
+    "supportFormats": "対応形式: JPG, PNG, WebP, BMP, TIFF",
+    "maxFiles": "最大{count}枚、1ファイル{size}MBまで",
+    "pasteHint": "クリップボードからの貼り付けも可能です（Ctrl+V）",
+    "selectFromAlbum": "フォトライブラリから選択"
   },
   "converter": {
-    "title": "Universal Image Converter",
-    "subtitle": "Fast, clean, and secure online image processing. Convert your images to any format in seconds.",
-    "subtitleMobile": "Convert your images in seconds.",
-    "settingsTitle": "Conversion Settings",
-    "settingsDesc": "Customize output format and quality",
-    "settingsMobile": "Settings",
-    "outputFormat": "Output Format",
-    "quality": "Quality",
-    "lowSize": "Low Size",
-    "bestQuality": "Best Quality",
-    "queue": "Queue",
-    "clearAll": "Clear All",
-    "converting": "Converting...",
-    "complete": "Complete",
-    "waiting": "Waiting",
-    "totalSavings": "Total size savings:",
-    "downloadAllZip": "Download All (ZIP)",
-    "progressive": "Progressive JPEG (recommended)",
-    "lossless": "Lossless",
+    "title": "画像フォーマット変換ツール",
+    "subtitle": "高速・安全なオンライン画像処理。JPG、PNG、WebP形式を相互変換。",
+    "subtitleMobile": "画像を瞬時に変換。",
+    "uploadHint": "JPG, PNG, WEBP, BMP, TIFF 対応、最大 50MB · 一括アップロード可能",
+    "settingsTitle": "変換設定",
+    "settingsDesc": "出力形式を選択",
+    "settingsMobile": "設定",
+    "outputFormat": "出力形式",
+    "quality": "品質",
+    "lowSize": "低容量",
+    "bestQuality": "最高品質",
+    "queue": "キュー",
+    "clearAll": "すべてクリア",
+    "converting": "変換中...",
+    "complete": "完了",
+    "waiting": "待機中",
+    "totalSavings": "合計削減:",
+    "downloadAllZip": "一括ダウンロード (ZIP)",
+    "lossless": "ロスレス",
     "losslessHint": "ロスレス変換、画質を完全に保持",
-    "pdfMode": "PDF Mode",
-    "pdfSingle": "One PDF per image",
-    "pdfMerge": "Merge all into one PDF",
-    "pageOrientation": "Page Orientation",
-    "autoOrientation": "Auto",
-    "portrait": "Portrait",
-    "landscape": "Landscape",
-    "pageSize": "Page Size",
     "formats": {
       "jpg": "Joint Photographic Experts Group",
       "png": "Portable Network Graphics",
@@ -94,6 +110,7 @@
     "title": "スマート画像圧縮",
     "subtitle": "画質を維持しながらファイルサイズを縮小。PNG、JPG、WEBPに最適。",
     "subtitleMobile": "画像をインテリジェントに最適化",
+    "uploadHint": "JPG, PNG, WEBP 対応、最大 50MB · 一括アップロード可能",
     "original": "オリジナル",
     "compressed": "圧縮後",
     "result": "結果",
@@ -128,79 +145,137 @@
     "format": "形式:",
     "proTip": "ご存知ですか？",
     "proTipText": "WebP形式はJPGと比較して、目立つ画質劣化なくファイルサイズをさらに30%縮小できます。",
-    "compareMode": "比較モード",
-    "sideBySide": "並べて比較",
-    "slider": "スライダー",
     "compressing": "圧縮中..."
   },
   "resizer": {
-    "title": "Resize Image",
+    "title": "画像リサイズツール",
+    "uploadHint": "JPG, PNG, WEBP, BMP, TIFF 対応、最大 50MB",
+    "settings": "リサイズ設定",
+    "resetToOriginal": "元に戻す",
+    "resizeBy": "リサイズ方法",
     "mode": {
-      "pixel": "By Pixels",
-      "percent": "By Percentage",
-      "ratio": "By Aspect Ratio"
+      "pixel": "ピクセル",
+      "percent": "パーセント"
     },
-    "width": "Width",
-    "height": "Height",
-    "scale": "Scale",
-    "keepRatio": "Keep aspect ratio",
-    "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
+    "width": "幅",
+    "height": "高さ",
+    "scale": "スケール",
+    "keepRatio": "アスペクト比を維持",
+    "lockRatio": "アスペクト比をロック",
+    "rotateLeft": "左に回転",
+    "rotateRight": "右に回転",
+    "flipH": "水平反転",
+    "flipV": "垂直反転",
+    "quickPresets": "クイックプリセット",
     "presets": {
-      "1:1": "Square (1:1)",
-      "4:3": "Photo (4:3)",
-      "16:9": "Widescreen (16:9)",
-      "3:2": "Camera (3:2)",
-      "9:16": "Phone (9:16)",
-      "custom": "Custom"
-    }
+      "square": "1:1 正方形",
+      "standard": "4:3 スタンダード",
+      "hd": "16:9 HD",
+      "story": "9:16 ストーリー",
+      "cover": "カバー写真"
+    },
+    "estimatedSize": "推定サイズ",
+    "outputFormat": "出力形式",
+    "outputPreview": "出力サイズ: {width} × {height} px (元画像の {percent}%)",
+    "resizeAndDownload": "リサイズしてダウンロード",
+    "replaceImage": "クリックして画像を変更",
+    "startOver": "別の画像をアップロード",
+    "securityNote": "ファイルはローカルで安全に処理されます。"
   },
   "common": {
-    "download": "Download",
-    "downloadAll": "Download All",
-    "preview": "Preview",
-    "delete": "Delete",
-    "cancel": "Cancel",
-    "reset": "Reset",
-    "process": "Process",
-    "processing": "Processing...",
-    "done": "Done",
-    "error": "Error",
-    "pending": "Waiting",
-    "retry": "Retry",
-    "close": "Close",
-    "fileSize": "File size",
-    "dimensions": "Dimensions"
+    "download": "ダウンロード",
+    "downloadAll": "すべてダウンロード",
+    "preview": "プレビュー",
+    "delete": "削除",
+    "cancel": "キャンセル",
+    "reset": "リセット",
+    "process": "処理開始",
+    "processing": "処理中...",
+    "done": "完了",
+    "error": "エラー",
+    "pending": "待機中",
+    "retry": "再試行",
+    "close": "閉じる",
+    "fileSize": "ファイルサイズ",
+    "dimensions": "サイズ"
   },
   "errors": {
-    "formatNotSupported": "Unsupported format. Please upload {formats}",
-    "fileTooLarge": "File exceeds {size}MB limit. Please try compressing it first.",
-    "fileCorrupted": "This file appears to be corrupted and cannot be read.",
-    "processFailed": "Processing failed. Please refresh the page and try again.",
-    "browserNotSupported": "Your browser doesn't support this feature. We recommend using Chrome.",
-    "maxFilesExceeded": "Maximum {count} files allowed. Only the first {count} will be processed."
+    "formatNotSupported": "非対応の形式です。{formats}をアップロードしてください",
+    "fileTooLarge": "ファイルが{size}MB制限を超えています。先に圧縮してから再度お試しください。",
+    "fileCorrupted": "ファイルが破損しており、読み取れません。",
+    "processFailed": "処理に失敗しました。ページを更新して再度お試しください。",
+    "browserNotSupported": "お使いのブラウザはこの機能に対応していません。Chromeの使用を推奨します。",
+    "maxFilesExceeded": "最大{count}ファイルまでです。先頭の{count}ファイルのみ処理されます。"
   },
   "footer": {
     "copyright": "© {year} PixelSwift. All rights reserved.",
-    "privacy": "Privacy Policy",
-    "terms": "Terms of Use",
-    "contact": "Contact Us"
+    "privacy": "プライバシーポリシー",
+    "terms": "利用規約",
+    "contact": "お問い合わせ"
+  },
+  "legal": {
+    "privacy": {
+      "title": "プライバシーポリシー",
+      "lastUpdated": "最終更新：{date}",
+      "overviewTitle": "概要",
+      "overviewText": "PixelSwift はブラウザ上で完全に動作するオンライン画像処理ツールです。お客様のプライバシーを重視し、データの取り扱いについて説明いたします。",
+      "dataTitle": "データ収集",
+      "dataText": "PixelSwift はお客様の個人データや画像ファイルを一切収集、保存、送信しません。",
+      "dataItem1": "画像はいかなるサーバーにもアップロードされません",
+      "dataItem2": "すべての画像処理はブラウザ内でローカルに実行されます",
+      "dataItem3": "個人を特定できる情報は一切収集しません",
+      "localTitle": "ローカル処理",
+      "localText": "PixelSwift のすべての画像変換、圧縮、リサイズ機能はブラウザ内で完全に実行されます。ファイルがデバイスから外に出ることはありません。",
+      "cookiesTitle": "Cookie について",
+      "cookiesText": "PixelSwift は言語設定とテーマ設定を保存するために必要最小限の機能的 Cookie のみを使用します。トラッキング Cookie やサードパーティ分析ツールは使用しません。",
+      "thirdPartyTitle": "サードパーティサービス",
+      "thirdPartyText": "PixelSwift はお客様のデータをいかなるサードパーティとも共有しません。",
+      "contactTitle": "お問い合わせ",
+      "contactText": "本プライバシーポリシーについてご質問がございましたら、こちらまでご連絡ください："
+    },
+    "terms": {
+      "title": "利用規約",
+      "lastUpdated": "最終更新：{date}",
+      "acceptTitle": "規約への同意",
+      "acceptText": "PixelSwift をご利用いただくことにより、本利用規約に同意したものとみなされます。",
+      "serviceTitle": "サービス内容",
+      "serviceText": "PixelSwift は、フォーマット変換、画像圧縮、リサイズなどの無料オンライン画像処理ツールを提供します。すべての処理はブラウザ内で行われ、登録は不要です。",
+      "usageTitle": "利用規則",
+      "usageItem1": "個人的または商用目的で PixelSwift をご利用いただけます",
+      "usageItem2": "違法なコンテンツの処理に本ツールを使用しないでください",
+      "usageItem3": "本サービスの正常な運用を妨害しないでください",
+      "ipTitle": "知的財産権",
+      "ipText": "PixelSwift のブランド名、ロゴ、インターフェースデザインは知的財産権により保護されています。本ツールで処理された画像はお客様のものであり、当社はいかなる権利も主張しません。",
+      "disclaimerTitle": "免責事項",
+      "disclaimerText": "PixelSwift は「現状のまま」提供され、いかなる保証もありません。重要な画像を処理する前にバックアップを保持することをお勧めします。",
+      "changesTitle": "規約の変更",
+      "changesText": "当社はいつでも本利用規約を変更する権利を有します。変更はこのページに掲載された時点で有効となります。",
+      "contactTitle": "お問い合わせ",
+      "contactText": "本利用規約についてご質問がございましたら、こちらまでご連絡ください："
+    },
+    "contact": {
+      "desc": "ご質問、ご提案、フィードバックがございましたら、お気軽にご連絡ください。",
+      "emailTitle": "メールアドレス",
+      "copy": "コピー",
+      "copied": "コピーしました!"
+    }
   },
   "seo": {
     "home": {
-      "title": "PixelSwift - Free Online Image Converter, Compressor & Resizer",
-      "description": "Convert, compress, and resize images online for free. No upload needed - all processing happens in your browser. Fast, secure, unlimited."
+      "title": "PixelSwift – 無料オンライン画像変換・圧縮・リサイズツール",
+      "description": "画像を無料で変換・圧縮・リサイズ。100%ブラウザ処理、アップロード不要、プライバシー安全。今すぐお試しください！"
     },
     "converter": {
-      "title": "Free Online Image Format Converter - PixelSwift",
-      "description": "Convert images between JPG, PNG, WebP, HEIC, BMP, TIFF formats. Free, fast, and secure - no upload required."
+      "title": "無料オンライン画像フォーマット変換 – JPG PNG WebP変換 | PixelSwift",
+      "description": "JPG、PNG、WebP、BMP、TIFF画像を瞬時に変換。無料・高速・安全 – アップロード不要。今すぐ変換！"
     },
     "compressor": {
-      "title": "Compress Images Online Free - Reduce File Size | PixelSwift",
-      "description": "Compress JPG, PNG, WebP images online. Reduce file size up to 90% while maintaining quality. Free and private."
+      "title": "無料オンライン画像圧縮 – 最大90%サイズ削減 | PixelSwift",
+      "description": "JPG、PNG、WebP画像を最大90%圧縮。画質維持、容量節約。無料＆安全 – 今すぐ圧縮！"
     },
     "resizer": {
-      "title": "Resize Image Online Free - PixelSwift",
-      "description": "Resize images by pixels, percentage, or aspect ratio. Free online tool with no limits."
+      "title": "無料オンライン画像リサイズ – ピクセル＆パーセント | PixelSwift",
+      "description": "ピクセルまたはパーセントで画像サイズを正確に調整。回転・反転も対応。無料オンラインツール、制限なし！"
     }
   }
 }

@@ -25,6 +25,6 @@ export function generateOutputName(
 }
 
 export function generateZipName(action: string): string {
-  const dateStr = new Date().toISOString().split("T")[0].replace(/-/g, "");
+  const dateStr = new Date().toISOString().split("T")[0]!.replace(/-/g, "");
   return `pixelswift_${action}_${dateStr}.zip`;
 }

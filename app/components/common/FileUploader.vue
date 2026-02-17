@@ -6,12 +6,14 @@ const props = withDefaults(
     accept?: string;
     maxSize?: number;
     maxCount?: number;
+    hint?: string;
   }>(),
   {
     accept:
-      "image/jpeg,image/png,image/webp,image/heic,image/heif,image/bmp,image/tiff",
+      "image/jpeg,image/png,image/webp,image/bmp,image/tiff",
     maxSize: 50,
     maxCount: 20,
+    hint: "",
   },
 );
 
@@ -96,7 +98,7 @@ onUnmounted(() => {
       <span
         class="inline-flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white font-semibold hover:bg-blue-700 transition-colors shadow-sm cursor-pointer"
       >
-        <span class="material-symbols-outlined text-sm"
+        <span class="material-symbols-outlined text-lg"
           >add_photo_alternate</span
         >
         <span>{{ t("upload.selectImages") }}</span>
@@ -107,7 +109,7 @@ onUnmounted(() => {
     <p
       class="text-xs text-slate-500 dark:text-slate-400 mt-3 md:mt-4 text-center"
     >
-      {{ t("upload.supportedFormats") }}
+      {{ hint || t("upload.supportedFormats") }}
     </p>
   </ElUpload>
 </template>

@@ -12,10 +12,15 @@
   },
   "home": {
     "title": "Free Online Image Tool",
-    "subtitle": "Convert, compress, and resize images instantly — right in your browser. No uploads, no sign-ups, 100% private.",
+    "subtitle": "Convert · Compress · Resize — all-in-one, processed locally in your browser. Your files never leave your device.",
+    "badges": {
+      "local": "🔒 Local Processing",
+      "batch": "📦 Batch Processing",
+      "limit": "📐 50MB / File"
+    },
     "converter": {
       "title": "Converter",
-      "desc": "Seamlessly convert between JPG, PNG, WEBP, HEIC, and more with one click.",
+      "desc": "Seamlessly convert between JPG, PNG, WEBP, and more with one click.",
       "btn": "Open Converter"
     },
     "compressor": {
@@ -42,16 +47,18 @@
     "why": {
       "title": "Why PixelSwift?",
       "fast": "Lightning Fast",
-      "fastDesc": "Powered by WebAssembly — images are processed instantly in your browser. No uploads, no queues.",
+      "fastDesc": "Powered by modern browser technology — images are processed instantly on your device. No upload-then-download. 5x faster than traditional online tools.",
       "secure": "100% Private",
-      "secureDesc": "Your files stay on your device. Nothing is uploaded to any server, ever.",
+      "secureDesc": "Your files stay on your device. Nothing is uploaded to any server — unlike traditional tools that require cloud uploads.",
       "free": "Forever Free",
-      "freeDesc": "All features, no limits, no watermarks. Free today, free tomorrow, free forever."
+      "freeDesc": "All features, no limits, no watermarks. Free today, free tomorrow, free forever.",
+      "batch": "Batch Processing",
+      "batchDesc": "Process up to 20 images at once, each up to 50MB — 10x the file size limit of similar free tools."
     },
     "faq": {
       "title": "Frequently Asked Questions",
-      "q1": "How to convert HEIC to JPG?",
-      "a1": "Select \"Converter\", upload your HEIC file, choose JPG format, and download.",
+      "q1": "What image formats are supported?",
+      "a1": "PixelSwift supports JPG, PNG, WebP, BMP, and TIFF formats for conversion, compression, and resizing.",
       "q2": "Are my images uploaded to a server?",
       "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
       "q3": "Is there a file size limit?",
@@ -65,19 +72,20 @@
     "tapToUpload": "Tap to Upload",
     "orDragDrop": "or drag and drop here",
     "selectImages": "Select Images",
-    "supportedFormats": "Supports JPG, PNG, WEBP, HEIC up to 25MB",
+    "supportedFormats": "Supports JPG, PNG, WEBP, BMP, TIFF up to 50MB",
     "releaseToUpload": "Release to upload",
-    "supportFormats": "Supports: JPG, PNG, WebP, HEIC, BMP, TIFF",
+    "supportFormats": "Supports: JPG, PNG, WebP, BMP, TIFF",
     "maxFiles": "Up to {count} images, max {size}MB each",
     "pasteHint": "You can also paste from clipboard (Ctrl+V)",
     "selectFromAlbum": "Select from your photo album"
   },
   "converter": {
     "title": "Universal Image Converter",
-    "subtitle": "Fast, clean, and secure online image processing. Convert your images to any format in seconds.",
+    "subtitle": "Fast, clean, and secure online image processing. Convert between JPG, PNG, and WebP formats.",
     "subtitleMobile": "Convert your images in seconds.",
+    "uploadHint": "Supports JPG, PNG, WEBP, BMP, TIFF up to 50MB · Batch upload available",
     "settingsTitle": "Conversion Settings",
-    "settingsDesc": "Customize output format and quality",
+    "settingsDesc": "Select output format",
     "settingsMobile": "Settings",
     "outputFormat": "Output Format",
     "quality": "Quality",
@@ -90,17 +98,8 @@
     "waiting": "Waiting",
     "totalSavings": "Total size savings:",
     "downloadAllZip": "Download All (ZIP)",
-    "progressive": "Progressive JPEG (recommended)",
     "lossless": "Lossless",
     "losslessHint": "Lossless conversion, full quality preserved",
-    "pdfMode": "PDF Mode",
-    "pdfSingle": "One PDF per image",
-    "pdfMerge": "Merge all into one PDF",
-    "pageOrientation": "Page Orientation",
-    "autoOrientation": "Auto",
-    "portrait": "Portrait",
-    "landscape": "Landscape",
-    "pageSize": "Page Size",
     "formats": {
       "jpg": "Joint Photographic Experts Group",
       "png": "Portable Network Graphics",
@@ -111,6 +110,7 @@
     "title": "Smart Image Compressor",
     "subtitle": "Reduce file size while maintaining quality. Perfect for PNG, JPG, and WEBP.",
     "subtitleMobile": "Optimize your images intelligently",
+    "uploadHint": "Supports JPG, PNG, WEBP up to 50MB · Batch upload available",
     "original": "Original",
     "compressed": "Compressed",
     "result": "Result",
@@ -145,32 +145,44 @@
     "format": "Format:",
     "proTip": "Did you know?",
     "proTipText": "WebP format can reduce file size by an additional 30% compared to JPG without noticeable quality loss.",
-    "compareMode": "Compare Mode",
-    "sideBySide": "Side by Side",
-    "slider": "Slider",
     "compressing": "Compressing..."
   },
   "resizer": {
-    "title": "Resize Image",
+    "title": "Precision Image Resizer",
+    "uploadHint": "Supports JPG, PNG, WEBP, BMP, TIFF up to 50MB",
+    "settings": "Resize Settings",
+    "resetToOriginal": "Reset to Original",
+    "resizeBy": "Resize By",
     "mode": {
-      "pixel": "By Pixels",
-      "percent": "By Percentage",
-      "ratio": "By Aspect Ratio"
+      "pixel": "Pixels",
+      "percent": "Percentage"
     },
     "width": "Width",
     "height": "Height",
     "scale": "Scale",
     "keepRatio": "Keep aspect ratio",
-    "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
+    "lockRatio": "Lock Aspect Ratio",
+    "rotateLeft": "Rotate Left",
+    "rotateRight": "Rotate Right",
+    "flipH": "Flip H",
+    "flipV": "Flip V",
+    "quickPresets": "Quick Presets",
     "presets": {
-      "1:1": "Square (1:1)",
-      "4:3": "Photo (4:3)",
-      "16:9": "Widescreen (16:9)",
-      "3:2": "Camera (3:2)",
-      "9:16": "Phone (9:16)",
-      "custom": "Custom"
-    }
+      "square": "1:1 Square",
+      "standard": "4:3 Standard",
+      "hd": "16:9 HD",
+      "story": "9:16 Story",
+      "cover": "Cover Photo"
+    },
+    "estimatedSize": "Estimated New Size",
+    "outputFormat": "Output Format",
+    "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
+    "resizeAndDownload": "Resize & Download Image",
+    "replaceImage": "Click to replace image",
+    "startOver": "Upload Another Image",
+    "securityNote": "Files are processed locally and are secure."
   },
+
   "common": {
     "download": "Download",
     "downloadAll": "Download All",
@@ -202,22 +214,69 @@
     "terms": "Terms of Use",
     "contact": "Contact Us"
   },
+  "legal": {
+    "privacy": {
+      "title": "Privacy Policy",
+      "lastUpdated": "Last updated: {date}",
+      "overviewTitle": "Overview",
+      "overviewText": "PixelSwift is an online image processing tool that runs entirely in your browser. We take your privacy seriously, and this policy explains how we handle your data.",
+      "dataTitle": "Data Collection",
+      "dataText": "PixelSwift does not collect, store, or transmit any of your personal data or image files. Specifically:",
+      "dataItem1": "Your images are never uploaded to any server",
+      "dataItem2": "All image processing is performed locally in your browser",
+      "dataItem3": "We do not collect any personally identifiable information",
+      "localTitle": "Local Processing",
+      "localText": "All image conversion, compression, and resizing features of PixelSwift are executed entirely within your browser. Your files never leave your device, meaning you have complete control over your data.",
+      "cookiesTitle": "Cookies",
+      "cookiesText": "PixelSwift only uses essential functional cookies to save your language preference and theme settings. We do not use any tracking cookies or third-party analytics tools.",
+      "thirdPartyTitle": "Third-Party Services",
+      "thirdPartyText": "PixelSwift does not share your data with any third parties. We do not use third-party analytics, advertising, or tracking services.",
+      "contactTitle": "Contact Us",
+      "contactText": "If you have any questions about this privacy policy, please contact us at: "
+    },
+    "terms": {
+      "title": "Terms of Use",
+      "lastUpdated": "Last updated: {date}",
+      "acceptTitle": "Acceptance of Terms",
+      "acceptText": "By using PixelSwift, you agree to these terms of use. If you do not agree with these terms, please stop using the service.",
+      "serviceTitle": "Service Description",
+      "serviceText": "PixelSwift provides free online image processing tools, including format conversion, image compression, and resizing. All processing is performed locally in your browser without requiring registration or login.",
+      "usageTitle": "Usage Rules",
+      "usageItem1": "You may use PixelSwift for personal or commercial purposes",
+      "usageItem2": "Do not use this tool to process illegal content",
+      "usageItem3": "Do not attempt to interfere with or disrupt the normal operation of this service",
+      "ipTitle": "Intellectual Property",
+      "ipText": "The PixelSwift brand name, logo, and interface design are protected by intellectual property rights. Images you process through this tool remain yours, and we claim no rights over them.",
+      "disclaimerTitle": "Disclaimer",
+      "disclaimerText": "PixelSwift is provided \"as is\" without any express or implied warranties. While we strive to ensure the reliability and accuracy of our tools, we are not responsible for any data loss or damage resulting from the use of this tool. We recommend keeping original backups before processing important images.",
+      "changesTitle": "Changes to Terms",
+      "changesText": "We reserve the right to modify these terms of use at any time. Any changes will take effect immediately upon being posted on this page. Continued use of PixelSwift constitutes acceptance of the modified terms.",
+      "contactTitle": "Contact Us",
+      "contactText": "If you have any questions about these terms of use, please contact us at: "
+    },
+    "contact": {
+      "desc": "If you have any questions, suggestions, or feedback, feel free to reach out to us.",
+      "emailTitle": "Email",
+      "copy": "Copy",
+      "copied": "Copied!"
+    }
+  },
   "seo": {
     "home": {
-      "title": "PixelSwift - Free Online Image Converter, Compressor & Resizer",
-      "description": "Convert, compress, and resize images online for free. No upload needed - all processing happens in your browser. Fast, secure, unlimited."
+      "title": "PixelSwift – Free Online Image Converter, Compressor & Resizer",
+      "description": "Convert, compress & resize images free online. 100% browser-based, no uploads, no sign-ups. Try it now!"
     },
     "converter": {
-      "title": "Free Online Image Format Converter - PixelSwift",
-      "description": "Convert images between JPG, PNG, WebP, HEIC, BMP, TIFF formats. Free, fast, and secure - no upload required."
+      "title": "Convert Images Online Free – JPG PNG WebP Converter | PixelSwift",
+      "description": "Convert JPG, PNG, WebP, BMP, TIFF images instantly. Free, private & unlimited – no upload needed. Try now!"
     },
     "compressor": {
-      "title": "Compress Images Online Free - Reduce File Size | PixelSwift",
-      "description": "Compress JPG, PNG, WebP images online. Reduce file size up to 90% while maintaining quality. Free and private."
+      "title": "Compress Images Online Free – Reduce Size up to 90% | PixelSwift",
+      "description": "Compress JPG, PNG & WebP images up to 90% smaller. Keep quality, save bandwidth. Free & private – try now!"
     },
     "resizer": {
-      "title": "Resize Image Online Free - PixelSwift",
-      "description": "Resize images by pixels, percentage, or aspect ratio. Free online tool with no limits."
+      "title": "Resize Images Online Free – Pixels & Percentage | PixelSwift",
+      "description": "Resize images to exact pixels or percentage. Rotate and flip supported. Free, fast & secure online tool. Try now!"
     }
   }
 }

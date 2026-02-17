@@ -19,26 +19,10 @@ export async function detectFormat(file: File): Promise<string> {
   const buffer = await file.slice(0, 12).arrayBuffer();
   const bytes = new Uint8Array(buffer);
 
-  // Check HEIC/HEIF (ftyp box)
-  if (bytes.length >= 12) {
-    const ftypStr = String.fromCharCode(bytes[4], bytes[5], bytes[6], bytes[7]);
-    if (ftypStr === "ftyp") {
-      const brandStr = String.fromCharCode(
-        bytes[8],
-        bytes[9],
-        bytes[10],
-        bytes[11],
-      );
-      if (["heic", "heix", "hevc", "mif1"].includes(brandStr)) {
-        return "heic";
-      }
-    }
-  }
-
   // Check WebP ("RIFF" + "WEBP")
   if (bytes.length >= 12) {
-    const riff = String.fromCharCode(bytes[0], bytes[1], bytes[2], bytes[3]);
-    const webp = String.fromCharCode(bytes[8], bytes[9], bytes[10], bytes[11]);
+    const riff = String.fromCharCode(bytes[0]!, bytes[1]!, bytes[2]!, bytes[3]!);
+    const webp = String.fromCharCode(bytes[8]!, bytes[9]!, bytes[10]!, bytes[11]!);
     if (riff === "RIFF" && webp === "WEBP") return "webp";
   }
 
@@ -61,8 +45,6 @@ export function isFormatSupported(format: string): boolean {
     "jpeg",
     "png",
     "webp",
-    "heic",
-    "heif",
     "bmp",
     "tif",
     "tiff",

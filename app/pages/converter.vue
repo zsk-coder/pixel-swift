@@ -1,11 +1,20 @@
 <script setup lang="ts">
-import type { FileItem } from "~/components/common/FileList.vue";
+import type { FileItem as BaseFileItem } from "~/components/common/FileList.vue";
+
+interface FileItem extends BaseFileItem {
+  outputFormat?: string;
+}
 
 const { t } = useI18n();
 
 useHead({
   title: t("seo.converter.title"),
-  meta: [{ name: "description", content: t("seo.converter.description") }],
+  meta: [
+    { name: "description", content: t("seo.converter.description") },
+    { property: "og:title", content: t("seo.converter.title") },
+    { property: "og:description", content: t("seo.converter.description") },
+    { property: "og:type", content: "website" },
+  ],
 });
 
 // Output format options with labels
@@ -18,11 +27,7 @@ type OutputFormat = "jpg" | "png" | "webp";
 
 const selectedFormat = ref<OutputFormat>("webp");
 const quality = ref(85);
-
-// Quality slider only for lossy formats
-const showQuality = computed(() =>
-  ["jpg", "webp"].includes(selectedFormat.value),
-);
+const showQuality = computed(() => selectedFormat.value !== "png");
 
 // Raw files from uploader
 const rawFiles = ref<File[]>([]);
@@ -95,7 +100,7 @@ async function onProcess() {
       const result = await processImage(file, {
         action: "convert",
         outputFormat: selectedFormat.value,
-        quality: quality.value,
+        quality: showQuality.value ? quality.value : 100,
       });
 
       item.status = "done";
@@ -103,6 +108,7 @@ async function onProcess() {
       item.processedSize = result.processedSize;
       item.width = result.width;
       item.height = result.height;
+      item.outputFormat = selectedFormat.value;
 
       processedBlobs.value.set(item.id, result.blob);
     } catch {
@@ -120,7 +126,7 @@ function onDownload(id: string) {
   if (!item || !blob) return;
 
   const filename = generateFileName(item.name, "convert", {
-    format: selectedFormat.value,
+    format: (item.outputFormat as any) || selectedFormat.value,
   });
   downloadFile(blob, filename);
 }
@@ -134,7 +140,7 @@ async function onDownloadAll() {
       zipFiles.push({
         blob,
         name: generateFileName(item.name, "convert", {
-          format: selectedFormat.value,
+          format: (item.outputFormat as any) || selectedFormat.value,
         }),
       });
     }
@@ -196,7 +202,7 @@ function onReset() {
       </div>
 
       <!-- Upload Area -->
-      <FileUploader @files="onFilesAdded" />
+      <FileUploader :hint="t('converter.uploadHint')" @files="onFilesAdded" />
 
       <!-- Conversion Settings Card -->
       <div
@@ -311,54 +317,7 @@ function onReset() {
                 />
               </ElSelect>
             </div>
-            <!-- Quality / Lossless -->
-            <div>
-              <div class="flex justify-between items-center mb-1.5">
-                <label
-                  class="block text-sm font-medium text-slate-700 dark:text-slate-300"
-                >
-                  {{ t("converter.quality") }}
-                </label>
-                <span
-                  v-if="showQuality"
-                  class="text-xs font-mono bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-400"
-                >
-                  {{ quality }}%
-                </span>
-                <span
-                  v-else
-                  class="text-xs font-bold bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 px-2.5 py-0.5 rounded-full"
-                >
-                  {{ t("converter.lossless") }}
-                </span>
-              </div>
-              <template v-if="showQuality">
-                <ElSlider
-                  v-model="quality"
-                  :min="1"
-                  :max="100"
-                  :show-tooltip="true"
-                  :format-tooltip="(val: number) => `${val}%`"
-                />
-                <div class="flex justify-between mt-1">
-                  <span class="text-[10px] text-slate-400">{{
-                    t("converter.lowSize")
-                  }}</span>
-                  <span class="text-[10px] text-slate-400">{{
-                    t("converter.bestQuality")
-                  }}</span>
-                </div>
-              </template>
-              <p
-                v-else
-                class="text-sm text-slate-400 dark:text-slate-500 flex items-center gap-1.5 py-1"
-              >
-                <span class="material-symbols-outlined text-[16px]"
-                  >verified</span
-                >
-                {{ t("converter.losslessHint") }}
-              </p>
-            </div>
+
           </div>
         </div>
       </div>
@@ -431,7 +390,7 @@ function onReset() {
                   >
                   <span class="font-medium text-slate-900 dark:text-white"
                     >{{ formatSize(file.processedSize || 0) }} ({{
-                      selectedFormat.toUpperCase()
+                      (file.outputFormat || selectedFormat).toUpperCase()
                     }})</span
                   >
                 </div>

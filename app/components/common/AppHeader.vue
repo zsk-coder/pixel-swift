@@ -6,8 +6,44 @@ const isMobileMenuOpen = ref(false);
 
 const isDark = computed(() => colorMode.value === "dark");
 
-function toggleTheme() {
-  colorMode.preference = isDark.value ? "light" : "dark";
+async function toggleTheme(event: MouseEvent) {
+  // Fallback for browsers that don't support View Transition API
+  if (
+    !document.startViewTransition ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    colorMode.preference = isDark.value ? "light" : "dark";
+    return;
+  }
+
+  // Get click coordinates for the circle origin
+  const x = event.clientX;
+  const y = event.clientY;
+  // Calculate the max radius to cover the entire viewport
+  const endRadius = Math.hypot(
+    Math.max(x, window.innerWidth - x),
+    Math.max(y, window.innerHeight - y),
+  );
+
+  const transition = document.startViewTransition(() => {
+    colorMode.preference = isDark.value ? "light" : "dark";
+  });
+
+  await transition.ready;
+
+  document.documentElement.animate(
+    {
+      clipPath: [
+        `circle(0px at ${x}px ${y}px)`,
+        `circle(${endRadius}px at ${x}px ${y}px)`,
+      ],
+    },
+    {
+      duration: 500,
+      easing: "ease-in-out",
+      pseudoElement: "::view-transition-new(root)",
+    },
+  );
 }
 
 function toggleMobileMenu() {
@@ -19,9 +55,9 @@ function closeMobileMenu() {
 }
 
 const navItems = computed(() => [
-  { label: t("nav.tools"), href: "#tools" },
-  { label: t("nav.about"), href: "#features" },
-  { label: t("nav.contact"), href: "#contact" },
+  { label: t("nav.converter"), to: localePath("/converter") },
+  { label: t("nav.compressor"), to: localePath("/compress-image") },
+  { label: t("nav.resizer"), to: localePath("/resize-image") },
 ]);
 
 const availableLocales = computed(() =>
@@ -41,12 +77,12 @@ function selectLocale(code: string) {
     class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md"
   >
     <div
-      class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8"
+      class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 relative"
     >
-      <!-- Logo -->
+      <!-- Logo (left) -->
       <NuxtLink
         :to="localePath('/')"
-        class="flex items-center gap-2"
+        class="flex items-center gap-2 shrink-0"
         @click="closeMobileMenu"
       >
         <div
@@ -60,19 +96,21 @@ function selectLocale(code: string) {
         >
       </NuxtLink>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8">
-        <a
+      <!-- Desktop Nav (center) -->
+      <nav
+        class="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2"
+      >
+        <NuxtLink
           v-for="item in navItems"
-          :key="item.href"
-          :href="item.href"
+          :key="item.to"
+          :to="item.to"
           class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
         >
           {{ item.label }}
-        </a>
+        </NuxtLink>
       </nav>
 
-      <!-- Desktop Actions -->
+      <!-- Actions (right) -->
       <div class="flex items-center gap-3">
         <!-- Language -->
         <ElDropdown trigger="click" @command="selectLocale">
@@ -136,15 +174,15 @@ function selectLocale(code: string) {
         class="md:hidden fixed left-0 right-0 top-16 z-50 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-xl"
       >
         <nav class="flex flex-col p-4 gap-1">
-          <a
+          <NuxtLink
             v-for="item in navItems"
-            :key="item.href"
-            :href="item.href"
+            :key="item.to"
+            :to="item.to"
             class="px-4 py-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
             @click="closeMobileMenu"
           >
             {{ item.label }}
-          </a>
+          </NuxtLink>
           <hr class="my-2 border-slate-200 dark:border-slate-700" />
           <div class="px-4 py-2">
             <p class="text-xs text-slate-500 mb-2">{{ t("nav.language") }}</p>
