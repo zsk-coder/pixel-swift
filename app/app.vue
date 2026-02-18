@@ -1,6 +1,17 @@
 <script setup>
-// Element Plus dark mode support (official approach)
+// Element Plus 暗黑模式支持（官方方案）
 import "element-plus/theme-chalk/dark/css-vars.css";
+
+// 生成 hreflang、og:locale 和 canonical link 标签，用于 SEO 多语言优化
+const head = useLocaleHead({
+  addDirAttribute: true,
+  addSeoAttributes: true,
+});
+useHead({
+  htmlAttrs: computed(() => head.value.htmlAttrs),
+  link: computed(() => head.value.link),
+  meta: computed(() => head.value.meta),
+});
 </script>
 
 <template>

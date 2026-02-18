@@ -264,11 +264,6 @@ async function doResize() {
       height: th,
     });
     downloadFile(result.blob, filename);
-
-    // Show success confirmation with actual output dimensions
-    ElMessage.success(
-      `✓ ${result.width}×${result.height} px · ${formatSize(result.processedSize)}`,
-    );
   } catch (e) {
     console.error("Resize failed:", e);
     ElMessage.error(String(e));
