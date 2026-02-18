@@ -11,8 +11,8 @@
     "theme": "Thème"
   },
   "home": {
-    "title": "Outil d'image en ligne gratuit",
-    "subtitle": "Convertir · Compresser · Redimensionner — tout-en-un, traité localement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil.",
+    "title": "Outil de traitement d’images en ligne",
+    "subtitle": "Convertissez, compressez et redimensionnez vos images gratuitement en ligne. Compatible JPG / PNG / WebP. Traité localement dans votre navigateur — aucun téléchargement, entièrement privé.",
     "badges": {
       "local": "🔒 Traitement local",
       "batch": "📦 Traitement par lot",
@@ -35,25 +35,25 @@
     },
     "features": {
       "title": "Fonctionnalités principales",
-      "subtitle": "Tout ce dont vous avez besoin pour gérer vos images, en un seul endroit."
+      "subtitle": "Convertissez, compressez et redimensionnez — tout au même endroit."
     },
     "cta": {
-      "start": "Démarrer gratuitement",
+      "start": "Commencer",
       "learn": "En savoir plus",
-      "title": "Prêt à optimiser vos images ?",
-      "desc": "Aucun téléchargement, aucune inscription. Commencez en quelques secondes.",
-      "button": "Essayer maintenant — Gratuit"
+      "title": "Prêt à traiter vos images ?",
+      "desc": "Ouvrez votre navigateur et commencez — aucun téléchargement ni inscription requis.",
+      "button": "Commencer"
     },
     "why": {
       "title": "Pourquoi PixelSwift ?",
       "fast": "Ultra rapide",
-      "fastDesc": "Grâce à la technologie moderne du navigateur, vos images sont traitées instantanément sur votre appareil. Pas de téléchargement suivi de re-téléchargement. 5× plus rapide que les outils en ligne classiques.",
-      "secure": "100 % confidentiel",
-      "secureDesc": "Vos fichiers restent sur votre appareil. Rien n'est envoyé sur un serveur — contrairement aux outils traditionnels qui nécessitent un téléchargement vers le cloud.",
-      "free": "Gratuit pour toujours",
-      "freeDesc": "Toutes les fonctionnalités, sans limite, sans filigrane. Gratuit aujourd'hui, demain et pour toujours.",
+      "fastDesc": "Compatible avec 5 formats d'image majeurs, traité instantanément en millisecondes — aucune attente de téléchargement.",
+      "secure": "Entièrement privé",
+      "secureDesc": "Vos fichiers restent sur votre appareil. Tout le traitement se fait localement dans le navigateur — rien n'est envoyé à aucun serveur.",
+      "free": "Entièrement gratuit",
+      "freeDesc": "Toutes les fonctionnalités disponibles — sans filigrane, utilisation illimitée, sans inscription.",
       "batch": "Traitement par lot",
-      "batchDesc": "Traitez jusqu'à 20 images à la fois, jusqu'à 50 Mo chacune — 10× la limite des outils gratuits similaires."
+      "batchDesc": "Traitez jusqu'à 20 images à la fois, jusqu'à 50 Mo chacune — gérez de gros volumes en toute simplicité."
     },
     "faq": {
       "title": "Questions fréquentes",

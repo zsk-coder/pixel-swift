@@ -74,4 +74,15 @@ html.dark {
 ::view-transition-new(root) {
   z-index: 9999;
 }
+/* ── 移动端 iOS Safari 防缩放 ── */
+/* iOS Safari 在 focus 字体 < 16px 的表单元素时会自动放大页面 */
+@media screen and (max-width: 768px) {
+  select,
+  input,
+  textarea,
+  .el-input__inner,
+  .el-select .el-input__inner {
+    font-size: 16px !important;
+  }
+}
 </style>

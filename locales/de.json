@@ -11,8 +11,8 @@
     "theme": "Design"
   },
   "home": {
-    "title": "Kostenloses Online-Bildtool",
-    "subtitle": "Konvertieren · Komprimieren · Skalieren — alles in einem, lokal im Browser verarbeitet. Ihre Dateien verlassen Ihr Gerät nie.",
+    "title": "Online-Bildbearbeitungstool",
+    "subtitle": "Kostenlos Bilder konvertieren, komprimieren und skalieren. Unterstützt JPG / PNG / WebP. Lokal im Browser verarbeitet — kein Upload nötig, vollständig privat.",
     "badges": {
       "local": "🔒 Lokale Verarbeitung",
       "batch": "📦 Stapelverarbeitung",
@@ -35,25 +35,25 @@
     },
     "features": {
       "title": "Kernfunktionen",
-      "subtitle": "Alles, was Sie für die Bildverwaltung brauchen — an einem Ort."
+      "subtitle": "Konvertieren, komprimieren und skalieren — alles an einem Ort."
     },
     "cta": {
-      "start": "Kostenlos starten",
+      "start": "Jetzt starten",
       "learn": "Mehr erfahren",
-      "title": "Bereit, Ihre Bilder zu optimieren?",
-      "desc": "Kein Download, keine Anmeldung. Starten Sie in Sekunden.",
-      "button": "Jetzt kostenlos testen"
+      "title": "Bereit, Ihre Bilder zu verarbeiten?",
+      "desc": "Öffnen Sie Ihren Browser und legen Sie los — keine Downloads oder Anmeldungen nötig.",
+      "button": "Jetzt starten"
     },
     "why": {
       "title": "Warum PixelSwift?",
       "fast": "Blitzschnell",
-      "fastDesc": "Dank moderner Browser-Technologie werden Bilder sofort auf Ihrem Gerät verarbeitet. Kein Hochladen und erneutes Herunterladen. 5× schneller als herkömmliche Online-Tools.",
-      "secure": "100 % privat",
-      "secureDesc": "Ihre Dateien bleiben auf Ihrem Gerät. Nichts wird jemals hochgeladen — im Gegensatz zu herkömmlichen Tools, die einen Cloud-Upload erfordern.",
-      "free": "Für immer kostenlos",
-      "freeDesc": "Alle Funktionen, ohne Limits, ohne Wasserzeichen. Heute, morgen und für immer kostenlos.",
+      "fastDesc": "Unterstützt 5 gängige Bildformate, sofort in Millisekunden verarbeitet — kein Warten auf Upload oder Download.",
+      "secure": "Vollständig privat",
+      "secureDesc": "Ihre Dateien bleiben auf Ihrem Gerät. Die gesamte Verarbeitung erfolgt lokal im Browser — nichts wird an einen Server gesendet.",
+      "free": "Komplett kostenlos",
+      "freeDesc": "Alle Funktionen verfügbar — keine Wasserzeichen, unbegrenzte Nutzung, keine Registrierung erforderlich.",
       "batch": "Stapelverarbeitung",
-      "batchDesc": "Bis zu 20 Bilder auf einmal, je bis zu 50 MB — das 10-Fache des Dateilimits ähnlicher kostenloser Tools."
+      "batchDesc": "Bis zu 20 Bilder auf einmal verarbeiten, je bis zu 50 MB — große Mengen mit Leichtigkeit bewältigen."
     },
     "faq": {
       "title": "Häufig gestellte Fragen",

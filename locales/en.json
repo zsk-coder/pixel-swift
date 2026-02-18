@@ -11,8 +11,8 @@
     "theme": "Theme"
   },
   "home": {
-    "title": "Free Online Image Tool",
-    "subtitle": "Convert · Compress · Resize — all-in-one, processed locally in your browser. Your files never leave your device.",
+    "title": "Online Image Processing Tool",
+    "subtitle": "Free online image converter, compressor & resizer. Supports JPG / PNG / WebP. Processed locally in your browser — no upload needed, fully private.",
     "badges": {
       "local": "🔒 Local Processing",
       "batch": "📦 Batch Processing",
@@ -35,25 +35,25 @@
     },
     "features": {
       "title": "Core Features",
-      "subtitle": "Everything you need to manage your images in one place."
+      "subtitle": "Convert, compress, and resize — all in one place."
     },
     "cta": {
-      "start": "Get Started — It's Free",
+      "start": "Get Started",
       "learn": "Learn more",
-      "title": "Ready to supercharge your images?",
-      "desc": "No downloads, no sign-ups. Start processing images in seconds.",
-      "button": "Try It Now — Free"
+      "title": "Ready to Process Your Images?",
+      "desc": "Open your browser and get started — no downloads or sign-ups needed.",
+      "button": "Get Started"
     },
     "why": {
       "title": "Why PixelSwift?",
       "fast": "Lightning Fast",
-      "fastDesc": "Powered by modern browser technology — images are processed instantly on your device. No upload-then-download. 5x faster than traditional online tools.",
-      "secure": "100% Private",
-      "secureDesc": "Your files stay on your device. Nothing is uploaded to any server — unlike traditional tools that require cloud uploads.",
-      "free": "Forever Free",
-      "freeDesc": "All features, no limits, no watermarks. Free today, free tomorrow, free forever.",
+      "fastDesc": "Supports 5 major image formats, processed instantly in milliseconds — no upload or download wait.",
+      "secure": "Fully Private",
+      "secureDesc": "Your files stay on your device. All processing happens locally in the browser — nothing is sent to any server.",
+      "free": "Completely Free",
+      "freeDesc": "All features fully available — no watermarks, unlimited use, no registration required.",
       "batch": "Batch Processing",
-      "batchDesc": "Process up to 20 images at once, each up to 50MB — 10x the file size limit of similar free tools."
+      "batchDesc": "Process up to 20 images at once, each up to 50MB — handle large batches with ease."
     },
     "faq": {
       "title": "Frequently Asked Questions",

@@ -11,8 +11,8 @@
     "theme": "Tema"
   },
   "home": {
-    "title": "Ferramenta de imagens online gratuita",
-    "subtitle": "Converter · Comprimir · Redimensionar — tudo em um, processado localmente no seu navegador. Seus arquivos nunca saem do seu dispositivo.",
+    "title": "Ferramenta de processamento de imagens online",
+    "subtitle": "Converta, comprima e redimensione imagens grátis online. Compatível com JPG / PNG / WebP. Processado localmente no navegador — sem envio, totalmente privado.",
     "badges": {
       "local": "🔒 Processamento local",
       "batch": "📦 Processamento em lote",
@@ -35,25 +35,25 @@
     },
     "features": {
       "title": "Recursos principais",
-      "subtitle": "Tudo que você precisa para gerenciar suas imagens, em um só lugar."
+      "subtitle": "Converta, comprima e redimensione — tudo em um só lugar."
     },
     "cta": {
-      "start": "Comece grátis",
+      "start": "Começar",
       "learn": "Saiba mais",
-      "title": "Pronto para otimizar suas imagens?",
-      "desc": "Sem downloads, sem cadastro. Comece a processar imagens em segundos.",
-      "button": "Experimente agora — Grátis"
+      "title": "Pronto para processar suas imagens?",
+      "desc": "Abra seu navegador e comece — sem downloads nem cadastros.",
+      "button": "Começar"
     },
     "why": {
       "title": "Por que PixelSwift?",
       "fast": "Ultrarrápido",
-      "fastDesc": "Com tecnologia moderna do navegador, suas imagens são processadas instantaneamente no seu dispositivo. Sem enviar e baixar novamente. 5× mais rápido que ferramentas online tradicionais.",
-      "secure": "100% privado",
-      "secureDesc": "Seus arquivos permanecem no seu dispositivo. Nada é enviado a nenhum servidor — diferente das ferramentas tradicionais que exigem upload para a nuvem.",
-      "free": "Gratuito para sempre",
-      "freeDesc": "Todos os recursos, sem limites, sem marca d'água. Grátis hoje, amanhã e para sempre.",
+      "fastDesc": "Compatível com 5 formatos principais de imagem, processados instantaneamente em milissegundos — sem espera de upload ou download.",
+      "secure": "Totalmente privado",
+      "secureDesc": "Seus arquivos ficam no seu dispositivo. Todo o processamento acontece localmente no navegador — nada é enviado a nenhum servidor.",
+      "free": "Completamente grátis",
+      "freeDesc": "Todas as funcionalidades disponíveis — sem marca d'água, uso ilimitado, sem cadastro.",
       "batch": "Processamento em lote",
-      "batchDesc": "Processe até 20 imagens de uma vez, até 50MB cada — 10× o limite de ferramentas gratuitas similares."
+      "batchDesc": "Processe até 20 imagens de uma vez, até 50 MB cada — lide com grandes volumes com facilidade."
     },
     "faq": {
       "title": "Perguntas frequentes",
