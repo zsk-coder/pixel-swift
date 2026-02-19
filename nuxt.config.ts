@@ -20,6 +20,7 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "nuxt-schema-org",
     "@element-plus/nuxt",
+    "nuxt-gtag",
   ],
 
   // ── Components (disable path prefix) ──
@@ -65,6 +66,11 @@ export default defineNuxtConfig({
     fallback: "light",
   },
 
+  // ── Google Analytics 4 ──
+  gtag: {
+    id: "G-9C80LFFN3X",
+  },
+
   // ── Element Plus ──
   elementPlus: {
     importStyle: "css",
@@ -99,7 +105,13 @@ export default defineNuxtConfig({
         },
         { property: "og:site_name", content: "PixelSwift" },
         { property: "og:locale", content: "en_US" },
+         // Google网站所有权验证
+        {
+          name: 'google-site-verification',
+          content: 'kW7iFJUB2r0As4go9uTxiXJDJyU8t9IEThNmw9GqCE8',
+        },
       ],
+      
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
