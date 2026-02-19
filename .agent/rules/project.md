@@ -17,7 +17,16 @@ alwaysApply: true
 | 国际化 | `@nuxtjs/i18n`（zh / en / ja / ko / fr / es / pt / de） |
 | 暗色模式 | `@nuxtjs/color-mode`（`.dark:` 前缀） |
 | SEO | `nuxt-schema-org`（FAQ Schema 等结构化数据） |
+| 流量监控 | `nuxt-gtag`（Google Analytics 4） |
 | 构建 | Vite（Nuxt 内置） |
+| 部署 | Cloudflare Pages |
+
+## 部署规则
+
+- 项目部署在 **Cloudflare Pages**，仅与 **GitHub** 仓库关联，推送后自动触发构建部署。
+- Git 远程仓库：`origin`（Gitee）、`github`（GitHub）。
+- **部署时必须推送到 `github` 远程**：`git push github master`，推送到 `origin`（Gitee）不会触发部署。
+- 如需同时推送两个远程：`git push origin master; git push github master`。
 
 ## 项目目录
 

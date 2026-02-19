@@ -120,13 +120,19 @@ export default defineNuxtConfig({
           href: "https://fonts.gstatic.com",
           crossorigin: "",
         },
+        // 主字体：精简权重 + preload 非阻塞加载
         {
-          rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap",
+          rel: "preload",
+          as: "style",
+          href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;700&display=swap",
+          onload: "this.onload=null;this.rel='stylesheet'",
         },
+        // Material Symbols：延迟加载，不阻塞首屏渲染
         {
           rel: "stylesheet",
-          href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap",
+          href: "https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,400,0..1&display=swap",
+          media: "print",
+          onload: "this.media='all'",
         },
       ],
     },
