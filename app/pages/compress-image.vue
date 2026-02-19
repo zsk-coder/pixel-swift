@@ -332,6 +332,8 @@ async function onBatchProcess() {
       if (result.processedSize >= file.size) {
         processedBlobs.value.set(item.id, file);
         item.processedSize = file.size;
+        // Use original preview as compressed preview (file unchanged)
+        compressedPreviews.value.set(item.id, item.preview || "");
       } else {
         processedBlobs.value.set(item.id, result.blob);
         item.processedSize = result.processedSize;
