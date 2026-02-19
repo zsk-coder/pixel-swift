@@ -174,7 +174,7 @@
       "story": "9:16 Historia",
       "cover": "Foto de portada"
     },
-    "estimatedSize": "Tamaño estimado",
+    "outputSize": "Tamaño de salida",
     "outputFormat": "Formato de salida",
     "outputPreview": "Tamaño de salida: {width} × {height} px ({percent}% del original)",
     "resizeAndDownload": "Redimensionar y descargar",

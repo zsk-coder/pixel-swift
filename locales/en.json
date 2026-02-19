@@ -174,7 +174,7 @@
       "story": "9:16 Story",
       "cover": "Cover Photo"
     },
-    "estimatedSize": "Estimated New Size",
+    "outputSize": "Output Size",
     "outputFormat": "Output Format",
     "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
     "resizeAndDownload": "Resize & Download Image",

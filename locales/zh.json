@@ -174,7 +174,7 @@
       "story": "9:16 竖屏",
       "cover": "封面图"
     },
-    "estimatedSize": "预估文件大小",
+    "outputSize": "输出文件大小",
     "outputFormat": "输出格式",
     "outputPreview": "输出尺寸: {width} × {height} px (原图的 {percent}%)",
     "resizeAndDownload": "缩放并下载图片",

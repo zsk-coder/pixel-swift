@@ -174,7 +174,7 @@
       "story": "9:16 ストーリー",
       "cover": "カバー写真"
     },
-    "estimatedSize": "推定サイズ",
+    "outputSize": "出力サイズ",
     "outputFormat": "出力形式",
     "outputPreview": "出力サイズ: {width} × {height} px (元画像の {percent}%)",
     "resizeAndDownload": "リサイズしてダウンロード",

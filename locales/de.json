@@ -174,7 +174,7 @@
       "story": "9:16 Story",
       "cover": "Titelbild"
     },
-    "estimatedSize": "Geschätzte Größe",
+    "outputSize": "Ausgabegröße",
     "outputFormat": "Ausgabeformat",
     "outputPreview": "Ausgabegröße: {width} × {height} px ({percent}% des Originals)",
     "resizeAndDownload": "Größe ändern und herunterladen",

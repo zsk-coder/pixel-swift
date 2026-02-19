@@ -40,6 +40,7 @@ const originalWidth = ref(0);
 const originalHeight = ref(0);
 const originalSize = ref(0);
 const originalFormat = ref("");
+const processedSize = ref(0);
 
 // ─── Composables ────────────────────────────────
 const { processImage } = useImageProcessor();
@@ -69,27 +70,14 @@ const targetHeight = computed(() => {
   return height.value;
 });
 
-const estimatedSize = computed(() => {
-  if (!originalSize.value || !originalWidth.value || !originalHeight.value)
-    return 0;
-  const origPixels = originalWidth.value * originalHeight.value;
-  const newPixels = targetWidth.value * targetHeight.value;
-  const ratio = newPixels / origPixels;
-  // Rough estimate: size scales roughly with pixel count (not perfect but useful)
-  return Math.round(originalSize.value * ratio);
-});
-
 const sizeChangePercent = computed(() => {
-  if (!originalSize.value || !estimatedSize.value) return 0;
+  if (!originalSize.value || !processedSize.value) return 0;
   return Math.round(
-    ((estimatedSize.value - originalSize.value) / originalSize.value) * 100,
+    ((processedSize.value - originalSize.value) / originalSize.value) * 100,
   );
 });
 
-const displayFormat = computed(() => {
-  const fmt = originalFormat.value || "jpg";
-  return fmt.toUpperCase();
-});
+
 
 // ─── Helpers ────────────────────────────────────
 function formatSize(bytes: number): string {
@@ -203,6 +191,7 @@ async function onFilesAdded(newFiles: File[]) {
   previewUrl.value = URL.createObjectURL(file);
   isDone.value = false;
   processedBlob.value = null;
+  processedSize.value = 0;
   rotation.value = 0;
   flipH.value = false;
   flipV.value = false;
@@ -213,6 +202,8 @@ async function onFilesAdded(newFiles: File[]) {
     originalHeight.value = bitmap.height;
     width.value = bitmap.width;
     height.value = bitmap.height;
+
+
   } catch {
     originalWidth.value = 1920;
     originalHeight.value = 1080;
@@ -255,6 +246,7 @@ async function doResize() {
     console.log(`[Resize] output: ${result.width}×${result.height}, size: ${result.processedSize}`);
 
     processedBlob.value = result.blob;
+    processedSize.value = result.processedSize;
     isDone.value = true;
 
     // Auto download
@@ -311,6 +303,9 @@ function resetToOriginal() {
   flipH.value = false;
   flipV.value = false;
   mode.value = "pixel";
+  processedSize.value = 0;
+  isDone.value = false;
+  processedBlob.value = null;
 }
 
 function startOver() {
@@ -323,6 +318,7 @@ function startOver() {
   originalFormat.value = "";
   isDone.value = false;
   processedBlob.value = null;
+  processedSize.value = 0;
   resetToOriginal();
 }
 </script>
@@ -374,7 +370,7 @@ function startOver() {
                 "
               />
 
-              <!-- Image with live aspect ratio preview -->
+              <!-- Image with live resize preview -->
               <div
                 class="relative z-10 flex items-center justify-center p-4 transition-all duration-300 ease-out"
                 :style="{ ...previewAspectStyle, maxHeight: '400px', maxWidth: '100%' }"
@@ -382,7 +378,7 @@ function startOver() {
                 <img
                   v-if="previewUrl"
                   :src="previewUrl"
-                  class="w-full h-full object-cover rounded-lg shadow-lg border border-white/20 transition-all duration-300"
+                  class="w-full h-full rounded-lg shadow-lg border border-white/20 transition-all duration-300"
                   :style="{ transform: previewTransform }"
                   alt="preview"
                 />
@@ -401,8 +397,8 @@ function startOver() {
                   <span v-if="hasDimensionChanged" class="material-symbols-outlined text-[14px]">open_with</span>
                   {{ targetWidth }} × {{ targetHeight }} px
                 </span>
-                <span class="w-px h-3 bg-white/30" />
-                <span>~{{ formatSize(estimatedSize) }}</span>
+                <span v-if="processedSize" class="w-px h-3 bg-white/30" />
+                <span v-if="processedSize">{{ formatSize(processedSize) }}</span>
               </div>
 
               <!-- Hover overlay to replace image -->
@@ -644,49 +640,33 @@ function startOver() {
                 class="h-px w-full bg-slate-200 dark:bg-slate-700 mb-6"
               />
 
-              <!-- Estimated Output Info -->
+              <!-- Output Info (shown after processing) -->
               <div
-                class="flex items-center justify-between mb-6 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg border border-slate-100 dark:border-slate-700/50"
+                v-if="processedSize"
+                class="flex items-center justify-between mb-6 p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-200 dark:border-green-900/30"
               >
-                <div>
-                  <p
-                    class="text-xs text-slate-500 dark:text-slate-400 mb-1"
+                <p
+                  class="text-xs text-slate-500 dark:text-slate-400"
+                >
+                  {{ t("resizer.outputSize") }}
+                </p>
+                <p
+                  class="font-bold text-slate-900 dark:text-white"
+                >
+                  {{ formatSize(processedSize) }}
+                  <span
+                    v-if="sizeChangePercent !== 0"
+                    class="text-xs font-normal ml-1"
+                    :class="
+                      sizeChangePercent < 0
+                        ? 'text-green-600'
+                        : 'text-orange-500'
+                    "
                   >
-                    {{ t("resizer.estimatedSize") }}
-                  </p>
-                  <p
-                    class="font-bold text-slate-900 dark:text-white"
-                  >
-                    ~{{ formatSize(estimatedSize) }}
-                    <span
-                      v-if="sizeChangePercent !== 0"
-                      class="text-xs font-normal ml-1"
-                      :class="
-                        sizeChangePercent < 0
-                          ? 'text-green-600'
-                          : 'text-orange-500'
-                      "
-                    >
-                      ({{ sizeChangePercent > 0 ? "+" : ""
-                      }}{{ sizeChangePercent }}%)
-                    </span>
-                  </p>
-                </div>
-                <div class="text-right">
-                  <p
-                    class="text-xs text-slate-500 dark:text-slate-400 mb-1"
-                  >
-                    {{ t("resizer.outputFormat") }}
-                  </p>
-                  <div
-                    class="flex items-center gap-1 text-sm font-medium text-slate-900 dark:text-white justify-end"
-                  >
-                    <span class="material-symbols-outlined text-base"
-                      >image</span
-                    >
-                    {{ displayFormat }}
-                  </div>
-                </div>
+                    ({{ sizeChangePercent > 0 ? "+" : ""
+                    }}{{ sizeChangePercent }}%)
+                  </span>
+                </p>
               </div>
 
               <!-- Action Buttons -->
@@ -728,22 +708,26 @@ function startOver() {
         <div class="lg:hidden flex flex-col gap-0">
           <!-- Image Preview (edge to edge) -->
           <div
-            class="relative bg-slate-100 dark:bg-slate-800 w-full flex items-center justify-center overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700"
-            style="aspect-ratio: 4/3"
+            class="relative bg-slate-100 dark:bg-slate-800 w-full flex items-center justify-center overflow-hidden rounded-xl border border-slate-200 dark:border-slate-700 p-4"
+            style="height: 280px"
           >
             <img
               v-if="previewUrl"
               :src="previewUrl"
-              class="w-full h-full object-contain transition-transform duration-300"
-              :style="{ transform: previewTransform }"
+              class="max-h-full rounded-lg shadow-sm transition-all duration-300"
+              :style="{
+                transform: previewTransform,
+                aspectRatio: `${targetWidth} / ${targetHeight}`,
+              }"
               alt="preview"
             />
 
             <!-- Dimensions badge -->
             <div
-              class="absolute top-3 right-3 bg-black/60 backdrop-blur-sm text-white text-xs px-2 py-1 rounded z-10"
+              class="absolute top-3 right-3 backdrop-blur-sm text-white text-xs px-2 py-1 rounded z-10 transition-colors duration-200"
+              :class="hasDimensionChanged ? 'bg-primary/80' : 'bg-black/60'"
             >
-              {{ originalWidth }} × {{ originalHeight }}
+              {{ targetWidth }} × {{ targetHeight }}
             </div>
 
             <!-- Rotate/Flip floating toolbar -->
@@ -964,27 +948,32 @@ function startOver() {
 
             <hr class="border-slate-100 dark:border-slate-800" />
 
-            <!-- Estimated Info -->
+            <!-- Output Info (shown after processing) -->
             <div
-              class="bg-blue-50 dark:bg-blue-900/10 rounded-lg p-4 border border-blue-100 dark:border-blue-900/30"
+              v-if="processedSize"
+              class="bg-green-50 dark:bg-green-900/10 rounded-lg p-4 border border-green-200 dark:border-green-900/30"
             >
-              <div class="flex items-center justify-between mb-1">
+              <div class="flex items-center justify-between">
                 <span class="text-sm text-slate-600 dark:text-slate-400">{{
-                  t("resizer.estimatedSize")
+                  t("resizer.outputSize")
                 }}</span>
                 <span
                   class="text-sm font-bold text-slate-900 dark:text-white"
-                  >~{{ formatSize(estimatedSize) }}</span
                 >
-              </div>
-              <div class="flex items-center justify-between">
-                <span class="text-sm text-slate-600 dark:text-slate-400">{{
-                  t("resizer.outputFormat")
-                }}</span>
-                <span
-                  class="text-sm font-medium text-slate-900 dark:text-white"
-                  >{{ displayFormat }}</span
-                >
+                  {{ formatSize(processedSize) }}
+                  <span
+                    v-if="sizeChangePercent !== 0"
+                    class="text-xs font-normal ml-1"
+                    :class="
+                      sizeChangePercent < 0
+                        ? 'text-green-600'
+                        : 'text-orange-500'
+                    "
+                  >
+                    ({{ sizeChangePercent > 0 ? "+" : ""
+                    }}{{ sizeChangePercent }}%)
+                  </span>
+                </span>
               </div>
             </div>
           </div>

@@ -174,7 +174,7 @@
       "story": "9:16 스토리",
       "cover": "커버 사진"
     },
-    "estimatedSize": "예상 크기",
+    "outputSize": "출력 크기",
     "outputFormat": "출력 형식",
     "outputPreview": "출력 크기: {width} × {height} px (원본의 {percent}%)",
     "resizeAndDownload": "크기 조정 후 다운로드",
