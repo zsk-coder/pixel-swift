@@ -1,4 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import wasm from "vite-plugin-wasm";
+import topLevelAwait from "vite-plugin-top-level-await";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: true },
@@ -76,8 +79,16 @@ export default defineNuxtConfig({
     importStyle: "css",
   },
 
-  // ── Vite (SCSS global injection) ──
+  // ── Vite (SCSS global injection + WASM support) ──
   vite: {
+    plugins: [
+      // Enable WebAssembly support for @jsquash/webp (Safari WebP fallback)
+      wasm(),
+      topLevelAwait(),
+    ],
+    optimizeDeps: {
+      exclude: ["@jsquash/webp"],
+    },
     css: {
       preprocessorOptions: {
         scss: {

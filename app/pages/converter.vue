@@ -201,11 +201,12 @@ function onReset() {
         </p>
       </div>
 
-      <!-- Upload Area -->
+      <!-- Upload Area (always at top) -->
       <FileUploader :hint="t('converter.uploadHint')" @files="onFilesAdded" />
 
-      <!-- Conversion Settings Card -->
+      <!-- Conversion Settings Card (only show after upload) -->
       <div
+        v-if="hasFiles"
         class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 md:p-6 shadow-sm"
       >
         <!-- Web layout: horizontal -->
@@ -605,6 +606,7 @@ function onReset() {
             </div>
           </div>
         </div>
+
       </div>
 
       <!-- Global Action Bar (visible when files exist) -->

@@ -139,6 +139,7 @@ const { processImage } = useImageProcessor();
 const { downloadFile, downloadAsZip, generateFileName, generateZipName } =
   useDownload();
 
+
 function formatSize(bytes: number): string {
   if (bytes < 0) bytes = 0;
   if (bytes < 1024) return `${bytes} B`;
@@ -154,9 +155,7 @@ function detectFormat(name: string): string {
 }
 
 function getActualFormat(originalName: string): string {
-  const fmt = detectFormat(originalName);
-  // PNG compresses better as WebP
-  return fmt === "png" ? "webp" : fmt;
+  return detectFormat(originalName);
 }
 
 // ─── Actions ────────────────────────────────────
@@ -470,10 +469,8 @@ function selectFile(id: string) {
 }
 
 // Actual output format label
-// Actual output format label
 const actualOutputFormat = computed(() => {
-  const fmt = originalFormat.value || "jpg";
-  return fmt === "png" ? "webp" : fmt;
+  return originalFormat.value || "jpg";
 });
 </script>
 

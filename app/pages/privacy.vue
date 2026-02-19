@@ -81,6 +81,26 @@ useHead({
           </p>
         </section>
 
+        <!-- Analytics -->
+        <section>
+          <h2
+            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
+          >
+            {{ t("legal.privacy.analyticsTitle") }}
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
+            {{ t("legal.privacy.analyticsText") }}
+          </p>
+          <ul
+            class="list-disc pl-5 text-slate-600 dark:text-slate-300 space-y-1"
+          >
+            <li>{{ t("legal.privacy.analyticsItem1") }}</li>
+            <li>{{ t("legal.privacy.analyticsItem2") }}</li>
+            <li>{{ t("legal.privacy.analyticsItem3") }}</li>
+            <li>{{ t("legal.privacy.analyticsItem4") }}</li>
+          </ul>
+        </section>
+
         <!-- Third Party -->
         <section>
           <h2
@@ -90,6 +110,18 @@ useHead({
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
             {{ t("legal.privacy.thirdPartyText") }}
+          </p>
+        </section>
+
+        <!-- Your Rights -->
+        <section>
+          <h2
+            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
+          >
+            {{ t("legal.privacy.rightsTitle") }}
+          </h2>
+          <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
+            {{ t("legal.privacy.rightsText") }}
           </p>
         </section>
 
