@@ -145,7 +145,8 @@
     "format": "Formato:",
     "proTip": "¿Sabías que?",
     "proTipText": "El formato WebP puede reducir el tamaño del archivo un 30% más que JPG sin pérdida de calidad visible.",
-    "compressing": "Comprimiendo..."
+    "compressing": "Comprimiendo...",
+    "compareMode": "Comparando"
   },
   "resizer": {
     "title": "Redimensionador de imágenes",

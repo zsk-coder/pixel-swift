@@ -145,7 +145,8 @@
     "format": "格式:",
     "proTip": "你知道吗？",
     "proTipText": "WebP 格式比 JPG 可以额外减少 30% 的文件体积，且画质损失几乎不可察觉。",
-    "compressing": "压缩中..."
+    "compressing": "压缩中...",
+    "compareMode": "对比预览"
   },
   "resizer": {
     "title": "精准图片缩放",

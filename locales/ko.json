@@ -145,7 +145,8 @@
     "format": "형식:",
     "proTip": "알고 계셨나요?",
     "proTipText": "WebP 형식은 눈에 띄는 화질 저하 없이 JPG 대비 파일 크기를 30% 더 줄일 수 있습니다.",
-    "compressing": "압축 중..."
+    "compressing": "압축 중...",
+    "compareMode": "비교 미리보기"
   },
   "resizer": {
     "title": "이미지 크기 조정",

@@ -1351,13 +1351,13 @@ const actualOutputFormat = computed(() => {
         >
           <div class="flex items-center justify-between mb-4">
             <h3
-              class="font-bold text-slate-900 dark:text-white flex items-center gap-2"
+              class="font-bold text-slate-900 dark:text-white flex items-center gap-2 min-w-0 flex-1"
             >
-              <span class="material-symbols-outlined text-primary"
+              <span class="material-symbols-outlined text-primary flex-shrink-0"
                 >compare</span
               >
-              {{ t("compressor.compareMode") }}:
-              <span class="text-primary truncate max-w-[200px]">{{
+              <span class="flex-shrink-0">{{ t("compressor.compareMode") }}:</span>
+              <span class="text-primary truncate">{{
                 selectedFile.name
               }}</span>
             </h3>

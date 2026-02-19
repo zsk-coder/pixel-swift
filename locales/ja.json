@@ -145,7 +145,8 @@
     "format": "形式:",
     "proTip": "ご存知ですか？",
     "proTipText": "WebP形式はJPGと比較して、目立つ画質劣化なくファイルサイズをさらに30%縮小できます。",
-    "compressing": "圧縮中..."
+    "compressing": "圧縮中...",
+    "compareMode": "比較プレビュー"
   },
   "resizer": {
     "title": "画像リサイズツール",
