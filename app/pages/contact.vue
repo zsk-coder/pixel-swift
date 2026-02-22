@@ -2,11 +2,11 @@
 const { t } = useI18n();
 
 useHead({
-  title: "Contact Us - PixelSwift",
+  title: () => t("seo.contact.title"),
   meta: [
     {
       name: "description",
-      content: "Get in touch with the PixelSwift team.",
+      content: () => t("seo.contact.description"),
     },
   ],
 });

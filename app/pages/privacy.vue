@@ -2,12 +2,11 @@
 const { t } = useI18n();
 
 useHead({
-  title: "Privacy Policy - PixelSwift",
+  title: () => t("seo.privacy.title"),
   meta: [
     {
       name: "description",
-      content:
-        "PixelSwift privacy policy. All image processing happens locally in your browser. We never upload or store your files.",
+      content: () => t("seo.privacy.description"),
     },
   ],
 });

@@ -2,12 +2,11 @@
 const { t } = useI18n();
 
 useHead({
-  title: "Terms of Use - PixelSwift",
+  title: () => t("seo.terms.title"),
   meta: [
     {
       name: "description",
-      content:
-        "PixelSwift terms of use. Free online image processing tool provided as-is.",
+      content: () => t("seo.terms.description"),
     },
   ],
 });

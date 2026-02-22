@@ -273,19 +273,31 @@
   "seo": {
     "home": {
       "title": "PixelSwift – Conversor, compressor e redimensionador de imagens online grátis",
-      "description": "Converta, comprima e redimensione imagens grátis online. 100% no navegador, sem envio de arquivos. Experimente agora!"
+      "description": "Converta, comprima e redimensione imagens grátis online. 100% no navegador, sem cadastro nem instalação. Experimente agora!"
     },
     "converter": {
       "title": "Conversor de imagens online grátis – JPG PNG WebP | PixelSwift",
-      "description": "Converta imagens JPG, PNG, WebP, BMP, TIFF instantaneamente. Grátis, rápido e seguro – sem envio necessário!"
+      "description": "Converta imagens JPG, PNG, WebP, BMP, TIFF instantaneamente. Grátis, sem cadastro e sem instalar – 100% no navegador!"
     },
     "compressor": {
       "title": "Comprimir imagens online – Reduza até 90% | PixelSwift",
-      "description": "Comprima imagens JPG, PNG e WebP em até 90%. Mantenha a qualidade, economize espaço. Grátis e privado!"
+      "description": "Comprima imagens JPG, PNG e WebP em até 90%. Sem cadastro, qualidade preservada. Grátis e privado!"
     },
     "resizer": {
       "title": "Redimensionar imagens online grátis – Pixels e porcentagem | PixelSwift",
-      "description": "Redimensione imagens por pixels ou porcentagem. Rotação e espelhamento incluídos. Ferramenta gratuita sem limites!"
+      "description": "Redimensione imagens por pixels ou porcentagem. Rotação e espelhamento incluídos. Grátis, sem cadastro nem instalação!"
+    },
+    "terms": {
+      "title": "Termos de uso – PixelSwift",
+      "description": "Termos de uso do PixelSwift. Ferramenta gratuita de processamento de imagens online. Consulte nossos termos."
+    },
+    "privacy": {
+      "title": "Política de privacidade – PixelSwift",
+      "description": "Política de privacidade do PixelSwift. Todo o processamento de imagens acontece localmente no seu navegador. Não enviamos nem armazenamos seus arquivos."
+    },
+    "contact": {
+      "title": "Contato – PixelSwift",
+      "description": "Entre em contato com a equipe PixelSwift. Dúvidas, sugestões ou feedback – ficaremos felizes em ajudar."
     }
   }
 }

@@ -286,6 +286,18 @@
     "resizer": {
       "title": "免费在线调整图片大小 – 像素/百分比调整 | PixelSwift",
       "description": "按像素或百分比精确调整图片尺寸，支持旋转翻转。免费在线工具，无限制。立即调整！"
+    },
+    "terms": {
+      "title": "使用条款 – PixelSwift",
+      "description": "PixelSwift 使用条款。免费在线图片处理工具的使用规范与免责声明。"
+    },
+    "privacy": {
+      "title": "隐私政策 – PixelSwift",
+      "description": "PixelSwift 隐私政策。所有图片处理均在浏览器本地完成，我们不会上传或存储您的任何文件。"
+    },
+    "contact": {
+      "title": "联系我们 – PixelSwift",
+      "description": "联系 PixelSwift 团队。如有任何问题、建议或反馈，欢迎与我们取得联系。"
     }
   }
 }

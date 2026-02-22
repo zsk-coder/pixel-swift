@@ -286,6 +286,18 @@
     "resizer": {
       "title": "無料オンライン画像リサイズ – ピクセル＆パーセント | PixelSwift",
       "description": "ピクセルまたはパーセントで画像サイズを正確に調整。回転・反転も対応。無料オンラインツール、制限なし！"
+    },
+    "terms": {
+      "title": "利用規約 – PixelSwift",
+      "description": "PixelSwift の利用規約。無料オンライン画像処理ツールのご利用条件と免責事項をご確認ください。"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー – PixelSwift",
+      "description": "PixelSwift のプライバシーポリシー。すべての画像処理はブラウザ内でローカルに行われ、ファイルをアップロード・保存することはありません。"
+    },
+    "contact": {
+      "title": "お問い合わせ – PixelSwift",
+      "description": "PixelSwift チームへのお問い合わせ。ご質問、ご提案、フィードバックなど、お気軽にご連絡ください。"
     }
   }
 }

@@ -286,6 +286,18 @@
     "resizer": {
       "title": "무료 온라인 이미지 크기 조정 – 픽셀 & 백분율 | PixelSwift",
       "description": "픽셀 또는 백분율로 이미지 크기를 정확하게 조정하세요. 회전, 뒤집기 지원. 무료 온라인 도구, 제한 없음!"
+    },
+    "terms": {
+      "title": "이용약관 – PixelSwift",
+      "description": "PixelSwift 이용약관. 무료 온라인 이미지 처리 도구의 이용 조건 및 면책 사항을 확인하세요."
+    },
+    "privacy": {
+      "title": "개인정보 처리방침 – PixelSwift",
+      "description": "PixelSwift 개인정보 처리방침. 모든 이미지 처리는 브라우저에서 로컬로 수행되며, 파일을 업로드하거나 저장하지 않습니다."
+    },
+    "contact": {
+      "title": "문의하기 – PixelSwift",
+      "description": "PixelSwift 팀에 문의하세요. 질문, 제안, 피드백 등 무엇이든 환영합니다."
     }
   }
 }

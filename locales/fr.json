@@ -273,19 +273,31 @@
   "seo": {
     "home": {
       "title": "PixelSwift – Convertisseur, compresseur et redimensionneur d'images en ligne gratuit",
-      "description": "Convertissez, compressez et redimensionnez vos images gratuitement en ligne. 100 % dans le navigateur, aucun téléchargement. Essayez maintenant !"
+      "description": "Convertissez, compressez et redimensionnez vos images gratuitement en ligne. 100 % dans le navigateur, sans inscription. Essayez maintenant !"
     },
     "converter": {
       "title": "Convertisseur d'images en ligne gratuit – JPG PNG WebP | PixelSwift",
-      "description": "Convertissez vos images JPG, PNG, WebP, BMP, TIFF instantanément. Gratuit, rapide et sécurisé – aucun téléchargement requis !"
+      "description": "Convertissez vos images JPG, PNG, WebP, BMP, TIFF instantanément. Gratuit, sans inscription ni installation – 100 % dans le navigateur !"
     },
     "compressor": {
       "title": "Compresser des images en ligne – Réduction jusqu'à 90 % | PixelSwift",
-      "description": "Compressez vos images JPG, PNG et WebP jusqu'à 90 %. Qualité préservée, espace économisé. Gratuit et confidentiel !"
+      "description": "Compressez vos images JPG, PNG et WebP jusqu'à 90 %. Sans inscription, qualité préservée. Gratuit et confidentiel !"
     },
     "resizer": {
       "title": "Redimensionner des images en ligne gratuit – Pixels et pourcentage | PixelSwift",
-      "description": "Redimensionnez vos images en pixels ou en pourcentage. Rotation et retournement inclus. Outil gratuit, sans limite !"
+      "description": "Redimensionnez vos images en pixels ou en pourcentage. Rotation et retournement inclus. Gratuit, sans inscription ni installation !"
+    },
+    "terms": {
+      "title": "Conditions d'utilisation – PixelSwift",
+      "description": "Conditions d'utilisation de PixelSwift. Outil gratuit de traitement d'images en ligne. Consultez nos conditions."
+    },
+    "privacy": {
+      "title": "Politique de confidentialité – PixelSwift",
+      "description": "Politique de confidentialité de PixelSwift. Tout le traitement d'images se fait localement dans votre navigateur. Aucun fichier n'est téléchargé ni stocké."
+    },
+    "contact": {
+      "title": "Nous contacter – PixelSwift",
+      "description": "Contactez l'équipe PixelSwift. Questions, suggestions ou commentaires – nous serons ravis de vous répondre."
     }
   }
 }

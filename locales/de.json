@@ -273,19 +273,31 @@
   "seo": {
     "home": {
       "title": "PixelSwift – Kostenloser Online-Bildkonverter, Kompressor & Größenänderer",
-      "description": "Bilder kostenlos online konvertieren, komprimieren und in der Größe ändern. 100% im Browser, kein Upload nötig. Jetzt ausprobieren!"
+      "description": "Bilder kostenlos online konvertieren, komprimieren und in der Größe ändern. 100% im Browser, ohne Anmeldung. Jetzt ausprobieren!"
     },
     "converter": {
       "title": "Kostenloser Online-Bildkonverter – JPG PNG WebP | PixelSwift",
-      "description": "Bilder zwischen JPG, PNG, WebP, BMP, TIFF konvertieren. Kostenlos, schnell und sicher – kein Upload erforderlich!"
+      "description": "Bilder zwischen JPG, PNG, WebP, BMP, TIFF konvertieren. Kostenlos, ohne Anmeldung und ohne Installation – direkt im Browser!"
     },
     "compressor": {
       "title": "Bilder online komprimieren – Bis zu 90% Größenreduktion | PixelSwift",
-      "description": "JPG, PNG und WebP Bilder bis zu 90% komprimieren. Qualität erhalten, Speicherplatz sparen. Kostenlos und privat!"
+      "description": "JPG, PNG und WebP Bilder bis zu 90% komprimieren. Ohne Anmeldung, Qualität erhalten. Kostenlos und privat!"
     },
     "resizer": {
       "title": "Bildgröße online ändern – Pixel & Prozent | PixelSwift",
-      "description": "Bildgröße per Pixel oder Prozent anpassen. Drehen und Spiegeln inklusive. Kostenloses Online-Tool ohne Limits!"
+      "description": "Bildgröße per Pixel oder Prozent anpassen. Drehen und Spiegeln inklusive. Kostenlos, ohne Anmeldung und ohne Installation!"
+    },
+    "terms": {
+      "title": "Nutzungsbedingungen – PixelSwift",
+      "description": "Nutzungsbedingungen von PixelSwift. Kostenloses Online-Tool zur Bildbearbeitung. Lesen Sie unsere Nutzungsbedingungen."
+    },
+    "privacy": {
+      "title": "Datenschutzerklärung – PixelSwift",
+      "description": "Datenschutzerklärung von PixelSwift. Die gesamte Bildverarbeitung erfolgt lokal in Ihrem Browser. Wir laden oder speichern keine Ihrer Dateien."
+    },
+    "contact": {
+      "title": "Kontakt – PixelSwift",
+      "description": "Kontaktieren Sie das PixelSwift-Team. Fragen, Anregungen oder Feedback – wir freuen uns auf Ihre Nachricht."
     }
   }
 }
