@@ -16,5 +16,8 @@ const { t } = useI18n();
 
     <!-- Footer -->
     <AppFooter />
+
+    <!-- Cookie 同意横幅 -->
+    <CookieConsent />
   </div>
 </template>

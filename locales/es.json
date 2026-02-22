@@ -10,6 +10,12 @@
     "language": "Idioma",
     "theme": "Tema"
   },
+  "cookie": {
+    "message": "Usamos cookies de análisis para mejorar su experiencia.",
+    "learnMore": "Más información",
+    "accept": "Aceptar",
+    "decline": "Rechazar"
+  },
   "home": {
     "title": "Herramienta de imágenes en línea",
     "subtitle": "Convierte, comprime y redimensiona imágenes gratis en línea. Compatible con JPG / PNG / WebP. Procesado localmente en tu navegador — sin subidas, totalmente privado.",

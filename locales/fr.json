@@ -10,6 +10,12 @@
     "language": "Langue",
     "theme": "Thème"
   },
+  "cookie": {
+    "message": "Nous utilisons des cookies d'analyse pour améliorer votre expérience.",
+    "learnMore": "En savoir plus",
+    "accept": "Accepter",
+    "decline": "Refuser"
+  },
   "home": {
     "title": "Outil de traitement d’images en ligne",
     "subtitle": "Convertissez, compressez et redimensionnez vos images gratuitement en ligne. Compatible JPG / PNG / WebP. Traité localement dans votre navigateur — aucun téléchargement, entièrement privé.",

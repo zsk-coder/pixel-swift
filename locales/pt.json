@@ -10,6 +10,12 @@
     "language": "Idioma",
     "theme": "Tema"
   },
+  "cookie": {
+    "message": "Usamos cookies de análise para melhorar sua experiência.",
+    "learnMore": "Saiba mais",
+    "accept": "Aceitar",
+    "decline": "Recusar"
+  },
   "home": {
     "title": "Ferramenta de processamento de imagens online",
     "subtitle": "Converta, comprima e redimensione imagens grátis online. Compatível com JPG / PNG / WebP. Processado localmente no navegador — sem envio, totalmente privado.",

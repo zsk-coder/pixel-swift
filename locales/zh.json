@@ -10,6 +10,12 @@
     "language": "语言",
     "theme": "主题"
   },
+  "cookie": {
+    "message": "我们使用 Cookie 进行流量分析以改善您的体验。",
+    "learnMore": "了解更多",
+    "accept": "接受",
+    "decline": "拒绝"
+  },
   "home": {
     "title": "在线图片处理工具",
     "subtitle": "免费在线转换 · 压缩 · 调整图片大小，支持 JPG / PNG / WebP。浏览器本地处理，无需上传，隐私安全。",

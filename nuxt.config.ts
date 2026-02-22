@@ -4,7 +4,7 @@ import topLevelAwait from "vite-plugin-top-level-await";
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
-  devtools: { enabled: true },
+  devtools: { enabled: false },
 
   // ── Cloudflare Pages 部署 ──
   nitro: {
@@ -69,9 +69,19 @@ export default defineNuxtConfig({
     fallback: "light",
   },
 
-  // ── Google Analytics 4 ──
   gtag: {
     id: "G-9C80LFFN3X",
+    initCommands: [
+      // Google Consent Mode v2：默认拒绝，用户同意后由 CookieConsent 组件更新
+      [
+        "consent",
+        "default",
+        {
+          analytics_storage: "denied",
+          wait_for_update: 500,
+        },
+      ],
+    ],
   },
 
   // ── Element Plus ──

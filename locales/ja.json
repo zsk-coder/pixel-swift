@@ -10,6 +10,12 @@
     "language": "言語",
     "theme": "テーマ"
   },
+  "cookie": {
+    "message": "より良い体験のために、分析用の Cookie を使用しています。",
+    "learnMore": "詳細",
+    "accept": "同意する",
+    "decline": "拒否する"
+  },
   "home": {
     "title": "オンライン画像処理ツール",
     "subtitle": "無料で画像を変換・圧縮・リサイズ。JPG / PNG / WebP に対応。ブラウザでローカル処理 — アップロード不要、プライバシーも安全。",

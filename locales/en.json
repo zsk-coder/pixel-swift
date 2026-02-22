@@ -10,6 +10,12 @@
     "language": "Language",
     "theme": "Theme"
   },
+  "cookie": {
+    "message": "We use cookies for analytics to improve your experience.",
+    "learnMore": "Learn more",
+    "accept": "Accept",
+    "decline": "Decline"
+  },
   "home": {
     "title": "Online Image Processing Tool",
     "subtitle": "Free online image converter, compressor & resizer. Supports JPG / PNG / WebP. Processed locally in your browser — no upload needed, fully private.",

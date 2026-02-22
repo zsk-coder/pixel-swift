@@ -10,6 +10,12 @@
     "language": "Sprache",
     "theme": "Design"
   },
+  "cookie": {
+    "message": "Wir verwenden Analyse-Cookies, um Ihre Erfahrung zu verbessern.",
+    "learnMore": "Mehr erfahren",
+    "accept": "Akzeptieren",
+    "decline": "Ablehnen"
+  },
   "home": {
     "title": "Online-Bildbearbeitungstool",
     "subtitle": "Kostenlos Bilder konvertieren, komprimieren und skalieren. Unterstützt JPG / PNG / WebP. Lokal im Browser verarbeitet — kein Upload nötig, vollständig privat.",
