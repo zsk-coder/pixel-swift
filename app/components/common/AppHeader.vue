@@ -183,27 +183,6 @@ function selectLocale(code: string) {
           >
             {{ item.label }}
           </NuxtLink>
-          <hr class="my-2 border-slate-200 dark:border-slate-700" />
-          <div class="px-4 py-2">
-            <p class="text-xs text-slate-500 mb-2">{{ t("nav.language") }}</p>
-            <ElSelect
-              :model-value="locale"
-              class="w-full"
-              @change="
-                (val: string) => {
-                  selectLocale(val);
-                  closeMobileMenu();
-                }
-              "
-            >
-              <ElOption
-                v-for="loc in availableLocales"
-                :key="loc.code"
-                :value="loc.code"
-                :label="loc.name"
-              />
-            </ElSelect>
-          </div>
         </nav>
       </div>
     </Transition>
