@@ -1497,6 +1497,9 @@ const actualOutputFormat = computed(() => {
           </ElButton>
         </div>
       </template>
+
+      <!-- FAQ Section -->
+      <ToolFaq i18n-prefix="compressor.faq" :count="3" />
     </div>
   </div>
 </template>

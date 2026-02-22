@@ -110,6 +110,15 @@
       "jpg": "Joint Photographic Experts Group",
       "png": "Portable Network Graphics",
       "webp": "Web Picture Format"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "q1": "¿Cómo convertir PNG a JPG en línea?",
+      "a1": "Suba su archivo PNG, seleccione JPG como formato de salida, ajuste la calidad si es necesario y haga clic en Procesar. El archivo convertido estará listo para descargar al instante, sin necesidad de subir nada a un servidor.",
+      "q2": "¿Cuál es la diferencia entre WebP y JPG?",
+      "a2": "WebP es un formato moderno desarrollado por Google que ofrece archivos 25-35% más pequeños que JPG con calidad comparable. Soporta transparencia (como PNG) y es ideal para uso web. Sin embargo, JPG tiene mayor compatibilidad con software antiguo.",
+      "q3": "¿Convertir formatos de imagen afecta la calidad?",
+      "a3": "Convertir entre formatos con pérdida (como JPG y WebP) puede reducir ligeramente la calidad. Convertir a PNG siempre es sin pérdida. PixelSwift le permite controlar el deslizador de calidad para encontrar el equilibrio perfecto entre tamaño y calidad visual."
     }
   },
   "compressor": {
@@ -152,7 +161,16 @@
     "proTip": "¿Sabías que?",
     "proTipText": "El formato WebP puede reducir el tamaño del archivo un 30% más que JPG sin pérdida de calidad visible.",
     "compressing": "Comprimiendo...",
-    "compareMode": "Comparando"
+    "compareMode": "Comparando",
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "q1": "¿Cómo comprimir imágenes sin perder calidad?",
+      "a1": "Use el deslizador de calidad de PixelSwift configurado al 80-90% para una compresión casi sin pérdida. A este nivel, la diferencia visual es imperceptible mientras los archivos se pueden reducir un 40-60%. Puede usar la comparación lado a lado para verificar la calidad antes de descargar.",
+      "q2": "¿Cuál es la diferencia entre comprimir PNG y JPG?",
+      "a2": "La compresión JPG elimina datos visuales (con pérdida): menor calidad significa archivos más pequeños. La compresión PNG mantiene todos los datos visuales intactos (sin pérdida), reduciendo el tamaño optimizando cómo se almacenan los datos. PixelSwift maneja ambos automáticamente según su formato de entrada.",
+      "q3": "¿Cuánto puedo reducir el tamaño de un archivo de imagen?",
+      "a3": "Resultados típicos: imágenes JPG se pueden reducir un 40-70%, imágenes PNG un 20-50%, y convertir PNG a WebP puede lograr hasta un 80% de reducción. Los resultados varían según el contenido de la imagen y la configuración de calidad."
+    }
   },
   "resizer": {
     "title": "Redimensionador de imágenes",
@@ -187,7 +205,16 @@
     "resizeAndDownload": "Redimensionar y descargar",
     "replaceImage": "Haz clic para reemplazar imagen",
     "startOver": "Subir otra imagen",
-    "securityNote": "Archivos procesados localmente, de forma segura."
+    "securityNote": "Archivos procesados localmente, de forma segura.",
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "q1": "¿Cómo redimensionar una imagen a un tamaño específico?",
+      "a1": "Suba su imagen, ingrese el ancho y alto exactos en píxeles, o use el modo porcentaje para escalar proporcionalmente. También puede usar preajustes rápidos para tamaños comunes como 1:1, 4:3 o 16:9. Haga clic en Redimensionar y Descargar para obtener su imagen.",
+      "q2": "¿Redimensionar una imagen reduce la calidad?",
+      "a2": "Reducir las dimensiones de una imagen baja ligeramente la calidad ya que se eliminan píxeles. Sin embargo, PixelSwift usa interpolación bicúbica de alta calidad para minimizar la pérdida. Agrandar imágenes puede causar borrosidad ya que se deben crear nuevos píxeles.",
+      "q3": "¿Cuál es la diferencia entre escalar y recortar?",
+      "a3": "Escalar cambia las dimensiones generales de toda la imagen, haciéndola más grande o más pequeña mientras mantiene todo el contenido visible. Recortar elimina partes de la imagen para enfocarse en un área específica. El redimensionador de PixelSwift usa escalado para preservar la imagen completa."
+    }
   },
   "common": {
     "download": "Descargar",

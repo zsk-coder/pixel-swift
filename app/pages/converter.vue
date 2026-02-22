@@ -682,5 +682,8 @@ function onReset() {
         }}
       </ElButton>
     </div>
+
+    <!-- FAQ Section -->
+    <ToolFaq i18n-prefix="converter.faq" :count="3" />
   </div>
 </template>

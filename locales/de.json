@@ -110,6 +110,15 @@
       "jpg": "Joint Photographic Experts Group",
       "png": "Portable Network Graphics",
       "webp": "Web Picture Format"
+    },
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Wie konvertiere ich PNG zu JPG online?",
+      "a1": "Laden Sie Ihre PNG-Datei hoch, wählen Sie JPG als Ausgabeformat, passen Sie bei Bedarf die Qualität an und klicken Sie auf Verarbeiten. Die konvertierte Datei steht sofort zum Download bereit, ohne Server-Upload.",
+      "q2": "Was ist der Unterschied zwischen WebP und JPG?",
+      "a2": "WebP ist ein modernes Format von Google, das bei vergleichbarer Qualität 25-35% kleinere Dateien als JPG bietet. Es unterstützt Transparenz (wie PNG) und ist ideal für das Web. JPG hat jedoch eine breitere Kompatibilität mit älterer Software.",
+      "q3": "Beeinflusst die Formatkonvertierung die Bildqualität?",
+      "a3": "Die Konvertierung zwischen verlustbehafteten Formaten (wie JPG und WebP) kann die Qualität leicht reduzieren. Die Konvertierung zu PNG ist immer verlustfrei. Mit PixelSwift können Sie den Qualitätsregler verwenden, um die perfekte Balance zwischen Dateigröße und visueller Qualität zu finden."
     }
   },
   "compressor": {
@@ -152,7 +161,16 @@
     "proTip": "Wussten Sie?",
     "proTipText": "Das WebP-Format kann die Dateigröße im Vergleich zu JPG um weitere 30% reduzieren, ohne spürbare Qualitätsverluste.",
     "compressing": "Komprimierung läuft...",
-    "compareMode": "Vergleich"
+    "compareMode": "Vergleich",
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Wie komprimiere ich Bilder ohne Qualitätsverlust?",
+      "a1": "Verwenden Sie den Qualitätsregler von PixelSwift auf 80-90% für nahezu verlustfreie Komprimierung. Auf diesem Niveau ist der visuelle Unterschied nicht wahrnehmbar, während die Dateigröße um 40-60% reduziert werden kann. Sie können den Side-by-Side-Vergleich nutzen, um die Qualität vor dem Download zu überprüfen.",
+      "q2": "Was ist der Unterschied zwischen PNG- und JPG-Komprimierung?",
+      "a2": "JPG-Komprimierung entfernt visuelle Daten (verlustbehaftet) — geringere Qualität bedeutet kleinere Dateien. PNG-Komprimierung behält alle visuellen Daten bei (verlustfrei) — sie reduziert die Dateigröße durch Optimierung der Datenspeicherung. PixelSwift behandelt beide automatisch basierend auf Ihrem Eingabeformat.",
+      "q3": "Wie stark kann ich die Bildgröße reduzieren?",
+      "a3": "Typische Ergebnisse: JPG-Bilder können um 40-70% reduziert werden, PNG-Bilder um 20-50%, und die Konvertierung von PNG zu WebP kann bis zu 80% Reduzierung erreichen. Die Ergebnisse variieren je nach Bildinhalt und Qualitätseinstellungen."
+    }
   },
   "resizer": {
     "title": "Bildgröße anpassen",
@@ -187,7 +205,16 @@
     "resizeAndDownload": "Größe ändern und herunterladen",
     "replaceImage": "Klicken um Bild zu ersetzen",
     "startOver": "Anderes Bild hochladen",
-    "securityNote": "Dateien werden lokal und sicher verarbeitet."
+    "securityNote": "Dateien werden lokal und sicher verarbeitet.",
+    "faq": {
+      "title": "Häufig gestellte Fragen",
+      "q1": "Wie ändere ich die Größe eines Bildes auf eine bestimmte Größe?",
+      "a1": "Laden Sie Ihr Bild hoch, geben Sie die genaue Breite und Höhe in Pixeln ein oder verwenden Sie den Prozentmodus für proportionale Skalierung. Sie können auch Schnellvorlagen für gängige Größen wie 1:1, 4:3 oder 16:9 verwenden. Klicken Sie auf Größe ändern und Herunterladen.",
+      "q2": "Reduziert das Ändern der Bildgröße die Qualität?",
+      "a2": "Die Verkleinerung der Bildabmessungen senkt die Qualität leicht, da Pixel entfernt werden. PixelSwift verwendet jedoch hochwertige bikubische Interpolation, um den Qualitätsverlust zu minimieren. Das Vergrößern von Bildern kann zu Unschärfe führen, da neue Pixel erstellt werden müssen.",
+      "q3": "Was ist der Unterschied zwischen Skalieren und Zuschneiden?",
+      "a3": "Skalieren ändert die Gesamtabmessungen Ihres gesamten Bildes und macht es größer oder kleiner, während der gesamte Inhalt sichtbar bleibt. Zuschneiden schneidet Teile des Bildes weg, um sich auf einen bestimmten Bereich zu konzentrieren. Der Resizer von PixelSwift verwendet Skalierung, um Ihr vollständiges Bild zu erhalten."
+    }
   },
   "common": {
     "download": "Herunterladen",

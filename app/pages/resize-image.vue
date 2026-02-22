@@ -1005,6 +1005,9 @@ function startOver() {
           </button>
         </div>
       </template>
+
+      <!-- FAQ Section -->
+      <ToolFaq i18n-prefix="resizer.faq" :count="3" />
     </div>
   </div>
 </template>

@@ -110,6 +110,15 @@
       "jpg": "Joint Photographic Experts Group",
       "png": "Portable Network Graphics",
       "webp": "Web Picture Format"
+    },
+    "faq": {
+      "title": "Questions Fréquentes",
+      "q1": "Comment convertir un PNG en JPG en ligne ?",
+      "a1": "Téléchargez votre fichier PNG, sélectionnez JPG comme format de sortie, ajustez la qualité si nécessaire, puis cliquez sur Traiter. Votre fichier converti sera prêt à télécharger instantanément, sans envoi sur un serveur.",
+      "q2": "Quelle est la différence entre WebP et JPG ?",
+      "a2": "WebP est un format moderne développé par Google qui offre des fichiers 25-35% plus petits que le JPG à qualité comparable. Il prend en charge la transparence (comme PNG) et est idéal pour le web. Cependant, JPG a une meilleure compatibilité avec les logiciels anciens.",
+      "q3": "La conversion de format affecte-t-elle la qualité ?",
+      "a3": "La conversion entre formats avec perte (comme JPG et WebP) peut légèrement réduire la qualité. La conversion en PNG est toujours sans perte. PixelSwift vous permet de contrôler le curseur de qualité pour trouver le parfait équilibre entre taille et qualité visuelle."
     }
   },
   "compressor": {
@@ -152,7 +161,16 @@
     "proTip": "Le saviez-vous ?",
     "proTipText": "Le format WebP peut réduire la taille des fichiers de 30 % de plus que le JPG sans perte de qualité visible.",
     "compressing": "Compression en cours...",
-    "compareMode": "Comparaison"
+    "compareMode": "Comparaison",
+    "faq": {
+      "title": "Questions Fréquentes",
+      "q1": "Comment compresser des images sans perte de qualité ?",
+      "a1": "Utilisez le curseur de qualité de PixelSwift réglé sur 80-90% pour une compression quasi sans perte. À ce niveau, la différence visuelle est imperceptible tandis que les fichiers peuvent être réduits de 40-60%. Vous pouvez utiliser la comparaison côte à côte pour vérifier la qualité avant le téléchargement.",
+      "q2": "Quelle est la différence entre la compression PNG et JPG ?",
+      "a2": "La compression JPG supprime des données visuelles (avec perte) : une qualité plus basse signifie des fichiers plus petits. La compression PNG conserve toutes les données visuelles (sans perte), réduisant la taille en optimisant le stockage des données. PixelSwift gère les deux automatiquement selon votre format.",
+      "q3": "De combien puis-je réduire la taille d’un fichier image ?",
+      "a3": "Résultats typiques : les images JPG peuvent être réduites de 40-70%, les PNG de 20-50%, et la conversion PNG vers WebP peut atteindre une réduction de 80%. Les résultats varient selon le contenu de l’image et vos paramètres de qualité."
+    }
   },
   "resizer": {
     "title": "Redimensionneur d'images",
@@ -187,7 +205,16 @@
     "resizeAndDownload": "Redimensionner et télécharger",
     "replaceImage": "Cliquez pour remplacer l'image",
     "startOver": "Importer une autre image",
-    "securityNote": "Fichiers traités localement, en toute sécurité."
+    "securityNote": "Fichiers traités localement, en toute sécurité.",
+    "faq": {
+      "title": "Questions Fréquentes",
+      "q1": "Comment redimensionner une image à une taille spécifique ?",
+      "a1": "Téléchargez votre image, entrez la largeur et la hauteur exactes en pixels, ou utilisez le mode pourcentage pour un redimensionnement proportionnel. Vous pouvez aussi utiliser les presets rapides pour des tailles courantes comme 1:1, 4:3 ou 16:9. Cliquez sur Redimensionner et Télécharger.",
+      "q2": "Le redimensionnement réduit-il la qualité ?",
+      "a2": "Réduire les dimensions d’une image baisse légèrement la qualité car des pixels sont supprimés. Cependant, PixelSwift utilise une interpolation bicubique de haute qualité pour minimiser la perte. Agrandir les images peut causer du flou car de nouveaux pixels doivent être créés.",
+      "q3": "Quelle est la différence entre redimensionner et recadrer ?",
+      "a3": "Le redimensionnement change les dimensions globales de votre image entière, en la rendant plus grande ou plus petite tout en gardant tout le contenu visible. Le recadrage coupe des parties de l’image pour se concentrer sur une zone spécifique. Le redimensionneur de PixelSwift utilise le redimensionnement pour préserver votre image complète."
+    }
   },
   "common": {
     "download": "Télécharger",

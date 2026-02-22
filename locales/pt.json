@@ -110,6 +110,15 @@
       "jpg": "Joint Photographic Experts Group",
       "png": "Portable Network Graphics",
       "webp": "Web Picture Format"
+    },
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "q1": "Como converter PNG para JPG online?",
+      "a1": "Carregue seu arquivo PNG, selecione JPG como formato de saída, ajuste a qualidade se necessário e clique em Processar. O arquivo convertido estará pronto para download instantaneamente, sem necessidade de upload para servidor.",
+      "q2": "Qual a diferença entre WebP e JPG?",
+      "a2": "WebP é um formato moderno desenvolvido pelo Google que oferece arquivos 25-35% menores que JPG com qualidade comparável. Suporta transparência (como PNG) e é ideal para uso na web. Porém, JPG tem maior compatibilidade com softwares antigos.",
+      "q3": "Converter formatos de imagem afeta a qualidade?",
+      "a3": "Converter entre formatos com perda (como JPG e WebP) pode reduzir levemente a qualidade. Converter para PNG é sempre sem perda. PixelSwift permite controlar o controle deslizante de qualidade para encontrar o equilíbrio perfeito entre tamanho e qualidade visual."
     }
   },
   "compressor": {
@@ -152,7 +161,16 @@
     "proTip": "Você sabia?",
     "proTipText": "O formato WebP pode reduzir o tamanho do arquivo em 30% a mais que o JPG sem perda perceptível de qualidade.",
     "compressing": "Comprimindo...",
-    "compareMode": "Comparando"
+    "compareMode": "Comparando",
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "q1": "Como comprimir imagens sem perder qualidade?",
+      "a1": "Use o controle deslizante de qualidade do PixelSwift configurado em 80-90% para compressão quase sem perda. Nesse nível, a diferença visual é imperceptível enquanto os arquivos podem ser reduzidos em 40-60%. Você pode usar a comparação lado a lado para verificar a qualidade antes de baixar.",
+      "q2": "Qual a diferença entre comprimir PNG e JPG?",
+      "a2": "A compressão JPG remove dados visuais (com perda): menor qualidade significa arquivos menores. A compressão PNG mantém todos os dados visuais intactos (sem perda), reduzindo o tamanho otimizando como os dados são armazenados. PixelSwift lida com ambos automaticamente com base no seu formato de entrada.",
+      "q3": "Quanto posso reduzir o tamanho de um arquivo de imagem?",
+      "a3": "Resultados típicos: imagens JPG podem ser reduzidas em 40-70%, imagens PNG em 20-50%, e converter PNG para WebP pode alcançar até 80% de redução. Os resultados variam conforme o conteúdo da imagem e configurações de qualidade."
+    }
   },
   "resizer": {
     "title": "Redimensionador de imagens",
@@ -187,7 +205,16 @@
     "resizeAndDownload": "Redimensionar e baixar",
     "replaceImage": "Clique para substituir imagem",
     "startOver": "Enviar outra imagem",
-    "securityNote": "Arquivos processados localmente, com segurança."
+    "securityNote": "Arquivos processados localmente, com segurança.",
+    "faq": {
+      "title": "Perguntas Frequentes",
+      "q1": "Como redimensionar uma imagem para um tamanho específico?",
+      "a1": "Carregue sua imagem, insira a largura e altura exatas em pixels, ou use o modo porcentagem para escalar proporcionalmente. Você também pode usar predefinições rápidas para tamanhos comuns como 1:1, 4:3 ou 16:9. Clique em Redimensionar e Baixar para obter sua imagem.",
+      "q2": "Redimensionar uma imagem reduz a qualidade?",
+      "a2": "Reduzir as dimensões de uma imagem diminui levemente a qualidade, pois pixels são removidos. Porém, PixelSwift usa interpolação bicúbica de alta qualidade para minimizar a perda. Ampliar imagens pode causar desfoque, pois novos pixels precisam ser criados.",
+      "q3": "Qual a diferença entre escalar e recortar?",
+      "a3": "Escalar altera as dimensões gerais de toda a imagem, tornando-a maior ou menor enquanto mantém todo o conteúdo visível. Recortar remove partes da imagem para focar em uma área específica. O redimensionador do PixelSwift usa escalamento para preservar sua imagem completa."
+    }
   },
   "common": {
     "download": "Baixar",

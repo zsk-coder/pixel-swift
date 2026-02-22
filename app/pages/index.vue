@@ -13,37 +13,7 @@ useHead({
   ],
 });
 
-// ── FAQ Schema (structured data for Google rich results) ──
-useHead({
-  script: [
-    {
-      type: "application/ld+json",
-      innerHTML: computed(() =>
-        JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: [
-            {
-              "@type": "Question",
-              name: t("home.faq.q1"),
-              acceptedAnswer: { "@type": "Answer", text: t("home.faq.a1") },
-            },
-            {
-              "@type": "Question",
-              name: t("home.faq.q2"),
-              acceptedAnswer: { "@type": "Answer", text: t("home.faq.a2") },
-            },
-            {
-              "@type": "Question",
-              name: t("home.faq.q3"),
-              acceptedAnswer: { "@type": "Answer", text: t("home.faq.a3") },
-            },
-          ],
-        }),
-      ),
-    },
-  ],
-});
+
 
 const features = computed(() => [
   {
@@ -92,16 +62,6 @@ const whyItems = computed(() => [
   },
 ]);
 
-const faqItems = computed(() => [
-  { q: t("home.faq.q1"), a: t("home.faq.a1") },
-  { q: t("home.faq.q2"), a: t("home.faq.a2") },
-  { q: t("home.faq.q3"), a: t("home.faq.a3") },
-]);
-
-const openFaq = ref<number | null>(null);
-function toggleFaq(index: number) {
-  openFaq.value = openFaq.value === index ? null : index;
-}
 </script>
 
 <template>
@@ -275,43 +235,7 @@ function toggleFaq(index: number) {
 
     <!-- FAQ Section -->
     <section class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <h2
-          class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl text-center mb-12"
-        >
-          {{ t("home.faq.title") }}
-        </h2>
-        <div class="space-y-4">
-          <div
-            v-for="(item, index) in faqItems"
-            :key="index"
-            class="bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 overflow-hidden transition-shadow hover:shadow-md"
-          >
-            <button
-              class="w-full flex items-center justify-between px-6 py-5 text-left"
-              @click="toggleFaq(index)"
-            >
-              <span class="text-base font-semibold text-slate-900 dark:text-white pr-4">
-                {{ item.q }}
-              </span>
-              <span
-                class="material-symbols-outlined text-slate-400 transition-transform duration-300 shrink-0"
-                :class="{ 'rotate-180': openFaq === index }"
-              >
-                expand_more
-              </span>
-            </button>
-            <div
-              class="overflow-hidden transition-all duration-300"
-              :class="openFaq === index ? 'max-h-40 opacity-100' : 'max-h-0 opacity-0'"
-            >
-              <p class="px-6 pb-5 text-slate-600 dark:text-slate-400 leading-relaxed">
-                {{ item.a }}
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ToolFaq i18n-prefix="home.faq" :count="3" />
     </section>
 
     <!-- CTA Section -->
