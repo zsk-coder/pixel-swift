@@ -258,7 +258,6 @@ async function doResize() {
     downloadFile(result.blob, filename);
   } catch (e) {
     console.error("Resize failed:", e);
-    ElMessage.error(String(e));
   } finally {
     isBusy.value = false;
   }
