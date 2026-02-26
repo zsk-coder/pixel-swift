@@ -18,24 +18,22 @@ const faqItems = computed(() =>
 );
 
 // 注入 FAQ Schema 结构化数据
-useHead({
+useHead(() => ({
   script: [
     {
       type: "application/ld+json",
-      innerHTML: computed(() =>
-        JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "FAQPage",
-          mainEntity: faqItems.value.map((item) => ({
-            "@type": "Question",
-            name: item.q,
-            acceptedAnswer: { "@type": "Answer", text: item.a },
-          })),
-        }),
-      ),
+      innerHTML: JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        mainEntity: faqItems.value.map((item) => ({
+          "@type": "Question",
+          name: item.q,
+          acceptedAnswer: { "@type": "Answer", text: item.a },
+        })),
+      }),
     },
   ],
-});
+}));
 
 // 展开/收起状态
 const openIndex = ref<number | null>(null);
