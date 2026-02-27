@@ -1,9 +1,12 @@
 /**
  * Image Processing Composable
  *
- * Core image processing logic using Canvas API.
- * When Canvas cannot encode WebP (Safari/iOS), automatically falls back
- * to a WASM-based encoder (@jsquash/webp) via lazy loading.
+ * Professional-grade image processing using WASM encoders:
+ * - JPG:  MozJPEG via @jsquash/jpeg  (superior to Canvas API)
+ * - PNG:  @jsquash/png + OxiPNG      (lossless PNG optimization)
+ * - WebP: @jsquash/webp              (with Canvas API fallback)
+ *
+ * All WASM modules are lazily imported for zero initial cost.
  */
 
 export interface ProcessOptions {
@@ -26,14 +29,9 @@ export interface ProcessResult {
   duration: number;
 }
 
-// ─── WebP WASM Fallback ─────────────────────────
-// Cached detection result: null = not tested, true/false = result
+// ─── WebP Canvas Detection ──────────────────────
 let _canvasWebPSupport: boolean | null = null;
 
-/**
- * Test if the browser's Canvas API can actually encode WebP.
- * Safari returns a PNG blob even when asked for image/webp.
- */
 async function canCanvasEncodeWebP(): Promise<boolean> {
   if (_canvasWebPSupport !== null) return _canvasWebPSupport;
   try {
@@ -46,10 +44,7 @@ async function canCanvasEncodeWebP(): Promise<boolean> {
   return _canvasWebPSupport;
 }
 
-/**
- * Encode ImageData to WebP using @jsquash/webp (WASM).
- * The module is lazily imported — zero cost for browsers that don't need it.
- */
+// ─── WASM Encoder: WebP (@jsquash/webp) ─────────
 async function wasmEncodeWebP(
   imageData: ImageData,
   quality: number,
@@ -57,6 +52,50 @@ async function wasmEncodeWebP(
   const { default: encode } = await import("@jsquash/webp/encode");
   const buffer = await encode(imageData, { quality });
   return new Blob([buffer], { type: "image/webp" });
+}
+
+// ─── WASM Encoder: JPEG (MozJPEG via @jsquash/jpeg) ──
+async function wasmEncodeJPEG(
+  imageData: ImageData,
+  quality: number,
+): Promise<Blob> {
+  const { default: encode } = await import("@jsquash/jpeg/encode");
+  const buffer = await encode(imageData, { quality });
+  return new Blob([buffer], { type: "image/jpeg" });
+}
+
+// ─── WASM Encoder: PNG (upng-js quantization + OxiPNG optimization) ──
+async function wasmEncodePNG(
+  imageData: ImageData,
+  quality: number,
+): Promise<Blob> {
+  const UPNG = (await import("upng-js")).default;
+  const { default: oxipngOptimise } = await import("@jsquash/oxipng/optimise");
+
+  // Step 1: Lossy quantization via upng-js (like TinyPNG)
+  // Map quality 1-100 → color count 16-256
+  const cnum = Math.round(16 + (quality / 100) * (256 - 16));
+  const quantizedBuffer = UPNG.encode(
+    [imageData.data.buffer],
+    imageData.width,
+    imageData.height,
+    cnum,
+  );
+
+  // Step 2: Lossless optimization via OxiPNG (only if it shrinks the result)
+  try {
+    const optimisedBuffer = await oxipngOptimise(quantizedBuffer, {
+      level: 3,
+      optimiseAlpha: true,
+    });
+    if (optimisedBuffer.byteLength < quantizedBuffer.byteLength) {
+      return new Blob([optimisedBuffer], { type: "image/png" });
+    }
+  } catch {
+    // OxiPNG failed, fall through to quantized result
+  }
+
+  return new Blob([quantizedBuffer], { type: "image/png" });
 }
 
 export function useImageProcessor() {
@@ -111,16 +150,31 @@ export function useImageProcessor() {
       const outputFormat = options.outputFormat || "jpg";
       const qualityPercent = options.quality ?? 85;
       let blob: Blob;
+      const imageData = ctx.getImageData(0, 0, outWidth, outHeight);
 
-      if (outputFormat === "webp" && !(await canCanvasEncodeWebP())) {
-        // Safari/iOS: use WASM encoder
-        const imageData = ctx.getImageData(0, 0, outWidth, outHeight);
-        blob = await wasmEncodeWebP(imageData, qualityPercent);
+      if (options.action === "compress") {
+        // ── Compress mode: use professional WASM encoders ──
+        if (outputFormat === "jpg") {
+          blob = await wasmEncodeJPEG(imageData, qualityPercent);
+        } else if (outputFormat === "png") {
+          blob = await wasmEncodePNG(imageData, qualityPercent);
+        } else if (outputFormat === "webp") {
+          blob = await wasmEncodeWebP(imageData, qualityPercent);
+        } else {
+          // Fallback for unknown formats
+          blob = await canvas.convertToBlob({
+            type: getMimeType(outputFormat),
+          });
+        }
       } else {
-        // Standard path: use Canvas API
-        const mimeType = getMimeType(outputFormat);
-        const quality = qualityPercent / 100;
-        blob = await canvas.convertToBlob({ type: mimeType, quality });
+        // ── Convert / Resize mode: use Canvas API (fast) or WASM where needed ──
+        if (outputFormat === "webp" && !(await canCanvasEncodeWebP())) {
+          blob = await wasmEncodeWebP(imageData, qualityPercent);
+        } else {
+          const mimeType = getMimeType(outputFormat);
+          const quality = qualityPercent / 100;
+          blob = await canvas.convertToBlob({ type: mimeType, quality });
+        }
       }
 
       progress.value = 100;

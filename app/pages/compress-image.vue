@@ -103,8 +103,6 @@ const totalSavingsPercent = computed(() => {
   return Math.round(((totalOrig - totalProc) / totalOrig) * 100);
 });
 
-
-
 // Selected file for batch detail view
 const selectedFile = computed(() => {
   if (!selectedFileId.value) return null;
@@ -121,7 +119,9 @@ const selectedCompressedPreview = computed(() => {
   return compressedPreviews.value.get(selectedFileId.value) || "";
 });
 
-const selectedOriginalSize = computed(() => selectedFile.value?.originalSize || 0);
+const selectedOriginalSize = computed(
+  () => selectedFile.value?.originalSize || 0,
+);
 const selectedCompressedSize = computed(
   () => selectedFile.value?.processedSize || 0,
 );
@@ -138,7 +138,6 @@ const selectedSavingsPercent = computed(() => {
 const { processImage } = useImageProcessor();
 const { downloadFile, downloadAsZip, generateFileName, generateZipName } =
   useDownload();
-
 
 function formatSize(bytes: number): string {
   if (bytes < 0) bytes = 0;
@@ -202,7 +201,10 @@ async function afterAllFilesAdded() {
       processedBlobs.value.delete(first.id);
     }
     // Clear single-mode comparison state
-    if (compressedPreview.value && compressedPreview.value !== originalPreview.value) {
+    if (
+      compressedPreview.value &&
+      compressedPreview.value !== originalPreview.value
+    ) {
       URL.revokeObjectURL(compressedPreview.value);
     }
     originalPreview.value = "";
@@ -218,7 +220,7 @@ async function afterAllFilesAdded() {
       console.error("No file found in rawFiles");
       return;
     }
-    
+
     // Set up single mode preview
     originalSize.value = file.size;
     originalFormat.value = detectFormat(file.name);
@@ -228,7 +230,7 @@ async function afterAllFilesAdded() {
       const img = await createImageBitmap(file);
       originalWidth.value = img.width;
       originalHeight.value = img.height;
-      
+
       // Start compression
       await doSingleCompress();
     } catch (e) {
@@ -284,7 +286,11 @@ async function doSingleCompress() {
     }
 
     // Revoke old preview AFTER the new one is set (avoid flash)
-    if (oldPreview && oldPreview !== originalPreview.value && oldPreview !== compressedPreview.value) {
+    if (
+      oldPreview &&
+      oldPreview !== originalPreview.value &&
+      oldPreview !== compressedPreview.value
+    ) {
       URL.revokeObjectURL(oldPreview);
     }
 
@@ -338,10 +344,7 @@ async function onBatchProcess() {
         processedBlobs.value.set(item.id, result.blob);
         item.processedSize = result.processedSize;
         // Store compressed preview for detail view
-        compressedPreviews.value.set(
-          item.id,
-          URL.createObjectURL(result.blob),
-        );
+        compressedPreviews.value.set(item.id, URL.createObjectURL(result.blob));
       }
       item.width = result.width;
       item.height = result.height;
@@ -352,7 +355,6 @@ async function onBatchProcess() {
       item.error = t("errors.processFailed");
     }
   }
-
 
   isBusy.value = false;
 }
@@ -404,12 +406,43 @@ function onRemove(id: string) {
   fileItems.value.splice(idx, 1);
   rawFiles.value.splice(idx, 1);
   if (selectedFileId.value === id) selectedFileId.value = null;
+
+  // Batch → Single transition: initialize single-mode state and auto-compress
+  if (fileItems.value.length === 1) {
+    const remainingFile = rawFiles.value[0];
+    const remainingItem = fileItems.value[0];
+    if (remainingFile && remainingItem) {
+      remainingItem.status = "pending";
+      remainingItem.progress = 0;
+      remainingItem.processedSize = undefined;
+      processedBlobs.value.delete(remainingItem.id);
+
+      originalSize.value = remainingFile.size;
+      originalFormat.value = detectFormat(remainingFile.name);
+      originalPreview.value = URL.createObjectURL(remainingFile);
+      compressedPreview.value = "";
+      compressedSize.value = 0;
+
+      createImageBitmap(remainingFile)
+        .then((img) => {
+          originalWidth.value = img.width;
+          originalHeight.value = img.height;
+        })
+        .then(() => doSingleCompress())
+        .catch((e) =>
+          console.error("Failed to init single mode after remove:", e),
+        );
+    }
+  }
 }
 
 function startOver() {
   // Revoke all URLs
   if (originalPreview.value) URL.revokeObjectURL(originalPreview.value);
-  if (compressedPreview.value && compressedPreview.value !== originalPreview.value)
+  if (
+    compressedPreview.value &&
+    compressedPreview.value !== originalPreview.value
+  )
     URL.revokeObjectURL(compressedPreview.value);
   for (const item of fileItems.value) {
     if (item?.preview) URL.revokeObjectURL(item.preview);
@@ -434,6 +467,12 @@ function startOver() {
   activePreset.value = 80;
 
   selectedFileId.value = null;
+}
+
+/** Replace current image(s) with new file(s) — used by "Process Another" uploader */
+function onReplaceFile(newFiles: File[]) {
+  startOver();
+  onFilesAdded(newFiles);
 }
 
 function onClearAll() {
@@ -462,8 +501,6 @@ watch(quality, () => {
   clearTimeout(qualityTimer);
   qualityTimer = setTimeout(() => doSingleCompress(), 500);
 });
-
-
 
 // Select a file for detail comparison in batch mode
 function selectFile(id: string) {
@@ -679,8 +716,6 @@ const actualOutputFormat = computed(() => {
                 </div>
               </div>
 
-
-
               <!-- Actions -->
               <div class="pt-4 flex flex-col gap-3">
                 <ElButton
@@ -700,41 +735,17 @@ const actualOutputFormat = computed(() => {
                     ></div>
                   </div>
                   <div class="relative flex justify-center text-xs">
-                    <span
-                      class="bg-white dark:bg-slate-900 px-2 text-slate-400"
+                    <span class="bg-white dark:bg-slate-900 px-2 text-slate-400"
                       >or</span
                     >
                   </div>
                 </div>
-                <ElButton
-                  class="!w-full"
-                  size="large"
-                  @click="startOver"
-                >
+                <ElButton class="!w-full" size="large" @click="startOver">
                   <span class="material-symbols-outlined text-lg mr-1"
                     >restart_alt</span
                   >
                   {{ t("compressor.startOver") }}
                 </ElButton>
-              </div>
-            </div>
-
-            <!-- Pro Tip -->
-            <div
-              class="bg-primary/5 dark:bg-primary/10 rounded-lg p-4 border border-primary/10"
-            >
-              <div class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-primary mt-0.5"
-                  >info</span
-                >
-                <p
-                  class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed"
-                >
-                  <strong class="text-slate-900 dark:text-white">{{
-                    t("compressor.proTip")
-                  }}</strong>
-                  {{ t("compressor.proTipText") }}
-                </p>
               </div>
             </div>
           </div>
@@ -871,8 +882,6 @@ const actualOutputFormat = computed(() => {
               </button>
             </div>
           </div>
-
-
         </div>
 
         <!-- Mobile Bottom Bar (single mode) -->
@@ -893,10 +902,9 @@ const actualOutputFormat = computed(() => {
               >
               <span
                 >{{ t("compressor.format") }}
-                <span
-                  class="font-medium text-slate-700 dark:text-slate-300"
-                  >{{ actualOutputFormat.toUpperCase() }}</span
-                ></span
+                <span class="font-medium text-slate-700 dark:text-slate-300">{{
+                  actualOutputFormat.toUpperCase()
+                }}</span></span
               >
             </div>
             <button
@@ -930,7 +938,7 @@ const actualOutputFormat = computed(() => {
               class="w-full"
               accept="image/jpeg,image/png,image/webp"
               :hint="t('compressor.uploadHint')"
-              @files="onFilesAdded"
+              @files="onReplaceFile"
             />
           </div>
         </div>
@@ -957,9 +965,7 @@ const actualOutputFormat = computed(() => {
               <h2
                 class="text-lg font-bold flex items-center gap-2 text-slate-900 dark:text-white"
               >
-                <span class="material-symbols-outlined text-primary"
-                  >tune</span
-                >
+                <span class="material-symbols-outlined text-primary">tune</span>
                 {{ t("compressor.settings") }}
               </h2>
             </div>
@@ -987,7 +993,6 @@ const actualOutputFormat = computed(() => {
                   />
                 </div>
               </div>
-
             </div>
           </div>
 
@@ -1020,7 +1025,6 @@ const actualOutputFormat = computed(() => {
                   :format-tooltip="(val: number) => `${val}%`"
                 />
               </div>
-
             </div>
           </div>
 
@@ -1087,8 +1091,7 @@ const actualOutputFormat = computed(() => {
                 'border-b border-slate-200 dark:border-slate-700':
                   idx < fileItems.length - 1,
                 'opacity-70': file.status === 'pending',
-                'bg-primary/5 dark:bg-primary/10':
-                  selectedFileId === file.id,
+                'bg-primary/5 dark:bg-primary/10': selectedFileId === file.id,
                 'hover:bg-slate-50 dark:hover:bg-slate-700/50':
                   selectedFileId !== file.id,
               }"
@@ -1123,10 +1126,9 @@ const actualOutputFormat = computed(() => {
                     <span class="material-symbols-outlined text-[10px]"
                       >arrow_forward</span
                     >
-                    <span
-                      class="font-medium text-slate-900 dark:text-white"
-                      >{{ formatSize(file.processedSize || 0) }}</span
-                    >
+                    <span class="font-medium text-slate-900 dark:text-white">{{
+                      formatSize(file.processedSize || 0)
+                    }}</span>
                     <span
                       v-if="
                         file.processedSize &&
@@ -1232,9 +1234,7 @@ const actualOutputFormat = computed(() => {
                     text
                     @click.stop="onDownload(file.id)"
                   >
-                    <span class="material-symbols-outlined"
-                      >download</span
-                    >
+                    <span class="material-symbols-outlined">download</span>
                   </ElButton>
                   <ElButton circle text @click.stop="onRemove(file.id)">
                     <span class="material-symbols-outlined">close</span>
@@ -1288,34 +1288,22 @@ const actualOutputFormat = computed(() => {
                 </p>
                 <div class="flex items-center gap-1 mt-0.5">
                   <template v-if="file.status === 'done'">
-                    <ElTag
-                      type="success"
-                      size="small"
-                      round
-                      effect="light"
-                      >{{ t("converter.complete") }}</ElTag
-                    >
+                    <ElTag type="success" size="small" round effect="light">{{
+                      t("converter.complete")
+                    }}</ElTag>
                     <span class="text-xs text-slate-400"
                       >• {{ formatSize(file.processedSize || 0) }}</span
                     >
                   </template>
                   <template v-else-if="file.status === 'processing'">
-                    <ElTag
-                      type="primary"
-                      size="small"
-                      round
-                      effect="light"
-                      >{{ t("common.processing") }}</ElTag
-                    >
+                    <ElTag type="primary" size="small" round effect="light">{{
+                      t("common.processing")
+                    }}</ElTag>
                   </template>
                   <template v-else>
-                    <ElTag
-                      type="info"
-                      size="small"
-                      round
-                      effect="light"
-                      >{{ t("converter.waiting") }}</ElTag
-                    >
+                    <ElTag type="info" size="small" round effect="light">{{
+                      t("converter.waiting")
+                    }}</ElTag>
                   </template>
                 </div>
               </div>
@@ -1358,10 +1346,10 @@ const actualOutputFormat = computed(() => {
               <span class="material-symbols-outlined text-primary flex-shrink-0"
                 >compare</span
               >
-              <span class="flex-shrink-0">{{ t("compressor.compareMode") }}:</span>
-              <span class="text-primary truncate">{{
-                selectedFile.name
-              }}</span>
+              <span class="flex-shrink-0"
+                >{{ t("compressor.compareMode") }}:</span
+              >
+              <span class="text-primary truncate">{{ selectedFile.name }}</span>
             </h3>
             <button
               class="text-xs text-slate-500 hover:text-primary"
@@ -1381,10 +1369,7 @@ const actualOutputFormat = computed(() => {
               :compressed-label="t('compressor.compressed')"
               max-height="500px"
             />
-            <div
-              v-else
-              class="py-12 text-center text-slate-400 text-sm"
-            >
+            <div v-else class="py-12 text-center text-slate-400 text-sm">
               {{ t("common.preview") }}
             </div>
           </div>
@@ -1414,9 +1399,7 @@ const actualOutputFormat = computed(() => {
                 class="text-[10px] text-green-700 dark:text-green-400 font-medium uppercase tracking-wider"
                 >{{ t("compressor.compressedFile") }}</span
               >
-              <p
-                class="text-lg font-bold text-green-700 dark:text-green-400"
-              >
+              <p class="text-lg font-bold text-green-700 dark:text-green-400">
                 {{ formatSize(selectedCompressedSize) }}
               </p>
             </div>
@@ -1437,8 +1420,7 @@ const actualOutputFormat = computed(() => {
                 >
                 <span>
                   {{ t("compressor.totalSavings") }}
-                  <span
-                    class="font-bold text-green-600 dark:text-green-400"
+                  <span class="font-bold text-green-600 dark:text-green-400"
                     >{{ formatSize(totalSavings) }} ({{
                       totalSavingsPercent
                     }}%)</span
