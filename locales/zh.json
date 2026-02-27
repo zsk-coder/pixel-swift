@@ -126,6 +126,7 @@
     "subtitle": "在保持画质的同时减小文件体积，完美适配 PNG、JPG 和 WEBP。",
     "subtitleMobile": "智能优化你的图片",
     "uploadHint": "支持 JPG, PNG, WEBP，最大 50MB · 可批量上传多张",
+    "uploadHintSingle": "支持 JPG, PNG, WEBP，最大 50MB",
     "original": "原图",
     "compressed": "压缩后",
     "result": "效果",

@@ -126,6 +126,7 @@
     "subtitle": "Dateigröße reduzieren bei gleichbleibender Qualität. Perfekt für PNG, JPG und WEBP.",
     "subtitleMobile": "Bilder intelligent optimieren",
     "uploadHint": "Unterstützt JPG, PNG, WEBP bis zu 50MB · Stapel-Upload verfügbar",
+    "uploadHintSingle": "Unterstützt JPG, PNG, WEBP bis zu 50MB",
     "original": "Original",
     "compressed": "Komprimiert",
     "result": "Ergebnis",

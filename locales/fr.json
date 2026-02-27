@@ -126,6 +126,7 @@
     "subtitle": "Réduisez la taille des fichiers tout en conservant la qualité. Idéal pour PNG, JPG et WEBP.",
     "subtitleMobile": "Optimisez vos images intelligemment",
     "uploadHint": "JPG, PNG, WEBP jusqu'à 50 Mo · Téléchargement par lot disponible",
+    "uploadHintSingle": "JPG, PNG, WEBP jusqu'à 50 Mo",
     "original": "Original",
     "compressed": "Compressé",
     "result": "Résultat",

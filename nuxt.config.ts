@@ -96,6 +96,10 @@ export default defineNuxtConfig({
       wasm(),
       topLevelAwait(),
     ],
+    worker: {
+      format: "es" as const,
+      plugins: () => [wasm(), topLevelAwait()],
+    },
     optimizeDeps: {
       exclude: ["@jsquash/webp", "@jsquash/jpeg", "@jsquash/oxipng"],
     },

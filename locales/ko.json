@@ -126,6 +126,7 @@
     "subtitle": "화질을 유지하면서 파일 크기를 줄입니다. PNG, JPG, WEBP에 최적화.",
     "subtitleMobile": "이미지를 지능적으로 최적화",
     "uploadHint": "JPG, PNG, WEBP 지원, 최대 50MB · 일괄 업로드 가능",
+    "uploadHintSingle": "JPG, PNG, WEBP 지원, 최대 50MB",
     "original": "원본",
     "compressed": "압축 후",
     "result": "결과",

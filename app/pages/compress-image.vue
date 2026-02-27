@@ -221,6 +221,12 @@ async function afterAllFilesAdded() {
       return;
     }
 
+    // Immediately enter processing state so the UI shows a loading indicator
+    // instead of a blank container while createImageBitmap decodes large files.
+    isBusy.value = true;
+    const item = fileItems.value[0];
+    if (item) item.status = "processing";
+
     // Set up single mode preview
     originalSize.value = file.size;
     originalFormat.value = detectFormat(file.name);
@@ -231,12 +237,14 @@ async function afterAllFilesAdded() {
       originalWidth.value = img.width;
       originalHeight.value = img.height;
 
+      // Reset isBusy so doSingleCompress can acquire it properly
+      isBusy.value = false;
       // Start compression
       await doSingleCompress();
     } catch (e) {
       console.error("Failed to load image for comparison:", e);
-      // Even if createImageBitmap fails, we created originalPreview URL above
-      // so user should see the image.
+      isBusy.value = false;
+      if (item) item.status = "error";
     }
   }
 }
@@ -561,30 +569,45 @@ const actualOutputFormat = computed(() => {
                   max-height="600px"
                   class="!rounded-none"
                 />
+                <!-- Recompression overlay -->
+                <div
+                  v-if="isBusy"
+                  class="absolute inset-0 bg-black/20 backdrop-blur-[2px] flex items-center justify-center z-30 transition-opacity duration-300"
+                >
+                  <div
+                    class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-5 py-3 shadow-lg flex items-center gap-3"
+                  >
+                    <span
+                      class="material-symbols-outlined text-primary animate-spin"
+                      >progress_activity</span
+                    >
+                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">{{
+                      t("compressor.compressing")
+                    }}</span>
+                  </div>
+                </div>
               </template>
               <template v-else>
-                <div class="absolute inset-0 flex items-center justify-center">
-                  <img
-                    v-if="originalPreview"
-                    :src="originalPreview"
-                    class="max-w-full max-h-full object-contain"
-                    alt="original"
-                  />
+                <img
+                  v-if="originalPreview"
+                  :src="originalPreview"
+                  class="max-w-full max-h-[600px] object-contain"
+                  alt="original"
+                />
+                <div
+                  v-if="isBusy"
+                  class="absolute inset-0 bg-black/20 backdrop-blur-[2px] flex items-center justify-center z-30 transition-opacity duration-300"
+                >
                   <div
-                    v-if="isBusy"
-                    class="absolute inset-0 bg-black/30 flex items-center justify-center"
+                    class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-5 py-3 shadow-lg flex items-center gap-3"
                   >
-                    <div
-                      class="bg-white dark:bg-slate-800 rounded-lg px-6 py-3 shadow-lg flex items-center gap-3"
+                    <span
+                      class="material-symbols-outlined text-primary animate-spin"
+                      >progress_activity</span
                     >
-                      <span
-                        class="material-symbols-outlined text-primary animate-spin"
-                        >progress_activity</span
-                      >
-                      <span class="text-sm font-medium">{{
-                        t("compressor.compressing")
-                      }}</span>
-                    </div>
+                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">{{
+                      t("compressor.compressing")
+                    }}</span>
                   </div>
                 </div>
               </template>
@@ -613,7 +636,7 @@ const actualOutputFormat = computed(() => {
                 class="bg-green-50 dark:bg-green-900/10 border border-green-100 dark:border-green-900/30 p-4 rounded-lg flex flex-col relative overflow-hidden"
               >
                 <div
-                  v-if="singleDone && savingsPercent > 0"
+                  v-if="singleDone && !isBusy && savingsPercent > 0"
                   class="absolute right-0 top-0 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-bl-lg"
                 >
                   -{{ savingsPercent }}%
@@ -626,16 +649,13 @@ const actualOutputFormat = computed(() => {
                   <span
                     class="text-xl font-bold text-green-700 dark:text-green-400"
                   >
-                    {{ singleDone ? formatSize(compressedSize) : "—" }}
+                    {{ compressedSize ? formatSize(compressedSize) : "—" }}
                   </span>
                   <span
-                    v-if="singleDone"
+                    v-if="singleDone && !isBusy"
                     class="text-xs text-green-600/70 dark:text-green-400/60"
                     >{{ t("compressor.readyToDownload") }}</span
                   >
-                  <span v-else class="text-xs text-slate-400">{{
-                    t("compressor.compressing")
-                  }}</span>
                 </div>
               </div>
             </div>
@@ -776,30 +796,45 @@ const actualOutputFormat = computed(() => {
               >
                 {{ formatSize(compressedSize) }}
               </div>
+              <!-- Recompression overlay (mobile) -->
+              <div
+                v-if="isBusy"
+                class="absolute inset-0 bg-black/20 backdrop-blur-[2px] flex items-center justify-center z-30 transition-opacity duration-300"
+              >
+                <div
+                  class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-4 py-2 shadow-lg flex items-center gap-2"
+                >
+                  <span
+                    class="material-symbols-outlined text-primary animate-spin text-lg"
+                    >progress_activity</span
+                  >
+                  <span class="text-xs font-medium text-slate-700 dark:text-slate-200">{{
+                    t("compressor.compressing")
+                  }}</span>
+                </div>
+              </div>
             </template>
             <template v-else>
-              <div class="absolute inset-0 flex items-center justify-center">
-                <img
-                  v-if="originalPreview"
-                  :src="originalPreview"
-                  class="max-w-full max-h-full object-contain"
-                  alt="original"
-                />
+              <img
+                v-if="originalPreview"
+                :src="originalPreview"
+                class="max-w-full max-h-[500px] object-contain"
+                alt="original"
+              />
+              <div
+                v-if="isBusy"
+                class="absolute inset-0 bg-black/20 backdrop-blur-[2px] flex items-center justify-center z-30 transition-opacity duration-300"
+              >
                 <div
-                  v-if="isBusy"
-                  class="absolute inset-0 bg-black/30 flex items-center justify-center"
+                  class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-4 py-2 shadow-lg flex items-center gap-2"
                 >
-                  <div
-                    class="bg-white dark:bg-slate-800 rounded-lg px-4 py-2 shadow-lg flex items-center gap-2"
+                  <span
+                    class="material-symbols-outlined text-primary animate-spin text-lg"
+                    >progress_activity</span
                   >
-                    <span
-                      class="material-symbols-outlined text-primary animate-spin text-lg"
-                      >progress_activity</span
-                    >
-                    <span class="text-xs font-medium">{{
-                      t("compressor.compressing")
-                    }}</span>
-                  </div>
+                  <span class="text-xs font-medium text-slate-700 dark:text-slate-200">{{
+                    t("compressor.compressing")
+                  }}</span>
                 </div>
               </div>
             </template>
@@ -937,7 +972,7 @@ const actualOutputFormat = computed(() => {
             <FileUploader
               class="w-full"
               accept="image/jpeg,image/png,image/webp"
-              :hint="t('compressor.uploadHint')"
+              :hint="t('compressor.uploadHintSingle')"
               @files="onReplaceFile"
             />
           </div>
@@ -1485,3 +1520,24 @@ const actualOutputFormat = computed(() => {
     </div>
   </div>
 </template>
+
+<style scoped>
+@keyframes progress-slide {
+  0% {
+    width: 0%;
+    margin-left: 0%;
+  }
+  50% {
+    width: 60%;
+    margin-left: 20%;
+  }
+  100% {
+    width: 0%;
+    margin-left: 100%;
+  }
+}
+
+.animate-progress-slide {
+  animation: progress-slide 1.5s ease-in-out infinite;
+}
+</style>

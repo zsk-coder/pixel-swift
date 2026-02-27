@@ -6,7 +6,7 @@
  * - PNG:  @jsquash/png + OxiPNG      (lossless PNG optimization)
  * - WebP: @jsquash/webp              (with Canvas API fallback)
  *
- * All WASM modules are lazily imported for zero initial cost.
+ * All heavy processing runs in a Web Worker to keep UI responsive.
  */
 
 export interface ProcessOptions {
@@ -29,73 +29,28 @@ export interface ProcessResult {
   duration: number;
 }
 
-// ─── WebP Canvas Detection ──────────────────────
-let _canvasWebPSupport: boolean | null = null;
+// ─── Singleton Worker ───────────────────────────
+let _worker: Worker | null = null;
+let _messageId = 0;
 
-async function canCanvasEncodeWebP(): Promise<boolean> {
-  if (_canvasWebPSupport !== null) return _canvasWebPSupport;
-  try {
-    const c = new OffscreenCanvas(1, 1);
-    const blob = await c.convertToBlob({ type: "image/webp" });
-    _canvasWebPSupport = blob.type === "image/webp";
-  } catch {
-    _canvasWebPSupport = false;
+function getWorker(): Worker {
+  if (!_worker) {
+    _worker = new Worker(
+      new URL("../workers/imageProcessor.worker.ts", import.meta.url),
+      { type: "module" },
+    );
   }
-  return _canvasWebPSupport;
+  return _worker;
 }
 
-// ─── WASM Encoder: WebP (@jsquash/webp) ─────────
-async function wasmEncodeWebP(
-  imageData: ImageData,
-  quality: number,
-): Promise<Blob> {
-  const { default: encode } = await import("@jsquash/webp/encode");
-  const buffer = await encode(imageData, { quality });
-  return new Blob([buffer], { type: "image/webp" });
-}
-
-// ─── WASM Encoder: JPEG (MozJPEG via @jsquash/jpeg) ──
-async function wasmEncodeJPEG(
-  imageData: ImageData,
-  quality: number,
-): Promise<Blob> {
-  const { default: encode } = await import("@jsquash/jpeg/encode");
-  const buffer = await encode(imageData, { quality });
-  return new Blob([buffer], { type: "image/jpeg" });
-}
-
-// ─── WASM Encoder: PNG (upng-js quantization + OxiPNG optimization) ──
-async function wasmEncodePNG(
-  imageData: ImageData,
-  quality: number,
-): Promise<Blob> {
-  const UPNG = (await import("upng-js")).default;
-  const { default: oxipngOptimise } = await import("@jsquash/oxipng/optimise");
-
-  // Step 1: Lossy quantization via upng-js (like TinyPNG)
-  // Map quality 1-100 → color count 16-256
-  const cnum = Math.round(16 + (quality / 100) * (256 - 16));
-  const quantizedBuffer = UPNG.encode(
-    [imageData.data.buffer],
-    imageData.width,
-    imageData.height,
-    cnum,
-  );
-
-  // Step 2: Lossless optimization via OxiPNG (only if it shrinks the result)
-  try {
-    const optimisedBuffer = await oxipngOptimise(quantizedBuffer, {
-      level: 3,
-      optimiseAlpha: true,
-    });
-    if (optimisedBuffer.byteLength < quantizedBuffer.byteLength) {
-      return new Blob([optimisedBuffer], { type: "image/png" });
-    }
-  } catch {
-    // OxiPNG failed, fall through to quantized result
-  }
-
-  return new Blob([quantizedBuffer], { type: "image/png" });
+function getMimeType(format: string): string {
+  const map: Record<string, string> = {
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    webp: "image/webp",
+  };
+  return map[format] || "image/jpeg";
 }
 
 export function useImageProcessor() {
@@ -104,7 +59,7 @@ export function useImageProcessor() {
   const error = ref<string | null>(null);
 
   /**
-   * Process a single image file
+   * Process a single image file via Web Worker
    */
   async function processImage(
     file: File,
@@ -117,77 +72,65 @@ export function useImageProcessor() {
     const startTime = performance.now();
 
     try {
-      // 1. Load image
-      progress.value = 10;
-      const imageBitmap = await createImageBitmap(file);
+      const worker = getWorker();
+      const id = String(++_messageId);
+      const buffer = await file.arrayBuffer();
 
-      // 2. Calculate output dimensions
-      let outWidth = options.width || imageBitmap.width;
-      let outHeight = options.height || imageBitmap.height;
+      const result = await new Promise<{
+        buffer: ArrayBuffer;
+        width: number;
+        height: number;
+        format: string;
+      }>((resolve, reject) => {
+        function handler(e: MessageEvent) {
+          const data = e.data;
+          if (data.id !== id) return;
 
-      if (
-        options.keepAspectRatio !== false &&
-        (options.width || options.height)
-      ) {
-        const ratio = imageBitmap.width / imageBitmap.height;
-        if (options.width && !options.height) {
-          outHeight = Math.round(options.width / ratio);
-        } else if (options.height && !options.width) {
-          outWidth = Math.round(options.height * ratio);
+          if (data.type === "progress") {
+            progress.value = data.progress ?? 0;
+          } else if (data.type === "complete") {
+            worker.removeEventListener("message", handler);
+            resolve(data.result);
+          } else if (data.type === "error") {
+            worker.removeEventListener("message", handler);
+            reject(new Error(data.error || "Processing failed"));
+          }
         }
-      }
 
-      progress.value = 30;
+        worker.addEventListener("message", handler);
 
-      // 3. Draw to canvas
-      const canvas = new OffscreenCanvas(outWidth, outHeight);
-      const ctx = canvas.getContext("2d")!;
-      ctx.drawImage(imageBitmap, 0, 0, outWidth, outHeight);
-
-      progress.value = 60;
-
-      // 4. Encode output
-      const outputFormat = options.outputFormat || "jpg";
-      const qualityPercent = options.quality ?? 85;
-      let blob: Blob;
-      const imageData = ctx.getImageData(0, 0, outWidth, outHeight);
-
-      if (options.action === "compress") {
-        // ── Compress mode: use professional WASM encoders ──
-        if (outputFormat === "jpg") {
-          blob = await wasmEncodeJPEG(imageData, qualityPercent);
-        } else if (outputFormat === "png") {
-          blob = await wasmEncodePNG(imageData, qualityPercent);
-        } else if (outputFormat === "webp") {
-          blob = await wasmEncodeWebP(imageData, qualityPercent);
-        } else {
-          // Fallback for unknown formats
-          blob = await canvas.convertToBlob({
-            type: getMimeType(outputFormat),
-          });
-        }
-      } else {
-        // ── Convert / Resize mode: use Canvas API (fast) or WASM where needed ──
-        if (outputFormat === "webp" && !(await canCanvasEncodeWebP())) {
-          blob = await wasmEncodeWebP(imageData, qualityPercent);
-        } else {
-          const mimeType = getMimeType(outputFormat);
-          const quality = qualityPercent / 100;
-          blob = await canvas.convertToBlob({ type: mimeType, quality });
-        }
-      }
+        // Transfer the buffer to the worker (zero-copy)
+        worker.postMessage(
+          {
+            id,
+            action: options.action,
+            buffer,
+            options: {
+              outputFormat: options.outputFormat,
+              quality: options.quality,
+              width: options.width,
+              height: options.height,
+              keepAspectRatio: options.keepAspectRatio,
+            },
+          },
+          [buffer],
+        );
+      });
 
       progress.value = 100;
 
+      const blob = new Blob([result.buffer], {
+        type: getMimeType(result.format),
+      });
       const duration = Math.round(performance.now() - startTime);
 
       return {
         blob,
         originalSize: file.size,
         processedSize: blob.size,
-        width: outWidth,
-        height: outHeight,
-        format: outputFormat,
+        width: result.width,
+        height: result.height,
+        format: result.format,
         duration,
       };
     } catch (err) {
@@ -224,14 +167,4 @@ export function useImageProcessor() {
     processImage,
     processBatch,
   };
-}
-
-function getMimeType(format: string): string {
-  const map: Record<string, string> = {
-    jpg: "image/jpeg",
-    jpeg: "image/jpeg",
-    png: "image/png",
-    webp: "image/webp",
-  };
-  return map[format] || "image/jpeg";
 }

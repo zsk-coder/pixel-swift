@@ -126,6 +126,7 @@
     "subtitle": "画質を維持しながらファイルサイズを縮小。PNG、JPG、WEBPに最適。",
     "subtitleMobile": "画像をインテリジェントに最適化",
     "uploadHint": "JPG, PNG, WEBP 対応、最大 50MB · 一括アップロード可能",
+    "uploadHintSingle": "JPG, PNG, WEBP 対応、最大 50MB",
     "original": "オリジナル",
     "compressed": "圧縮後",
     "result": "結果",
