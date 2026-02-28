@@ -8,23 +8,28 @@ alwaysApply: true
 
 ## 技术栈
 
-| 类别 | 技术 |
-|------|------|
-| 框架 | Nuxt 3 + Vue 3 |
-| 语言 | TypeScript（Strict Mode） |
-| 样式 | TailwindCSS + SCSS（全局变量 / Mixin 已通过 Vite 注入） |
-| UI 库 | Element Plus（`@element-plus/nuxt` 自动导入组件） |
-| 国际化 | `@nuxtjs/i18n`（zh / en / ja / ko / fr / es / pt / de） |
-| 暗色模式 | `@nuxtjs/color-mode`（`.dark:` 前缀） |
-| SEO | `nuxt-schema-org`（FAQ Schema 等结构化数据） |
-| 流量监控 | `nuxt-gtag`（Google Analytics 4） |
-| 构建 | Vite（Nuxt 内置） |
-| 部署 | Cloudflare Pages |
+| 类别     | 技术                                                    |
+| -------- | ------------------------------------------------------- |
+| 框架     | Nuxt 3 + Vue 3                                          |
+| 语言     | TypeScript（Strict Mode）                               |
+| 样式     | TailwindCSS + SCSS（全局变量 / Mixin 已通过 Vite 注入） |
+| UI 库    | Element Plus（`@element-plus/nuxt` 自动导入组件）       |
+| 国际化   | `@nuxtjs/i18n`（zh / en / ja / ko / fr / es / pt / de） |
+| 暗色模式 | `@nuxtjs/color-mode`（`.dark:` 前缀）                   |
+| SEO      | `nuxt-schema-org`（FAQ Schema 等结构化数据）            |
+| 流量监控 | `nuxt-gtag`（Google Analytics 4）                       |
+| 构建     | Vite（Nuxt 内置）                                       |
+| 部署     | Cloudflare Pages                                        |
 
 ## 部署规则
 
-- 项目部署在 **Cloudflare Pages**，与 **GitHub** 仓库关联，推送后自动触发构建部署。
-- 部署只需 `git push` 即可（远程为 GitHub）。
+- 项目部署在 **Cloudflare Pages**，与 **GitHub** 仓库的 `master` 分支关联，推送到 `master` 后自动触发构建部署。
+- **日常开发**在 `dev` 分支进行，代码就绪后合并到 `master` 再 push 触发部署。
+- 部署流程：
+  1. 在 `dev` 分支完成开发并提交
+  2. `git checkout master && git merge dev`
+  3. `git push origin master`
+  4. `git checkout dev`（切回开发分支继续工作）
 
 ## Git 规范
 
@@ -73,5 +78,6 @@ locales/                 # 8 个语言 JSON 文件
 - **项目 Composable**：`useI18n`、`useLocalePath`、`useImageProcessor`、`useFileUpload`、`useDownload`、`useBatchProcess`、`useTheme`
 
 **需要手动 import 的**：
+
 - 类型定义：`import type { ProcessOptions } from "~/composables/useImageProcessor"`
 - 第三方库类型：`import type { UploadFile } from "element-plus"`
