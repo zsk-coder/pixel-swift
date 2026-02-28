@@ -67,9 +67,11 @@ if (!ctx) throw new Error("无法获取 Canvas 2D 上下文");
 // 6. 生命周期钩子
 </script>
 
-<template> ... </template>
+<template>...</template>
 
-<style scoped lang="scss"> ... </style>
+<style scoped lang="scss">
+...
+</style>
 ```
 
 ### 2.2 Props & Emits
@@ -120,10 +122,10 @@ try {
   const result = await processImage(file, options);
 } catch (err) {
   const message = err instanceof Error ? err.message : "处理失败";
-  error.value = message;         // 更新 UI
+  error.value = message; // 更新 UI
   console.error("[模块名]", err); // 开发日志
 } finally {
-  isProcessing.value = false;    // 重置状态
+  isProcessing.value = false; // 重置状态
 }
 ```
 
@@ -161,14 +163,14 @@ export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
 
 ## 四、命名规范
 
-| 类别 | 规范 | 示例 |
-|------|------|------|
-| 组件文件 | PascalCase | `FileUploader.vue` |
-| 页面文件 | kebab-case | `compress-image.vue` |
-| Composable | use 前缀 + camelCase | `useImageProcessor.ts` |
-| 工具函数 | camelCase | `formatDetector.ts` |
-| 常量 | UPPER_SNAKE_CASE | `MAX_FILE_SIZE` |
-| 接口 / 类型 | PascalCase | `ProcessOptions` |
+| 类别        | 规范                 | 示例                   |
+| ----------- | -------------------- | ---------------------- |
+| 组件文件    | PascalCase           | `FileUploader.vue`     |
+| 页面文件    | kebab-case           | `compress-image.vue`   |
+| Composable  | use 前缀 + camelCase | `useImageProcessor.ts` |
+| 工具函数    | camelCase            | `formatDetector.ts`    |
+| 常量        | UPPER_SNAKE_CASE     | `MAX_FILE_SIZE`        |
+| 接口 / 类型 | PascalCase           | `ProcessOptions`       |
 
 ---
 
@@ -207,4 +209,53 @@ git commit -m "功能: 添加 GA4 隐私政策披露"
 
 # ❌ 错误（禁止使用英文）
 git commit -m "fix: batch mode preview not showing"
+```
+
+## 八、UI 一致性规范
+
+### 8.1 修改 UI 前必须全面排查
+
+修改任何 UI 样式、文案或功能时，**必须同时排查以下维度的一致性**：
+
+- **移动端 vs 桌面端**：同一功能在不同视口下的**文案、样式、间距、功能**必须统一（例如移动端和桌面端必须使用相同的翻译 Key、展示相同的信息）。
+- **单张模式 vs 批量模式**：共用的功能区域（设置面板、按钮、预设等）必须使用完全相同的样式代码和文案。
+- **跨页面一致性**：相同功能的组件（如下载按钮、上传按钮）在不同页面间的样式、文案和交互行为必须统一。
+
+### 8.2 禁止同一组件写两套样式
+
+```vue
+<!-- ❌ 禁止：同一个预设按钮在不同模式下使用不同的样式 -->
+<!-- 单张模式 -->
+<button class="rounded-xl border-2 ...">
+<!-- 批量模式 -->
+<button class="rounded-lg border ...">
+
+<!-- ✅ 正确：复用完全相同的样式，或抽取为组件 -->
+<button class="rounded-xl border-2 ...">
+```
+
+### 8.3 多语言同步检查清单
+
+修改文案时，按以下清单逐一确认：
+
+1. 确认涉及的所有翻译 Key（包括移动端/桌面端可能使用不同 Key 的情况）。
+2. 全部 **8 种语言**（zh / en / ja / ko / es / de / fr / pt）都已更新。
+3. 同一功能在不同页面使用的 Key 保持一致。
+
+### 8.4 新增 UI 元素必须逐属性对照
+
+新增按钮、卡片等 UI 元素时，必须**逐项复制参照元素的完整 class 列表**（高度、圆角、字号、字重、图标大小、间距等），然后仅修改差异部分（如文字内容、颜色）。禁止凭记忆手写样式。
+
+```vue
+<!-- ❌ 禁止：参照按钮是 !h-12 !text-base !font-bold text-[20px]，新按钮随手写 -->
+<ElButton class="!w-full !h-12 !rounded-xl !ml-0 mt-2">
+  <span class="material-symbols-outlined text-sm mr-1">restart_alt</span>
+  重置
+</ElButton>
+
+<!-- ✅ 正确：完整复制参照按钮的所有属性，仅改文案和颜色 -->
+<ElButton class="!w-full !h-12 !rounded-xl !ml-0 !text-base mt-2">
+  <span class="material-symbols-outlined text-[20px] mr-1">restart_alt</span>
+  重置
+</ElButton>
 ```

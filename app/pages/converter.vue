@@ -26,8 +26,6 @@ const formatOptions = computed(() => [
 type OutputFormat = "jpg" | "png" | "webp";
 
 const selectedFormat = ref<OutputFormat>("webp");
-const quality = ref(85);
-const showQuality = computed(() => selectedFormat.value !== "png");
 
 // Raw files from uploader
 const rawFiles = ref<File[]>([]);
@@ -97,10 +95,11 @@ async function onProcess() {
     try {
       const file = rawFiles.value[i];
       if (!file) continue;
+      // 格式转换使用固定高质量：JPG/WebP 92%（近无损），PNG 100%（始终无损）
       const result = await processImage(file, {
         action: "convert",
         outputFormat: selectedFormat.value,
-        quality: showQuality.value ? quality.value : 100,
+        quality: selectedFormat.value === "png" ? 100 : 92,
       });
 
       item.status = "done";
@@ -173,7 +172,6 @@ function onClearAll() {
 function onReset() {
   onClearAll();
   selectedFormat.value = "webp";
-  quality.value = 85;
 }
 </script>
 
@@ -189,15 +187,10 @@ function onReset() {
         >
           {{ t("converter.title") }}
         </h1>
-        <!-- Web subtitle -->
         <p
-          class="hidden md:block text-slate-500 dark:text-slate-400 text-lg max-w-2xl mx-auto"
+          class="text-slate-500 dark:text-slate-400 text-sm md:text-lg max-w-2xl mx-auto"
         >
           {{ t("converter.subtitle") }}
-        </p>
-        <!-- Mobile subtitle -->
-        <p class="md:hidden text-sm text-slate-500 dark:text-slate-400">
-          {{ t("converter.subtitleMobile") }}
         </p>
       </div>
 
@@ -209,88 +202,41 @@ function onReset() {
         v-if="hasFiles"
         class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 p-4 md:p-6 shadow-sm"
       >
-        <!-- Web layout: horizontal -->
-        <div
-          class="hidden md:flex items-start md:items-center justify-between gap-6"
-        >
+        <!-- Web layout: horizontal, gap controlled -->
+        <div class="hidden md:flex items-center gap-[100px]">
           <!-- Left: title & desc -->
-          <div class="flex flex-col gap-1 flex-shrink-0">
+          <div class="flex flex-col gap-0.5 flex-shrink-0">
             <h2
-              class="text-lg font-bold flex items-center gap-2 text-slate-900 dark:text-white"
+              class="text-base font-bold flex items-center gap-2 text-slate-900 dark:text-white"
             >
               <span class="material-symbols-outlined text-primary">tune</span>
               {{ t("converter.settingsTitle") }}
             </h2>
-            <p class="text-sm text-slate-500 dark:text-slate-400">
+            <p class="text-xs text-slate-500 dark:text-slate-400 ml-8">
               {{ t("converter.settingsDesc") }}
             </p>
           </div>
 
-          <!-- Right: format + quality -->
-          <div class="flex gap-6 flex-1 justify-end">
-            <!-- Format Selection -->
-            <div class="flex flex-col gap-2 min-w-[280px]">
-              <label
-                class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
-              >
-                {{ t("converter.outputFormat") }}
-              </label>
-              <ElSelect
-                v-model="selectedFormat"
-                size="large"
-                class="w-full"
-                :suffix-icon="''"
-              >
-                <ElOption
-                  v-for="fmt in formatOptions"
-                  :key="fmt.value"
-                  :label="fmt.label"
-                  :value="fmt.value"
-                />
-              </ElSelect>
-            </div>
-
-            <!-- Quality Area (always present, content changes) -->
-            <div class="flex flex-col gap-2 min-w-[240px] flex-1">
-              <div class="flex justify-between items-center">
-                <label
-                  class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
-                >
-                  {{ t("converter.quality") }}
-                </label>
-                <span
-                  v-if="showQuality"
-                  class="text-xs font-bold bg-primary/10 text-primary px-2 py-0.5 rounded"
-                >
-                  {{ quality }}%
-                </span>
-                <span
-                  v-else
-                  class="text-xs font-bold bg-emerald-50 text-emerald-600 dark:bg-emerald-900/30 dark:text-emerald-400 px-2.5 py-0.5 rounded-full"
-                >
-                  {{ t("converter.lossless") }}
-                </span>
-              </div>
-              <div class="flex items-center h-[42px]">
-                <ElSlider
-                  v-if="showQuality"
-                  v-model="quality"
-                  :min="1"
-                  :max="100"
-                  :show-tooltip="true"
-                  :format-tooltip="(val: number) => `${val}%`"
-                />
-                <p
-                  v-else
-                  class="text-sm text-slate-400 dark:text-slate-500 flex items-center gap-1.5"
-                >
-                  <span class="material-symbols-outlined text-[16px]"
-                    >verified</span
-                  >
-                  {{ t("converter.losslessHint") }}
-                </p>
-              </div>
-            </div>
+          <!-- Format selector -->
+          <div class="flex flex-col gap-1.5">
+            <label
+              class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
+            >
+              {{ t("converter.outputFormat") }}
+            </label>
+            <ElSelect
+              v-model="selectedFormat"
+              size="large"
+              class="!w-[380px]"
+              :suffix-icon="''"
+            >
+              <ElOption
+                v-for="fmt in formatOptions"
+                :key="fmt.value"
+                :label="fmt.label"
+                :value="fmt.value"
+              />
+            </ElSelect>
           </div>
         </div>
 
@@ -318,7 +264,6 @@ function onReset() {
                 />
               </ElSelect>
             </div>
-
           </div>
         </div>
       </div>
@@ -606,7 +551,6 @@ function onReset() {
             </div>
           </div>
         </div>
-
       </div>
 
       <!-- Global Action Bar (visible when files exist) -->
@@ -615,21 +559,7 @@ function onReset() {
         <div
           class="rounded-xl border border-slate-200 dark:border-slate-700 bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-4 shadow-lg flex items-center justify-between gap-4"
         >
-          <div
-            class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400"
-          >
-            <div v-if="totalSavings > 0" class="flex items-center gap-2">
-              <span class="material-symbols-outlined text-primary"
-                >folder_zip</span
-              >
-              <span>
-                {{ t("converter.totalSavings") }}
-                <span class="font-bold text-green-600 dark:text-green-400">{{
-                  formatSize(totalSavings)
-                }}</span>
-              </span>
-            </div>
-          </div>
+          <div></div>
           <div class="flex gap-3">
             <ElButton @click="onReset">
               <span class="material-symbols-outlined text-sm mr-1"

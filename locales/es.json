@@ -64,7 +64,7 @@
     "faq": {
       "title": "Preguntas frecuentes",
       "q1": "¿Qué formatos de imagen son compatibles?",
-      "a1": "PixelSwift es compatible con JPG, PNG, WebP, BMP y TIFF para conversión, compresión y redimensionamiento.",
+      "a1": "PixelSwift es compatible con JPG, PNG, WebP y BMP para conversión, compresión y redimensionamiento.",
       "q2": "¿Se suben mis imágenes a un servidor?",
       "a2": "No. Todo el procesamiento se realiza localmente en tu navegador. Tus imágenes nunca salen de tu dispositivo.",
       "q3": "¿Hay un límite de tamaño de archivo?",
@@ -78,9 +78,9 @@
     "tapToUpload": "Toca para subir",
     "orDragDrop": "o arrastra y suelta aquí",
     "selectImages": "Seleccionar imágenes",
-    "supportedFormats": "Compatible con JPG, PNG, WEBP, BMP, TIFF hasta 50MB",
+    "supportedFormats": "Compatible con JPG, PNG, WEBP, BMP hasta 50MB",
     "releaseToUpload": "Suelta para subir",
-    "supportFormats": "Formatos compatibles: JPG, PNG, WebP, BMP, TIFF",
+    "supportFormats": "Formatos compatibles: JPG, PNG, WebP, BMP",
     "maxFiles": "Hasta {count} imágenes, máximo {size} MB cada una",
     "pasteHint": "También puedes pegar desde el portapapeles (Ctrl+V)",
     "selectFromAlbum": "Seleccionar desde tu álbum de fotos"
@@ -89,7 +89,7 @@
     "title": "Convertidor de imágenes",
     "subtitle": "Procesamiento de imágenes rápido y seguro. Convierte entre JPG, PNG y WebP.",
     "subtitleMobile": "Convierte tus imágenes al instante.",
-    "uploadHint": "Compatible con JPG, PNG, WEBP, BMP, TIFF hasta 50MB · Carga por lotes disponible",
+    "uploadHint": "Compatible con JPG, PNG, WEBP, BMP hasta 50MB · Carga por lotes disponible",
     "settingsTitle": "Ajustes de conversión",
     "settingsDesc": "Seleccionar formato de salida",
     "settingsMobile": "Ajustes",
@@ -114,11 +114,11 @@
     "faq": {
       "title": "Preguntas Frecuentes",
       "q1": "¿Cómo convertir PNG a JPG en línea?",
-      "a1": "Suba su archivo PNG, seleccione JPG como formato de salida, ajuste la calidad si es necesario y haga clic en Procesar. El archivo convertido estará listo para descargar al instante, sin necesidad de subir nada a un servidor.",
+      "a1": "Suba su archivo PNG, seleccione JPG como formato de salida y haga clic en Procesar. El archivo convertido estará listo para descargar al instante, sin necesidad de subir nada a un servidor.",
       "q2": "¿Cuál es la diferencia entre WebP y JPG?",
       "a2": "WebP es un formato moderno desarrollado por Google que ofrece archivos 25-35% más pequeños que JPG con calidad comparable. Soporta transparencia (como PNG) y es ideal para uso web. Sin embargo, JPG tiene mayor compatibilidad con software antiguo.",
       "q3": "¿Convertir formatos de imagen afecta la calidad?",
-      "a3": "Convertir entre formatos con pérdida (como JPG y WebP) puede reducir ligeramente la calidad. Convertir a PNG siempre es sin pérdida. PixelSwift le permite controlar el deslizador de calidad para encontrar el equilibrio perfecto entre tamaño y calidad visual."
+      "a3": "Convertir entre formatos con pérdida (como JPG y WebP) puede reducir ligeramente la calidad. Convertir a PNG siempre es sin pérdida. PixelSwift utiliza configuraciones optimizadas de alta calidad para preservar la máxima fidelidad visual durante la conversión."
     }
   },
   "compressor": {
@@ -151,7 +151,7 @@
     "keepOriginal": "Formato original ({format})",
     "convertTo": "Convertir a {format}",
     "downloadImage": "Descargar imagen",
-    "startOver": "Empezar de nuevo",
+    "startOver": "Subir otra imagen",
     "processAnother": "Procesar otra imagen",
     "compressAnother": "Comprimir otra imagen",
     "originalFile": "Archivo original",
@@ -168,14 +168,14 @@
       "q1": "¿Cómo comprimir imágenes sin perder calidad?",
       "a1": "Use el deslizador de calidad de PixelSwift configurado al 80-90% para una compresión casi sin pérdida. A este nivel, la diferencia visual es imperceptible mientras los archivos se pueden reducir un 40-60%. Puede usar la comparación lado a lado para verificar la calidad antes de descargar.",
       "q2": "¿Cuál es la diferencia entre comprimir PNG y JPG?",
-      "a2": "La compresión JPG elimina datos visuales (con pérdida): menor calidad significa archivos más pequeños. La compresión PNG mantiene todos los datos visuales intactos (sin pérdida), reduciendo el tamaño optimizando cómo se almacenan los datos. PixelSwift maneja ambos automáticamente según su formato de entrada.",
+      "a2": "La compresión JPG elimina datos visuales (con pérdida): menor calidad significa archivos más pequeños. La compresión PNG reduce inteligentemente el número de colores (similar a TinyPNG), reduciendo significativamente el tamaño del archivo mientras mantiene el resultado visual casi idéntico. PixelSwift maneja ambos automáticamente según su formato de entrada.",
       "q3": "¿Cuánto puedo reducir el tamaño de un archivo de imagen?",
-      "a3": "Resultados típicos: imágenes JPG se pueden reducir un 40-70%, imágenes PNG un 20-50%, y convertir PNG a WebP puede lograr hasta un 80% de reducción. Los resultados varían según el contenido de la imagen y la configuración de calidad."
+      "a3": "Resultados típicos: imágenes JPG se pueden reducir un 40-70%, imágenes PNG un 20-50%. Los resultados varían según el contenido de la imagen, la complejidad del color y la configuración de calidad. Para mayor ahorro de espacio, pruebe convertir al formato WebP usando nuestra herramienta Convertidor."
     }
   },
   "resizer": {
     "title": "Redimensionador de imágenes",
-    "uploadHint": "Compatible con JPG, PNG, WEBP, BMP, TIFF hasta 50MB",
+    "uploadHint": "Compatible con JPG, PNG, WEBP, BMP hasta 50MB",
     "settings": "Ajustes de redimensión",
     "resetToOriginal": "Restaurar original",
     "resizeBy": "Redimensionar por",
@@ -203,7 +203,7 @@
     "outputSize": "Tamaño de salida",
     "outputFormat": "Formato de salida",
     "outputPreview": "Tamaño de salida: {width} × {height} px ({percent}% del original)",
-    "resizeAndDownload": "Redimensionar y descargar",
+    "resizeAndDownload": "Descargar imagen",
     "replaceImage": "Haz clic para reemplazar imagen",
     "startOver": "Subir otra imagen",
     "securityNote": "Archivos procesados localmente, de forma segura.",
@@ -311,7 +311,7 @@
     },
     "converter": {
       "title": "Convertidor de imágenes en línea gratis – JPG PNG WebP | PixelSwift",
-      "description": "Convierte imágenes JPG, PNG, WebP, BMP, TIFF al instante. Gratis, sin registro ni instalar nada – 100% en tu navegador."
+      "description": "Convierte imágenes JPG, PNG, WebP, BMP al instante. Gratis, sin registro ni instalar nada – 100% en tu navegador."
     },
     "compressor": {
       "title": "Comprimir imágenes en línea – Reduce hasta un 90% | PixelSwift",

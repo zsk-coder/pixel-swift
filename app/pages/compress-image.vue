@@ -477,16 +477,6 @@ function startOver() {
   selectedFileId.value = null;
 }
 
-/** Replace current image(s) with new file(s) — used by "Process Another" uploader */
-function onReplaceFile(newFiles: File[]) {
-  startOver();
-  onFilesAdded(newFiles);
-}
-
-function onClearAll() {
-  startOver();
-}
-
 let fromPreset = false;
 
 function selectPreset(value: number) {
@@ -533,11 +523,8 @@ const actualOutputFormat = computed(() => {
         >
           {{ t("compressor.title") }}
         </h1>
-        <p class="text-slate-500 dark:text-slate-400 text-lg hidden md:block">
+        <p class="text-slate-500 dark:text-slate-400 text-sm md:text-lg">
           {{ t("compressor.subtitle") }}
-        </p>
-        <p class="text-slate-500 dark:text-slate-400 text-sm md:hidden">
-          {{ t("compressor.subtitleMobile") }}
         </p>
       </div>
 
@@ -581,9 +568,10 @@ const actualOutputFormat = computed(() => {
                       class="material-symbols-outlined text-primary animate-spin"
                       >progress_activity</span
                     >
-                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">{{
-                      t("compressor.compressing")
-                    }}</span>
+                    <span
+                      class="text-sm font-medium text-slate-700 dark:text-slate-200"
+                      >{{ t("compressor.compressing") }}</span
+                    >
                   </div>
                 </div>
               </template>
@@ -605,9 +593,10 @@ const actualOutputFormat = computed(() => {
                       class="material-symbols-outlined text-primary animate-spin"
                       >progress_activity</span
                     >
-                    <span class="text-sm font-medium text-slate-700 dark:text-slate-200">{{
-                      t("compressor.compressing")
-                    }}</span>
+                    <span
+                      class="text-sm font-medium text-slate-700 dark:text-slate-200"
+                      >{{ t("compressor.compressing") }}</span
+                    >
                   </div>
                 </div>
               </template>
@@ -716,14 +705,18 @@ const actualOutputFormat = computed(() => {
               <!-- Presets -->
               <div class="space-y-3">
                 <label
-                  class="text-sm font-medium text-slate-700 dark:text-slate-300"
-                  >{{ t("compressor.compressionLevel") }}</label
+                  class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2"
                 >
+                  <span class="material-symbols-outlined text-primary text-lg"
+                    >temp_preferences_custom</span
+                  >
+                  {{ t("compressor.compressionLevel") }}
+                </label>
                 <div class="grid grid-cols-2 gap-2">
                   <button
                     v-for="preset in presets"
                     :key="preset.value"
-                    class="px-3 py-2 text-xs font-medium rounded border transition-all"
+                    class="flex flex-col items-start px-3 py-2 text-xs font-medium rounded border transition-all"
                     :class="[
                       activePreset === preset.value
                         ? 'bg-primary/10 text-primary border-primary/20 shadow-sm ring-1 ring-primary/20 font-bold'
@@ -731,7 +724,10 @@ const actualOutputFormat = computed(() => {
                     ]"
                     @click="selectPreset(preset.value)"
                   >
-                    {{ preset.label }}
+                    <span>{{ preset.label }}</span>
+                    <span class="text-[10px] text-slate-500 mt-0.5">{{
+                      preset.hint
+                    }}</span>
                   </button>
                 </div>
               </div>
@@ -748,22 +744,11 @@ const actualOutputFormat = computed(() => {
                   <span class="material-symbols-outlined mr-1">download</span>
                   {{ t("compressor.downloadImage") }}
                 </ElButton>
-                <div class="relative py-2">
-                  <div class="absolute inset-0 flex items-center">
-                    <div
-                      class="w-full border-t border-slate-200 dark:border-slate-700"
-                    ></div>
-                  </div>
-                  <div class="relative flex justify-center text-xs">
-                    <span class="bg-white dark:bg-slate-900 px-2 text-slate-400"
-                      >or</span
-                    >
-                  </div>
-                </div>
-                <ElButton class="!w-full" size="large" @click="startOver">
-                  <span class="material-symbols-outlined text-lg mr-1"
-                    >restart_alt</span
-                  >
+                <ElButton
+                  class="!w-full !h-10 !rounded-lg !ml-0"
+                  size="large"
+                  @click="startOver"
+                >
                   {{ t("compressor.startOver") }}
                 </ElButton>
               </div>
@@ -808,9 +793,10 @@ const actualOutputFormat = computed(() => {
                     class="material-symbols-outlined text-primary animate-spin text-lg"
                     >progress_activity</span
                   >
-                  <span class="text-xs font-medium text-slate-700 dark:text-slate-200">{{
-                    t("compressor.compressing")
-                  }}</span>
+                  <span
+                    class="text-xs font-medium text-slate-700 dark:text-slate-200"
+                    >{{ t("compressor.compressing") }}</span
+                  >
                 </div>
               </div>
             </template>
@@ -832,9 +818,10 @@ const actualOutputFormat = computed(() => {
                     class="material-symbols-outlined text-primary animate-spin text-lg"
                     >progress_activity</span
                   >
-                  <span class="text-xs font-medium text-slate-700 dark:text-slate-200">{{
-                    t("compressor.compressing")
-                  }}</span>
+                  <span
+                    class="text-xs font-medium text-slate-700 dark:text-slate-200"
+                    >{{ t("compressor.compressing") }}</span
+                  >
                 </div>
               </div>
             </template>
@@ -921,9 +908,9 @@ const actualOutputFormat = computed(() => {
 
         <!-- Mobile Bottom Bar (single mode) -->
         <div
-          class="lg:hidden sticky bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-5 pb-8 -mx-4 mt-6 z-30"
+          class="lg:hidden sticky bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 pb-6 -mx-4 mt-6 z-30"
         >
-          <div class="flex flex-col gap-3">
+          <div class="flex flex-col gap-2">
             <div
               class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1"
             >
@@ -935,46 +922,24 @@ const actualOutputFormat = computed(() => {
                     : "—"
                 }}</span></span
               >
-              <span
-                >{{ t("compressor.format") }}
-                <span class="font-medium text-slate-700 dark:text-slate-300">{{
-                  actualOutputFormat.toUpperCase()
-                }}</span></span
-              >
             </div>
-            <button
-              class="w-full flex items-center justify-center gap-2 rounded-xl bg-primary py-4 text-sm font-bold text-white shadow-lg shadow-blue-500/25 hover:bg-blue-700 active:scale-[0.98] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            <ElButton
+              type="primary"
+              size="large"
+              class="!w-full !h-12 !rounded-xl !text-base !font-bold"
               :disabled="!singleDone || isBusy"
               @click="onDownloadSingle"
             >
-              <span class="material-symbols-outlined">download</span>
+              <span class="material-symbols-outlined mr-1">download</span>
               {{ t("compressor.downloadImage") }}
-            </button>
-            <button
-              class="w-full py-2 text-xs font-medium text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white transition-colors"
+            </ElButton>
+            <ElButton
+              class="!w-full !h-12 !rounded-xl !ml-0 mt-2"
+              size="large"
               @click="startOver"
             >
-              {{ t("compressor.compressAnother") }}
-            </button>
-          </div>
-        </div>
-
-        <!-- Desktop: Process Another (bottom upload) -->
-        <div
-          class="hidden lg:block w-full mt-12 border-t border-dashed border-slate-200 dark:border-slate-800 pt-8 pb-12"
-        >
-          <div class="flex flex-col items-center gap-6 w-full">
-            <h3
-              class="text-slate-400 dark:text-slate-500 text-sm font-medium uppercase tracking-widest"
-            >
-              {{ t("compressor.processAnother") }}
-            </h3>
-            <FileUploader
-              class="w-full"
-              accept="image/jpeg,image/png,image/webp"
-              :hint="t('compressor.uploadHintSingle')"
-              @files="onReplaceFile"
-            />
+              {{ t("compressor.startOver") }}
+            </ElButton>
           </div>
         </div>
       </template>
@@ -998,7 +963,7 @@ const actualOutputFormat = computed(() => {
           >
             <div class="flex flex-col gap-1 flex-shrink-0">
               <h2
-                class="text-lg font-bold flex items-center gap-2 text-slate-900 dark:text-white"
+                class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"
               >
                 <span class="material-symbols-outlined text-primary">tune</span>
                 {{ t("compressor.settings") }}
@@ -1008,49 +973,13 @@ const actualOutputFormat = computed(() => {
               <div class="flex flex-col gap-2 min-w-[240px] flex-1">
                 <div class="flex justify-between items-center">
                   <label
-                    class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400"
-                  >
-                    {{ t("compressor.quality") }}
-                  </label>
-                  <span
-                    class="text-xs font-bold bg-primary/10 text-primary px-2 py-0.5 rounded"
-                  >
-                    {{ quality }}%
-                  </span>
-                </div>
-                <div class="flex items-center h-[42px]">
-                  <ElSlider
-                    v-model="quality"
-                    :min="1"
-                    :max="100"
-                    :show-tooltip="true"
-                    :format-tooltip="(val: number) => `${val}%`"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Mobile: vertical -->
-          <div class="md:hidden space-y-4">
-            <h2
-              class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400"
-            >
-              {{ t("compressor.settings") }}
-            </h2>
-            <div class="grid gap-4">
-              <div>
-                <div class="flex justify-between items-center mb-1.5">
-                  <label
                     class="text-sm font-medium text-slate-700 dark:text-slate-300"
+                    >{{ t("compressor.quality") }}</label
                   >
-                    {{ t("compressor.quality") }}
-                  </label>
                   <span
-                    class="text-xs font-mono bg-slate-100 dark:bg-slate-700 px-2 py-0.5 rounded text-slate-600 dark:text-slate-400"
+                    class="text-sm font-bold text-primary bg-primary/10 px-2 py-0.5 rounded"
+                    >{{ quality }}%</span
                   >
-                    {{ quality }}%
-                  </span>
                 </div>
                 <ElSlider
                   v-model="quality"
@@ -1059,6 +988,46 @@ const actualOutputFormat = computed(() => {
                   :show-tooltip="true"
                   :format-tooltip="(val: number) => `${val}%`"
                 />
+                <div
+                  class="flex justify-between text-[10px] text-slate-400 uppercase font-medium"
+                >
+                  <span>{{ t("compressor.lowSize") }}</span>
+                  <span>{{ t("compressor.highQuality") }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mobile: vertical -->
+          <div class="md:hidden space-y-4">
+            <!-- Quality slider (matched single mode style) -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label
+                  class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2"
+                >
+                  <span class="material-symbols-outlined text-primary text-lg"
+                    >tune</span
+                  >
+                  {{ t("compressor.quality") }}
+                </label>
+                <span
+                  class="text-sm font-bold text-primary bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded"
+                  >{{ quality }}%</span
+                >
+              </div>
+              <ElSlider
+                v-model="quality"
+                :min="1"
+                :max="100"
+                :show-tooltip="true"
+                :format-tooltip="(val: number) => `${val}%`"
+              />
+              <div
+                class="flex justify-between text-[10px] text-slate-400 font-medium uppercase tracking-wide"
+              >
+                <span>{{ t("compressor.lowSize") }}</span>
+                <span>{{ t("compressor.highQuality") }}</span>
               </div>
             </div>
           </div>
@@ -1067,36 +1036,81 @@ const actualOutputFormat = computed(() => {
           <div
             class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-700"
           >
-            <label
-              class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 block"
-            >
-              {{ t("compressor.compressionLevel") }}
-            </label>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
-              <button
-                v-for="preset in presets"
-                :key="preset.value"
-                class="flex flex-col items-start p-3 rounded-lg border transition-all text-left"
-                :class="[
-                  activePreset === preset.value
-                    ? 'bg-primary/10 text-primary border-primary/20 shadow-sm ring-1 ring-primary/20'
-                    : 'bg-slate-50 dark:bg-slate-800/50 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary',
-                ]"
-                @click="selectPreset(preset.value)"
+            <!-- Desktop presets (matching single mode style) -->
+            <div class="hidden md:block">
+              <label
+                class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2 mb-3"
               >
-                <span
-                  class="text-xs font-bold"
-                  :class="
-                    activePreset === preset.value
-                      ? 'text-primary'
-                      : 'text-slate-900 dark:text-white'
-                  "
-                  >{{ preset.label }}</span
+                <span class="material-symbols-outlined text-primary text-lg"
+                  >temp_preferences_custom</span
                 >
-                <span class="text-[10px] text-slate-500 mt-0.5">{{
-                  preset.hint
-                }}</span>
-              </button>
+                {{ t("compressor.compressionLevel") }}
+              </label>
+              <div class="grid grid-cols-4 gap-2">
+                <button
+                  v-for="preset in presets"
+                  :key="preset.value"
+                  class="flex flex-col items-start px-3 py-2 text-xs font-medium rounded border transition-all"
+                  :class="[
+                    activePreset === preset.value
+                      ? 'bg-primary/10 text-primary border-primary/20 shadow-sm ring-1 ring-primary/20 font-bold'
+                      : 'bg-slate-50 dark:bg-slate-800 text-slate-600 dark:text-slate-400 border-slate-200 dark:border-slate-700 hover:border-primary hover:text-primary',
+                  ]"
+                  @click="selectPreset(preset.value)"
+                >
+                  <span>{{ preset.label }}</span>
+                  <span class="text-[10px] text-slate-500 mt-0.5">{{
+                    preset.hint
+                  }}</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Mobile presets (card style with check icons) -->
+            <div class="md:hidden">
+              <label
+                class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2 mb-3"
+              >
+                <span class="material-symbols-outlined text-primary text-lg"
+                  >temp_preferences_custom</span
+                >
+                {{ t("compressor.compressionLevel") }}
+              </label>
+              <div class="grid grid-cols-2 gap-2">
+                <button
+                  v-for="preset in presets"
+                  :key="preset.value"
+                  class="flex flex-col items-start p-3 rounded-xl border-2 transition-all text-left relative overflow-hidden"
+                  :class="[
+                    activePreset === preset.value
+                      ? 'border-primary bg-blue-50 dark:bg-blue-900/20'
+                      : 'border-transparent bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700',
+                  ]"
+                  @click="selectPreset(preset.value)"
+                >
+                  <div
+                    v-if="activePreset === preset.value"
+                    class="absolute top-0 right-0 p-[2px] bg-primary rounded-bl-lg"
+                  >
+                    <span
+                      class="material-symbols-outlined text-white text-[10px] block"
+                      >check</span
+                    >
+                  </div>
+                  <span
+                    class="text-xs font-bold"
+                    :class="
+                      activePreset === preset.value
+                        ? 'text-primary'
+                        : 'text-slate-900 dark:text-white'
+                    "
+                    >{{ preset.label }}</span
+                  >
+                  <span class="text-[10px] text-slate-500 mt-1">{{
+                    preset.hint
+                  }}</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -1109,7 +1123,7 @@ const actualOutputFormat = computed(() => {
             >
               {{ t("converter.queue") }} ({{ fileItems.length }})
             </h3>
-            <ElButton type="danger" link @click="onClearAll">
+            <ElButton type="danger" link @click="startOver">
               {{ t("converter.clearAll") }}
             </ElButton>
           </div>
@@ -1321,14 +1335,38 @@ const actualOutputFormat = computed(() => {
                 >
                   {{ file.name }}
                 </p>
-                <div class="flex items-center gap-1 mt-0.5">
+                <div class="flex items-center gap-1 flex-wrap mt-0.5">
                   <template v-if="file.status === 'done'">
                     <ElTag type="success" size="small" round effect="light">{{
                       t("converter.complete")
                     }}</ElTag>
-                    <span class="text-xs text-slate-400"
-                      >• {{ formatSize(file.processedSize || 0) }}</span
+                    <span class="text-xs text-slate-400">
+                      {{ formatSize(file.originalSize) }}
+                    </span>
+                    <span
+                      class="material-symbols-outlined text-[10px] text-slate-400"
+                      >arrow_forward</span
                     >
+                    <span
+                      class="text-xs font-medium text-slate-700 dark:text-slate-300"
+                    >
+                      {{ formatSize(file.processedSize || 0) }}
+                    </span>
+                    <span
+                      v-if="
+                        file.processedSize &&
+                        file.processedSize < file.originalSize
+                      "
+                      class="text-xs text-green-600 dark:text-green-400 font-medium"
+                    >
+                      (-{{
+                        Math.round(
+                          ((file.originalSize - file.processedSize) /
+                            file.originalSize) *
+                            100,
+                        )
+                      }}%)
+                    </span>
                   </template>
                   <template v-else-if="file.status === 'processing'">
                     <ElTag type="primary" size="small" round effect="light">{{
@@ -1339,6 +1377,9 @@ const actualOutputFormat = computed(() => {
                     <ElTag type="info" size="small" round effect="light">{{
                       t("converter.waiting")
                     }}</ElTag>
+                    <span class="text-xs text-slate-400"
+                      >• {{ formatSize(file.originalSize) }}</span
+                    >
                   </template>
                 </div>
               </div>
@@ -1464,7 +1505,7 @@ const actualOutputFormat = computed(() => {
               </div>
             </div>
             <div class="flex gap-3">
-              <ElButton @click="onClearAll">
+              <ElButton @click="startOver">
                 <span class="material-symbols-outlined text-sm mr-1"
                   >restart_alt</span
                 >
@@ -1494,14 +1535,27 @@ const actualOutputFormat = computed(() => {
         <div
           class="md:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 z-40"
         >
+          <div
+            v-if="totalSavings > 0"
+            class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2"
+          >
+            <span>
+              {{ t("compressor.totalSavings") }}
+              <span class="font-bold text-green-600 dark:text-green-400"
+                >{{ formatSize(totalSavings) }} ({{
+                  totalSavingsPercent
+                }}%)</span
+              >
+            </span>
+          </div>
           <ElButton
             type="primary"
             size="large"
-            class="!w-full !rounded-xl !py-5 !text-base !font-bold"
+            class="!w-full !h-12 !rounded-xl !text-base !font-bold"
             :disabled="isBusy"
             @click="allDone ? onDownloadAll() : onBatchProcess()"
           >
-            <span class="material-symbols-outlined text-[24px] mr-1">{{
+            <span class="material-symbols-outlined text-[20px] mr-1">{{
               allDone ? "folder_zip" : "play_arrow"
             }}</span>
             {{
@@ -1511,6 +1565,16 @@ const actualOutputFormat = computed(() => {
                   ? t("converter.downloadAllZip")
                   : t("common.process")
             }}
+          </ElButton>
+          <ElButton
+            class="!w-full !h-12 !rounded-xl !ml-0 !text-base mt-2"
+            size="large"
+            @click="startOver"
+          >
+            <span class="material-symbols-outlined text-[20px] mr-1"
+              >restart_alt</span
+            >
+            {{ t("common.reset") }}
           </ElButton>
         </div>
       </template>

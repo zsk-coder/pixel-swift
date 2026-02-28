@@ -64,7 +64,7 @@
     "faq": {
       "title": "자주 묻는 질문",
       "q1": "어떤 이미지 형식을 지원하나요?",
-      "a1": "PixelSwift는 JPG, PNG, WebP, BMP, TIFF 형식의 변환, 압축, 크기 조정을 지원합니다.",
+      "a1": "PixelSwift는 JPG, PNG, WebP, BMP 형식의 변환, 압축, 크기 조정을 지원합니다.",
       "q2": "이미지가 서버에 업로드되나요?",
       "a2": "아닙니다. 모든 처리는 브라우저에서 로컬로 이루어집니다. 이미지가 기기를 벗어나지 않습니다.",
       "q3": "파일 크기 제한이 있나요?",
@@ -78,9 +78,9 @@
     "tapToUpload": "탭하여 업로드",
     "orDragDrop": "또는 여기에 끌어다 놓기",
     "selectImages": "이미지 선택",
-    "supportedFormats": "JPG, PNG, WEBP, BMP, TIFF 지원, 최대 50MB",
+    "supportedFormats": "JPG, PNG, WEBP, BMP 지원, 최대 50MB",
     "releaseToUpload": "놓으면 업로드됩니다",
-    "supportFormats": "지원 형식: JPG, PNG, WebP, BMP, TIFF",
+    "supportFormats": "지원 형식: JPG, PNG, WebP, BMP",
     "maxFiles": "최대 {count}개 이미지, 파일당 최대 {size}MB",
     "pasteHint": "클립보드에서 붙여넣기도 가능합니다 (Ctrl+V)",
     "selectFromAlbum": "사진 앨범에서 선택"
@@ -89,7 +89,7 @@
     "title": "이미지 포맷 변환기",
     "subtitle": "빠르고 안전한 온라인 이미지 처리. JPG, PNG, WebP 형식 간 변환.",
     "subtitleMobile": "이미지를 빠르게 변환하세요.",
-    "uploadHint": "JPG, PNG, WEBP, BMP, TIFF 지원, 최대 50MB · 일괄 업로드 가능",
+    "uploadHint": "JPG, PNG, WEBP, BMP 지원, 최대 50MB · 일괄 업로드 가능",
     "settingsTitle": "변환 설정",
     "settingsDesc": "출력 형식 선택",
     "settingsMobile": "설정",
@@ -114,11 +114,11 @@
     "faq": {
       "title": "자주 묻는 질문",
       "q1": "온라인에서 PNG를 JPG로 변환하는 방법은?",
-      "a1": "PNG 파일을 업로드하고, 출력 형식으로 JPG를 선택하며, 필요에 따라 품질을 조정한 후 처리를 클릭합니다. 변환된 파일은 즉시 다운로드할 수 있습니다. 서버 업로드가 필요하지 않습니다.",
+      "a1": "PNG 파일을 업로드하고, 출력 형식으로 JPG를 선택한 후 처리를 클릭합니다. 변환된 파일은 즉시 다운로드할 수 있습니다. 서버 업로드가 필요하지 않습니다.",
       "q2": "WebP와 JPG의 차이점은?",
       "a2": "WebP는 Google이 개발한 최신 형식으로, 비슷한 품질에서 JPG보다 25-35% 작은 파일 크기를 제공합니다. PNG처럼 투명도를 지원하며 웹 사용에 이상적입니다. 그러나 JPG는 오래된 소프트웨어와의 호환성이 더 넓습니다.",
       "q3": "이미지 형식 변환이 품질에 영향을 미치나요?",
-      "a3": "손실 형식 간 변환(예: JPG와 WebP 간)은 품질이 약간 저하될 수 있습니다. PNG로 변환하는 것은 항상 무손실입니다. PixelSwift에서는 품질 슬라이더를 사용하여 파일 크기와 화질 사이의 완벽한 균형을 찾을 수 있습니다."
+      "a3": "손실 형식 간 변환(예: JPG와 WebP 간)은 품질이 약간 저하될 수 있습니다. PNG로 변환하는 것은 항상 무손실입니다. PixelSwift는 최적화된 고품질 설정을 사용하여 변환 시 최대한의 시각적 충실도를 보존합니다."
     }
   },
   "compressor": {
@@ -151,7 +151,7 @@
     "keepOriginal": "원본 형식 ({format})",
     "convertTo": "{format}(으)로 변환",
     "downloadImage": "이미지 다운로드",
-    "startOver": "다시 시작",
+    "startOver": "다른 이미지 업로드",
     "processAnother": "다른 이미지 처리",
     "compressAnother": "다른 이미지 압축",
     "originalFile": "원본 파일",
@@ -168,14 +168,14 @@
       "q1": "품질 손실 없이 이미지를 압축하는 방법은?",
       "a1": "PixelSwift의 품질 슬라이더를 80-90%로 설정하면 거의 무손실 압축을 달성할 수 있습니다. 이 수준에서는 시각적 차이가 거의 감지할 수 없으며 파일 크기는 40-60% 줄일 수 있습니다. 다운로드 전에 나란히 비교를 사용하여 품질을 확인할 수 있습니다.",
       "q2": "PNG와 JPG 압축의 차이점은?",
-      "a2": "JPG 압축은 시각 데이터를 제거합니다(손실) — 품질이 낮을수록 파일이 작아집니다. PNG 압축은 모든 시각 데이터를 유지합니다(무손실) — 데이터 저장 방식을 최적화하여 파일 크기를 줄입니다. PixelSwift는 입력 형식에 따라 자동으로 최적의 방법을 선택합니다.",
+      "a2": "JPG 압축은 시각 데이터를 제거합니다(손실) — 품질이 낮을수록 파일이 작아집니다. PNG 압축은 색상 수를 지능적으로 줄여 파일 크기를 축소합니다(TinyPNG와 유사) — 시각적 결과를 거의 동일하게 유지하면서 파일 크기를 크게 줄입니다. PixelSwift는 입력 형식에 따라 자동으로 최적의 방법을 선택합니다.",
       "q3": "이미지 파일 크기를 얼마나 줄일 수 있나요?",
-      "a3": "일반적인 결과: JPG 이미지는 40-70%, PNG 이미지는 20-50% 줄일 수 있으며, PNG를 WebP로 변환하면 최대 80%까지 줄일 수 있습니다. 결과는 이미지 내용과 품질 설정에 따라 다릅니다."
+      "a3": "일반적인 결과: JPG 이미지는 40-70%, PNG 이미지는 20-50% 줄일 수 있습니다. 결과는 이미지 내용, 색상 복잡도 및 품질 설정에 따라 다릅니다. 더 큰 용량 절감을 원하시면 변환기 도구를 사용하여 WebP 형식으로 변환해 보세요."
     }
   },
   "resizer": {
     "title": "이미지 크기 조정",
-    "uploadHint": "JPG, PNG, WEBP, BMP, TIFF 지원, 최대 50MB",
+    "uploadHint": "JPG, PNG, WEBP, BMP 지원, 최대 50MB",
     "settings": "크기 조정 설정",
     "resetToOriginal": "원본으로 복원",
     "resizeBy": "크기 조정 방법",
@@ -203,7 +203,7 @@
     "outputSize": "출력 크기",
     "outputFormat": "출력 형식",
     "outputPreview": "출력 크기: {width} × {height} px (원본의 {percent}%)",
-    "resizeAndDownload": "크기 조정 후 다운로드",
+    "resizeAndDownload": "이미지 다운로드",
     "replaceImage": "클릭하여 이미지 교체",
     "startOver": "다른 이미지 업로드",
     "securityNote": "파일은 로컬에서 안전하게 처리됩니다.",
@@ -311,7 +311,7 @@
     },
     "converter": {
       "title": "무료 온라인 이미지 포맷 변환기 – JPG PNG WebP 변환 | PixelSwift",
-      "description": "JPG, PNG, WebP, BMP, TIFF 이미지를 즉시 변환하세요. 무료, 빠르고 안전 – 업로드 불필요. 지금 사용해 보세요!"
+      "description": "JPG, PNG, WebP, BMP 이미지를 즉시 변환하세요. 무료, 빠르고 안전 – 업로드 불필요. 지금 사용해 보세요!"
     },
     "compressor": {
       "title": "무료 온라인 이미지 압축 – 최대 90% 용량 감소 | PixelSwift",

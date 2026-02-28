@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ElMessage } from "element-plus";
+
 const { t } = useI18n();
 
 const props = withDefaults(
@@ -9,8 +11,7 @@ const props = withDefaults(
     hint?: string;
   }>(),
   {
-    accept:
-      "image/jpeg,image/png,image/webp,image/bmp,image/tiff",
+    accept: "image/jpeg,image/png,image/webp,image/bmp,image/tiff",
     maxSize: 50,
     maxCount: 20,
     hint: "",
@@ -20,6 +21,11 @@ const props = withDefaults(
 const emit = defineEmits<{
   files: [files: File[]];
 }>();
+
+// 超出文件数量限制时，给出明确提示（ElUpload 默认行为是静默丢弃）
+function onExceed() {
+  ElMessage.warning(t("errors.maxFilesExceeded", { count: props.maxCount }));
+}
 
 function onPaste(e: ClipboardEvent) {
   const items = e.clipboardData?.items;
@@ -59,6 +65,7 @@ onUnmounted(() => {
       }
     "
     :limit="maxCount"
+    :on-exceed="onExceed"
   >
     <!-- Upload Icon -->
     <div

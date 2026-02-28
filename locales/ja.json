@@ -64,7 +64,7 @@
     "faq": {
       "title": "よくある質問",
       "q1": "対応している画像フォーマットは？",
-      "a1": "PixelSwiftはJPG、PNG、WebP、BMP、TIFF形式の変換・圧縮・リサイズに対応しています。",
+      "a1": "PixelSwiftはJPG、PNG、WebP、BMP形式の変換・圧縮・リサイズに対応しています。",
       "q2": "画像はサーバーにアップロードされますか？",
       "a2": "いいえ。すべての処理はブラウザ内でローカルに行われます。画像がデバイスから外に出ることはありません。",
       "q3": "ファイルサイズに制限はありますか？",
@@ -78,9 +78,9 @@
     "tapToUpload": "タップしてアップロード",
     "orDragDrop": "またはここにドラッグ＆ドロップ",
     "selectImages": "画像を選択",
-    "supportedFormats": "JPG, PNG, WEBP, BMP, TIFF に対応、最大 50MB",
+    "supportedFormats": "JPG, PNG, WEBP, BMP に対応、最大 50MB",
     "releaseToUpload": "離すとアップロードされます",
-    "supportFormats": "対応形式: JPG, PNG, WebP, BMP, TIFF",
+    "supportFormats": "対応形式: JPG, PNG, WebP, BMP",
     "maxFiles": "最大{count}枚、1ファイル{size}MBまで",
     "pasteHint": "クリップボードからの貼り付けも可能です（Ctrl+V）",
     "selectFromAlbum": "フォトライブラリから選択"
@@ -89,7 +89,7 @@
     "title": "画像フォーマット変換ツール",
     "subtitle": "高速・安全なオンライン画像処理。JPG、PNG、WebP形式を相互変換。",
     "subtitleMobile": "画像を瞬時に変換。",
-    "uploadHint": "JPG, PNG, WEBP, BMP, TIFF 対応、最大 50MB · 一括アップロード可能",
+    "uploadHint": "JPG, PNG, WEBP, BMP 対応、最大 50MB · 一括アップロード可能",
     "settingsTitle": "変換設定",
     "settingsDesc": "出力形式を選択",
     "settingsMobile": "設定",
@@ -114,11 +114,11 @@
     "faq": {
       "title": "よくある質問",
       "q1": "オンラインでPNGをJPGに変換するには？",
-      "a1": "PNGファイルをアップロードし、出力形式としてJPGを選択、必要に応じて品質を調整してから処理をクリックします。変換されたファイルはすぐにダウンロードできます。サーバーへのアップロードは不要です。",
+      "a1": "PNGファイルをアップロードし、出力形式としてJPGを選択してから処理をクリックします。変換されたファイルはすぐにダウンロードできます。サーバーへのアップロードは不要です。",
       "q2": "WebPとJPGの違いは？",
       "a2": "WebPはGoogleが開発した最新フォーマットで、同等の品質でJPGより25-35%小さいファイルサイズを実現します。PNGのような透明度をサポートし、Web利用に最適です。ただし、JPGは古いソフトウェアとの互換性が高いです。",
       "q3": "画像形式の変換は品質に影響しますか？",
-      "a3": "非可逆形式間の変換（JPGとWebP間など）は品質がわずかに低下する可能性があります。PNGへの変換は常にロスレスです。PixelSwiftでは品質スライダーでファイルサイズと画質の最適なバランスを調整できます。"
+      "a3": "非可逆形式間の変換（JPGとWebP間など）は品質がわずかに低下する可能性があります。PNGへの変換は常にロスレスです。PixelSwiftは最適化された高品質設定を使用し、変換時の視覚的な忠実度を最大限に保持します。"
     }
   },
   "compressor": {
@@ -151,7 +151,7 @@
     "keepOriginal": "元の形式 ({format})",
     "convertTo": "{format}に変換",
     "downloadImage": "画像をダウンロード",
-    "startOver": "やり直す",
+    "startOver": "別の画像をアップロード",
     "processAnother": "別の画像を処理",
     "compressAnother": "別の画像を圧縮",
     "originalFile": "元のファイル",
@@ -168,14 +168,14 @@
       "q1": "画質を落とさずに画像を圧縮するには？",
       "a1": "PixelSwiftの品質スライダーを80-90%に設定すると、ほぼロスレスの圧縮が実現できます。このレベルでは視覚的な違いはほぼわかりませんが、ファイルサイズは40-60%削減できます。ダウンロード前に並べて比較して品質を確認できます。",
       "q2": "PNGとJPGの圧縮の違いは？",
-      "a2": "JPG圧縮は視覚データを削除します（非可逆）— 品質を下げるほどファイルが小さくなります。PNG圧縮はすべての視覚データを保持します（可逆）— データの格納方法を最適化してファイルサイズを削減します。PixelSwiftは入力形式に基づいて自動的に最適な方法を選択します。",
+      "a2": "JPG圧縮は視覚データを削除します（非可逆）— 品質を下げるほどファイルが小さくなります。PNG圧縮はカラー数をインテリジェントに削減してファイルサイズを縮小します（TinyPNGに類似）— ファイルサイズを大幅に削減しながら視覚的な結果はほぼ同じです。PixelSwiftは入力形式に基づいて自動的に最適な方法を選択します。",
       "q3": "画像ファイルサイズはどのくらい削減できますか？",
-      "a3": "一般的な結果：JPG画像は40-70%、PNG画像は20-50%削減でき、PNGからWebPへの変換では最大80%の削減が可能です。結果は画像の内容と品質設定によって異なります。"
+      "a3": "一般的な結果：JPG画像は40-70%、PNG画像は20-50%削減できます。結果は画像の内容、色の複雑さ、品質設定によって異なります。さらに大きなサイズの削減には、フォーマット変換ツールを使ってWebP形式に変換することをお試しください。"
     }
   },
   "resizer": {
     "title": "画像リサイズツール",
-    "uploadHint": "JPG, PNG, WEBP, BMP, TIFF 対応、最大 50MB",
+    "uploadHint": "JPG, PNG, WEBP, BMP 対応、最大 50MB",
     "settings": "リサイズ設定",
     "resetToOriginal": "元に戻す",
     "resizeBy": "リサイズ方法",
@@ -203,7 +203,7 @@
     "outputSize": "出力サイズ",
     "outputFormat": "出力形式",
     "outputPreview": "出力サイズ: {width} × {height} px (元画像の {percent}%)",
-    "resizeAndDownload": "リサイズしてダウンロード",
+    "resizeAndDownload": "画像をダウンロード",
     "replaceImage": "クリックして画像を変更",
     "startOver": "別の画像をアップロード",
     "securityNote": "ファイルはローカルで安全に処理されます。",
@@ -311,7 +311,7 @@
     },
     "converter": {
       "title": "無料オンライン画像フォーマット変換 – JPG PNG WebP変換 | PixelSwift",
-      "description": "JPG、PNG、WebP、BMP、TIFF画像を瞬時に変換。無料・高速・安全 – アップロード不要。今すぐ変換！"
+      "description": "JPG、PNG、WebP、BMP画像を瞬時に変換。無料・高速・安全 – アップロード不要。今すぐ変換！"
     },
     "compressor": {
       "title": "無料オンライン画像圧縮 – 最大90%サイズ削減 | PixelSwift",

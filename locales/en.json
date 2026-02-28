@@ -64,7 +64,7 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": "What image formats are supported?",
-      "a1": "PixelSwift supports JPG, PNG, WebP, BMP, and TIFF formats for conversion, compression, and resizing.",
+      "a1": "PixelSwift supports JPG, PNG, WebP, and BMP formats for conversion, compression, and resizing.",
       "q2": "Are my images uploaded to a server?",
       "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
       "q3": "Is there a file size limit?",
@@ -78,9 +78,9 @@
     "tapToUpload": "Tap to Upload",
     "orDragDrop": "or drag and drop here",
     "selectImages": "Select Images",
-    "supportedFormats": "Supports JPG, PNG, WEBP, BMP, TIFF up to 50MB",
+    "supportedFormats": "Supports JPG, PNG, WEBP, BMP up to 50MB",
     "releaseToUpload": "Release to upload",
-    "supportFormats": "Supports: JPG, PNG, WebP, BMP, TIFF",
+    "supportFormats": "Supports: JPG, PNG, WebP, BMP",
     "maxFiles": "Up to {count} images, max {size}MB each",
     "pasteHint": "You can also paste from clipboard (Ctrl+V)",
     "selectFromAlbum": "Select from your photo album"
@@ -89,7 +89,7 @@
     "title": "Universal Image Converter",
     "subtitle": "Fast, clean, and secure online image processing. Convert between JPG, PNG, and WebP formats.",
     "subtitleMobile": "Convert your images in seconds.",
-    "uploadHint": "Supports JPG, PNG, WEBP, BMP, TIFF up to 50MB · Batch upload available",
+    "uploadHint": "Supports JPG, PNG, WEBP, BMP up to 50MB · Batch upload available",
     "settingsTitle": "Conversion Settings",
     "settingsDesc": "Select output format",
     "settingsMobile": "Settings",
@@ -114,11 +114,11 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": "How do I convert PNG to JPG online?",
-      "a1": "Simply upload your PNG file, select JPG as the output format, adjust quality if needed, then click Process. Your converted file will be ready to download instantly — no server upload required.",
+      "a1": "Simply upload your PNG file, select JPG as the output format, then click Process. Your converted file will be ready to download instantly — no server upload required.",
       "q2": "What is the difference between WebP and JPG?",
       "a2": "WebP is a modern format developed by Google that offers 25-35% smaller file sizes than JPG at comparable quality. It supports transparency (like PNG) and is ideal for web use. However, JPG has broader compatibility with older software.",
       "q3": "Does converting image formats affect quality?",
-      "a3": "Converting between lossy formats (like JPG ↔ WebP) may slightly reduce quality. Converting to PNG is always lossless. PixelSwift lets you control the quality slider to find the perfect balance between file size and visual quality."
+      "a3": "Converting between lossy formats (like JPG ↔ WebP) may slightly reduce quality. Converting to PNG is always lossless. PixelSwift uses optimized high-quality settings to preserve maximum visual fidelity during conversion."
     }
   },
   "compressor": {
@@ -151,9 +151,9 @@
     "keepOriginal": "Original ({format})",
     "convertTo": "Convert to {format}",
     "downloadImage": "Download Image",
-    "startOver": "Start Over",
-    "processAnother": "Process Another Image",
-    "compressAnother": "Compress Another Image",
+    "startOver": "Upload Another Image",
+    "processAnother": "Process Another",
+    "compressAnother": "Compress Another",
     "originalFile": "Original File",
     "compressedFile": "Compressed File",
     "readyToDownload": "Ready to download",
@@ -168,14 +168,14 @@
       "q1": "How to compress images without losing quality?",
       "a1": "Use PixelSwift's quality slider set to 80-90% for near-lossless compression. At this level, the visual difference is imperceptible while file sizes can be reduced by 40-60%. You can use the side-by-side comparison to verify quality before downloading.",
       "q2": "What is the difference between compressing PNG and JPG?",
-      "a2": "JPG compression removes visual data (lossy) — lower quality means smaller files. PNG compression keeps all visual data intact (lossless) — it reduces file size by optimizing how data is stored. PixelSwift handles both automatically based on your input format.",
+      "a2": "JPG compression removes visual data (lossy) — lower quality means smaller files. PNG compression intelligently reduces the number of colors (similar to TinyPNG) — significantly shrinking file size while keeping the visual result nearly identical. PixelSwift handles both automatically based on your input format.",
       "q3": "How much can I reduce an image file size?",
-      "a3": "Typical results: JPG images can be reduced by 40-70%, PNG images by 20-50%, and converting PNG to WebP can achieve up to 80% reduction. Results vary based on image content and your quality settings."
+      "a3": "Typical results: JPG images can be reduced by 40-70%, PNG images by 20-50%. Results vary based on image content, color complexity, and your quality settings. For even greater size savings, try converting to WebP format using our Converter tool."
     }
   },
   "resizer": {
     "title": "Precision Image Resizer",
-    "uploadHint": "Supports JPG, PNG, WEBP, BMP, TIFF up to 50MB",
+    "uploadHint": "Supports JPG, PNG, WEBP, BMP up to 50MB",
     "settings": "Resize Settings",
     "resetToOriginal": "Reset to Original",
     "resizeBy": "Resize By",
@@ -203,7 +203,7 @@
     "outputSize": "Output Size",
     "outputFormat": "Output Format",
     "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
-    "resizeAndDownload": "Resize & Download Image",
+    "resizeAndDownload": "Download Image",
     "replaceImage": "Click to replace image",
     "startOver": "Upload Another Image",
     "securityNote": "Files are processed locally and are secure.",
@@ -312,7 +312,7 @@
     },
     "converter": {
       "title": "Convert Images Online Free – JPG PNG WebP Converter | PixelSwift",
-      "description": "Convert JPG, PNG, WebP, BMP, TIFF images instantly. Free, private & unlimited – no upload needed. Try now!"
+      "description": "Convert JPG, PNG, WebP, BMP images instantly. Free, private & unlimited – no upload needed. Try now!"
     },
     "compressor": {
       "title": "Compress Images Online Free – Reduce Size up to 90% | PixelSwift",

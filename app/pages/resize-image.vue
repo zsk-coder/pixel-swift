@@ -77,8 +77,6 @@ const sizeChangePercent = computed(() => {
   );
 });
 
-
-
 // ─── Helpers ────────────────────────────────────
 function formatSize(bytes: number): string {
   if (bytes < 0) bytes = 0;
@@ -202,8 +200,6 @@ async function onFilesAdded(newFiles: File[]) {
     originalHeight.value = bitmap.height;
     width.value = bitmap.width;
     height.value = bitmap.height;
-
-
   } catch {
     originalWidth.value = 1920;
     originalHeight.value = 1080;
@@ -219,9 +215,9 @@ async function doResize() {
     const outFormat =
       originalFormat.value === "jpeg"
         ? "jpg"
-        : (["jpg", "png", "webp"].includes(originalFormat.value)
-            ? originalFormat.value
-            : "jpg");
+        : ["jpg", "png", "webp"].includes(originalFormat.value)
+          ? originalFormat.value
+          : "jpg";
 
     // Step 1: Apply transforms (rotate/flip) if needed
     let sourceFile: File | Blob = file;
@@ -231,7 +227,9 @@ async function doResize() {
 
     const tw = targetWidth.value;
     const th = targetHeight.value;
-    console.log(`[Resize] target: ${tw}×${th}, source: ${file.name}, format: ${outFormat}`);
+    console.log(
+      `[Resize] target: ${tw}×${th}, source: ${file.name}, format: ${outFormat}`,
+    );
 
     // Step 2: Resize
     const result = await processImage(sourceFile as File, {
@@ -243,7 +241,9 @@ async function doResize() {
       quality: 92,
     });
 
-    console.log(`[Resize] output: ${result.width}×${result.height}, size: ${result.processedSize}`);
+    console.log(
+      `[Resize] output: ${result.width}×${result.height}, size: ${result.processedSize}`,
+    );
 
     processedBlob.value = result.blob;
     processedSize.value = result.processedSize;
@@ -372,7 +372,11 @@ function startOver() {
               <!-- Image with live resize preview -->
               <div
                 class="relative z-10 flex items-center justify-center p-4 transition-all duration-300 ease-out"
-                :style="{ ...previewAspectStyle, maxHeight: '400px', maxWidth: '100%' }"
+                :style="{
+                  ...previewAspectStyle,
+                  maxHeight: '400px',
+                  maxWidth: '100%',
+                }"
               >
                 <img
                   v-if="previewUrl"
@@ -388,16 +392,20 @@ function startOver() {
                 class="absolute bottom-6 left-1/2 -translate-x-1/2 z-20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-xs font-medium flex items-center gap-3 shadow-lg whitespace-nowrap transition-colors duration-200"
                 :class="hasDimensionChanged ? 'bg-primary/85' : 'bg-black/75'"
               >
-                <span class="truncate max-w-[120px]">{{
-                  rawFile?.name
-                }}</span>
+                <span class="truncate max-w-[120px]">{{ rawFile?.name }}</span>
                 <span class="w-px h-3 bg-white/30" />
                 <span class="flex items-center gap-1">
-                  <span v-if="hasDimensionChanged" class="material-symbols-outlined text-[14px]">open_with</span>
+                  <span
+                    v-if="hasDimensionChanged"
+                    class="material-symbols-outlined text-[14px]"
+                    >open_with</span
+                  >
                   {{ targetWidth }} × {{ targetHeight }} px
                 </span>
                 <span v-if="processedSize" class="w-px h-3 bg-white/30" />
-                <span v-if="processedSize">{{ formatSize(processedSize) }}</span>
+                <span v-if="processedSize">{{
+                  formatSize(processedSize)
+                }}</span>
               </div>
 
               <!-- Hover overlay to replace image -->
@@ -447,7 +455,9 @@ function startOver() {
                 class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:text-primary hover:border-primary/30 transition-all"
                 @click="toggleFlipV"
               >
-                <span class="material-symbols-outlined text-lg -rotate-90">flip</span>
+                <span class="material-symbols-outlined text-lg -rotate-90"
+                  >flip</span
+                >
                 {{ t("resizer.flipV") }}
               </button>
             </div>
@@ -459,12 +469,8 @@ function startOver() {
               class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-6 shadow-sm"
             >
               <!-- Header -->
-              <div
-                class="flex items-center justify-between mb-6"
-              >
-                <h3
-                  class="font-bold text-lg text-slate-900 dark:text-white"
-                >
+              <div class="flex items-center justify-between mb-6">
+                <h3 class="font-bold text-lg text-slate-900 dark:text-white">
                   {{ t("resizer.settings") }}
                 </h3>
                 <button
@@ -493,7 +499,7 @@ function startOver() {
                     }"
                   />
                   <button
-                    v-for="m in (['pixel', 'percent'] as ResizeMode[])"
+                    v-for="m in ['pixel', 'percent'] as ResizeMode[]"
                     :key="m"
                     class="relative z-10 flex-1 py-1.5 px-3 rounded text-sm font-medium transition-colors duration-200"
                     :class="[
@@ -509,10 +515,7 @@ function startOver() {
               </div>
 
               <!-- Pixel Mode -->
-              <div
-                v-if="mode === 'pixel'"
-                class="mb-6 space-y-4"
-              >
+              <div v-if="mode === 'pixel'" class="mb-6 space-y-4">
                 <div class="flex items-end gap-3">
                   <div class="flex-1">
                     <label
@@ -587,10 +590,7 @@ function startOver() {
               </div>
 
               <!-- Percent Mode -->
-              <div
-                v-if="mode === 'percent'"
-                class="mb-6 space-y-3"
-              >
+              <div v-if="mode === 'percent'" class="mb-6 space-y-3">
                 <div class="flex justify-between items-center">
                   <label
                     class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider"
@@ -608,8 +608,6 @@ function startOver() {
                   {{ targetWidth }} × {{ targetHeight }} px
                 </div>
               </div>
-
-
 
               <!-- Quick Presets (pixel mode only) -->
               <div v-if="mode === 'pixel'" class="mb-6">
@@ -635,23 +633,17 @@ function startOver() {
               </div>
 
               <!-- Divider -->
-              <div
-                class="h-px w-full bg-slate-200 dark:bg-slate-700 mb-6"
-              />
+              <div class="h-px w-full bg-slate-200 dark:bg-slate-700 mb-6" />
 
               <!-- Output Info (shown after processing) -->
               <div
                 v-if="processedSize"
                 class="flex items-center justify-between mb-6 p-4 bg-green-50 dark:bg-green-900/10 rounded-lg border border-green-200 dark:border-green-900/30"
               >
-                <p
-                  class="text-xs text-slate-500 dark:text-slate-400"
-                >
+                <p class="text-xs text-slate-500 dark:text-slate-400">
                   {{ t("resizer.outputSize") }}
                 </p>
-                <p
-                  class="font-bold text-slate-900 dark:text-white"
-                >
+                <p class="font-bold text-slate-900 dark:text-white">
                   {{ formatSize(processedSize) }}
                   <span
                     v-if="sizeChangePercent !== 0"
@@ -677,19 +669,22 @@ function startOver() {
                   class="!w-full !h-10 !rounded-lg !text-sm !font-bold"
                   @click="doResize"
                 >
-                  <span v-if="!isBusy" class="material-symbols-outlined text-lg mr-1">download</span>
+                  <span v-if="!isBusy" class="material-symbols-outlined mr-1"
+                    >download</span
+                  >
                   {{
                     isBusy
                       ? t("common.processing")
                       : t("resizer.resizeAndDownload")
                   }}
                 </ElButton>
-                <button
-                  class="w-full text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 font-medium py-3 px-4 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 transition-all"
+                <ElButton
+                  class="!w-full !h-10 !rounded-lg !ml-0"
+                  size="large"
                   @click="startOver"
                 >
                   {{ t("resizer.startOver") }}
-                </button>
+                </ElButton>
               </div>
             </div>
 
@@ -754,16 +749,13 @@ function startOver() {
                 class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 @click="toggleFlipH"
               >
-                <span class="material-symbols-outlined text-[20px]"
-                  >flip</span
-                >
+                <span class="material-symbols-outlined text-[20px]">flip</span>
               </button>
               <button
                 class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 @click="toggleFlipV"
               >
-                <span
-                  class="material-symbols-outlined text-[20px] -rotate-90"
+                <span class="material-symbols-outlined text-[20px] -rotate-90"
                   >flip</span
                 >
               </button>
@@ -774,9 +766,7 @@ function startOver() {
           <div class="p-0 pt-6 space-y-6">
             <!-- Header -->
             <div class="flex items-center justify-between">
-              <h2
-                class="text-lg font-bold text-slate-900 dark:text-white"
-              >
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white">
                 {{ t("resizer.settings") }}
               </h2>
               <button
@@ -800,7 +790,7 @@ function startOver() {
                 }"
               />
               <button
-                v-for="m in (['pixel', 'percent'] as ResizeMode[])"
+                v-for="m in ['pixel', 'percent'] as ResizeMode[]"
                 :key="m"
                 class="relative z-10 flex-1 py-1.5 text-sm font-medium rounded-md transition-colors duration-200"
                 :class="[
@@ -815,10 +805,7 @@ function startOver() {
             </div>
 
             <!-- Pixel Mode -->
-            <div
-              v-if="mode === 'pixel'"
-              class="space-y-4"
-            >
+            <div v-if="mode === 'pixel'" class="space-y-4">
               <div class="flex items-end gap-3">
                 <div class="flex-1 space-y-1.5">
                   <label
@@ -900,10 +887,7 @@ function startOver() {
             </div>
 
             <!-- Percent Mode -->
-            <div
-              v-if="mode === 'percent'"
-              class="space-y-3"
-            >
+            <div v-if="mode === 'percent'" class="space-y-3">
               <div class="flex justify-between items-center">
                 <label
                   class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider"
@@ -919,8 +903,6 @@ function startOver() {
                 {{ targetWidth }} × {{ targetHeight }} px
               </div>
             </div>
-
-
 
             <!-- Quick Presets (pixel mode only) -->
             <div v-if="mode === 'pixel'">
@@ -956,9 +938,7 @@ function startOver() {
                 <span class="text-sm text-slate-600 dark:text-slate-400">{{
                   t("resizer.outputSize")
                 }}</span>
-                <span
-                  class="text-sm font-bold text-slate-900 dark:text-white"
-                >
+                <span class="text-sm font-bold text-slate-900 dark:text-white">
                   {{ formatSize(processedSize) }}
                   <span
                     v-if="sizeChangePercent !== 0"
@@ -989,19 +969,22 @@ function startOver() {
             class="!w-full !h-12 !rounded-xl !text-base !font-bold"
             @click="doResize"
           >
-            <span v-if="!isBusy" class="material-symbols-outlined text-[20px] mr-1">download</span>
+            <span
+              v-if="!isBusy"
+              class="material-symbols-outlined text-[20px] mr-1"
+              >download</span
+            >
             {{
-              isBusy
-                ? t("common.processing")
-                : t("resizer.resizeAndDownload")
+              isBusy ? t("common.processing") : t("resizer.resizeAndDownload")
             }}
           </ElButton>
-          <button
-            class="w-full text-slate-500 text-sm font-medium py-2 mt-1"
+          <ElButton
+            class="!w-full !h-12 !rounded-xl !ml-0 mt-2"
+            size="large"
             @click="startOver"
           >
             {{ t("resizer.startOver") }}
-          </button>
+          </ElButton>
         </div>
       </template>
 
