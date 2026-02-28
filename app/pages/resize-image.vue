@@ -30,6 +30,7 @@ const flipV = ref(false);
 
 // ─── File State ─────────────────────────────────
 const rawFile = ref<File | null>(null);
+const uploaderRef = ref<{ clearFiles: () => void }>();
 const previewUrl = ref("");
 const isBusy = ref(false);
 const isDone = ref(false);
@@ -319,6 +320,7 @@ function startOver() {
   processedBlob.value = null;
   processedSize.value = 0;
   resetToOriginal();
+  uploaderRef.value?.clearFiles();
 }
 </script>
 
@@ -344,7 +346,7 @@ function startOver() {
 
       <!-- ================== UPLOAD STATE ================== -->
       <div v-if="!hasFile">
-        <FileUploader :hint="t('resizer.uploadHint')" @files="onFilesAdded" />
+        <FileUploader ref="uploaderRef" :multiple="false" :max-count="1" :hint="t('resizer.uploadHint')" @files="onFilesAdded" />
       </div>
 
       <!-- ================== EDITOR STATE ================== -->

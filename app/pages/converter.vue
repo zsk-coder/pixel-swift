@@ -33,6 +33,7 @@ const rawFiles = ref<File[]>([]);
 const processedBlobs = ref<Map<string, Blob>>(new Map());
 // File list state
 const fileItems = ref<FileItem[]>([]);
+const uploaderRef = ref<{ clearFiles: () => void }>();
 // Is currently processing
 const isBusy = ref(false);
 
@@ -167,12 +168,10 @@ function onClearAll() {
   processedBlobs.value.clear();
   fileItems.value = [];
   rawFiles.value = [];
+  uploaderRef.value?.clearFiles();
 }
 
-function onReset() {
-  onClearAll();
-  selectedFormat.value = "webp";
-}
+
 </script>
 
 <template>
@@ -195,7 +194,7 @@ function onReset() {
       </div>
 
       <!-- Upload Area (always at top) -->
-      <FileUploader :hint="t('converter.uploadHint')" @files="onFilesAdded" />
+      <FileUploader ref="uploaderRef" :hint="t('converter.uploadHint')" @files="onFilesAdded" />
 
       <!-- Conversion Settings Card (only show after upload) -->
       <div
@@ -344,18 +343,11 @@ function onReset() {
 
               <!-- Processing status: name + progress bar -->
               <template v-else-if="file.status === 'processing'">
-                <div class="flex justify-between items-baseline mb-1">
-                  <p
-                    class="truncate font-semibold text-sm text-slate-900 dark:text-white"
-                  >
-                    {{ file.name }}
-                  </p>
-                  <span
-                    class="text-xs font-medium text-primary flex-shrink-0 ml-2"
-                  >
-                    {{ t("converter.converting") }}
-                  </span>
-                </div>
+                <p
+                  class="truncate font-semibold text-sm text-slate-900 dark:text-white mb-1"
+                >
+                  {{ file.name }}
+                </p>
                 <ElProgress
                   :percentage="65"
                   :show-text="false"
@@ -372,15 +364,11 @@ function onReset() {
                 >
                   {{ file.name }}
                 </p>
-                <div
-                  class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400"
+                <span
+                  class="text-xs text-slate-500 dark:text-slate-400"
                 >
-                  <span>{{ formatSize(file.originalSize) }}</span>
-                  <span class="material-symbols-outlined text-[10px]"
-                    >arrow_forward</span
-                  >
-                  <span>{{ t("common.pending") }}</span>
-                </div>
+                  {{ formatSize(file.originalSize) }}
+                </span>
               </template>
             </div>
 
@@ -502,36 +490,56 @@ function onReset() {
               >
                 {{ file.name }}
               </p>
-              <div class="flex items-center gap-1 mt-0.5">
+              <div
+                class="flex items-center gap-1.5 mt-0.5 text-xs text-slate-500 dark:text-slate-400"
+              >
                 <!-- Done -->
                 <template v-if="file.status === 'done'">
-                  <ElTag type="success" size="small" round effect="light">{{
-                    t("converter.complete")
-                  }}</ElTag>
-                  <span class="text-xs text-slate-400"
-                    >• {{ formatSize(file.processedSize || 0) }}</span
+                  <span>{{ formatSize(file.originalSize) }}</span>
+                  <span class="material-symbols-outlined text-[10px]"
+                    >arrow_forward</span
+                  >
+                  <span class="font-medium text-slate-900 dark:text-white"
+                    >{{ formatSize(file.processedSize || 0) }} ({{
+                      (file.outputFormat || selectedFormat).toUpperCase()
+                    }})</span
                   >
                 </template>
                 <!-- Processing -->
                 <template v-else-if="file.status === 'processing'">
-                  <ElTag type="primary" size="small" round effect="light">{{
-                    t("common.processing")
-                  }}</ElTag>
-                  <span class="text-xs text-slate-400">{{
-                    t("converter.converting")
-                  }}</span>
+                  <span>{{ formatSize(file.originalSize) }}</span>
                 </template>
                 <!-- Pending -->
                 <template v-else>
-                  <ElTag type="info" size="small" round effect="light">{{
-                    t("converter.waiting")
-                  }}</ElTag>
+                  <span>{{ formatSize(file.originalSize) }}</span>
                 </template>
               </div>
             </div>
 
-            <!-- Actions -->
-            <div class="flex items-center gap-0 flex-shrink-0">
+            <!-- Status + Actions -->
+            <div class="flex items-center gap-1 flex-shrink-0">
+              <!-- Status icon -->
+              <span
+                v-if="file.status === 'done'"
+                class="material-symbols-outlined text-[18px] text-green-500"
+                >check_circle</span
+              >
+              <span
+                v-else-if="file.status === 'processing'"
+                class="material-symbols-outlined text-[18px] text-primary animate-spin"
+                >progress_activity</span
+              >
+              <span
+                v-else-if="file.status === 'error'"
+                class="material-symbols-outlined text-[18px] text-red-500"
+                >error</span
+              >
+              <span
+                v-else
+                class="material-symbols-outlined text-[18px] text-slate-400"
+                >schedule</span
+              >
+              <!-- Action buttons -->
               <ElButton
                 v-if="file.status === 'done'"
                 circle
@@ -561,12 +569,6 @@ function onReset() {
         >
           <div></div>
           <div class="flex gap-3">
-            <ElButton @click="onReset">
-              <span class="material-symbols-outlined text-sm mr-1"
-                >restart_alt</span
-              >
-              {{ t("common.reset") }}
-            </ElButton>
             <ElButton
               type="primary"
               :disabled="isBusy"

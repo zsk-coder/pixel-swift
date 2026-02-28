@@ -45,6 +45,7 @@ const presets = computed(() => [
 const rawFiles = ref<File[]>([]);
 const processedBlobs = ref<Map<string, Blob>>(new Map());
 const fileItems = ref<FileItem[]>([]);
+const uploaderRef = ref<{ clearFiles: () => void }>();
 const isBusy = ref(false);
 
 // ─── Single-file comparison state ───────────────
@@ -471,10 +472,9 @@ function startOver() {
   originalWidth.value = 0;
   originalHeight.value = 0;
   originalFormat.value = "";
-  quality.value = 80;
-  activePreset.value = 80;
 
   selectedFileId.value = null;
+  uploaderRef.value?.clearFiles();
 }
 
 let fromPreset = false;
@@ -531,6 +531,7 @@ const actualOutputFormat = computed(() => {
       <!-- ================== UPLOAD STATE ================== -->
       <div v-if="!hasFiles">
         <FileUploader
+          ref="uploaderRef"
           accept="image/jpeg,image/png,image/webp"
           :hint="t('compressor.uploadHint')"
           @files="onFilesAdded"
@@ -667,12 +668,6 @@ const actualOutputFormat = computed(() => {
                   >
                   {{ t("compressor.settings") }}
                 </h3>
-                <button
-                  class="text-xs font-medium text-slate-500 hover:text-primary transition-colors"
-                  @click="startOver"
-                >
-                  {{ t("compressor.reset") }}
-                </button>
               </div>
 
               <!-- Quality Slider -->
@@ -908,39 +903,36 @@ const actualOutputFormat = computed(() => {
 
         <!-- Mobile Bottom Bar (single mode) -->
         <div
-          class="lg:hidden sticky bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 p-4 pb-6 -mx-4 mt-6 z-30"
+          class="lg:hidden fixed bottom-0 left-0 right-0 p-4 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 z-40"
         >
-          <div class="flex flex-col gap-2">
-            <div
-              class="flex items-center justify-between text-xs text-slate-500 dark:text-slate-400 mb-1"
+          <div
+            v-if="singleDone && !isBusy"
+            class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mb-2"
+          >
+            <span
+              >{{ t("compressor.totalSavings") }}
+              <span class="text-green-600 font-bold">{{
+                `${formatSize(originalSize - compressedSize)} (${savingsPercent}%)`
+              }}</span></span
             >
-              <span
-                >{{ t("compressor.totalSavings") }}
-                <span class="text-green-600 font-bold">{{
-                  singleDone
-                    ? `${formatSize(originalSize - compressedSize)} (${savingsPercent}%)`
-                    : "—"
-                }}</span></span
-              >
-            </div>
-            <ElButton
-              type="primary"
-              size="large"
-              class="!w-full !h-12 !rounded-xl !text-base !font-bold"
-              :disabled="!singleDone || isBusy"
-              @click="onDownloadSingle"
-            >
-              <span class="material-symbols-outlined mr-1">download</span>
-              {{ t("compressor.downloadImage") }}
-            </ElButton>
-            <ElButton
-              class="!w-full !h-12 !rounded-xl !ml-0 mt-2"
-              size="large"
-              @click="startOver"
-            >
-              {{ t("compressor.startOver") }}
-            </ElButton>
           </div>
+          <ElButton
+            type="primary"
+            size="large"
+            class="!w-full !rounded-xl !py-5 !text-base !font-bold"
+            :disabled="!singleDone || isBusy"
+            @click="onDownloadSingle"
+          >
+            <span class="material-symbols-outlined text-[20px] mr-1">download</span>
+            {{ t("compressor.downloadImage") }}
+          </ElButton>
+          <ElButton
+            class="!w-full !rounded-xl !py-5 !ml-0 !text-base mt-2"
+            size="large"
+            @click="startOver"
+          >
+            {{ t("compressor.startOver") }}
+          </ElButton>
         </div>
       </template>
 
@@ -948,6 +940,7 @@ const actualOutputFormat = computed(() => {
       <template v-if="isBatchMode">
         <!-- Upload more (above settings) -->
         <FileUploader
+          ref="uploaderRef"
           accept="image/jpeg,image/png,image/webp"
           :hint="t('compressor.uploadHint')"
           @files="onFilesAdded"
@@ -1196,18 +1189,11 @@ const actualOutputFormat = computed(() => {
                   </div>
                 </template>
                 <template v-else-if="file.status === 'processing'">
-                  <div class="flex justify-between items-baseline mb-1">
-                    <p
-                      class="truncate font-semibold text-sm text-slate-900 dark:text-white"
-                    >
-                      {{ file.name }}
-                    </p>
-                    <span
-                      class="text-xs font-medium text-primary flex-shrink-0 ml-2"
-                    >
-                      {{ t("compressor.compressing") }}
-                    </span>
-                  </div>
+                  <p
+                    class="truncate font-semibold text-sm text-slate-900 dark:text-white mb-1"
+                  >
+                    {{ file.name }}
+                  </p>
                   <ElProgress
                     :percentage="65"
                     :show-text="false"
@@ -1222,15 +1208,11 @@ const actualOutputFormat = computed(() => {
                   >
                     {{ file.name }}
                   </p>
-                  <div
-                    class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400"
+                  <span
+                    class="text-xs text-slate-500 dark:text-slate-400"
                   >
-                    <span>{{ formatSize(file.originalSize) }}</span>
-                    <span class="material-symbols-outlined text-[10px]"
-                      >arrow_forward</span
-                    >
-                    <span>{{ t("common.pending") }}</span>
-                  </div>
+                    {{ formatSize(file.originalSize) }}
+                  </span>
                 </template>
               </div>
               <div class="flex items-center gap-4 md:gap-6 flex-shrink-0">
@@ -1335,29 +1317,23 @@ const actualOutputFormat = computed(() => {
                 >
                   {{ file.name }}
                 </p>
-                <div class="flex items-center gap-1 flex-wrap mt-0.5">
+                <div
+                  class="flex items-center gap-1.5 mt-0.5 text-xs text-slate-500 dark:text-slate-400"
+                >
                   <template v-if="file.status === 'done'">
-                    <ElTag type="success" size="small" round effect="light">{{
-                      t("converter.complete")
-                    }}</ElTag>
-                    <span class="text-xs text-slate-400">
-                      {{ formatSize(file.originalSize) }}
-                    </span>
-                    <span
-                      class="material-symbols-outlined text-[10px] text-slate-400"
+                    <span>{{ formatSize(file.originalSize) }}</span>
+                    <span class="material-symbols-outlined text-[10px]"
                       >arrow_forward</span
                     >
-                    <span
-                      class="text-xs font-medium text-slate-700 dark:text-slate-300"
-                    >
-                      {{ formatSize(file.processedSize || 0) }}
-                    </span>
+                    <span class="font-medium text-slate-900 dark:text-white">{{
+                      formatSize(file.processedSize || 0)
+                    }}</span>
                     <span
                       v-if="
                         file.processedSize &&
                         file.processedSize < file.originalSize
                       "
-                      class="text-xs text-green-600 dark:text-green-400 font-medium"
+                      class="text-green-600 dark:text-green-400 font-medium"
                     >
                       (-{{
                         Math.round(
@@ -1369,21 +1345,37 @@ const actualOutputFormat = computed(() => {
                     </span>
                   </template>
                   <template v-else-if="file.status === 'processing'">
-                    <ElTag type="primary" size="small" round effect="light">{{
-                      t("common.processing")
-                    }}</ElTag>
+                    <span>{{ formatSize(file.originalSize) }}</span>
                   </template>
                   <template v-else>
-                    <ElTag type="info" size="small" round effect="light">{{
-                      t("converter.waiting")
-                    }}</ElTag>
-                    <span class="text-xs text-slate-400"
-                      >• {{ formatSize(file.originalSize) }}</span
-                    >
+                    <span>{{ formatSize(file.originalSize) }}</span>
                   </template>
                 </div>
               </div>
-              <div class="flex items-center gap-0 flex-shrink-0">
+              <!-- Status + Actions -->
+              <div class="flex items-center gap-1 flex-shrink-0">
+                <!-- Status icon -->
+                <span
+                  v-if="file.status === 'done'"
+                  class="material-symbols-outlined text-[18px] text-green-500"
+                  >check_circle</span
+                >
+                <span
+                  v-else-if="file.status === 'processing'"
+                  class="material-symbols-outlined text-[18px] text-primary animate-spin"
+                  >progress_activity</span
+                >
+                <span
+                  v-else-if="file.status === 'error'"
+                  class="material-symbols-outlined text-[18px] text-red-500"
+                  >error</span
+                >
+                <span
+                  v-else
+                  class="material-symbols-outlined text-[18px] text-slate-400"
+                  >schedule</span
+                >
+                <!-- Action buttons -->
                 <ElButton
                   v-if="file.status === 'done'"
                   circle
@@ -1505,12 +1497,6 @@ const actualOutputFormat = computed(() => {
               </div>
             </div>
             <div class="flex gap-3">
-              <ElButton @click="startOver">
-                <span class="material-symbols-outlined text-sm mr-1"
-                  >restart_alt</span
-                >
-                {{ t("common.reset") }}
-              </ElButton>
               <ElButton
                 type="primary"
                 :disabled="isBusy"
@@ -1551,7 +1537,7 @@ const actualOutputFormat = computed(() => {
           <ElButton
             type="primary"
             size="large"
-            class="!w-full !h-12 !rounded-xl !text-base !font-bold"
+            class="!w-full !rounded-xl !py-5 !text-base !font-bold"
             :disabled="isBusy"
             @click="allDone ? onDownloadAll() : onBatchProcess()"
           >
@@ -1566,16 +1552,7 @@ const actualOutputFormat = computed(() => {
                   : t("common.process")
             }}
           </ElButton>
-          <ElButton
-            class="!w-full !h-12 !rounded-xl !ml-0 !text-base mt-2"
-            size="large"
-            @click="startOver"
-          >
-            <span class="material-symbols-outlined text-[20px] mr-1"
-              >restart_alt</span
-            >
-            {{ t("common.reset") }}
-          </ElButton>
+
         </div>
       </template>
 
