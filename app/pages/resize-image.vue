@@ -11,6 +11,20 @@ useHead({
   ],
 });
 
+// ── Schema.org：图片调整大小结构化数据 ──
+useSchemaOrg([
+  defineWebPage({ "@type": "WebPage" }),
+  {
+    "@type": "WebApplication",
+    name: "PixelSwift Image Resizer",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: t("seo.resizer.description"),
+    featureList: t("schema.resizer.featureList"),
+  },
+]);
+
 // ─── Resize Settings ────────────────────────────
 type ResizeMode = "pixel" | "percent";
 
@@ -991,7 +1005,7 @@ function startOver() {
       </template>
 
       <!-- FAQ Section -->
-      <ToolFaq i18n-prefix="resizer.faq" :count="3" />
+      <ToolFaq i18n-prefix="resizer.faq" :count="6" />
     </div>
   </div>
 </template>

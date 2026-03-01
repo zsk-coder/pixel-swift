@@ -68,7 +68,15 @@
       "q2": "Are my images uploaded to a server?",
       "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
       "q3": "Is there a file size limit?",
-      "a3": "Each file can be up to 50MB. You can process up to 20 images at once."
+      "a3": "Each file can be up to 50MB. You can process up to 20 images at once.",
+      "q4": "Is PixelSwift really free? Are there any hidden costs?",
+      "a4": "Yes, PixelSwift is 100% free with no hidden costs, no watermarks, and no usage limits. All features are fully available without registration or payment.",
+      "q5": "Do I need to install any software or browser extension?",
+      "a5": "No. PixelSwift runs entirely in your web browser. Just open the website and start processing — no downloads, no installations, no plugins needed.",
+      "q6": "Can I use PixelSwift on my phone or tablet?",
+      "a6": "Yes. PixelSwift is fully responsive and works on all devices — iPhone, iPad, Android phones and tablets. The full functionality is available on mobile browsers.",
+      "q7": "How is my data kept safe?",
+      "a7": "Your files never leave your device. Everything is processed right here in your browser — nothing is uploaded to any server. It's like editing on your own computer, but in a web page."
     }
   },
   "upload": {
@@ -116,9 +124,15 @@
       "q1": "How do I convert PNG to JPG online?",
       "a1": "Simply upload your PNG file, select JPG as the output format, then click Process. Your converted file will be ready to download instantly — no server upload required.",
       "q2": "What is the difference between WebP and JPG?",
-      "a2": "WebP is a modern format developed by Google that offers 25-35% smaller file sizes than JPG at comparable quality. It supports transparency (like PNG) and is ideal for web use. However, JPG has broader compatibility with older software.",
+      "a2": "WebP is a newer image format that produces much smaller files than JPG while looking just as good. It also supports transparent backgrounds like PNG. Most modern browsers and apps support it — it's the recommended format for websites today.",
       "q3": "Does converting image formats affect quality?",
-      "a3": "Converting between lossy formats (like JPG ↔ WebP) may slightly reduce quality. Converting to PNG is always lossless. PixelSwift uses optimized high-quality settings to preserve maximum visual fidelity during conversion."
+      "a3": "It depends on the formats. Converting from JPG to PNG won't lose quality. But converting between JPG and WebP may cause a very slight quality reduction — in most cases you won't notice the difference. PixelSwift uses the best possible settings to keep your images looking great.",
+      "q4": "What is the best image format for websites?",
+      "a4": "For websites, WebP is the best choice — smaller file sizes, great quality, and supports transparent backgrounds. If you need to support very old browsers, use JPG. If you need a perfectly sharp image with transparency, use PNG.",
+      "q5": "Can I convert multiple images at once?",
+      "a5": "Yes! PixelSwift supports batch conversion of up to 20 images at once. Simply drag and drop all your files, select the output format, and they'll be processed simultaneously.",
+      "q6": "How do I convert images while keeping transparency?",
+      "a6": "To keep transparency, convert to PNG or WebP format — both support transparent backgrounds. JPG does not support transparency and will replace transparent areas with a white background."
     }
   },
   "compressor": {
@@ -166,11 +180,17 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": "How to compress images without losing quality?",
-      "a1": "Use PixelSwift's quality slider set to 80-90% for near-lossless compression. At this level, the visual difference is imperceptible while file sizes can be reduced by 40-60%. You can use the side-by-side comparison to verify quality before downloading.",
+      "a1": "Set the quality slider to 80-90%. At this level, the image looks virtually the same but the file size drops significantly. Use the side-by-side comparison view to check the result before downloading.",
       "q2": "What is the difference between compressing PNG and JPG?",
-      "a2": "JPG compression removes visual data (lossy) — lower quality means smaller files. PNG compression intelligently reduces the number of colors (similar to TinyPNG) — significantly shrinking file size while keeping the visual result nearly identical. PixelSwift handles both automatically based on your input format.",
+      "a2": "JPG compression makes the file smaller by reducing image detail — the lower the quality setting, the smaller the file. PNG compression works differently — it simplifies colors to shrink the file while keeping the image looking nearly identical. PixelSwift handles both automatically.",
       "q3": "How much can I reduce an image file size?",
-      "a3": "Typical results: JPG images can be reduced by 40-70%, PNG images by 20-50%. Results vary based on image content, color complexity, and your quality settings. For even greater size savings, try converting to WebP format using our Converter tool."
+      "a3": "Typically, JPG images can be reduced by 40-70%, and PNG images by 20-50%. The exact result depends on the image itself — photos with many colors compress less than simple graphics. Want even smaller files? Try converting to WebP format with our Converter tool.",
+      "q4": "What is the ideal image size for a website?",
+      "a4": "For websites, each image should ideally be under 200KB. Large banner images can be 300-500KB. Set the quality slider to 75-85% for the best balance between image quality and loading speed. Smaller images = faster website = better Google ranking.",
+      "q5": "Can I compress images for email attachments?",
+      "a5": "Yes! Most email providers limit attachments to 25MB. Use PixelSwift to compress your images to a smaller size — set quality to 70-80% to reduce photos significantly while keeping them looking great in emails.",
+      "q6": "Is PixelSwift better than TinyPNG for compression?",
+      "a6": "Both produce excellent results. The key difference: TinyPNG uploads your files to their server for processing, while PixelSwift processes everything locally in your browser. If privacy matters to you, PixelSwift is the better choice since your images never leave your device."
     }
   },
   "resizer": {
@@ -212,12 +232,17 @@
       "q1": "How do I resize an image to a specific size?",
       "a1": "Upload your image, enter the exact width and height in pixels, or use percentage mode to scale proportionally. You can also use quick presets for common sizes like 1:1, 4:3, or 16:9. Click Resize & Download to get your resized image.",
       "q2": "Does resizing an image reduce quality?",
-      "a2": "Reducing image dimensions slightly lowers quality since pixels are removed. However, PixelSwift uses high-quality bicubic interpolation to minimize quality loss. Enlarging images may cause blurriness as new pixels must be created.",
+      "a2": "Making an image smaller may reduce quality slightly, but PixelSwift uses smart processing to keep the result as sharp as possible. Making an image larger can cause some blurriness — it's always best to start with a high-resolution original.",
       "q3": "What is the difference between scaling and cropping?",
-      "a3": "Scaling changes the overall dimensions of your entire image — making it larger or smaller while keeping all content visible. Cropping cuts away parts of the image to focus on a specific area. PixelSwift's resizer uses scaling to preserve your complete image."
+      "a3": "Scaling changes the overall dimensions of your entire image — making it larger or smaller while keeping all content visible. Cropping cuts away parts of the image to focus on a specific area. PixelSwift's resizer uses scaling to preserve your complete image.",
+      "q4": "What are the best image sizes for social media?",
+      "a4": "Common sizes: Instagram post 1080×1080px, Instagram story 1080×1920px, Facebook cover 820×312px, Twitter/X header 1500×500px, LinkedIn banner 1584×396px. Use PixelSwift's quick presets to resize to these dimensions easily.",
+      "q5": "Can I resize images without stretching or distortion?",
+      "a5": "Yes. Enable 'Lock Aspect Ratio' (on by default) — when you change the width, the height adjusts automatically to maintain the original proportions. This prevents any stretching or squishing.",
+      "q6": "What image resolution (DPI) should I use for printing?",
+      "a6": "For printing photos, your image needs to be large enough — about 300 pixels per inch of print. For example, to print a standard 4×6 inch photo, you need at least a 1200×1800 pixel image. For screens and websites, smaller sizes work fine."
     }
   },
-
   "common": {
     "download": "Download",
     "downloadAll": "Download All",
@@ -333,6 +358,18 @@
     "contact": {
       "title": "Contact Us – PixelSwift",
       "description": "Get in touch with the PixelSwift team. Questions, suggestions, or feedback – we'd love to hear from you."
+    }
+  },
+  "schema": {
+    "siteDescription": "Free online image converter, compressor, and resizer. No upload needed — process images directly in your browser.",
+    "converter": {
+      "featureList": "Convert images between JPG, PNG and WebP formats, batch conversion, no upload needed, 100% browser-based"
+    },
+    "compressor": {
+      "featureList": "Compress JPEG, PNG and WebP images, adjustable quality, real-time preview comparison, batch compression, up to 90% size reduction"
+    },
+    "resizer": {
+      "featureList": "Resize images by pixel or percentage, rotate and flip, aspect ratio presets, real-time preview, no upload needed"
     }
   }
 }

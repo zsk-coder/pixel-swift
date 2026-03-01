@@ -68,7 +68,15 @@
       "q2": "Werden meine Bilder auf einen Server hochgeladen?",
       "a2": "Nein. Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser. Ihre Bilder verlassen Ihr Gerät nie.",
       "q3": "Gibt es eine Dateigrößenbeschränkung?",
-      "a3": "Jede Datei kann bis zu 50 MB groß sein. Sie können bis zu 20 Bilder gleichzeitig verarbeiten."
+      "a3": "Jede Datei kann bis zu 50 MB groß sein. Sie können bis zu 20 Bilder gleichzeitig verarbeiten.",
+      "q4": "Ist PixelSwift wirklich kostenlos? Gibt es versteckte Kosten?",
+      "a4": "Ja, PixelSwift ist 100% kostenlos ohne versteckte Kosten, ohne Wasserzeichen und ohne Nutzungsbeschränkungen. Alle Funktionen sind ohne Registrierung oder Zahlung verfügbar.",
+      "q5": "Muss ich Software oder ein Browser-Plugin installieren?",
+      "a5": "Nein. PixelSwift läuft vollständig in Ihrem Browser. Öffnen Sie einfach die Website und legen Sie los — ohne Downloads, Installationen oder Plugins.",
+      "q6": "Kann ich PixelSwift auf meinem Handy oder Tablet nutzen?",
+      "a6": "Ja. PixelSwift ist vollständig responsiv und funktioniert auf allen Geräten. Die volle Funktionalität ist in mobilen Browsern verfügbar.",
+      "q7": "Wie werden meine Daten geschützt?",
+      "a7": "Ihre Dateien verlassen niemals Ihr Gerät. Alles wird direkt in Ihrem Browser verarbeitet — es wird nichts auf einen Server hochgeladen. So sicher wie die Bearbeitung auf Ihrem eigenen Computer."
     }
   },
   "upload": {
@@ -116,9 +124,15 @@
       "q1": "Wie konvertiere ich PNG zu JPG online?",
       "a1": "Laden Sie Ihre PNG-Datei hoch, wählen Sie JPG als Ausgabeformat und klicken Sie auf Verarbeiten. Die konvertierte Datei steht sofort zum Download bereit, ohne Server-Upload.",
       "q2": "Was ist der Unterschied zwischen WebP und JPG?",
-      "a2": "WebP ist ein modernes Format von Google, das bei vergleichbarer Qualität 25-35% kleinere Dateien als JPG bietet. Es unterstützt Transparenz (wie PNG) und ist ideal für das Web. JPG hat jedoch eine breitere Kompatibilität mit älterer Software.",
+      "a2": "WebP ist ein neueres Bildformat, das viel kleinere Dateien als JPG produziert, bei gleicher visueller Qualität. Es unterstützt auch transparente Hintergründe wie PNG. Die meisten modernen Browser unterstützen es — es ist das empfohlene Format für Websites.",
       "q3": "Beeinflusst die Formatkonvertierung die Bildqualität?",
-      "a3": "Die Konvertierung zwischen verlustbehafteten Formaten (wie JPG und WebP) kann die Qualität leicht reduzieren. Die Konvertierung zu PNG ist immer verlustfrei. PixelSwift verwendet optimierte Hochqualitätseinstellungen, um bei der Konvertierung die maximale visuelle Treue zu bewahren."
+      "a3": "Das hängt vom Format ab. JPG zu PNG verliert keine Qualität. Zwischen JPG und WebP kann es eine sehr leichte Qualitätsminderung geben — in den meisten Fällen werden Sie keinen Unterschied bemerken.",
+      "q4": "Welches ist das beste Bildformat für Websites?",
+      "a4": "Für Websites ist WebP die beste Wahl — kleinste Dateien, gute Qualität und unterstützt transparente Hintergründe. Für sehr alte Browser verwenden Sie JPG. Für perfekt scharfe Bilder mit Transparenz verwenden Sie PNG.",
+      "q5": "Kann ich mehrere Bilder gleichzeitig konvertieren?",
+      "a5": "Ja! PixelSwift unterstützt die Stapelkonvertierung von bis zu 20 Bildern gleichzeitig. Ziehen Sie einfach alle Dateien per Drag & Drop und wählen Sie das Ausgabeformat.",
+      "q6": "Wie konvertiere ich Bilder unter Beibehaltung der Transparenz?",
+      "a6": "Um die Transparenz beizubehalten, konvertieren Sie in das PNG- oder WebP-Format — beide unterstützen transparente Hintergründe. JPG unterstützt keine Transparenz und ersetzt transparente Bereiche durch Weiß."
     }
   },
   "compressor": {
@@ -166,11 +180,17 @@
     "faq": {
       "title": "Häufig gestellte Fragen",
       "q1": "Wie komprimiere ich Bilder ohne Qualitätsverlust?",
-      "a1": "Verwenden Sie den Qualitätsregler von PixelSwift auf 80-90% für nahezu verlustfreie Komprimierung. Auf diesem Niveau ist der visuelle Unterschied nicht wahrnehmbar, während die Dateigröße um 40-60% reduziert werden kann. Sie können den Side-by-Side-Vergleich nutzen, um die Qualität vor dem Download zu überprüfen.",
+      "a1": "Stellen Sie den Qualitätsregler auf 80-90%. Bei diesem Level sieht das Bild praktisch gleich aus, aber die Dateigröße sinkt deutlich. Nutzen Sie den Seite-an-Seite-Vergleich, um das Ergebnis vor dem Download zu prüfen.",
       "q2": "Was ist der Unterschied zwischen PNG- und JPG-Komprimierung?",
-      "a2": "JPG-Komprimierung entfernt visuelle Daten (verlustbehaftet) — geringere Qualität bedeutet kleinere Dateien. PNG-Komprimierung reduziert intelligent die Anzahl der Farben (ähnlich wie TinyPNG) — die Dateigröße wird erheblich verkleinert, während das visuelle Ergebnis nahezu identisch bleibt. PixelSwift behandelt beide automatisch basierend auf Ihrem Eingabeformat.",
+      "a2": "JPG-Komprimierung verkleinert die Datei, indem Bilddetails reduziert werden — geringere Qualität bedeutet kleinere Dateien. PNG-Komprimierung funktioniert anders — sie vereinfacht die Farben, um die Datei zu verkleinern, wobei das Bild fast identisch aussieht. PixelSwift handhabt beides automatisch.",
       "q3": "Wie stark kann ich die Bildgröße reduzieren?",
-      "a3": "Typische Ergebnisse: JPG-Bilder können um 40-70% reduziert werden, PNG-Bilder um 20-50%. Die Ergebnisse variieren je nach Bildinhalt, Farbkomplexität und Qualitätseinstellungen. Für noch größere Einsparungen konvertieren Sie Ihre Bilder mit unserem Konverter-Tool in das WebP-Format."
+      "a3": "Typischerweise können JPG-Bilder um 40-70% und PNG-Bilder um 20-50% verkleinert werden. Fotos mit vielen Farben lassen sich weniger komprimieren als einfache Grafiken. Noch kleinere Dateien? Probieren Sie die Konvertierung ins WebP-Format.",
+      "q4": "Was ist die ideale Bildgröße für eine Website?",
+      "a4": "Für Websites sollte jedes Bild idealerweise unter 200KB liegen. Große Bannerbilder können 300-500KB sein. Stellen Sie die Qualität auf 75-85% für die beste Balance zwischen Qualität und Ladegeschwindigkeit.",
+      "q5": "Kann ich Bilder für E-Mail-Anhänge komprimieren?",
+      "a5": "Ja! Die meisten E-Mail-Anbieter begrenzen Anhänge auf 25MB. Stellen Sie die Qualität auf 70-80% ein, um Fotos deutlich zu verkleinern.",
+      "q6": "Ist PixelSwift besser als TinyPNG?",
+      "a6": "Beide liefern hervorragende Ergebnisse. Der Hauptunterschied: TinyPNG lädt Ihre Dateien auf deren Server hoch, während PixelSwift alles lokal in Ihrem Browser verarbeitet. Wenn Ihnen Datenschutz wichtig ist, ist PixelSwift die bessere Wahl."
     }
   },
   "resizer": {
@@ -212,9 +232,15 @@
       "q1": "Wie ändere ich die Größe eines Bildes auf eine bestimmte Größe?",
       "a1": "Laden Sie Ihr Bild hoch, geben Sie die genaue Breite und Höhe in Pixeln ein oder verwenden Sie den Prozentmodus für proportionale Skalierung. Sie können auch Schnellvorlagen für gängige Größen wie 1:1, 4:3 oder 16:9 verwenden. Klicken Sie auf Größe ändern und Herunterladen.",
       "q2": "Reduziert das Ändern der Bildgröße die Qualität?",
-      "a2": "Die Verkleinerung der Bildabmessungen senkt die Qualität leicht, da Pixel entfernt werden. PixelSwift verwendet jedoch hochwertige bikubische Interpolation, um den Qualitätsverlust zu minimieren. Das Vergrößern von Bildern kann zu Unschärfe führen, da neue Pixel erstellt werden müssen.",
+      "a2": "Das Verkleinern eines Bildes kann die Qualität leicht verringern, aber PixelSwift verwendet intelligente Verarbeitung, um das Ergebnis so scharf wie möglich zu halten. Das Vergrößern kann zu Unschärfe führen — am besten mit einem hochauflösenden Original beginnen.",
       "q3": "Was ist der Unterschied zwischen Skalieren und Zuschneiden?",
-      "a3": "Skalieren ändert die Gesamtabmessungen Ihres gesamten Bildes und macht es größer oder kleiner, während der gesamte Inhalt sichtbar bleibt. Zuschneiden schneidet Teile des Bildes weg, um sich auf einen bestimmten Bereich zu konzentrieren. Der Resizer von PixelSwift verwendet Skalierung, um Ihr vollständiges Bild zu erhalten."
+      "a3": "Skalieren ändert die Gesamtabmessungen Ihres gesamten Bildes und macht es größer oder kleiner, während der gesamte Inhalt sichtbar bleibt. Zuschneiden schneidet Teile des Bildes weg, um sich auf einen bestimmten Bereich zu konzentrieren. Der Resizer von PixelSwift verwendet Skalierung, um Ihr vollständiges Bild zu erhalten.",
+      "q4": "Was sind die besten Bildgrößen für soziale Medien?",
+      "a4": "Gängige Größen: Instagram Post 1080x1080px, Instagram Story 1080x1920px, Facebook Cover 820x312px, Twitter/X Header 1500x500px, LinkedIn Banner 1584x396px.",
+      "q5": "Kann ich Bilder ohne Verzerrung skalieren?",
+      "a5": "Ja. Aktivieren Sie \"Seitenverhältnis sperren\" (standardmäßig aktiviert) — wenn Sie die Breite ändern, passt sich die Höhe automatisch an.",
+      "q6": "Welche Bildauflösung (DPI) sollte ich zum Drucken verwenden?",
+      "a6": "Für den Fotodruck muss Ihr Bild groß genug sein — etwa 300 Pixel pro Zoll Druckgröße. Beispiel: Für ein Standard-Foto (4×6 Zoll) brauchen Sie mindestens ein 1200×1800 Pixel großes Bild."
     }
   },
   "common": {
@@ -332,6 +358,18 @@
     "contact": {
       "title": "Kontakt – PixelSwift",
       "description": "Kontaktieren Sie das PixelSwift-Team. Fragen, Anregungen oder Feedback – wir freuen uns auf Ihre Nachricht."
+    }
+  },
+  "schema": {
+    "siteDescription": "Kostenloser Online-Bildkonverter, Kompressor und Größenänderer. Kein Upload nötig — Bilder direkt im Browser verarbeiten.",
+    "converter": {
+      "featureList": "Bilder zwischen JPG, PNG und WebP konvertieren, Stapelkonvertierung, kein Upload nötig, 100% browserbasiert"
+    },
+    "compressor": {
+      "featureList": "JPEG, PNG und WebP Bilder komprimieren, einstellbare Qualität, Echtzeit-Vorschau-Vergleich, Stapelkomprimierung, bis zu 90% Größenreduktion"
+    },
+    "resizer": {
+      "featureList": "Bildgröße per Pixel oder Prozent ändern, Drehen und Spiegeln, Seitenverhältnis-Vorlagen, Echtzeit-Vorschau, kein Upload nötig"
     }
   }
 }

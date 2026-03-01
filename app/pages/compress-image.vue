@@ -13,6 +13,20 @@ useHead({
   ],
 });
 
+// ── Schema.org：图片压缩器结构化数据 ──
+useSchemaOrg([
+  defineWebPage({ "@type": "WebPage" }),
+  {
+    "@type": "WebApplication",
+    name: "PixelSwift Image Compressor",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: t("seo.compressor.description"),
+    featureList: t("schema.compressor.featureList"),
+  },
+]);
+
 // ─── Settings (shared across modes) ─────────────
 const quality = ref(80);
 
@@ -1557,7 +1571,7 @@ const actualOutputFormat = computed(() => {
       </template>
 
       <!-- FAQ Section -->
-      <ToolFaq i18n-prefix="compressor.faq" :count="3" />
+      <ToolFaq i18n-prefix="compressor.faq" :count="6" />
     </div>
   </div>
 </template>

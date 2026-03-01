@@ -13,7 +13,18 @@ useHead({
   ],
 });
 
-
+// ── Schema.org：首页结构化数据 ──
+useSchemaOrg([
+  defineWebPage({ "@type": "WebPage" }),
+  {
+    "@type": "WebApplication",
+    name: "PixelSwift",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: t("seo.home.description"),
+  },
+]);
 
 const features = computed(() => [
   {
@@ -61,7 +72,6 @@ const whyItems = computed(() => [
     desc: t("home.why.batchDesc"),
   },
 ]);
-
 </script>
 
 <template>
@@ -104,7 +114,9 @@ const whyItems = computed(() => [
             class="text-4xl font-black tracking-tight text-slate-900 dark:text-white sm:text-6xl mb-6"
           >
             PixelSwift
-            <span class="block text-xl sm:text-2xl font-semibold text-primary mt-2">
+            <span
+              class="block text-xl sm:text-2xl font-semibold text-primary mt-2"
+            >
               {{ t("home.title") }}
             </span>
           </h1>
@@ -235,7 +247,7 @@ const whyItems = computed(() => [
 
     <!-- FAQ Section -->
     <section class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-      <ToolFaq i18n-prefix="home.faq" :count="3" />
+      <ToolFaq i18n-prefix="home.faq" :count="7" />
     </section>
 
     <!-- CTA Section -->

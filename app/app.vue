@@ -12,6 +12,15 @@ useHead({
   link: computed(() => head.value.link),
   meta: computed(() => head.value.meta),
 });
+
+// ── Schema.org：全局 WebSite 结构化数据 ──
+const { t } = useI18n();
+useSchemaOrg([
+  defineWebSite({
+    name: "PixelSwift",
+    description: t("schema.siteDescription"),
+  }),
+]);
 </script>
 
 <template>

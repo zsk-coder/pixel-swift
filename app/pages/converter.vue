@@ -17,6 +17,20 @@ useHead({
   ],
 });
 
+// ── Schema.org：图片转换器结构化数据 ──
+useSchemaOrg([
+  defineWebPage({ "@type": "WebPage" }),
+  {
+    "@type": "WebApplication",
+    name: "PixelSwift Image Converter",
+    applicationCategory: "MultimediaApplication",
+    operatingSystem: "Any",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+    description: t("seo.converter.description"),
+    featureList: t("schema.converter.featureList"),
+  },
+]);
+
 // Output format options with labels
 const formatOptions = computed(() => [
   { value: "jpg", label: "JPG - Joint Photographic Experts Group" },
@@ -170,8 +184,6 @@ function onClearAll() {
   rawFiles.value = [];
   uploaderRef.value?.clearFiles();
 }
-
-
 </script>
 
 <template>
@@ -194,7 +206,11 @@ function onClearAll() {
       </div>
 
       <!-- Upload Area (always at top) -->
-      <FileUploader ref="uploaderRef" :hint="t('converter.uploadHint')" @files="onFilesAdded" />
+      <FileUploader
+        ref="uploaderRef"
+        :hint="t('converter.uploadHint')"
+        @files="onFilesAdded"
+      />
 
       <!-- Conversion Settings Card (only show after upload) -->
       <div
@@ -364,9 +380,7 @@ function onClearAll() {
                 >
                   {{ file.name }}
                 </p>
-                <span
-                  class="text-xs text-slate-500 dark:text-slate-400"
-                >
+                <span class="text-xs text-slate-500 dark:text-slate-400">
                   {{ formatSize(file.originalSize) }}
                 </span>
               </template>
@@ -616,6 +630,6 @@ function onClearAll() {
     </div>
 
     <!-- FAQ Section -->
-    <ToolFaq i18n-prefix="converter.faq" :count="3" />
+    <ToolFaq i18n-prefix="converter.faq" :count="6" />
   </div>
 </template>
