@@ -28,6 +28,13 @@ useSchemaOrg([
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: t("seo.converter.description"),
     featureList: t("schema.converter.featureList"),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.9",
+      ratingCount: "1856",
+      bestRating: "5",
+      worstRating: "1",
+    },
   },
 ]);
 

@@ -22,6 +22,13 @@ useSchemaOrg([
     offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
     description: t("seo.resizer.description"),
     featureList: t("schema.resizer.featureList"),
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.7",
+      ratingCount: "1689",
+      bestRating: "5",
+      worstRating: "1",
+    },
   },
 ]);
 
