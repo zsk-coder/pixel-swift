@@ -18,7 +18,11 @@ const currentYear = new Date().getFullYear();
           <div
             class="flex h-6 w-6 items-center justify-center rounded bg-primary text-white"
           >
-            <span class="material-symbols-outlined text-[16px]">auto_fix</span>
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[16px]"
+              >auto_fix</span
+            >
           </div>
           <span class="text-lg font-bold text-slate-900 dark:text-white"
             >PixelSwift</span
@@ -46,8 +50,6 @@ const currentYear = new Date().getFullYear();
             {{ t("footer.contact") }}
           </NuxtLink>
         </div>
-
-
       </div>
 
       <div

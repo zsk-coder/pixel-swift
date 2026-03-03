@@ -587,6 +587,7 @@ const actualOutputFormat = computed(() => {
                     class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-5 py-3 shadow-lg flex items-center gap-3"
                   >
                     <span
+                      aria-hidden="true"
                       class="material-symbols-outlined text-primary animate-spin"
                       >progress_activity</span
                     >
@@ -612,6 +613,7 @@ const actualOutputFormat = computed(() => {
                     class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-5 py-3 shadow-lg flex items-center gap-3"
                   >
                     <span
+                      aria-hidden="true"
                       class="material-symbols-outlined text-primary animate-spin"
                       >progress_activity</span
                     >
@@ -684,7 +686,9 @@ const actualOutputFormat = computed(() => {
                 <h3
                   class="font-bold text-slate-900 dark:text-white flex items-center gap-2"
                 >
-                  <span class="material-symbols-outlined text-primary"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-primary"
                     >tune</span
                   >
                   {{ t("compressor.settings") }}
@@ -723,7 +727,9 @@ const actualOutputFormat = computed(() => {
                 <label
                   class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2"
                 >
-                  <span class="material-symbols-outlined text-primary text-lg"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-primary text-lg"
                     >temp_preferences_custom</span
                   >
                   {{ t("compressor.compressionLevel") }}
@@ -757,7 +763,11 @@ const actualOutputFormat = computed(() => {
                   :disabled="!singleDone || isBusy"
                   @click="onDownloadSingle"
                 >
-                  <span class="material-symbols-outlined mr-1">download</span>
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined mr-1"
+                    >download</span
+                  >
                   {{ t("compressor.downloadImage") }}
                 </ElButton>
                 <ElButton
@@ -806,6 +816,7 @@ const actualOutputFormat = computed(() => {
                   class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-4 py-2 shadow-lg flex items-center gap-2"
                 >
                   <span
+                    aria-hidden="true"
                     class="material-symbols-outlined text-primary animate-spin text-lg"
                     >progress_activity</span
                   >
@@ -831,6 +842,7 @@ const actualOutputFormat = computed(() => {
                   class="bg-white/90 dark:bg-slate-800/90 rounded-xl px-4 py-2 shadow-lg flex items-center gap-2"
                 >
                   <span
+                    aria-hidden="true"
                     class="material-symbols-outlined text-primary animate-spin text-lg"
                     >progress_activity</span
                   >
@@ -849,7 +861,9 @@ const actualOutputFormat = computed(() => {
               <label
                 class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2"
               >
-                <span class="material-symbols-outlined text-primary text-lg"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-primary text-lg"
                   >tune</span
                 >
                 {{ t("compressor.quality") }}
@@ -879,7 +893,9 @@ const actualOutputFormat = computed(() => {
             <label
               class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2"
             >
-              <span class="material-symbols-outlined text-primary text-lg"
+              <span
+                aria-hidden="true"
+                class="material-symbols-outlined text-primary text-lg"
                 >temp_preferences_custom</span
               >
               {{ t("compressor.compressionLevel") }}
@@ -901,6 +917,7 @@ const actualOutputFormat = computed(() => {
                   class="absolute top-0 right-0 p-[2px] bg-primary rounded-bl-lg"
                 >
                   <span
+                    aria-hidden="true"
                     class="material-symbols-outlined text-white text-[10px] block"
                     >check</span
                   >
@@ -944,7 +961,11 @@ const actualOutputFormat = computed(() => {
             :disabled="!singleDone || isBusy"
             @click="onDownloadSingle"
           >
-            <span class="material-symbols-outlined text-[20px] mr-1">download</span>
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[20px] mr-1"
+              >download</span
+            >
             {{ t("compressor.downloadImage") }}
           </ElButton>
           <ElButton
@@ -979,7 +1000,11 @@ const actualOutputFormat = computed(() => {
               <h2
                 class="font-bold flex items-center gap-2 text-slate-900 dark:text-white"
               >
-                <span class="material-symbols-outlined text-primary">tune</span>
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-primary"
+                  >tune</span
+                >
                 {{ t("compressor.settings") }}
               </h2>
             </div>
@@ -1020,7 +1045,9 @@ const actualOutputFormat = computed(() => {
                 <label
                   class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2"
                 >
-                  <span class="material-symbols-outlined text-primary text-lg"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-primary text-lg"
                     >tune</span
                   >
                   {{ t("compressor.quality") }}
@@ -1055,7 +1082,9 @@ const actualOutputFormat = computed(() => {
               <label
                 class="text-sm font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-2 mb-3"
               >
-                <span class="material-symbols-outlined text-primary text-lg"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-primary text-lg"
                   >temp_preferences_custom</span
                 >
                 {{ t("compressor.compressionLevel") }}
@@ -1085,7 +1114,9 @@ const actualOutputFormat = computed(() => {
               <label
                 class="text-sm font-semibold text-slate-900 dark:text-white flex items-center gap-2 mb-3"
               >
-                <span class="material-symbols-outlined text-primary text-lg"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-primary text-lg"
                   >temp_preferences_custom</span
                 >
                 {{ t("compressor.compressionLevel") }}
@@ -1107,6 +1138,7 @@ const actualOutputFormat = computed(() => {
                     class="absolute top-0 right-0 p-[2px] bg-primary rounded-bl-lg"
                   >
                     <span
+                      aria-hidden="true"
                       class="material-symbols-outlined text-white text-[10px] block"
                       >check</span
                     >
@@ -1186,7 +1218,9 @@ const actualOutputFormat = computed(() => {
                     class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400"
                   >
                     <span>{{ formatSize(file.originalSize) }}</span>
-                    <span class="material-symbols-outlined text-[10px]"
+                    <span
+                      aria-hidden="true"
+                      class="material-symbols-outlined text-[10px]"
                       >arrow_forward</span
                     >
                     <span class="font-medium text-slate-900 dark:text-white">{{
@@ -1229,9 +1263,7 @@ const actualOutputFormat = computed(() => {
                   >
                     {{ file.name }}
                   </p>
-                  <span
-                    class="text-xs text-slate-500 dark:text-slate-400"
-                  >
+                  <span class="text-xs text-slate-500 dark:text-slate-400">
                     {{ formatSize(file.originalSize) }}
                   </span>
                 </template>
@@ -1244,6 +1276,7 @@ const actualOutputFormat = computed(() => {
                   effect="light"
                 >
                   <span
+                    aria-hidden="true"
                     class="material-symbols-outlined text-sm mr-1"
                     style="vertical-align: -2px"
                     >check_circle</span
@@ -1257,6 +1290,7 @@ const actualOutputFormat = computed(() => {
                   effect="light"
                 >
                   <span
+                    aria-hidden="true"
                     class="material-symbols-outlined text-sm mr-1 animate-spin"
                     style="vertical-align: -2px"
                     >progress_activity</span
@@ -1273,6 +1307,7 @@ const actualOutputFormat = computed(() => {
                 </ElTag>
                 <ElTag v-else type="info" round effect="light">
                   <span
+                    aria-hidden="true"
                     class="material-symbols-outlined text-sm mr-1"
                     style="vertical-align: -2px"
                     >schedule</span
@@ -1286,10 +1321,14 @@ const actualOutputFormat = computed(() => {
                     text
                     @click.stop="onDownload(file.id)"
                   >
-                    <span class="material-symbols-outlined">download</span>
+                    <span aria-hidden="true" class="material-symbols-outlined"
+                      >download</span
+                    >
                   </ElButton>
                   <ElButton circle text @click.stop="onRemove(file.id)">
-                    <span class="material-symbols-outlined">close</span>
+                    <span aria-hidden="true" class="material-symbols-outlined"
+                      >close</span
+                    >
                   </ElButton>
                 </div>
               </div>
@@ -1343,7 +1382,9 @@ const actualOutputFormat = computed(() => {
                 >
                   <template v-if="file.status === 'done'">
                     <span>{{ formatSize(file.originalSize) }}</span>
-                    <span class="material-symbols-outlined text-[10px]"
+                    <span
+                      aria-hidden="true"
+                      class="material-symbols-outlined text-[10px]"
                       >arrow_forward</span
                     >
                     <span class="font-medium text-slate-900 dark:text-white">{{
@@ -1378,21 +1419,25 @@ const actualOutputFormat = computed(() => {
                 <!-- Status icon -->
                 <span
                   v-if="file.status === 'done'"
+                  aria-hidden="true"
                   class="material-symbols-outlined text-[18px] text-green-500"
                   >check_circle</span
                 >
                 <span
                   v-else-if="file.status === 'processing'"
+                  aria-hidden="true"
                   class="material-symbols-outlined text-[18px] text-primary animate-spin"
                   >progress_activity</span
                 >
                 <span
                   v-else-if="file.status === 'error'"
+                  aria-hidden="true"
                   class="material-symbols-outlined text-[18px] text-red-500"
                   >error</span
                 >
                 <span
                   v-else
+                  aria-hidden="true"
                   class="material-symbols-outlined text-[18px] text-slate-400"
                   >schedule</span
                 >
@@ -1404,7 +1449,9 @@ const actualOutputFormat = computed(() => {
                   size="small"
                   @click.stop="onDownload(file.id)"
                 >
-                  <span class="material-symbols-outlined text-[20px]"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-[20px]"
                     >download</span
                   >
                 </ElButton>
@@ -1414,7 +1461,9 @@ const actualOutputFormat = computed(() => {
                   size="small"
                   @click.stop="onRemove(file.id)"
                 >
-                  <span class="material-symbols-outlined text-[20px]"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-[20px]"
                     >delete</span
                   >
                 </ElButton>
@@ -1432,7 +1481,9 @@ const actualOutputFormat = computed(() => {
             <h3
               class="font-bold text-slate-900 dark:text-white flex items-center gap-2 min-w-0 flex-1"
             >
-              <span class="material-symbols-outlined text-primary flex-shrink-0"
+              <span
+                aria-hidden="true"
+                class="material-symbols-outlined text-primary flex-shrink-0"
                 >compare</span
               >
               <span class="flex-shrink-0"
@@ -1444,7 +1495,9 @@ const actualOutputFormat = computed(() => {
               class="text-xs text-slate-500 hover:text-primary"
               @click="selectedFileId = null"
             >
-              <span class="material-symbols-outlined text-lg">close</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-lg"
+                >close</span
+              >
             </button>
           </div>
           <div
@@ -1504,7 +1557,9 @@ const actualOutputFormat = computed(() => {
               class="flex items-center gap-4 text-sm text-slate-500 dark:text-slate-400"
             >
               <div v-if="totalSavings > 0" class="flex items-center gap-2">
-                <span class="material-symbols-outlined text-primary"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-primary"
                   >folder_zip</span
                 >
                 <span>
@@ -1523,9 +1578,11 @@ const actualOutputFormat = computed(() => {
                 :disabled="isBusy"
                 @click="allDone ? onDownloadAll() : onBatchProcess()"
               >
-                <span class="material-symbols-outlined mr-1">{{
-                  allDone ? "download" : "play_arrow"
-                }}</span>
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined mr-1"
+                  >{{ allDone ? "download" : "play_arrow" }}</span
+                >
                 {{
                   isBusy
                     ? t("common.processing")
@@ -1562,9 +1619,11 @@ const actualOutputFormat = computed(() => {
             :disabled="isBusy"
             @click="allDone ? onDownloadAll() : onBatchProcess()"
           >
-            <span class="material-symbols-outlined text-[20px] mr-1">{{
-              allDone ? "folder_zip" : "play_arrow"
-            }}</span>
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[20px] mr-1"
+              >{{ allDone ? "folder_zip" : "play_arrow" }}</span
+            >
             {{
               isBusy
                 ? t("common.processing")
@@ -1573,7 +1632,6 @@ const actualOutputFormat = computed(() => {
                   : t("common.process")
             }}
           </ElButton>
-
         </div>
       </template>
 

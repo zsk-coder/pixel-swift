@@ -57,14 +57,20 @@ async function copyEmail() {
           <div
             class="flex h-10 w-10 items-center justify-center rounded-lg bg-primary text-white"
           >
-            <span class="material-symbols-outlined text-[20px]">mail</span>
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[20px]"
+              >mail</span
+            >
           </div>
           <h2 class="text-lg font-semibold text-slate-900 dark:text-white">
             {{ t("legal.contact.emailTitle") }}
           </h2>
         </div>
 
-        <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        <div
+          class="flex flex-col sm:flex-row items-start sm:items-center gap-4"
+        >
           <a
             :href="`mailto:${email}`"
             class="text-primary hover:underline text-lg font-medium break-all"
@@ -80,7 +86,10 @@ async function copyEmail() {
             "
             @click="copyEmail"
           >
-            <span class="material-symbols-outlined text-[16px]">
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[16px]"
+            >
               {{ copied ? "check" : "content_copy" }}
             </span>
             {{ copied ? t("legal.contact.copied") : t("legal.contact.copy") }}

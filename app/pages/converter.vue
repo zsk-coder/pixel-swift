@@ -231,7 +231,11 @@ function onClearAll() {
             <h2
               class="text-base font-bold flex items-center gap-2 text-slate-900 dark:text-white"
             >
-              <span class="material-symbols-outlined text-primary">tune</span>
+              <span
+                aria-hidden="true"
+                class="material-symbols-outlined text-primary"
+                >tune</span
+              >
               {{ t("converter.settingsTitle") }}
             </h2>
             <p class="text-xs text-slate-500 dark:text-slate-400 ml-8">
@@ -336,7 +340,11 @@ function onClearAll() {
                 v-else
                 class="w-full h-full flex items-center justify-center bg-slate-100 dark:bg-slate-700 text-slate-400"
               >
-                <span class="material-symbols-outlined text-xl">image</span>
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-xl"
+                  >image</span
+                >
               </div>
             </div>
 
@@ -353,7 +361,9 @@ function onClearAll() {
                   class="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400"
                 >
                   <span>{{ formatSize(file.originalSize) }}</span>
-                  <span class="material-symbols-outlined text-[10px]"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-[10px]"
                     >arrow_forward</span
                   >
                   <span class="font-medium text-slate-900 dark:text-white"
@@ -403,6 +413,7 @@ function onClearAll() {
                 effect="light"
               >
                 <span
+                  aria-hidden="true"
                   class="material-symbols-outlined text-sm mr-1"
                   style="vertical-align: -2px"
                   >check_circle</span
@@ -416,6 +427,7 @@ function onClearAll() {
                 effect="light"
               >
                 <span
+                  aria-hidden="true"
                   class="material-symbols-outlined text-sm mr-1 animate-spin"
                   style="vertical-align: -2px"
                   >progress_activity</span
@@ -429,6 +441,7 @@ function onClearAll() {
                 effect="light"
               >
                 <span
+                  aria-hidden="true"
                   class="material-symbols-outlined text-sm mr-1"
                   style="vertical-align: -2px"
                   >error</span
@@ -437,6 +450,7 @@ function onClearAll() {
               </ElTag>
               <ElTag v-else type="info" round effect="light">
                 <span
+                  aria-hidden="true"
                   class="material-symbols-outlined text-sm mr-1"
                   style="vertical-align: -2px"
                   >schedule</span
@@ -452,13 +466,19 @@ function onClearAll() {
                   text
                   @click="onDownload(file.id)"
                 >
-                  <span class="material-symbols-outlined">download</span>
+                  <span aria-hidden="true" class="material-symbols-outlined"
+                    >download</span
+                  >
                 </ElButton>
                 <ElButton v-else circle text disabled>
-                  <span class="material-symbols-outlined">download</span>
+                  <span aria-hidden="true" class="material-symbols-outlined"
+                    >download</span
+                  >
                 </ElButton>
                 <ElButton circle text @click="onRemove(file.id)">
-                  <span class="material-symbols-outlined">close</span>
+                  <span aria-hidden="true" class="material-symbols-outlined"
+                    >close</span
+                  >
                 </ElButton>
               </div>
             </div>
@@ -500,7 +520,11 @@ function onClearAll() {
                 v-else
                 class="w-full h-full flex items-center justify-center bg-slate-100 dark:bg-slate-800 text-slate-400"
               >
-                <span class="material-symbols-outlined text-xl">image</span>
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-xl"
+                  >image</span
+                >
               </div>
             </div>
 
@@ -517,7 +541,9 @@ function onClearAll() {
                 <!-- Done -->
                 <template v-if="file.status === 'done'">
                   <span>{{ formatSize(file.originalSize) }}</span>
-                  <span class="material-symbols-outlined text-[10px]"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-[10px]"
                     >arrow_forward</span
                   >
                   <span class="font-medium text-slate-900 dark:text-white"
@@ -542,21 +568,25 @@ function onClearAll() {
               <!-- Status icon -->
               <span
                 v-if="file.status === 'done'"
+                aria-hidden="true"
                 class="material-symbols-outlined text-[18px] text-green-500"
                 >check_circle</span
               >
               <span
                 v-else-if="file.status === 'processing'"
+                aria-hidden="true"
                 class="material-symbols-outlined text-[18px] text-primary animate-spin"
                 >progress_activity</span
               >
               <span
                 v-else-if="file.status === 'error'"
+                aria-hidden="true"
                 class="material-symbols-outlined text-[18px] text-red-500"
                 >error</span
               >
               <span
                 v-else
+                aria-hidden="true"
                 class="material-symbols-outlined text-[18px] text-slate-400"
                 >schedule</span
               >
@@ -568,14 +598,18 @@ function onClearAll() {
                 size="small"
                 @click="onDownload(file.id)"
               >
-                <span class="material-symbols-outlined text-[20px]"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-[20px]"
                   >download</span
                 >
               </ElButton>
               <ElButton circle text size="small" @click="onRemove(file.id)">
-                <span class="material-symbols-outlined text-[20px]">{{
-                  file.status === "processing" ? "close" : "delete"
-                }}</span>
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-[20px]"
+                  >{{ file.status === "processing" ? "close" : "delete" }}</span
+                >
               </ElButton>
             </div>
           </div>
@@ -595,7 +629,7 @@ function onClearAll() {
               :disabled="isBusy"
               @click="allDone ? onDownloadAll() : onProcess()"
             >
-              <span class="material-symbols-outlined mr-1">{{
+              <span aria-hidden="true" class="material-symbols-outlined mr-1">{{
                 allDone ? "download" : "play_arrow"
               }}</span>
               {{
@@ -623,9 +657,11 @@ function onClearAll() {
         :disabled="isBusy"
         @click="allDone ? onDownloadAll() : onProcess()"
       >
-        <span class="material-symbols-outlined text-[24px] mr-1">{{
-          allDone ? "folder_zip" : "play_arrow"
-        }}</span>
+        <span
+          aria-hidden="true"
+          class="material-symbols-outlined text-[24px] mr-1"
+          >{{ allDone ? "folder_zip" : "play_arrow" }}</span
+        >
         {{
           isBusy
             ? t("common.processing")

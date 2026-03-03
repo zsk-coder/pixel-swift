@@ -83,7 +83,9 @@ onUnmounted(() => {
     <div
       class="h-12 w-12 md:h-16 md:w-16 rounded-full bg-primary/10 flex items-center justify-center text-primary mx-auto"
     >
-      <span class="material-symbols-outlined text-3xl md:text-4xl"
+      <span
+        aria-hidden="true"
+        class="material-symbols-outlined text-3xl md:text-4xl"
         >cloud_upload</span
       >
     </div>
@@ -117,7 +119,7 @@ onUnmounted(() => {
       <span
         class="inline-flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white font-semibold hover:bg-blue-700 transition-colors shadow-sm cursor-pointer"
       >
-        <span class="material-symbols-outlined text-lg"
+        <span aria-hidden="true" class="material-symbols-outlined text-lg"
           >add_photo_alternate</span
         >
         <span>{{ t("upload.selectImages") }}</span>

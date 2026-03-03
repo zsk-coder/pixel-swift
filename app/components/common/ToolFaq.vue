@@ -59,6 +59,7 @@ function toggle(index: number) {
             {{ item.q }}
           </span>
           <span
+            aria-hidden="true"
             class="material-symbols-outlined text-slate-400 transition-transform duration-300 shrink-0"
             :class="{ 'rotate-180': openIndex === index }"
           >

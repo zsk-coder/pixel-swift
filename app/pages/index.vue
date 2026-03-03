@@ -145,6 +145,7 @@ const whyItems = computed(() => [
             >
               {{ t("home.cta.learn") }}
               <span
+                aria-hidden="true"
                 class="material-symbols-outlined text-[16px] transition-transform group-hover:translate-x-1"
                 >arrow_forward</span
               >
@@ -206,9 +207,11 @@ const whyItems = computed(() => [
             <div
               class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/30 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300"
             >
-              <span class="material-symbols-outlined text-[32px]">{{
-                feature.icon
-              }}</span>
+              <span
+                aria-hidden="true"
+                class="material-symbols-outlined text-[32px]"
+                >{{ feature.icon }}</span
+              >
             </div>
             <h3 class="text-xl font-bold text-slate-900 dark:text-white mb-3">
               {{ feature.title }}
@@ -235,7 +238,9 @@ const whyItems = computed(() => [
             <div
               class="mb-6 flex h-12 w-12 items-center justify-center rounded-lg bg-primary text-white"
             >
-              <span class="material-symbols-outlined">{{ item.icon }}</span>
+              <span aria-hidden="true" class="material-symbols-outlined">{{
+                item.icon
+              }}</span>
             </div>
             <h3
               class="text-lg font-bold leading-8 text-slate-900 dark:text-white"

@@ -367,7 +367,13 @@ function startOver() {
 
       <!-- ================== UPLOAD STATE ================== -->
       <div v-if="!hasFile">
-        <FileUploader ref="uploaderRef" :multiple="false" :max-count="1" :hint="t('resizer.uploadHint')" @files="onFilesAdded" />
+        <FileUploader
+          ref="uploaderRef"
+          :multiple="false"
+          :max-count="1"
+          :hint="t('resizer.uploadHint')"
+          @files="onFilesAdded"
+        />
       </div>
 
       <!-- ================== EDITOR STATE ================== -->
@@ -420,6 +426,7 @@ function startOver() {
                 <span class="flex items-center gap-1">
                   <span
                     v-if="hasDimensionChanged"
+                    aria-hidden="true"
                     class="material-symbols-outlined text-[14px]"
                     >open_with</span
                   >
@@ -439,7 +446,9 @@ function startOver() {
                 <div
                   class="bg-white dark:bg-slate-800 text-slate-900 dark:text-white px-4 py-2 rounded-lg shadow-lg font-medium text-sm flex items-center gap-2"
                 >
-                  <span class="material-symbols-outlined text-primary"
+                  <span
+                    aria-hidden="true"
+                    class="material-symbols-outlined text-primary"
                     >upload</span
                   >
                   {{ t("resizer.replaceImage") }}
@@ -453,7 +462,9 @@ function startOver() {
                 class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:text-primary hover:border-primary/30 transition-all"
                 @click="rotateLeft"
               >
-                <span class="material-symbols-outlined text-lg"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-lg"
                   >rotate_left</span
                 >
                 {{ t("resizer.rotateLeft") }}
@@ -462,7 +473,9 @@ function startOver() {
                 class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:text-primary hover:border-primary/30 transition-all"
                 @click="rotateRight"
               >
-                <span class="material-symbols-outlined text-lg"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-lg"
                   >rotate_right</span
                 >
                 {{ t("resizer.rotateRight") }}
@@ -471,14 +484,20 @@ function startOver() {
                 class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:text-primary hover:border-primary/30 transition-all"
                 @click="toggleFlipH"
               >
-                <span class="material-symbols-outlined text-lg">flip</span>
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-lg"
+                  >flip</span
+                >
                 {{ t("resizer.flipH") }}
               </button>
               <button
                 class="flex items-center gap-2 px-3 py-2 text-sm font-medium text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg hover:text-primary hover:border-primary/30 transition-all"
                 @click="toggleFlipV"
               >
-                <span class="material-symbols-outlined text-lg -rotate-90"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-lg -rotate-90"
                   >flip</span
                 >
                 {{ t("resizer.flipV") }}
@@ -572,9 +591,11 @@ function startOver() {
                       :title="t('resizer.keepRatio')"
                       @click="keepRatio = !keepRatio"
                     >
-                      <span class="material-symbols-outlined text-xl">{{
-                        keepRatio ? "link" : "link_off"
-                      }}</span>
+                      <span
+                        aria-hidden="true"
+                        class="material-symbols-outlined text-xl"
+                        >{{ keepRatio ? "link" : "link_off" }}</span
+                      >
                     </button>
                   </div>
                   <div class="flex-1">
@@ -692,7 +713,10 @@ function startOver() {
                   class="!w-full !h-10 !rounded-lg !text-sm !font-bold"
                   @click="doResize"
                 >
-                  <span v-if="!isBusy" class="material-symbols-outlined mr-1"
+                  <span
+                    v-if="!isBusy"
+                    aria-hidden="true"
+                    class="material-symbols-outlined mr-1"
                     >download</span
                   >
                   {{
@@ -715,7 +739,9 @@ function startOver() {
             <div
               class="flex items-center justify-center gap-2 text-xs text-slate-400"
             >
-              <span class="material-symbols-outlined text-sm">lock</span>
+              <span aria-hidden="true" class="material-symbols-outlined text-sm"
+                >lock</span
+              >
               {{ t("resizer.securityNote") }}
             </div>
           </div>
@@ -755,7 +781,9 @@ function startOver() {
                 class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 @click="rotateLeft"
               >
-                <span class="material-symbols-outlined text-[20px]"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-[20px]"
                   >rotate_left</span
                 >
               </button>
@@ -763,7 +791,9 @@ function startOver() {
                 class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 @click="rotateRight"
               >
-                <span class="material-symbols-outlined text-[20px]"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-[20px]"
                   >rotate_right</span
                 >
               </button>
@@ -772,13 +802,19 @@ function startOver() {
                 class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 @click="toggleFlipH"
               >
-                <span class="material-symbols-outlined text-[20px]">flip</span>
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-[20px]"
+                  >flip</span
+                >
               </button>
               <button
                 class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300"
                 @click="toggleFlipV"
               >
-                <span class="material-symbols-outlined text-[20px] -rotate-90"
+                <span
+                  aria-hidden="true"
+                  class="material-symbols-outlined text-[20px] -rotate-90"
                   >flip</span
                 >
               </button>
@@ -864,9 +900,11 @@ function startOver() {
                     "
                     @click="keepRatio = !keepRatio"
                   >
-                    <span class="material-symbols-outlined text-[20px]">{{
-                      keepRatio ? "link" : "link_off"
-                    }}</span>
+                    <span
+                      aria-hidden="true"
+                      class="material-symbols-outlined text-[20px]"
+                      >{{ keepRatio ? "link" : "link_off" }}</span
+                    >
                   </button>
                 </div>
                 <div class="flex-1 space-y-1.5">
@@ -994,6 +1032,7 @@ function startOver() {
           >
             <span
               v-if="!isBusy"
+              aria-hidden="true"
               class="material-symbols-outlined text-[20px] mr-1"
               >download</span
             >

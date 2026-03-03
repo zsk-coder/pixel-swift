@@ -88,7 +88,9 @@ function selectLocale(code: string) {
         <div
           class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white"
         >
-          <span class="material-symbols-outlined text-[20px]">auto_fix</span>
+          <span aria-hidden="true" class="material-symbols-outlined text-[20px]"
+            >auto_fix</span
+          >
         </div>
         <span
           class="text-xl font-bold tracking-tight text-slate-900 dark:text-white"
@@ -118,7 +120,11 @@ function selectLocale(code: string) {
             aria-label="Language"
             class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors"
           >
-            <span class="material-symbols-outlined text-[20px]">language</span>
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[20px]"
+              >language</span
+            >
           </button>
           <template #dropdown>
             <ElDropdownMenu>
@@ -140,9 +146,11 @@ function selectLocale(code: string) {
           class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors"
           @click="toggleTheme"
         >
-          <span class="material-symbols-outlined text-[20px]">{{
-            isDark ? "light_mode" : "dark_mode"
-          }}</span>
+          <span
+            aria-hidden="true"
+            class="material-symbols-outlined text-[20px]"
+            >{{ isDark ? "light_mode" : "dark_mode" }}</span
+          >
         </button>
 
         <!-- Mobile Hamburger -->
@@ -152,6 +160,7 @@ function selectLocale(code: string) {
           @click="toggleMobileMenu"
         >
           <span
+            aria-hidden="true"
             class="material-symbols-outlined text-[24px] text-slate-700 dark:text-slate-300"
           >
             {{ isMobileMenuOpen ? "close" : "menu" }}
