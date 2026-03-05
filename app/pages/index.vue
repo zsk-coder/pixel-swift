@@ -5,6 +5,7 @@ const localePath = useLocalePath();
 // ── SEO: title + description + OG tags ──
 useHead({
   title: t("seo.home.title"),
+  titleTemplate: "",
   meta: [
     { name: "description", content: t("seo.home.description") },
     { property: "og:title", content: t("seo.home.title") },

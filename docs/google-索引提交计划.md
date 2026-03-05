@@ -34,8 +34,8 @@
 
 ## 第 2 批 — 3月5日
 
-- [ ] `https://pixelswift.site/es/compress-image`
-- [ ] `https://pixelswift.site/ja/compress-image`
+- [x] `https://pixelswift.site/es/compress-image`
+- [x] `https://pixelswift.site/ja/compress-image`
 - [ ] `https://pixelswift.site/pt/compress-image`
 - [ ] `https://pixelswift.site/ko/compress-image`
 - [ ] `https://pixelswift.site/pt/converter`

@@ -120,6 +120,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       title: "PixelSwift - Free Online Image Tool",
+      titleTemplate: "%s | PixelSwift",
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },

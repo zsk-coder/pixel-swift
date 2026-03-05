@@ -336,27 +336,27 @@
       "description": "Convert, compress & resize images free online. 100% browser-based, no uploads, no sign-ups. Try it now!"
     },
     "converter": {
-      "title": "Convert Images Online Free – JPG PNG WebP Converter | PixelSwift",
+      "title": "Convert Images Online Free – JPG PNG WebP Converter",
       "description": "Convert JPG, PNG, WebP, BMP images instantly. Free, private & unlimited – no upload needed. Try now!"
     },
     "compressor": {
-      "title": "Compress Images Online Free – Reduce Size up to 90% | PixelSwift",
+      "title": "Compress Images Online Free – Reduce Size up to 90%",
       "description": "Compress JPG, PNG & WebP images up to 90% smaller. Keep quality, save bandwidth. Free & private – try now!"
     },
     "resizer": {
-      "title": "Resize Images Online Free – Pixels & Percentage | PixelSwift",
+      "title": "Resize Images Online Free – Pixels & Percentage",
       "description": "Resize images to exact pixels or percentage. Rotate and flip supported. Free, fast & secure online tool. Try now!"
     },
     "terms": {
-      "title": "Terms of Use – PixelSwift",
+      "title": "Terms of Use",
       "description": "PixelSwift terms of use. Free online image processing tool provided as-is. Read our usage terms."
     },
     "privacy": {
-      "title": "Privacy Policy – PixelSwift",
+      "title": "Privacy Policy",
       "description": "PixelSwift privacy policy. All image processing happens locally in your browser. We never upload or store your files."
     },
     "contact": {
-      "title": "Contact Us – PixelSwift",
+      "title": "Contact Us",
       "description": "Get in touch with the PixelSwift team. Questions, suggestions, or feedback – we'd love to hear from you."
     }
   },

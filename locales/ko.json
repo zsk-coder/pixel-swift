@@ -336,27 +336,27 @@
       "description": "이미지를 무료로 변환, 압축, 크기 조정하세요. 100% 브라우저 로컬 처리, 업로드 불필요, 개인정보 안전. 지금 사용해 보세요!"
     },
     "converter": {
-      "title": "무료 온라인 이미지 포맷 변환기 – JPG PNG WebP 변환 | PixelSwift",
+      "title": "무료 온라인 이미지 포맷 변환기 – JPG PNG WebP 변환",
       "description": "JPG, PNG, WebP, BMP 이미지를 즉시 변환하세요. 무료, 빠르고 안전 – 업로드 불필요. 지금 사용해 보세요!"
     },
     "compressor": {
-      "title": "무료 온라인 이미지 압축 – 최대 90% 용량 감소 | PixelSwift",
+      "title": "무료 온라인 이미지 압축 – 최대 90% 용량 감소",
       "description": "JPG, PNG, WebP 이미지를 최대 90% 압축하세요. 화질 유지, 용량 절약. 무료 & 안전 – 지금 압축하세요!"
     },
     "resizer": {
-      "title": "무료 온라인 이미지 크기 조정 – 픽셀 & 백분율 | PixelSwift",
+      "title": "무료 온라인 이미지 크기 조정 – 픽셀 & 백분율",
       "description": "픽셀 또는 백분율로 이미지 크기를 정확하게 조정하세요. 회전, 뒤집기 지원. 무료 온라인 도구, 제한 없음!"
     },
     "terms": {
-      "title": "이용약관 – PixelSwift",
+      "title": "이용약관",
       "description": "PixelSwift 이용약관. 무료 온라인 이미지 처리 도구의 이용 조건 및 면책 사항을 확인하세요."
     },
     "privacy": {
-      "title": "개인정보 처리방침 – PixelSwift",
+      "title": "개인정보 처리방침",
       "description": "PixelSwift 개인정보 처리방침. 모든 이미지 처리는 브라우저에서 로컬로 수행되며, 파일을 업로드하거나 저장하지 않습니다."
     },
     "contact": {
-      "title": "문의하기 – PixelSwift",
+      "title": "문의하기",
       "description": "PixelSwift 팀에 문의하세요. 질문, 제안, 피드백 등 무엇이든 환영합니다."
     }
   },
