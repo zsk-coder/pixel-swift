@@ -69,6 +69,12 @@ locales/                 # 8 个语言 JSON 文件
 - 与用户交流时必须使用 **中文**。
 - 变量名、函数名保持 **英文**（符合编程规范）。
 
+## 终端规范
+
+- 用户使用的是 **PowerShell**，不支持 `&&` 连接命令，必须使用 **分号 `;`** 分隔多条命令。
+  - ❌ `git add -A && git commit -m "xxx"`
+  - ✅ `git add -A; git commit -m "xxx"`
+
 ## Nuxt 自动导入清单
 
 以下函数 **不需要手动 import**：

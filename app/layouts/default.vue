@@ -2,13 +2,15 @@
 const { t } = useI18n();
 const route = useRoute();
 
+// 全局 title 模板：所有页面自动追加 "| PixelSwift"
+useHead({
+  titleTemplate: "%s | PixelSwift",
+});
+
 // 工具页有固定底部栏，需要额外底部间距防止遮挡 footer
 const hasFixedBottomBar = computed(() => {
   const path = route.path;
-  return (
-    path.includes("compress-image") ||
-    path.includes("resize-image")
-  );
+  return path.includes("compress-image") || path.includes("resize-image");
 });
 </script>
 
