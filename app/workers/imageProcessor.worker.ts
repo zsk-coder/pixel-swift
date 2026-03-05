@@ -125,6 +125,16 @@ self.onmessage = async (e: MessageEvent<WorkerInput>) => {
     // 3. Draw to OffscreenCanvas
     const canvas = new OffscreenCanvas(outWidth, outHeight);
     const ctx = canvas.getContext("2d")!;
+
+    // If the output format doesn't support transparency (e.g. JPG/JPEG),
+    // fill the canvas with white first to prevent transparent areas
+    // from rendering as black.
+    const formatLower = (options.outputFormat || "jpg").toLowerCase();
+    if (formatLower === "jpg" || formatLower === "jpeg") {
+      ctx.fillStyle = "#ffffff";
+      ctx.fillRect(0, 0, outWidth, outHeight);
+    }
+
     ctx.drawImage(bitmap, 0, 0, outWidth, outHeight);
 
     postMessage({ id, type: "progress", progress: 40 } satisfies WorkerOutput);
