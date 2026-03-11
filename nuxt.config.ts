@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     "nuxt-schema-org",
     "@element-plus/nuxt",
     "nuxt-gtag",
+    "@nuxt/content",
   ],
 
   // ── Components (disable path prefix) ──
