@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>How to Optimize Images for Web Performance in 2026 - PixelSwift</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#2563EB",
+                "background-light": "#f8f6f6",
+                "background-dark": "#221610",
+              },
+              fontFamily: {
+                "display": ["Public Sans", "sans-serif"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Public Sans', sans-serif; }
+        .prose blockquote { border-left: 4px solid #2563EB; padding-left: 1.5rem; font-style: italic; color: #475569; }
+        .prose code { background-color: #f1f5f9; padding: 0.2rem 0.4rem; border-radius: 0.25rem; font-size: 0.875em; color: #2563EB; }
+        .sticky-toc { top: 6rem; }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-200">
+<!-- Header / Navbar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary text-white p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">auto_fix_high</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">PixelSwift</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary" href="#">Converter</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary" href="#">Compressor</a>
+<a class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary" href="#">Resize</a>
+<a class="text-sm font-medium text-primary font-semibold" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-3">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl transition-colors">
+<span class="material-symbols-outlined">dark_mode</span>
+</button>
+<button class="hidden sm:flex bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-xl text-sm font-bold transition-all shadow-sm shadow-primary/20">
+                        Get Started
+                    </button>
+<div class="h-8 w-8 rounded-full bg-slate-200 dark:bg-slate-700 overflow-hidden ring-2 ring-slate-100 dark:ring-slate-800">
+<img alt="Profile" data-alt="User profile avatar placeholder" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvadNpcMPFIyn4ouQxmFM8rRykrmaHVzsH9jhavAXFm32Kn56Q6kXl-xdg6-yN1IpvLGuomXt5Bi4Nj03XJT6d26lbPnwHmsAoh2f2GziXXWw-Nae9Z8a86BBatIv6FPli9xZETNG98LkEYF3sXzwB7pCsFRFHw4u5cOYmO7Hp9Mv4Cv04Bk46atHHmjlQ6Tny3V6DgCepHszplwk9JW5Fs8aMFM3CeMcsu5XQsgbk_P-AWicl1Cx--mSTyHHN6v2aEPXehJypmSE"/>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main class="py-12 md:py-20">
+<!-- Article Hero Section -->
+<article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl mx-auto text-center mb-12">
+<div class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase mb-6">
+                    GUIDES
+                </div>
+<h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.1] tracking-tight mb-8">
+                    How to Optimize Images for Web Performance in 2026
+                </h1>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4 text-slate-600 dark:text-slate-400">
+<div class="flex items-center gap-3">
+<div class="h-10 w-10 rounded-full overflow-hidden">
+<img alt="Alex Chen" data-alt="Alex Chen portrait author of the blog post" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4CWkNeotHcZ_6oC69LHK_auggUrKS1idi2NHktziw9mmD3K_VbbPQzLtIIQqmEPmpZj55i-fzqNEGyfQRbvMJW6BVe5xzKdMtCLccL_oQ1KRk7NRJYbMaV2bxbnX00OV0uz0H-xat0ULwNGiMVOBIsR1rJbVuCLs_Kz7D1MJw2FXOKcisajEuyUNXQXY9s_mD_RseCfkqniGOgQwC-lN0rHO9afuSQYFxOvd9RK6EqfB9EbEnDtLiRQPJc-2R1nQe-Wl8_MaaZwQ"/>
+</div>
+<span class="font-semibold text-slate-900 dark:text-slate-200">Alex Chen</span>
+</div>
+<span class="hidden sm:block text-slate-300">•</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">calendar_today</span>
+<span>Jan 12, 2026</span>
+</div>
+<span class="hidden sm:block text-slate-300">•</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span>8 min read</span>
+</div>
+</div>
+</div>
+<div class="max-w-5xl mx-auto mb-16">
+<div class="aspect-video w-full overflow-hidden rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-800">
+<img alt="Web Performance Optimization 2026" class="w-full h-full object-cover" data-alt="Conceptual modern tech landscape representing web optimization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSwf6MP9cLkpd9Hk2ITJLdwEX1K7RzNEXBXxM2z0FLnMRSZPTzZdgTKq-WdsQuK4psCQdiBcFcR1g38Dvd0UTOadJw71H6WWkfCfPzPH2DFfrEd-YDL-rWjWMlvRMFjTGC0n1Tp4Pn_dSKacqeY3vmc-5BAWLMuqVkZ_9Z_7cTG9J90QXXfRrbuue18y-lut0G_4zskNcLyKbxk-6oVecX_pw0sECop0xC3aYklZD5cc2HVrJvIpPoRRy6rL4WeoFdcapiWr4VlL4"/>
+</div>
+</div>
+<!-- Content Layout with Sidebar -->
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-12">
+<!-- Main Content Body -->
+<div class="flex-1 max-w-3xl mx-auto lg:mx-0">
+<div class="prose prose-slate prose-lg dark:prose-invert max-w-none text-slate-800 dark:text-slate-300 leading-relaxed">
+<p class="text-xl leading-loose mb-8">
+                            In 2026, the landscape of web performance has evolved beyond simple compression. With the rise of adaptive connectivity and ultra-high-resolution displays, image optimization is now a multi-layered discipline combining AI-driven processing, next-gen formats, and edge computing.
+                        </p>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6" id="why-it-matters">Why Image Optimization Matters</h2>
+<p class="mb-6">
+                            Images typically account for over 60% of total page weight. As users increasingly access the web from variable network conditions—ranging from 6G satellite links to legacy 4G rural connections—the cost of heavy imagery remains the single largest factor in high bounce rates.
+                        </p>
+<blockquote class="my-8">
+                            "A 100ms delay in website load time can hurt conversion rates by 7%. In 2026, where instant gratification is the baseline, optimization isn't a feature—it's a requirement."
+                        </blockquote>
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white mt-10 mb-4" id="core-web-vitals">The Impact on Core Web Vitals</h3>
+<p class="mb-6">
+                            Google's updated 2026 Core Web Vitals now place a 40% weighting on <strong>Largest Contentful Paint (LCP)</strong>. Since images are almost always the LCP element, your optimization strategy directly dictates your search ranking.
+                        </p>
+<ul class="list-disc pl-6 space-y-3 mb-8">
+<li>Reduced Largest Contentful Paint (LCP) metrics.</li>
+<li>Improved Cumulative Layout Shift (CLS) by using explicit dimensions.</li>
+<li>Lowered environmental impact by reducing data transfer energy consumption.</li>
+<li>Enhanced accessibility through proper alt-text and high-contrast delivery.</li>
+</ul>
+<div class="my-10 p-6 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+<img alt="Comparison" class="rounded-xl mb-4" data-alt="Comparison graph between WebP and JPG file sizes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUE5N1JQkyWQbNOzKras_dpwUfKhLYkX5GPPLS-0EC986CyIpuOTDVaMSDEf0Aztj6p6LhMMKuB5kdL5Knsq3WlathqDXEaz_46DHUz8zzij5DzGY_oIblfUfHn5DSGTOEZZ7IP1R2rL0eJAeLjdnyhVjEVKsVyuwN0y-aFgTZ_LzKWBTrxafNYtDsZknvXLekvR7yklIL5XvBxEUhUoEQlqXtUfxFuEH97x5l-9nU32urxCkhLMwDuNTKD0en6bpYPKXA8d2C3VU"/>
+<p class="text-sm text-center text-slate-500 italic">Figure 1: Comparative analysis of WebP-2 vs. Traditional Formats in 2026 benchmarks.</p>
+</div>
+<p class="mb-6">
+                            Implementing high-performance images in modern frameworks like Next.js is now more intuitive than ever using the <code>next/image</code> component with custom loaders.
+                        </p>
+<div class="relative group mt-8 mb-12">
+<div class="absolute top-4 right-4 z-10">
+<button class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-white text-xs rounded-lg transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+<span>Copy</span>
+</button>
+</div>
+<pre class="bg-slate-900 text-slate-100 p-6 rounded-xl overflow-x-auto text-sm font-mono leading-relaxed"><code>const convertToWebP = async (buffer) =&gt; {
+  const result = await sharp(buffer)
+    .webp({ quality: 80, effort: 6 })
+    .toBuffer();
+  
+  return {
+    data: result,
+    format: 'webp',
+    size: result.length
+  };
+};</code></pre>
+</div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mt-12 mb-6" id="final-thoughts">Final Thoughts</h2>
+<p class="mb-12">
+                            The future of the web is visual. By mastering these optimization techniques, you're not just improving scores; you're delivering a faster, more inclusive experience for every user globally.
+                        </p>
+</div>
+<!-- Social Share -->
+<div class="border-y border-slate-200 dark:border-slate-800 py-8 mt-12 flex flex-col sm:flex-row items-center justify-between gap-6">
+<span class="font-bold text-slate-900 dark:text-white">Share this article:</span>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white rounded-xl transition-all text-sm font-semibold">
+<span class="material-symbols-outlined text-lg">share</span> Twitter
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white rounded-xl transition-all text-sm font-semibold">
+<span class="material-symbols-outlined text-lg">group</span> LinkedIn
+                            </button>
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white rounded-xl transition-all text-sm font-semibold">
+<span class="material-symbols-outlined text-lg">link</span> Copy Link
+                            </button>
+</div>
+</div>
+</div>
+<!-- Sticky Sidebar TOC -->
+<aside class="hidden lg:block w-64 shrink-0">
+<div class="sticky sticky-toc">
+<h4 class="text-xs font-bold text-slate-400 uppercase tracking-widest mb-6">On this page</h4>
+<nav class="space-y-4">
+<a class="block text-sm font-medium text-primary border-l-2 border-primary pl-4" href="#why-it-matters">Why Image Optimization Matters</a>
+<a class="block text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 border-l-2 border-transparent pl-4" href="#core-web-vitals">Core Web Vitals Impact</a>
+<a class="block text-sm font-medium text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-200 border-l-2 border-transparent pl-4" href="#final-thoughts">Final Thoughts</a>
+</nav>
+<div class="mt-12 p-6 bg-primary/5 rounded-2xl border border-primary/10">
+<h5 class="text-sm font-bold text-slate-900 dark:text-white mb-2">Want faster images?</h5>
+<p class="text-xs text-slate-600 dark:text-slate-400 mb-4 leading-relaxed">Try PixelSwift's AI-driven compression engine today.</p>
+<button class="w-full py-2 bg-primary text-white text-xs font-bold rounded-lg shadow-sm">Compress Now</button>
+</div>
+</div>
+</aside>
+</div>
+</article>
+<!-- Recommended Articles Section -->
+<section class="bg-slate-50 dark:bg-slate-900/30 py-20 mt-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-end justify-between mb-12">
+<div>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-2">More Articles</h2>
+<p class="text-slate-600 dark:text-slate-400">Expand your knowledge with our latest insights.</p>
+</div>
+<a class="hidden sm:flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all" href="#">
+                        View all posts <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<!-- Recommended Card 1 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden group">
+<div class="aspect-video overflow-hidden">
+<img alt="Post 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Modern web dashboard UI design" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcSHwuT-jxFm7FfI_Kos_R6silOj5ojOBIYAk9W8W0ghvS6nti0_wL6UnXgo54ldXdlPi1R8xxMtajkIAQjC-zBf60o2H7Dop5PStMuzAJDYTk3hSfebhP77W37Cc7ArwUwei3AYSMhg3Kt66ALxspVumu7kflgXtQs9GTT26LsqdaJxwkub8_koSVp3CvfRg5ufvmZf1UnyK-wB81fX9VnhyqawBMfZD5S5tIKvsLq0HIXCmVjtVTYJk1XlxfRN7iJRYg2Zn3xUA"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-extrabold uppercase tracking-wider text-primary">Design</span>
+<span class="text-slate-300">•</span>
+<span class="text-xs text-slate-500">5 min read</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">7 SVG Optimization Secrets Every Developer Should Know</h3>
+<div class="flex items-center gap-3 mt-auto">
+<div class="h-6 w-6 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Sarah" data-alt="Avatar of Sarah Jenkins" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtermpX-Mv1_ZJxXtz96HcNj9ggZ4YaUDA90EHMeJEdBUm5S_BV0GoI3NL1h9zMfoU3z7Kl9lvOZcgh3dgSigZ72ue38x8m1QEkxlPy_AI72-fFVbfjS0Tt_tIQLNOLDcDC-GRFs4NiJI7z9LlG3HBCTtMfh1N3zmbqTprb0MIooj2scVv9qAzPjMgop-TgUaVGRWEoxif-W4BBV26cAGs6j1CtDTZZrrZHl5NXPt3cDHFqw2nv-XjuH6ZdH8nF91RVw8bFJDUDv0"/>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Sarah Jenkins</span>
+</div>
+</div>
+</div>
+<!-- Recommended Card 2 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden group">
+<div class="aspect-video overflow-hidden">
+<img alt="Post 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Cloud servers and abstract data visualization" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8SDZgU1URcU5kW357B6-jFFr_m0C8NUIrYkIMaWmLQ-6Bbvzb72cIw4bmvjVKx6EbGQMKro4UJ3IwBqOJDkRUvkg5qHPX6C5y72fFwvvENSH9XPl77_JzUTDIiooJMS3sTopLEuOG1_-mOKiI6bjECIOtf6BjqzoxIO0jKmcGzbRKIscPprUbnwJGo5L9cRMW-kAUU2USWF0R-qfnwHle9IxjbZ3ZmcPTa2B9YYfda004dPgj2mEEpS4EraL_4lOUyz_EJCgVzkE"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-extrabold uppercase tracking-wider text-primary">Productivity</span>
+<span class="text-slate-300">•</span>
+<span class="text-xs text-slate-500">12 min read</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">Setting up a High-Speed Asset Pipeline with PixelSwift API</h3>
+<div class="flex items-center gap-3 mt-auto">
+<div class="h-6 w-6 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Michael" data-alt="Avatar of Michael Ross" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBiuRSrxruVlijzSvwYsfhHRRe50_2_sWv3iHFOpKardm_cOIYTXMc-iVLVjlZEWHDknpWUMws5UGMpK5Tbuip28TDjntjDfETf-Mpswikao52WYltp43fbJfgt2CD7peLVPsRBkOpzXG3Wc66Agp8jSAqgwlZj6ZcTmPvhCXt9sAq0BCNI6BnSseWA4K7MeODGId_wfx9JySgewzMfiwQGxoZcbu1FiOkNjMy0SPWLXZLfXV1hyNgT2rLusTHQkbaMQV8VxtFuQOg"/>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Michael Ross</span>
+</div>
+</div>
+</div>
+<!-- Recommended Card 3 -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden group">
+<div class="aspect-video overflow-hidden">
+<img alt="Post 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Comparison of various image file formats" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuNKMKowWesuJiMTJ8xyUDU-tLxip1A0kpvrjZs2qjjX843Tv5QqVQjHbhZYOIFd0OFhbpgB6a9tb3hnGeu6xERDmMWvPcNQB7C-9UM0r5jupMMHr13e1PGDVNNZ2C0o6iAHd94UufAnfJdiy8jZZt5cCJGul-xehttSqkB9kmLV0KwkSJ-YI3zn6ZseGmlRx3ViVf29P0UEvp9xjWxnw53XK7Go-ZF3OQeyInvMZtL1NMwB9wVgZ55vJr7LDjTEeafaTxvT2P9ac"/>
+</div>
+<div class="p-6">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-[10px] font-extrabold uppercase tracking-wider text-primary">Trends</span>
+<span class="text-slate-300">•</span>
+<span class="text-xs text-slate-500">6 min read</span>
+</div>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-4 group-hover:text-primary transition-colors">AVIF vs WebP: Which Format Should You Choose in 2026?</h3>
+<div class="flex items-center gap-3 mt-auto">
+<div class="h-6 w-6 rounded-full bg-slate-200 overflow-hidden">
+<img alt="Alex" data-alt="Avatar of Alex Chen" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDooEHfbFj4VeExs8bX0Bpx_gTMxf3cIRbvSc6vTC6g6pEFSMhJKv6QjGG924G3Pkr4pP2MMoZoxNw-c1EvHpFqPFt6aXHeN6YgdA79Hqz8P4LTGGOEOW-PhVfbq6btwHCuZicU5Ob1Of3g5SmxJPPBKljmaP6ZeBMYgD8HI2K3ENH35IuBf9sywdejaF8USA-RLXxB8KnQJ2qgWvkkB2IHjkTXI9VcQ2923lyadX6IKaWdmTZEEJPse52KrMbuxzZfQMJmCsHNvpM"/>
+</div>
+<span class="text-xs font-medium text-slate-600 dark:text-slate-400">Alex Chen</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-12 mb-16">
+<div class="col-span-2">
+<div class="flex items-center gap-2 mb-6">
+<div class="bg-primary text-white p-1.5 rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-xl">auto_fix_high</span>
+</div>
+<span class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">PixelSwift</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 max-w-sm leading-relaxed mb-6">
+                        The world's fastest tool for web image optimization. Compress, resize, and convert images with AI-powered precision.
+                    </p>
+<div class="flex items-center gap-4">
+<a class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined">public</span></a>
+<a class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined">code</span></a>
+<a class="h-10 w-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#"><span class="material-symbols-outlined">alternate_email</span></a>
+</div>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-6">Tools</h4>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Image Converter</a></li>
+<li><a class="hover:text-primary" href="#">Bulk Compressor</a></li>
+<li><a class="hover:text-primary" href="#">Resize Canvas</a></li>
+<li><a class="hover:text-primary" href="#">Metadata Remover</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-6">Resources</h4>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">Blog</a></li>
+<li><a class="hover:text-primary" href="#">Documentation</a></li>
+<li><a class="hover:text-primary" href="#">API Reference</a></li>
+<li><a class="hover:text-primary" href="#">Help Center</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-bold text-slate-900 dark:text-white mb-6">Company</h4>
+<ul class="space-y-4 text-sm text-slate-500 dark:text-slate-400">
+<li><a class="hover:text-primary" href="#">About Us</a></li>
+<li><a class="hover:text-primary" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary" href="#">Terms of Service</a></li>
+<li><a class="hover:text-primary" href="#">Contact</a></li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500 dark:text-slate-400">
+<p>© 2026 PixelSwift Inc. All rights reserved.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary" href="#">Status</a>
+<a class="hover:text-primary" href="#">Sitemap</a>
+<a class="hover:text-primary" href="#">Cookies</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

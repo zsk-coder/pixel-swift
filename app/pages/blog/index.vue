@@ -1,0 +1,521 @@
+<script setup lang="ts">
+const { t } = useI18n();
+const localePath = useLocalePath();
+
+// ── SEO ──
+useHead({
+  title: t("seo.blog.title"),
+  meta: [
+    { name: "description", content: t("seo.blog.description") },
+    { property: "og:title", content: t("seo.blog.title") },
+    { property: "og:description", content: t("seo.blog.description") },
+    { property: "og:type", content: "website" },
+  ],
+});
+
+useSchemaOrg([
+  defineWebPage({ "@type": "CollectionPage" }),
+  {
+    "@type": "Blog",
+    name: "PixelSwift Blog",
+    description: t("seo.blog.description"),
+  },
+]);
+
+// ── Mock Data (will be replaced by @nuxt/content queries) ──
+const featuredPost = {
+  slug: "optimize-images-web-performance",
+  title: "How to Optimize Images for Web Performance in 2024",
+  excerpt:
+    "Learn the latest techniques to slash page load times without compromising on visual quality. We cover AVIF, WebP, and lazy loading strategies that actually work.",
+  cover: "/images/blog/featured-cover.png",
+  category: "guides",
+  author: { name: "Alex Chen", avatar: "" },
+  date: "Jan 12, 2024",
+  readTime: 8,
+};
+
+const posts = ref([
+  {
+    slug: "png-vs-webp-format-comparison",
+    title: "PNG vs WebP: Which Format Should You Choose?",
+    excerpt:
+      "A comprehensive deep dive into compression algorithms and browser support for modern image formats.",
+    cover: "/images/blog/format-comparison.png",
+    category: "guides",
+    author: { name: "Sarah Jenkins", avatar: "" },
+    date: "Jan 10, 2024",
+  },
+  {
+    slug: "batch-processing-webp",
+    title: "Introducing Batch Processing for WebP",
+    excerpt:
+      "Now you can convert and resize up to 50 images at once right in your browser. No server required.",
+    cover: "/images/blog/batch-processing.png",
+    category: "productNews",
+    author: { name: "David Lee", avatar: "" },
+    date: "Jan 08, 2024",
+  },
+  {
+    slug: "browser-side-image-processing",
+    title: "Understanding Browser-Side Image Processing",
+    excerpt:
+      "How PixelSwift uses WebAssembly and Canvas APIs to process your files securely without uploading.",
+    cover: "/images/blog/browser-processing.png",
+    category: "techFocus",
+    author: { name: "Alex Chen", avatar: "" },
+    date: "Jan 05, 2024",
+  },
+  {
+    slug: "image-seo-best-practices",
+    title: "Image SEO: Best Practices for 2024",
+    excerpt:
+      "Don't let your images be invisible to search engines. Learn about alt text, sitemaps, and structure.",
+    cover: "/images/blog/seo-images.png",
+    category: "optimization",
+    author: { name: "Emma Stone", avatar: "" },
+    date: "Jan 02, 2024",
+  },
+  {
+    slug: "responsive-images-srcset",
+    title: "Responsive Images: srcset Demystified",
+    excerpt:
+      "Master the art of delivering the perfect image size for every device and screen density.",
+    cover: "/images/blog/responsive-images.png",
+    category: "designTips",
+    author: { name: "Mike Ross", avatar: "" },
+    date: "Dec 28, 2023",
+  },
+  {
+    slug: "color-profiles-web-optimization",
+    title: "Color Profiles and Web Optimization",
+    excerpt:
+      "Why your images look different on the web and how to fix it with proper sRGB conversion.",
+    cover: "/images/blog/color-profiles.png",
+    category: "tutorials",
+    author: { name: "Sarah Jenkins", avatar: "" },
+    date: "Dec 22, 2023",
+  },
+]);
+
+// ── Category filter ──
+const categories = [
+  "allCategories",
+  "tutorials",
+  "optimization",
+  "productNews",
+  "caseStudies",
+  "designTips",
+] as const;
+
+const activeCategory = ref("allCategories");
+
+const filteredPosts = computed(() => {
+  if (activeCategory.value === "allCategories") return posts.value;
+  return posts.value.filter((p) => p.category === activeCategory.value);
+});
+
+// ── Pagination (mock) ──
+const currentPage = ref(1);
+const totalPages = 5;
+
+// Show featured only when an article is manually marked as featured
+// TODO: Check for `featured: true` in article frontmatter when using @nuxt/content
+const showFeatured = computed(() => false);
+
+// ── Mobile infinite scroll ──
+const isMobile = ref(false);
+const loadMoreRef = ref<HTMLElement | null>(null);
+const isLoadingMore = ref(false);
+const hasMore = ref(true);
+
+function loadMore() {
+  if (isLoadingMore.value || !hasMore.value) return;
+  isLoadingMore.value = true;
+  // Simulate loading delay (will be replaced by real API)
+  setTimeout(() => {
+    // Mock: duplicate existing posts with new slugs
+    const morePosts = posts.value.slice(0, 3).map((p, i) => ({
+      ...p,
+      slug: `${p.slug}-page-${Date.now()}-${i}`,
+    }));
+    if (morePosts.length === 0) {
+      hasMore.value = false;
+    } else {
+      posts.value.push(...morePosts);
+    }
+    isLoadingMore.value = false;
+  }, 800);
+}
+
+onMounted(() => {
+  // Detect mobile
+  //   const mq = window.matchMedia("(max-width: 639px)");
+  //   isMobile.value = mq.matches;
+  //   mq.addEventListener("change", (e) => {
+  //     isMobile.value = e.matches;
+  //   });
+  //   // IntersectionObserver for infinite scroll
+  //   nextTick(() => {
+  //     if (!loadMoreRef.value) return;
+  //     const observer = new IntersectionObserver(
+  //       (entries) => {
+  //         if (entries[0]?.isIntersecting && isMobile.value) {
+  //           loadMore();
+  //         }
+  //       },
+  //       { rootMargin: "200px" },
+  //     );
+  //     observer.observe(loadMoreRef.value);
+  //   });
+});
+
+function getCategoryLabel(key: string) {
+  if (key === "allCategories") return t("blog.allCategories");
+  return t(`blog.categories.${key}`);
+}
+
+function getAuthorInitials(name: string) {
+  return name
+    .split(" ")
+    .map((w) => w[0])
+    .join("")
+    .toUpperCase();
+}
+</script>
+
+<template>
+  <div>
+    <!-- ═══ HERO SECTION ═══ -->
+    <section class="hero-section relative overflow-hidden">
+      <!-- Decorative gradient blobs (matching design: blob class) -->
+      <div class="blob -top-20 -left-20"></div>
+      <div
+        class="blob -bottom-20 -right-20"
+        style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%)"
+      ></div>
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <h1
+          class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4"
+        >
+          {{ t("blog.title") }}
+        </h1>
+        <p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          {{ t("blog.subtitle") }}
+        </p>
+      </div>
+    </section>
+
+    <!-- ═══ MAIN CONTENT ═══ -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+      <!-- ── Featured Article ── -->
+      <!-- Exactly matching design: flex flex-col lg:flex-row, min-h-[400px] -->
+      <article
+        v-if="showFeatured"
+        class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-sm mb-4 featured-card group transition-all hover:shadow-lg"
+      >
+        <!-- Image with FEATURED badge overlay on mobile -->
+        <div class="featured-card__image overflow-hidden relative">
+          <img
+            :alt="featuredPost.title"
+            :src="featuredPost.cover"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
+          <!-- Badge overlay on image (mobile only) -->
+          <span
+            class="featured-badge-overlay absolute top-3 left-3 bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-full tracking-wider uppercase shadow-sm"
+          >
+            {{ t("blog.featured") }}
+          </span>
+        </div>
+        <!-- Content -->
+        <div class="featured-card__content flex flex-col">
+          <!-- Desktop-only badge (hidden on mobile since it's on the image) -->
+          <span
+            class="featured-badge hidden sm:inline-flex px-3 py-1 rounded-full text-xs font-bold bg-primary text-white mb-4 uppercase tracking-wider shadow-sm"
+          >
+            {{ t("blog.featured") }}
+          </span>
+          <!-- Category label on mobile -->
+          <span
+            class="text-primary text-[11px] font-bold uppercase tracking-wider sm:hidden"
+          >
+            {{ getCategoryLabel(featuredPost.category) }}
+          </span>
+          <h2
+            class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors"
+          >
+            {{ featuredPost.title }}
+          </h2>
+          <p
+            class="text-slate-600 dark:text-slate-300 line-clamp-2 sm:line-clamp-3 text-sm sm:text-lg leading-relaxed"
+          >
+            {{ featuredPost.excerpt }}
+          </p>
+          <!-- Author row: hidden on mobile per mobile design -->
+          <div class="hidden sm:flex items-center gap-4 mt-8 mb-8">
+            <div
+              class="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-sm ring-2 ring-white dark:ring-slate-800 shadow-sm"
+            >
+              {{ getAuthorInitials(featuredPost.author.name) }}
+            </div>
+            <div>
+              <p class="text-base font-semibold text-slate-900 dark:text-white">
+                {{ featuredPost.author.name }}
+              </p>
+              <p class="text-sm text-slate-500 dark:text-slate-400">
+                {{ featuredPost.date }} •
+                {{ t("blog.minRead", { min: featuredPost.readTime }) }}
+              </p>
+            </div>
+          </div>
+          <!-- CTA: mt-2 pt-4 border-t on mobile matching design, inline on desktop -->
+          <div
+            class="mt-2 pt-4 border-t border-slate-100 dark:border-slate-800 sm:border-0 sm:mt-0 sm:pt-0"
+          >
+            <NuxtLink
+              :to="localePath(`/blog/${featuredPost.slug}`)"
+              class="inline-flex items-center text-primary font-bold text-sm sm:font-semibold sm:text-lg hover:gap-2 transition-all"
+              :aria-label="t('blog.readMore') + ': ' + featuredPost.title"
+            >
+              {{ t("blog.readMore") }}
+              <span
+                class="material-symbols-outlined ml-1 text-[18px] sm:text-xl"
+                aria-hidden="true"
+                >arrow_forward</span
+              >
+            </NuxtLink>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── Category Filter Pills ── -->
+      <!-- Matching design: no border on inactive pills -->
+      <div
+        class="flex items-center gap-2 overflow-x-auto hide-scrollbar mb-4 pb-2"
+      >
+        <button
+          v-for="cat in categories"
+          :key="cat"
+          class="px-5 py-2 rounded-full text-sm font-medium shrink-0 transition-colors"
+          :class="[
+            activeCategory === cat
+              ? 'bg-primary text-white'
+              : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700',
+          ]"
+          @click="activeCategory = cat"
+        >
+          {{ getCategoryLabel(cat) }}
+        </button>
+      </div>
+
+      <!-- ── Article Grid ── -->
+      <!-- Matching design: grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <article
+          v-for="post in filteredPosts"
+          :key="post.slug"
+          class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group"
+        >
+          <NuxtLink
+            :to="localePath(`/blog/${post.slug}`)"
+            class="block"
+            :aria-label="post.title"
+          >
+            <!-- Card Image: fixed 140px on mobile, aspect-video on desktop -->
+            <div class="card-image overflow-hidden">
+              <img
+                :alt="post.title"
+                :src="post.cover"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+            </div>
+            <!-- Card Content -->
+            <div class="card-content flex flex-col">
+              <span
+                class="text-primary text-[11px] font-bold uppercase tracking-wider"
+              >
+                {{ getCategoryLabel(post.category) }}
+              </span>
+              <h3
+                class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-tight line-clamp-2"
+              >
+                {{ post.title }}
+              </h3>
+              <p
+                class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed truncate sm:line-clamp-2 sm:whitespace-normal"
+              >
+                {{ post.excerpt }}
+              </p>
+              <div
+                class="flex items-center gap-2 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800"
+              >
+                <div
+                  class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-700 dark:text-slate-300"
+                >
+                  {{ getAuthorInitials(post.author.name) }}
+                </div>
+                <span class="text-slate-500 text-xs font-medium">
+                  {{ post.author.name }} • {{ post.date }}
+                </span>
+              </div>
+            </div>
+          </NuxtLink>
+        </article>
+      </div>
+
+      <!-- ── Mobile: Infinite scroll sentinel ── -->
+      <div ref="loadMoreRef" class="sm:hidden py-6 flex justify-center">
+        <span v-if="isLoadingMore" class="text-sm text-slate-400">{{
+          t("blog.loading") || "Loading..."
+        }}</span>
+        <span v-else-if="!hasMore" class="text-sm text-slate-400">{{
+          t("blog.noMore") || "No more articles"
+        }}</span>
+      </div>
+
+      <!-- ── Desktop: Pagination (Element Plus) ── -->
+      <div class="mt-12 hidden sm:flex justify-center">
+        <ElPagination
+          v-model:current-page="currentPage"
+          :page-size="6"
+          :total="totalPages * 6"
+          background
+          layout="prev, pager, next"
+        />
+      </div>
+    </main>
+  </div>
+</template>
+
+<style scoped>
+/* ── Decorative blobs (matching design exactly) ── */
+.blob {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  filter: blur(80px);
+  opacity: 0.2;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+/* ── Hide scrollbar for category filters ── */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ── Hero section ── */
+.hero-section {
+  padding-top: 2.5rem;
+  padding-bottom: 2rem;
+}
+
+@media (min-width: 640px) {
+  .hero-section {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+  }
+}
+
+/* ── Featured card layout ── */
+.featured-card {
+  display: flex;
+  flex-direction: column;
+}
+.featured-card__image {
+  aspect-ratio: 16 / 9;
+  max-height: 200px;
+}
+.featured-card__content {
+  padding: 1.25rem;
+  gap: 0.5rem;
+}
+/* Hide overlay badge on desktop, show inline badge instead */
+.featured-badge-overlay {
+  display: block;
+}
+
+@media (min-width: 640px) {
+  .featured-badge-overlay {
+    display: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .featured-card {
+    flex-direction: row;
+    min-height: 400px;
+  }
+  .featured-card__image {
+    width: 50%;
+    aspect-ratio: auto;
+    max-height: none;
+  }
+  .featured-card__content {
+    width: 50%;
+    padding: 3rem 2.5rem;
+    gap: 0;
+    justify-content: center;
+  }
+}
+
+/* ── Most Popular grid (3 columns on md+) ── */
+.popular-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .popular-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ── Featured badge (force fit-content width) ── */
+.featured-badge {
+  width: fit-content;
+  align-self: flex-start;
+}
+
+/* ── Popular post thumbnails (fixed 96px square to prevent large images from expanding) ── */
+.popular-thumb {
+  width: 96px;
+  height: 96px;
+  min-width: 96px;
+  min-height: 96px;
+  flex-shrink: 0;
+}
+
+/* ── Article card image: 140px fixed on mobile, aspect-video on sm+ ── */
+.card-image {
+  height: 140px;
+}
+
+@media (min-width: 640px) {
+  .card-image {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ── Article card content: compact on mobile, spacious on sm+ ── */
+.card-content {
+  padding: 1.25rem;
+  gap: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .card-content {
+    padding: 1.5rem;
+    gap: 0.5rem;
+  }
+}
+</style>

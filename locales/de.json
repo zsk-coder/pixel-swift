@@ -8,7 +8,8 @@
     "about": "Über uns",
     "contact": "Kontakt",
     "language": "Sprache",
-    "theme": "Design"
+    "theme": "Design",
+    "blog": "Blog"
   },
   "cookie": {
     "message": "Wir verwenden Analyse-Cookies, um Ihre Erfahrung zu verbessern.",
@@ -358,6 +359,10 @@
     "contact": {
       "title": "Kontakt",
       "description": "Kontaktieren Sie das PixelSwift-Team. Fragen, Anregungen oder Feedback – wir freuen uns auf Ihre Nachricht."
+    },
+    "blog": {
+      "title": "PixelSwift Blog – Tipps zur Bildoptimierung",
+      "description": "Expertentipps und Tutorials zur Bildoptimierung, Komprimierung und Web-Performance."
     }
   },
   "schema": {
@@ -370,6 +375,27 @@
     },
     "resizer": {
       "featureList": "Bildgröße per Pixel oder Prozent ändern, Drehen und Spiegeln, Seitenverhältnis-Vorlagen, Echtzeit-Vorschau, kein Upload nötig"
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Tipps, Tutorials und Einblicke zur Bildoptimierung für Entwickler, Designer und Kreative.",
+    "featured": "Empfohlen",
+    "readMore": "Weiterlesen",
+    "readFullArticle": "Artikel lesen",
+    "allCategories": "Alle",
+    "mostPopular": "Beliebteste",
+    "minRead": "{min} Min. Lesezeit",
+    "previous": "Zurück",
+    "next": "Weiter",
+    "categories": {
+      "tutorials": "Tutorials",
+      "optimization": "Optimierung",
+      "productNews": "Produktneuheiten",
+      "caseStudies": "Fallstudien",
+      "designTips": "Design-Tipps",
+      "guides": "Leitfäden",
+      "techFocus": "Technik"
     }
   }
 }

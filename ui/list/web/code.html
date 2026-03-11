@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PixelSwift Blog | Image Optimization Insights</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#2563EB",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#0F172A",
+                    },
+                    fontFamily: {
+                        display: ["Inter", "sans-serif"],
+                        sans: ["Inter", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.75rem",
+                    },
+                },
+            },
+        };
+    </script>
+<style>
+        .glass {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(15, 23, 42, 0.7);
+        }
+        .blob {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 50%;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="font-sans bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 transition-colors duration-200">
+<header class="sticky top-0 z-50 glass border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">auto_fix_high</span>
+</div>
+<span class="text-xl font-bold tracking-tight">PixelSwift</span>
+</div>
+<nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Converter</a>
+<a class="hover:text-primary transition-colors" href="#">Compressor</a>
+<a class="hover:text-primary transition-colors" href="#">Resize</a>
+<a class="text-primary" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined">language</span>
+</button>
+<button class="p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors" onclick="document.documentElement.classList.toggle('dark')">
+<span class="material-symbols-outlined dark:hidden">dark_mode</span>
+<span class="material-symbols-outlined hidden dark:block">light_mode</span>
+</button>
+<a class="hidden sm:inline-flex bg-primary text-white px-4 py-2 rounded-lg font-medium text-sm hover:bg-blue-700 transition-colors" href="#">Get Started</a>
+</div>
+</div>
+</header>
+<section class="relative pt-24 pb-16 overflow-hidden">
+<div class="blob -top-20 -left-20"></div>
+<div class="blob -bottom-20 -right-20" style="background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);"></div>
+<div class="max-w-7xl mx-auto px-4 text-center">
+<h1 class="text-4xl sm:text-5xl font-bold text-slate-900 dark:text-white mb-4">Blog</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Tips, tutorials, and insights about image optimization for developers, designers, and creators.</p>
+</div>
+</section>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+<article class="relative bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-md mb-10 flex flex-col lg:flex-row group transition-all hover:shadow-lg lg:h-auto min-h-[400px]">
+<div class="lg:w-[50%] overflow-hidden aspect-[3/2] lg:aspect-auto">
+<img alt="Person working on high quality web graphics" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIfjgMYMM7_PjuKVde2Rfiagw6-68Qsag_D0eX8FOlRijPbsLV3urWyDkWkF69G3cTslwHB7bnBd43RtTsG99UA3Vj2t1cJ2pDdsYRnvH_su0bqcm1HfcluAXysx_DDMMJSO3z0XD0aRnuZ9crqoRXiO0ItFOQ3xAG-hIrFLeKM5AZBa6cIhb1igyDYpwlc_JvF8RK9b_77Z6cRvOqZxaVUoN5V8LKZykjdPZrSfitzd9w0-cW3aRfNsNfXbhLTqtRr7I4s-az57M"/>
+</div>
+<div class="lg:w-[50%] p-8 lg:px-10 lg:py-12 flex flex-col justify-center">
+<span class="inline-flex px-3 py-1 rounded-full text-xs font-bold bg-primary text-white mb-4 w-fit uppercase tracking-wider shadow-sm">Featured</span>
+<h2 class="text-3xl font-bold text-slate-900 dark:text-white mb-4 leading-tight group-hover:text-primary transition-colors">How to Optimize Images for Web Performance in 2024</h2>
+<p class="text-slate-600 dark:text-slate-300 mb-8 line-clamp-3 text-lg">Learn the latest techniques to slash page load times without compromising on visual quality. We cover AVIF, WebP, and lazy loading strategies that actually work.</p>
+<div class="flex items-center gap-4 mb-8">
+<img alt="Alex Chen" class="w-12 h-12 rounded-full ring-2 ring-white dark:ring-slate-800 shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzH9HpGWplXh8kBSfcStromHSkvvxgRghsacGqXEPstKkzinnDDkoal4KlLEoahIkEWoFrY34OBJJZdGSujdV149lojukR1KKKOXBXb6f2d7PXA1V0ZwoQWlRSTff2cIe3PEaSlCE81rpIsdj-RZh4ylk6ji7vTy4MNqCduxVVKJsk9IqNPB-5foV_r5oOE5T0fUsjN7vaqInJM-cLAZAgWv_Y_ALf5gCTYdeNFYV4ctcvKgJnCboIY-zMhRE5RaLM1CWe4fXIhdY"/>
+<div>
+<p class="text-base font-semibold text-slate-900 dark:text-white">Alex Chen</p>
+<p class="text-sm text-slate-500 dark:text-slate-400">Jan 12, 2024 • 8 min read</p>
+</div>
+</div>
+<a class="inline-flex items-center text-primary font-semibold hover:gap-2 transition-all mt-auto text-lg" href="#">
+                    Read more <span class="material-symbols-outlined ml-1 text-xl">arrow_forward</span>
+</a>
+</div>
+</article>
+<div class="flex items-center gap-3 overflow-x-auto hide-scrollbar mb-8 pb-2">
+<button class="px-5 py-2 rounded-full text-sm font-medium bg-primary text-white shrink-0">All</button>
+<button class="px-5 py-2 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0">Tutorials</button>
+<button class="px-5 py-2 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0">Optimization</button>
+<button class="px-5 py-2 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0">Product News</button>
+<button class="px-5 py-2 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0">Case Studies</button>
+<button class="px-5 py-2 rounded-full text-sm font-medium bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors shrink-0">Design Tips</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="aspect-video overflow-hidden">
+<img alt="Abstract comparison of image formats" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAKdzWU9CYO7D4FBqRsdcHJIhzdoUDiBrce_fFuh59LyWEfhQ7_6byGWz6MaflT5UhDPl1xHbLgtyPalyyhkuDLNxW2PCgZXPKvQweEU6_gnFqGZ_M1TKlMR57MCbLyG4ygR4V82z2Kq248cO2bcSOP6TtgSPKUaHfUXDgzvtUsqXsfmUqIlmS7LLQwpVj-LbVyQOQSI8cAK0ZVLscFD7r6d9a1UVnPDniBT4BWN95fm6ocJiRuItTt1gLKwQ-otiVdgxSFyJgqKmk"/>
+</div>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Guides</span>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">PNG vs WebP: Which Format Should You Choose?</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-2">A comprehensive deep dive into compression algorithms and browser support for modern image formats.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<img alt="Sarah J." class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIUm8vUmc1auA_0d_q5t6q6Pq6J5V7fd4vhgy1R_xtkWhu1Ttod-gDI520IK1kn4t0ASbt7FhD76mU3LTWfqMXXxQgz8QA29OdB84Y3m3K6iwQx25sL13BI0TN3kirURk0mWaprcCY-UuoflrmVS_3CChen-KxsKQ94XwZCWivls43NyJEA-1UmEMXMuA9UBk8OGZyuwAKoyosa39qonUSGJguT7D82SuTLtsGMM_zkA141K-AWWYX3BWb3PRXo2s7Z7wKJbMszvE"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Sarah Jenkins</span>
+</div>
+<span class="text-xs text-slate-500">Jan 10, 2024</span>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="aspect-video overflow-hidden">
+<img alt="Coding on a laptop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJn9QvvK-hUMQ23WQLK527hsUtmUExuPBKJ4s0nY9Fzzzmuun_qk3vJ3CRXp82sQ2BHdJILO3d6-v2qRJMpuGclesdXq_jft-_uVtQNYvevlFgOuhlffM8m-GAHH3WINCW_c1V2gEb3k1EJMInwoi4cKu-hAwgtN-d87uAzO9uMLjs70MuTPs5jTd3SNbNICYkYqJn6VV6h-6MOgmZWp7sxNlPkKdbk0iwBoWdqPLRz3O2y6NGR2olhO9vwtg92FzacUwmtRkgKIo"/>
+</div>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Product News</span>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">Introducing Batch Processing for WebP</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-2">Now you can convert and resize up to 50 images at once right in your browser. No server required.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<img alt="Dave L." class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_xNBn826VgEYUF0gdhS_FxRzf3aJUofou4i3DiqDNJyp1t84d11b8gafhawDX6L0VjI0czzT6Ht01bVqfuRX28Qypcf3I5zN47M3fbJY57o66FPQlH_OIXnvB7tTVcHnHxm4YQI1qnymNPjr-ntlGhlcWKPG9nYObcbxCp8A4dgcermVjoI5_PMtGPPa-v35FlhTL8xQFArmljXV0Ohg4j43H6UX9nGmgA5_mJKTn_C0JAVw2xL-8F9EF8iio72Sc7sqnLi64yPU"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">David Lee</span>
+</div>
+<span class="text-xs text-slate-500">Jan 08, 2024</span>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="aspect-video overflow-hidden">
+<img alt="Retro hardware" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWYpjeAJny96QD2nbp-c-hs9DKRDJ9IEDJ1PtWmVPq55pN9qduPOUIGa5un2fWB2UtT9N3IHMmhbC32pEz2vxbi2owFfB-_IamVqeckGDBv_bOOZTSc6W-mrtLYlGWxyMvwKF7VChg3DCuhjSkcUlSw6sA8RW7ziHQ5kQ3TvCplgOX8saieCsQnD1pkQRFUTiUpQz84oR0JIUbrP5eqpiYcgzo7o19YH8qJBj79BGib87IJeIywwjNQrO4Scbw7j1w4RNcSHVHkuw"/>
+</div>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Tech Focus</span>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">Understanding Browser-Side Image Processing</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-2">How PixelSwift uses WebAssembly and Canvas APIs to process your files securely without uploading.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<img alt="Alex C." class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxkZvadv2xzy3EzXgyOcr-1t5JpS2GFLUyvUUwRpQHIWDGVQE9ay5TJ3NNEGoBs9twybJGg5ICWEqmo1YKHw8kOIGkN8Iu9kn-_qq60952SE5xTFm492gJVW3liMbSWDt8pT6RxQ0CYiIiy5ttEz703RyHBxMytgQTOMrPYgtP1nMk0sbyCqQR1Tsz_Woo5A3y1eEepdfIgVDbSWfeJ_xJXw6m60kj7qt4dyb5mFy5WJ18Uw0E5N48HDXk5rugxLmlqc06F9HCbWo"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Alex Chen</span>
+</div>
+<span class="text-xs text-slate-500">Jan 05, 2024</span>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="aspect-video overflow-hidden">
+<img alt="Data visualization dashboard" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDReZiiPzaQJnJ8i3ZVAXa5XxGn3W-Y074NxuEHfXYYUAZ4R3wl865foTldPO2ra4NUOTSpHyHTM_hDxgJtuZp9B4ePAmOmuMqHYK0f4XIrXqzOFK5ZNPdOIrq9jz9-EWlqfZCDAzq43J4HYpko8KFl3cq2mNv7kZRLG0ol9SA9z7-2pGDnNpBEeZpTBS6BUPS1cpUUyTEia4TYe1QiC85PECyGRsYEoJwIqjNrxtpDBSvs1bl0t6Dtq4bhQv_Lwlt7feMyeKE3Img"/>
+</div>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Optimization</span>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">Image SEO: Best Practices for 2024</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-2">Don't let your images be invisible to search engines. Learn about alt text, sitemaps, and structure.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<img alt="Emma S." class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsefD_VL0_CWMlFQvqQouPK9UgJDa7OP2wgaEYO5JSTxaRt4bFn-28DiuuZn7qUTXCq1D7LKyfHEY22V8q86TCdLvxZYTBBGbsm6gWa51fmmSCDo0YvkrWOadp3FmvT4q2AhR2DOqpZFGm3dAkBLwKfgVYoOLK2OkVQ8a5Cevd2oC93Dk6XpJwI0FwJafb2VkQ4eDgI9PiFC4Vsha-esKDLrggBINQt6IxvghKbpn2pHWyWdueiLwsCTcnGDIU-n-fMq2Insc2kno"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Emma Stone</span>
+</div>
+<span class="text-xs text-slate-500">Jan 02, 2024</span>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="Mobile app interface" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdkuG3abB4HMcUMAEweQk_j6616xBlAxPzHafhCC_3b51UpPpIXvnlpxr9DMqCwM8pZ3ry9cOL-dhDT0enxFMYDO_Bly3k80GXA9FTj_rGtql-39zd7bBnuQg4rJL4VniW94EB2HvY5lwq704PZyWCphvu8ZHszo7-brXKNDWZM80EAlhyia2YLVzyB8iSTS3GRo9e26YxVIGlKx3tNls8KH5UlB_Skj-SXXPbuA2D3FLV2d3eplXlC4iS-jrkv2KME3en9R8pUYs"/>
+</div>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Design Tips</span>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">Responsive Images: srcset Demystified</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-2">Master the art of delivering the perfect image size for every device and screen density.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<img alt="Mike R." class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0dX1l_FXmHXFlhTS9Zz0fNMuMVQW47VBsoN-qx1FAgZZ3HsX7HtWqIwmBaGrBLRjOirt2D_-_wbmJKl4-WSrdSWjGjJcyX5PSbjlatVviuebZL_dvFjYiZCDUXMeYLW9d8pSyN0gXsL0oaamHYL5gbT1Z5WwdF83PthO-Ysbzu2QvfK-kIsW6QMk5sBx4XUeEWznXYYTnvBr8YxJgrJWHp_qOpqJg6ljrwa74iwCIpDYFrYnbhR5icJHe5TOsP2I8es_OiYhI48k"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Mike Ross</span>
+</div>
+<span class="text-xs text-slate-500">Dec 28, 2023</span>
+</div>
+</div>
+</article>
+<article class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group">
+<div class="aspect-video overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img alt="Colors and palettes" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCm5CFXYu_urp5rnsnqxt0U-3H5ht4PsPHgZGQJ4c9f0iZOH91ZwemMQR8c9YaFq68h6Q7E3L8qUf22bbwQEUC5odL1vGAVWFJ1IQy8I-eGFyvjORRFE_o9XbY6KukbAX6ANzw3LJwMTtPYXvykxyKBcnexGLK5XnRPFYLLVLTAQx02cgp-beiTNkLKak3w-hnL3uU8sLh3j2tg1aaWNHHEzLGoLHRxeU2495TqYMHdLYF1xuYp4SZerb8pIc7gs8BElmQn--MevA"/>
+</div>
+<div class="p-6">
+<span class="text-xs font-bold text-primary uppercase tracking-wider mb-2 block">Tutorials</span>
+<h3 class="text-xl font-bold text-slate-900 dark:text-white mb-2 line-clamp-2">Color Profiles and Web Optimization</h3>
+<p class="text-slate-600 dark:text-slate-400 text-sm mb-6 line-clamp-2">Why your images look different on the web and how to fix it with proper sRGB conversion.</p>
+<div class="flex items-center justify-between mt-auto">
+<div class="flex items-center gap-2">
+<img alt="Sarah J." class="w-8 h-8 rounded-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIUm8vUmc1auA_0d_q5t6q6Pq6J5V7fd4vhgy1R_xtkWhu1Ttod-gDI520IK1kn4t0ASbt7FhD76mU3LTWfqMXXxQgz8QA29OdB84Y3m3K6iwQx25sL13BI0TN3kirURk0mWaprcCY-UuoflrmVS_3CChen-KxsKQ94XwZCWivls43NyJEA-1UmEMXMuA9UBk8OGZyuwAKoyosa39qonUSGJguT7D82SuTLtsGMM_zkA141K-AWWYX3BWb3PRXo2s7Z7wKJbMszvE"/>
+<span class="text-xs font-medium text-slate-700 dark:text-slate-300">Sarah Jenkins</span>
+</div>
+<span class="text-xs text-slate-500">Dec 22, 2023</span>
+</div>
+</div>
+</article>
+</div>
+<div class="mt-12 flex items-center justify-center gap-4 text-sm font-medium">
+<button class="flex items-center gap-1 text-slate-400 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">west</span> Previous
+            </button>
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 flex items-center justify-center bg-primary text-white rounded-lg">1</span>
+<a class="w-8 h-8 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">2</a>
+<a class="w-8 h-8 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">3</a>
+<span class="text-slate-400 px-2">...</span>
+<a class="w-8 h-8 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors" href="#">5</a>
+</div>
+<a class="flex items-center gap-1 text-primary hover:gap-2 transition-all" href="#">
+                Next <span class="material-symbols-outlined text-sm">east</span>
+</a>
+</div>
+</main>
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<hr class="border-t border-slate-200 dark:border-slate-800"/>
+</div>
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
+<div class="mb-8">
+<h3 class="text-2xl font-bold text-slate-900 dark:text-white">Most Popular</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+<a class="flex gap-4 group" href="#">
+<img alt="Miniature abstract" class="w-24 h-24 rounded-xl object-cover shadow-sm group-hover:shadow-md transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPe6RrmvkotOhgitj9TohUnIWi8wNSZTmqdsO8lPF7-CX4mwFL-wKGRHDlbqlYc-_xOKLRgavt7rkquRew845jbJKkpDiAbCCEW6DsjbpTg2F9oRQNs4FwDICNOPY11R4WjlaHxitgmXP53q7LOjdZTYkCbN9hE1eqaDoh7gqA7TrKuyuLTcGAKHYGXLzLJyGQm0Msn7fCSq_ipGXtOZBoxw6TW4NDbOLR29Y_BuIkwJYRy_ky72V2ycjCo69jHByHRrdtq4MWZX0"/>
+<div class="flex flex-col justify-center">
+<h4 class="text-base font-semibold text-slate-900 dark:text-white line-clamp-2 group-hover:text-primary transition-colors mb-2">5 Tools for Fast Image Resizing in 2024</h4>
+<span class="text-sm text-slate-500">Jan 15, 2024</span>
+</div>
+</a>
+<a class="flex gap-4 group" href="#">
+<img alt="Tech setup" class="w-24 h-24 rounded-xl object-cover shadow-sm group-hover:shadow-md transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAe9dko2UW1f7D8zOyGpl6GjtzRiNuvi5FioOjfOIUq37ijOn8TSUAg2UEcF_2mLmLAzoZXC4smN1Cl7j_-Z_oDvdlb5F2TDAWQL2afQL9vltG6sSK4BeRGd9IKHh1M_5y_ER3OaLsMFwHqlfggFRyRSblUUMSqg36xEKpTfwqxkOTkmnLHcjTgql3TrPTQOyo_Nu7YTEdVCvbCEccWBc8EFqaauP2oIHdY_IIxplClDnvaPICmRkEkJc2FkmsK1V6lQ3NcRwDBXLU"/>
+<div class="flex flex-col justify-center">
+<h4 class="text-base font-semibold text-slate-900 dark:text-white line-clamp-2 group-hover:text-primary transition-colors mb-2">Why AVIF is the Future of the Web</h4>
+<span class="text-sm text-slate-500">Dec 20, 2023</span>
+</div>
+</a>
+<a class="flex gap-4 group" href="#">
+<img alt="Collaboration" class="w-24 h-24 rounded-xl object-cover shadow-sm group-hover:shadow-md transition-all" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZ-AMc9sW6KKRFWuML13aquxjk8jQ0t6jUeEp9RtyWoI8lQgEqeJr8Yos8AJwMNJyqFURu1wLHLDgRWqKpxxnBEtUrY9PoHY5CTysLHyRH0bO8cOaasj8SaBxulssbViIOXJ15BXgshaowiv67YwgZjS4jIGy9ILGy3WwVGlwYbS-l4k7nOWprwlXuHm1FUxMZKb8bdXUhRBhDEWyaaJo-H58o0YBU2REEfnGbbQjxpg6lDMafflrxZCdYSJfHO4Ri-7XNNA5vsrI"/>
+<div class="flex flex-col justify-center">
+<h4 class="text-base font-semibold text-slate-900 dark:text-white line-clamp-2 group-hover:text-primary transition-colors mb-2">How We Built a Serverless Image Tool</h4>
+<span class="text-sm text-slate-500">Dec 12, 2023</span>
+</div>
+</a>
+</div>
+</section>
+<footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8">
+<div class="flex items-center gap-2">
+<div class="bg-primary p-1.5 rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">auto_fix_high</span>
+</div>
+<span class="text-xl font-bold tracking-tight">PixelSwift</span>
+</div>
+<nav class="flex gap-8 text-sm font-medium text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Use</a>
+<a class="hover:text-primary transition-colors" href="#">Contact Us</a>
+</nav>
+<div class="flex gap-4">
+<a class="p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.84 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+</a>
+<a class="p-2 bg-slate-100 dark:bg-slate-800 rounded-full text-slate-600 dark:text-slate-400 hover:bg-primary hover:text-white transition-all" href="#">
+<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+</a>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-100 dark:border-slate-800 text-center text-xs text-slate-400">
+                © 2024 PixelSwift. All rights reserved. Locally processed, globally accessible.
+            </div>
+</div>
+</footer>
+</body></html>

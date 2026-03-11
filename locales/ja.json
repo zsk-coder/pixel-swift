@@ -8,7 +8,8 @@
     "about": "概要",
     "contact": "お問い合わせ",
     "language": "言語",
-    "theme": "テーマ"
+    "theme": "テーマ",
+    "blog": "ブログ"
   },
   "cookie": {
     "message": "より良い体験のために、分析用の Cookie を使用しています。",
@@ -358,6 +359,10 @@
     "contact": {
       "title": "お問い合わせ",
       "description": "PixelSwift チームへのお問い合わせ。ご質問、ご提案、フィードバックなど、お気軽にご連絡ください。"
+    },
+    "blog": {
+      "title": "PixelSwiftブログ – 画像最適化のヒントとチュートリアル",
+      "description": "画像最適化、圧縮、Webパフォーマンスに関する専門的なヒントとチュートリアル。"
     }
   },
   "schema": {
@@ -370,6 +375,27 @@
     },
     "resizer": {
       "featureList": "ピクセルまたはパーセントで画像サイズを変更、回転・反転、アスペクト比プリセット、リアルタイムプレビュー、アップロード不要"
+    }
+  },
+  "blog": {
+    "title": "ブログ",
+    "subtitle": "開発者、デザイナー、クリエイター向けの画像最適化のヒント、チュートリアル、インサイト。",
+    "featured": "注目",
+    "readMore": "続きを読む",
+    "readFullArticle": "全文を読む",
+    "allCategories": "すべて",
+    "mostPopular": "人気記事",
+    "minRead": "{min}分で読める",
+    "previous": "前へ",
+    "next": "次へ",
+    "categories": {
+      "tutorials": "チュートリアル",
+      "optimization": "最適化",
+      "productNews": "製品ニュース",
+      "caseStudies": "ケーススタディ",
+      "designTips": "デザインのヒント",
+      "guides": "ガイド",
+      "techFocus": "テック"
     }
   }
 }

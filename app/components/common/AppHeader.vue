@@ -58,6 +58,7 @@ const navItems = computed(() => [
   { label: t("nav.converter"), to: localePath("/converter") },
   { label: t("nav.compressor"), to: localePath("/compress-image") },
   { label: t("nav.resizer"), to: localePath("/resize-image") },
+  { label: t("nav.blog"), to: localePath("/blog") },
 ]);
 
 const availableLocales = computed(() =>

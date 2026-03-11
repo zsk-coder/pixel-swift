@@ -36,14 +36,14 @@
 
 - [x] `https://pixelswift.site/es/compress-image`
 - [x] `https://pixelswift.site/ja/compress-image`
-- [ ] `https://pixelswift.site/pt/compress-image`
-- [ ] `https://pixelswift.site/ko/compress-image`
-- [ ] `https://pixelswift.site/pt/converter`
-- [ ] `https://pixelswift.site/ko/converter`
-- [ ] `https://pixelswift.site/es/resize-image`
-- [ ] `https://pixelswift.site/ja/resize-image`
-- [ ] `https://pixelswift.site/pt/resize-image`
-- [ ] `https://pixelswift.site/ko/resize-image`
+- [x] `https://pixelswift.site/pt/compress-image`
+- [x] `https://pixelswift.site/ko/compress-image`
+- [x] `https://pixelswift.site/pt/converter`
+- [x] `https://pixelswift.site/ko/converter`
+- [x] `https://pixelswift.site/es/resize-image`
+- [x] `https://pixelswift.site/ja/resize-image`
+- [x] `https://pixelswift.site/pt/resize-image`
+- [x] `https://pixelswift.site/ko/resize-image`
 
 ---
 

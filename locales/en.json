@@ -4,6 +4,7 @@
     "converter": "Converter",
     "compressor": "Compressor",
     "resizer": "Resize",
+    "blog": "Blog",
     "tools": "Tools",
     "about": "About",
     "contact": "Contact",
@@ -77,6 +78,39 @@
       "a6": "Yes. PixelSwift is fully responsive and works on all devices — iPhone, iPad, Android phones and tablets. The full functionality is available on mobile browsers.",
       "q7": "How is my data kept safe?",
       "a7": "Your files never leave your device. Everything is processed right here in your browser — nothing is uploaded to any server. It's like editing on your own computer, but in a web page."
+    }
+  },
+  "blog": {
+    "title": "Blog",
+    "subtitle": "Tips, tutorials, and insights about image optimization for developers, designers, and creators.",
+    "featured": "Featured",
+    "readMore": "Read more",
+    "readFullArticle": "Read Full Article",
+    "allCategories": "All",
+    "mostPopular": "Most Popular",
+    "minRead": "{min} min read",
+    "previous": "Previous",
+    "next": "Next",
+    "categories": {
+      "tutorials": "Tutorials",
+      "optimization": "Optimization",
+      "productNews": "Product News",
+      "caseStudies": "Case Studies",
+      "designTips": "Design Tips",
+      "guides": "Guides",
+      "techFocus": "Tech Focus"
+    },
+    "detail": {
+      "onThisPage": "On this page",
+      "share": "Share this article:",
+      "copyLink": "Copy Link",
+      "copy": "Copy",
+      "ctaTitle": "Want faster images?",
+      "ctaDesc": "Try PixelSwift's AI-driven compression engine today.",
+      "compressNow": "Compress Now",
+      "moreArticles": "More Articles",
+      "moreArticlesDesc": "Expand your knowledge with our latest insights.",
+      "viewAll": "View all posts"
     }
   },
   "upload": {
@@ -358,6 +392,10 @@
     "contact": {
       "title": "Contact Us",
       "description": "Get in touch with the PixelSwift team. Questions, suggestions, or feedback – we'd love to hear from you."
+    },
+    "blog": {
+      "title": "PixelSwift Blog – Image Optimization Tips & Tutorials",
+      "description": "Expert tips, tutorials and insights on image optimization, compression, and web performance. Learn to optimize images for faster websites."
     }
   },
   "schema": {

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PixelSwift Blog</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563eb",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        .scrollbar-hide {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-slate-900 font-display min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden mx-auto max-w-[375px] bg-white shadow-2xl">
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-slate-200 bg-white/95 backdrop-blur-sm px-4 py-3">
+<div class="flex items-center gap-2 text-black">
+<div class="size-6 text-primary">
+<svg fill="currentColor" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M42.4379 44C42.4379 44 36.0744 33.9038 41.1692 24C46.8624 12.9336 42.2078 4 42.2078 4L7.01134 4C7.01134 4 11.6577 12.932 5.96912 23.9969C0.876273 33.9029 7.27094 44 7.27094 44L42.4379 44Z"></path>
+</svg>
+</div>
+<h2 class="text-lg font-bold tracking-tight">PixelSwift</h2>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center size-9 rounded-full text-slate-600 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[22px]">search</span>
+</button>
+<button class="flex items-center justify-center size-9 rounded-full text-slate-600 hover:bg-slate-100 transition-colors">
+<span class="material-symbols-outlined text-[22px]">menu</span>
+</button>
+</div>
+</header>
+<main class="flex-1 pb-10">
+<section class="relative px-4 py-16 flex flex-col items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0 opacity-10" style="background-image: radial-gradient(circle at 50% 0%, #2563eb 0%, transparent 70%);"></div>
+<div class="relative z-10 flex flex-col items-center gap-3 text-center">
+<h1 class="text-4xl font-black text-slate-900 tracking-tight">Blog</h1>
+<p class="text-slate-600 text-[15px] max-w-[320px] leading-relaxed">Tips, tutorials, and insights about image optimization for developers, designers, and creators.</p>
+</div>
+</section>
+<section class="px-4 pb-8">
+<div class="flex flex-col rounded-xl bg-white border border-slate-200 overflow-hidden shadow-sm">
+<div class="relative w-full aspect-[16/9] bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC1lER7nzmQIJBxBlkJ4ykitNBB2ML5GEmy9JV-UPngvBordRdjM2Z3Er238X1SEYJGXJ3eGj4Y4EprTMzFZN9DHCV91KzJIMsXnGRGOrs9BydHZ81UkIFkI3SFTX6y9f2GcmR5BU0T92slKJdfp3yCmlSTJmMHg_TmKnzz__AardutsbYaz0hXA4W6PHpBJfTpqup5g3sBbpEk__TiXhttUfH2NI5oOE3VEbck5n9lkyXoLCbeaX_SVHt-qL-yB57_aYMYD_JSjJE");'>
+<div class="absolute top-3 left-3 bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-full tracking-wider uppercase shadow-sm">FEATURED</div>
+</div>
+<div class="flex flex-col gap-2 p-5">
+<span class="text-primary text-[11px] font-bold uppercase tracking-wider">Technology</span>
+<h3 class="text-xl font-bold text-slate-900 leading-tight">The Future of AI Image Processing</h3>
+<p class="text-slate-600 text-sm leading-relaxed line-clamp-2">Discover how machine learning is revolutionizing the way we edit and enhance digital images in real-time.</p>
+<div class="mt-2 pt-4 border-t border-slate-100">
+<button class="text-primary text-sm font-bold flex items-center gap-1 hover:text-blue-700 transition-colors">Read Full Article <span class="material-symbols-outlined text-[18px]">arrow_forward</span></button>
+</div>
+</div>
+</div>
+</section>
+<section class="py-2 mb-4 px-4">
+<div class="flex gap-2 overflow-x-auto pb-2 scrollbar-hide snap-x">
+<button class="snap-start shrink-0 flex h-9 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-white shadow-sm">All</button>
+<button class="snap-start shrink-0 flex h-9 items-center justify-center rounded-full bg-slate-100 border border-slate-200 px-5 text-sm font-medium text-slate-600">Tutorials</button>
+<button class="snap-start shrink-0 flex h-9 items-center justify-center rounded-full bg-slate-100 border border-slate-200 px-5 text-sm font-medium text-slate-600">Optimization</button>
+<button class="snap-start shrink-0 flex h-9 items-center justify-center rounded-full bg-slate-100 border border-slate-200 px-5 text-sm font-medium text-slate-600">Product News</button>
+<button class="snap-start shrink-0 flex h-9 items-center justify-center rounded-full bg-slate-100 border border-slate-200 px-5 text-sm font-medium text-slate-600">Case Studies</button>
+<button class="snap-start shrink-0 flex h-9 items-center justify-center rounded-full bg-slate-100 border border-slate-200 px-5 text-sm font-medium text-slate-600">Design Tips</button>
+</div>
+</section>
+<section class="px-4 flex flex-col gap-6">
+<article class="flex flex-col rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+<div class="w-full h-[140px] bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCVXR_beJalVmitrXPIuLiM_2CjW6RgIBPtmrMk-Vou2GH2BBhQBOPrR5x-fwPKaWXmwVzOll6AjU8YKqnG8GGFsCajuZbtpUqfO7Arh5FTp1roy9xRHuQp6NkdVG95mNgAYEzj-qywEI5SpC0fb56ybz5hUeLb8KKbbo-hfqai5KMkP2RTZi5hiQR1utIVpekCwUBbJ9kwZdPaouZi8v-3E50sJlCyYefCz1mYjPPDpstWgZoTEIhrNUtBeK44LJ3aM4XE6m4TrCc");'></div>
+<div class="p-5 flex flex-col gap-2">
+<span class="text-primary text-[11px] font-bold uppercase tracking-wider">Engineering</span>
+<h4 class="text-lg font-bold text-slate-900 leading-tight">Mastering Batch Processing</h4>
+<p class="text-slate-600 text-sm truncate leading-relaxed">Learn how to automate your image editing tasks efficiently to save hours of manual work.</p>
+<div class="flex items-center gap-2 mt-2 pt-4 border-t border-slate-100">
+<div class="size-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-700 font-bold">JD</div>
+<span class="text-slate-500 text-xs font-medium">John Doe • Oct 12</span>
+</div>
+</div>
+</article>
+<article class="flex flex-col rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+<div class="w-full h-[140px] bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuByuQLeZWN0Z8bbJKBglW-xIJ7xJT1MVfUSaa-5tmVSiKF18Ah8pCvdagjM_1NSjkYxMcXM6h-G9EP-aP71VK5DRwv2WdFplnhBh5qL6_jg90wsAmE1PzDJvaoiqODoWBXnXeVYcVD8ZKuNXwP9v06wEfkfehqjVGtEbL84MNW1u6utBKEDcQqhFZem1Xktf1t8lcLJG2KUAC7ZM_4YD-5fPL8a2UDf3PWNR2_hz8-TxQBari2rjIrDzV6x3VsGC0u2_MIzKmavTfg");'></div>
+<div class="p-5 flex flex-col gap-2">
+<span class="text-primary text-[11px] font-bold uppercase tracking-wider">Design</span>
+<h4 class="text-lg font-bold text-slate-900 leading-tight">Color Grading Secrets Unveiled</h4>
+<p class="text-slate-600 text-sm truncate leading-relaxed">A comprehensive guide to professional color correction techniques for dramatic effects.</p>
+<div class="flex items-center gap-2 mt-2 pt-4 border-t border-slate-100">
+<div class="size-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-700 font-bold">JS</div>
+<span class="text-slate-500 text-xs font-medium">Jane Smith • Oct 10</span>
+</div>
+</div>
+</article>
+<article class="flex flex-col rounded-xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+<div class="w-full h-[140px] bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB6qOcqK1NOoCe97-B-76Q0wD3n1swuYqPdqjl3y2djosxWpir38nfFqYv4GnGHzOkyBJU95ONExkBq9SNA7FDq5HJOsAsUQz6_kTZGlYXIy4elHubQjeHL31MDZvet4ph0AUKXrxm4q1E3hfCxL8VEcExzwaJQQbt-Uv0SfJWxEPVvUDDKYOCYRv-jYz6qwA_QXlP_I5xynv7UgbYkC69B3PuGrOvCAanQMFU-CUokc-pfHP4Y0RIIBd0EBG2pdYLSLl0mvKZp3X8");'></div>
+<div class="p-5 flex flex-col gap-2">
+<span class="text-primary text-[11px] font-bold uppercase tracking-wider">Tutorials</span>
+<h4 class="text-lg font-bold text-slate-900 leading-tight">Top 5 Workflow Setups</h4>
+<p class="text-slate-600 text-sm truncate leading-relaxed">Boost your productivity with these essential setups optimized for high-volume shoots.</p>
+<div class="flex items-center gap-2 mt-2 pt-4 border-t border-slate-100">
+<div class="size-6 rounded-full bg-slate-200 flex items-center justify-center text-[10px] text-slate-700 font-bold">AL</div>
+<span class="text-slate-500 text-xs font-medium">Ada Lovelace • Oct 5</span>
+</div>
+</div>
+</article>
+</section>
+<section class="p-4 mt-8 border-t border-slate-200 bg-slate-50/50">
+<h3 class="text-lg font-bold text-slate-900 mb-5">Most Popular</h3>
+<div class="flex flex-col gap-5">
+<div class="flex gap-4 items-center bg-white p-2 rounded-lg border border-slate-100 shadow-sm">
+<div class="size-16 rounded-lg bg-cover bg-center shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDBI2jUo5Lsbs4NhxYbeDTRRJsXlNhMgRmqRCItGFJd2QTqvu_5gngXuhMWbqIJu0xUFK1lI6zELeGfpA1fEwMA3GEprb2sZExMUt1eqUPMVVXLKlUmjK-p6Lbv_8ieVdK0EkhRKRaIry2MXZAhtmA3258AB3KIxrc0vpDOFfhj2ru9mwJaU9g89ZUoJ9RFlkXVNGus8CN0yhti0wD29NE2LTbzm1_ZvflV4sLR_6cYJoeir9b69JKkvyOFEHq_wacPf_JWZKoh9cs");'></div>
+<div class="flex flex-col">
+<h5 class="text-[13px] font-bold text-slate-900 leading-tight line-clamp-2">Understanding Image Compression Settings</h5>
+<span class="text-slate-500 text-[11px] mt-1 font-medium">5 min read</span>
+</div>
+</div>
+<div class="flex gap-4 items-center bg-white p-2 rounded-lg border border-slate-100 shadow-sm">
+<div class="size-16 rounded-lg bg-cover bg-center shrink-0" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuA1PPYQCiVokU5KOa8dO-hRVlbm2lsaulp73tZiAiG2NZ5dqExIN9xb8Z1_VUob4wOyK7h2FVHneyiX_BuGFw3tR5JE00t9W4_aFr_vYy8i-4c-FR9k__qwS8NJq7aRjNvzfP_FbjeMLVKCVSuslvflfCgYU9og5Forc6Kx1rbnj1DPIskvcz-fkD3cnHWq6XLmDTLm0MNAmDSyelC5eIuxrD4_RhX664TcARDc2f_i8sRXME8k_MPznsPqTgj3nJTooCXag0WKRwA");'></div>
+<div class="flex flex-col">
+<h5 class="text-[13px] font-bold text-slate-900 leading-tight line-clamp-2">The Ultimate Guide to RAW Processing</h5>
+<span class="text-slate-500 text-[11px] mt-1 font-medium">8 min read</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>
