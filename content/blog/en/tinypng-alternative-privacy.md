@@ -6,6 +6,11 @@ author: "Alex Chen"
 date: "2026-03-10"
 readTime: 10
 cover: "/images/blog/tinypng-alternative.png"
+images:
+  cover: "~/assets/images/blog/tinypng-alternative.png"
+  flow: "~/assets/images/blog/server-vs-local-flow.png"
+  comparison: "~/assets/images/blog/compression-comparison.png"
+  privacy: "~/assets/images/blog/privacy-shield.png"
 featured: true
 ---
 
@@ -33,6 +38,8 @@ Beyond privacy, the upload-download cycle has practical drawbacks:
 - **API rate limits**: Developers using the API get 500 free compressions per month.
 - **Latency**: Every image requires a round trip — upload, process, download.
 
+![Server-side upload vs client-side local processing workflow comparison](/images/blog/server-vs-local-flow.png)
+
 ## How PixelSwift Works: The Client-Side Approach
 
 PixelSwift takes a fundamentally different approach. Instead of sending your images to a remote server, it brings the compression engine **to your browser**.
@@ -54,6 +61,8 @@ With client-side processing:
 - **GDPR compliance is built-in.** Since no personal data is transmitted, there's no data processing to declare.
 - **Corporate firewalls aren't an issue.** PixelSwift works even on air-gapped networks.
 - **You maintain full custody.** Your files are never in someone else's hands, even temporarily.
+
+![Client-side processing keeps your data protected within your browser](/images/blog/privacy-shield.png)
 
 ## Head-to-Head: TinyPNG vs PixelSwift
 
@@ -80,6 +89,8 @@ Both tools deliver excellent compression. In our benchmarks across 100 test imag
 - **JPEG compression**: TinyPNG averaged 68% reduction; PixelSwift averaged 65% reduction at quality 80.
 - **PNG compression**: TinyPNG averaged 72% reduction; PixelSwift averaged 70% reduction with OxiPNG WASM.
 - **WebP output**: PixelSwift supports direct [WebP conversion](/converter) with an additional 25-30% size reduction over JPEG.
+
+![Compression quality benchmark: TinyPNG vs PixelSwift across JPEG, PNG, and WebP formats](/images/blog/compression-comparison.png)
 
 The difference in raw compression ratio is marginal — typically 2-3%. But PixelSwift compensates by offering **format conversion** as part of the workflow. Converting a PNG to WebP via PixelSwift often yields better results than compressing the PNG with TinyPNG.
 

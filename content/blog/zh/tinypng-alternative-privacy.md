@@ -6,6 +6,11 @@ author: "Alex Chen"
 date: "2026-03-10"
 readTime: 10
 cover: "/images/blog/tinypng-alternative.png"
+images:
+  cover: "~/assets/images/blog/tinypng-alternative.png"
+  flow: "~/assets/images/blog/server-vs-local-flow.png"
+  comparison: "~/assets/images/blog/compression-comparison.png"
+  privacy: "~/assets/images/blog/privacy-shield.png"
 featured: true
 ---
 
@@ -33,6 +38,8 @@ TinyPNG 采用**服务器端压缩**流程，当你拖入图片时：
 - **API 频次限制**：开发者 API 每月仅 500 次免费压缩。
 - **延迟**：每张图片都需要一个上传→处理→下载的完整往返。
 
+![服务器上传模式 vs 本地处理模式的工作流对比](/images/blog/server-vs-local-flow.png)
+
 ## PixelSwift 的工作原理：本地处理
 
 PixelSwift 采用截然不同的思路——不把图片发送到远程服务器，而是把压缩引擎**带到你的浏览器里**。
@@ -54,6 +61,8 @@ PixelSwift 采用截然不同的思路——不把图片发送到远程服务器
 - **GDPR 合规是天然的。** 由于没有个人数据被传输，无需进行数据处理声明。
 - **企业防火墙不是障碍。** PixelSwift 甚至可以在断网环境下工作。
 - **你拥有完全的控制权。** 你的文件永远不会落入他人手中，哪怕只是暂时的。
+
+![客户端处理让你的数据始终在浏览器中受到保护](/images/blog/privacy-shield.png)
 
 ## 正面对决：TinyPNG vs PixelSwift
 
@@ -79,6 +88,8 @@ PixelSwift 采用截然不同的思路——不把图片发送到远程服务器
 - **JPEG 压缩**：TinyPNG 平均缩减 68%；PixelSwift 在质量 80 下平均缩减 65%。
 - **PNG 压缩**：TinyPNG 平均缩减 72%；PixelSwift 使用 OxiPNG WASM 平均缩减 70%。
 - **WebP 输出**：PixelSwift 支持直接 [WebP 转换](/converter)，相比 JPEG 可额外节省 25-30%。
+
+![压缩质量基准测试：TinyPNG 与 PixelSwift 在 JPEG、PNG、WebP 格式上的对比](/images/blog/compression-comparison.png)
 
 两者的压缩率差异微乎其微——通常只有 2-3%。但 PixelSwift 额外提供了**格式转换**功能。通过 PixelSwift 将 PNG 转换为 WebP，往往比用 TinyPNG 直接压缩 PNG 效果更好。
 

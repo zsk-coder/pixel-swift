@@ -99,6 +99,18 @@
       "designTips": "设计技巧",
       "guides": "指南",
       "techFocus": "技术聚焦"
+    },
+    "detail": {
+      "onThisPage": "本页目录",
+      "share": "分享本文：",
+      "copyLink": "复制链接",
+      "copy": "复制",
+      "ctaTitle": "想要更快的图片？",
+      "ctaDesc": "立即体验 PixelSwift 的 AI 驱动压缩引擎。",
+      "compressNow": "立即压缩",
+      "moreArticles": "更多文章",
+      "moreArticlesDesc": "通过我们的最新洞察拓展您的知识。",
+      "viewAll": "查看所有文章"
     }
   },
   "upload": {
