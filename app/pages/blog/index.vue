@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n();
+const { t, locale } = useI18n();
 const localePath = useLocalePath();
 
 // ── SEO ──
@@ -22,81 +22,22 @@ useSchemaOrg([
   },
 ]);
 
-// ── Mock Data (will be replaced by @nuxt/content queries) ──
-const featuredPost = {
-  slug: "optimize-images-web-performance",
-  title: "How to Optimize Images for Web Performance in 2024",
-  excerpt:
-    "Learn the latest techniques to slash page load times without compromising on visual quality. We cover AVIF, WebP, and lazy loading strategies that actually work.",
-  cover: "/images/blog/featured-cover.png",
-  category: "guides",
-  author: { name: "Alex Chen", avatar: "" },
-  date: "Jan 12, 2024",
-  readTime: 8,
-};
+// ── Real content from @nuxt/content ──
+const { data: allPosts } = await useAsyncData(
+  `blog-list-${locale.value}`,
+  () =>
+    queryCollection("blog")
+      .where("stem", "LIKE", `blog/${locale.value}/%`)
+      .order("date", "DESC")
+      .all(),
+  { watch: [locale] },
+);
 
-const posts = ref([
-  {
-    slug: "png-vs-webp-format-comparison",
-    title: "PNG vs WebP: Which Format Should You Choose?",
-    excerpt:
-      "A comprehensive deep dive into compression algorithms and browser support for modern image formats.",
-    cover: "/images/blog/format-comparison.png",
-    category: "guides",
-    author: { name: "Sarah Jenkins", avatar: "" },
-    date: "Jan 10, 2024",
-  },
-  {
-    slug: "batch-processing-webp",
-    title: "Introducing Batch Processing for WebP",
-    excerpt:
-      "Now you can convert and resize up to 50 images at once right in your browser. No server required.",
-    cover: "/images/blog/batch-processing.png",
-    category: "productNews",
-    author: { name: "David Lee", avatar: "" },
-    date: "Jan 08, 2024",
-  },
-  {
-    slug: "browser-side-image-processing",
-    title: "Understanding Browser-Side Image Processing",
-    excerpt:
-      "How PixelSwift uses WebAssembly and Canvas APIs to process your files securely without uploading.",
-    cover: "/images/blog/browser-processing.png",
-    category: "techFocus",
-    author: { name: "Alex Chen", avatar: "" },
-    date: "Jan 05, 2024",
-  },
-  {
-    slug: "image-seo-best-practices",
-    title: "Image SEO: Best Practices for 2024",
-    excerpt:
-      "Don't let your images be invisible to search engines. Learn about alt text, sitemaps, and structure.",
-    cover: "/images/blog/seo-images.png",
-    category: "optimization",
-    author: { name: "Emma Stone", avatar: "" },
-    date: "Jan 02, 2024",
-  },
-  {
-    slug: "responsive-images-srcset",
-    title: "Responsive Images: srcset Demystified",
-    excerpt:
-      "Master the art of delivering the perfect image size for every device and screen density.",
-    cover: "/images/blog/responsive-images.png",
-    category: "designTips",
-    author: { name: "Mike Ross", avatar: "" },
-    date: "Dec 28, 2023",
-  },
-  {
-    slug: "color-profiles-web-optimization",
-    title: "Color Profiles and Web Optimization",
-    excerpt:
-      "Why your images look different on the web and how to fix it with proper sRGB conversion.",
-    cover: "/images/blog/color-profiles.png",
-    category: "tutorials",
-    author: { name: "Sarah Jenkins", avatar: "" },
-    date: "Dec 22, 2023",
-  },
-]);
+// Derive slug from stem (e.g. "blog/en/tinypng-alternative-privacy" → "tinypng-alternative-privacy")
+function getSlug(post: any) {
+  const parts = (post.stem || post.path || "").split("/");
+  return parts[parts.length - 1] || "";
+}
 
 // ── Category filter ──
 const categories = [
@@ -106,22 +47,33 @@ const categories = [
   "productNews",
   "caseStudies",
   "designTips",
+  "guides",
+  "techFocus",
 ] as const;
 
 const activeCategory = ref("allCategories");
 
 const filteredPosts = computed(() => {
-  if (activeCategory.value === "allCategories") return posts.value;
-  return posts.value.filter((p) => p.category === activeCategory.value);
+  const posts = allPosts.value || [];
+  // Exclude featured post from the grid
+  const nonFeatured = posts.filter((p: any) => !p.featured);
+  if (activeCategory.value === "allCategories") return nonFeatured;
+  return nonFeatured.filter((p: any) => p.category === activeCategory.value);
 });
 
-// ── Pagination (mock) ──
-const currentPage = ref(1);
-const totalPages = 5;
+// ── Featured post ──
+const featuredPost = computed(() => {
+  const posts = allPosts.value || [];
+  return posts.find((p: any) => p.featured) || null;
+});
 
-// Show featured only when an article is manually marked as featured
-// TODO: Check for `featured: true` in article frontmatter when using @nuxt/content
-const showFeatured = computed(() => false);
+const showFeatured = computed(() => !!featuredPost.value);
+
+// ── Pagination ──
+const currentPage = ref(1);
+const totalPages = computed(() =>
+  Math.max(1, Math.ceil((filteredPosts.value?.length || 0) / 6)),
+);
 
 // ── Mobile infinite scroll ──
 const isMobile = ref(false);
@@ -130,45 +82,8 @@ const isLoadingMore = ref(false);
 const hasMore = ref(true);
 
 function loadMore() {
-  if (isLoadingMore.value || !hasMore.value) return;
-  isLoadingMore.value = true;
-  // Simulate loading delay (will be replaced by real API)
-  setTimeout(() => {
-    // Mock: duplicate existing posts with new slugs
-    const morePosts = posts.value.slice(0, 3).map((p, i) => ({
-      ...p,
-      slug: `${p.slug}-page-${Date.now()}-${i}`,
-    }));
-    if (morePosts.length === 0) {
-      hasMore.value = false;
-    } else {
-      posts.value.push(...morePosts);
-    }
-    isLoadingMore.value = false;
-  }, 800);
+  // No-op for now — all posts are loaded at once
 }
-
-onMounted(() => {
-  // Detect mobile
-  //   const mq = window.matchMedia("(max-width: 639px)");
-  //   isMobile.value = mq.matches;
-  //   mq.addEventListener("change", (e) => {
-  //     isMobile.value = e.matches;
-  //   });
-  //   // IntersectionObserver for infinite scroll
-  //   nextTick(() => {
-  //     if (!loadMoreRef.value) return;
-  //     const observer = new IntersectionObserver(
-  //       (entries) => {
-  //         if (entries[0]?.isIntersecting && isMobile.value) {
-  //           loadMore();
-  //         }
-  //       },
-  //       { rootMargin: "200px" },
-  //     );
-  //     observer.observe(loadMoreRef.value);
-  //   });
-});
 
 function getCategoryLabel(key: string) {
   if (key === "allCategories") return t("blog.allCategories");
@@ -250,18 +165,18 @@ function getAuthorInitials(name: string) {
           <p
             class="text-slate-600 dark:text-slate-300 line-clamp-2 sm:line-clamp-3 text-sm sm:text-lg leading-relaxed"
           >
-            {{ featuredPost.excerpt }}
+            {{ featuredPost.description }}
           </p>
           <!-- Author row: hidden on mobile per mobile design -->
           <div class="hidden sm:flex items-center gap-4 mt-8 mb-8">
             <div
               class="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-sm ring-2 ring-white dark:ring-slate-800 shadow-sm"
             >
-              {{ getAuthorInitials(featuredPost.author.name) }}
+              {{ getAuthorInitials(featuredPost.author) }}
             </div>
             <div>
               <p class="text-base font-semibold text-slate-900 dark:text-white">
-                {{ featuredPost.author.name }}
+                {{ featuredPost.author }}
               </p>
               <p class="text-sm text-slate-500 dark:text-slate-400">
                 {{ featuredPost.date }} •
@@ -274,7 +189,7 @@ function getAuthorInitials(name: string) {
             class="mt-2 pt-4 border-t border-slate-100 dark:border-slate-800 sm:border-0 sm:mt-0 sm:pt-0"
           >
             <NuxtLink
-              :to="localePath(`/blog/${featuredPost.slug}`)"
+              :to="localePath(`/blog/${getSlug(featuredPost)}`)"
               class="inline-flex items-center text-primary font-bold text-sm sm:font-semibold sm:text-lg hover:gap-2 transition-all"
               :aria-label="t('blog.readMore') + ': ' + featuredPost.title"
             >
@@ -318,7 +233,7 @@ function getAuthorInitials(name: string) {
           class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group"
         >
           <NuxtLink
-            :to="localePath(`/blog/${post.slug}`)"
+            :to="localePath(`/blog/${getSlug(post)}`)"
             class="block"
             :aria-label="post.title"
           >
@@ -346,7 +261,7 @@ function getAuthorInitials(name: string) {
               <p
                 class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed truncate sm:line-clamp-2 sm:whitespace-normal"
               >
-                {{ post.excerpt }}
+                {{ post.description }}
               </p>
               <div
                 class="flex items-center gap-2 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800"
@@ -354,10 +269,10 @@ function getAuthorInitials(name: string) {
                 <div
                   class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-700 dark:text-slate-300"
                 >
-                  {{ getAuthorInitials(post.author.name) }}
+                  {{ getAuthorInitials(post.author) }}
                 </div>
                 <span class="text-slate-500 text-xs font-medium">
-                  {{ post.author.name }} • {{ post.date }}
+                  {{ post.author }} • {{ post.date }}
                 </span>
               </div>
             </div>

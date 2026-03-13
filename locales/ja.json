@@ -396,6 +396,18 @@
       "designTips": "デザインのヒント",
       "guides": "ガイド",
       "techFocus": "テック"
+    },
+    "detail": {
+      "onThisPage": "目次",
+      "share": "この記事をシェア：",
+      "copyLink": "リンクをコピー",
+      "copy": "コピー",
+      "ctaTitle": "画像をもっと軽くしたいですか？",
+      "ctaDesc": "PixelSwiftのAI圧縮エンジンをお試しください。",
+      "compressNow": "今すぐ圧縮",
+      "moreArticles": "関連記事",
+      "moreArticlesDesc": "最新のインサイトで知識を広げましょう。",
+      "viewAll": "すべての記事を見る"
     }
   }
 }
