@@ -128,7 +128,7 @@ const toc = computed(() => {
         </div>
 
         <!-- ── Cover Image ── -->
-        <div class="max-w-5xl mx-auto mb-8 sm:mb-16">
+        <div class="max-w-7xl mx-auto mb-8 sm:mb-16">
           <div
             class="aspect-video w-full overflow-hidden rounded-2xl shadow-xl sm:shadow-2xl border border-slate-100 dark:border-slate-800"
           >
@@ -506,9 +506,9 @@ const toc = computed(() => {
 /* ── Images ── */
 .custom-prose :deep(img) {
   display: block;
-  max-width: 100%;
-  max-height: 400px;
-  object-fit: contain;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
   margin: 1.5rem 0;
   border-radius: 0.75rem;
   border: 1px solid #e2e8f0;

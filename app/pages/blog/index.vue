@@ -40,25 +40,23 @@ function getSlug(post: any) {
 }
 
 // ── Category filter ──
-const categories = [
-  "allCategories",
-  "tutorials",
-  "optimization",
-  "productNews",
-  "caseStudies",
-  "designTips",
-  "guides",
-  "techFocus",
-] as const;
+// Dynamic categories based on actual posts
+const categories = computed(() => {
+  const posts = allPosts.value || [];
+  const usedCategories = [...new Set(posts.map((p: any) => p.category).filter(Boolean))];
+  return ["allCategories", ...usedCategories];
+});
 
 const activeCategory = ref("allCategories");
 
 const filteredPosts = computed(() => {
   const posts = allPosts.value || [];
-  // Exclude featured post from the grid
-  const nonFeatured = posts.filter((p: any) => !p.featured);
-  if (activeCategory.value === "allCategories") return nonFeatured;
-  return nonFeatured.filter((p: any) => p.category === activeCategory.value);
+  // Only exclude featured post from grid when featured section is visible
+  const basePosts = showFeatured.value
+    ? posts.filter((p: any) => !p.featured)
+    : posts;
+  if (activeCategory.value === "allCategories") return basePosts;
+  return basePosts.filter((p: any) => p.category === activeCategory.value);
 });
 
 // ── Featured post ──
@@ -67,7 +65,11 @@ const featuredPost = computed(() => {
   return posts.find((p: any) => p.featured) || null;
 });
 
-const showFeatured = computed(() => !!featuredPost.value);
+// Only show featured section when there are more than 1 article
+const showFeatured = computed(() => {
+  const posts = allPosts.value || [];
+  return !!featuredPost.value && posts.length > 1;
+});
 
 // ── Pagination ──
 const currentPage = ref(1);
@@ -207,6 +209,7 @@ function getAuthorInitials(name: string) {
       <!-- ── Category Filter Pills ── -->
       <!-- Matching design: no border on inactive pills -->
       <div
+        v-if="categories.length > 2"
         class="flex items-center gap-2 overflow-x-auto hide-scrollbar mb-4 pb-2"
       >
         <button
