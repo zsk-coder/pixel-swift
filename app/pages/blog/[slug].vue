@@ -432,22 +432,32 @@ const toc = computed(() => {
 
 /* ── Links: subtle, don't overwhelm ── */
 .custom-prose :deep(a) {
-  color: #2563eb;
+  color: theme("colors.primary.DEFAULT");
   text-decoration: none;
   font-weight: 500;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s, color 0.2s;
+  transition: color 0.2s;
 }
 .custom-prose :deep(a:hover) {
-  color: #1d4ed8;
-  border-bottom-color: #93c5fd;
+  color: theme("colors.primary.dark");
 }
 .dark .custom-prose :deep(a) {
-  color: #60a5fa;
+  color: theme("colors.primary.light");
 }
 .dark .custom-prose :deep(a:hover) {
-  color: #93c5fd;
-  border-bottom-color: #60a5fa;
+  color: theme("colors.primary.100");
+}
+
+/* ── Heading anchors: inherit heading color, not link blue ── */
+.custom-prose :deep(h2 a),
+.custom-prose :deep(h3 a),
+.custom-prose :deep(h4 a) {
+  color: inherit;
+  font-weight: inherit;
+}
+.custom-prose :deep(h2 a:hover),
+.custom-prose :deep(h3 a:hover),
+.custom-prose :deep(h4 a:hover) {
+  color: inherit;
 }
 
 /* ── Lists ── */
@@ -480,7 +490,7 @@ const toc = computed(() => {
 
 /* ── Blockquote ── */
 .custom-prose :deep(blockquote) {
-  border-left: 4px solid #2563eb;
+  border-left: 4px solid theme("colors.primary.DEFAULT");
   padding: 0.75rem 1.25rem;
   margin: 1.5rem 0;
   background-color: #f8fafc;
@@ -495,12 +505,18 @@ const toc = computed(() => {
 
 /* ── Images ── */
 .custom-prose :deep(img) {
+  display: block;
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  margin: 1.5rem 0;
   border-radius: 0.75rem;
-  margin: 2rem auto;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 .dark .custom-prose :deep(img) {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  border-color: #334155;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* ── Table ── */
@@ -573,4 +589,3 @@ const toc = computed(() => {
   border-color: #334155;
 }
 </style>
-

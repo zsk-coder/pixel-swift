@@ -259,3 +259,38 @@ git commit -m "fix: batch mode preview not showing"
   重置
 </ElButton>
 ```
+
+### 8.5 样式中使用预定义主题色
+
+禁止在 `<style>` 中硬编码颜色值（如 `#2563eb`）。必须使用 Tailwind 预定义的主题色：
+
+- **template 中**：直接使用 Tailwind 工具类（如 `text-primary`、`bg-primary/10`）。
+- **`<style>` 中**：使用 `theme()` 函数引用 `tailwind.config.ts` 中的 Design Token。
+
+```css
+/* ❌ 禁止：硬编码颜色 */
+.custom-link {
+  color: #2563eb;
+}
+.dark .custom-link {
+  color: #60a5fa;
+}
+
+/* ✅ 正确：从 Tailwind 配置取值 */
+.custom-link {
+  color: theme("colors.primary.DEFAULT");
+}
+.dark .custom-link {
+  color: theme("colors.primary.light");
+}
+```
+
+可用的主题色 Token（定义在 `tailwind.config.ts`）：
+
+| Token                                   | 用途                    |
+| --------------------------------------- | ----------------------- |
+| `colors.primary.DEFAULT`                | 主色（链接、品牌色）    |
+| `colors.primary.dark`                   | 主色深（hover 状态）    |
+| `colors.primary.light`                  | 主色浅（dark 模式链接） |
+| `colors.primary.50` / `100`             | 主色极浅（背景、边框）  |
+| `colors.success` / `warning` / `danger` | 语义色                  |
