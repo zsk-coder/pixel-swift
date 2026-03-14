@@ -43,7 +43,9 @@ function getSlug(post: any) {
 // Dynamic categories based on actual posts
 const categories = computed(() => {
   const posts = allPosts.value || [];
-  const usedCategories = [...new Set(posts.map((p: any) => p.category).filter(Boolean))];
+  const usedCategories = [
+    ...new Set(posts.map((p: any) => p.category).filter(Boolean)),
+  ];
   return ["allCategories", ...usedCategories];
 });
 
@@ -172,9 +174,13 @@ function getAuthorInitials(name: string) {
           <!-- Author row: hidden on mobile per mobile design -->
           <div class="hidden sm:flex items-center gap-4 mt-8 mb-8">
             <div
-              class="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-sm ring-2 ring-white dark:ring-slate-800 shadow-sm"
+              class="w-12 h-12 rounded-full overflow-hidden bg-white dark:bg-slate-800 flex items-center justify-center ring-2 ring-white dark:ring-slate-800 shadow-sm"
             >
-              {{ getAuthorInitials(featuredPost.author) }}
+              <img
+                src="/images/logo.png"
+                alt="PixelSwift"
+                class="w-full h-full object-cover"
+              />
             </div>
             <div>
               <p class="text-base font-semibold text-slate-900 dark:text-white">
@@ -270,9 +276,13 @@ function getAuthorInitials(name: string) {
                 class="flex items-center gap-2 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800"
               >
                 <div
-                  class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-700 dark:text-slate-300"
+                  class="w-6 h-6 rounded-full overflow-hidden bg-white dark:bg-slate-800 flex items-center justify-center"
                 >
-                  {{ getAuthorInitials(post.author) }}
+                  <img
+                    src="/images/logo.png"
+                    alt="PixelSwift"
+                    class="w-full h-full object-cover"
+                  />
                 </div>
                 <span class="text-slate-500 text-xs font-medium">
                   {{ post.author }} • {{ post.date }}

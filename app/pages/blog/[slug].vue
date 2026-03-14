@@ -72,7 +72,7 @@ const toc = computed(() => {
 
 <template>
   <div>
-    <main v-if="post" class="py-12 md:py-20">
+    <main v-if="post" class="pt-10 md:pt-16 pb-12 md:pb-20">
       <!-- ── Article Hero Section ── -->
       <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center mb-8 md:mb-12">
@@ -82,7 +82,7 @@ const toc = computed(() => {
             {{ getCategoryLabel(post.category) }}
           </div>
           <h1
-            class="text-3xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white leading-[1.1] md:leading-[1.1] tracking-tight mb-6 md:mb-8"
+            class="text-2xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-[1.15] md:leading-[1.15] tracking-tight mb-6 md:mb-8"
           >
             {{ post.title }}
           </h1>
@@ -91,9 +91,13 @@ const toc = computed(() => {
           >
             <div class="flex items-center gap-3">
               <div
-                class="h-12 w-12 sm:h-10 sm:w-10 rounded-full overflow-hidden border-2 border-slate-100 dark:border-slate-800 sm:border-0 bg-primary/10 text-primary font-bold flex items-center justify-center text-sm"
+                class="h-12 w-12 sm:h-10 sm:w-10 rounded-full overflow-hidden border-2 border-slate-100 dark:border-slate-800 sm:border-0 bg-white dark:bg-slate-800 flex items-center justify-center"
               >
-                {{ getAuthorInitials(post.author) }}
+                <img
+                  src="/images/logo.png"
+                  alt="PixelSwift"
+                  class="w-full h-full object-cover"
+                />
               </div>
               <div class="text-sm sm:text-base text-left sm:text-center">
                 <p
@@ -124,19 +128,6 @@ const toc = computed(() => {
               <span class="material-symbols-outlined text-lg">schedule</span>
               <span>{{ t("blog.minRead", { min: post.readTime }) }}</span>
             </div>
-          </div>
-        </div>
-
-        <!-- ── Cover Image ── -->
-        <div class="max-w-7xl mx-auto mb-8 sm:mb-16">
-          <div
-            class="aspect-video w-full overflow-hidden rounded-2xl shadow-xl sm:shadow-2xl border border-slate-100 dark:border-slate-800"
-          >
-            <img
-              :alt="post.title"
-              class="w-full h-full object-cover"
-              :src="post.cover"
-            />
           </div>
         </div>
 
@@ -174,6 +165,16 @@ const toc = computed(() => {
         >
           <!-- Main Content Body -->
           <div class="flex-1 min-w-0 mx-auto lg:mx-0 w-full">
+            <!-- Cover Image (inside content column) -->
+            <div
+              class="aspect-video w-full overflow-hidden rounded-2xl shadow-lg border border-slate-100 dark:border-slate-800 mb-8 sm:mb-10"
+            >
+              <img
+                :alt="post.title"
+                class="w-full h-full object-cover"
+                :src="post.cover"
+              />
+            </div>
             <div
               class="prose prose-slate dark:prose-invert max-w-none custom-prose"
             >
@@ -352,9 +353,13 @@ const toc = computed(() => {
                   </h3>
                   <div class="flex items-center gap-2 sm:gap-3 mt-auto pt-2">
                     <div
-                      class="h-6 w-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-700 dark:text-slate-300"
+                      class="h-6 w-6 rounded-full overflow-hidden bg-white dark:bg-slate-800 flex items-center justify-center"
                     >
-                      {{ getAuthorInitials(rpost.author) }}
+                      <img
+                        src="/images/logo.png"
+                        alt="PixelSwift"
+                        class="w-full h-full object-cover"
+                      />
                     </div>
                     <span
                       class="text-xs font-medium text-slate-600 dark:text-slate-400"

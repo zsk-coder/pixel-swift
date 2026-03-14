@@ -2,7 +2,7 @@
 title: "TinyPNG vs PixelSwift: Why Client-Side Compression Wins for Privacy"
 description: "Compare TinyPNG and PixelSwift head-to-head. Discover why browser-based image compression is the smarter, more private alternative to uploading your files to a server."
 category: "optimization"
-author: "Alex Chen"
+author: "PixelSwift Team"
 date: "2026-03-10"
 readTime: 10
 cover: "/images/blog/tinypng-alternative.png"
@@ -68,19 +68,19 @@ With client-side processing:
 
 Let's break down the comparison across the dimensions that matter most:
 
-| Feature | TinyPNG | PixelSwift |
-|---|---|---|
-| **Processing Location** | Remote server | Your browser (local) |
-| **Privacy** | Files uploaded to cloud | Files never leave device |
-| **File Size Limit** | 5 MB (free) | 50 MB |
-| **Batch Limit** | 20 images | 20 images |
-| **Supported Formats** | PNG, JPEG, WebP | JPG, PNG, WebP, BMP |
-| **Format Conversion** | No | Yes (built-in) |
-| **Image Resizing** | No | Yes (built-in) |
-| **Speed (10 MB file)** | 3-8s (depends on network) | 1-3s (local processing) |
-| **Offline Capable** | No | Yes (after initial load) |
-| **Cost** | Free (limited) / $25+/yr Pro | 100% Free |
-| **API for Developers** | Yes (500/mo free) | No API needed |
+| Feature                 | TinyPNG                      | PixelSwift               |
+| ----------------------- | ---------------------------- | ------------------------ |
+| **Processing Location** | Remote server                | Your browser (local)     |
+| **Privacy**             | Files uploaded to cloud      | Files never leave device |
+| **File Size Limit**     | 5 MB (free)                  | 50 MB                    |
+| **Batch Limit**         | 20 images                    | 20 images                |
+| **Supported Formats**   | PNG, JPEG, WebP              | JPG, PNG, WebP, BMP      |
+| **Format Conversion**   | No                           | Yes (built-in)           |
+| **Image Resizing**      | No                           | Yes (built-in)           |
+| **Speed (10 MB file)**  | 3-8s (depends on network)    | 1-3s (local processing)  |
+| **Offline Capable**     | No                           | Yes (after initial load) |
+| **Cost**                | Free (limited) / $25+/yr Pro | 100% Free                |
+| **API for Developers**  | Yes (500/mo free)            | No API needed            |
 
 ### Compression Quality Comparison
 
@@ -168,6 +168,6 @@ Ready to try a private, fast, and free alternative? [Compress your first image w
 
 ---
 
-*Looking for more context on how browser-based compression works under the hood? Read our deep dive: [How Browser-Based Image Compression Works](/blog/browser-image-compression-explained).*
+_Looking for more context on how browser-based compression works under the hood? Read our deep dive: [How Browser-Based Image Compression Works](/blog/browser-image-compression-explained)._
 
-*Want to squeeze even more savings? Learn about format selection in our [WebP vs JPG vs PNG guide](/blog/webp-vs-jpg-vs-png).*
+_Want to squeeze even more savings? Learn about format selection in our [WebP vs JPG vs PNG guide](/blog/webp-vs-jpg-vs-png)._
