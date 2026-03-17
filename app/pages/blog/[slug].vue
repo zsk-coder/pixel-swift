@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
 const route = useRoute();
@@ -64,6 +64,57 @@ function getAuthorInitials(name: string) {
 }
 
 // ── Dynamic TOC from content headings ──
+// ── Share functions ──
+const linkCopied = ref(false);
+
+function getShareUrl() {
+  if (import.meta.client) {
+    return window.location.href;
+  }
+  return "";
+}
+
+function shareOnTwitter() {
+  const url = encodeURIComponent(getShareUrl());
+  const text = encodeURIComponent(post.value?.title || "");
+  window.open(
+    `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
+    "_blank",
+    "noopener,noreferrer",
+  );
+}
+
+function shareOnLinkedIn() {
+  const url = encodeURIComponent(getShareUrl());
+  window.open(
+    `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+    "_blank",
+    "noopener,noreferrer",
+  );
+}
+
+async function copyLink() {
+  try {
+    await navigator.clipboard.writeText(getShareUrl());
+    linkCopied.value = true;
+    setTimeout(() => {
+      linkCopied.value = false;
+    }, 2000);
+  } catch {
+    // Fallback for older browsers
+    const input = document.createElement("input");
+    input.value = getShareUrl();
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    document.body.removeChild(input);
+    linkCopied.value = true;
+    setTimeout(() => {
+      linkCopied.value = false;
+    }, 2000);
+  }
+}
+
 const toc = computed(() => {
   if (!post.value?.body?.toc?.links) return [];
   return post.value.body.toc.links;
@@ -76,11 +127,6 @@ const toc = computed(() => {
       <!-- ── Article Hero Section ── -->
       <article class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="max-w-4xl mx-auto text-center mb-8 md:mb-12">
-          <div
-            class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-wide uppercase mb-4 md:mb-6"
-          >
-            {{ getCategoryLabel(post.category) }}
-          </div>
           <h1
             class="text-2xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white leading-[1.15] md:leading-[1.15] tracking-tight mb-6 md:mb-8"
           >
@@ -106,8 +152,7 @@ const toc = computed(() => {
                   {{ post.author }}
                 </p>
                 <p class="text-slate-500 sm:hidden">
-                  {{ post.date }} •
-                  {{ t("blog.minRead", { min: post.readTime }) }}
+                  {{ post.date }}
                 </p>
               </div>
             </div>
@@ -120,13 +165,6 @@ const toc = computed(() => {
                 >calendar_today</span
               >
               <span>{{ post.date }}</span>
-            </div>
-            <span class="hidden sm:block text-slate-300 dark:text-slate-700"
-              >•</span
-            >
-            <div class="hidden sm:flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg">schedule</span>
-              <span>{{ t("blog.minRead", { min: post.readTime }) }}</span>
             </div>
           </div>
         </div>
@@ -183,57 +221,21 @@ const toc = computed(() => {
 
             <!-- ── Mobile: Inline CTA (hidden lg) ── -->
             <section
-              class="my-10 bg-slate-900 rounded-2xl p-6 text-center text-white lg:hidden"
+              class="my-10 bg-primary/5 rounded-2xl p-6 text-center border border-primary/10 lg:hidden"
             >
-              <h3 class="text-white text-xl font-bold mb-2">
+              <h3 class="text-slate-900 dark:text-white text-xl font-bold mb-2">
                 {{ t("blog.detail.ctaTitle") }}
               </h3>
-              <p class="text-slate-400 text-sm mb-6">
+              <p class="text-slate-600 dark:text-slate-400 text-sm mb-6">
                 {{ t("blog.detail.ctaDesc") }}
               </p>
               <NuxtLink
                 :to="localePath('/compress-image')"
-                class="w-full inline-block bg-primary hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors"
+                class="w-full inline-block bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg transition-colors"
               >
                 {{ t("blog.detail.compressNow") }}
               </NuxtLink>
             </section>
-
-            <!-- ── Social Share ── -->
-            <div
-              class="border-y border-slate-200 dark:border-slate-800 py-8 mt-12 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6"
-            >
-              <span
-                class="text-sm sm:text-base font-bold text-slate-900 dark:text-white"
-                >{{ t("blog.detail.share") }}</span
-              >
-              <div class="flex items-center justify-center gap-2 sm:gap-3">
-                <button
-                  class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white rounded-xl transition-all text-sm font-semibold text-slate-700 dark:text-slate-300"
-                >
-                  <span class="material-symbols-outlined text-base sm:text-lg"
-                    >share</span
-                  >
-                  Twitter
-                </button>
-                <button
-                  class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white rounded-xl transition-all text-sm font-semibold text-slate-700 dark:text-slate-300"
-                >
-                  <span class="material-symbols-outlined text-base sm:text-lg"
-                    >group</span
-                  >
-                  LinkedIn
-                </button>
-                <button
-                  class="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-primary hover:text-white rounded-xl transition-all text-sm font-semibold text-slate-700 dark:text-slate-300"
-                >
-                  <span class="material-symbols-outlined text-base sm:text-lg"
-                    >link</span
-                  >
-                  {{ t("blog.detail.copyLink") }}
-                </button>
-              </div>
-            </div>
           </div>
 
           <!-- ── Desktop: Sticky Sidebar TOC ── -->
@@ -335,17 +337,6 @@ const toc = computed(() => {
                   />
                 </div>
                 <div class="p-5 sm:p-6 flex flex-col h-[calc(100%-auto)]">
-                  <div
-                    class="flex items-center gap-2 mb-2 sm:mb-3 text-[10px] font-bold sm:font-extrabold uppercase tracking-wider"
-                  >
-                    <span class="text-primary">{{
-                      getCategoryLabel(rpost.category)
-                    }}</span>
-                    <span class="text-slate-300 dark:text-slate-600">•</span>
-                    <span class="text-slate-500">{{
-                      t("blog.minRead", { min: rpost.readTime })
-                    }}</span>
-                  </div>
                   <h3
                     class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-tight sm:leading-normal mb-4 group-hover:text-primary transition-colors line-clamp-2"
                   >
@@ -462,6 +453,17 @@ const toc = computed(() => {
 .custom-prose :deep(h2 a:hover),
 .custom-prose :deep(h3 a:hover),
 .custom-prose :deep(h4 a:hover) {
+  color: inherit;
+}
+.dark .custom-prose :deep(h2 a),
+.dark .custom-prose :deep(h3 a),
+.dark .custom-prose :deep(h4 a) {
+  color: inherit;
+  font-weight: inherit;
+}
+.dark .custom-prose :deep(h2 a:hover),
+.dark .custom-prose :deep(h3 a:hover),
+.dark .custom-prose :deep(h4 a:hover) {
   color: inherit;
 }
 

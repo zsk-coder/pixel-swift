@@ -155,12 +155,7 @@ function getAuthorInitials(name: string) {
           >
             {{ t("blog.featured") }}
           </span>
-          <!-- Category label on mobile -->
-          <span
-            class="text-primary text-[11px] font-bold uppercase tracking-wider sm:hidden"
-          >
-            {{ getCategoryLabel(featuredPost.category) }}
-          </span>
+
           <h2
             class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors"
           >
@@ -187,8 +182,7 @@ function getAuthorInitials(name: string) {
                 {{ featuredPost.author }}
               </p>
               <p class="text-sm text-slate-500 dark:text-slate-400">
-                {{ featuredPost.date }} •
-                {{ t("blog.minRead", { min: featuredPost.readTime }) }}
+                {{ featuredPost.date }}
               </p>
             </div>
           </div>
@@ -257,11 +251,6 @@ function getAuthorInitials(name: string) {
             </div>
             <!-- Card Content -->
             <div class="card-content flex flex-col">
-              <span
-                class="text-primary text-[11px] font-bold uppercase tracking-wider"
-              >
-                {{ getCategoryLabel(post.category) }}
-              </span>
               <h3
                 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white leading-tight line-clamp-2"
               >

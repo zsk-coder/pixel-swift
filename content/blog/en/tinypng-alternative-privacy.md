@@ -165,9 +165,3 @@ PixelSwift proves that you don't have to sacrifice compression quality for priva
 **Your images are your data. They should stay on your device.**
 
 Ready to try a private, fast, and free alternative? [Compress your first image with PixelSwift →](/compress-image)
-
----
-
-_Looking for more context on how browser-based compression works under the hood? Read our deep dive: [How Browser-Based Image Compression Works](/blog/browser-image-compression-explained)._
-
-_Want to squeeze even more savings? Learn about format selection in our [WebP vs JPG vs PNG guide](/blog/webp-vs-jpg-vs-png)._

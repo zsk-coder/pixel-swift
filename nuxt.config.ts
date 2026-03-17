@@ -71,6 +71,7 @@ export default defineNuxtConfig({
   },
 
   gtag: {
+    enabled: process.env.NODE_ENV === "production",
     id: "G-9C80LFFN3X",
     initCommands: [
       // Google Consent Mode v2：默认拒绝，用户同意后由 CookieConsent 组件更新
