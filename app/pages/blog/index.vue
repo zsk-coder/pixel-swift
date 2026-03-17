@@ -2,14 +2,34 @@
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
 
+const siteUrl = useRuntimeConfig().public.siteUrl;
+const blogUrl = computed(() => {
+  const prefix = locale.value === "en" ? "" : `/${locale.value}`;
+  return `${siteUrl}${prefix}/blog`;
+});
+
 // ── SEO ──
 useHead({
   title: t("seo.blog.title"),
   meta: [
     { name: "description", content: t("seo.blog.description") },
+    // Open Graph
     { property: "og:title", content: t("seo.blog.title") },
     { property: "og:description", content: t("seo.blog.description") },
     { property: "og:type", content: "website" },
+    { property: "og:url", content: () => blogUrl.value },
+    {
+      property: "og:image",
+      content: `${siteUrl}/images/blog/og-default.png`,
+    },
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: t("seo.blog.title") },
+    { name: "twitter:description", content: t("seo.blog.description") },
+    {
+      name: "twitter:image",
+      content: `${siteUrl}/images/blog/og-default.png`,
+    },
   ],
 });
 

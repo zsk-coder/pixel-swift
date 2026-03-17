@@ -65,7 +65,7 @@
     "faq": {
       "title": "자주 묻는 질문",
       "q1": "어떤 이미지 형식을 지원하나요?",
-      "a1": "PixelSwift는 JPG, PNG, WebP, BMP 형식의 변환, 압축, 크기 조정을 지원합니다.",
+      "a1": "PixelSwift는 JPG, PNG, WebP 형식의 변환, 압축, 크기 조정을 지원합니다.",
       "q2": "이미지가 서버에 업로드되나요?",
       "a2": "아닙니다. 모든 처리는 브라우저에서 로컬로 이루어집니다. 이미지가 기기를 벗어나지 않습니다.",
       "q3": "파일 크기 제한이 있나요?",
@@ -87,18 +87,18 @@
     "tapToUpload": "탭하여 업로드",
     "orDragDrop": "또는 여기에 끌어다 놓기",
     "selectImages": "이미지 선택",
-    "supportedFormats": "JPG, PNG, WEBP, BMP 지원, 최대 50MB",
+    "supportedFormats": "JPG, PNG, WEBP 지원, 최대 50MB",
     "releaseToUpload": "놓으면 업로드됩니다",
-    "supportFormats": "지원 형식: JPG, PNG, WebP, BMP",
+    "supportFormats": "지원 형식: JPG, PNG, WebP",
     "maxFiles": "최대 {count}개 이미지, 파일당 최대 {size}MB",
     "pasteHint": "클립보드에서 붙여넣기도 가능합니다 (Ctrl+V)",
     "selectFromAlbum": "사진 앨범에서 선택"
   },
   "converter": {
     "title": "이미지 포맷 변환기",
-    "subtitle": "빠르고 안전한 온라인 이미지 처리. JPG, PNG, WebP 형식 간 변환.",
+    "subtitle": "모든 이미지 형식을 JPG, PNG, WebP로 변환. 빠르고 무료, 브라우저에서 완전 처리.",
     "subtitleMobile": "이미지를 빠르게 변환하세요.",
-    "uploadHint": "JPG, PNG, WEBP, BMP 지원, 최대 50MB · 일괄 업로드 가능",
+    "uploadHint": "JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF 등 다양한 형식 지원, 최대 50MB · 일괄 업로드 가능",
     "settingsTitle": "변환 설정",
     "settingsDesc": "출력 형식 선택",
     "settingsMobile": "설정",
@@ -196,7 +196,7 @@
   },
   "resizer": {
     "title": "이미지 크기 조정",
-    "uploadHint": "JPG, PNG, WEBP, BMP 지원, 최대 50MB",
+    "uploadHint": "JPG, PNG, WEBP 지원, 최대 50MB",
     "settings": "크기 조정 설정",
     "resetToOriginal": "원본으로 복원",
     "resizeBy": "크기 조정 방법",
@@ -268,7 +268,8 @@
     "fileCorrupted": "파일이 손상되어 읽을 수 없습니다.",
     "processFailed": "처리에 실패했습니다. 페이지를 새로고침 후 다시 시도해 주세요.",
     "browserNotSupported": "브라우저가 이 기능을 지원하지 않습니다. Chrome 사용을 권장합니다.",
-    "maxFilesExceeded": "최대 {count}개 파일만 허용됩니다. 처음 {count}개만 처리됩니다."
+    "maxFilesExceeded": "최대 {count}개 파일만 허용됩니다. 처음 {count}개만 처리됩니다.",
+    "unsupportedFormat": "지원하지 않는 파일 형식입니다. 지원 형식: {formats}"
   },
   "footer": {
     "copyright": "© {year} PixelSwift. 모든 권리 보유.",
@@ -337,8 +338,8 @@
       "description": "이미지를 무료로 변환, 압축, 크기 조정하세요. 100% 브라우저 로컬 처리, 업로드 불필요, 개인정보 안전. 지금 사용해 보세요!"
     },
     "converter": {
-      "title": "무료 온라인 이미지 포맷 변환기 – JPG PNG WebP 변환",
-      "description": "JPG, PNG, WebP, BMP 이미지를 즉시 변환하세요. 무료, 빠르고 안전 – 업로드 불필요. 지금 사용해 보세요!"
+      "title": "무료 온라인 이미지 변환 — BMP GIF TIFF를 JPG PNG WebP로",
+      "description": "BMP, GIF, TIFF, AVIF 등을 JPG, PNG, WebP로 즉시 변환. 무료, 업로드 불필요, 프라이버시 보호."
     },
     "compressor": {
       "title": "무료 온라인 이미지 압축 – 최대 90% 용량 감소",
@@ -368,7 +369,7 @@
   "schema": {
     "siteDescription": "무료 온라인 이미지 변환기, 압축기, 크기 조정기. 업로드 불필요 — 브라우저에서 직접 이미지 처리.",
     "converter": {
-      "featureList": "JPG, PNG, WebP 형식 간 이미지 변환, 일괄 변환, 업로드 불필요, 100% 브라우저 기반"
+      "featureList": "모든 이미지 형식(BMP, GIF, TIFF, AVIF 등)을 JPG, PNG, WebP로 변환, 일괄 변환, 업로드 불필요, 100% 브라우저 처리"
     },
     "compressor": {
       "featureList": "JPEG, PNG, WebP 이미지 압축, 화질 조절 가능, 실시간 미리보기 비교, 일괄 압축, 최대 90% 크기 감소"

@@ -65,7 +65,7 @@
     "faq": {
       "title": "よくある質問",
       "q1": "対応している画像フォーマットは？",
-      "a1": "PixelSwiftはJPG、PNG、WebP、BMP形式の変換・圧縮・リサイズに対応しています。",
+      "a1": "PixelSwiftはJPG、PNG、WebP形式の変換・圧縮・リサイズに対応しています。",
       "q2": "画像はサーバーにアップロードされますか？",
       "a2": "いいえ。すべての処理はブラウザ内でローカルに行われます。画像がデバイスから外に出ることはありません。",
       "q3": "ファイルサイズに制限はありますか？",
@@ -87,18 +87,18 @@
     "tapToUpload": "タップしてアップロード",
     "orDragDrop": "またはここにドラッグ＆ドロップ",
     "selectImages": "画像を選択",
-    "supportedFormats": "JPG, PNG, WEBP, BMP に対応、最大 50MB",
+    "supportedFormats": "JPG, PNG, WEBP に対応、最大 50MB",
     "releaseToUpload": "離すとアップロードされます",
-    "supportFormats": "対応形式: JPG, PNG, WebP, BMP",
+    "supportFormats": "対応形式: JPG, PNG, WebP",
     "maxFiles": "最大{count}枚、1ファイル{size}MBまで",
     "pasteHint": "クリップボードからの貼り付けも可能です（Ctrl+V）",
     "selectFromAlbum": "フォトライブラリから選択"
   },
   "converter": {
     "title": "画像フォーマット変換ツール",
-    "subtitle": "高速・安全なオンライン画像処理。JPG、PNG、WebP形式を相互変換。",
+    "subtitle": "あらゆる画像形式を JPG、PNG、WebP に変換。高速・無料、すべてブラウザ内で処理。",
     "subtitleMobile": "画像を瞬時に変換。",
-    "uploadHint": "JPG, PNG, WEBP, BMP 対応、最大 50MB · 一括アップロード可能",
+    "uploadHint": "JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF など多数の形式に対応、最大 50MB · 一括アップロード可能",
     "settingsTitle": "変換設定",
     "settingsDesc": "出力形式を選択",
     "settingsMobile": "設定",
@@ -196,7 +196,7 @@
   },
   "resizer": {
     "title": "画像リサイズツール",
-    "uploadHint": "JPG, PNG, WEBP, BMP 対応、最大 50MB",
+    "uploadHint": "JPG, PNG, WEBP 対応、最大 50MB",
     "settings": "リサイズ設定",
     "resetToOriginal": "元に戻す",
     "resizeBy": "リサイズ方法",
@@ -268,7 +268,8 @@
     "fileCorrupted": "ファイルが破損しており、読み取れません。",
     "processFailed": "処理に失敗しました。ページを更新して再度お試しください。",
     "browserNotSupported": "お使いのブラウザはこの機能に対応していません。Chromeの使用を推奨します。",
-    "maxFilesExceeded": "最大{count}ファイルまでです。先頭の{count}ファイルのみ処理されます。"
+    "maxFilesExceeded": "最大{count}ファイルまでです。先頭の{count}ファイルのみ処理されます。",
+    "unsupportedFormat": "サポートされていないファイル形式です。対応形式: {formats}"
   },
   "footer": {
     "copyright": "© {year} PixelSwift. All rights reserved.",
@@ -337,8 +338,8 @@
       "description": "画像を無料で変換・圧縮・リサイズ。100%ブラウザ処理、アップロード不要、プライバシー安全。今すぐお試しください！"
     },
     "converter": {
-      "title": "無料オンライン画像フォーマット変換 – JPG PNG WebP変換",
-      "description": "JPG、PNG、WebP、BMP画像を瞬時に変換。無料・高速・安全 – アップロード不要。今すぐ変換！"
+      "title": "無料オンライン画像変換 — BMP GIF TIFFをJPG PNG WebPに変換",
+      "description": "BMP、GIF、TIFF、AVIFなどをJPG、PNG、WebPに瞬時変換。無料・アップロード不要・プライバシー保護。"
     },
     "compressor": {
       "title": "無料オンライン画像圧縮 – 最大90%サイズ削減",
@@ -368,7 +369,7 @@
   "schema": {
     "siteDescription": "無料オンライン画像変換・圧縮・リサイズツール。アップロード不要 — ブラウザで直接処理。",
     "converter": {
-      "featureList": "JPG、PNG、WebP形式の相互変換、バッチ変換、アップロード不要、100%ブラウザベース"
+      "featureList": "あらゆる画像形式（BMP、GIF、TIFF、AVIF等）をJPG、PNG、WebPに変換、一括変換対応、アップロード不要、100%ブラウザ処理"
     },
     "compressor": {
       "featureList": "JPEG、PNG、WebP画像の圧縮、品質調整可能、リアルタイムプレビュー比較、バッチ圧縮、最大90%サイズ削減"

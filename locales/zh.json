@@ -65,7 +65,7 @@
     "faq": {
       "title": "常见问题",
       "q1": "支持哪些图片格式？",
-      "a1": "PixelSwift 支持 JPG、PNG、WebP、BMP 格式的转换、压缩和调整大小。",
+      "a1": "PixelSwift 支持 JPG、PNG、WebP 格式的转换、压缩和调整大小。",
       "q2": "图片会被上传到服务器吗？",
       "a2": "不会。所有处理都在您的浏览器本地完成，图片不会离开您的设备。",
       "q3": "有文件大小限制吗？",
@@ -121,18 +121,18 @@
     "tapToUpload": "点击上传",
     "orDragDrop": "或拖放到此处",
     "selectImages": "选择图片",
-    "supportedFormats": "支持 JPG, PNG, WEBP, BMP，最大 50MB",
+    "supportedFormats": "支持 JPG, PNG, WEBP，最大 50MB",
     "releaseToUpload": "释放以上传",
-    "supportFormats": "支持: JPG, PNG, WebP, BMP",
+    "supportFormats": "支持: JPG, PNG, WebP",
     "maxFiles": "最多 {count} 张图片，每张不超过 {size}MB",
     "pasteHint": "也可以从剪贴板粘贴 (Ctrl+V)",
     "selectFromAlbum": "从相册中选择图片"
   },
   "converter": {
     "title": "通用图片转换器",
-    "subtitle": "快速、简洁、安全的在线图片处理。支持 JPG、PNG、WebP 格式互转。",
+    "subtitle": "将任意图片格式转换为 JPG、PNG 或 WebP。快速、免费，完全在浏览器中处理。",
     "subtitleMobile": "一键转换你的图片。",
-    "uploadHint": "支持 JPG, PNG, WEBP, BMP，最大 50MB · 可批量上传多张",
+    "uploadHint": "支持 JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF 等多种格式，最大 50MB · 可批量上传",
     "settingsTitle": "转换设置",
     "settingsDesc": "自定义输出格式",
     "settingsMobile": "设置",
@@ -230,7 +230,7 @@
   },
   "resizer": {
     "title": "精准图片缩放",
-    "uploadHint": "支持 JPG, PNG, WEBP, BMP，最大 50MB",
+    "uploadHint": "支持 JPG, PNG, WEBP，最大 50MB",
     "settings": "缩放设置",
     "resetToOriginal": "恢复原始尺寸",
     "resizeBy": "缩放方式",
@@ -302,7 +302,8 @@
     "fileCorrupted": "文件似乎已损坏，无法读取",
     "processFailed": "处理失败，请刷新页面重试",
     "browserNotSupported": "您的浏览器不支持此功能，建议使用 Chrome",
-    "maxFilesExceeded": "最多允许 {count} 个文件，仅处理前 {count} 个"
+    "maxFilesExceeded": "最多允许 {count} 个文件，仅处理前 {count} 个",
+    "unsupportedFormat": "不支持该文件格式，请使用 {formats}"
   },
   "footer": {
     "copyright": "© {year} PixelSwift. 保留所有权利。",
@@ -371,8 +372,8 @@
       "description": "免费在线转换、压缩、调整图片。100% 浏览器本地处理，无需上传，隐私安全。立即体验！"
     },
     "converter": {
-      "title": "免费在线图片格式转换器 – JPG PNG WebP 互转",
-      "description": "在线转换 JPG、PNG、WebP、BMP 图片格式。免费、极速、无需上传。立即使用！"
+      "title": "免费在线图片转换 — BMP GIF TIFF 等轻松转 JPG PNG WebP",
+      "description": "将 BMP、GIF、TIFF、AVIF 等图片即时转换为 JPG、PNG 或 WebP。免费、无需上传、保护隐私。立即使用！"
     },
     "compressor": {
       "title": "在线图片压缩工具 – 最高缩小90%体积",
@@ -402,7 +403,7 @@
   "schema": {
     "siteDescription": "免费在线图片转换、压缩、调整大小工具。无需上传，浏览器本地直接处理图片。",
     "converter": {
-      "featureList": "JPG、PNG、WebP 格式互转，批量转换，无需上传，100% 浏览器本地处理"
+      "featureList": "支持任意图片格式（BMP、GIF、TIFF、AVIF 等）转换为 JPG、PNG 或 WebP，批量转换，无需上传，100%浏览器处理"
     },
     "compressor": {
       "featureList": "压缩 JPEG、PNG、WebP 图片，可调节画质，实时预览对比，批量压缩，最高缩小 90%"

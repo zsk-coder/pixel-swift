@@ -186,17 +186,25 @@ function getActualFormat(originalName: string): string {
 let pendingModeCheck: ReturnType<typeof setTimeout> | null = null;
 
 function onFilesAdded(newFiles: File[]) {
-  // Add files to the list
+  // Add files to the list — push synchronously so the 100ms deferred
+  // mode check in afterAllFilesAdded sees the correct fileItems.length.
+  // Data URL previews are generated asynchronously and filled in afterward.
   newFiles.forEach((file) => {
     const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     rawFiles.value.push(file);
-    fileItems.value.push({
+    const item = {
       id,
       name: file.name,
       originalSize: file.size,
-      status: "pending",
+      status: "pending" as const,
       progress: 0,
-      preview: URL.createObjectURL(file), // Used for batch list thumbnails
+      preview: "",
+    };
+    fileItems.value.push(item);
+
+    // Fill in preview asynchronously (non-blocking)
+    blobToDataUrl(file).then((dataUrl) => {
+      item.preview = dataUrl;
     });
   });
 
@@ -223,12 +231,6 @@ async function afterAllFilesAdded() {
       processedBlobs.value.delete(first.id);
     }
     // Clear single-mode comparison state
-    if (
-      compressedPreview.value &&
-      compressedPreview.value !== originalPreview.value
-    ) {
-      URL.revokeObjectURL(compressedPreview.value);
-    }
     originalPreview.value = "";
     compressedPreview.value = "";
     compressedSize.value = 0;
@@ -252,7 +254,7 @@ async function afterAllFilesAdded() {
     // Set up single mode preview
     originalSize.value = file.size;
     originalFormat.value = detectFormat(file.name);
-    originalPreview.value = URL.createObjectURL(file);
+    originalPreview.value = await blobToDataUrl(file);
 
     try {
       const img = await createImageBitmap(file);
@@ -300,9 +302,6 @@ async function doSingleCompress() {
       quality: quality.value,
     });
 
-    // Save old URL for deferred revocation
-    const oldPreview = compressedPreview.value;
-
     if (result.processedSize >= file.size) {
       processedBlobs.value.set(item!.id, file);
       compressedSize.value = file.size;
@@ -311,17 +310,8 @@ async function doSingleCompress() {
     } else {
       processedBlobs.value.set(item!.id, result.blob);
       compressedSize.value = result.processedSize;
-      compressedPreview.value = URL.createObjectURL(result.blob);
+      compressedPreview.value = await blobToDataUrl(result.blob);
       if (item) item.processedSize = result.processedSize;
-    }
-
-    // Revoke old preview AFTER the new one is set (avoid flash)
-    if (
-      oldPreview &&
-      oldPreview !== originalPreview.value &&
-      oldPreview !== compressedPreview.value
-    ) {
-      URL.revokeObjectURL(oldPreview);
     }
 
     if (item) {
@@ -374,7 +364,7 @@ async function onBatchProcess() {
         processedBlobs.value.set(item.id, result.blob);
         item.processedSize = result.processedSize;
         // Store compressed preview for detail view
-        compressedPreviews.value.set(item.id, URL.createObjectURL(result.blob));
+        compressedPreviews.value.set(item.id, await blobToDataUrl(result.blob));
       }
       item.width = result.width;
       item.height = result.height;
@@ -427,10 +417,6 @@ async function onDownloadAll() {
 function onRemove(id: string) {
   const idx = fileItems.value.findIndex((f) => f.id === id);
   if (idx === -1) return;
-  const item = fileItems.value[idx];
-  if (item?.preview) URL.revokeObjectURL(item.preview);
-  const cp = compressedPreviews.value.get(id);
-  if (cp) URL.revokeObjectURL(cp);
   compressedPreviews.value.delete(id);
   processedBlobs.value.delete(id);
   fileItems.value.splice(idx, 1);
@@ -449,12 +435,16 @@ function onRemove(id: string) {
 
       originalSize.value = remainingFile.size;
       originalFormat.value = detectFormat(remainingFile.name);
-      originalPreview.value = URL.createObjectURL(remainingFile);
       compressedPreview.value = "";
       compressedSize.value = 0;
 
-      createImageBitmap(remainingFile)
-        .then((img) => {
+      // Await both preview generation and image dimensions before compressing
+      Promise.all([
+        blobToDataUrl(remainingFile),
+        createImageBitmap(remainingFile),
+      ])
+        .then(([dataUrl, img]) => {
+          originalPreview.value = dataUrl;
           originalWidth.value = img.width;
           originalHeight.value = img.height;
         })
@@ -467,20 +457,6 @@ function onRemove(id: string) {
 }
 
 function startOver() {
-  // Revoke all URLs
-  if (originalPreview.value) URL.revokeObjectURL(originalPreview.value);
-  if (
-    compressedPreview.value &&
-    compressedPreview.value !== originalPreview.value
-  )
-    URL.revokeObjectURL(compressedPreview.value);
-  for (const item of fileItems.value) {
-    if (item?.preview) URL.revokeObjectURL(item.preview);
-  }
-  for (const url of compressedPreviews.value.values()) {
-    URL.revokeObjectURL(url);
-  }
-
   // Reset all
   rawFiles.value = [];
   fileItems.value = [];

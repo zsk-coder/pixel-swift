@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useI18n } from "vue-i18n";
 import { useRoute } from "vue-router";
-import { computed, ref } from "vue";
+import { computed } from "vue";
 const { t, locale } = useI18n();
 const localePath = useLocalePath();
 const route = useRoute();
@@ -31,18 +31,62 @@ const filteredRecommended = computed(() => {
 });
 
 // ── SEO ──
+const siteUrl = useRuntimeConfig().public.siteUrl;
+const articleUrl = computed(() => {
+  const prefix = locale.value === "en" ? "" : `/${locale.value}`;
+  return `${siteUrl}${prefix}/blog/${slug}`;
+});
+const ogImageUrl = computed(() =>
+  post.value?.cover
+    ? `${siteUrl}${post.value.cover}`
+    : `${siteUrl}/images/blog/og-default.png`,
+);
+
 useHead({
   title: () => post.value?.title || "",
   meta: [
     { name: "description", content: () => post.value?.description || "" },
+    // Open Graph
     { property: "og:title", content: () => post.value?.title || "" },
     {
       property: "og:description",
       content: () => post.value?.description || "",
     },
     { property: "og:type", content: "article" },
+    { property: "og:url", content: () => articleUrl.value },
+    { property: "og:image", content: () => ogImageUrl.value },
+    // Article metadata
+    {
+      property: "article:published_time",
+      content: () => post.value?.date || "",
+    },
+    { property: "article:author", content: () => post.value?.author || "" },
+    // Twitter Card
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: () => post.value?.title || "" },
+    {
+      name: "twitter:description",
+      content: () => post.value?.description || "",
+    },
+    { name: "twitter:image", content: () => ogImageUrl.value },
   ],
 });
+
+// ── Schema.org: BlogPosting 结构化数据 ──
+useSchemaOrg([
+  defineArticle({
+    "@type": "BlogPosting",
+    headline: post.value?.title,
+    description: post.value?.description,
+    image: ogImageUrl.value,
+    datePublished: post.value?.date,
+    author: {
+      "@type": "Organization",
+      name: post.value?.author || "PixelSwift Team",
+      url: siteUrl,
+    },
+  }),
+]);
 
 // Derive slug from stem
 function getSlug(p: any) {
@@ -50,70 +94,9 @@ function getSlug(p: any) {
   return parts[parts.length - 1] || "";
 }
 
-function getCategoryLabel(key: string) {
-  if (key === "allCategories") return t("blog.allCategories");
-  return t(`blog.categories.${key}`);
-}
 
-function getAuthorInitials(name: string) {
-  return name
-    .split(" ")
-    .map((w) => w[0])
-    .join("")
-    .toUpperCase();
-}
 
 // ── Dynamic TOC from content headings ──
-// ── Share functions ──
-const linkCopied = ref(false);
-
-function getShareUrl() {
-  if (import.meta.client) {
-    return window.location.href;
-  }
-  return "";
-}
-
-function shareOnTwitter() {
-  const url = encodeURIComponent(getShareUrl());
-  const text = encodeURIComponent(post.value?.title || "");
-  window.open(
-    `https://twitter.com/intent/tweet?url=${url}&text=${text}`,
-    "_blank",
-    "noopener,noreferrer",
-  );
-}
-
-function shareOnLinkedIn() {
-  const url = encodeURIComponent(getShareUrl());
-  window.open(
-    `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
-    "_blank",
-    "noopener,noreferrer",
-  );
-}
-
-async function copyLink() {
-  try {
-    await navigator.clipboard.writeText(getShareUrl());
-    linkCopied.value = true;
-    setTimeout(() => {
-      linkCopied.value = false;
-    }, 2000);
-  } catch {
-    // Fallback for older browsers
-    const input = document.createElement("input");
-    input.value = getShareUrl();
-    document.body.appendChild(input);
-    input.select();
-    document.execCommand("copy");
-    document.body.removeChild(input);
-    linkCopied.value = true;
-    setTimeout(() => {
-      linkCopied.value = false;
-    }, 2000);
-  }
-}
 
 const toc = computed(() => {
   if (!post.value?.body?.toc?.links) return [];

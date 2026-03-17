@@ -202,13 +202,12 @@ async function onFilesAdded(newFiles: File[]) {
   const file = newFiles[0];
   if (!file) return;
 
-  // Clean up old preview
-  if (previewUrl.value) URL.revokeObjectURL(previewUrl.value);
+  // Clean up old state
 
   rawFile.value = file;
   originalSize.value = file.size;
   originalFormat.value = detectFormat(file.name);
-  previewUrl.value = URL.createObjectURL(file);
+  previewUrl.value = await blobToDataUrl(file);
   isDone.value = false;
   processedBlob.value = null;
   processedSize.value = 0;
@@ -330,7 +329,6 @@ function resetToOriginal() {
 }
 
 function startOver() {
-  if (previewUrl.value) URL.revokeObjectURL(previewUrl.value);
   rawFile.value = null;
   previewUrl.value = "";
   originalSize.value = 0;
@@ -369,6 +367,7 @@ function startOver() {
       <div v-if="!hasFile">
         <FileUploader
           ref="uploaderRef"
+          accept="image/jpeg,image/png,image/webp"
           :multiple="false"
           :max-count="1"
           :hint="t('resizer.uploadHint')"

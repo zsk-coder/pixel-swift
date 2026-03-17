@@ -88,17 +88,18 @@ function formatSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
 }
 
-function onFilesAdded(newFiles: File[]) {
+async function onFilesAdded(newFiles: File[]) {
   for (const file of newFiles) {
     const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     rawFiles.value.push(file);
+    const preview = await blobToDataUrl(file);
     fileItems.value.push({
       id,
       name: file.name,
       originalSize: file.size,
       status: "pending",
       progress: 0,
-      preview: URL.createObjectURL(file),
+      preview,
     });
   }
 }
@@ -175,17 +176,12 @@ function onRemove(id: string) {
   const idx = fileItems.value.findIndex((f) => f.id === id);
   if (idx === -1) return;
 
-  const item = fileItems.value[idx];
-  if (item?.preview) URL.revokeObjectURL(item.preview);
   processedBlobs.value.delete(id);
   fileItems.value.splice(idx, 1);
   rawFiles.value.splice(idx, 1);
 }
 
 function onClearAll() {
-  for (const item of fileItems.value) {
-    if (item?.preview) URL.revokeObjectURL(item.preview);
-  }
   processedBlobs.value.clear();
   fileItems.value = [];
   rawFiles.value = [];
@@ -215,6 +211,7 @@ function onClearAll() {
       <!-- Upload Area (always at top) -->
       <FileUploader
         ref="uploaderRef"
+        accept="image/*"
         :hint="t('converter.uploadHint')"
         @files="onFilesAdded"
       />

@@ -65,7 +65,7 @@
     "faq": {
       "title": "Perguntas frequentes",
       "q1": "Quais formatos de imagem são suportados?",
-      "a1": "O PixelSwift suporta JPG, PNG, WebP e BMP para conversão, compressão e redimensionamento.",
+      "a1": "O PixelSwift suporta JPG, PNG, WebP para conversão, compressão e redimensionamento.",
       "q2": "Minhas imagens são enviadas para um servidor?",
       "a2": "Não. Todo o processamento acontece localmente no seu navegador. Suas imagens nunca saem do seu dispositivo.",
       "q3": "Há limite de tamanho de arquivo?",
@@ -87,18 +87,18 @@
     "tapToUpload": "Toque para enviar",
     "orDragDrop": "ou arraste e solte aqui",
     "selectImages": "Selecionar imagens",
-    "supportedFormats": "Suporta JPG, PNG, WEBP, BMP até 50MB",
+    "supportedFormats": "Suporta JPG, PNG, WEBP até 50MB",
     "releaseToUpload": "Solte para enviar",
-    "supportFormats": "Formatos suportados: JPG, PNG, WebP, BMP",
+    "supportFormats": "Formatos suportados: JPG, PNG, WebP",
     "maxFiles": "Até {count} imagens, máximo {size} MB cada",
     "pasteHint": "Também é possível colar da área de transferência (Ctrl+V)",
     "selectFromAlbum": "Selecionar do álbum de fotos"
   },
   "converter": {
     "title": "Conversor de imagens",
-    "subtitle": "Processamento de imagens rápido e seguro. Converta entre JPG, PNG e WebP.",
+    "subtitle": "Converta qualquer formato de imagem para JPG, PNG ou WebP. Rápido, gratuito e totalmente no navegador.",
     "subtitleMobile": "Converta suas imagens instantaneamente.",
-    "uploadHint": "Suporta JPG, PNG, WEBP, BMP até 50MB · Upload em lote disponível",
+    "uploadHint": "Suporta JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF e mais · Máx. 50MB · Upload em lote disponível",
     "settingsTitle": "Configurações de conversão",
     "settingsDesc": "Selecionar formato de saída",
     "settingsMobile": "Configurações",
@@ -196,7 +196,7 @@
   },
   "resizer": {
     "title": "Redimensionador de imagens",
-    "uploadHint": "Suporta JPG, PNG, WEBP, BMP até 50MB",
+    "uploadHint": "Suporta JPG, PNG, WEBP até 50MB",
     "settings": "Configurações de redimensionamento",
     "resetToOriginal": "Restaurar original",
     "resizeBy": "Redimensionar por",
@@ -268,7 +268,8 @@
     "fileCorrupted": "Este arquivo parece estar corrompido e não pode ser lido.",
     "processFailed": "Falha no processamento. Atualize a página e tente novamente.",
     "browserNotSupported": "Seu navegador não suporta este recurso. Recomendamos usar o Chrome.",
-    "maxFilesExceeded": "Máximo de {count} arquivos permitidos. Apenas os {count} primeiros serão processados."
+    "maxFilesExceeded": "Máximo de {count} arquivos permitidos. Apenas os {count} primeiros serão processados.",
+    "unsupportedFormat": "Formato de arquivo não suportado. Formatos aceitos: {formats}"
   },
   "footer": {
     "copyright": "© {year} PixelSwift. Todos os direitos reservados.",
@@ -337,8 +338,8 @@
       "description": "Converta, comprima e redimensione imagens grátis online. 100% no navegador, sem cadastro nem instalação. Experimente agora!"
     },
     "converter": {
-      "title": "Conversor de imagens online grátis – JPG PNG WebP",
-      "description": "Converta imagens JPG, PNG, WebP, BMP instantaneamente. Grátis, sem cadastro e sem instalar – 100% no navegador!"
+      "title": "Converter imagens online grátis — BMP GIF TIFF para JPG PNG WebP",
+      "description": "Converta BMP, GIF, TIFF, AVIF e mais para JPG, PNG ou WebP instantaneamente. Grátis, sem upload, privado."
     },
     "compressor": {
       "title": "Comprimir imagens online – Reduza até 90%",
@@ -368,7 +369,7 @@
   "schema": {
     "siteDescription": "Conversor, compressor e redimensionador de imagens online grátis. Sem necessidade de upload — processamento direto no navegador.",
     "converter": {
-      "featureList": "Converter imagens entre formatos JPG, PNG e WebP, conversão em lote, sem upload necessário, 100% no navegador"
+      "featureList": "Converta qualquer formato (BMP, GIF, TIFF, AVIF, etc.) para JPG, PNG ou WebP, conversão em lote, sem upload, 100% no navegador"
     },
     "compressor": {
       "featureList": "Comprimir imagens JPEG, PNG e WebP, qualidade ajustável, comparação em tempo real, compressão em lote, redução de até 90%"

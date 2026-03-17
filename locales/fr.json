@@ -65,7 +65,7 @@
     "faq": {
       "title": "Questions fréquentes",
       "q1": "Quels formats d'image sont pris en charge ?",
-      "a1": "PixelSwift prend en charge les formats JPG, PNG, WebP et BMP pour la conversion, la compression et le redimensionnement.",
+      "a1": "PixelSwift prend en charge les formats JPG, PNG, WebP pour la conversion, la compression et le redimensionnement.",
       "q2": "Mes images sont-elles téléchargées sur un serveur ?",
       "a2": "Non. Tout le traitement se fait localement dans votre navigateur. Vos images ne quittent jamais votre appareil.",
       "q3": "Y a-t-il une limite de taille de fichier ?",
@@ -87,18 +87,18 @@
     "tapToUpload": "Appuyez pour importer",
     "orDragDrop": "ou glissez-déposez ici",
     "selectImages": "Sélectionner des images",
-    "supportedFormats": "Prend en charge JPG, PNG, WEBP, BMP jusqu'à 50 Mo",
+    "supportedFormats": "Prend en charge JPG, PNG, WEBP jusqu'à 50 Mo",
     "releaseToUpload": "Relâchez pour importer",
-    "supportFormats": "Formats pris en charge : JPG, PNG, WebP, BMP",
+    "supportFormats": "Formats pris en charge : JPG, PNG, WebP",
     "maxFiles": "Jusqu'à {count} images, {size} Mo max par fichier",
     "pasteHint": "Vous pouvez aussi coller depuis le presse-papiers (Ctrl+V)",
     "selectFromAlbum": "Sélectionner depuis votre photothèque"
   },
   "converter": {
     "title": "Convertisseur d'images",
-    "subtitle": "Traitement d'images rapide et sécurisé. Convertissez entre JPG, PNG et WebP.",
+    "subtitle": "Convertissez n'importe quel format d'image en JPG, PNG ou WebP. Rapide, gratuit et entièrement dans le navigateur.",
     "subtitleMobile": "Convertissez vos images en un clin d'œil.",
-    "uploadHint": "JPG, PNG, WEBP, BMP jusqu'à 50 Mo · Téléchargement par lot disponible",
+    "uploadHint": "JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF et plus · Max 50 Mo · Téléchargement par lot disponible",
     "settingsTitle": "Paramètres de conversion",
     "settingsDesc": "Sélectionner le format de sortie",
     "settingsMobile": "Paramètres",
@@ -196,7 +196,7 @@
   },
   "resizer": {
     "title": "Redimensionneur d'images",
-    "uploadHint": "JPG, PNG, WEBP, BMP jusqu'à 50 Mo",
+    "uploadHint": "JPG, PNG, WEBP jusqu'à 50 Mo",
     "settings": "Paramètres de redimensionnement",
     "resetToOriginal": "Restaurer l'original",
     "resizeBy": "Redimensionner par",
@@ -268,7 +268,8 @@
     "fileCorrupted": "Ce fichier semble être endommagé et ne peut pas être lu.",
     "processFailed": "Échec du traitement. Actualisez la page et réessayez.",
     "browserNotSupported": "Votre navigateur ne prend pas en charge cette fonctionnalité. Nous recommandons Chrome.",
-    "maxFilesExceeded": "Maximum {count} fichiers autorisés. Seuls les {count} premiers seront traités."
+    "maxFilesExceeded": "Maximum {count} fichiers autorisés. Seuls les {count} premiers seront traités.",
+    "unsupportedFormat": "Format non pris en charge. Formats acceptés : {formats}"
   },
   "footer": {
     "copyright": "© {year} PixelSwift. Tous droits réservés.",
@@ -337,8 +338,8 @@
       "description": "Convertissez, compressez et redimensionnez vos images gratuitement en ligne. 100 % dans le navigateur, sans inscription. Essayez maintenant !"
     },
     "converter": {
-      "title": "Convertisseur d'images en ligne gratuit – JPG PNG WebP",
-      "description": "Convertissez vos images JPG, PNG, WebP, BMP instantanément. Gratuit, sans inscription ni installation – 100 % dans le navigateur !"
+      "title": "Convertir des images en ligne gratuitement — BMP GIF TIFF vers JPG PNG WebP",
+      "description": "Convertissez BMP, GIF, TIFF, AVIF et plus en JPG, PNG ou WebP instantanément. Gratuit, sans upload, privé."
     },
     "compressor": {
       "title": "Compresser des images en ligne – Réduction jusqu'à 90 %",
@@ -368,7 +369,7 @@
   "schema": {
     "siteDescription": "Convertisseur, compresseur et redimensionneur d'images en ligne gratuit. Aucun envoi nécessaire — traitement directement dans votre navigateur.",
     "converter": {
-      "featureList": "Convertir des images entre les formats JPG, PNG et WebP, conversion par lots, aucun téléchargement nécessaire, 100% dans le navigateur"
+      "featureList": "Convertir tout format d'image (BMP, GIF, TIFF, AVIF, etc.) en JPG, PNG ou WebP, conversion par lot, sans upload, 100% dans le navigateur"
     },
     "compressor": {
       "featureList": "Compresser des images JPEG, PNG et WebP, qualité ajustable, comparaison en temps réel, compression par lots, réduction jusqu'à 90%"

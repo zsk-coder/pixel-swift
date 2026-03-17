@@ -3,14 +3,9 @@ title: "TinyPNG vs PixelSwift: Why Client-Side Compression Wins for Privacy"
 description: "Compare TinyPNG and PixelSwift head-to-head. Discover why browser-based image compression is the smarter, more private alternative to uploading your files to a server."
 category: "optimization"
 author: "PixelSwift Team"
-date: "2026-03-10"
+date: "2026-03-17"
 readTime: 10
 cover: "/images/blog/tinypng-alternative.png"
-images:
-  cover: "~/assets/images/blog/tinypng-alternative.png"
-  flow: "~/assets/images/blog/server-vs-local-flow.png"
-  comparison: "~/assets/images/blog/compression-comparison.png"
-  privacy: "~/assets/images/blog/privacy-shield.png"
 featured: true
 ---
 

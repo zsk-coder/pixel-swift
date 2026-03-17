@@ -2,10 +2,14 @@
 import wasm from "vite-plugin-wasm";
 import topLevelAwait from "vite-plugin-top-level-await";
 
+const SITE_URL = "https://pixelswift.site";
+
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
-
+  devServer: {
+    host: '0.0.0.0',
+  },
   // ── Cloudflare Pages 部署 ──
   nitro: {
     preset: "cloudflare-pages",
@@ -13,7 +17,14 @@ export default defineNuxtConfig({
 
   // ── 站点 URL（sitemap 和 SEO 需要） ──
   site: {
-    url: "https://pixelswift.site",
+    url: SITE_URL,
+  },
+
+  // ── 公开运行时配置（组件中使用 useRuntimeConfig().public.siteUrl）──
+  runtimeConfig: {
+    public: {
+      siteUrl: SITE_URL,
+    },
   },
 
   modules: [
@@ -42,7 +53,7 @@ export default defineNuxtConfig({
 
   // ── i18n ──
   i18n: {
-    baseUrl: "https://pixelswift.site",
+    baseUrl: SITE_URL,
     locales: [
       { code: "en", language: "en-US", file: "en.json", name: "English" },
       { code: "zh", language: "zh-CN", file: "zh.json", name: "简体中文" },

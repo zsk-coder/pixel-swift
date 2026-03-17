@@ -29,8 +29,6 @@ const DEFAULT_CONFIG: UploadConfig = {
     "image/jpeg",
     "image/png",
     "image/webp",
-    "image/bmp",
-    "image/tiff",
   ],
 };
 
@@ -38,7 +36,7 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
   const finalConfig = { ...DEFAULT_CONFIG, ...config };
   const files = ref<UploadFile[]>([]);
 
-  function addFiles(rawFiles: File[]): void {
+  async function addFiles(rawFiles: File[]): Promise<void> {
     const remaining = finalConfig.maxFileCount - files.value.length;
     const toAdd = rawFiles.slice(0, remaining);
 
@@ -49,13 +47,14 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
         continue;
       }
 
+      const preview = await blobToDataUrl(file);
       files.value.push({
         id: generateId(),
         file,
         name: file.name,
         size: file.size,
         format: getExtension(file.name),
-        preview: URL.createObjectURL(file),
+        preview,
         status: "pending",
         progress: 0,
       });
@@ -77,9 +76,6 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
       "jpeg",
       "png",
       "webp",
-      "bmp",
-      "tif",
-      "tiff",
     ];
     if (!validExtensions.includes(ext)) {
       return { valid: false, error: `Unsupported format: ${ext}` };
@@ -91,7 +87,6 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
   function removeFile(id: string): void {
     const index = files.value.findIndex((f) => f.id === id);
     if (index !== -1) {
-      URL.revokeObjectURL(files.value[index].preview);
       files.value.splice(index, 1);
     }
   }
@@ -102,14 +97,8 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
   }
 
   function clearAll(): void {
-    files.value.forEach((f) => URL.revokeObjectURL(f.preview));
     files.value = [];
   }
-
-  // Clean up object URLs on unmount
-  onUnmounted(() => {
-    files.value.forEach((f) => URL.revokeObjectURL(f.preview));
-  });
 
   return {
     files: readonly(files),

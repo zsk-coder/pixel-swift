@@ -65,7 +65,7 @@
     "faq": {
       "title": "Häufig gestellte Fragen",
       "q1": "Welche Bildformate werden unterstützt?",
-      "a1": "PixelSwift unterstützt JPG, PNG, WebP und BMP für Konvertierung, Komprimierung und Größenänderung.",
+      "a1": "PixelSwift unterstützt JPG, PNG, WebP für Konvertierung, Komprimierung und Größenänderung.",
       "q2": "Werden meine Bilder auf einen Server hochgeladen?",
       "a2": "Nein. Die gesamte Verarbeitung erfolgt lokal in Ihrem Browser. Ihre Bilder verlassen Ihr Gerät nie.",
       "q3": "Gibt es eine Dateigrößenbeschränkung?",
@@ -87,18 +87,18 @@
     "tapToUpload": "Tippen zum Hochladen",
     "orDragDrop": "oder hierher ziehen und ablegen",
     "selectImages": "Bilder auswählen",
-    "supportedFormats": "Unterstützt JPG, PNG, WEBP, BMP bis zu 50MB",
+    "supportedFormats": "Unterstützt JPG, PNG, WEBP bis zu 50MB",
     "releaseToUpload": "Loslassen zum Hochladen",
-    "supportFormats": "Unterstützte Formate: JPG, PNG, WebP, BMP",
+    "supportFormats": "Unterstützte Formate: JPG, PNG, WebP",
     "maxFiles": "Bis zu {count} Bilder, max. {size} MB pro Datei",
     "pasteHint": "Einfügen aus der Zwischenablage möglich (Strg+V)",
     "selectFromAlbum": "Aus Fotobibliothek auswählen"
   },
   "converter": {
     "title": "Bildformat-Konverter",
-    "subtitle": "Schnelle und sichere Bildverarbeitung. Zwischen JPG, PNG und WebP konvertieren.",
+    "subtitle": "Jedes Bildformat in JPG, PNG oder WebP konvertieren. Schnell, kostenlos und vollständig im Browser.",
     "subtitleMobile": "Bilder sofort konvertieren.",
-    "uploadHint": "Unterstützt JPG, PNG, WEBP, BMP bis zu 50MB · Stapel-Upload verfügbar",
+    "uploadHint": "Unterstützt JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF u.v.m. · Max. 50MB · Stapel-Upload verfügbar",
     "settingsTitle": "Konvertierungseinstellungen",
     "settingsDesc": "Ausgabeformat auswählen",
     "settingsMobile": "Einstellungen",
@@ -196,7 +196,7 @@
   },
   "resizer": {
     "title": "Bildgröße anpassen",
-    "uploadHint": "Unterstützt JPG, PNG, WEBP, BMP bis zu 50MB",
+    "uploadHint": "Unterstützt JPG, PNG, WEBP bis zu 50MB",
     "settings": "Größenänderungseinstellungen",
     "resetToOriginal": "Original wiederherstellen",
     "resizeBy": "Größe ändern nach",
@@ -268,7 +268,8 @@
     "fileCorrupted": "Diese Datei scheint beschädigt zu sein und kann nicht gelesen werden.",
     "processFailed": "Verarbeitung fehlgeschlagen. Bitte aktualisieren Sie die Seite und versuchen Sie es erneut.",
     "browserNotSupported": "Ihr Browser unterstützt diese Funktion nicht. Wir empfehlen Chrome.",
-    "maxFilesExceeded": "Maximal {count} Dateien erlaubt. Es werden nur die ersten {count} verarbeitet."
+    "maxFilesExceeded": "Maximal {count} Dateien erlaubt. Es werden nur die ersten {count} verarbeitet.",
+    "unsupportedFormat": "Nicht unterstütztes Dateiformat. Unterstützte Formate: {formats}"
   },
   "footer": {
     "copyright": "© {year} PixelSwift. Alle Rechte vorbehalten.",
@@ -337,8 +338,8 @@
       "description": "Bilder kostenlos online konvertieren, komprimieren und in der Größe ändern. 100% im Browser, ohne Anmeldung. Jetzt ausprobieren!"
     },
     "converter": {
-      "title": "Kostenloser Online-Bildkonverter – JPG PNG WebP",
-      "description": "Bilder zwischen JPG, PNG, WebP, BMP konvertieren. Kostenlos, ohne Anmeldung und ohne Installation – direkt im Browser!"
+      "title": "Bilder kostenlos online konvertieren — BMP GIF TIFF zu JPG PNG WebP",
+      "description": "BMP, GIF, TIFF, AVIF u.v.m. sofort in JPG, PNG oder WebP konvertieren. Kostenlos, ohne Upload, privat."
     },
     "compressor": {
       "title": "Bilder online komprimieren – Bis zu 90% Größenreduktion",
@@ -368,7 +369,7 @@
   "schema": {
     "siteDescription": "Kostenloser Online-Bildkonverter, Kompressor und Größenänderer. Kein Upload nötig — Bilder direkt im Browser verarbeiten.",
     "converter": {
-      "featureList": "Bilder zwischen JPG, PNG und WebP konvertieren, Stapelkonvertierung, kein Upload nötig, 100% browserbasiert"
+      "featureList": "Jedes Bildformat (BMP, GIF, TIFF, AVIF usw.) in JPG, PNG oder WebP konvertieren, Stapelkonvertierung, kein Upload nötig, 100% browserbasiert"
     },
     "compressor": {
       "featureList": "JPEG, PNG und WebP Bilder komprimieren, einstellbare Qualität, Echtzeit-Vorschau-Vergleich, Stapelkomprimierung, bis zu 90% Größenreduktion"

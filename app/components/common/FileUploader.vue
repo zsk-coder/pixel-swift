@@ -13,7 +13,7 @@ const props = withDefaults(
     hint?: string;
   }>(),
   {
-    accept: "image/jpeg,image/png,image/webp,image/bmp,image/tiff",
+    accept: "image/jpeg,image/png,image/webp",
     maxSize: 50,
     maxCount: 20,
     multiple: true,
@@ -26,6 +26,101 @@ const emit = defineEmits<{
 }>();
 
 const uploadRef = ref<UploadInstance>();
+
+// Parse accepted MIME types into a lookup set for validation
+const acceptedMimeTypes = computed(() => {
+  return new Set(
+    props.accept
+      .split(",")
+      .map((s) => s.trim().toLowerCase())
+      .filter(Boolean),
+  );
+});
+
+// Map common MIME types to user-friendly extensions for error messages
+const acceptedExtensions = computed(() => {
+  // If wildcard like "image/*", no need to list specific formats
+  if ([...acceptedMimeTypes.value].some((m) => m.endsWith("/*"))) {
+    return "JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF...";
+  }
+  const mimeToExt: Record<string, string> = {
+    "image/jpeg": "JPG",
+    "image/png": "PNG",
+    "image/webp": "WEBP",
+    "image/bmp": "BMP",
+    "image/gif": "GIF",
+    "image/tiff": "TIFF",
+    "image/avif": "AVIF",
+  };
+  return [...acceptedMimeTypes.value]
+    .map((m) => mimeToExt[m] || m)
+    .join(", ");
+});
+
+/** Check if a file's type is in the accepted list */
+function isFileAccepted(file: File): boolean {
+  if (!props.accept) return true;
+  const mime = file.type.toLowerCase();
+
+  // Support wildcard patterns like "image/*"
+  for (const accepted of acceptedMimeTypes.value) {
+    if (accepted.endsWith("/*")) {
+      const prefix = accepted.slice(0, -1); // "image/*" → "image/"
+      if (mime.startsWith(prefix)) return true;
+    } else if (accepted === mime) {
+      return true;
+    }
+  }
+
+  // Fallback: check by extension (some browsers report empty type)
+  const ext = file.name.split(".").pop()?.toLowerCase() || "";
+  const extMime: Record<string, string> = {
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    webp: "image/webp",
+    bmp: "image/bmp",
+    gif: "image/gif",
+    tif: "image/tiff",
+    tiff: "image/tiff",
+    avif: "image/avif",
+    ico: "image/x-icon",
+    svg: "image/svg+xml",
+  };
+  const mappedMime = extMime[ext];
+  if (mappedMime) {
+    for (const accepted of acceptedMimeTypes.value) {
+      if (accepted.endsWith("/*")) {
+        if (mappedMime.startsWith(accepted.slice(0, -1))) return true;
+      } else if (accepted === mappedMime) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
+/** Filter files and show warning for rejected ones */
+function filterAcceptedFiles(files: File[]): File[] {
+  const accepted: File[] = [];
+  const rejected: string[] = [];
+  for (const file of files) {
+    if (isFileAccepted(file)) {
+      accepted.push(file);
+    } else {
+      rejected.push(file.name);
+    }
+  }
+  if (rejected.length > 0) {
+    ElMessage.warning(
+      t("errors.unsupportedFormat", {
+        formats: acceptedExtensions.value,
+      }),
+    );
+  }
+  return accepted;
+}
 
 // 超出文件数量限制时，给出明确提示（ElUpload 默认行为是静默丢弃）
 function onExceed() {
@@ -48,7 +143,8 @@ function onPaste(e: ClipboardEvent) {
       if (file) files.push(file);
     }
   }
-  if (files.length) emit("files", files);
+  const accepted = filterAcceptedFiles(files);
+  if (accepted.length) emit("files", accepted);
 }
 
 // Listen for paste globally
@@ -73,7 +169,10 @@ onUnmounted(() => {
     :auto-upload="false"
     :on-change="
       (file: any) => {
-        if (file?.raw) emit('files', [file.raw as File]);
+        if (file?.raw) {
+          const accepted = filterAcceptedFiles([file.raw as File]);
+          if (accepted.length) emit('files', accepted);
+        }
       }
     "
     :limit="maxCount"
