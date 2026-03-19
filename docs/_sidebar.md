@@ -18,4 +18,8 @@
 
 * **运营相关**
   * [Product Hunt 提交文案](Product%20Hunt%20提交文案.md)
+  * [Hacker News 发帖完全指南](Hacker%20News发帖完全指南.md)
+  * [Reddit 发帖计划](reddit发帖计划.md)
+  * [全渠道流量获取计划](全渠道流量获取计划.md)
+  * [外链渠道](外链渠道.md)
   * [变现渠道调研与分析报告](变现渠道调研与分析报告.md)
