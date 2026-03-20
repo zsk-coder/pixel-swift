@@ -8,7 +8,7 @@ export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
   devServer: {
-    host: '0.0.0.0',
+    host: "0.0.0.0",
   },
   // ── Cloudflare Pages 部署 ──
   nitro: {
@@ -84,17 +84,6 @@ export default defineNuxtConfig({
   gtag: {
     enabled: process.env.NODE_ENV === "production",
     id: "G-9C80LFFN3X",
-    initCommands: [
-      // Google Consent Mode v2：默认拒绝，用户同意后由 CookieConsent 组件更新
-      [
-        "consent",
-        "default",
-        {
-          analytics_storage: "denied",
-          wait_for_update: 500,
-        },
-      ],
-    ],
   },
 
   // ── Element Plus ──
@@ -104,6 +93,10 @@ export default defineNuxtConfig({
 
   // ── Vite (SCSS global injection + WASM support) ──
   vite: {
+    // 生产构建：移除 console.* 和 debugger（esbuild 内置，无需额外依赖）
+    esbuild: {
+      drop: ["console", "debugger"],
+    },
     plugins: [
       // Enable WebAssembly support for @jsquash/webp (Safari WebP fallback)
       wasm(),

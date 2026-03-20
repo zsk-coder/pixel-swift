@@ -31,8 +31,5 @@ const hasFixedBottomBar = computed(() => {
 
     <!-- 移动端底部间距：防止工具页固定下载栏遮挡 footer -->
     <div v-if="hasFixedBottomBar" class="h-40 lg:hidden"></div>
-
-    <!-- Cookie 同意横幅 -->
-    <CookieConsent />
   </div>
 </template>

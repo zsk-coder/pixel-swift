@@ -21,15 +21,13 @@ useHead({
         {{ t("legal.privacy.title") }}
       </h1>
       <p class="text-sm text-slate-500 dark:text-slate-400 mb-12">
-        {{ t("legal.privacy.lastUpdated", { date: "2026-02-17" }) }}
+        {{ t("legal.privacy.lastUpdated", { date: "2026-03-20" }) }}
       </p>
 
       <div class="prose prose-slate dark:prose-invert max-w-none space-y-8">
         <!-- Overview -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.overviewTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -39,9 +37,7 @@ useHead({
 
         <!-- Data Collection -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.dataTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
@@ -58,9 +54,7 @@ useHead({
 
         <!-- Local Processing -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.localTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -70,9 +64,7 @@ useHead({
 
         <!-- Cookies -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.cookiesTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -82,9 +74,7 @@ useHead({
 
         <!-- Analytics -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.analyticsTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed mb-3">
@@ -102,9 +92,7 @@ useHead({
 
         <!-- Third Party -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.thirdPartyTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -114,9 +102,7 @@ useHead({
 
         <!-- Your Rights -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.rightsTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed">
@@ -126,9 +112,7 @@ useHead({
 
         <!-- Contact -->
         <section>
-          <h2
-            class="text-xl font-semibold text-slate-900 dark:text-white mb-3"
-          >
+          <h2 class="text-xl font-semibold text-slate-900 dark:text-white mb-3">
             {{ t("legal.privacy.contactTitle") }}
           </h2>
           <p class="text-slate-600 dark:text-slate-300 leading-relaxed">

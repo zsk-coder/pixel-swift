@@ -11,12 +11,7 @@
     "language": "语言",
     "theme": "主题"
   },
-  "cookie": {
-    "message": "我们使用 Cookie 进行流量分析以改善您的体验。",
-    "learnMore": "了解更多",
-    "accept": "接受",
-    "decline": "拒绝"
-  },
+
   "home": {
     "title": "在线图片处理工具",
     "subtitle": "免费在线转换 · 压缩 · 调整图片大小，支持 JPG / PNG / WebP。浏览器本地处理，无需上传，隐私安全。",
@@ -325,9 +320,9 @@
       "localTitle": "本地处理",
       "localText": "PixelSwift 的所有图片转换、压缩和缩放功能均完全在您的浏览器中执行。您的文件不会离开您的设备，这意味着您可以完全掌控自己的数据。",
       "cookiesTitle": "Cookies",
-      "cookiesText": "PixelSwift 使用必要的功能性 Cookie 来保存您的语言偏好和主题设置。我们还使用 Google Analytics 设置的 Cookie 进行网站使用分析（详见下方「数据分析」部分）。",
+      "cookiesText": "PixelSwift 使用必要的功能性 Cookie 来保存您的语言偏好和主题设置。Google Analytics 还会设置第一方 Cookie 来收集匿名使用数据（详见下方「数据分析」部分）。",
       "analyticsTitle": "数据分析",
-      "analyticsText": "我们使用 Google Analytics 4（GA4）来了解访客如何使用我们的网站，以帮助改善用户体验。Google Analytics 可能收集以下信息：",
+      "analyticsText": "我们使用 Google Analytics 4（GA4）来了解访客如何使用我们的网站。GA4 直接加载，无需 Cookie 同意。它收集匿名的汇总数据，包括：",
       "analyticsItem1": "访问的页面和在每个页面上停留的时间",
       "analyticsItem2": "浏览器类型、设备类型和操作系统",
       "analyticsItem3": "大致地理位置（国家/城市级别，非精确定位）",
@@ -335,7 +330,7 @@
       "thirdPartyTitle": "第三方服务",
       "thirdPartyText": "PixelSwift 使用 Google Analytics 4 进行网站使用分析。Google 可能会根据其自身的隐私政策处理此数据。我们不使用任何广告服务，也不会将您的数据出售或分享给其他第三方。",
       "rightsTitle": "您的权利",
-      "rightsText": "您可以通过使用浏览器扩展程序（如 Google Analytics 停用浏览器插件）或调整浏览器的 Cookie 设置来选择退出 Google Analytics 跟踪。禁用分析 Cookie 不会影响 PixelSwift 的功能。",
+      "rightsText": "您可以随时通过以下方式选择退出 Google Analytics 跟踪：使用 Google Analytics 停用浏览器插件、在浏览器设置中启用「禁止跟踪」或使用内容拦截器。退出跟踪不会影响 PixelSwift 的任何功能。",
       "contactTitle": "联系我们",
       "contactText": "如果您对本隐私政策有任何疑问，请通过以下邮箱联系我们："
     },
