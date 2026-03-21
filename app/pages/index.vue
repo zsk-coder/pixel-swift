@@ -36,18 +36,18 @@ useSchemaOrg([
 
 const features = computed(() => [
   {
-    icon: "sync_alt",
-    title: t("home.converter.title"),
-    desc: t("home.converter.desc"),
-    to: localePath("/converter"),
-    btnLabel: t("home.converter.btn"),
-  },
-  {
     icon: "folder_zip",
     title: t("home.compressor.title"),
     desc: t("home.compressor.desc"),
     to: localePath("/compress-image"),
     btnLabel: t("home.compressor.btn"),
+  },
+  {
+    icon: "sync_alt",
+    title: t("home.converter.title"),
+    desc: t("home.converter.desc"),
+    to: localePath("/converter"),
+    btnLabel: t("home.converter.btn"),
   },
   {
     icon: "aspect_ratio",
@@ -135,7 +135,7 @@ const whyItems = computed(() => [
           </p>
           <div class="mt-10 flex items-center justify-center gap-x-6">
             <NuxtLink
-              :to="localePath('/converter')"
+              :to="localePath('/compress-image')"
               class="rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-300 hover:scale-105"
             >
               {{ t("home.cta.start") }}
@@ -280,7 +280,7 @@ const whyItems = computed(() => [
           {{ t("home.cta.desc") }}
         </p>
         <NuxtLink
-          :to="localePath('/converter')"
+          :to="localePath('/compress-image')"
           class="inline-flex items-center justify-center rounded-lg bg-primary px-8 py-3 text-base font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-200"
         >
           {{ t("home.cta.button") }}

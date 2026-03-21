@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "Home",
-    "converter": "Converter",
     "compressor": "Compressor",
+    "converter": "Converter",
     "resizer": "Resize",
     "blog": "Blog",
     "tools": "Tools",
@@ -14,21 +14,21 @@
 
   "home": {
     "title": "Online Image Processing Tool",
-    "subtitle": "Free online image converter, compressor & resizer. Supports JPG / PNG / WebP. Processed locally in your browser — no upload needed, fully private.",
+    "subtitle": "Free online image compressor, converter & resizer. Supports JPG / PNG / WebP. Processed locally in your browser — no upload needed, fully private.",
     "badges": {
       "local": "🔒 Local Processing",
       "batch": "📦 Batch Processing",
       "limit": "📐 50MB / File"
     },
-    "converter": {
-      "title": "Converter",
-      "desc": "Seamlessly convert between JPG, PNG, WEBP, and more with one click.",
-      "btn": "Open Converter"
-    },
     "compressor": {
       "title": "Compressor",
       "desc": "Shrink file sizes by up to 90% while keeping images crystal clear.",
       "btn": "Open Compressor"
+    },
+    "converter": {
+      "title": "Converter",
+      "desc": "Seamlessly convert between JPG, PNG, WEBP, and more with one click.",
+      "btn": "Open Converter"
     },
     "resizer": {
       "title": "Resizer",
@@ -37,7 +37,7 @@
     },
     "features": {
       "title": "Core Features",
-      "subtitle": "Convert, compress, and resize — all in one place."
+      "subtitle": "Compress, convert, and resize — all in one place."
     },
     "cta": {
       "start": "Get Started",
@@ -366,13 +366,13 @@
       "title": "PixelSwift — Free Online Image Converter, Compressor & Resizer",
       "description": "Convert, compress & resize images free online. 100% browser-based, no uploads, no sign-ups. Try it now!"
     },
-    "converter": {
-      "title": "Convert Images Online Free — BMP GIF TIFF to JPG PNG WebP",
-      "description": "Convert BMP, GIF, TIFF, AVIF, and more to JPG, PNG, or WebP instantly. Free, private & unlimited — no upload needed. Try now!"
-    },
     "compressor": {
       "title": "Compress Images Online Free — Reduce Size up to 90%",
       "description": "Compress JPG, PNG & WebP images up to 90% smaller. Keep quality, save bandwidth. Free & private — try now!"
+    },
+    "converter": {
+      "title": "Convert Images Online Free — BMP GIF TIFF to JPG PNG WebP",
+      "description": "Convert BMP, GIF, TIFF, AVIF, and more to JPG, PNG, or WebP instantly. Free, private & unlimited — no upload needed. Try now!"
     },
     "resizer": {
       "title": "Resize Images Online Free — Pixels & Percentage",
@@ -397,11 +397,11 @@
   },
   "schema": {
     "siteDescription": "Free online image converter, compressor, and resizer. No upload needed — process images directly in your browser.",
-    "converter": {
-      "featureList": "Convert any image format (BMP, GIF, TIFF, AVIF, etc.) to JPG, PNG or WebP, batch conversion, no upload needed, 100% browser-based"
-    },
     "compressor": {
       "featureList": "Compress JPEG, PNG and WebP images, adjustable quality, real-time preview comparison, batch compression, up to 90% size reduction"
+    },
+    "converter": {
+      "featureList": "Convert any image format (BMP, GIF, TIFF, AVIF, etc.) to JPG, PNG or WebP, batch conversion, no upload needed, 100% browser-based"
     },
     "resizer": {
       "featureList": "Resize images by pixel or percentage, rotate and flip, aspect ratio presets, real-time preview, no upload needed"

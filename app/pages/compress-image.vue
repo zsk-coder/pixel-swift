@@ -203,8 +203,11 @@ function onFilesAdded(newFiles: File[]) {
     fileItems.value.push(item);
 
     // Fill in preview asynchronously (non-blocking)
+    // Must look up from the reactive array — `item` is the raw object,
+    // not the Vue reactive proxy created after .push().
     blobToDataUrl(file).then((dataUrl) => {
-      item.preview = dataUrl;
+      const reactiveItem = fileItems.value.find((f) => f.id === id);
+      if (reactiveItem) reactiveItem.preview = dataUrl;
     });
   });
 

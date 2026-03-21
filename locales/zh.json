@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "首页",
-    "converter": "格式转换",
     "compressor": "图片压缩",
+    "converter": "格式转换",
     "resizer": "调整大小",
     "blog": "博客",
     "tools": "工具",
@@ -14,21 +14,21 @@
 
   "home": {
     "title": "在线图片处理工具",
-    "subtitle": "免费在线转换 · 压缩 · 调整图片大小，支持 JPG / PNG / WebP。浏览器本地处理，无需上传，隐私安全。",
+    "subtitle": "免费在线压缩 · 转换 · 调整图片大小，支持 JPG / PNG / WebP。浏览器本地处理，无需上传，隐私安全。",
     "badges": {
       "local": "🔒 本地处理",
       "batch": "📦 批量处理",
       "limit": "📐 50MB / 文件"
     },
-    "converter": {
-      "title": "格式转换",
-      "desc": "一键在 JPG、PNG、WEBP 等格式间自由转换。",
-      "btn": "打开转换器"
-    },
     "compressor": {
       "title": "图片压缩",
       "desc": "体积缩小高达 90%，画质几乎无损。",
       "btn": "打开压缩器"
+    },
+    "converter": {
+      "title": "格式转换",
+      "desc": "一键在 JPG、PNG、WEBP 等格式间自由转换。",
+      "btn": "打开转换器"
     },
     "resizer": {
       "title": "调整大小",
@@ -37,7 +37,7 @@
     },
     "features": {
       "title": "核心功能",
-      "subtitle": "转换、压缩、调整大小，一站搞定。"
+      "subtitle": "压缩、转换、调整大小，一站搞定。"
     },
     "cta": {
       "start": "立即开始",
@@ -366,13 +366,13 @@
       "title": "PixelSwift – 免费在线图片转换、压缩、调整大小工具",
       "description": "免费在线转换、压缩、调整图片。100% 浏览器本地处理，无需上传，隐私安全。立即体验！"
     },
-    "converter": {
-      "title": "免费在线图片转换 — BMP GIF TIFF 等轻松转 JPG PNG WebP",
-      "description": "将 BMP、GIF、TIFF、AVIF 等图片即时转换为 JPG、PNG 或 WebP。免费、无需上传、保护隐私。立即使用！"
-    },
     "compressor": {
       "title": "在线图片压缩工具 – 最高缩小90%体积",
       "description": "免费在线压缩 JPG、PNG、WebP 图片，最高减小 90% 体积，画质几乎无损。立即压缩！"
+    },
+    "converter": {
+      "title": "免费在线图片转换 — BMP GIF TIFF 等轻松转 JPG PNG WebP",
+      "description": "将 BMP、GIF、TIFF、AVIF 等图片即时转换为 JPG、PNG 或 WebP。免费、无需上传、保护隐私。立即使用！"
     },
     "resizer": {
       "title": "免费在线调整图片大小 – 像素/百分比调整",
@@ -397,11 +397,11 @@
   },
   "schema": {
     "siteDescription": "免费在线图片转换、压缩、调整大小工具。无需上传，浏览器本地直接处理图片。",
-    "converter": {
-      "featureList": "支持任意图片格式（BMP、GIF、TIFF、AVIF 等）转换为 JPG、PNG 或 WebP，批量转换，无需上传，100%浏览器处理"
-    },
     "compressor": {
       "featureList": "压缩 JPEG、PNG、WebP 图片，可调节画质，实时预览对比，批量压缩，最高缩小 90%"
+    },
+    "converter": {
+      "featureList": "支持任意图片格式（BMP、GIF、TIFF、AVIF 等）转换为 JPG、PNG 或 WebP，批量转换，无需上传，100%浏览器处理"
     },
     "resizer": {
       "featureList": "按像素或百分比调整图片大小，旋转翻转，宽高比预设，实时预览，无需上传"

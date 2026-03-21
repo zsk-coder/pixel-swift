@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "ホーム",
-    "converter": "変換",
     "compressor": "圧縮",
+    "converter": "変換",
     "resizer": "リサイズ",
     "tools": "ツール",
     "about": "概要",
@@ -13,21 +13,21 @@
   },
   "home": {
     "title": "オンライン画像処理ツール",
-    "subtitle": "無料で画像を変換・圧縮・リサイズ。JPG / PNG / WebP に対応。ブラウザでローカル処理 — アップロード不要、プライバシーも安全。",
+    "subtitle": "無料で画像を圧縮・変換・リサイズ。JPG / PNG / WebP に対応。ブラウザでローカル処理 — アップロード不要、プライバシーも安全。",
     "badges": {
       "local": "🔒 ローカル処理",
       "batch": "📦 バッチ処理",
       "limit": "📐 50MB / ファイル"
     },
-    "converter": {
-      "title": "フォーマット変換",
-      "desc": "JPG、PNG、WEBPなどをワンクリックで自由に変換。",
-      "btn": "変換ツールを開く"
-    },
     "compressor": {
       "title": "画像圧縮",
       "desc": "画質を維持したままファイルサイズを最大90%削減。",
       "btn": "圧縮ツールを開く"
+    },
+    "converter": {
+      "title": "フォーマット変換",
+      "desc": "JPG、PNG、WEBPなどをワンクリックで自由に変換。",
+      "btn": "変換ツールを開く"
     },
     "resizer": {
       "title": "画像リサイズ",
@@ -36,7 +36,7 @@
     },
     "features": {
       "title": "主な機能",
-      "subtitle": "変換・圧縮・リサイズ、すべてをワンストップで。"
+      "subtitle": "圧縮・変換・リサイズ、すべてをワンストップで。"
     },
     "cta": {
       "start": "今すぐ始める",
@@ -331,13 +331,13 @@
       "title": "PixelSwift – 無料オンライン画像変換・圧縮・リサイズツール",
       "description": "画像を無料で変換・圧縮・リサイズ。100%ブラウザ処理、アップロード不要、プライバシー安全。今すぐお試しください！"
     },
-    "converter": {
-      "title": "無料オンライン画像変換 — BMP GIF TIFFをJPG PNG WebPに変換",
-      "description": "BMP、GIF、TIFF、AVIFなどをJPG、PNG、WebPに瞬時変換。無料・アップロード不要・プライバシー保護。"
-    },
     "compressor": {
       "title": "無料オンライン画像圧縮 – 最大90%サイズ削減",
       "description": "JPG、PNG、WebP画像を最大90%圧縮。画質維持、容量節約。無料＆安全 – 今すぐ圧縮！"
+    },
+    "converter": {
+      "title": "無料オンライン画像変換 — BMP GIF TIFFをJPG PNG WebPに変換",
+      "description": "BMP、GIF、TIFF、AVIFなどをJPG、PNG、WebPに瞬時変換。無料・アップロード不要・プライバシー保護。"
     },
     "resizer": {
       "title": "無料オンライン画像リサイズ – ピクセル＆パーセント",
@@ -362,11 +362,11 @@
   },
   "schema": {
     "siteDescription": "無料オンライン画像変換・圧縮・リサイズツール。アップロード不要 — ブラウザで直接処理。",
-    "converter": {
-      "featureList": "あらゆる画像形式（BMP、GIF、TIFF、AVIF等）をJPG、PNG、WebPに変換、一括変換対応、アップロード不要、100%ブラウザ処理"
-    },
     "compressor": {
       "featureList": "JPEG、PNG、WebP画像の圧縮、品質調整可能、リアルタイムプレビュー比較、バッチ圧縮、最大90%サイズ削減"
+    },
+    "converter": {
+      "featureList": "あらゆる画像形式（BMP、GIF、TIFF、AVIF等）をJPG、PNG、WebPに変換、一括変換対応、アップロード不要、100%ブラウザ処理"
     },
     "resizer": {
       "featureList": "ピクセルまたはパーセントで画像サイズを変更、回転・反転、アスペクト比プリセット、リアルタイムプレビュー、アップロード不要"

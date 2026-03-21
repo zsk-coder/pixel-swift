@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "홈",
-    "converter": "변환기",
     "compressor": "압축기",
+    "converter": "변환기",
     "resizer": "크기 조정",
     "tools": "도구",
     "about": "소개",
@@ -13,21 +13,21 @@
   },
   "home": {
     "title": "온라인 이미지 처리 도구",
-    "subtitle": "무료로 이미지 변환 · 압축 · 크기 조정. JPG / PNG / WebP 지원. 브라우저 로컬 처리 — 업로드 불필요, 완전 비공개.",
+    "subtitle": "무료로 이미지 압축 · 변환 · 크기 조정. JPG / PNG / WebP 지원. 브라우저 로컬 처리 — 업로드 불필요, 완전 비공개.",
     "badges": {
       "local": "🔒 로컬 처리",
       "batch": "📦 일괄 처리",
       "limit": "📐 50MB / 파일"
     },
-    "converter": {
-      "title": "포맷 변환기",
-      "desc": "JPG, PNG, WEBP 등 다양한 형식을 원클릭으로 자유롭게 변환.",
-      "btn": "변환기 열기"
-    },
     "compressor": {
       "title": "이미지 압축기",
       "desc": "화질 저하 없이 파일 크기를 최대 90% 줄이세요.",
       "btn": "압축기 열기"
+    },
+    "converter": {
+      "title": "포맷 변환기",
+      "desc": "JPG, PNG, WEBP 등 다양한 형식을 원클릭으로 자유롭게 변환.",
+      "btn": "변환기 열기"
     },
     "resizer": {
       "title": "이미지 크기 조정",
@@ -36,7 +36,7 @@
     },
     "features": {
       "title": "핵심 기능",
-      "subtitle": "변환, 압축, 크기 조정 — 한 곳에서 모두 해결."
+      "subtitle": "압축, 변환, 크기 조정 — 한 곳에서 모두 해결."
     },
     "cta": {
       "start": "바로 시작하기",
@@ -331,13 +331,13 @@
       "title": "PixelSwift – 무료 온라인 이미지 변환, 압축, 크기 조정 도구",
       "description": "이미지를 무료로 변환, 압축, 크기 조정하세요. 100% 브라우저 로컬 처리, 업로드 불필요, 개인정보 안전. 지금 사용해 보세요!"
     },
-    "converter": {
-      "title": "무료 온라인 이미지 변환 — BMP GIF TIFF를 JPG PNG WebP로",
-      "description": "BMP, GIF, TIFF, AVIF 등을 JPG, PNG, WebP로 즉시 변환. 무료, 업로드 불필요, 프라이버시 보호."
-    },
     "compressor": {
       "title": "무료 온라인 이미지 압축 – 최대 90% 용량 감소",
       "description": "JPG, PNG, WebP 이미지를 최대 90% 압축하세요. 화질 유지, 용량 절약. 무료 & 안전 – 지금 압축하세요!"
+    },
+    "converter": {
+      "title": "무료 온라인 이미지 변환 — BMP GIF TIFF를 JPG PNG WebP로",
+      "description": "BMP, GIF, TIFF, AVIF 등을 JPG, PNG, WebP로 즉시 변환. 무료, 업로드 불필요, 프라이버시 보호."
     },
     "resizer": {
       "title": "무료 온라인 이미지 크기 조정 – 픽셀 & 백분율",
@@ -362,11 +362,11 @@
   },
   "schema": {
     "siteDescription": "무료 온라인 이미지 변환기, 압축기, 크기 조정기. 업로드 불필요 — 브라우저에서 직접 이미지 처리.",
-    "converter": {
-      "featureList": "모든 이미지 형식(BMP, GIF, TIFF, AVIF 등)을 JPG, PNG, WebP로 변환, 일괄 변환, 업로드 불필요, 100% 브라우저 처리"
-    },
     "compressor": {
       "featureList": "JPEG, PNG, WebP 이미지 압축, 화질 조절 가능, 실시간 미리보기 비교, 일괄 압축, 최대 90% 크기 감소"
+    },
+    "converter": {
+      "featureList": "모든 이미지 형식(BMP, GIF, TIFF, AVIF 등)을 JPG, PNG, WebP로 변환, 일괄 변환, 업로드 불필요, 100% 브라우저 처리"
     },
     "resizer": {
       "featureList": "픽셀 또는 백분율로 이미지 크기 조정, 회전 및 뒤집기, 비율 프리셋, 실시간 미리보기, 업로드 불필요"

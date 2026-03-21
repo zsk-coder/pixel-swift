@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "Inicio",
-    "converter": "Convertidor",
     "compressor": "Compresor",
+    "converter": "Convertidor",
     "resizer": "Redimensionar",
     "tools": "Herramientas",
     "about": "Acerca de",
@@ -13,21 +13,21 @@
   },
   "home": {
     "title": "Herramienta de imágenes en línea",
-    "subtitle": "Convierte, comprime y redimensiona imágenes gratis en línea. Compatible con JPG / PNG / WebP. Procesado localmente en tu navegador — sin subidas, totalmente privado.",
+    "subtitle": "Comprime, convierte y redimensiona imágenes gratis en línea. Compatible con JPG / PNG / WebP. Procesado localmente en tu navegador — sin subidas, totalmente privado.",
     "badges": {
       "local": "🔒 Procesamiento local",
       "batch": "📦 Procesamiento por lotes",
       "limit": "📐 50MB / archivo"
     },
-    "converter": {
-      "title": "Convertidor de formato",
-      "desc": "Convierte entre JPG, PNG, WEBP y más con un solo clic.",
-      "btn": "Abrir convertidor"
-    },
     "compressor": {
       "title": "Compresor de imágenes",
       "desc": "Reduce el tamaño hasta un 90% manteniendo la calidad impecable.",
       "btn": "Abrir compresor"
+    },
+    "converter": {
+      "title": "Convertidor de formato",
+      "desc": "Convierte entre JPG, PNG, WEBP y más con un solo clic.",
+      "btn": "Abrir convertidor"
     },
     "resizer": {
       "title": "Redimensionar imagen",
@@ -36,7 +36,7 @@
     },
     "features": {
       "title": "Funciones principales",
-      "subtitle": "Convierte, comprime y redimensiona — todo en un solo lugar."
+      "subtitle": "Comprime, convierte y redimensiona — todo en un solo lugar."
     },
     "cta": {
       "start": "Empezar",
@@ -331,13 +331,13 @@
       "title": "PixelSwift – Convertidor, compresor y redimensionador de imágenes en línea gratis",
       "description": "Convierte, comprime y redimensiona imágenes gratis en línea. 100% en el navegador, sin registro ni instalación. ¡Pruébalo ahora!"
     },
-    "converter": {
-      "title": "Convertir imágenes gratis online — BMP GIF TIFF a JPG PNG WebP",
-      "description": "Convierte BMP, GIF, TIFF, AVIF y más a JPG, PNG o WebP al instante. Gratis, sin subir archivos, privado."
-    },
     "compressor": {
       "title": "Comprimir imágenes en línea – Reduce hasta un 90%",
       "description": "Comprime imágenes JPG, PNG y WebP hasta un 90%. Sin registro, sin instalar. Mantén la calidad y ahorra espacio. ¡Gratis!"
+    },
+    "converter": {
+      "title": "Convertir imágenes gratis online — BMP GIF TIFF a JPG PNG WebP",
+      "description": "Convierte BMP, GIF, TIFF, AVIF y más a JPG, PNG o WebP al instante. Gratis, sin subir archivos, privado."
     },
     "resizer": {
       "title": "Redimensionar imágenes en línea gratis – Píxeles y porcentaje",
@@ -362,11 +362,11 @@
   },
   "schema": {
     "siteDescription": "Conversor, compresor y redimensionador de imágenes en línea gratis. Sin necesidad de subir archivos — procesamiento directo en su navegador.",
-    "converter": {
-      "featureList": "Convierte cualquier formato (BMP, GIF, TIFF, AVIF, etc.) a JPG, PNG o WebP, conversión por lotes, sin subir, 100% en el navegador"
-    },
     "compressor": {
       "featureList": "Comprimir imágenes JPEG, PNG y WebP, calidad ajustable, comparación en tiempo real, compresión por lotes, reducción de hasta un 90%"
+    },
+    "converter": {
+      "featureList": "Convierte cualquier formato (BMP, GIF, TIFF, AVIF, etc.) a JPG, PNG o WebP, conversión por lotes, sin subir, 100% en el navegador"
     },
     "resizer": {
       "featureList": "Redimensionar imágenes por píxeles o porcentaje, rotar y voltear, preajustes de proporción, vista previa en tiempo real, sin subir archivos"

@@ -1,8 +1,8 @@
 {
   "nav": {
     "home": "Startseite",
-    "converter": "Konverter",
     "compressor": "Kompressor",
+    "converter": "Konverter",
     "resizer": "Größe ändern",
     "tools": "Werkzeuge",
     "about": "Über uns",
@@ -13,21 +13,21 @@
   },
   "home": {
     "title": "Online-Bildbearbeitungstool",
-    "subtitle": "Kostenlos Bilder konvertieren, komprimieren und skalieren. Unterstützt JPG / PNG / WebP. Lokal im Browser verarbeitet — kein Upload nötig, vollständig privat.",
+    "subtitle": "Kostenlos Bilder komprimieren, konvertieren und skalieren. Unterstützt JPG / PNG / WebP. Lokal im Browser verarbeitet — kein Upload nötig, vollständig privat.",
     "badges": {
       "local": "🔒 Lokale Verarbeitung",
       "batch": "📦 Stapelverarbeitung",
       "limit": "📐 50 MB / Datei"
     },
-    "converter": {
-      "title": "Format-Konverter",
-      "desc": "JPG, PNG, WEBP und mehr mit einem Klick konvertieren.",
-      "btn": "Konverter öffnen"
-    },
     "compressor": {
       "title": "Bildkompressor",
       "desc": "Dateigröße um bis zu 90 % reduzieren bei kristallklarer Qualität.",
       "btn": "Kompressor öffnen"
+    },
+    "converter": {
+      "title": "Format-Konverter",
+      "desc": "JPG, PNG, WEBP und mehr mit einem Klick konvertieren.",
+      "btn": "Konverter öffnen"
     },
     "resizer": {
       "title": "Bildgröße ändern",
@@ -36,7 +36,7 @@
     },
     "features": {
       "title": "Kernfunktionen",
-      "subtitle": "Konvertieren, komprimieren und skalieren — alles an einem Ort."
+      "subtitle": "Komprimieren, konvertieren und skalieren — alles an einem Ort."
     },
     "cta": {
       "start": "Jetzt starten",
@@ -331,13 +331,13 @@
       "title": "PixelSwift – Kostenloser Online-Bildkonverter, Kompressor & Größenänderer",
       "description": "Bilder kostenlos online konvertieren, komprimieren und in der Größe ändern. 100% im Browser, ohne Anmeldung. Jetzt ausprobieren!"
     },
-    "converter": {
-      "title": "Bilder kostenlos online konvertieren — BMP GIF TIFF zu JPG PNG WebP",
-      "description": "BMP, GIF, TIFF, AVIF u.v.m. sofort in JPG, PNG oder WebP konvertieren. Kostenlos, ohne Upload, privat."
-    },
     "compressor": {
       "title": "Bilder online komprimieren – Bis zu 90% Größenreduktion",
       "description": "JPG, PNG und WebP Bilder bis zu 90% komprimieren. Ohne Anmeldung, Qualität erhalten. Kostenlos und privat!"
+    },
+    "converter": {
+      "title": "Bilder kostenlos online konvertieren — BMP GIF TIFF zu JPG PNG WebP",
+      "description": "BMP, GIF, TIFF, AVIF u.v.m. sofort in JPG, PNG oder WebP konvertieren. Kostenlos, ohne Upload, privat."
     },
     "resizer": {
       "title": "Bildgröße online ändern – Pixel & Prozent",
@@ -362,11 +362,11 @@
   },
   "schema": {
     "siteDescription": "Kostenloser Online-Bildkonverter, Kompressor und Größenänderer. Kein Upload nötig — Bilder direkt im Browser verarbeiten.",
-    "converter": {
-      "featureList": "Jedes Bildformat (BMP, GIF, TIFF, AVIF usw.) in JPG, PNG oder WebP konvertieren, Stapelkonvertierung, kein Upload nötig, 100% browserbasiert"
-    },
     "compressor": {
       "featureList": "JPEG, PNG und WebP Bilder komprimieren, einstellbare Qualität, Echtzeit-Vorschau-Vergleich, Stapelkomprimierung, bis zu 90% Größenreduktion"
+    },
+    "converter": {
+      "featureList": "Jedes Bildformat (BMP, GIF, TIFF, AVIF usw.) in JPG, PNG oder WebP konvertieren, Stapelkonvertierung, kein Upload nötig, 100% browserbasiert"
     },
     "resizer": {
       "featureList": "Bildgröße per Pixel oder Prozent ändern, Drehen und Spiegeln, Seitenverhältnis-Vorlagen, Echtzeit-Vorschau, kein Upload nötig"

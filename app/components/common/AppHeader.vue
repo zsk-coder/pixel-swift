@@ -55,8 +55,8 @@ function closeMobileMenu() {
 }
 
 const navItems = computed(() => [
-  { label: t("nav.converter"), to: localePath("/converter") },
   { label: t("nav.compressor"), to: localePath("/compress-image") },
+  { label: t("nav.converter"), to: localePath("/converter") },
   { label: t("nav.resizer"), to: localePath("/resize-image") },
   { label: t("nav.blog"), to: localePath("/blog") },
 ]);
@@ -80,38 +80,44 @@ function selectLocale(code: string) {
     <div
       class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8 relative"
     >
-      <!-- Logo (left) -->
-      <NuxtLink
-        :to="localePath('/')"
-        class="flex items-center gap-2 shrink-0"
-        @click="closeMobileMenu"
-      >
-        <div
-          class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white"
-        >
-          <span aria-hidden="true" class="material-symbols-outlined text-[20px]"
-            >auto_fix</span
-          >
-        </div>
-        <span
-          class="text-xl font-bold tracking-tight text-slate-900 dark:text-white"
-          >PixelSwift</span
-        >
-      </NuxtLink>
-
-      <!-- Desktop Nav (center) -->
-      <nav
-        class="hidden md:flex items-center gap-6 absolute left-1/2 -translate-x-1/2"
-      >
+      <!-- Left: Logo + Nav -->
+      <div class="flex items-center">
         <NuxtLink
-          v-for="item in navItems"
-          :key="item.to"
-          :to="item.to"
-          class="text-sm font-medium text-slate-600 hover:text-primary dark:text-slate-300 dark:hover:text-primary transition-colors"
+          :to="localePath('/')"
+          class="flex items-center gap-2 shrink-0"
+          @click="closeMobileMenu"
         >
-          {{ item.label }}
+          <div
+            class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white"
+          >
+            <span aria-hidden="true" class="material-symbols-outlined text-[20px]"
+              >auto_fix</span
+            >
+          </div>
+          <span
+            class="text-xl font-bold tracking-tight text-slate-900 dark:text-white"
+            >PixelSwift</span
+          >
         </NuxtLink>
-      </nav>
+
+        <!-- Divider -->
+        <div class="hidden md:block w-px h-5 bg-slate-200 dark:bg-slate-700 mx-6" />
+
+        <!-- Desktop Nav -->
+        <nav
+          class="hidden md:flex items-center gap-8"
+        >
+          <NuxtLink
+            v-for="item in navItems"
+            :key="item.to"
+            :to="item.to"
+            class="text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors"
+            active-class="!text-primary"
+          >
+            {{ item.label }}
+          </NuxtLink>
+        </nav>
+      </div>
 
       <!-- Actions (right) -->
       <div class="flex items-center gap-3">
