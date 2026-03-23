@@ -87,10 +87,10 @@ const featuredPost = computed(() => {
   return posts.find((p: any) => p.featured) || null;
 });
 
-// Only show featured section when there are more than 1 article
+// Only show featured section when there are enough articles (>= 6)
 const showFeatured = computed(() => {
   const posts = allPosts.value || [];
-  return !!featuredPost.value && posts.length > 1;
+  return !!featuredPost.value && posts.length >= 6;
 });
 
 // ── Pagination ──
@@ -229,7 +229,7 @@ function getAuthorInitials(name: string) {
       <!-- ── Category Filter Pills ── -->
       <!-- Matching design: no border on inactive pills -->
       <div
-        v-if="categories.length > 2"
+        v-if="categories.length > 4"
         class="flex items-center gap-2 overflow-x-auto hide-scrollbar mb-4 pb-2"
       >
         <button
