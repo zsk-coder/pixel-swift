@@ -1,24 +1,13 @@
 {
   "nav": {
-    "home": "ホーム",
     "compressor": "圧縮",
     "converter": "変換",
     "resizer": "リサイズ",
-    "tools": "ツール",
-    "about": "概要",
-    "contact": "お問い合わせ",
-    "language": "言語",
-    "theme": "テーマ",
     "blog": "ブログ"
   },
   "home": {
     "title": "オンライン画像処理ツール",
     "subtitle": "無料で画像を圧縮・変換・リサイズ。JPG / PNG / WebP に対応。ブラウザでローカル処理 — アップロード不要、プライバシーも安全。",
-    "badges": {
-      "local": "🔒 ローカル処理",
-      "batch": "📦 バッチ処理",
-      "limit": "📐 50MB / ファイル"
-    },
     "compressor": {
       "title": "画像圧縮",
       "desc": "画質を維持したままファイルサイズを最大90%削減。",
@@ -46,7 +35,6 @@
       "button": "使ってみる"
     },
     "why": {
-      "title": "PixelSwiftが選ばれる理由",
       "fast": "高速処理",
       "fastDesc": "5つの主要画像フォーマットに対応、ミリ秒単位で即座に処理 — アップロードやダウンロードの待ち時間なし。",
       "secure": "完全プライベート",
@@ -75,17 +63,11 @@
     }
   },
   "upload": {
-    "dragText": "画像をここにドラッグ＆ドロップ、またはクリックしてアップロード",
     "dragTitle": "ファイルをここにドラッグ＆ドロップ",
     "orBrowse": "またはクリックしてファイルを選択",
     "tapToUpload": "タップしてアップロード",
-    "orDragDrop": "またはここにドラッグ＆ドロップ",
     "selectImages": "画像を選択",
     "supportedFormats": "JPG, PNG, WEBP に対応、最大 50MB",
-    "releaseToUpload": "離すとアップロードされます",
-    "supportFormats": "対応形式: JPG, PNG, WebP",
-    "maxFiles": "最大{count}枚、1ファイル{size}MBまで",
-    "pasteHint": "クリップボードからの貼り付けも可能です（Ctrl+V）",
     "selectFromAlbum": "フォトライブラリから選択"
   },
   "converter": {
@@ -98,8 +80,6 @@
     "settingsMobile": "設定",
     "outputFormat": "出力形式",
     "quality": "品質",
-    "lowSize": "低容量",
-    "bestQuality": "最高品質",
     "queue": "キュー",
     "clearAll": "すべてクリア",
     "converting": "変換中...",
@@ -109,11 +89,6 @@
     "downloadAllZip": "一括ダウンロード (ZIP)",
     "lossless": "ロスレス",
     "losslessHint": "ロスレス変換、画質を完全に保持",
-    "formats": {
-      "jpg": "Joint Photographic Experts Group",
-      "png": "Portable Network Graphics",
-      "webp": "Web Picture Format"
-    },
     "faq": {
       "title": "よくある質問",
       "q1": "オンラインでPNGをJPGに変換するには？",
@@ -135,17 +110,14 @@
     "subtitle": "画質を維持しながらファイルサイズを縮小。PNG、JPG、WEBPに最適。",
     "subtitleMobile": "画像をインテリジェントに最適化",
     "uploadHint": "JPG, PNG, WEBP 対応、最大 50MB · 一括アップロード可能",
-    "uploadHintSingle": "JPG, PNG, WEBP 対応、最大 50MB",
     "original": "オリジナル",
     "compressed": "圧縮後",
-    "result": "結果",
     "settings": "設定",
     "reset": "リセット",
     "quality": "品質",
     "lowSize": "低容量",
     "highQuality": "高品質",
     "compressionLevel": "圧縮レベル",
-    "savedSpace": "節約: {size} ({percent}%)",
     "presets": {
       "extreme": "最大圧縮",
       "extremeHint": "-80% サイズ",
@@ -156,9 +128,6 @@
       "lossless": "ほぼ無損失",
       "losslessHint": "-10% サイズ"
     },
-    "outputFormat": "出力形式",
-    "keepOriginal": "元の形式 ({format})",
-    "convertTo": "{format}に変換",
     "downloadImage": "画像をダウンロード",
     "startOver": "別の画像をアップロード",
     "processAnother": "別の画像を処理",
@@ -192,7 +161,6 @@
     "title": "画像リサイズツール",
     "uploadHint": "JPG, PNG, WEBP 対応、最大 50MB",
     "settings": "リサイズ設定",
-    "resetToOriginal": "元に戻す",
     "resizeBy": "リサイズ方法",
     "mode": {
       "pixel": "ピクセル",
@@ -216,8 +184,6 @@
       "cover": "カバー写真"
     },
     "outputSize": "出力サイズ",
-    "outputFormat": "出力形式",
-    "outputPreview": "出力サイズ: {width} × {height} px (元画像の {percent}%)",
     "resizeAndDownload": "画像をダウンロード",
     "replaceImage": "クリックして画像を変更",
     "startOver": "別の画像をアップロード",
@@ -240,28 +206,17 @@
   },
   "common": {
     "download": "ダウンロード",
-    "downloadAll": "すべてダウンロード",
     "preview": "プレビュー",
     "delete": "削除",
     "cancel": "キャンセル",
     "reset": "リセット",
     "process": "処理開始",
     "processing": "処理中...",
-    "done": "完了",
     "error": "エラー",
-    "pending": "待機中",
-    "retry": "再試行",
-    "close": "閉じる",
-    "fileSize": "ファイルサイズ",
-    "dimensions": "サイズ",
-    "notSupported": "このブラウザではサポートされていません"
+    "pending": "待機中"
   },
   "errors": {
-    "formatNotSupported": "非対応の形式です。{formats}をアップロードしてください",
-    "fileTooLarge": "ファイルが{size}MB制限を超えています。先に圧縮してから再度お試しください。",
-    "fileCorrupted": "ファイルが破損しており、読み取れません。",
     "processFailed": "処理に失敗しました。ページを更新して再度お試しください。",
-    "browserNotSupported": "お使いのブラウザはこの機能に対応していません。Chromeの使用を推奨します。",
     "maxFilesExceeded": "最大{count}ファイルまでです。先頭の{count}ファイルのみ処理されます。",
     "unsupportedFormat": "サポートされていないファイル形式です。対応形式: {formats}"
   },
@@ -377,12 +332,7 @@
     "subtitle": "プライバシー重視の画像処理テクニックとチュートリアル。圧縮・変換・最適化をブラウザ内で完結、アップロード不要。",
     "featured": "注目",
     "readMore": "続きを読む",
-    "readFullArticle": "全文を読む",
     "allCategories": "すべて",
-    "mostPopular": "人気記事",
-    "minRead": "{min}分で読める",
-    "previous": "前へ",
-    "next": "次へ",
     "categories": {
       "tutorials": "チュートリアル",
       "optimization": "最適化",
@@ -394,12 +344,8 @@
     },
     "detail": {
       "onThisPage": "目次",
-      "share": "この記事をシェア：",
-      "copyLink": "リンクをコピー",
-      "copied": "コピーしました",
-      "copy": "コピー",
       "ctaTitle": "画像をもっと軽くしたいですか？",
-      "ctaDesc": "PixelSwiftのAI圧縮エンジンをお試しください。",
+      "ctaDesc": "無料でオンライン画像圧縮 — 登録不要、すぐに使えます。",
       "compressNow": "今すぐ圧縮",
       "moreArticles": "関連記事",
       "moreArticlesDesc": "最新のインサイトで知識を広げましょう。",

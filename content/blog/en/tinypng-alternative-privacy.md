@@ -42,7 +42,7 @@ PixelSwift takes a fundamentally different approach. Instead of sending your ima
 Here's the technical stack that makes this possible:
 
 - **Canvas API** for image decoding and pixel manipulation
-- **WebAssembly (WASM)** modules for high-performance encoding (OxiPNG, MozJPEG-equivalent algorithms)
+- High-performance encoding engine (OxiPNG, MozJPEG-equivalent algorithms)
 - **Web Workers** to run compression off the main thread, keeping the UI responsive
 - **Zero network requests** — your files never leave `localhost`
 
@@ -82,7 +82,7 @@ Let's break down the comparison across the dimensions that matter most:
 Both tools deliver excellent compression. In our benchmarks across 100 test images:
 
 - **JPEG compression**: TinyPNG averaged 68% reduction; PixelSwift averaged 65% reduction at quality 80.
-- **PNG compression**: TinyPNG averaged 72% reduction; PixelSwift averaged 70% reduction with OxiPNG WASM.
+- **PNG compression**: TinyPNG averaged 72% reduction; PixelSwift averaged 70% reduction.
 - **WebP output**: PixelSwift supports direct [WebP conversion](/converter) with an additional 25-30% size reduction over JPEG.
 
 ![Compression quality benchmark: TinyPNG vs PixelSwift across JPEG, PNG, and WebP formats](/images/blog/compression-comparison.png)
@@ -155,7 +155,7 @@ There's no account to create, no extension to install, and no learning curve. Th
 
 TinyPNG remains a solid tool with proven compression quality. But in an era of increasing data regulation and privacy awareness, the server-upload model is becoming a liability rather than a convenience.
 
-PixelSwift proves that you don't have to sacrifice compression quality for privacy. By leveraging modern browser technologies — WebAssembly, Canvas API, and Web Workers — it delivers comparable results with zero data exposure.
+PixelSwift proves that you don't have to sacrifice compression quality for privacy. By leveraging modern browser technologies, it delivers comparable results with zero data exposure.
 
 **Your images are your data. They should stay on your device.**
 

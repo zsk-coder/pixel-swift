@@ -107,7 +107,7 @@ All of these fit comfortably within email limits after compression.
 
 Here's something most people don't think about: traditional online compressors **upload your images to their servers** for processing. Your vacation photos, medical documents, ID scans, and business files all pass through someone else's infrastructure.
 
-PixelSwift is different. It uses **WebAssembly (WASM) technology** to run the entire compression engine inside your browser. Your files never leave your device — not even temporarily.
+PixelSwift is different. Its compression engine runs entirely inside your browser. Your files never leave your device — not even temporarily.
 
 This matters when you're compressing:
 

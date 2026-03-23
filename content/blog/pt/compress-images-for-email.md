@@ -78,7 +78,7 @@ Precisa converter formatos? O [conversor de imagens](/converter) do PixelSwift c
 
 ## Privacidade: suas fotos não saem do seu dispositivo
 
-Compressores online tradicionais enviam suas imagens para seus servidores. O PixelSwift usa **tecnologia WebAssembly (WASM)** para executar toda a compressão no seu navegador. Seus arquivos nunca saem do seu dispositivo.
+Compressores online tradicionais enviam suas imagens para seus servidores. O motor de compressão do PixelSwift funciona completamente no seu navegador. Seus arquivos nunca saem do seu dispositivo.
 
 Sem servidor = sem risco de vazamento de dados.
 

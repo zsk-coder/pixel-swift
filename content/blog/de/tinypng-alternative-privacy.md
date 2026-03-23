@@ -42,7 +42,7 @@ PixelSwift verfolgt einen grundlegend anderen Ansatz. Anstatt Ihre Bilder an ein
 Der technische Stack dahinter:
 
 - **Canvas API** für Bilddekodierung und Pixelmanipulation
-- **WebAssembly (WASM)**-Module für Hochleistungs-Encoding (OxiPNG, MozJPEG-äquivalente Algorithmen)
+- Hochleistungs-Encoding-Engine (OxiPNG, MozJPEG-äquivalente Algorithmen)
 - **Web Workers** für die Auslagerung der Komprimierung vom Haupt-Thread
 - **Null Netzwerkanfragen** — Ihre Dateien bleiben durchgehend lokal
 
@@ -81,7 +81,7 @@ Vergleichen wir die beiden Tools in den wichtigsten Kategorien:
 Beide Tools liefern ausgezeichnete Komprimierungsergebnisse. In unserem Benchmark mit 100 Testbildern:
 
 - **JPEG-Komprimierung**: TinyPNG erzielte durchschnittlich 68 % Reduktion; PixelSwift 65 % bei Qualitätsstufe 80.
-- **PNG-Komprimierung**: TinyPNG erzielte durchschnittlich 72 % Reduktion; PixelSwift 70 % mit OxiPNG WASM.
+- **PNG-Komprimierung**: TinyPNG erzielte durchschnittlich 72 % Reduktion; PixelSwift 70 %.
 - **WebP-Ausgabe**: PixelSwift unterstützt die direkte [WebP-Konvertierung](/de/converter) mit zusätzlich 25–30 % Größenreduktion gegenüber JPEG.
 
 ![Benchmark: Komprimierungsqualität von TinyPNG vs PixelSwift bei JPEG, PNG und WebP](/images/blog/compression-comparison.png)
@@ -139,7 +139,7 @@ Kein Konto nötig, keine Erweiterung zu installieren, keine Einarbeitungszeit. D
 
 TinyPNG bleibt ein solides Werkzeug mit bewährter Komprimierungsqualität. Aber in einer Zeit zunehmender Datenschutzregulierung und wachsendem Bewusstsein für Privatsphäre wird das Server-Upload-Modell eher zum Risiko als zum Vorteil.
 
-PixelSwift beweist, dass man **keine Komprimierungsqualität opfern muss, um Datenschutz zu gewährleisten**. Durch den Einsatz moderner Browser-Technologien — WebAssembly, Canvas API und Web Workers — liefert es vergleichbare Ergebnisse bei null Datenexposition.
+PixelSwift beweist, dass man **keine Komprimierungsqualität opfern muss, um Datenschutz zu gewährleisten**. Durch den Einsatz moderner Browser-Technologien liefert es vergleichbare Ergebnisse bei null Datenexposition.
 
 **Ihre Bilder sind Ihre Daten. Sie sollten auf Ihrem Gerät bleiben.**
 

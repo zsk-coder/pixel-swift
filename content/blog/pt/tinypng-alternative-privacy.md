@@ -42,7 +42,7 @@ O PixelSwift adota uma abordagem fundamentalmente diferente. Em vez de enviar su
 A pilha tecnológica que torna isso possível:
 
 - **Canvas API** para decodificação de imagens e manipulação de pixels
-- **WebAssembly (WASM)** para codificação de alto desempenho (OxiPNG, algoritmos equivalentes ao MozJPEG)
+- Motor de codificação de alto desempenho (OxiPNG, algoritmos equivalentes ao MozJPEG)
 - **Web Workers** para executar a compressão fora da thread principal, mantendo a interface responsiva
 - **Zero requisições de rede** — seus arquivos nunca saem do `localhost`
 
@@ -81,7 +81,7 @@ Vamos comparar as duas ferramentas nos quesitos mais importantes:
 Ambas as ferramentas entregam excelentes resultados de compressão. Nosso benchmark com 100 imagens de teste mostrou:
 
 - **Compressão JPEG**: TinyPNG obteve redução média de 68%; PixelSwift 65% na qualidade 80.
-- **Compressão PNG**: TinyPNG obteve 72% de média; PixelSwift 70% com OxiPNG WASM.
+- **Compressão PNG**: TinyPNG obteve 72% de média; PixelSwift 70%.
 - **Saída WebP**: PixelSwift suporta [conversão direta para WebP](/pt/converter), com 25-30% de redução adicional em relação ao JPEG.
 
 ![Benchmark de qualidade: TinyPNG vs PixelSwift em formatos JPEG, PNG e WebP](/images/blog/compression-comparison.png)
@@ -139,7 +139,7 @@ Sem criar conta, sem instalar extensões, sem curva de aprendizado. A interface 
 
 O TinyPNG continua sendo uma ferramenta sólida com qualidade de compressão comprovada. Mas em uma era de regulamentações de dados cada vez mais rígidas e maior conscientização sobre privacidade, o modelo de upload para servidor está se tornando mais um risco do que uma conveniência.
 
-O PixelSwift prova que **não é preciso sacrificar qualidade de compressão para proteger a privacidade**. Utilizando tecnologias modernas do navegador — WebAssembly, Canvas API e Web Workers —, ele entrega resultados comparáveis com zero exposição de dados.
+O PixelSwift prova que **não é preciso sacrificar qualidade de compressão para proteger a privacidade**. Utilizando tecnologias modernas do navegador, ele entrega resultados comparáveis com zero exposição de dados.
 
 **Suas imagens são seus dados. Eles devem ficar no seu dispositivo.**
 

@@ -42,7 +42,7 @@ PixelSwift adopte une approche fondamentalement différente. Au lieu d'envoyer v
 La pile technologique qui rend cela possible :
 
 - **Canvas API** pour le décodage d'images et la manipulation de pixels
-- **WebAssembly (WASM)** pour un encodage haute performance (OxiPNG, algorithmes équivalents à MozJPEG)
+- Moteur d'encodage haute performance (OxiPNG, algorithmes équivalents à MozJPEG)
 - **Web Workers** pour exécuter la compression en dehors du thread principal, gardant l'interface réactive
 - **Zéro requête réseau** — vos fichiers ne quittent jamais `localhost`
 
@@ -81,7 +81,7 @@ Analysons point par point les critères les plus importants :
 Les deux outils offrent d'excellents résultats. Voici nos benchmarks sur 100 images test :
 
 - **Compression JPEG** : TinyPNG atteint en moyenne 68 % de réduction ; PixelSwift 65 % à qualité 80.
-- **Compression PNG** : TinyPNG atteint en moyenne 72 % de réduction ; PixelSwift 70 % avec OxiPNG WASM.
+- **Compression PNG** : TinyPNG atteint en moyenne 72 % de réduction ; PixelSwift 70 %.
 - **Sortie WebP** : PixelSwift prend en charge la [conversion WebP](/fr/converter) directe, avec 25-30 % de gain supplémentaire par rapport au JPEG.
 
 ![Benchmark : qualité de compression TinyPNG vs PixelSwift en JPEG, PNG et WebP](/images/blog/compression-comparison.png)
@@ -139,7 +139,7 @@ Pas de compte à créer, pas d'extension à installer, aucune courbe d'apprentis
 
 TinyPNG reste un outil solide à la qualité de compression éprouvée. Mais à l'heure du RGPD et de la sensibilisation croissante à la protection des données, le modèle basé sur l'upload devient davantage un risque qu'une commodité.
 
-PixelSwift prouve qu'il est possible de **protéger sa vie privée sans sacrifier la qualité de compression**. Grâce aux technologies modernes du navigateur — WebAssembly, Canvas API et Web Workers —, il offre des résultats comparables avec zéro exposition de données.
+PixelSwift prouve qu'il est possible de **protéger sa vie privée sans sacrifier la qualité de compression**. Grâce aux technologies modernes du navigateur, il offre des résultats comparables avec zéro exposition de données.
 
 **Vos images sont vos données. Elles doivent rester sur votre appareil.**
 

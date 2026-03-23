@@ -78,7 +78,7 @@ Haz clic en **"Descargar imagen"**. El archivo comprimido se guarda directamente
 
 ## Privacidad: tus fotos no salen de tu dispositivo
 
-Los compresores online tradicionales suben tus imágenes a sus servidores. PixelSwift usa **tecnología WebAssembly (WASM)** para ejecutar toda la compresión en tu navegador. Tus archivos nunca salen de tu dispositivo.
+Los compresores online tradicionales suben tus imágenes a sus servidores. El motor de compresión de PixelSwift se ejecuta completamente en tu navegador. Tus archivos nunca salen de tu dispositivo.
 
 Sin servidor = sin riesgo de filtración de datos.
 

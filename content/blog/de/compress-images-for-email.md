@@ -78,7 +78,7 @@ Formatkonvertierung nötig? PixelSwifts [Bildformat-Konverter](/converter) wande
 
 ## Datenschutz: Ihre Fotos verlassen Ihr Gerät nicht
 
-Herkömmliche Online-Kompressoren laden Ihre Bilder auf deren Server hoch. PixelSwift verwendet **WebAssembly (WASM)-Technologie** und führt die gesamte Komprimierung in Ihrem Browser aus. Ihre Dateien verlassen nie Ihr Gerät.
+Herkömmliche Online-Kompressoren laden Ihre Bilder auf deren Server hoch. Die Komprimierungs-Engine von PixelSwift läuft vollständig in Ihrem Browser. Ihre Dateien verlassen nie Ihr Gerät.
 
 Kein Server bedeutet kein Risiko eines Datenlecks.
 

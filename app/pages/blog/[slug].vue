@@ -186,16 +186,7 @@ const toc = computed(() => {
         >
           <!-- Main Content Body -->
           <div class="flex-1 min-w-0 mx-auto lg:mx-0 w-full">
-            <!-- Cover Image (inside content column) -->
-            <div
-              class="aspect-video w-full overflow-hidden rounded-2xl shadow-lg border border-slate-100 dark:border-slate-800 mb-8 sm:mb-10"
-            >
-              <img
-                :alt="post.title"
-                class="w-full h-full object-cover"
-                :src="post.cover"
-              />
-            </div>
+            <!-- Cover image removed for cleaner reading experience -->
             <div
               class="prose prose-slate dark:prose-invert max-w-none custom-prose"
             >
@@ -266,9 +257,9 @@ const toc = computed(() => {
         </div>
       </article>
 
-      <!-- ── More Articles (Recommended) ── -->
+      <!-- ── More Articles (Recommended) - Hidden until we have enough articles ── -->
       <section
-        v-if="filteredRecommended.length"
+        v-if="false"
         class="bg-slate-50 dark:bg-slate-900/30 py-16 sm:py-20 mt-16 sm:mt-20"
       >
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

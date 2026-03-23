@@ -1,25 +1,13 @@
 {
   "nav": {
-    "home": "Home",
     "compressor": "Compressor",
     "converter": "Converter",
     "resizer": "Resize",
-    "blog": "Blog",
-    "tools": "Tools",
-    "about": "About",
-    "contact": "Contact",
-    "language": "Language",
-    "theme": "Theme"
+    "blog": "Blog"
   },
-
   "home": {
     "title": "Online Image Processing Tool",
     "subtitle": "Free online image compressor, converter & resizer. Supports JPG / PNG / WebP. Processed locally in your browser — no upload needed, fully private.",
-    "badges": {
-      "local": "🔒 Local Processing",
-      "batch": "📦 Batch Processing",
-      "limit": "📐 50MB / File"
-    },
     "compressor": {
       "title": "Compressor",
       "desc": "Shrink file sizes by up to 90% while keeping images crystal clear.",
@@ -47,7 +35,6 @@
       "button": "Get Started"
     },
     "why": {
-      "title": "Why PixelSwift?",
       "fast": "Lightning Fast",
       "fastDesc": "Supports 5 major image formats, processed instantly in milliseconds — no upload or download wait.",
       "secure": "Fully Private",
@@ -80,12 +67,7 @@
     "subtitle": "Privacy-first tips and tutorials for image processing — compress, convert, and optimize entirely in your browser, no uploads needed.",
     "featured": "Featured",
     "readMore": "Read more",
-    "readFullArticle": "Read Full Article",
     "allCategories": "All",
-    "mostPopular": "Most Popular",
-    "minRead": "{min} min read",
-    "previous": "Previous",
-    "next": "Next",
     "categories": {
       "tutorials": "Tutorials",
       "optimization": "Optimization",
@@ -97,12 +79,8 @@
     },
     "detail": {
       "onThisPage": "On this page",
-      "share": "Share this article:",
-      "copyLink": "Copy Link",
-      "copied": "Copied!",
-      "copy": "Copy",
       "ctaTitle": "Want faster images?",
-      "ctaDesc": "Try PixelSwift's AI-driven compression engine today.",
+      "ctaDesc": "Free online image compression — no signup, no upload limits.",
       "compressNow": "Compress Now",
       "moreArticles": "More Articles",
       "moreArticlesDesc": "Expand your knowledge with our latest insights.",
@@ -110,17 +88,11 @@
     }
   },
   "upload": {
-    "dragText": "Drag & drop images here, or click to upload",
     "dragTitle": "Drag & Drop files here",
     "orBrowse": "or click to browse from your computer",
     "tapToUpload": "Tap to Upload",
-    "orDragDrop": "or drag and drop here",
     "selectImages": "Select Images",
     "supportedFormats": "Supports JPG, PNG, WEBP up to 50MB",
-    "releaseToUpload": "Release to upload",
-    "supportFormats": "Supports: JPG, PNG, WebP",
-    "maxFiles": "Up to {count} images, max {size}MB each",
-    "pasteHint": "You can also paste from clipboard (Ctrl+V)",
     "selectFromAlbum": "Select from your photo album"
   },
   "converter": {
@@ -133,8 +105,6 @@
     "settingsMobile": "Settings",
     "outputFormat": "Output Format",
     "quality": "Quality",
-    "lowSize": "Low Size",
-    "bestQuality": "Best Quality",
     "queue": "Queue",
     "clearAll": "Clear All",
     "converting": "Converting...",
@@ -144,11 +114,6 @@
     "downloadAllZip": "Download All (ZIP)",
     "lossless": "Lossless",
     "losslessHint": "Lossless conversion, full quality preserved",
-    "formats": {
-      "jpg": "Joint Photographic Experts Group",
-      "png": "Portable Network Graphics",
-      "webp": "Web Picture Format"
-    },
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": "How do I convert PNG to JPG online?",
@@ -170,17 +135,14 @@
     "subtitle": "Reduce file size while maintaining quality. Perfect for PNG, JPG, and WEBP.",
     "subtitleMobile": "Optimize your images intelligently",
     "uploadHint": "Supports JPG, PNG, WEBP up to 50MB · Batch upload available",
-    "uploadHintSingle": "Supports JPG, PNG, WEBP up to 50MB",
     "original": "Original",
     "compressed": "Compressed",
-    "result": "Result",
     "settings": "Settings",
     "reset": "Reset",
     "quality": "Quality",
     "lowSize": "Low",
     "highQuality": "High",
     "compressionLevel": "Compression Level",
-    "savedSpace": "Saved: {size} ({percent}%)",
     "presets": {
       "extreme": "Maximum",
       "extremeHint": "-80% size",
@@ -191,9 +153,6 @@
       "lossless": "Near Lossless",
       "losslessHint": "-10% size"
     },
-    "outputFormat": "Output Format",
-    "keepOriginal": "Original ({format})",
-    "convertTo": "Convert to {format}",
     "downloadImage": "Download Image",
     "startOver": "Upload Another Image",
     "processAnother": "Process Another",
@@ -227,7 +186,6 @@
     "title": "Precision Image Resizer",
     "uploadHint": "Supports JPG, PNG, WEBP up to 50MB",
     "settings": "Resize Settings",
-    "resetToOriginal": "Reset to Original",
     "resizeBy": "Resize By",
     "mode": {
       "pixel": "Pixels",
@@ -251,8 +209,6 @@
       "cover": "Cover Photo"
     },
     "outputSize": "Output Size",
-    "outputFormat": "Output Format",
-    "outputPreview": "Output size: {width} × {height} px ({percent}% of original)",
     "resizeAndDownload": "Download Image",
     "replaceImage": "Click to replace image",
     "startOver": "Upload Another Image",
@@ -275,28 +231,17 @@
   },
   "common": {
     "download": "Download",
-    "downloadAll": "Download All",
     "preview": "Preview",
     "delete": "Delete",
     "cancel": "Cancel",
     "reset": "Reset",
     "process": "Process",
     "processing": "Processing...",
-    "done": "Done",
     "error": "Error",
-    "pending": "Waiting",
-    "retry": "Retry",
-    "close": "Close",
-    "fileSize": "File size",
-    "dimensions": "Dimensions",
-    "notSupported": "Not supported by this browser"
+    "pending": "Waiting"
   },
   "errors": {
-    "formatNotSupported": "Unsupported format. Please upload {formats}",
-    "fileTooLarge": "File exceeds {size}MB limit. Please try compressing it first.",
-    "fileCorrupted": "This file appears to be corrupted and cannot be read.",
     "processFailed": "Processing failed. Please refresh the page and try again.",
-    "browserNotSupported": "Your browser doesn't support this feature. We recommend using Chrome.",
     "maxFilesExceeded": "Maximum {count} files allowed. Only the first {count} will be processed.",
     "unsupportedFormat": "Unsupported file format. Supported formats: {formats}"
   },

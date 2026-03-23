@@ -1,24 +1,13 @@
 {
   "nav": {
-    "home": "Início",
     "compressor": "Compressor",
     "converter": "Conversor",
     "resizer": "Redimensionar",
-    "tools": "Ferramentas",
-    "about": "Sobre",
-    "contact": "Contato",
-    "language": "Idioma",
-    "theme": "Tema",
     "blog": "Blog"
   },
   "home": {
     "title": "Ferramenta de processamento de imagens online",
     "subtitle": "Comprima, converta e redimensione imagens grátis online. Compatível com JPG / PNG / WebP. Processado localmente no navegador — sem envio, totalmente privado.",
-    "badges": {
-      "local": "🔒 Processamento local",
-      "batch": "📦 Processamento em lote",
-      "limit": "📐 50MB / arquivo"
-    },
     "compressor": {
       "title": "Compressor de imagens",
       "desc": "Reduza o tamanho em até 90% mantendo a qualidade impecável.",
@@ -46,7 +35,6 @@
       "button": "Começar"
     },
     "why": {
-      "title": "Por que PixelSwift?",
       "fast": "Ultrarrápido",
       "fastDesc": "Compatível com 5 formatos principais de imagem, processados instantaneamente em milissegundos — sem espera de upload ou download.",
       "secure": "Totalmente privado",
@@ -75,17 +63,11 @@
     }
   },
   "upload": {
-    "dragText": "Arraste e solte imagens aqui ou clique para enviar",
     "dragTitle": "Arraste e solte arquivos aqui",
     "orBrowse": "ou clique para procurar no seu computador",
     "tapToUpload": "Toque para enviar",
-    "orDragDrop": "ou arraste e solte aqui",
     "selectImages": "Selecionar imagens",
     "supportedFormats": "Suporta JPG, PNG, WEBP até 50MB",
-    "releaseToUpload": "Solte para enviar",
-    "supportFormats": "Formatos suportados: JPG, PNG, WebP",
-    "maxFiles": "Até {count} imagens, máximo {size} MB cada",
-    "pasteHint": "Também é possível colar da área de transferência (Ctrl+V)",
     "selectFromAlbum": "Selecionar do álbum de fotos"
   },
   "converter": {
@@ -98,8 +80,6 @@
     "settingsMobile": "Configurações",
     "outputFormat": "Formato de saída",
     "quality": "Qualidade",
-    "lowSize": "Menor tamanho",
-    "bestQuality": "Melhor qualidade",
     "queue": "Fila",
     "clearAll": "Limpar tudo",
     "converting": "Convertendo...",
@@ -109,11 +89,6 @@
     "downloadAllZip": "Baixar tudo (ZIP)",
     "lossless": "Sem perdas",
     "losslessHint": "Conversão sem perdas, qualidade total preservada",
-    "formats": {
-      "jpg": "Joint Photographic Experts Group",
-      "png": "Portable Network Graphics",
-      "webp": "Web Picture Format"
-    },
     "faq": {
       "title": "Perguntas Frequentes",
       "q1": "Como converter PNG para JPG online?",
@@ -135,17 +110,14 @@
     "subtitle": "Reduza o tamanho do arquivo mantendo a qualidade. Perfeito para PNG, JPG e WEBP.",
     "subtitleMobile": "Otimize suas imagens de forma inteligente",
     "uploadHint": "Suporta JPG, PNG, WEBP até 50MB · Upload em lote disponível",
-    "uploadHintSingle": "Suporta JPG, PNG, WEBP até 50MB",
     "original": "Original",
     "compressed": "Comprimido",
-    "result": "Resultado",
     "settings": "Configurações",
     "reset": "Redefinir",
     "quality": "Qualidade",
     "lowSize": "Baixo",
     "highQuality": "Alto",
     "compressionLevel": "Nível de compressão",
-    "savedSpace": "Economizado: {size} ({percent}%)",
     "presets": {
       "extreme": "Máximo",
       "extremeHint": "-80% tamanho",
@@ -156,9 +128,6 @@
       "lossless": "Quase sem perda",
       "losslessHint": "-10% tamanho"
     },
-    "outputFormat": "Formato de saída",
-    "keepOriginal": "Formato original ({format})",
-    "convertTo": "Converter para {format}",
     "downloadImage": "Baixar imagem",
     "startOver": "Enviar outra imagem",
     "processAnother": "Processar outra imagem",
@@ -192,7 +161,6 @@
     "title": "Redimensionador de imagens",
     "uploadHint": "Suporta JPG, PNG, WEBP até 50MB",
     "settings": "Configurações de redimensionamento",
-    "resetToOriginal": "Restaurar original",
     "resizeBy": "Redimensionar por",
     "mode": {
       "pixel": "Pixels",
@@ -216,8 +184,6 @@
       "cover": "Foto de capa"
     },
     "outputSize": "Tamanho de saída",
-    "outputFormat": "Formato de saída",
-    "outputPreview": "Tamanho de saída: {width} × {height} px ({percent}% do original)",
     "resizeAndDownload": "Baixar imagem",
     "replaceImage": "Clique para substituir imagem",
     "startOver": "Enviar outra imagem",
@@ -240,28 +206,17 @@
   },
   "common": {
     "download": "Baixar",
-    "downloadAll": "Baixar tudo",
     "preview": "Visualizar",
     "delete": "Excluir",
     "cancel": "Cancelar",
     "reset": "Redefinir",
     "process": "Processar",
     "processing": "Processando...",
-    "done": "Concluído",
     "error": "Erro",
-    "pending": "Aguardando",
-    "retry": "Tentar novamente",
-    "close": "Fechar",
-    "fileSize": "Tamanho do arquivo",
-    "dimensions": "Dimensões",
-    "notSupported": "Não suportado por este navegador"
+    "pending": "Aguardando"
   },
   "errors": {
-    "formatNotSupported": "Formato não suportado. Por favor, envie um arquivo {formats}",
-    "fileTooLarge": "O arquivo excede o limite de {size} MB. Tente comprimi-lo primeiro.",
-    "fileCorrupted": "Este arquivo parece estar corrompido e não pode ser lido.",
     "processFailed": "Falha no processamento. Atualize a página e tente novamente.",
-    "browserNotSupported": "Seu navegador não suporta este recurso. Recomendamos usar o Chrome.",
     "maxFilesExceeded": "Máximo de {count} arquivos permitidos. Apenas os {count} primeiros serão processados.",
     "unsupportedFormat": "Formato de arquivo não suportado. Formatos aceitos: {formats}"
   },
@@ -377,12 +332,7 @@
     "subtitle": "Dicas e tutoriais de processamento de imagens com foco em privacidade — comprima, converta e otimize diretamente no seu navegador, sem necessidade de upload.",
     "featured": "Destaque",
     "readMore": "Ler mais",
-    "readFullArticle": "Ler artigo completo",
     "allCategories": "Todos",
-    "mostPopular": "Mais Popular",
-    "minRead": "{min} min de leitura",
-    "previous": "Anterior",
-    "next": "Próximo",
     "categories": {
       "tutorials": "Tutoriais",
       "optimization": "Otimização",
@@ -391,6 +341,15 @@
       "designTips": "Dicas de Design",
       "guides": "Guias",
       "techFocus": "Tecnologia"
+    },
+    "detail": {
+      "onThisPage": "Nesta página",
+      "ctaTitle": "Quer imagens mais rápidas?",
+      "ctaDesc": "Compressão de imagens online grátis — sem cadastro, sem limites.",
+      "compressNow": "Comprimir agora",
+      "moreArticles": "Mais artigos",
+      "moreArticlesDesc": "Amplie seus conhecimentos com nossos artigos mais recentes.",
+      "viewAll": "Ver tudo"
     }
   }
 }

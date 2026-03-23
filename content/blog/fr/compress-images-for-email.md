@@ -78,7 +78,7 @@ Besoin de convertir ? Le [convertisseur d'images](/converter) de PixelSwift gèr
 
 ## Confidentialité : vos photos restent sur votre appareil
 
-Les compresseurs en ligne traditionnels envoient vos images sur leurs serveurs. PixelSwift utilise la **technologie WebAssembly (WASM)** pour exécuter la compression entièrement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil.
+Les compresseurs en ligne traditionnels envoient vos images sur leurs serveurs. Le moteur de compression de PixelSwift fonctionne entièrement dans votre navigateur. Vos fichiers ne quittent jamais votre appareil.
 
 Pas de serveur = pas de risque de fuite de données.
 
