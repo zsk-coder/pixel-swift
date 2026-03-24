@@ -1,0 +1,41 @@
+# PixelSwift
+
+> Free browser-based image processing tool. Compress, convert, and resize images entirely on the client side — no uploads, no servers, complete privacy.
+
+## About
+
+PixelSwift is an open-source image toolkit built with Nuxt 4 and WebAssembly. All processing happens in the browser using OffscreenCanvas and Web Workers, ensuring user images never leave their device.
+
+## Tools
+
+### Image Compressor
+- URL: https://pixelswift.site/compress-image
+- Compress JPEG, PNG, and WebP images using MozJPEG and upng-js WASM encoders
+- Achieves compression rates comparable to TinyPNG (60-80% size reduction)
+- Adjustable quality slider with real-time before/after preview
+
+### Image Format Converter
+- URL: https://pixelswift.site/converter
+- Convert between 7+ input formats (JPEG, PNG, WebP, BMP, GIF, AVIF, TIFF) and 3 output formats (JPG, PNG, WebP)
+- Batch processing with ZIP download support
+- Canvas API fast path with WASM fallback for Safari WebP compatibility
+
+### Image Resizer
+- URL: https://pixelswift.site/resize-image
+- Resize images by pixel dimensions or percentage scale
+- Lock aspect ratio with precision calculation based on original dimensions
+- Rotate (90°/180°/270°) and flip (horizontal/vertical) support
+- Quick presets: 1:1, 4:3, 16:9, 9:16, social media cover (1200×630)
+- Real-time CSS preview with zero processing overhead
+
+## Key Features
+- 100% client-side processing — images never leave the browser
+- WebAssembly encoders (MozJPEG, upng-js, libwebp) for optimal compression
+- Web Worker isolation to keep the UI responsive
+- Supports 8 languages: English, Chinese, Japanese, Korean, French, German, Spanish, Portuguese
+- Dark mode support
+- Mobile responsive design
+
+## Links
+- Website: https://pixelswift.site
+- Blog: https://pixelswift.site/blog
