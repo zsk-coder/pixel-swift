@@ -36,7 +36,83 @@ export default defineNuxtConfig({
     "@element-plus/nuxt",
     "nuxt-gtag",
     "@nuxt/content",
+    "@vite-pwa/nuxt",
   ],
+
+  // ── PWA ──
+  pwa: {
+    registerType: "autoUpdate",
+    manifest: {
+      name: "PixelSwift - Free Online Image Tool",
+      short_name: "PixelSwift",
+      description:
+        "Free online image converter, compressor, and resizer. No upload needed.",
+      theme_color: "#2563eb",
+      background_color: "#ffffff",
+      display: "standalone",
+      start_url: "/",
+      icons: [
+        {
+          src: "/icons/pwa-192x192.png",
+          sizes: "192x192",
+          type: "image/png",
+        },
+        {
+          src: "/icons/pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+        },
+        {
+          src: "/icons/pwa-512x512.png",
+          sizes: "512x512",
+          type: "image/png",
+          purpose: "maskable",
+        },
+      ],
+    },
+    workbox: {
+      navigateFallback: undefined,
+      globPatterns: ["**/*.{js,css,html,ico,png,svg,webp,woff2}"],
+      runtimeCaching: [
+        {
+          urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "google-fonts-cache",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 60 * 60 * 24 * 365,
+            },
+          },
+        },
+        {
+          urlPattern: /^https:\/\/fonts\.gstatic\.com\/.*/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "gstatic-fonts-cache",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 60 * 60 * 24 * 365,
+            },
+          },
+        },
+        {
+          urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|ico)$/i,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "images-cache",
+            expiration: {
+              maxEntries: 50,
+              maxAgeSeconds: 60 * 60 * 24 * 30,
+            },
+          },
+        },
+      ],
+    },
+    client: {
+      installPrompt: true,
+    },
+  },
 
   // ── Components (disable path prefix) ──
   components: [
@@ -146,10 +222,21 @@ export default defineNuxtConfig({
           name: "google-adsense-account",
           content: "ca-pub-7567205058563091",
         },
+        // PWA - Apple 支持
+        { name: "apple-mobile-web-app-capable", content: "yes" },
+        {
+          name: "apple-mobile-web-app-status-bar-style",
+          content: "black-translucent",
+        },
       ],
 
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+        {
+          rel: "apple-touch-icon",
+          sizes: "192x192",
+          href: "/icons/pwa-192x192.png",
+        },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
         {
           rel: "preconnect",
