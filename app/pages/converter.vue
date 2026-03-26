@@ -59,6 +59,15 @@ const uploaderRef = ref<{ clearFiles: () => void }>();
 const isBusy = ref(false);
 
 const hasFiles = computed(() => fileItems.value.length > 0);
+
+// 通知布局：移动端有固定底栏时需要额外间距
+const hasFixedBottomBar = useState("hasFixedBottomBar", () => false);
+watchEffect(() => {
+  hasFixedBottomBar.value = hasFiles.value;
+});
+onUnmounted(() => {
+  hasFixedBottomBar.value = false;
+});
 const allDone = computed(
   () =>
     fileItems.value.length > 0 &&

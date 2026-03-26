@@ -1,17 +1,13 @@
 <script setup lang="ts">
 const { t } = useI18n();
-const route = useRoute();
 
 // 全局 title 模板：所有页面自动追加 "| PixelSwift"
 useHead({
   titleTemplate: "%s | PixelSwift",
 });
 
-// 工具页有固定底部栏，需要额外底部间距防止遮挡 footer
-const hasFixedBottomBar = computed(() => {
-  const path = route.path;
-  return path.includes("compress-image") || path.includes("resize-image");
-});
+// 工具页通过 useState 设置此值，布局读取后在 Footer 下方添加间距
+const hasFixedBottomBar = useState("hasFixedBottomBar", () => false);
 </script>
 
 <template>
@@ -30,6 +26,6 @@ const hasFixedBottomBar = computed(() => {
     <AppFooter />
 
     <!-- 移动端底部间距：防止工具页固定下载栏遮挡 footer -->
-    <div v-if="hasFixedBottomBar" class="h-40 lg:hidden"></div>
+    <div v-if="hasFixedBottomBar" class="h-28 lg:hidden"></div>
   </div>
 </template>

@@ -80,6 +80,15 @@ const quickPresets = computed(() => [
 // ─── Computed ───────────────────────────────────
 const hasFile = computed(() => !!rawFile.value);
 
+// 通知布局：移动端有固定底栏时需要额外间距
+const hasFixedBottomBar = useState("hasFixedBottomBar", () => false);
+watchEffect(() => {
+  hasFixedBottomBar.value = hasFile.value;
+});
+onUnmounted(() => {
+  hasFixedBottomBar.value = false;
+});
+
 const targetWidth = computed(() => {
   if (mode.value === "percent")
     return Math.round((originalWidth.value * scale.value) / 100);

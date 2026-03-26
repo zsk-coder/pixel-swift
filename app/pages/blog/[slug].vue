@@ -94,8 +94,6 @@ function getSlug(p: any) {
   return parts[parts.length - 1] || "";
 }
 
-
-
 // ── Dynamic TOC from content headings ──
 
 const toc = computed(() => {
@@ -118,42 +116,16 @@ const toc = computed(() => {
           <div
             class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-slate-600 dark:text-slate-400"
           >
-            <div class="flex items-center gap-3">
-              <div
-                class="h-12 w-12 sm:h-10 sm:w-10 rounded-full overflow-hidden border-2 border-slate-100 dark:border-slate-800 sm:border-0 bg-white dark:bg-slate-800 flex items-center justify-center"
-              >
-                <img
-                  src="/images/logo.png"
-                  alt="PixelSwift"
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="text-sm sm:text-base text-left sm:text-center">
-                <p
-                  class="font-bold sm:font-semibold text-slate-900 dark:text-slate-200"
-                >
-                  {{ post.author }}
-                </p>
-                <p class="text-slate-500 sm:hidden">
-                  {{ post.date }}
-                </p>
-              </div>
-            </div>
-            <!-- Desktop only date/time row -->
-            <span class="hidden sm:block text-slate-300 dark:text-slate-700"
-              >•</span
-            >
-            <div class="hidden sm:flex items-center gap-2">
-              <span class="material-symbols-outlined text-lg"
-                >calendar_today</span
-              >
-              <span>{{ post.date }}</span>
-            </div>
+            <span class="font-semibold text-slate-900 dark:text-slate-200">
+              {{ post.author }}
+            </span>
+            <span class="text-slate-300 dark:text-slate-700">·</span>
+            <span>{{ post.date }}</span>
           </div>
         </div>
 
         <!-- ── Mobile: Table of Contents Accordion ── -->
-        <section v-if="toc.length" class="mb-8 lg:hidden">
+        <section v-if="toc.length" class="mb-4 lg:hidden">
           <details
             class="group bg-slate-50 dark:bg-slate-800/50 rounded-xl overflow-hidden border border-slate-100 dark:border-slate-800"
           >
@@ -500,12 +472,19 @@ const toc = computed(() => {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
-/* ── Table ── */
+/* ── Table wrapper for horizontal scroll on mobile ── */
 .custom-prose :deep(table) {
   font-size: 0.875rem;
   width: 100%;
   border-collapse: collapse;
   margin: 1.5rem 0;
+}
+@media (max-width: 768px) {
+  .custom-prose :deep(table) {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
 }
 .custom-prose :deep(th) {
   text-align: left;

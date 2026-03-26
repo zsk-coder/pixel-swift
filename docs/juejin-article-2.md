@@ -3,7 +3,25 @@
 > **发布说明**：复制分隔线以后的内容到掘金编辑器。标签选：`前端` `WebAssembly` `Canvas`
 > **发布时间**：建议 周三（3.25）早上 8:30
 
----
+Canvas API vs WebAssembly，浏览器端图片处理到底该用哪个？
+
+最近在做一个纯浏览器端的图片工具，跑了个 benchmark 结果挺意外的：
+
+📊 同一张 3MB JPEG 转 WebP：
+
+Canvas convertToBlob() → 80ms
+WASM (libwebp) → 400ms
+Canvas 快了 5 倍。
+
+但换成压缩场景，同一张图压到 200KB 以内：
+
+Canvas toBlob quality=0.6 → 出来 350KB，压不下去
+WASM MozJPEG quality=75 → 出来 180KB，肉眼看不出差别
+结论：转换用 Canvas（快），压缩用 WASM（狠）。
+
+基于这个思路做了个工具，图片全程不上传服务器： 🔗 在线体验：pixelswift.site 🗜️ 图片压缩：pixelswift.site/compress-image 🔄 格式转换：pixelswift.site/converter
+
+## 你们在浏览器端做图片处理用的什么方案？
 
 # Canvas API vs WebAssembly：浏览器端图片处理该怎么选？实测性能差 5 倍
 
@@ -56,10 +74,10 @@
 
 实际性能差多少？
 
-| 路径 | 3MB JPEG → WebP | 说明 |
-|------|-----------------|------|
-| WASM（getImageData + encode） | ~400ms | 两次拷贝 + WASM 编码 |
-| Canvas（convertToBlob） | ~80ms | 内置编码，快 5 倍 |
+| 路径                          | 3MB JPEG → WebP | 说明                 |
+| ----------------------------- | --------------- | -------------------- |
+| WASM（getImageData + encode） | ~400ms          | 两次拷贝 + WASM 编码 |
+| Canvas（convertToBlob）       | ~80ms           | 内置编码，快 5 倍    |
 
 格式转换追求的就是快，5 倍差距没必要纠结了。
 
@@ -198,13 +216,13 @@ const bitmap = await createImageBitmap(blob); // 一行搞定所有格式
 
 测试环境：Ryzen 5，Chrome 130，16GB 内存
 
-| 操作 | 文件大小 | 耗时 |
-|------|---------|------|
-| PNG → JPG | 5MB | ~80ms |
-| JPG → WebP (Chrome) | 3MB | ~90ms |
-| JPG → WebP (Safari 旧版) | 3MB | ~400ms |
-| BMP → PNG | 8MB | ~120ms |
-| 10 张批量 PNG → WebP | 总 30MB | ~1.2s |
+| 操作                     | 文件大小 | 耗时   |
+| ------------------------ | -------- | ------ |
+| PNG → JPG                | 5MB      | ~80ms  |
+| JPG → WebP (Chrome)      | 3MB      | ~90ms  |
+| JPG → WebP (Safari 旧版) | 3MB      | ~400ms |
+| BMP → PNG                | 8MB      | ~120ms |
+| 10 张批量 PNG → WebP     | 总 30MB  | ~1.2s  |
 
 对比 CloudConvert 之类的在线工具：同样 3MB PNG → WebP，我们 ~90ms，它们 3-8 秒（含上传下载）。而且图片全程不离开浏览器，没有隐私顾虑。
 
@@ -221,11 +239,11 @@ const bitmap = await createImageBitmap(blob); // 一行搞定所有格式
 
 一句话总结：**格式转换用 Canvas API 就够了，WASM 只是 Safari WebP 的兜底方案。**
 
-| 维度 | 压缩 | 转换 |
-|------|-----|------|
-| 核心诉求 | 体积最小 | 速度最快 |
-| 编码路径 | WASM | Canvas API + WASM 兜底 |
-| 性能 | 300-500ms/张 | 60-120ms/张 |
+| 维度     | 压缩         | 转换                   |
+| -------- | ------------ | ---------------------- |
+| 核心诉求 | 体积最小     | 速度最快               |
+| 编码路径 | WASM         | Canvas API + WASM 兜底 |
+| 性能     | 300-500ms/张 | 60-120ms/张            |
 
 ## 项目地址
 
