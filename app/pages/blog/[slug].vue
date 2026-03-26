@@ -114,7 +114,7 @@ const toc = computed(() => {
             {{ post.title }}
           </h1>
           <div
-            class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 text-slate-600 dark:text-slate-400"
+            class="flex flex-row items-center justify-center gap-2 sm:gap-4 text-sm sm:text-base text-slate-600 dark:text-slate-400"
           >
             <span class="font-semibold text-slate-900 dark:text-slate-200">
               {{ post.author }}

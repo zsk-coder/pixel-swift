@@ -259,7 +259,7 @@ const whyItems = computed(() => [
     </section>
 
     <!-- FAQ Section -->
-    <section class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
+    <section class="pt-6 pb-12 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
       <ToolFaq i18n-prefix="home.faq" :count="7" />
     </section>
 
