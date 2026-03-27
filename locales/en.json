@@ -1,4 +1,4 @@
-{
+﻿{
   "nav": {
     "compressor": "Compressor",
     "converter": "Converter",
@@ -7,7 +7,7 @@
   },
   "home": {
     "title": "Online Image Processing Tool",
-    "subtitle": "Free online image compressor, converter & resizer. Supports JPG / PNG / WebP. Processed locally in your browser — no upload needed, fully private.",
+    "subtitle": "Free online image compressor, converter & resizer. Supports JPG / PNG / WebP / AVIF. Processed locally in your browser — no upload needed, fully private.",
     "compressor": {
       "title": "Compressor",
       "desc": "Shrink file sizes by up to 90% while keeping images crystal clear.",
@@ -15,7 +15,7 @@
     },
     "converter": {
       "title": "Converter",
-      "desc": "Seamlessly convert between JPG, PNG, WEBP, and more with one click.",
+      "desc": "Seamlessly convert between JPG, PNG, WebP, AVIF and more with one click.",
       "btn": "Open Converter"
     },
     "resizer": {
@@ -47,7 +47,7 @@
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": "What image formats are supported?",
-      "a1": "PixelSwift supports JPG, PNG, WebP, formats for conversion, compression, and resizing.",
+      "a1": "PixelSwift supports JPG, PNG, WebP, and AVIF formats for conversion, compression, and resizing.",
       "q2": "Are my images uploaded to a server?",
       "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
       "q3": "Is there a file size limit?",
@@ -92,12 +92,12 @@
     "orBrowse": "or click to browse from your computer",
     "tapToUpload": "Tap to Upload",
     "selectImages": "Select Images",
-    "supportedFormats": "Supports JPG, PNG, WEBP up to 50MB",
+    "supportedFormats": "Supports JPG, PNG, WEBP, AVIF up to 50MB",
     "selectFromAlbum": "Select from your photo album"
   },
   "converter": {
     "title": "Universal Image Converter",
-    "subtitle": "Convert any image format to JPG, PNG, or WebP. Fast, free, and processed entirely in your browser.",
+    "subtitle": "Convert any image format to JPG, PNG, WebP, or AVIF. Fast, free, and processed entirely in your browser.",
     "subtitleMobile": "Convert your images in seconds.",
     "uploadHint": "Supports JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF and more · Max 50MB · Batch upload available",
     "settingsTitle": "Conversion Settings",
@@ -123,18 +123,18 @@
       "q3": "Does converting image formats affect quality?",
       "a3": "It depends on the formats. Converting from JPG to PNG won't lose quality. But converting between JPG and WebP may cause a very slight quality reduction — in most cases you won't notice the difference. PixelSwift uses the best possible settings to keep your images looking great.",
       "q4": "What is the best image format for websites?",
-      "a4": "For websites, WebP is the best choice — smaller file sizes, great quality, and supports transparent backgrounds. If you need to support very old browsers, use JPG. If you need a perfectly sharp image with transparency, use PNG.",
+      "a4": "For websites, WebP or AVIF are the best choices — smaller file sizes, great quality, and both support transparent backgrounds. If you need to support very old browsers, use JPG. If you need a perfectly sharp image with transparency, use PNG.",
       "q5": "Can I convert multiple images at once?",
       "a5": "Yes! PixelSwift supports batch conversion of up to 20 images at once. Simply drag and drop all your files, select the output format, and they'll be processed simultaneously.",
       "q6": "How do I convert images while keeping transparency?",
-      "a6": "To keep transparency, convert to PNG or WebP format — both support transparent backgrounds. JPG does not support transparency and will replace transparent areas with a white background."
+      "a6": "To keep transparency, convert to PNG, WebP, or AVIF format — all three support transparent backgrounds. JPG does not support transparency and will replace transparent areas with a white background."
     }
   },
   "compressor": {
     "title": "Smart Image Compressor",
-    "subtitle": "Reduce file size while maintaining quality. Perfect for PNG, JPG, and WEBP.",
+    "subtitle": "Reduce file size while maintaining quality. Perfect for PNG, JPG, WEBP, and AVIF.",
     "subtitleMobile": "Optimize your images intelligently",
-    "uploadHint": "Supports JPG, PNG, WEBP up to 50MB · Batch upload available",
+    "uploadHint": "Supports JPG, PNG, WEBP, AVIF up to 50MB · Batch upload available",
     "original": "Original",
     "compressed": "Compressed",
     "settings": "Settings",
@@ -184,7 +184,7 @@
   },
   "resizer": {
     "title": "Precision Image Resizer",
-    "uploadHint": "Supports JPG, PNG, WEBP up to 50MB",
+    "uploadHint": "Supports JPG, PNG, WEBP, AVIF up to 50MB",
     "settings": "Resize Settings",
     "resizeBy": "Resize By",
     "mode": {
@@ -316,8 +316,8 @@
       "description": "Compress JPG, PNG & WebP images up to 90% smaller. Keep quality, save bandwidth. Free & private — try now!"
     },
     "converter": {
-      "title": "Convert Images Online Free — BMP GIF TIFF to JPG PNG WebP",
-      "description": "Convert BMP, GIF, TIFF, AVIF, and more to JPG, PNG, or WebP instantly. Free, private & unlimited — no upload needed. Try now!"
+      "title": "Convert Images Online Free — BMP GIF TIFF to JPG PNG WebP AVIF",
+      "description": "Convert BMP, GIF, TIFF, and more to JPG, PNG, WebP, or AVIF instantly. Free, private & unlimited — no upload needed. Try now!"
     },
     "resizer": {
       "title": "Resize Images Online Free — Pixels & Percentage",
@@ -346,7 +346,7 @@
       "featureList": "Compress JPEG, PNG and WebP images, adjustable quality, real-time preview comparison, batch compression, up to 90% size reduction"
     },
     "converter": {
-      "featureList": "Convert any image format (BMP, GIF, TIFF, AVIF, etc.) to JPG, PNG or WebP, batch conversion, no upload needed, 100% browser-based"
+      "featureList": "Convert any image format (BMP, GIF, TIFF, etc.) to JPG, PNG, WebP, or AVIF, batch conversion, no upload needed, 100% browser-based"
     },
     "resizer": {
       "featureList": "Resize images by pixel or percentage, rotate and flip, aspect ratio presets, real-time preview, no upload needed"

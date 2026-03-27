@@ -7,7 +7,7 @@
   },
   "home": {
     "title": "온라인 이미지 처리 도구",
-    "subtitle": "무료로 이미지 압축 · 변환 · 크기 조정. JPG / PNG / WebP 지원. 브라우저 로컬 처리 — 업로드 불필요, 완전 비공개.",
+    "subtitle": "무료로 이미지 압축 · 변환 · 크기 조정. JPG / PNG / WebP / AVIF 지원. 브라우저 로컬 처리 — 업로드 불필요, 완전 비공개.",
     "compressor": {
       "title": "이미지 압축기",
       "desc": "화질 저하 없이 파일 크기를 최대 90% 줄이세요.",
@@ -15,7 +15,7 @@
     },
     "converter": {
       "title": "포맷 변환기",
-      "desc": "JPG, PNG, WEBP 등 다양한 형식을 원클릭으로 자유롭게 변환.",
+      "desc": "JPG, PNG, WebP, AVIF 등 다양한 형식을 원클릭으로 자유롭게 변환.",
       "btn": "변환기 열기"
     },
     "resizer": {
@@ -47,7 +47,7 @@
     "faq": {
       "title": "자주 묻는 질문",
       "q1": "어떤 이미지 형식을 지원하나요?",
-      "a1": "PixelSwift는 JPG, PNG, WebP 형식의 변환, 압축, 크기 조정을 지원합니다.",
+      "a1": "PixelSwift는 JPG, PNG, WebP, AVIF 형식의 변환, 압축, 크기 조정을 지원합니다.",
       "q2": "이미지가 서버에 업로드되나요?",
       "a2": "아닙니다. 모든 처리는 브라우저에서 로컬로 이루어집니다. 이미지가 기기를 벗어나지 않습니다.",
       "q3": "파일 크기 제한이 있나요?",
@@ -67,12 +67,12 @@
     "orBrowse": "또는 클릭하여 컴퓨터에서 찾아보기",
     "tapToUpload": "탭하여 업로드",
     "selectImages": "이미지 선택",
-    "supportedFormats": "JPG, PNG, WEBP 지원, 최대 50MB",
+    "supportedFormats": "JPG, PNG, WEBP, AVIF 지원, 최대 50MB",
     "selectFromAlbum": "사진 앨범에서 선택"
   },
   "converter": {
     "title": "이미지 포맷 변환기",
-    "subtitle": "모든 이미지 형식을 JPG, PNG, WebP로 변환. 빠르고 무료, 브라우저에서 완전 처리.",
+    "subtitle": "모든 이미지 형식을 JPG, PNG, WebP, AVIF로 변환. 빠르고 무료, 브라우저에서 완전 처리.",
     "subtitleMobile": "이미지를 빠르게 변환하세요.",
     "uploadHint": "JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF 등 다양한 형식 지원, 최대 50MB · 일괄 업로드 가능",
     "settingsTitle": "변환 설정",
@@ -107,9 +107,9 @@
   },
   "compressor": {
     "title": "스마트 이미지 압축기",
-    "subtitle": "화질을 유지하면서 파일 크기를 줄입니다. PNG, JPG, WEBP에 최적화.",
+    "subtitle": "화질을 유지하면서 파일 크기를 줄입니다. PNG, JPG, WEBP, AVIF에 최적화.",
     "subtitleMobile": "이미지를 지능적으로 최적화",
-    "uploadHint": "JPG, PNG, WEBP 지원, 최대 50MB · 일괄 업로드 가능",
+    "uploadHint": "JPG, PNG, WEBP, AVIF 지원, 최대 50MB · 일괄 업로드 가능",
     "original": "원본",
     "compressed": "압축 후",
     "settings": "설정",
@@ -159,7 +159,7 @@
   },
   "resizer": {
     "title": "이미지 크기 조정",
-    "uploadHint": "JPG, PNG, WEBP 지원, 최대 50MB",
+    "uploadHint": "JPG, PNG, WEBP, AVIF 지원, 최대 50MB",
     "settings": "크기 조정 설정",
     "resizeBy": "크기 조정 방법",
     "mode": {
@@ -291,8 +291,8 @@
       "description": "JPG, PNG, WebP 이미지를 최대 90% 압축하세요. 화질 유지, 용량 절약. 무료 & 안전 – 지금 압축하세요!"
     },
     "converter": {
-      "title": "무료 온라인 이미지 변환 — BMP GIF TIFF를 JPG PNG WebP로",
-      "description": "BMP, GIF, TIFF, AVIF 등을 JPG, PNG, WebP로 즉시 변환. 무료, 업로드 불필요, 프라이버시 보호."
+      "title": "무료 온라인 이미지 변환 — BMP GIF TIFF를 JPG PNG WebP AVIF로",
+      "description": "BMP, GIF, TIFF 등을 JPG, PNG, WebP, AVIF로 즉시 변환. 무료, 업로드 불필요, 프라이버시 보호."
     },
     "resizer": {
       "title": "무료 온라인 이미지 크기 조정 – 픽셀 & 백분율",

@@ -7,7 +7,7 @@
   },
   "home": {
     "title": "オンライン画像処理ツール",
-    "subtitle": "無料で画像を圧縮・変換・リサイズ。JPG / PNG / WebP に対応。ブラウザでローカル処理 — アップロード不要、プライバシーも安全。",
+    "subtitle": "無料で画像を圧縮・変換・リサイズ。JPG / PNG / WebP / AVIF に対応。ブラウザでローカル処理 — アップロード不要、プライバシーも安全。",
     "compressor": {
       "title": "画像圧縮",
       "desc": "画質を維持したままファイルサイズを最大90%削減。",
@@ -15,7 +15,7 @@
     },
     "converter": {
       "title": "フォーマット変換",
-      "desc": "JPG、PNG、WEBPなどをワンクリックで自由に変換。",
+      "desc": "JPG、PNG、WebP、AVIFなどをワンクリックで自由に変換。",
       "btn": "変換ツールを開く"
     },
     "resizer": {
@@ -47,7 +47,7 @@
     "faq": {
       "title": "よくある質問",
       "q1": "対応している画像フォーマットは？",
-      "a1": "PixelSwiftはJPG、PNG、WebP形式の変換・圧縮・リサイズに対応しています。",
+      "a1": "PixelSwiftはJPG、PNG、WebP、AVIF形式の変換・圧縮・リサイズに対応しています。",
       "q2": "画像はサーバーにアップロードされますか？",
       "a2": "いいえ。すべての処理はブラウザ内でローカルに行われます。画像がデバイスから外に出ることはありません。",
       "q3": "ファイルサイズに制限はありますか？",
@@ -67,12 +67,12 @@
     "orBrowse": "またはクリックしてファイルを選択",
     "tapToUpload": "タップしてアップロード",
     "selectImages": "画像を選択",
-    "supportedFormats": "JPG, PNG, WEBP に対応、最大 50MB",
+    "supportedFormats": "JPG, PNG, WEBP, AVIF に対応、最大 50MB",
     "selectFromAlbum": "フォトライブラリから選択"
   },
   "converter": {
     "title": "画像フォーマット変換ツール",
-    "subtitle": "あらゆる画像形式を JPG、PNG、WebP に変換。高速・無料、すべてブラウザ内で処理。",
+    "subtitle": "あらゆる画像形式を JPG、PNG、WebP、AVIF に変換。高速・無料、すべてブラウザ内で処理。",
     "subtitleMobile": "画像を瞬時に変換。",
     "uploadHint": "JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF など多数の形式に対応、最大 50MB · 一括アップロード可能",
     "settingsTitle": "変換設定",
@@ -107,9 +107,9 @@
   },
   "compressor": {
     "title": "スマート画像圧縮",
-    "subtitle": "画質を維持しながらファイルサイズを縮小。PNG、JPG、WEBPに最適。",
+    "subtitle": "画質を維持しながらファイルサイズを縮小。PNG、JPG、WEBP、AVIFに最適。",
     "subtitleMobile": "画像をインテリジェントに最適化",
-    "uploadHint": "JPG, PNG, WEBP 対応、最大 50MB · 一括アップロード可能",
+    "uploadHint": "JPG, PNG, WEBP, AVIF 対応、最大 50MB · 一括アップロード可能",
     "original": "オリジナル",
     "compressed": "圧縮後",
     "settings": "設定",
@@ -159,7 +159,7 @@
   },
   "resizer": {
     "title": "画像リサイズツール",
-    "uploadHint": "JPG, PNG, WEBP 対応、最大 50MB",
+    "uploadHint": "JPG, PNG, WEBP, AVIF 対応、最大 50MB",
     "settings": "リサイズ設定",
     "resizeBy": "リサイズ方法",
     "mode": {
@@ -291,7 +291,7 @@
       "description": "JPG、PNG、WebP画像を最大90%圧縮。画質維持、容量節約。無料＆安全 – 今すぐ圧縮！"
     },
     "converter": {
-      "title": "無料オンライン画像変換 — BMP GIF TIFFをJPG PNG WebPに変換",
+      "title": "無料オンライン画像変換 — BMP GIF TIFFをJPG PNG WebP AVIFに変換",
       "description": "BMP、GIF、TIFF、AVIFなどをJPG、PNG、WebPに瞬時変換。無料・アップロード不要・プライバシー保護。"
     },
     "resizer": {
