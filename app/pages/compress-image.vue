@@ -971,7 +971,7 @@ const actualOutputFormat = computed(() => {
         <!-- Upload more (above settings) -->
         <FileUploader
           ref="uploaderRef"
-          accept="image/jpeg,image/png,image/webp"
+          accept="image/jpeg,image/png,image/webp,image/avif"
           :hint="t('compressor.uploadHint')"
           @files="onFilesAdded"
         />

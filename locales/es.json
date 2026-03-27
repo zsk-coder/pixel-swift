@@ -15,7 +15,7 @@
     },
     "converter": {
       "title": "Convertidor de formato",
-      "desc": "Convierte entre JPG, PNG, WEBP y más con un solo clic.",
+      "desc": "Convierte entre JPG, PNG, WEBP, AVIF y más con un solo clic.",
       "btn": "Abrir convertidor"
     },
     "resizer": {
@@ -47,7 +47,7 @@
     "faq": {
       "title": "Preguntas frecuentes",
       "q1": "¿Qué formatos de imagen son compatibles?",
-      "a1": "PixelSwift es compatible con JPG, PNG, WebP para conversión, compresión y redimensionamiento.",
+      "a1": "PixelSwift es compatible con JPG, PNG, WebP, AVIF para conversión, compresión y redimensionamiento.",
       "q2": "¿Se suben mis imágenes a un servidor?",
       "a2": "No. Todo el procesamiento se realiza localmente en tu navegador. Tus imágenes nunca salen de tu dispositivo.",
       "q3": "¿Hay un límite de tamaño de archivo?",
@@ -67,12 +67,12 @@
     "orBrowse": "o haz clic para explorar tu ordenador",
     "tapToUpload": "Toca para subir",
     "selectImages": "Seleccionar imágenes",
-    "supportedFormats": "Compatible con JPG, PNG, WEBP hasta 50MB",
+    "supportedFormats": "Compatible con JPG, PNG, WEBP, AVIF hasta 50MB",
     "selectFromAlbum": "Seleccionar desde tu álbum de fotos"
   },
   "converter": {
     "title": "Convertidor de imágenes",
-    "subtitle": "Convierte cualquier formato de imagen a JPG, PNG o WebP. Rápido, gratuito y completamente en el navegador.",
+    "subtitle": "Convierte cualquier formato de imagen a JPG, PNG, WebP o AVIF. Rápido, gratuito y completamente en el navegador.",
     "subtitleMobile": "Convierte tus imágenes al instante.",
     "uploadHint": "Compatible con JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF y más · Máx. 50MB · Carga por lotes",
     "settingsTitle": "Ajustes de conversión",
@@ -96,20 +96,20 @@
       "q2": "¿Cuál es la diferencia entre WebP y JPG?",
       "a2": "WebP es un formato de imagen más nuevo que produce archivos mucho más pequeños que JPG con la misma calidad visual. También soporta fondos transparentes como PNG. La mayoría de navegadores modernos lo soportan — es el formato recomendado para sitios web hoy en día.",
       "q3": "¿Convertir formatos de imagen afecta la calidad?",
-      "a3": "Depende de los formatos. Convertir de JPG a PNG no pierde calidad. Pero convertir entre JPG y WebP puede causar una reducción muy leve — en la mayoría de los casos no notará la diferencia.",
+      "a3": "Depende de los formatos. Convertir de JPG a PNG no pierde calidad. Pero convertir entre JPG y WebP/AVIF puede causar una reducción muy leve — en la mayoría de los casos no notará la diferencia.",
       "q4": "¿Cuál es el mejor formato de imagen para sitios web?",
-      "a4": "Para sitios web, WebP es la mejor opción — archivos más pequeños, gran calidad y soporta fondos transparentes. Si necesita compatibilidad con navegadores muy antiguos, use JPG. Para imágenes perfectamente nítidas con transparencia, use PNG.",
+      "a4": "Para sitios web, WebP o AVIF son las mejores opciones — archivos más pequeños, gran calidad y soporta fondos transparentes. Si necesita compatibilidad con navegadores muy antiguos, use JPG. Para imágenes perfectamente nítidas con transparencia, use PNG.",
       "q5": "¿Puedo convertir múltiples imágenes a la vez?",
       "a5": "¡Sí! PixelSwift soporta conversión por lotes de hasta 20 imágenes a la vez. Simplemente arrastre y suelte todos sus archivos y seleccione el formato de salida.",
       "q6": "¿Cómo convierto imágenes manteniendo la transparencia?",
-      "a6": "Para mantener la transparencia, convierta a formato PNG o WebP — ambos soportan fondos transparentes. JPG no soporta transparencia y reemplazará las áreas transparentes con fondo blanco."
+      "a6": "Para mantener la transparencia, convierta a formato PNG, WebP o AVIF — los tres soportan fondos transparentes. JPG no soporta transparencia y reemplazará las áreas transparentes con fondo blanco."
     }
   },
   "compressor": {
     "title": "Compresor de imágenes inteligente",
-    "subtitle": "Reduce el tamaño del archivo manteniendo la calidad. Perfecto para PNG, JPG y WEBP.",
+    "subtitle": "Reduce el tamaño del archivo manteniendo la calidad. Perfecto para PNG, JPG, WEBP y AVIF.",
     "subtitleMobile": "Optimiza tus imágenes de forma inteligente",
-    "uploadHint": "Compatible con JPG, PNG, WEBP hasta 50MB · Carga por lotes disponible",
+    "uploadHint": "Compatible con JPG, PNG, WEBP, AVIF hasta 50MB · Carga por lotes disponible",
     "original": "Original",
     "compressed": "Comprimido",
     "settings": "Ajustes",
@@ -148,7 +148,7 @@
       "q2": "¿Cuál es la diferencia entre comprimir PNG y JPG?",
       "a2": "La compresión JPG reduce el tamaño eliminando detalles de la imagen — menor calidad significa archivos más pequeños. La compresión PNG funciona diferente — simplifica los colores para reducir el tamaño manteniendo la imagen casi idéntica. PixelSwift maneja ambos automáticamente.",
       "q3": "¿Cuánto puedo reducir el tamaño de un archivo de imagen?",
-      "a3": "Típicamente, las imágenes JPG se pueden reducir un 40-70%, y las PNG un 20-50%. El resultado depende de la imagen — las fotos con muchos colores se comprimen menos que los gráficos simples. ¿Quiere archivos aún más pequeños? Pruebe convertir a formato WebP.",
+      "a3": "Típicamente, las imágenes JPG se pueden reducir un 40-70%, y las PNG un 20-50%. El resultado depende de la imagen — las fotos con muchos colores se comprimen menos que los gráficos simples. ¿Quiere archivos aún más pequeños? Pruebe convertir a formato WebP o AVIF.",
       "q4": "¿Cuál es el tamaño de imagen ideal para un sitio web?",
       "a4": "Para sitios web, cada imagen debería pesar menos de 200KB. Las imágenes de banner pueden ser de 300-500KB. Configure la calidad al 75-85% para el mejor equilibrio entre calidad y velocidad de carga.",
       "q5": "¿Puedo comprimir imágenes para adjuntos de correo electrónico?",
@@ -159,7 +159,7 @@
   },
   "resizer": {
     "title": "Redimensionador de imágenes",
-    "uploadHint": "Compatible con JPG, PNG, WEBP hasta 50MB",
+    "uploadHint": "Compatible con JPG, PNG, WEBP, AVIF hasta 50MB",
     "settings": "Ajustes de redimensión",
     "resizeBy": "Redimensionar por",
     "mode": {
@@ -288,10 +288,10 @@
     },
     "compressor": {
       "title": "Comprimir imágenes en línea – Reduce hasta un 90%",
-      "description": "Comprime imágenes JPG, PNG y WebP hasta un 90%. Sin registro, sin instalar. Mantén la calidad y ahorra espacio. ¡Gratis!"
+      "description": "Comprime imágenes JPG, PNG, WebP y AVIF hasta un 90%. Sin registro, sin instalar. Mantén la calidad y ahorra espacio. ¡Gratis!"
     },
     "converter": {
-      "title": "Convertir imágenes gratis online — BMP GIF TIFF a JPG PNG WebP",
+      "title": "Convertir imágenes gratis online — BMP GIF TIFF a JPG PNG WebP AVIF",
       "description": "Convierte BMP, GIF, TIFF, AVIF y más a JPG, PNG o WebP al instante. Gratis, sin subir archivos, privado."
     },
     "resizer": {

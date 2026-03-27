@@ -121,7 +121,7 @@
       "q2": "What is the difference between WebP and JPG?",
       "a2": "WebP is a newer image format that produces much smaller files than JPG while looking just as good. It also supports transparent backgrounds like PNG. Most modern browsers and apps support it — it's the recommended format for websites today.",
       "q3": "Does converting image formats affect quality?",
-      "a3": "It depends on the formats. Converting from JPG to PNG won't lose quality. But converting between JPG and WebP may cause a very slight quality reduction — in most cases you won't notice the difference. PixelSwift uses the best possible settings to keep your images looking great.",
+      "a3": "It depends on the formats. Converting from JPG to PNG won't lose quality. But converting between JPG and WebP/AVIF may cause a very slight quality reduction — in most cases you won't notice the difference. PixelSwift uses the best possible settings to keep your images looking great.",
       "q4": "What is the best image format for websites?",
       "a4": "For websites, WebP or AVIF are the best choices — smaller file sizes, great quality, and both support transparent backgrounds. If you need to support very old browsers, use JPG. If you need a perfectly sharp image with transparency, use PNG.",
       "q5": "Can I convert multiple images at once?",
@@ -173,7 +173,7 @@
       "q2": "What is the difference between compressing PNG and JPG?",
       "a2": "JPG compression makes the file smaller by reducing image detail — the lower the quality setting, the smaller the file. PNG compression works differently — it simplifies colors to shrink the file while keeping the image looking nearly identical. PixelSwift handles both automatically.",
       "q3": "How much can I reduce an image file size?",
-      "a3": "Typically, JPG images can be reduced by 40-70%, and PNG images by 20-50%. The exact result depends on the image itself — photos with many colors compress less than simple graphics. Want even smaller files? Try converting to WebP format with our Converter tool.",
+      "a3": "Typically, JPG images can be reduced by 40-70%, and PNG images by 20-50%. The exact result depends on the image itself — photos with many colors compress less than simple graphics. Want even smaller files? Try converting to WebP or AVIF format with our Converter tool.",
       "q4": "What is the ideal image size for a website?",
       "a4": "For websites, each image should ideally be under 200KB. Large banner images can be 300-500KB. Set the quality slider to 75-85% for the best balance between image quality and loading speed. Smaller images = faster website = better Google ranking.",
       "q5": "Can I compress images for email attachments?",
@@ -313,7 +313,7 @@
     },
     "compressor": {
       "title": "Compress Images Online Free — Reduce Size up to 90%",
-      "description": "Compress JPG, PNG & WebP images up to 90% smaller. Keep quality, save bandwidth. Free & private — try now!"
+      "description": "Compress JPG, PNG, WebP & AVIF images up to 90% smaller. Keep quality, save bandwidth. Free & private — try now!"
     },
     "converter": {
       "title": "Convert Images Online Free — BMP GIF TIFF to JPG PNG WebP AVIF",
