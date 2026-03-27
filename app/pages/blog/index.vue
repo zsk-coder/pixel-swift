@@ -282,19 +282,10 @@ function getAuthorInitials(name: string) {
                 {{ post.description }}
               </p>
               <div
-                class="flex items-center gap-2 mt-2 pt-3 border-t border-slate-100 dark:border-slate-800"
+                class="mt-2 pt-3 border-t border-slate-100 dark:border-slate-800"
               >
-                <div
-                  class="w-6 h-6 rounded-full overflow-hidden bg-white dark:bg-slate-800 flex items-center justify-center"
-                >
-                  <img
-                    src="/images/logo.png"
-                    alt="PixelSwift"
-                    class="w-full h-full object-cover"
-                  />
-                </div>
                 <span class="text-slate-500 text-xs font-medium">
-                  {{ post.author }} • {{ post.date }}
+                  {{ post.date }}
                 </span>
               </div>
             </div>

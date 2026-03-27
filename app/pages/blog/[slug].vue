@@ -529,6 +529,35 @@ const toc = computed(() => {
 .custom-prose :deep(pre) {
   border-radius: 0.75rem;
   margin: 1.5rem 0;
+  padding: 1.25rem 1.5rem;
+  background-color: #f8fafc !important; /* slate-50 */
+  border: 1px solid #e2e8f0;
+  overflow-x: auto;
+}
+.dark .custom-prose :deep(pre) {
+  background-color: #1e293b !important; /* slate-800 */
+  border-color: #334155;
+}
+/* Ensure code text inside pre is visible */
+.custom-prose :deep(pre code) {
+  color: #334155; /* slate-700 */
+  background: transparent !important;
+  padding: 0;
+  font-size: 0.875em;
+  line-height: 1.7;
+}
+.dark .custom-prose :deep(pre code) {
+  color: #e2e8f0; /* slate-200 */
+}
+/* Override Shiki's inline styles that may cause visibility issues */
+.custom-prose :deep(pre code .line span) {
+  color: inherit;
+}
+.custom-prose :deep(pre code .line) {
+  color: #334155;
+}
+.dark .custom-prose :deep(pre code .line) {
+  color: #e2e8f0;
 }
 
 /* ── Strong / bold ── */
