@@ -48,6 +48,17 @@ declare module "@jsquash/oxipng/optimise" {
   ): Promise<ArrayBuffer>;
 }
 
+declare module "@jsquash/avif/encode" {
+  interface EncodeOptions {
+    quality?: number;
+  }
+
+  export default function encode(
+    data: ImageData,
+    options?: EncodeOptions,
+  ): Promise<ArrayBuffer>;
+}
+
 declare module "upng-js" {
   const UPNG: {
     encode(

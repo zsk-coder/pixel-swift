@@ -6,6 +6,7 @@
  * - JPG:  MozJPEG via @jsquash/jpeg
  * - PNG:  upng-js quantization (like TinyPNG)
  * - WebP: @jsquash/webp
+ * - AVIF: @jsquash/avif (WASM-only, no native Canvas support cross-browser)
  */
 
 export interface WorkerInput {
@@ -51,6 +52,14 @@ async function wasmEncodeWebP(
   return encode(imageData, { quality });
 }
 
+async function wasmEncodeAVIF(
+  imageData: ImageData,
+  quality: number,
+): Promise<ArrayBuffer> {
+  const { default: encode } = await import("@jsquash/avif/encode");
+  return encode(imageData, { quality });
+}
+
 async function wasmEncodePNG(
   imageData: ImageData,
   quality: number,
@@ -89,6 +98,7 @@ function getMimeType(format: string): string {
     jpeg: "image/jpeg",
     png: "image/png",
     webp: "image/webp",
+    avif: "image/avif",
   };
   return map[format] || "image/jpeg";
 }
@@ -160,6 +170,8 @@ self.onmessage = async (e: MessageEvent<WorkerInput>) => {
         resultBuffer = await wasmEncodePNG(imageData, qualityPercent);
       } else if (outputFormat === "webp") {
         resultBuffer = await wasmEncodeWebP(imageData, qualityPercent);
+      } else if (outputFormat === "avif") {
+        resultBuffer = await wasmEncodeAVIF(imageData, qualityPercent);
       } else {
         const resultBlob = await canvas.convertToBlob({
           type: getMimeType(outputFormat),
@@ -167,8 +179,12 @@ self.onmessage = async (e: MessageEvent<WorkerInput>) => {
         resultBuffer = await resultBlob.arrayBuffer();
       }
     } else {
-      // Convert / Resize: Canvas API (fast) with WASM fallback for WebP
-      if (outputFormat === "webp" && !(await canCanvasEncodeWebP())) {
+      // Convert / Resize: Canvas API (fast) with WASM fallback for WebP/AVIF
+      if (outputFormat === "avif") {
+        // AVIF: always use WASM (no cross-browser Canvas support)
+        const imageData = ctx.getImageData(0, 0, outWidth, outHeight);
+        resultBuffer = await wasmEncodeAVIF(imageData, qualityPercent);
+      } else if (outputFormat === "webp" && !(await canCanvasEncodeWebP())) {
         const imageData = ctx.getImageData(0, 0, outWidth, outHeight);
         resultBuffer = await wasmEncodeWebP(imageData, qualityPercent);
       } else {

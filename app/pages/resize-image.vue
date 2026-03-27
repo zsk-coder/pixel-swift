@@ -118,7 +118,7 @@ function formatSize(bytes: number): string {
 
 function detectFormat(name: string): string {
   const ext = name.split(".").pop()?.toLowerCase() || "jpg";
-  if (["png", "webp", "jpg", "jpeg"].includes(ext))
+  if (["png", "webp", "jpg", "jpeg", "avif"].includes(ext))
     return ext === "jpeg" ? "jpg" : ext;
   return "jpg";
 }
@@ -245,7 +245,7 @@ async function doResize() {
     const outFormat =
       originalFormat.value === "jpeg"
         ? "jpg"
-        : ["jpg", "png", "webp"].includes(originalFormat.value)
+        : ["jpg", "png", "webp", "avif"].includes(originalFormat.value)
           ? originalFormat.value
           : "jpg";
 
@@ -267,7 +267,7 @@ async function doResize() {
       width: tw,
       height: th,
       keepAspectRatio: false,
-      outputFormat: outFormat as "jpg" | "png" | "webp",
+      outputFormat: outFormat as "jpg" | "png" | "webp" | "avif",
       quality: 92,
     });
 
@@ -317,7 +317,9 @@ async function applyTransforms(file: File): Promise<Blob> {
       ? "image/png"
       : originalFormat.value === "webp"
         ? "image/webp"
-        : "image/jpeg";
+        : originalFormat.value === "avif"
+          ? "image/avif"
+          : "image/jpeg";
   return await canvas.convertToBlob({ type: mimeType, quality: 0.92 });
 }
 
@@ -376,7 +378,7 @@ function startOver() {
       <div v-if="!hasFile">
         <FileUploader
           ref="uploaderRef"
-          accept="image/jpeg,image/png,image/webp"
+          accept="image/jpeg,image/png,image/webp,image/avif"
           :multiple="false"
           :max-count="1"
           :hint="t('resizer.uploadHint')"

@@ -43,8 +43,9 @@ const formatOptions = computed(() => [
   { value: "jpg", label: "JPG - Joint Photographic Experts Group" },
   { value: "png", label: "PNG - Portable Network Graphics" },
   { value: "webp", label: "WebP - Web Picture Format" },
+  { value: "avif", label: "AVIF - AV1 Image File Format" },
 ]);
-type OutputFormat = "jpg" | "png" | "webp";
+type OutputFormat = "jpg" | "png" | "webp" | "avif";
 
 const selectedFormat = ref<OutputFormat>("webp");
 
@@ -131,7 +132,12 @@ async function onProcess() {
       const result = await processImage(file, {
         action: "convert",
         outputFormat: selectedFormat.value,
-        quality: selectedFormat.value === "png" ? 100 : 92,
+        quality:
+          selectedFormat.value === "png"
+            ? 100
+            : selectedFormat.value === "avif"
+              ? 50
+              : 92,
       });
 
       item.status = "done";

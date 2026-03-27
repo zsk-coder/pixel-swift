@@ -183,7 +183,12 @@ export default defineNuxtConfig({
       plugins: () => [wasm(), topLevelAwait()],
     },
     optimizeDeps: {
-      exclude: ["@jsquash/webp", "@jsquash/jpeg", "@jsquash/oxipng"],
+      exclude: [
+        "@jsquash/webp",
+        "@jsquash/jpeg",
+        "@jsquash/oxipng",
+        "@jsquash/avif",
+      ],
     },
     css: {
       preprocessorOptions: {

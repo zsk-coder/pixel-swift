@@ -5,13 +5,14 @@
  * - JPG:  MozJPEG via @jsquash/jpeg  (superior to Canvas API)
  * - PNG:  @jsquash/png + OxiPNG      (lossless PNG optimization)
  * - WebP: @jsquash/webp              (with Canvas API fallback)
+ * - AVIF: @jsquash/avif              (WASM-only, cross-browser)
  *
  * All heavy processing runs in a Web Worker to keep UI responsive.
  */
 
 export interface ProcessOptions {
   action: "convert" | "compress" | "resize";
-  outputFormat?: "jpg" | "png" | "webp" | "pdf";
+  outputFormat?: "jpg" | "png" | "webp" | "avif" | "pdf";
   quality?: number;
   width?: number;
   height?: number;
@@ -49,6 +50,7 @@ function getMimeType(format: string): string {
     jpeg: "image/jpeg",
     png: "image/png",
     webp: "image/webp",
+    avif: "image/avif",
   };
   return map[format] || "image/jpeg";
 }

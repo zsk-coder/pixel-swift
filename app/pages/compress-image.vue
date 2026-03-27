@@ -179,7 +179,7 @@ function formatSize(bytes: number): string {
 
 function detectFormat(name: string): string {
   const ext = name.split(".").pop()?.toLowerCase() || "jpg";
-  if (["png", "webp", "jpg", "jpeg"].includes(ext))
+  if (["png", "webp", "jpg", "jpeg", "avif"].includes(ext))
     return ext === "jpeg" ? "jpg" : ext;
   return "jpg";
 }
@@ -310,7 +310,7 @@ async function doSingleCompress() {
     const fmt = getActualFormat(file.name);
     const result = await processImage(file, {
       action: "compress",
-      outputFormat: fmt as "jpg" | "png" | "webp",
+      outputFormat: fmt as "jpg" | "png" | "webp" | "avif",
       quality: quality.value,
     });
 
@@ -363,7 +363,7 @@ async function onBatchProcess() {
       const fmt = getActualFormat(file.name);
       const result = await processImage(file, {
         action: "compress",
-        outputFormat: fmt as "jpg" | "png" | "webp",
+        outputFormat: fmt as "jpg" | "png" | "webp" | "avif",
         quality: quality.value,
       });
 
@@ -541,7 +541,7 @@ const actualOutputFormat = computed(() => {
       <div v-if="!hasFiles">
         <FileUploader
           ref="uploaderRef"
-          accept="image/jpeg,image/png,image/webp"
+          accept="image/jpeg,image/png,image/webp,image/avif"
           :hint="t('compressor.uploadHint')"
           @files="onFilesAdded"
         />
