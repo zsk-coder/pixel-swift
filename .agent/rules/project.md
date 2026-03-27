@@ -27,9 +27,10 @@ alwaysApply: true
 - **日常开发**在 `dev` 分支进行，代码就绪后合并到 `master` 再 push 触发部署。
 - 部署流程：
   1. 在 `dev` 分支完成开发并提交
-  2. `git checkout master && git merge dev`
-  3. `git push origin master`
-  4. `git checkout dev`（切回开发分支继续工作）
+  2. `git push origin dev`（先推送 dev 到远程，保持同步）
+  3. `git checkout master; git merge dev`
+  4. `git push origin master`
+  5. `git checkout dev`（切回开发分支继续工作）
 
 ## Git 规范
 
