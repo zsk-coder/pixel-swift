@@ -147,7 +147,13 @@ export default defineNuxtConfig({
           content: "ca-pub-7567205058563091",
         },
       ],
-
+      script: [
+        {
+          src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7567205058563091",
+          async: true,
+          crossorigin: "anonymous",
+        },
+      ],
       link: [
         { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
         { rel: "preconnect", href: "https://fonts.googleapis.com" },
