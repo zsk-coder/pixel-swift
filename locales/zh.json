@@ -163,7 +163,7 @@
     "totalSavings": "总节省:",
     "format": "格式:",
     "proTip": "你知道吗？",
-    "proTipText": "WebP 格式比 JPG 可以额外减少 30% 的文件体积，且画质损失几乎不可察觉。",
+    "proTipText": "WebP 或 AVIF 格式比 JPG 可以额外减少 30% 的文件体积，且画质损失几乎不可察觉。",
     "compressing": "压缩中...",
     "compareMode": "对比预览",
     "faq": {
@@ -343,7 +343,7 @@
   "schema": {
     "siteDescription": "免费在线图片转换、压缩、调整大小工具。无需上传，浏览器本地直接处理图片。",
     "compressor": {
-      "featureList": "压缩 JPEG、PNG、WebP 图片，可调节画质，实时预览对比，批量压缩，最高缩小 90%"
+      "featureList": "压缩 JPEG、PNG、WebP、AVIF 图片，可调节画质，实时预览对比，批量压缩，最高缩小 90%"
     },
     "converter": {
       "featureList": "支持任意图片格式（BMP、GIF、TIFF 等）转换为 JPG、PNG、WebP 或 AVIF，批量转换，无需上传，100%浏览器处理"

@@ -138,7 +138,7 @@
     "totalSavings": "合計節約:",
     "format": "形式:",
     "proTip": "ご存知ですか？",
-    "proTipText": "WebP形式はJPGと比較して、目立つ画質劣化なくファイルサイズをさらに30%縮小できます。",
+    "proTipText": "WebPまたはAVIF形式はJPGと比較して、目立つ画質劣化なくファイルサイズをさらに30%縮小できます。",
     "compressing": "圧縮中...",
     "compareMode": "比較プレビュー",
     "faq": {
@@ -318,7 +318,7 @@
   "schema": {
     "siteDescription": "無料オンライン画像変換・圧縮・リサイズツール。アップロード不要 — ブラウザで直接処理。",
     "compressor": {
-      "featureList": "JPEG、PNG、WebP画像の圧縮、品質調整可能、リアルタイムプレビュー比較、バッチ圧縮、最大90%サイズ削減"
+      "featureList": "JPEG、PNG、WebP、AVIF画像の圧縮、品質調整可能、リアルタイムプレビュー比較、バッチ圧縮、最大90%サイズ削減"
     },
     "converter": {
       "featureList": "あらゆる画像形式（BMP、GIF、TIFF、AVIF等）をJPG、PNG、WebPに変換、一括変換対応、アップロード不要、100%ブラウザ処理"

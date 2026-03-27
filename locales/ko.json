@@ -138,7 +138,7 @@
     "totalSavings": "총 절약:",
     "format": "형식:",
     "proTip": "알고 계셨나요?",
-    "proTipText": "WebP 형식은 눈에 띄는 화질 저하 없이 JPG 대비 파일 크기를 30% 더 줄일 수 있습니다.",
+    "proTipText": "WebP 또는 AVIF 형식은 눈에 띄는 화질 저하 없이 JPG 대비 파일 크기를 30% 더 줄일 수 있습니다.",
     "compressing": "압축 중...",
     "compareMode": "비교 미리보기",
     "faq": {
@@ -318,7 +318,7 @@
   "schema": {
     "siteDescription": "무료 온라인 이미지 변환기, 압축기, 크기 조정기. 업로드 불필요 — 브라우저에서 직접 이미지 처리.",
     "compressor": {
-      "featureList": "JPEG, PNG, WebP 이미지 압축, 화질 조절 가능, 실시간 미리보기 비교, 일괄 압축, 최대 90% 크기 감소"
+      "featureList": "JPEG, PNG, WebP, AVIF 이미지 압축, 화질 조절 가능, 실시간 미리보기 비교, 일괄 압축, 최대 90% 크기 감소"
     },
     "converter": {
       "featureList": "모든 이미지 형식(BMP, GIF, TIFF, AVIF 등)을 JPG, PNG, WebP로 변환, 일괄 변환, 업로드 불필요, 100% 브라우저 처리"

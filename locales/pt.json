@@ -138,7 +138,7 @@
     "totalSavings": "Economia total:",
     "format": "Formato:",
     "proTip": "Você sabia?",
-    "proTipText": "O formato WebP pode reduzir o tamanho do arquivo em 30% a mais que o JPG sem perda perceptível de qualidade.",
+    "proTipText": "O formato WebP ou AVIF pode reduzir o tamanho do arquivo em 30% a mais que o JPG sem perda perceptível de qualidade.",
     "compressing": "Comprimindo...",
     "compareMode": "Comparando",
     "faq": {
@@ -318,7 +318,7 @@
   "schema": {
     "siteDescription": "Conversor, compressor e redimensionador de imagens online grátis. Sem necessidade de upload — processamento direto no navegador.",
     "compressor": {
-      "featureList": "Comprimir imagens JPEG, PNG e WebP, qualidade ajustável, comparação em tempo real, compressão em lote, redução de até 90%"
+      "featureList": "Comprimir imagens JPEG, PNG, WebP e AVIF, qualidade ajustável, comparação em tempo real, compressão em lote, redução de até 90%"
     },
     "converter": {
       "featureList": "Converta qualquer formato (BMP, GIF, TIFF, AVIF, etc.) para JPG, PNG ou WebP, conversão em lote, sem upload, 100% no navegador"
