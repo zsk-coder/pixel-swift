@@ -44,6 +44,23 @@
       "batch": "Procesamiento por lotes",
       "batchDesc": "Procesa hasta 20 imágenes a la vez, hasta 50 MB cada una — maneja grandes lotes con facilidad."
     },
+    "stats": {
+      "title": "Confianza de usuarios en todo el mundo",
+      "subtitle": "Los datos hablan — procesamiento de imágenes seguro y confiable para cada usuario.",
+      "processed": "Imágenes procesadas",
+      "formats": "Formatos compatibles",
+      "rating": "Valoración de usuarios",
+      "local": "Procesamiento local"
+    },
+    "tech": {
+      "title": "Impulsado por tecnología líder en la industria",
+      "subtitle": "Construido con motores de código abierto probados en batalla — la misma tecnología en la que confían Mozilla y la comunidad Rust.",
+      "wasmDesc": "Procesamiento a velocidad nativa directamente en tu navegador",
+      "mozjpegDesc": "Codificador JPEG avanzado de Mozilla para compresión óptima",
+      "oxipngDesc": "Optimizador PNG impulsado por Rust para reducción sin pérdida",
+      "zeroTransfer": "Cero transferencia de datos",
+      "zeroTransferDesc": "Tus archivos nunca salen de tu navegador — funciona completamente offline"
+    },
     "faq": {
       "title": "Preguntas frecuentes",
       "q1": "¿Qué formatos de imagen son compatibles?",

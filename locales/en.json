@@ -44,6 +44,23 @@
       "batch": "Batch Processing",
       "batchDesc": "Process up to 20 images at once, each up to 50MB — handle large batches with ease."
     },
+    "stats": {
+      "title": "Trusted by Users Worldwide",
+      "subtitle": "Let the numbers speak — secure, reliable image processing for every user.",
+      "processed": "Images Processed",
+      "formats": "Formats Supported",
+      "rating": "User Rating",
+      "local": "Local Processing"
+    },
+    "tech": {
+      "title": "Powered by Industry-Leading Technology",
+      "subtitle": "Built on battle-tested open-source engines — the same technology trusted by Mozilla and the Rust community.",
+      "wasmDesc": "Native-speed processing directly in your browser",
+      "mozjpegDesc": "Mozilla's advanced JPEG encoder for optimal compression",
+      "oxipngDesc": "Rust-powered PNG optimizer for lossless reduction",
+      "zeroTransfer": "Zero Data Transfer",
+      "zeroTransferDesc": "Your files never leave your browser — fully offline-capable"
+    },
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": "What image formats are supported?",

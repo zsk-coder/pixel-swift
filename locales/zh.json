@@ -44,6 +44,23 @@
       "batch": "批量处理",
       "batchDesc": "一次处理多达 20 张图片，单文件最大 50MB，轻松应对大批量需求。"
     },
+    "stats": {
+      "title": "深受用户信赖",
+      "subtitle": "用数据说话，为每一位用户提供安全可靠的图片处理体验。",
+      "processed": "已处理图片",
+      "formats": "支持格式",
+      "rating": "用户评分",
+      "local": "本地处理"
+    },
+    "tech": {
+      "title": "行业领先技术驱动",
+      "subtitle": "基于经过实战检验的开源引擎构建 — 与 Mozilla 和 Rust 社区信赖的同款技术。",
+      "wasmDesc": "浏览器中直接以原生速度处理",
+      "mozjpegDesc": "Mozilla 出品的高级 JPEG 编码器，压缩效果最优",
+      "oxipngDesc": "Rust 驱动的 PNG 优化器，无损压缩",
+      "zeroTransfer": "零数据传输",
+      "zeroTransferDesc": "文件永远不离开浏览器 — 完全离线可用"
+    },
     "faq": {
       "title": "常见问题",
       "q1": "支持哪些图片格式？",

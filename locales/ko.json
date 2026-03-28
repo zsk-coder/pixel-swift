@@ -44,6 +44,23 @@
       "batch": "일괄 처리",
       "batchDesc": "한 번에 최대 20장, 파일당 최대 50MB까지 지원. 대량의 이미지도 쉽게 처리할 수 있습니다."
     },
+    "stats": {
+      "title": "전 세계 사용자의 신뢰",
+      "subtitle": "숫자가 증명합니다 — 모든 사용자에게 안전하고 신뢰할 수 있는 이미지 처리를 제공합니다.",
+      "processed": "처리된 이미지",
+      "formats": "지원 형식",
+      "rating": "사용자 평점",
+      "local": "로컬 처리"
+    },
+    "tech": {
+      "title": "업계 최고의 기술로 구동",
+      "subtitle": "실전에서 검증된 오픈소스 엔진 기반 — Mozilla와 Rust 커뮤니티가 신뢰하는 동일한 기술.",
+      "wasmDesc": "브라우저에서 네이티브 속도로 직접 처리",
+      "mozjpegDesc": "최적의 압축을 위한 Mozilla의 고급 JPEG 인코더",
+      "oxipngDesc": "무손실 압축을 위한 Rust 기반 PNG 옵티마이저",
+      "zeroTransfer": "데이터 전송 제로",
+      "zeroTransferDesc": "파일이 브라우저를 벗어나지 않음 — 완전 오프라인 지원"
+    },
     "faq": {
       "title": "자주 묻는 질문",
       "q1": "어떤 이미지 형식을 지원하나요?",

@@ -44,6 +44,23 @@
       "batch": "Stapelverarbeitung",
       "batchDesc": "Bis zu 20 Bilder auf einmal verarbeiten, je bis zu 50 MB — große Mengen mit Leichtigkeit bewältigen."
     },
+    "stats": {
+      "title": "Weltweites Nutzervertrauen",
+      "subtitle": "Zahlen sprechen für sich — sichere und zuverlässige Bildverarbeitung für jeden Nutzer.",
+      "processed": "Verarbeitete Bilder",
+      "formats": "Unterstützte Formate",
+      "rating": "Nutzerbewertung",
+      "local": "Lokale Verarbeitung"
+    },
+    "tech": {
+      "title": "Angetrieben von branchenführender Technologie",
+      "subtitle": "Basierend auf kampferprobten Open-Source-Engines — die gleiche Technologie, der Mozilla und die Rust-Community vertrauen.",
+      "wasmDesc": "Verarbeitung in nativer Geschwindigkeit direkt im Browser",
+      "mozjpegDesc": "Mozillas fortschrittlicher JPEG-Encoder für optimale Komprimierung",
+      "oxipngDesc": "Rust-basierter PNG-Optimierer für verlustfreie Reduktion",
+      "zeroTransfer": "Keine Datenübertragung",
+      "zeroTransferDesc": "Ihre Dateien verlassen niemals Ihren Browser — vollständig offline-fähig"
+    },
     "faq": {
       "title": "Häufig gestellte Fragen",
       "q1": "Welche Bildformate werden unterstützt?",

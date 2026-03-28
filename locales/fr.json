@@ -44,6 +44,23 @@
       "batch": "Traitement par lot",
       "batchDesc": "Traitez jusqu'à 20 images à la fois, jusqu'à 50 Mo chacune — gérez de gros volumes en toute simplicité."
     },
+    "stats": {
+      "title": "La confiance des utilisateurs dans le monde entier",
+      "subtitle": "Les chiffres parlent d'eux-mêmes — un traitement d'image sûr et fiable pour chaque utilisateur.",
+      "processed": "Images traitées",
+      "formats": "Formats pris en charge",
+      "rating": "Note des utilisateurs",
+      "local": "Traitement local"
+    },
+    "tech": {
+      "title": "Propulsé par une technologie de pointe",
+      "subtitle": "Construit sur des moteurs open-source éprouvés — la même technologie utilisée par Mozilla et la communauté Rust.",
+      "wasmDesc": "Traitement à vitesse native directement dans votre navigateur",
+      "mozjpegDesc": "L'encodeur JPEG avancé de Mozilla pour une compression optimale",
+      "oxipngDesc": "Optimiseur PNG propulsé par Rust pour une réduction sans perte",
+      "zeroTransfer": "Zéro transfert de données",
+      "zeroTransferDesc": "Vos fichiers ne quittent jamais votre navigateur — entièrement hors ligne"
+    },
     "faq": {
       "title": "Questions fréquentes",
       "q1": "Quels formats d'image sont pris en charge ?",
