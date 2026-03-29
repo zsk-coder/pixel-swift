@@ -1,6 +1,6 @@
 ---
-title: "Comment compresser des images pour les e-mails : la méthode gratuite la plus rapide"
-description: "Apprenez à réduire rapidement la taille des images pour les pièces jointes. Gratuit, privé et sans inscription. Compatible Gmail, Outlook et tous les clients mail."
+title: "Comment réduire la taille d'une photo pour email gratuitement"
+description: "Apprenez à compresser vos photos et réduire la taille des images pour email gratuitement. Sans inscription, sans installation. Compatible Gmail, Outlook et tous les clients mail."
 category: "tutorials"
 author: "PixelSwift Team"
 date: "2026-03-23"
@@ -9,9 +9,9 @@ cover: "/images/blog/compress-images-email.png"
 featured: false
 ---
 
-Nous sommes tous passés par là. Vous essayez de joindre une photo à un e-mail et vous recevez ce message frustrant : **« La taille de la pièce jointe dépasse la limite autorisée. »**
+Besoin de **réduire la taille d'une photo** pour l'envoyer par email ? Nous sommes tous passés par là. Vous essayez de joindre une photo et vous recevez ce message frustrant : **« La taille de la pièce jointe dépasse la limite autorisée. »**
 
-Que vous envoyiez des photos de produits à un client, des photos de vacances à votre famille ou des maquettes à votre équipe — les images trop volumineuses sont un casse-tête universel. La bonne nouvelle ? Vous pouvez résoudre ce problème en moins de 30 secondes, gratuitement et sans rien installer.
+Que vous envoyiez des photos de produits à un client, des photos de vacances à votre famille ou des maquettes à votre équipe — les images trop volumineuses sont un problème universel. La bonne nouvelle ? Vous pouvez **compresser vos photos** en moins de 30 secondes, gratuitement et sans rien installer.
 
 ## Pourquoi les pièces jointes ont une limite de taille
 

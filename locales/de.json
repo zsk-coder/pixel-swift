@@ -309,7 +309,7 @@
     },
     "converter": {
       "title": "Bilder kostenlos online konvertieren — BMP GIF TIFF zu JPG PNG WebP AVIF",
-      "description": "BMP, GIF, TIFF, AVIF u.v.m. sofort in JPG, PNG, WebP oder AVIF konvertieren. Kostenlos, ohne Upload, privat."
+      "description": "BMP, GIF, TIFF, AVIF u.v.m. sofort in JPG, PNG, WebP oder AVIF konvertieren. Kostenlos, ohne Upload, ohne Anmeldung."
     },
     "resizer": {
       "title": "Bildgröße online ändern – Pixel & Prozent",
@@ -328,8 +328,8 @@
       "description": "Kontaktieren Sie das PixelSwift-Team. Fragen, Anregungen oder Feedback – wir freuen uns auf Ihre Nachricht."
     },
     "blog": {
-      "title": "PixelSwift Blog – Tipps zur Bildoptimierung",
-      "description": "Expertentipps und Tutorials zur Bildoptimierung, Komprimierung und Web-Performance."
+      "title": "PixelSwift Blog – Bilder komprimieren, Formate konvertieren und mehr",
+      "description": "Tutorials zum Komprimieren, Konvertieren und Skalieren von Bildern. Tipps für JPG, PNG, WebP und AVIF — kostenlos und im Browser."
     }
   },
   "schema": {
@@ -346,7 +346,7 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Datenschutzorientierte Tipps und Tutorials zur Bildbearbeitung — komprimieren, konvertieren und optimieren Sie direkt im Browser, ohne Upload.",
+    "subtitle": "Kostenlose Online-Tutorials zur Bildkomprimierung, Formatkonvertierung und Größenänderung. Unterstützt JPG, PNG, WebP, AVIF — direkt im Browser verarbeitet.",
     "featured": "Empfohlen",
     "readMore": "Weiterlesen",
     "allCategories": "Alle",

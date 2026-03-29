@@ -81,7 +81,7 @@
   },
   "blog": {
     "title": "博客",
-    "subtitle": "隐私优先的图片处理技巧与教程，在浏览器中完成压缩、格式转换与优化，无需上传文件。",
+    "subtitle": "免费在线图片压缩、格式转换与调整大小的实用教程，支持 JPG、PNG、WebP、AVIF，直接在浏览器中完成。",
     "featured": "精选",
     "readMore": "阅读更多",
     "allCategories": "全部",
@@ -326,7 +326,7 @@
   "seo": {
     "home": {
       "title": "PixelSwift – 免费在线图片转换、压缩、调整大小工具",
-      "description": "免费在线转换、压缩、调整图片。100% 浏览器本地处理，无需上传，隐私安全。立即体验！"
+      "description": "免费在线转换、压缩、调整图片。100% 浏览器本地处理，无需上传，无需注册。立即体验！"
     },
     "compressor": {
       "title": "在线图片压缩工具 – 最高缩小90%体积",
@@ -334,7 +334,7 @@
     },
     "converter": {
       "title": "免费在线图片转换 — BMP GIF TIFF 等轻松转 JPG PNG WebP AVIF",
-      "description": "将 BMP、GIF、TIFF 等图片即时转换为 JPG、PNG、WebP 或 AVIF。免费、无需上传、保护隐私。立即使用！"
+      "description": "将 BMP、GIF、TIFF 等图片即时转换为 JPG、PNG、WebP 或 AVIF。免费、无需上传、无需注册。立即使用！"
     },
     "resizer": {
       "title": "免费在线调整图片大小 – 像素/百分比调整",

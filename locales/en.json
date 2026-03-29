@@ -81,7 +81,7 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Privacy-first tips and tutorials for image processing — compress, convert, and optimize entirely in your browser, no uploads needed.",
+    "subtitle": "Free online tutorials for image compression, format conversion, and resizing. Supports JPG, PNG, WebP, AVIF — processed directly in your browser.",
     "featured": "Featured",
     "readMore": "Read more",
     "allCategories": "All",
@@ -330,11 +330,11 @@
     },
     "compressor": {
       "title": "Compress Images Online Free — Reduce Size up to 90%",
-      "description": "Compress JPG, PNG, WebP & AVIF images up to 90% smaller. Keep quality, save bandwidth. Free & private — try now!"
+      "description": "Compress JPG, PNG, WebP & AVIF images up to 90% smaller. Keep quality, save bandwidth. Free, no sign-up — try now!"
     },
     "converter": {
       "title": "Convert Images Online Free — BMP GIF TIFF to JPG PNG WebP AVIF",
-      "description": "Convert BMP, GIF, TIFF, and more to JPG, PNG, WebP, or AVIF instantly. Free, private & unlimited — no upload needed. Try now!"
+      "description": "Convert BMP, GIF, TIFF, and more to JPG, PNG, WebP, or AVIF instantly. Free, no sign-up & unlimited — no upload needed. Try now!"
     },
     "resizer": {
       "title": "Resize Images Online Free — Pixels & Percentage",
@@ -353,8 +353,8 @@
       "description": "Get in touch with the PixelSwift team. Questions, suggestions, or feedback — we'd love to hear from you."
     },
     "blog": {
-      "title": "PixelSwift Blog — Privacy-First Image Processing Tips & Guides",
-      "description": "Learn how to compress, convert and resize images privately in your browser. No uploads, no servers — practical tips and step-by-step guides."
+      "title": "PixelSwift Blog — Image Compression, Conversion & Optimization Tips",
+      "description": "Free tutorials on image compression, format conversion, and resizing. Learn to optimize JPG, PNG, WebP & AVIF for web and email."
     }
   },
   "schema": {

@@ -1,6 +1,6 @@
 ---
-title: "Cómo comprimir imágenes para correo electrónico: el método gratuito más rápido"
-description: "Aprende a reducir rápidamente el tamaño de las imágenes para adjuntos de correo. Gratis, privado y sin registro. Funciona con Gmail, Outlook y todos los clientes de correo."
+title: "Cómo comprimir fotos para enviar por email gratis — reducir peso en segundos"
+description: "Aprende a comprimir fotos y reducir el tamaño de imágenes para email gratis. Sin registro, sin instalar nada. Funciona con Gmail, Outlook y todos los clientes de correo."
 category: "tutorials"
 author: "PixelSwift Team"
 date: "2026-03-23"
@@ -9,9 +9,9 @@ cover: "/images/blog/compress-images-email.png"
 featured: false
 ---
 
-Todos hemos pasado por eso. Intentas adjuntar una foto a un correo y recibes ese frustrante mensaje: **"El tamaño del archivo adjunto supera el límite permitido."**
+¿Necesitas **comprimir fotos para enviar por email** pero no sabes cómo reducir el peso sin perder calidad? Todos hemos recibido ese frustrante mensaje: **"El tamaño del archivo adjunto supera el límite permitido."**
 
-Ya sea que envíes fotos de productos a un cliente, fotos de vacaciones a tu familia o maquetas de diseño a tu equipo — las imágenes demasiado grandes son un dolor de cabeza universal del correo electrónico. ¿La buena noticia? Puedes solucionarlo en menos de 30 segundos, completamente gratis y sin instalar nada.
+Ya sea que envíes fotos de productos a un cliente, fotos de vacaciones a tu familia o maquetas de diseño a tu equipo — las imágenes demasiado grandes son un problema universal. ¿La buena noticia? Puedes **reducir el tamaño de tus fotos** en menos de 30 segundos, completamente gratis y sin instalar nada.
 
 ## Por qué los adjuntos de correo tienen límite de tamaño
 

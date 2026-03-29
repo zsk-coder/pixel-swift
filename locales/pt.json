@@ -305,15 +305,15 @@
     },
     "compressor": {
       "title": "Comprimir imagens online – Reduza até 90%",
-      "description": "Comprima imagens JPG, PNG, WebP e AVIF em até 90%. Sem cadastro, qualidade preservada. Grátis e privado!"
+      "description": "Comprima fotos e imagens JPG, PNG, WebP e AVIF em até 90%. Sem cadastro, qualidade preservada. Grátis e sem limites!"
     },
     "converter": {
       "title": "Converter imagens online grátis — BMP GIF TIFF para JPG PNG WebP AVIF",
-      "description": "Converta BMP, GIF, TIFF, AVIF e mais para JPG, PNG ou WebP instantaneamente. Grátis, sem upload, privado."
+      "description": "Converta BMP, GIF, TIFF, AVIF e mais para JPG, PNG ou WebP instantaneamente. Grátis, sem upload, sem cadastro."
     },
     "resizer": {
       "title": "Redimensionar imagens online grátis – Pixels e porcentagem",
-      "description": "Redimensione imagens por pixels ou porcentagem. Rotação e espelhamento incluídos. Grátis, sem cadastro nem instalação!"
+      "description": "Redimensione fotos e imagens por pixels ou porcentagem. Rotação e espelhamento incluídos. Grátis, sem cadastro nem instalação!"
     },
     "terms": {
       "title": "Termos de uso",
@@ -328,8 +328,8 @@
       "description": "Entre em contato com a equipe PixelSwift. Dúvidas, sugestões ou feedback – ficaremos felizes em ajudar."
     },
     "blog": {
-      "title": "Blog PixelSwift – Dicas de Otimização de Imagens",
-      "description": "Dicas e tutoriais sobre otimização de imagens, compressão e performance web."
+      "title": "Blog PixelSwift – Comprimir fotos online, formatos de imagem e mais",
+      "description": "Tutoriais para comprimir fotos online grátis, converter formatos de imagem e redimensionar fotos. Guias passo a passo para JPG, PNG, WebP e AVIF."
     }
   },
   "schema": {
@@ -346,7 +346,7 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Dicas e tutoriais de processamento de imagens com foco em privacidade — comprima, converta e otimize diretamente no seu navegador, sem necessidade de upload.",
+    "subtitle": "Tutoriais gratuitos para comprimir imagens, converter formatos e redimensionar fotos online. Compatível com JPG, PNG, WebP, AVIF — diretamente no seu navegador.",
     "featured": "Destaque",
     "readMore": "Ler mais",
     "allCategories": "Todos",

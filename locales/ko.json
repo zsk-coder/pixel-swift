@@ -309,7 +309,7 @@
     },
     "converter": {
       "title": "무료 온라인 이미지 변환 — BMP GIF TIFF를 JPG PNG WebP AVIF로",
-      "description": "BMP, GIF, TIFF 등을 JPG, PNG, WebP, AVIF로 즉시 변환. 무료, 업로드 불필요, 프라이버시 보호."
+      "description": "BMP, GIF, TIFF 등을 JPG, PNG, WebP, AVIF로 즉시 변환. 무료, 업로드 불필요, 완전 무료."
     },
     "resizer": {
       "title": "무료 온라인 이미지 크기 조정 – 픽셀 & 백분율",
@@ -328,8 +328,8 @@
       "description": "PixelSwift 팀에 문의하세요. 질문, 제안, 피드백 등 무엇이든 환영합니다."
     },
     "blog": {
-      "title": "PixelSwift 블로그 – 이미지 최적화 팁 및 튜토리얼",
-      "description": "이미지 최적화, 압축 및 웹 성능에 대한 전문 팁과 튜토리얼."
+      "title": "PixelSwift 블로그 – 이미지 압축, 포맷 변환, 최적화 팁",
+      "description": "이미지 압축, 포맷 변환, 크기 조정을 위한 무료 튜토리얼. JPG, PNG, WebP, AVIF를 브라우저에서 최적화하는 방법을 안내합니다."
     }
   },
   "schema": {
@@ -346,7 +346,7 @@
   },
   "blog": {
     "title": "블로그",
-    "subtitle": "프라이버시 우선 이미지 처리 팁과 튜토리얼 — 브라우저에서 압축, 변환, 최적화를 완료하세요. 업로드가 필요 없습니다.",
+    "subtitle": "이미지 압축, 포맷 변환, 크기 조정을 위한 무료 온라인 튜토리얼. JPG, PNG, WebP, AVIF 지원 — 브라우저에서 직접 처리.",
     "featured": "추천",
     "readMore": "더 읽기",
     "allCategories": "전체",

@@ -305,15 +305,15 @@
     },
     "compressor": {
       "title": "Comprimir imágenes en línea – Reduce hasta un 90%",
-      "description": "Comprime imágenes JPG, PNG, WebP y AVIF hasta un 90%. Sin registro, sin instalar. Mantén la calidad y ahorra espacio. ¡Gratis!"
+      "description": "Comprime fotos e imágenes JPG, PNG, WebP y AVIF hasta un 90%. Sin registro, sin instalar. Mantén la calidad y ahorra espacio. ¡Gratis!"
     },
     "converter": {
       "title": "Convertir imágenes gratis online — BMP GIF TIFF a JPG PNG WebP AVIF",
-      "description": "Convierte BMP, GIF, TIFF, AVIF y más a JPG, PNG o WebP al instante. Gratis, sin subir archivos, privado."
+      "description": "Convierte BMP, GIF, TIFF, AVIF y más a JPG, PNG o WebP al instante. Gratis, sin subir archivos, sin registro."
     },
     "resizer": {
       "title": "Redimensionar imágenes en línea gratis – Píxeles y porcentaje",
-      "description": "Redimensiona imágenes por píxeles o porcentaje. Rotación y volteo incluidos. Gratis, sin registro ni instalación."
+      "description": "Redimensiona fotos e imágenes por píxeles o porcentaje. Rotación y volteo incluidos. Gratis, sin registro ni instalación."
     },
     "terms": {
       "title": "Términos de uso",
@@ -328,8 +328,8 @@
       "description": "Contacte al equipo de PixelSwift. Preguntas, sugerencias o comentarios – estaremos encantados de ayudarle."
     },
     "blog": {
-      "title": "Blog de PixelSwift – Consejos de Optimización de Imágenes",
-      "description": "Consejos expertos sobre optimización de imágenes, compresión y rendimiento web."
+      "title": "Blog de PixelSwift – Comprimir fotos online, formatos de imagen y más",
+      "description": "Tutoriales para comprimir fotos online gratis, convertir formatos de imagen y redimensionar fotos. Guías paso a paso para JPG, PNG, WebP y AVIF."
     }
   },
   "schema": {
@@ -346,7 +346,7 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Consejos y tutoriales de procesamiento de imágenes con privacidad primero — comprime, convierte y optimiza directamente en tu navegador, sin necesidad de subir archivos.",
+    "subtitle": "Tutoriales gratuitos para comprimir imágenes, convertir formatos y redimensionar fotos online. Compatible con JPG, PNG, WebP y AVIF — todo en tu navegador.",
     "featured": "Destacado",
     "readMore": "Leer más",
     "allCategories": "Todos",

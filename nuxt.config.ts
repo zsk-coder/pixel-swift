@@ -131,14 +131,14 @@ export default defineNuxtConfig({
   i18n: {
     baseUrl: SITE_URL,
     locales: [
-      { code: "en", language: "en-US", file: "en.json", name: "English" },
-      { code: "zh", language: "zh-CN", file: "zh.json", name: "简体中文" },
-      { code: "es", language: "es-ES", file: "es.json", name: "Español" },
-      { code: "ja", language: "ja-JP", file: "ja.json", name: "日本語" },
-      { code: "de", language: "de-DE", file: "de.json", name: "Deutsch" },
-      { code: "fr", language: "fr-FR", file: "fr.json", name: "Français" },
-      { code: "pt", language: "pt-BR", file: "pt.json", name: "Português" },
-      { code: "ko", language: "ko-KR", file: "ko.json", name: "한국어" },
+      { code: "en", language: "en-US", file: "en.json", name: "English" }, // 英语
+      { code: "zh", language: "zh-CN", file: "zh.json", name: "简体中文" }, // 中文
+      { code: "es", language: "es-ES", file: "es.json", name: "Español" }, // 西班牙语
+      { code: "ja", language: "ja-JP", file: "ja.json", name: "日本語" }, // 日语
+      { code: "de", language: "de-DE", file: "de.json", name: "Deutsch" }, // 德语
+      { code: "fr", language: "fr-FR", file: "fr.json", name: "Français" }, // 法语
+      { code: "pt", language: "pt-BR", file: "pt.json", name: "Português" }, // 葡萄牙语
+      { code: "ko", language: "ko-KR", file: "ko.json", name: "한국어" }, // 韩语
     ],
     langDir: "../locales",
     defaultLocale: "en",

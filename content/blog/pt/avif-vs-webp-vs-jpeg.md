@@ -1,6 +1,6 @@
 ---
-title: "AVIF vs WebP vs JPEG: qual formato de imagem usar em 2026?"
-description: "Comparação completa e baseada em dados dos formatos AVIF, WebP e JPEG. Descubra qual formato oferece a melhor compressão, qualidade e desempenho para o seu caso de uso."
+title: "AVIF vs WebP vs JPEG: qual o melhor formato de imagem para web em 2026?"
+description: "Comparação completa dos formatos de imagem AVIF, WebP e JPEG. Descubra qual formato oferece melhor compressão e qualidade para reduzir o tamanho das suas imagens online."
 category: "optimization"
 author: "PixelSwift Team"
 date: "2026-03-27"
@@ -9,9 +9,9 @@ cover: "/images/blog/vif-vs-webp-vs-jpeg.webp"
 featured: true
 ---
 
-O cenário dos formatos de imagem mudou drasticamente. Durante duas décadas, o JPEG reinou como padrão para imagens web. O WebP trouxe arquivos menores com qualidade comparável. Agora, o **AVIF** — apoiado por Google, Netflix e Alliance for Open Media — está reescrevendo completamente as regras.
+Quer saber qual é o **melhor formato de imagem para web** em 2026? O cenário mudou drasticamente. Durante duas décadas, o JPEG reinou como padrão para **comprimir e converter imagens** online. O WebP trouxe arquivos menores com qualidade comparável. Agora, o **AVIF** — apoiado por Google, Netflix e Alliance for Open Media — está reescrevendo completamente as regras.
 
-Se você é desenvolvedor web, designer ou criador de conteúdo e quer saber qual formato usar em 2026, este guia oferece uma resposta clara e baseada em dados.
+Se você é desenvolvedor web, designer ou criador de conteúdo e quer **reduzir o tamanho das suas imagens** sem perder qualidade, este guia oferece uma resposta clara e baseada em dados.
 
 ## Os três formatos em resumo
 
