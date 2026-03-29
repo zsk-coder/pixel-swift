@@ -36,7 +36,7 @@
     },
     "why": {
       "fast": "Ultrarrápido",
-      "fastDesc": "Compatível com 5 formatos principais de imagem, processados instantaneamente em milissegundos — sem espera de upload ou download.",
+      "fastDesc": "Compatível com formatos JPG, PNG, WebP e AVIF, processados instantaneamente em milissegundos — sem espera de upload ou download.",
       "secure": "Totalmente privado",
       "secureDesc": "Seus arquivos ficam no seu dispositivo. Todo o processamento acontece localmente no navegador — nada é enviado a nenhum servidor.",
       "free": "Completamente grátis",

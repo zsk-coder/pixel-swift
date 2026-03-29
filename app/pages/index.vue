@@ -4,7 +4,7 @@ const localePath = useLocalePath();
 
 // ── Trust Stats ──
 const statsData: Array<{ target: number; start: number; format: boolean; suffix: string; labelKey: string; decimal?: number }> = [
-  { target: 15000, start: 10000, format: true, suffix: "+", labelKey: "home.stats.processed" },
+  { target: 20000, start: 14000, format: true, suffix: "+", labelKey: "home.stats.processed" },
   { target: 4, start: 2, format: false, suffix: "", labelKey: "home.stats.formats" },
   { target: 4.8, start: 3.0, format: false, suffix: "/5", labelKey: "home.stats.rating", decimal: 1 },
   { target: 100, start: 70, format: false, suffix: "%", labelKey: "home.stats.local" },
@@ -252,7 +252,7 @@ const whyItems = computed(() => [
 
     <!-- Trust Stats Section -->
     <section class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
-      <div class="px-4 sm:px-6 lg:px-8">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
           <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
             {{ t('home.stats.title') }}
@@ -263,7 +263,7 @@ const whyItems = computed(() => [
         </div>
         <div
           ref="statsRef"
-          class="mx-auto max-w-7xl rounded-2xl bg-white dark:bg-slate-800 shadow-lg shadow-slate-200/60 dark:shadow-slate-900/60 border border-slate-100 dark:border-slate-700/60"
+          class="rounded-2xl bg-white dark:bg-slate-800 shadow-lg shadow-slate-200/60 dark:shadow-slate-900/60 border border-slate-100 dark:border-slate-700/60"
         >
           <div
             class="grid grid-cols-2 lg:grid-cols-4 divide-x divide-slate-100 dark:divide-slate-700/60"

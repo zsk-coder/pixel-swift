@@ -36,7 +36,7 @@
     },
     "why": {
       "fast": "Lightning Fast",
-      "fastDesc": "Supports 5 major image formats, processed instantly in milliseconds — no upload or download wait.",
+      "fastDesc": "Supports JPG, PNG, WebP, and AVIF formats, processed instantly in milliseconds — no upload or download wait.",
       "secure": "Fully Private",
       "secureDesc": "Your files stay on your device. All processing happens locally in the browser — nothing is sent to any server.",
       "free": "Completely Free",
