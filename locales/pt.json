@@ -172,7 +172,8 @@
       "a5": "Sim! A maioria dos provedores de e-mail limita anexos a 25MB. Configure a qualidade em 70-80% para reduzir as fotos significativamente.",
       "q6": "O PixelSwift é melhor que o TinyPNG?",
       "a6": "Ambos produzem excelentes resultados. A diferença chave: TinyPNG envia seus arquivos para o servidor deles, enquanto o PixelSwift processa tudo localmente no seu navegador. Se privacidade é importante, PixelSwift é a melhor escolha."
-    }
+    },
+    "fetchingExtension": "Recebendo imagem do navegador..."
   },
   "resizer": {
     "title": "Redimensionador de imagens",

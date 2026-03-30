@@ -522,12 +522,14 @@ const actualOutputFormat = computed(() => {
 // ─── Browser Extension / URL Params Integration ───
 const route = useRoute();
 const router = useRouter();
+const isFetchingExtensionImage = ref(false);
 
 onMounted(async () => {
   const imageUrl = route.query.url as string;
   if (!imageUrl) return;
 
   try {
+    isFetchingExtensionImage.value = true;
     isBusy.value = true;
     
     // Call our server-side API proxy to bypass CORS
@@ -541,7 +543,7 @@ onMounted(async () => {
     try {
       const urlObj = new URL(imageUrl);
       const nameMatch = urlObj.pathname.match(/\/([^/?#]+)$/);
-      filename = nameMatch ? nameMatch[1] : filename;
+      filename = nameMatch?.[1] || filename;
     } catch {}
     
     if (!filename.includes('.')) {
@@ -562,6 +564,7 @@ onMounted(async () => {
   } catch (error) {
     console.error("Extension integration error:", error);
   } finally {
+    isFetchingExtensionImage.value = false;
     isBusy.value = false;
   }
 });
@@ -585,14 +588,16 @@ onMounted(async () => {
       </div>
 
       <!-- ================== UPLOAD STATE ================== -->
-      <div v-if="!hasFiles">
+      <template v-if="!hasFiles">
         <FileUploader
           ref="uploaderRef"
+          v-loading="isFetchingExtensionImage"
+          :element-loading-text="t('compressor.fetchingExtension')"
           accept="image/jpeg,image/png,image/webp,image/avif"
           :hint="t('compressor.uploadHint')"
           @files="onFilesAdded"
         />
-      </div>
+      </template>
 
       <!-- ================== SINGLE FILE: COMPARISON MODE ================== -->
       <template v-if="isSingleMode">

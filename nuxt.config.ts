@@ -7,6 +7,12 @@ const SITE_URL = "https://pixelswift.site";
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
   devtools: { enabled: false },
+  // ── 构建优化（加快打包速度） ──
+  telemetry: false,
+  sourcemap: {
+    server: false,
+    client: false, // 生产环境不生成 .map 文件，可大幅减少 Vite 打包 CPU 耗时
+  },
   devServer: {
     host: "0.0.0.0",
   },

@@ -14,14 +14,24 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
     const imageUrl = info.srcUrl;
     
     // 审计修复 3：直接拦截 Base64 (data:image) 格式。如果把几兆的图片字符串当参数传进 URL，
-    // 往往会导致 Nginx/浏览器报出 414 URI Too Long 错误甚至崩溃。
-    if (imageUrl.startsWith("data:")) {
-      console.warn("PixelSwift: Local base64 data images are too large to pass via URL.");
+    // 智能检测当前浏览器的界面的语言，例如 'zh-CN', 'ja', 'en-US'
+    const rawLang = chrome.i18n.getUILanguage() || 'en';
+    const lang = rawLang.split('-')[0].toLowerCase();
+    
+    // 根据项目配置的 8 种语言进行匹配，英文是默认路由不需要加前缀
+    const supportedLocales = ['zh', 'es', 'ja', 'de', 'fr', 'pt', 'ko'];
+    const localePath = supportedLocales.includes(lang) ? `/${lang}` : '';
+    const baseUrl = `https://pixelswift.site${localePath}/compress-image`;
+
+    // 如果是 Base64 数据则直接拦截，防止 URL 过长导致 414 错误
+    if (imageUrl.startsWith('data:')) {
+      // 打开官方网站（无参数），让用户手动粘贴
+      chrome.tabs.create({ url: baseUrl });
       return;
     }
     
-    // 打开官方网站，并把图片 URL 作为参数挂在后面带过去
-    const pixelswiftUrl = `https://pixelswift.site/compress-image?url=${encodeURIComponent(imageUrl)}`;
+    // 打开官方对应的语言网站，并把图片 URL 作为参数挂在后面带过去
+    const pixelswiftUrl = `${baseUrl}?url=${encodeURIComponent(imageUrl)}`;
     
     // 自动新开一个标签页，跳去网站
     chrome.tabs.create({ url: pixelswiftUrl });
