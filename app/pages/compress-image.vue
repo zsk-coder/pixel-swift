@@ -518,6 +518,53 @@ function selectFile(id: string) {
 const actualOutputFormat = computed(() => {
   return originalFormat.value || "jpg";
 });
+
+// ─── Browser Extension / URL Params Integration ───
+const route = useRoute();
+const router = useRouter();
+
+onMounted(async () => {
+  const imageUrl = route.query.url as string;
+  if (!imageUrl) return;
+
+  try {
+    isBusy.value = true;
+    
+    // Call our server-side API proxy to bypass CORS
+    const response = await fetch(`/api/fetch-image?url=${encodeURIComponent(imageUrl)}`);
+    if (!response.ok) throw new Error("Failed to fetch image from URL");
+    
+    const blob = await response.blob();
+    
+    // Extract filename from URL or use a default
+    let filename = 'downloaded-image';
+    try {
+      const urlObj = new URL(imageUrl);
+      const nameMatch = urlObj.pathname.match(/\/([^/?#]+)$/);
+      filename = nameMatch ? nameMatch[1] : filename;
+    } catch {}
+    
+    if (!filename.includes('.')) {
+      // Guess extension from mime type
+      const ext = blob.type.split('/')[1] || 'jpg';
+      filename += `.${ext}`;
+    }
+
+    const file = new File([blob], filename, { type: blob.type });
+    
+    // Inject beautifully into the existing flow
+    onFilesAdded([file]);
+    
+    // Clean up the URL so F5 doesn't re-trigger
+    const query = { ...route.query };
+    delete query.url;
+    router.replace({ query });
+  } catch (error) {
+    console.error("Extension integration error:", error);
+  } finally {
+    isBusy.value = false;
+  }
+});
 </script>
 
 <template>
@@ -555,7 +602,7 @@ const actualOutputFormat = computed(() => {
           <div class="col-span-8 flex flex-col gap-4">
             <!-- Comparison Container -->
             <div
-              class="relative w-full max-h-[600px] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center"
+              class="relative w-full min-h-[400px] max-h-[600px] bg-slate-100 dark:bg-slate-800 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-700 shadow-sm flex items-center justify-center"
             >
               <template v-if="singleDone && compressedPreview">
                 <CompareSlider
@@ -774,7 +821,7 @@ const actualOutputFormat = computed(() => {
         <div class="lg:hidden flex flex-col gap-6">
           <!-- Compare Viewer -->
           <div
-            class="relative w-full max-h-[500px] bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex items-center justify-center"
+            class="relative w-full min-h-[300px] max-h-[400px] bg-slate-100 dark:bg-slate-800 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-700 flex items-center justify-center"
           >
             <template v-if="singleDone && compressedPreview">
               <CompareSlider
@@ -782,7 +829,7 @@ const actualOutputFormat = computed(() => {
                 :compressed-src="compressedPreview"
                 :original-label="t('compressor.original')"
                 :compressed-label="t('compressor.compressed')"
-                max-height="500px"
+                max-height="400px"
                 class="!rounded-none"
               />
               <div

@@ -150,7 +150,7 @@ function getAuthorInitials(name: string) {
       <!-- ── Featured Article ── -->
       <!-- Exactly matching design: flex flex-col lg:flex-row, min-h-[400px] -->
       <article
-        v-if="showFeatured"
+        v-if="showFeatured && featuredPost"
         class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-sm mb-4 featured-card group transition-all hover:shadow-lg"
       >
         <!-- Image with FEATURED badge overlay on mobile -->
@@ -252,7 +252,7 @@ function getAuthorInitials(name: string) {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         <article
           v-for="post in filteredPosts"
-          :key="post.slug"
+          :key="post.path || post.id"
           class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group"
         >
           <NuxtLink

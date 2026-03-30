@@ -41,7 +41,7 @@ const containerStyle = computed(() => {
 <template>
   <div
     ref="containerRef"
-    class="relative overflow-hidden rounded-card select-none cursor-col-resize flex items-center justify-center bg-slate-100 dark:bg-slate-800"
+    class="relative overflow-hidden rounded-card select-none cursor-col-resize flex items-center justify-center bg-slate-100 dark:bg-slate-800 touch-pan-y"
     :style="containerStyle"
     @pointerdown="onPointerDown"
     @pointermove="onPointerMove"

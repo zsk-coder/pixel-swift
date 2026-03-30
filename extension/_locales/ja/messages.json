@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "PixelSwift - 無料の画像圧縮＆変換ツール"
+  },
+  "extensionDescription": {
+    "message": "右クリックするだけでWebP画像の変換や圧縮がブラウザで完了。アップロード不要、完全プライベート。"
+  },
+  "contextMenuTitle": {
+    "message": "⚡ PixelSwiftで圧縮・形式変換"
+  }
+}

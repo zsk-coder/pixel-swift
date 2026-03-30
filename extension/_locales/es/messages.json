@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "PixelSwift - Compresor de imágenes local gratuito"
+  },
+  "extensionDescription": {
+    "message": "Sin cargas o servidores, 100% privado. Haz clic derecho en cualquier imagen para convertir WebP/AVIF o comprimir su tamaño instantáneamente de forma local."
+  },
+  "contextMenuTitle": {
+    "message": "⚡ Comprimir / Convertir con PixelSwift"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "PixelSwift - 무료 로컬 이미지 압축기"
+  },
+  "extensionDescription": {
+    "message": "업로드 없이 100% 프라이버시 보호. 웹에서 이미지를 우클릭하여 WebP 변환 및 압축을 로컬에서 즉시 수행하세요."
+  },
+  "contextMenuTitle": {
+    "message": "⚡ PixelSwift로 압축 / 형식 변환"
+  }
+}

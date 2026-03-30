@@ -1,0 +1,11 @@
+{
+  "extensionName": {
+    "message": "PixelSwift - 免費本地圖片壓縮工具"
+  },
+  "extensionDescription": {
+    "message": "無需上傳，純前端 WASM 加速。右鍵任何圖片即可秒速壓縮體積或將 WebP 轉換為普通格式。100% 保護隱私。"
+  },
+  "contextMenuTitle": {
+    "message": "⚡ 用 PixelSwift 壓縮 / 轉換格式"
+  }
+}
