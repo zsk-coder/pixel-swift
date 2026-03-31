@@ -352,6 +352,10 @@ function startOver() {
   resetToOriginal();
   uploaderRef.value?.clearFiles();
 }
+
+// ─── Browser Extension / URL Params Integration ───
+const { isFetching: isFetchingExtensionImage } =
+  useExtensionImage(onFilesAdded);
 </script>
 
 <template>
@@ -378,6 +382,8 @@ function startOver() {
       <div v-if="!hasFile">
         <FileUploader
           ref="uploaderRef"
+          v-loading="isFetchingExtensionImage"
+          :element-loading-text="t('common.fetchingExtension')"
           accept="image/jpeg,image/png,image/webp,image/avif"
           :multiple="false"
           :max-count="1"

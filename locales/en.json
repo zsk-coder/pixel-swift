@@ -197,8 +197,7 @@
       "a5": "Yes! Most email providers limit attachments to 25MB. Use PixelSwift to compress your images to a smaller size — set quality to 70-80% to reduce photos significantly while keeping them looking great in emails.",
       "q6": "Is PixelSwift better than TinyPNG for compression?",
       "a6": "Both produce excellent results. The key difference: TinyPNG uploads your files to their server for processing, while PixelSwift processes everything locally in your browser. If privacy matters to you, PixelSwift is the better choice since your images never leave your device."
-    },
-    "fetchingExtension": "Receiving image from browser..."
+    }
   },
   "resizer": {
     "title": "Precision Image Resizer",
@@ -256,7 +255,8 @@
     "process": "Process",
     "processing": "Processing...",
     "error": "Error",
-    "pending": "Waiting"
+    "pending": "Waiting",
+    "fetchingExtension": "Receiving image from browser..."
   },
   "errors": {
     "processFailed": "Processing failed. Please refresh the page and try again.",

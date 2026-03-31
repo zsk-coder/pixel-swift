@@ -1,11 +1,20 @@
 {
   "extensionName": {
-    "message": "PixelSwift - 무료 로컬 이미지 압축기"
+    "message": "PixelSwift - 이미지 압축, 변환 & 크기 조정"
   },
   "extensionDescription": {
-    "message": "업로드 없이 100% 프라이버시 보호. 웹에서 이미지를 우클릭하여 WebP 변환 및 압축을 로컬에서 즉시 수행하세요."
+    "message": "이미지를 우클릭하여 압축, 형식 변환, 크기 조정을 즉시 수행하세요. 업로드 불필요, 100% 비공개."
   },
   "contextMenuTitle": {
-    "message": "⚡ PixelSwift로 압축 / 형식 변환"
+    "message": "PixelSwift로 압축 / 변환 / 크기 조정"
+  },
+  "contextMenuCompress": {
+    "message": "이미지 압축"
+  },
+  "contextMenuConvert": {
+    "message": "형식 변환"
+  },
+  "contextMenuResize": {
+    "message": "크기 조정"
   }
 }

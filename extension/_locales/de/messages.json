@@ -1,11 +1,20 @@
 {
   "extensionName": {
-    "message": "PixelSwift - Kostenloser lokaler Bildkompressor"
+    "message": "PixelSwift - Bildkompressor, Konverter & Größenänderung"
   },
   "extensionDescription": {
-    "message": "Ohne Uploads, 100% privat. Klicken Sie mit der rechten Maustaste auf ein beliebiges Bild, um WebP zu konvertieren oder es lokal zu komprimieren."
+    "message": "Rechtsklick auf ein beliebiges Bild zum Komprimieren, Konvertieren oder Skalieren. Kein Upload nötig, 100% privat."
   },
   "contextMenuTitle": {
-    "message": "⚡ Mit PixelSwift komprimieren / konvertieren"
+    "message": "Mit PixelSwift komprimieren / konvertieren / skalieren"
+  },
+  "contextMenuCompress": {
+    "message": "Bild komprimieren"
+  },
+  "contextMenuConvert": {
+    "message": "Format konvertieren"
+  },
+  "contextMenuResize": {
+    "message": "Größe ändern"
   }
 }

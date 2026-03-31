@@ -520,54 +520,17 @@ const actualOutputFormat = computed(() => {
 });
 
 // ─── Browser Extension / URL Params Integration ───
-const route = useRoute();
-const router = useRouter();
-const isFetchingExtensionImage = ref(false);
-
-onMounted(async () => {
-  const imageUrl = route.query.url as string;
-  if (!imageUrl) return;
-
-  try {
-    isFetchingExtensionImage.value = true;
-    isBusy.value = true;
-    
-    // Call our server-side API proxy to bypass CORS
-    const response = await fetch(`/api/fetch-image?url=${encodeURIComponent(imageUrl)}`);
-    if (!response.ok) throw new Error("Failed to fetch image from URL");
-    
-    const blob = await response.blob();
-    
-    // Extract filename from URL or use a default
-    let filename = 'downloaded-image';
-    try {
-      const urlObj = new URL(imageUrl);
-      const nameMatch = urlObj.pathname.match(/\/([^/?#]+)$/);
-      filename = nameMatch?.[1] || filename;
-    } catch {}
-    
-    if (!filename.includes('.')) {
-      // Guess extension from mime type
-      const ext = blob.type.split('/')[1] || 'jpg';
-      filename += `.${ext}`;
-    }
-
-    const file = new File([blob], filename, { type: blob.type });
-    
-    // Inject beautifully into the existing flow
-    onFilesAdded([file]);
-    
-    // Clean up the URL so F5 doesn't re-trigger
-    const query = { ...route.query };
-    delete query.url;
-    router.replace({ query });
-  } catch (error) {
-    console.error("Extension integration error:", error);
-  } finally {
-    isFetchingExtensionImage.value = false;
-    isBusy.value = false;
-  }
-});
+const { isFetching: isFetchingExtensionImage } = useExtensionImage(
+  onFilesAdded,
+  {
+    onStart: () => {
+      isBusy.value = true;
+    },
+    onEnd: () => {
+      isBusy.value = false;
+    },
+  },
+);
 </script>
 
 <template>
@@ -592,7 +555,7 @@ onMounted(async () => {
         <FileUploader
           ref="uploaderRef"
           v-loading="isFetchingExtensionImage"
-          :element-loading-text="t('compressor.fetchingExtension')"
+          :element-loading-text="t('common.fetchingExtension')"
           accept="image/jpeg,image/png,image/webp,image/avif"
           :hint="t('compressor.uploadHint')"
           @files="onFilesAdded"

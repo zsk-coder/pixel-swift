@@ -1,11 +1,20 @@
 {
   "extensionName": {
-    "message": "PixelSwift - 無料の画像圧縮＆変換ツール"
+    "message": "PixelSwift - 画像圧縮・形式変換・リサイズ"
   },
   "extensionDescription": {
-    "message": "右クリックするだけでWebP画像の変換や圧縮がブラウザで完了。アップロード不要、完全プライベート。"
+    "message": "画像を右クリックするだけで、圧縮・形式変換・リサイズが即完了。アップロード不要、100% プライベート。"
   },
   "contextMenuTitle": {
-    "message": "⚡ PixelSwiftで圧縮・形式変換"
+    "message": "PixelSwiftで圧縮・変換・リサイズ"
+  },
+  "contextMenuCompress": {
+    "message": "画像を圧縮"
+  },
+  "contextMenuConvert": {
+    "message": "形式を変換"
+  },
+  "contextMenuResize": {
+    "message": "サイズを変更"
   }
 }

@@ -172,8 +172,7 @@
       "a5": "Ja! Die meisten E-Mail-Anbieter begrenzen Anhänge auf 25MB. Stellen Sie die Qualität auf 70-80% ein, um Fotos deutlich zu verkleinern.",
       "q6": "Ist PixelSwift besser als TinyPNG?",
       "a6": "Beide liefern hervorragende Ergebnisse. Der Hauptunterschied: TinyPNG lädt Ihre Dateien auf deren Server hoch, während PixelSwift alles lokal in Ihrem Browser verarbeitet. Wenn Ihnen Datenschutz wichtig ist, ist PixelSwift die bessere Wahl."
-    },
-    "fetchingExtension": "Empfange Bild vom Browser..."
+    }
   },
   "resizer": {
     "title": "Bildgröße anpassen",
@@ -231,7 +230,8 @@
     "process": "Verarbeiten",
     "processing": "Verarbeitung...",
     "error": "Fehler",
-    "pending": "Wartend"
+    "pending": "Wartend",
+    "fetchingExtension": "Empfange Bild vom Browser..."
   },
   "errors": {
     "processFailed": "Verarbeitung fehlgeschlagen. Bitte aktualisieren Sie die Seite und versuchen Sie es erneut.",

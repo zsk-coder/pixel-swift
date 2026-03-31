@@ -172,8 +172,7 @@
       "a5": "Oui ! La plupart des fournisseurs email limitent les pièces jointes à 25 Mo. Réglez la qualité à 70-80% pour réduire significativement les photos.",
       "q6": "PixelSwift est-il meilleur que TinyPNG ?",
       "a6": "Les deux produisent d'excellents résultats. La différence clé : TinyPNG envoie vos fichiers sur leur serveur, tandis que PixelSwift traite tout localement dans votre navigateur. Si la confidentialité vous importe, PixelSwift est le meilleur choix."
-    },
-    "fetchingExtension": "Réception de l'image depuis le navigateur..."
+    }
   },
   "resizer": {
     "title": "Redimensionneur d'images",
@@ -231,7 +230,8 @@
     "process": "Traiter",
     "processing": "Traitement...",
     "error": "Erreur",
-    "pending": "En attente"
+    "pending": "En attente",
+    "fetchingExtension": "Réception de l'image depuis le navigateur..."
   },
   "errors": {
     "processFailed": "Échec du traitement. Actualisez la page et réessayez.",

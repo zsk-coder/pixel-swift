@@ -202,6 +202,10 @@ function onClearAll() {
   rawFiles.value = [];
   uploaderRef.value?.clearFiles();
 }
+
+// ─── Browser Extension / URL Params Integration ───
+const { isFetching: isFetchingExtensionImage } =
+  useExtensionImage(onFilesAdded);
 </script>
 
 <template>
@@ -226,6 +230,8 @@ function onClearAll() {
       <!-- Upload Area (always at top) -->
       <FileUploader
         ref="uploaderRef"
+        v-loading="isFetchingExtensionImage"
+        :element-loading-text="t('common.fetchingExtension')"
         accept="image/*"
         :hint="t('converter.uploadHint')"
         @files="onFilesAdded"
