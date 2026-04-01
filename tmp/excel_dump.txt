@@ -1,0 +1,200 @@
+
+============================================
+SHEET: 图表
+============================================
+日期,点击次数,展示,点击率,排名
+2026-02-18,0,0,,
+2026-02-19,1,1,100.00%,1.00
+2026-02-20,1,10,10.00%,4.50
+2026-02-21,0,12,0.00%,2.10
+2026-02-22,3,10,30.00%,4.20
+2026-02-23,1,8,12.50%,3.40
+2026-02-24,0,0,,
+2026-02-25,0,2,0.00%,25.50
+2026-02-26,0,1,0.00%,1.00
+2026-02-27,0,1,0.00%,1.00
+2026-02-28,0,0,,
+2026-03-01,0,0,,
+2026-03-02,0,7,0.00%,10.70
+2026-03-03,1,5,20.00%,1.00
+2026-03-04,0,3,0.00%,1.00
+2026-03-05,0,4,0.00%,1.00
+2026-03-06,1,5,20.00%,26.20
+2026-03-07,1,8,12.50%,55.90
+2026-03-08,0,3,0.00%,46.30
+2026-03-09,0,7,0.00%,36.10
+2026-03-10,0,6,0.00%,27.20
+2026-03-11,0,4,0.00%,20.50
+2026-03-12,0,8,0.00%,34.20
+2026-03-13,0,5,0.00%,55.80
+2026-03-14,0,5,0.00%,54.40
+2026-03-15,0,3,0.00%,63.00
+2026-03-16,0,5,0.00%,88.20
+2026-03-17,1,5,20.00%,34.00
+2026-03-18,2,12,16.67%,23.30
+2026-03-19,0,3,0.00%,56.70
+2026-03-20,1,7,14.29%,38.90
+2026-03-21,0,2,0.00%,43.50
+2026-03-22,0,5,0.00%,54.60
+2026-03-23,1,6,16.67%,32.50
+2026-03-24,0,8,0.00%,12.20
+2026-03-25,0,4,0.00%,103.20
+2026-03-26,0,7,0.00%,1.00
+2026-03-27,1,1,100.00%,1.00
+2026-03-28,0,1,0.00%,35.00
+2026-03-29,0,1,0.00%,1.00
+2026-03-30,0,4,0.00%,22.80
+2026-03-31,0,3,0.00%,1.00
+
+============================================
+SHEET: 查询数
+============================================
+热门查询,点击次数,展示,点击率,排名
+pixelswift,2,13,15.38%,15.77
+pixelswift free download,1,4,25.00%,4.50
+pixel swift free download,1,4,25.00%,4.75
+pixelswift free,1,4,25.00%,19.25
+bajarle la calidad a una imagen,0,11,0.00%,85.45
+estirar imagen,0,3,0.00%,77.00
+pixel swift,0,2,0.00%,33.50
+redimensionar fotografias,0,2,0.00%,83.00
+redimensionar fotos,0,2,0.00%,91.00
+redimensionar imagem,0,2,0.00%,91.00
+réduction photo,0,2,0.00%,92.00
+tinypng webp support,0,1,0.00%,5.00
+redimensionar foto online,0,1,0.00%,35.00
+esticar a imagem,0,1,0.00%,74.00
+画像 px 変更,0,1,0.00%,79.00
+diminuir pixels da imagem,0,1,0.00%,82.00
+reduction photo,0,1,0.00%,83.00
+réduire photo,0,1,0.00%,83.00
+estirar una imagen,0,1,0.00%,84.00
+reduire les photos,0,1,0.00%,84.00
+diminuer image,0,1,0.00%,85.00
+reducir pixeles imagen,0,1,0.00%,85.00
+reduction photos,0,1,0.00%,88.00
+aumentar o tamanho da imagem,0,1,0.00%,89.00
+reducir pixeles de una imagen,0,1,0.00%,89.00
+hacer menos pesado una imagen,0,1,0.00%,90.00
+redimensionar imagen,0,1,0.00%,90.00
+pixeles imagen,0,1,0.00%,91.00
+pixeles foto,0,1,0.00%,93.00
+quitar peso a las fotos,0,1,0.00%,93.00
+redimensionar imágenes,0,1,0.00%,95.00
+reducir peso de fotos,0,1,0.00%,95.00
+bajar calidad a foto,0,1,0.00%,96.00
+réduire image,0,1,0.00%,96.00
+画像 容量 圧縮,0,1,0.00%,96.00
+解像度 変換,0,1,0.00%,98.00
+bajar tamaño de fotos,0,1,0.00%,99.00
+comprimir fotos,0,1,0.00%,178.00
+
+============================================
+SHEET: 网页
+============================================
+排名靠前的网页,点击次数,展示,点击率,排名
+https://pixelswift.site/,5,141,3.55%,5.13
+https://pixelswift.site/converter,1,91,1.10%,6.67
+https://pixelswift.site/compress-image,1,58,1.72%,8.72
+https://pixelswift.site/es,1,53,1.89%,4.74
+https://pixelswift.site/pt,1,40,2.50%,4.00
+https://pixelswift.site/zh/converter,1,38,2.63%,10.13
+https://pixelswift.site/es/converter,1,31,3.23%,9.48
+https://pixelswift.site/ko/blog/tinypng-alternative-privacy,1,15,6.67%,25.47
+https://pixelswift.site/ja/blog/tinypng-alternative-privacy,1,15,6.67%,26.47
+https://pixelswift.site/zh/blog/tinypng-alternative-privacy,1,15,6.67%,27.47
+https://pixelswift.site/fr/blog/compress-images-for-email,1,10,10.00%,31.80
+https://pixelswift.site/fr/blog/tinypng-alternative-privacy,1,5,20.00%,21.20
+https://pixelswift.site/zh/blog/avif-vs-webp-vs-jpeg,1,4,25.00%,41.75
+https://pixelswift.site/resize-image,0,77,0.00%,8.48
+https://pixelswift.site/zh,0,74,0.00%,1.99
+https://pixelswift.site/fr,0,73,0.00%,6.18
+https://pixelswift.site/ja,0,70,0.00%,5.20
+https://pixelswift.site/de,0,66,0.00%,3.00
+https://pixelswift.site/pt/converter,0,46,0.00%,9.24
+https://pixelswift.site/ko,0,42,0.00%,6.55
+https://pixelswift.site/es/compress-image,0,40,0.00%,51.75
+https://pixelswift.site/zh/resize-image,0,36,0.00%,22.69
+https://pixelswift.site/es/resize-image,0,31,0.00%,47.55
+https://pixelswift.site/zh/compress-image,0,28,0.00%,17.07
+https://pixelswift.site/pt/resize-image,0,27,0.00%,39.37
+https://pixelswift.site/ko/compress-image,0,25,0.00%,22.68
+https://pixelswift.site/fr/resize-image,0,25,0.00%,25.04
+https://pixelswift.site/ja/converter,0,24,0.00%,11.50
+https://pixelswift.site/ko/resize-image,0,24,0.00%,25.08
+https://pixelswift.site/ja/resize-image,0,24,0.00%,27.50
+https://pixelswift.site/de/converter,0,23,0.00%,10.09
+https://pixelswift.site/fr/compress-image,0,22,0.00%,46.59
+https://pixelswift.site/de/compress-image,0,21,0.00%,27.14
+https://pixelswift.site/ja/compress-image,0,19,0.00%,28.53
+https://pixelswift.site/fr/converter,0,17,0.00%,14.65
+https://pixelswift.site/ko/converter,0,14,0.00%,13.29
+https://pixelswift.site/blog/tinypng-alternative-privacy,0,14,0.00%,19.93
+https://pixelswift.site/de/resize-image,0,14,0.00%,26.00
+https://pixelswift.site/pt/compress-image,0,11,0.00%,17.27
+https://pixelswift.site/ja/blog/compress-images-for-email,0,9,0.00%,29.89
+https://pixelswift.site/ko/blog/compress-images-for-email,0,9,0.00%,30.89
+https://pixelswift.site/es/blog/tinypng-alternative-privacy,0,8,0.00%,22.50
+https://pixelswift.site/pt/blog/compress-images-for-email,0,8,0.00%,36.62
+https://pixelswift.site/de/blog/compress-images-for-email,0,7,0.00%,35.00
+https://pixelswift.site/blog/compress-images-for-email,0,6,0.00%,15.67
+https://pixelswift.site/zh/blog/compress-images-for-email,0,5,0.00%,27.00
+https://pixelswift.site/es/blog/compress-images-for-email,0,5,0.00%,28.00
+https://pixelswift.site/contact,0,4,0.00%,7.75
+https://pixelswift.site/ko/blog/avif-vs-webp-vs-jpeg,0,4,0.00%,39.75
+https://pixelswift.site/pt/blog/avif-vs-webp-vs-jpeg,0,4,0.00%,40.75
+https://pixelswift.site/fr/blog/avif-vs-webp-vs-jpeg,0,4,0.00%,42.75
+https://pixelswift.site/es/blog/avif-vs-webp-vs-jpeg,0,4,0.00%,43.75
+https://pixelswift.site/pt/blog/tinypng-alternative-privacy,0,3,0.00%,25.00
+https://pixelswift.site/ja/blog/avif-vs-webp-vs-jpeg,0,3,0.00%,46.00
+https://pixelswift.site/de/blog/avif-vs-webp-vs-jpeg,0,3,0.00%,47.00
+https://pixelswift.site/ko/contact,0,1,0.00%,12.00
+
+============================================
+SHEET: 国家_地区
+============================================
+国家/地区,点击次数,展示,点击率,排名
+美国,9,97,9.28%,13.39
+西班牙,2,15,13.33%,55.73
+日本,1,14,7.14%,23.43
+中国香港,1,5,20.00%,1.00
+印度,1,5,20.00%,4.80
+委内瑞拉,1,2,50.00%,4.00
+法国,0,13,0.00%,62.15
+葡萄牙,0,6,0.00%,87.83
+巴基斯坦,0,5,0.00%,3.60
+墨西哥,0,5,0.00%,75.40
+德国,0,4,0.00%,5.50
+阿根廷,0,3,0.00%,86.00
+台湾,0,2,0.00%,5.50
+俄罗斯,0,2,0.00%,28.50
+中国,0,2,0.00%,37.50
+巴西,0,2,0.00%,78.00
+秘鲁,0,2,0.00%,95.00
+加拿大,0,1,0.00%,1.00
+越南,0,1,0.00%,1.00
+波多黎各,0,1,0.00%,2.00
+哥伦比亚,0,1,0.00%,4.00
+韩国,0,1,0.00%,4.00
+斯洛文尼亚,0,1,0.00%,4.00
+阿拉伯联合酋长国,0,1,0.00%,9.00
+乌兹别克斯坦,0,1,0.00%,22.00
+
+============================================
+SHEET: 设备
+============================================
+设备,点击次数,展示,点击率,排名
+桌面,11,157,7.01%,25.95
+移动设备,4,35,11.43%,27.77
+
+============================================
+SHEET: 搜索结果呈现
+============================================
+搜索结果呈现,点击次数,展示,点击率,排名
+
+============================================
+SHEET: 过滤器
+============================================
+过滤器,值
+搜索类型,网络
+日期,2026年2月18日-2026年3月31日

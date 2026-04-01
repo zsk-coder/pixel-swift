@@ -1,0 +1,93 @@
+TDK Length Audit Report
+=======================
+
+📝 [Locale: de.json] -> Page: home
+  ⚠️ TITLE (73 chars): PixelSwift – Kostenloser Online-Bildkonverter, Kompressor & Größenänderer
+
+📝 [Locale: de.json] -> Page: converter
+  ⚠️ TITLE (72 chars): Bilder kostenlos online konvertieren — BMP GIF TIFF zu JPG PNG WebP AVIF
+
+📝 [Locale: es.json] -> Page: home
+  ⚠️ TITLE (81 chars): PixelSwift – Convertidor, compresor y redimensionador de imágenes en línea gratis
+
+📝 [Locale: fr.json] -> Page: home
+  ⚠️ TITLE (84 chars): PixelSwift – Convertisseur, compresseur et redimensionneur d'images en ligne gratuit
+
+📝 [Locale: fr.json] -> Page: converter
+  ⚠️ TITLE (80 chars): Convertir des images en ligne gratuitement — BMP GIF TIFF vers JPG PNG WebP AVIF
+
+📝 [Locale: fr.json] -> Page: blog
+  ⚠️ TITLE (73 chars): Blog PixelSwift – Compresser des photos en ligne, formats d'image et plus
+
+📝 [Locale: ja.json] -> Page: converter
+  ⚠️ TITLE (47 chars): 無料オンライン画像変換 — BMP GIF TIFFをJPG PNG WebP AVIFに変換
+
+📝 [Locale: ko.json] -> Page: converter
+  ⚠️ TITLE (48 chars): 무료 온라인 이미지 변환 — BMP GIF TIFF를 JPG PNG WebP AVIF로
+
+📝 [Locale: pt.json] -> Page: home
+  ⚠️ TITLE (77 chars): PixelSwift – Conversor, compressor e redimensionador de imagens online grátis
+
+📝 [Locale: zh.json] -> Page: converter
+  ⚠️ TITLE (46 chars): 免费在线图片转换 — BMP GIF TIFF 等轻松转 JPG PNG WebP AVIF
+
+📄 [Blog: content\blog\de\avif-vs-webp-vs-jpeg.md]
+  ⚠️ DESC (187 chars): Ein umfassender, datenbasierter Vergleich der Bildformate AVIF, WebP und JPEG. Erfahren Sie, welches Format die beste Komprimierung, Qualität und Leistung für Ihren Anwendungsfall bietet.
+
+📄 [Blog: content\blog\de\compress-images-for-email.md]
+  ⚠️ DESC (171 chars): Erfahren Sie, wie Sie Bilder schnell für E-Mail-Anhänge verkleinern können. Kostenlos, privat und ohne Anmeldung. Funktioniert mit Gmail, Outlook und allen E-Mail-Clients.
+
+📄 [Blog: content\blog\de\tinypng-alternative-privacy.md]
+  ⚠️ TITLE (88 chars): TinyPNG-Alternative: Warum lokale Komprimierung die bessere Wahl für den Datenschutz ist
+
+📄 [Blog: content\blog\en\avif-vs-webp-vs-jpeg.md]
+  ⚠️ DESC (181 chars): A comprehensive, data-driven comparison of AVIF, WebP, and JPEG image formats. Learn which format delivers the best compression, quality, and performance for your specific use case.
+
+📄 [Blog: content\blog\en\tinypng-alternative-privacy.md]
+  ⚠️ DESC (167 chars): Compare TinyPNG and PixelSwift head-to-head. Discover why browser-based image compression is the smarter, more private alternative to uploading your files to a server.
+
+📄 [Blog: content\blog\es\avif-vs-webp-vs-jpeg.md]
+  ⚠️ TITLE (75 chars): AVIF vs WebP vs JPEG: ¿cuál es el mejor formato de imagen para web en 2026?
+
+📄 [Blog: content\blog\es\compress-images-for-email.md]
+  ⚠️ TITLE (76 chars): Cómo comprimir fotos para enviar por email gratis — reducir peso en segundos
+  ⚠️ DESC (169 chars): Aprende a comprimir fotos y reducir el tamaño de imágenes para email gratis. Sin registro, sin instalar nada. Funciona con Gmail, Outlook y todos los clientes de correo.
+
+📄 [Blog: content\blog\es\tinypng-alternative-privacy.md]
+  ⚠️ TITLE (74 chars): Alternativa a TinyPNG gratis: comprimir imágenes online sin subir archivos
+
+📄 [Blog: content\blog\fr\avif-vs-webp-vs-jpeg.md]
+  ⚠️ TITLE (80 chars): AVIF vs WebP vs JPEG : quel est le meilleur format d'image pour le web en 2026 ?
+  ⚠️ DESC (171 chars): Comparaison complète des formats d'image AVIF, WebP et JPEG. Découvrez quel format offre la meilleure compression et qualité pour réduire la taille de vos images en ligne.
+
+📄 [Blog: content\blog\fr\compress-images-for-email.md]
+  ⚠️ DESC (178 chars): Apprenez à compresser vos photos et réduire la taille des images pour email gratuitement. Sans inscription, sans installation. Compatible Gmail, Outlook et tous les clients mail.
+
+📄 [Blog: content\blog\fr\tinypng-alternative-privacy.md]
+  ⚠️ TITLE (75 chars): Alternative à TinyPNG gratuite : compresser des photos en ligne sans upload
+
+📄 [Blog: content\blog\ja\avif-vs-webp-vs-jpeg.md]
+  ⚠️ TITLE (41 chars): AVIF vs WebP vs JPEG：2026年に使うべき画像フォーマットは？
+
+📄 [Blog: content\blog\ko\avif-vs-webp-vs-jpeg.md]
+  ⚠️ TITLE (48 chars): AVIF vs WebP vs JPEG: 2026년에 어떤 이미지 포맷을 사용해야 할까?
+
+📄 [Blog: content\blog\ko\compress-images-for-email.md]
+  ⚠️ DESC (102 chars): 이메일 첨부 파일 크기 제한에 맞게 이미지를 빠르게 압축하는 방법을 알아보세요. 완전 무료, 개인정보 보호, 가입 불필요. Gmail, Outlook 등 모든 이메일 클라이언트 지원.
+
+📄 [Blog: content\blog\ko\tinypng-alternative-privacy.md]
+  ⚠️ TITLE (42 chars): TinyPNG 대안: 클라이언트 사이드 압축이 개인정보 보호에 더 나은 이유
+
+📄 [Blog: content\blog\pt\avif-vs-webp-vs-jpeg.md]
+  ⚠️ TITLE (71 chars): AVIF vs WebP vs JPEG: qual o melhor formato de imagem para web em 2026?
+  ⚠️ DESC (169 chars): Comparação completa dos formatos de imagem AVIF, WebP e JPEG. Descubra qual formato oferece melhor compressão e qualidade para reduzir o tamanho das suas imagens online.
+
+📄 [Blog: content\blog\pt\compress-images-for-email.md]
+  ⚠️ TITLE (73 chars): Como comprimir fotos para email grátis — reduzir tamanho de imagem rápido
+  ⚠️ DESC (166 chars): Aprenda a comprimir fotos e reduzir o tamanho de imagens para email grátis. Sem cadastro, sem instalar nada. Funciona com Gmail, Outlook e todos os clientes de email.
+
+📄 [Blog: content\blog\pt\tinypng-alternative-privacy.md]
+  ⚠️ TITLE (72 chars): Alternativa ao TinyPNG grátis: comprimir imagens online sem fazer upload
+
+
+Total Warnings: 28
