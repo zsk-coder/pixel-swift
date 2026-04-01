@@ -5,9 +5,9 @@ const localePath = useLocalePath();
 // ── Trust Stats ──
 const statsData: Array<{ target: number; start: number; format: boolean; suffix: string; labelKey: string; decimal?: number }> = [
   { target: 20000, start: 14000, format: true, suffix: "+", labelKey: "home.stats.processed" },
-  { target: 4, start: 2, format: false, suffix: "", labelKey: "home.stats.formats" },
+  { target: 90, start: 60, format: false, suffix: "%", labelKey: "home.stats.compression" },
   { target: 4.8, start: 3.0, format: false, suffix: "/5", labelKey: "home.stats.rating", decimal: 1 },
-  { target: 100, start: 70, format: false, suffix: "%", labelKey: "home.stats.local" },
+  { target: 100, start: 70, format: false, suffix: "%", labelKey: "home.stats.free" },
 ];
 
 const stats = computed(() =>

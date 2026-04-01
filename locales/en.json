@@ -6,8 +6,8 @@
     "blog": "Blog"
   },
   "home": {
-    "title": "Online Image Processing Tool",
-    "subtitle": "Free online image compressor, converter & resizer. Supports JPG / PNG / WebP / AVIF. Processed locally in your browser — no upload needed, fully private.",
+    "title": "Free Online Image Compressor, Converter & Resizer",
+    "subtitle": "Supports JPG, PNG, WebP & AVIF, up to 50MB per file. 100% free to use — no sign-up, no installation needed.",
     "compressor": {
       "title": "Compressor",
       "desc": "Shrink file sizes by up to 90% while keeping images crystal clear.",
@@ -48,9 +48,9 @@
       "title": "Trusted by Users Worldwide",
       "subtitle": "Let the numbers speak — secure, reliable image processing for every user.",
       "processed": "Images Processed",
-      "formats": "Formats Supported",
+      "compression": "Max Compression",
       "rating": "User Rating",
-      "local": "Local Processing"
+      "free": "Free to Use"
     },
     "tech": {
       "title": "Powered by Industry-Leading Technology",

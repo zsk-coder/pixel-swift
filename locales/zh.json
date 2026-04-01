@@ -6,8 +6,8 @@
     "blog": "博客"
   },
   "home": {
-    "title": "在线图片处理工具",
-    "subtitle": "免费在线压缩 · 转换 · 调整图片大小，支持 JPG / PNG / WebP / AVIF。浏览器本地处理，无需上传，隐私安全。",
+    "title": "免费在线图片压缩、转换、调整大小工具",
+    "subtitle": "支持 JPG、PNG、WebP、AVIF，单文件最大 50MB。100% 免费使用，无需注册，无需安装。",
     "compressor": {
       "title": "图片压缩",
       "desc": "体积缩小高达 90%，画质几乎无损。",
@@ -48,9 +48,9 @@
       "title": "深受用户信赖",
       "subtitle": "用数据说话，为每一位用户提供安全可靠的图片处理体验。",
       "processed": "已处理图片",
-      "formats": "支持格式",
+      "compression": "最大压缩率",
       "rating": "用户评分",
-      "local": "本地处理"
+      "free": "免费使用"
     },
     "tech": {
       "title": "行业领先技术驱动",
