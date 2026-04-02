@@ -31,14 +31,14 @@
       "start": "Começar",
       "learn": "Saiba mais",
       "title": "Pronto para processar suas imagens?",
-      "desc": "Abra seu navegador e comece — sem downloads nem cadastros.",
+      "desc": "Abra a página e comece — sem downloads nem cadastros.",
       "button": "Começar"
     },
     "why": {
       "fast": "Ultrarrápido",
       "fastDesc": "Compatível com formatos JPG, PNG, WebP e AVIF, processados instantaneamente em milissegundos — sem espera de upload ou download.",
       "secure": "Totalmente privado",
-      "secureDesc": "Seus arquivos ficam no seu dispositivo. Todo o processamento acontece localmente no navegador — nada é enviado a nenhum servidor.",
+      "secureDesc": "Seus arquivos ficam no seu dispositivo. Não são enviados pra lugar nenhum.",
       "free": "Completamente grátis",
       "freeDesc": "Todas as funcionalidades disponíveis — sem marca d'água, uso ilimitado, sem cadastro.",
       "batch": "Processamento em lote",
@@ -55,28 +55,28 @@
     "tech": {
       "title": "Impulsionado por tecnologia líder do setor",
       "subtitle": "Construído com motores de código aberto testados em batalha — a mesma tecnologia confiada pela Mozilla e pela comunidade Rust.",
-      "wasmDesc": "Processamento em velocidade nativa diretamente no navegador",
+      "wasmDesc": "Pronto pra usar — processamento ultravelóz",
       "mozjpegDesc": "Codificador JPEG avançado da Mozilla para compressão ideal",
       "oxipngDesc": "Otimizador PNG desenvolvido em Rust para redução sem perdas",
       "zeroTransfer": "Zero transferência de dados",
-      "zeroTransferDesc": "Seus arquivos nunca saem do navegador — totalmente offline"
+      "zeroTransferDesc": "Seus arquivos não são enviados pra lugar nenhum — funciona offline também"
     },
     "faq": {
       "title": "Perguntas frequentes",
       "q1": "Quais formatos de imagem são suportados?",
       "a1": "O PixelSwift suporta JPG, PNG, WebP, AVIF para conversão, compressão e redimensionamento.",
-      "q2": "Minhas imagens são enviadas para um servidor?",
-      "a2": "Não. Todo o processamento acontece localmente no seu navegador. Suas imagens nunca saem do seu dispositivo.",
+      "q2": "A compressão reduz a qualidade da imagem?",
+      "a2": "Quase imperceptível. Com as configurações padrão, o tamanho cai mais de 60% e a imagem fica praticamente igual. Você pode usar a pré-visualização lado a lado pra conferir antes de baixar.",
       "q3": "Há limite de tamanho de arquivo?",
       "a3": "Cada arquivo pode ter até 50 MB. Você pode processar até 20 imagens de uma vez.",
       "q4": "O PixelSwift é realmente grátis? Há custos ocultos?",
       "a4": "Sim, o PixelSwift é 100% grátis sem custos ocultos, sem marca d'água e sem limites de uso. Todas as funcionalidades estão disponíveis sem cadastro ou pagamento.",
-      "q5": "Preciso instalar algum software ou extensão do navegador?",
-      "a5": "Não. O PixelSwift funciona inteiramente no seu navegador. Basta abrir o site e começar — sem downloads, sem instalações, sem plugins.",
+      "q5": "Preciso instalar algo?",
+      "a5": "Não. Basta abrir o site do PixelSwift e começar — sem downloads, sem instalações, sem plugins.",
       "q6": "Posso usar o PixelSwift no celular ou tablet?",
       "a6": "Sim. O PixelSwift é totalmente responsivo e funciona em todos os dispositivos. A funcionalidade completa está disponível em navegadores móveis.",
       "q7": "Como meus dados são protegidos?",
-      "a7": "Seus arquivos nunca saem do seu dispositivo. Tudo é processado diretamente no seu navegador — nada é enviado a nenhum servidor. Tão seguro quanto editar no seu próprio computador."
+      "a7": "Seus arquivos nunca saem do seu dispositivo — não são enviados pra lugar nenhum. Fecha a aba, zero rastro."
     }
   },
   "upload": {
@@ -89,7 +89,7 @@
   },
   "converter": {
     "title": "Conversor de imagens",
-    "subtitle": "Converta qualquer formato de imagem para JPG, PNG, WebP ou AVIF. Rápido, gratuito e totalmente no navegador.",
+    "subtitle": "Converta qualquer formato de imagem para JPG, PNG, WebP ou AVIF. Rápido, gratuito, sem cadastro.",
     "subtitleMobile": "Converta suas imagens instantaneamente.",
     "uploadHint": "Suporta JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF e mais · Máx. 50MB · Upload em lote disponível",
     "settingsTitle": "Configurações de conversão",
@@ -171,7 +171,7 @@
       "q5": "Posso comprimir imagens para anexos de e-mail?",
       "a5": "Sim! A maioria dos provedores de e-mail limita anexos a 25MB. Configure a qualidade em 70-80% para reduzir as fotos significativamente.",
       "q6": "O PixelSwift é melhor que o TinyPNG?",
-      "a6": "Ambos produzem excelentes resultados. A diferença chave: TinyPNG envia seus arquivos para o servidor deles, enquanto o PixelSwift processa tudo localmente no seu navegador. Se privacidade é importante, PixelSwift é a melhor escolha."
+      "a6": "Ambos produzem excelentes resultados. A diferença chave: TinyPNG envia seus arquivos pro site deles, enquanto o PixelSwift não envia nada — suas imagens ficam no seu dispositivo. Se privacidade importa, PixelSwift é a melhor escolha."
     }
   },
   "resizer": {
@@ -302,7 +302,7 @@
   "seo": {
     "home": {
       "title": "PixelSwift – Conversor, compressor e redimensionador de imagens online grátis",
-      "description": "Converta, comprima e redimensione imagens grátis online. 100% no navegador, sem cadastro nem instalação. Experimente agora!"
+      "description": "Converta, comprima e redimensione imagens grátis online. Sem cadastro, abra e use. Experimente agora!"
     },
     "compressor": {
       "title": "Comprimir imagens online – Reduza até 90%",
@@ -334,12 +334,12 @@
     }
   },
   "schema": {
-    "siteDescription": "Conversor, compressor e redimensionador de imagens online grátis. Sem necessidade de upload — processamento direto no navegador.",
+    "siteDescription": "Conversor, compressor e redimensionador de imagens online grátis. Sem cadastro, abra e use.",
     "compressor": {
       "featureList": "Comprimir imagens JPEG, PNG, WebP e AVIF, qualidade ajustável, comparação em tempo real, compressão em lote, redução de até 90%"
     },
     "converter": {
-      "featureList": "Converta qualquer formato (BMP, GIF, TIFF, AVIF, etc.) para JPG, PNG ou WebP, conversão em lote, sem upload, 100% no navegador"
+      "featureList": "Converta qualquer formato (BMP, GIF, TIFF, AVIF, etc.) para JPG, PNG ou WebP, conversão em lote, sem upload, 100% grátis"
     },
     "resizer": {
       "featureList": "Redimensionar imagens por pixels ou porcentagem, rotacionar e espelhar, presets de proporção, visualização em tempo real, sem upload necessário"
@@ -347,7 +347,7 @@
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Tutoriais gratuitos para comprimir imagens, converter formatos e redimensionar fotos online. Compatível com JPG, PNG, WebP, AVIF — diretamente no seu navegador.",
+    "subtitle": "Tutoriais gratuitos para comprimir imagens, converter formatos e redimensionar fotos online. Compatível com JPG, PNG, WebP, AVIF.",
     "featured": "Destaque",
     "readMore": "Ler mais",
     "allCategories": "Todos",
