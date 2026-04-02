@@ -51,7 +51,7 @@ AVIF est dérivé du codec vidéo AV1, développé par l'Alliance for Open Media
 
 ## Benchmark réel : résultats de compression
 
-Nous avons compressé le même ensemble d'images test avec [le convertisseur PixelSwift](/converter). Toutes les conversions ont été effectuées localement dans le navigateur.
+Nous avons compressé le même ensemble d'images test avec [le convertisseur PixelSwift](/fr/converter). Toutes les conversions ont été effectuées localement dans le navigateur.
 
 ### Conditions de test
 
@@ -162,7 +162,7 @@ Un article de blog avec 5 images :
 - 🌐 **Performance web critique** — e-commerce, SaaS, sites médias
 - 📱 **Audience mobile-first** — fichiers plus petits = chargement plus rapide
 - 🎨 **Contenu HDR/gamut large** — AVIF est le seul format web avec HDR complet
-- 🔒 **Confidentialité** — traitement local avec [PixelSwift](/converter)
+- 🔒 **Confidentialité** — traitement local avec [PixelSwift](/fr/converter)
 
 ### Utilisez WebP pour :
 
@@ -190,9 +190,9 @@ Un article de blog avec 5 images :
 
 ## Comment convertir vos images
 
-Avec [le convertisseur gratuit PixelSwift](/converter), convertissez en quelques secondes :
+Avec [le convertisseur gratuit PixelSwift](/fr/converter), convertissez en quelques secondes :
 
-1. Ouvrez le [Convertisseur d'images PixelSwift](/converter)
+1. Ouvrez le [Convertisseur d'images PixelSwift](/fr/converter)
 2. Glissez-déposez vos images (JPEG, PNG, WebP, AVIF)
 3. Sélectionnez le format cible et la qualité
 4. Téléchargez — tout est traité dans votre navigateur
@@ -205,4 +205,4 @@ Aucun téléversement, aucune inscription. **Vos images ne quittent jamais votre
 
 Cette approche à trois niveaux vous offre la meilleure compression (AVIF), une large compatibilité (WebP) et un repli universel (JPEG).
 
-**[Convertir vos images en AVIF gratuitement →](/converter)**
+**[Convertir vos images en AVIF gratuitement →](/fr/converter)**

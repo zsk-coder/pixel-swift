@@ -31,11 +31,11 @@ featured: false
 
 ## 3ステップで解決：画像を即座に圧縮
 
-[PixelSwiftの無料圧縮ツール](/compress-image)を使えば、30秒以内に画像を圧縮できます。登録不要、ソフトのインストール不要、ファイルのアップロードも一切不要です。
+[PixelSwiftの無料圧縮ツール](/ja/compress-image)を使えば、30秒以内に画像を圧縮できます。登録不要、ソフトのインストール不要、ファイルのアップロードも一切不要です。
 
 ### ステップ1：圧縮ツールを開く
 
-ブラウザで[PixelSwift画像圧縮ツール](/compress-image)を開きます。シンプルなドラッグ＆ドロップゾーンが表示されます。
+ブラウザで[PixelSwift画像圧縮ツール](/ja/compress-image)を開きます。シンプルなドラッグ＆ドロップゾーンが表示されます。
 
 ![PixelSwift圧縮ツールのインターフェース](/images/blog/email-step1-interface.png)
 
@@ -70,7 +70,7 @@ featured: false
 
 **メールのおすすめ**：写真は**JPEG**、スクリーンショットは**PNG**。JPEG品質75%が最も安全な選択です。
 
-フォーマット変換が必要ですか？PixelSwiftの[画像フォーマット変換ツール](/converter)でJPG↔PNG↔WebPを即座に変換できます。
+フォーマット変換が必要ですか？PixelSwiftの[画像フォーマット変換ツール](/ja/converter)でJPG↔PNG↔WebPを即座に変換できます。
 
 ## バッチ処理：複数の写真を送る場合
 
@@ -104,10 +104,10 @@ featured: false
 
 ## メール添付の制限と戦うのはもうやめましょう
 
-1. [PixelSwiftの圧縮ツール](/compress-image)を開く
+1. [PixelSwiftの圧縮ツール](/ja/compress-image)を開く
 2. 画像をドロップ
 3. ダウンロードして添付
 
 アカウント不要。インストール不要。アップロード不要。
 
-**[今すぐメール用画像を圧縮する →](/compress-image)**
+**[今すぐメール用画像を圧縮する →](/ja/compress-image)**

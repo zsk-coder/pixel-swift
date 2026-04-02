@@ -29,11 +29,11 @@ Esses limites se aplicam ao **tamanho total de todos os anexos** — não por ar
 
 ## A solução em 3 passos: comprima imagens instantaneamente
 
-Com o [compressor gratuito do PixelSwift](/compress-image), comprima suas imagens em menos de 30 segundos — sem cadastro, sem instalação, sem upload para nenhum servidor.
+Com o [compressor gratuito do PixelSwift](/pt/compress-image), comprima suas imagens em menos de 30 segundos — sem cadastro, sem instalação, sem upload para nenhum servidor.
 
 ### Passo 1: Abra o compressor
 
-Abra o [compressor de imagens PixelSwift](/compress-image) em qualquer navegador moderno.
+Abra o [compressor de imagens PixelSwift](/pt/compress-image) em qualquer navegador moderno.
 
 ![Interface do compressor PixelSwift](/images/blog/email-step1-interface.png)
 
@@ -66,7 +66,7 @@ Clique em **"Baixar imagem"**. O arquivo comprimido é salvo diretamente no seu 
 | **PNG**      | Capturas com texto, logos      | 30-50% redução    | ✅ Universal                            |
 | **WebP**     | Compressão máxima              | 70-90% redução    | ⚠️ Alguns clientes antigos não suportam |
 
-Precisa converter formatos? O [conversor de imagens](/converter) do PixelSwift converte JPG↔PNG↔WebP instantaneamente.
+Precisa converter formatos? O [conversor de imagens](/pt/converter) do PixelSwift converte JPG↔PNG↔WebP instantaneamente.
 
 ## Processamento em lote
 
@@ -98,10 +98,10 @@ Até **50 MB** por arquivo e **20 imagens** simultaneamente. Sem limite diário 
 
 ## Pare de lutar contra os limites de e-mail
 
-1. Abra o [compressor PixelSwift](/compress-image)
+1. Abra o [compressor PixelSwift](/pt/compress-image)
 2. Arraste suas imagens
 3. Baixe e anexe
 
 Sem conta. Sem instalação. Sem upload.
 
-**[Comprimir imagens para e-mail agora →](/compress-image)**
+**[Comprimir imagens para e-mail agora →](/pt/compress-image)**
