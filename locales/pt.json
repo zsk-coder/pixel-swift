@@ -6,8 +6,8 @@
     "blog": "Blog"
   },
   "home": {
-    "title": "Ferramenta de processamento de imagens online",
-    "subtitle": "Comprima, converta e redimensione imagens grátis online. Compatível com JPG / PNG / WebP / AVIF. Processado localmente no navegador — sem envio, totalmente privado.",
+    "title": "Compressor, conversor e redimensionador de imagens online grátis",
+    "subtitle": "Compatível com JPG, PNG, WebP e AVIF, até 50 MB por arquivo. 100% grátis — sem cadastro, sem instalação.",
     "compressor": {
       "title": "Compressor de imagens",
       "desc": "Reduza o tamanho em até 90% mantendo a qualidade impecável.",
@@ -48,9 +48,9 @@
       "title": "Confiança de usuários em todo o mundo",
       "subtitle": "Os números falam por si — processamento de imagens seguro e confiável para cada usuário.",
       "processed": "Imagens processadas",
-      "formats": "Formatos suportados",
+      "compression": "Compressão máx.",
       "rating": "Avaliação dos usuários",
-      "local": "Processamento local"
+      "free": "Grátis"
     },
     "tech": {
       "title": "Impulsionado por tecnologia líder do setor",

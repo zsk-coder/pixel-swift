@@ -6,8 +6,8 @@
     "blog": "Blog"
   },
   "home": {
-    "title": "Online-Bildbearbeitungstool",
-    "subtitle": "Kostenlos Bilder komprimieren, konvertieren und skalieren. Unterstützt JPG / PNG / WebP / AVIF. Lokal im Browser verarbeitet — kein Upload nötig, vollständig privat.",
+    "title": "Kostenloser Online-Bildkompressor, Konverter & Größenänderer",
+    "subtitle": "Unterstützt JPG, PNG, WebP & AVIF, bis zu 50 MB pro Datei. 100 % kostenlos — keine Anmeldung, keine Installation.",
     "compressor": {
       "title": "Bildkompressor",
       "desc": "Dateigröße um bis zu 90 % reduzieren bei kristallklarer Qualität.",
@@ -48,9 +48,9 @@
       "title": "Weltweites Nutzervertrauen",
       "subtitle": "Zahlen sprechen für sich — sichere und zuverlässige Bildverarbeitung für jeden Nutzer.",
       "processed": "Verarbeitete Bilder",
-      "formats": "Unterstützte Formate",
+      "compression": "Max. Kompression",
       "rating": "Nutzerbewertung",
-      "local": "Lokale Verarbeitung"
+      "free": "Kostenlos nutzbar"
     },
     "tech": {
       "title": "Angetrieben von branchenführender Technologie",

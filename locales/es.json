@@ -6,8 +6,8 @@
     "blog": "Blog"
   },
   "home": {
-    "title": "Herramienta de imágenes en línea",
-    "subtitle": "Comprime, convierte y redimensiona imágenes gratis en línea. Compatible con JPG / PNG / WebP / AVIF. Procesado localmente en tu navegador — sin subidas, totalmente privado.",
+    "title": "Compresor, convertidor y redimensionador de imágenes en línea gratis",
+    "subtitle": "Compatible con JPG, PNG, WebP y AVIF, hasta 50 MB por archivo. 100% gratis — sin registro, sin instalación.",
     "compressor": {
       "title": "Compresor de imágenes",
       "desc": "Reduce el tamaño hasta un 90% manteniendo la calidad impecable.",
@@ -48,9 +48,9 @@
       "title": "Confianza de usuarios en todo el mundo",
       "subtitle": "Los datos hablan — procesamiento de imágenes seguro y confiable para cada usuario.",
       "processed": "Imágenes procesadas",
-      "formats": "Formatos compatibles",
+      "compression": "Compresión máxima",
       "rating": "Valoración de usuarios",
-      "local": "Procesamiento local"
+      "free": "Gratis"
     },
     "tech": {
       "title": "Impulsado por tecnología líder en la industria",
