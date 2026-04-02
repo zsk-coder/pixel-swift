@@ -31,11 +31,11 @@ featured: false
 
 ## 3단계 해결책: 이미지 즉시 압축
 
-[PixelSwift 무료 압축 도구](/compress-image)로 30초 안에 이미지를 압축하세요 — 가입 불필요, 소프트웨어 설치 불필요, 서버 업로드 없음.
+[PixelSwift 무료 압축 도구](/ko/compress-image)로 30초 안에 이미지를 압축하세요 — 가입 불필요, 소프트웨어 설치 불필요, 서버 업로드 없음.
 
 ### 1단계: 압축 도구 열기
 
-브라우저에서 [PixelSwift 이미지 압축기](/compress-image)를 엽니다. 깔끔한 드래그 앤 드롭 영역이 나타납니다.
+브라우저에서 [PixelSwift 이미지 압축기](/ko/compress-image)를 엽니다. 깔끔한 드래그 앤 드롭 영역이 나타납니다.
 
 ![PixelSwift 압축 도구 인터페이스](/images/blog/email-step1-interface.png)
 
@@ -68,7 +68,7 @@ featured: false
 | **PNG**      | 텍스트 포함 스크린샷, 로고 | 30~50% 감소     | ✅ 범용                               |
 | **WebP**     | 최대 압축                  | 70~90% 감소     | ⚠️ 일부 구형 이메일 클라이언트 미지원 |
 
-포맷 변환이 필요하신가요? PixelSwift의 [이미지 포맷 변환기](/converter)로 JPG↔PNG↔WebP를 즉시 변환할 수 있습니다.
+포맷 변환이 필요하신가요? PixelSwift의 [이미지 포맷 변환기](/ko/converter)로 JPG↔PNG↔WebP를 즉시 변환할 수 있습니다.
 
 ## 일괄 처리: 여러 사진을 보내야 할 때
 
@@ -98,10 +98,10 @@ featured: false
 
 ## 더 이상 이메일 첨부 제한과 씨름하지 마세요
 
-1. [PixelSwift 압축기](/compress-image) 열기
+1. [PixelSwift 압축기](/ko/compress-image) 열기
 2. 이미지 드롭
 3. 다운로드 후 첨부
 
 계정 불필요. 설치 불필요. 업로드 불필요.
 
-**[지금 이메일용 이미지 압축하기 →](/compress-image)**
+**[지금 이메일용 이미지 압축하기 →](/ko/compress-image)**

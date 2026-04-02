@@ -29,11 +29,11 @@ Diese Limits gelten für die **Gesamtgröße aller Anhänge** — nicht pro Date
 
 ## Die 3-Schritte-Lösung: Bilder sofort komprimieren
 
-Mit [PixelSwifts kostenlosem Kompressor](/compress-image) können Sie Ihre Bilder in unter 30 Sekunden komprimieren — keine Anmeldung, keine Software-Installation, kein Datei-Upload auf irgendeinen Server.
+Mit [PixelSwifts kostenlosem Kompressor](/de/compress-image) können Sie Ihre Bilder in unter 30 Sekunden komprimieren — keine Anmeldung, keine Software-Installation, kein Datei-Upload auf irgendeinen Server.
 
 ### Schritt 1: Kompressor öffnen
 
-Öffnen Sie den [PixelSwift-Bildkompressor](/compress-image) in einem beliebigen modernen Browser. Sie sehen eine übersichtliche Drag-and-Drop-Zone.
+Öffnen Sie den [PixelSwift-Bildkompressor](/de/compress-image) in einem beliebigen modernen Browser. Sie sehen eine übersichtliche Drag-and-Drop-Zone.
 
 ![PixelSwift Kompressor-Interface](/images/blog/email-step1-interface.png)
 
@@ -66,7 +66,7 @@ Klicken Sie auf **„Bild herunterladen"**. Die komprimierte Datei wird direkt a
 | **PNG**      | Screenshots mit Text, Logos      | 30–50% Reduktion       | ✅ Universal                                   |
 | **WebP**     | Maximale Komprimierung           | 70–90% Reduktion       | ⚠️ Ältere E-Mail-Clients können nicht anzeigen |
 
-Formatkonvertierung nötig? PixelSwifts [Bildformat-Konverter](/converter) wandelt JPG↔PNG↔WebP sofort um.
+Formatkonvertierung nötig? PixelSwifts [Bildformat-Konverter](/de/converter) wandelt JPG↔PNG↔WebP sofort um.
 
 ## Stapelverarbeitung: Mehrere Fotos senden
 
@@ -98,10 +98,10 @@ Bis zu **50 MB** pro Datei und **20 Bilder** gleichzeitig. Kein Tageslimit — k
 
 ## Schluss mit dem Kampf gegen E-Mail-Limits
 
-1. [PixelSwift-Kompressor](/compress-image) öffnen
+1. [PixelSwift-Kompressor](/de/compress-image) öffnen
 2. Bilder hineinziehen
 3. Herunterladen und anhängen
 
 Kein Konto. Keine Installation. Kein Upload.
 
-**[Jetzt Bilder für E-Mails komprimieren →](/compress-image)**
+**[Jetzt Bilder für E-Mails komprimieren →](/de/compress-image)**
