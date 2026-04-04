@@ -171,7 +171,7 @@
       "q5": "Kann ich Bilder für E-Mail-Anhänge komprimieren?",
       "a5": "Ja! Die meisten E-Mail-Anbieter begrenzen Anhänge auf 25MB. Stellen Sie die Qualität auf 70-80% ein, um Fotos deutlich zu verkleinern.",
       "q6": "Ist PixelSwift besser als TinyPNG?",
-      "a6": "Beide liefern hervorragende Ergebnisse. Der Hauptunterschied: TinyPNG lädt Ihre Dateien auf deren Website hoch, während PixelSwift nichts hochlädt — Ihre Bilder bleiben auf Ihrem Gerät. Wenn Datenschutz wichtig ist, ist PixelSwift die bessere Wahl."
+      "a6": "Beide liefern hervorragende Ergebnisse. Der Hauptunterschied: Die kostenlose Version von TinyPNG begrenzt auf 500 Bilder pro Monat, während PixelSwift keinerlei Limits hat — unbegrenzte Komprimierung, 100% kostenlos, keine Registrierung nötig, und bis zu 20 Bilder gleichzeitig per Stapelverarbeitung."
     }
   },
   "resizer": {

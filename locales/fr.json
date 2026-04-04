@@ -171,7 +171,7 @@
       "q5": "Puis-je compresser des images pour les pièces jointes email ?",
       "a5": "Oui ! La plupart des fournisseurs email limitent les pièces jointes à 25 Mo. Réglez la qualité à 70-80% pour réduire significativement les photos.",
       "q6": "PixelSwift est-il meilleur que TinyPNG ?",
-      "a6": "Les deux produisent d'excellents résultats. La différence clé : TinyPNG envoie vos fichiers sur leur site, tandis que PixelSwift n'envoie rien — vos images restent sur votre appareil. Si la confidentialité vous importe, PixelSwift est le meilleur choix."
+      "a6": "Les deux produisent d'excellents résultats. La différence clé : la version gratuite de TinyPNG est limitée à 500 images par mois, tandis que PixelSwift n'a aucune limite — compression illimitée, 100% gratuit, sans inscription, et vous pouvez traiter jusqu'à 20 images à la fois par lots."
     }
   },
   "resizer": {
