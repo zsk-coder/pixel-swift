@@ -45,6 +45,21 @@ export default defineNuxtConfig({
     "@vite-pwa/nuxt",
   ],
 
+  // ── Sitemap Config ──
+  sitemap: {
+    exclude: [
+      "/blog/en/**",
+      "/blog/zh/**",
+      "/blog/es/**",
+      "/blog/fr/**",
+      "/blog/de/**",
+      "/blog/ja/**",
+      "/blog/ko/**",
+      "/blog/pt/**",
+    ],
+    sources: ["/api/_sitemap-urls"],
+  },
+
   // ── PWA ──
   pwa: {
     registerType: "autoUpdate",
