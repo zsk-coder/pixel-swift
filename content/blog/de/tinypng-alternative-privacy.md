@@ -17,7 +17,7 @@ Aber wer es regelmäßig nutzt, kennt die frustrierenden Einschränkungen. Wenn 
 
 Die Komprimierungsqualität von TinyPNG stimmt, aber die Gratis-Version hat Einschränkungen, die Vielnutzer stören:
 
-- **Nur 500 kostenlose Komprimierungen pro Monat** — danach wird es kostenpflichtig. Pro ab 25 $/Jahr.
+- **Nur 500 kostenlose Komprimierungen pro Monat** — danach wird es kostenpflichtig. Ein Upgrade auf Pro ist erforderlich.
 - **Maximale Dateigröße 5 MB** — etwas größere Bilder können gar nicht verarbeitet werden.
 - **Keine Formatkonvertierung** — PNG in WebP umwandeln? Geht nicht, Sie brauchen ein anderes Tool.
 - **Keine Größenanpassung** — nach dem Komprimieren die Maße ändern? Wieder ein anderes Tool nötig.
@@ -32,25 +32,25 @@ PixelSwift ist ein Bildkomprimierer der nächsten Generation, der alle Schwachst
 - **Komplett kostenlos, unbegrenzte Nutzung** — kein 500er-Monatslimit, so viele Bilder komprimieren wie Sie wollen.
 - **Keine Registrierung nötig** — Seite öffnen und sofort loslegen.
 - **Bis zu 50 MB pro Datei** — das Zehnfache der TinyPNG-Gratisversion.
-- **Stapelverarbeitung** — bis zu 20 Bilder gleichzeitig komprimieren.
+- **Stapelverarbeitung** — bis zu 100 Bilder gleichzeitig komprimieren.
 - **Integrierte Formatkonvertierung** — frei zwischen JPG, PNG, WebP und AVIF konvertieren, ohne ein anderes Tool zu brauchen.
 - **Integrierte Größenanpassung** — Komprimieren, Konvertieren und Skalieren an einem Ort.
 - **Schnelle Verarbeitung** — die meisten Bilder sind in unter 1 Sekunde komprimiert.
 
 ## Direktvergleich: TinyPNG vs PixelSwift
 
-| Funktion                  | TinyPNG                          | PixelSwift                    |
-| ------------------------- | -------------------------------- | ----------------------------- |
-| **Gratis-Kontingent**     | 500 Bilder/Monat                 | Unbegrenzt                    |
-| **Dateigrößenlimit**      | 5 MB (kostenlos)                 | 50 MB                         |
-| **Stapelverarbeitung**    | 20 Bilder                       | 20 Bilder                     |
-| **Unterstützte Formate**  | PNG, JPEG, WebP                  | JPG, PNG, WebP, BMP           |
-| **Formatkonvertierung**   | Nein                             | Ja (integriert)               |
-| **Bildgrößenanpassung**   | Nein                             | Ja (integriert)               |
-| **Geschwindigkeit (10 MB)** | 3–8 Sek. (netzwerkabhängig)    | 1–3 Sek.                     |
-| **Offline-fähig**         | Nein                             | Ja                            |
-| **Registrierung nötig**   | Für API ja                       | Überhaupt nicht               |
-| **Preis**                 | Kostenlos (begrenzt) / ab 25 $/J.| 100 % kostenlos               |
+| Funktion                    | TinyPNG                                      | PixelSwift          |
+| --------------------------- | -------------------------------------------- | ------------------- |
+| **Gratis-Kontingent**       | 500 Bilder/Monat                             | Unbegrenzt          |
+| **Dateigrößenlimit**        | 5 MB (kostenlos)                             | 50 MB               |
+| **Stapelverarbeitung**      | 20 Bilder                                    | 100 Bilder          |
+| **Unterstützte Formate**    | PNG, JPEG, WebP                              | JPG, PNG, WebP, BMP |
+| **Formatkonvertierung**     | Nein                                         | Ja (integriert)     |
+| **Bildgrößenanpassung**     | Nein                                         | Ja (integriert)     |
+| **Geschwindigkeit (10 MB)** | 3–8 Sek. (netzwerkabhängig)                  | 1–3 Sek.            |
+| **Offline-fähig**           | Nein                                         | Ja                  |
+| **Registrierung nötig**     | Für API ja                                   | Überhaupt nicht     |
+| **Preis**                   | Kostenlos (begrenzt) / Kostenpflichtiges Pro | 100 % kostenlos     |
 
 ### Komprimierungsqualität im Vergleich
 
@@ -68,7 +68,7 @@ Der Unterschied bei der Komprimierungsrate ist minimal — typischerweise nur 2�
 
 ### 1. Online-Händler
 
-Hunderte Produktbilder pro Woche verarbeiten, schnell komprimieren und einheitlich skalieren. PixelSwifts Stapelverarbeitung bewältigt bis zu 20 Bilder gleichzeitig, und das [integrierte Größenanpassungs-Tool](/de/resize-image) vereinheitlicht Abmessungen für Amazon, eBay und andere Plattformen.
+Hunderte Produktbilder pro Woche verarbeiten, schnell komprimieren und einheitlich skalieren. PixelSwifts Stapelverarbeitung bewältigt bis zu 100 Bilder gleichzeitig, und das [integrierte Größenanpassungs-Tool](/de/resize-image) vereinheitlicht Abmessungen für Amazon, eBay und andere Plattformen.
 
 ### 2. Designer und Marketing-Teams
 

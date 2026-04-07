@@ -42,7 +42,7 @@
       "free": "Entièrement gratuit",
       "freeDesc": "Toutes les fonctionnalités disponibles — sans filigrane, utilisation illimitée, sans inscription.",
       "batch": "Traitement par lot",
-      "batchDesc": "Traitez jusqu'à 20 images à la fois, jusqu'à 50 Mo chacune — gérez de gros volumes en toute simplicité."
+      "batchDesc": "Traitez jusqu'à 100 images à la fois, jusqu'à 50 Mo chacune — gérez de gros volumes en toute simplicité."
     },
     "stats": {
       "title": "La confiance des utilisateurs dans le monde entier",
@@ -68,7 +68,7 @@
       "q2": "La compression réduit-elle la qualité d'image ?",
       "a2": "À peine perceptible. Avec les réglages par défaut, la taille diminue de plus de 60 % tout en restant visuellement identique. Utilisez l'aperçu côte à côte pour vérifier avant de télécharger.",
       "q3": "Y a-t-il une limite de taille de fichier ?",
-      "a3": "Chaque fichier peut aller jusqu'à 50 Mo. Vous pouvez traiter jusqu'à 20 images à la fois.",
+      "a3": "Chaque fichier peut aller jusqu'à 50 Mo. Vous pouvez traiter jusqu'à 100 images à la fois.",
       "q4": "PixelSwift est-il vraiment gratuit ? Y a-t-il des coûts cachés ?",
       "a4": "Oui, PixelSwift est 100% gratuit sans coûts cachés, sans filigrane et sans limites d'utilisation. Toutes les fonctionnalités sont disponibles sans inscription ni paiement.",
       "q5": "Faut-il installer quelque chose ?",
@@ -117,7 +117,7 @@
       "q4": "Quel est le meilleur format d'image pour les sites web ?",
       "a4": "Pour les sites web, WebP ou AVIF sont les meilleurs choix — fichiers plus petits, bonne qualité et supporte les fonds transparents. Pour les très anciens navigateurs, utilisez JPG. Pour des images parfaitement nettes avec transparence, utilisez PNG.",
       "q5": "Puis-je convertir plusieurs images à la fois ?",
-      "a5": "Oui ! PixelSwift supporte la conversion par lots jusqu'à 20 images. Glissez-déposez tous vos fichiers et sélectionnez le format de sortie.",
+      "a5": "Oui ! PixelSwift supporte la conversion par lots jusqu'à 100 images. Glissez-déposez tous vos fichiers et sélectionnez le format de sortie.",
       "q6": "Comment convertir des images en gardant la transparence ?",
       "a6": "Pour garder la transparence, convertissez en format PNG, WebP ou AVIF — tous les trois supportent les fonds transparents. JPG ne supporte pas la transparence."
     }
@@ -171,7 +171,7 @@
       "q5": "Puis-je compresser des images pour les pièces jointes email ?",
       "a5": "Oui ! La plupart des fournisseurs email limitent les pièces jointes à 25 Mo. Réglez la qualité à 70-80% pour réduire significativement les photos.",
       "q6": "PixelSwift est-il meilleur que TinyPNG ?",
-      "a6": "Les deux produisent d'excellents résultats. La différence clé : la version gratuite de TinyPNG est limitée à 500 images par mois, tandis que PixelSwift n'a aucune limite — compression illimitée, 100% gratuit, sans inscription, et vous pouvez traiter jusqu'à 20 images à la fois par lots."
+      "a6": "Les deux produisent d'excellents résultats. La différence clé : la version gratuite de TinyPNG est limitée à 500 images par mois, tandis que PixelSwift n'a aucune limite — compression illimitée, 100% gratuit, sans inscription, et vous pouvez traiter jusqu'à 100 images à la fois par lots."
     }
   },
   "resizer": {

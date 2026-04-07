@@ -61,7 +61,7 @@ locales/                 # 8 个语言 JSON 文件
 ## 核心原则
 
 1. **本地处理**：所有图片操作在浏览器端完成（Canvas API / OffscreenCanvas），严禁上传到任何服务器。
-2. **批量支持**：最多 20 个文件同时处理，单文件最大 50MB。
+2. **批量支持**：最多 100 个文件同时处理，单文件最大 50MB。
 3. **依赖最小化**：优先使用 Web 原生 API（Canvas、FileReader、createImageBitmap），非必要不引入新依赖。
 
 ## 语言规范

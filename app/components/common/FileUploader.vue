@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ElMessage } from "element-plus";
 import type { UploadInstance } from "element-plus";
+import { MAX_FILE_COUNT } from "~/utils/constants";
 
 const { t } = useI18n();
 
@@ -15,7 +16,7 @@ const props = withDefaults(
   {
     accept: "image/jpeg,image/png,image/webp",
     maxSize: 50,
-    maxCount: 20,
+    maxCount: MAX_FILE_COUNT,
     multiple: true,
     hint: "",
   },
@@ -52,9 +53,7 @@ const acceptedExtensions = computed(() => {
     "image/tiff": "TIFF",
     "image/avif": "AVIF",
   };
-  return [...acceptedMimeTypes.value]
-    .map((m) => mimeToExt[m] || m)
-    .join(", ");
+  return [...acceptedMimeTypes.value].map((m) => mimeToExt[m] || m).join(", ");
 });
 
 /** Check if a file's type is in the accepted list */
