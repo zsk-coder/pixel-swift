@@ -9,128 +9,153 @@ cover: "/images/blog/bypass-tinypng-limits.webp"
 featured: true
 ---
 
-Na semana passada, precisei comprimir 87 fotos de produtos para a loja online de um cliente. Arrastei tudo pro TinyPNG. Processou 20. Aí veio: **"Você atingiu seu limite. Faça upgrade para o Pro por $25/ano."**
+Semana passada eu precisei comprimir 87 fotos de produtos pro e-commerce de um cliente. Joguei tudo no TinyPNG. Fez 20 e parou: **"Você atingiu seu limite. Faça upgrade para o Pro por $25/ano."**
 
-Então arrastei mais 20. E mais 20. Depois de quatro rodadas de arrastar-baixar-repetir, desisti e fui procurar algo melhor.
+Tá bom, jogo mais 20. Mais 20. Na quarta rodada eu já tava de saco cheio e fui caçar outra ferramenta.
 
-Se você já bateu nessa parede — o limite de 20 imagens, o teto de 5MB, o "crie uma conta" insistente — este artigo é pra você.
+Se você já passou por isso — o limite de 20 imagens, o teto de 5MB, o "crie uma conta" chato pra caramba que não para de aparecer — esse artigo é pra você.
 
-## O problema: todo compressor "gratuito" tem uma pegadinha
+## O problema: todo compressor "gratuito" tem pegadinha
 
-Não é só o TinyPNG. Quase todo compressor de imagem "gratuito" faz a mesma jogada:
+Não é só o TinyPNG. Quase todo compressor "grátis" de imagem joga o mesmo jogo:
 
-| Ferramenta        | Limite grátis    | Tamanho máx. | O que querem      |
-| ----------------- | ---------------- | ------------ | ----------------- |
-| **TinyPNG**       | 20 imagens/lote  | 5 MB         | Pro a $25/ano     |
-| **iLoveIMG**      | 15 imagens/lote  | Varia        | Assinatura $4/mês |
-| **Optimizilla**   | 20 imagens       | 10 MB        | Upgrade Pro       |
-| **Compressor.io** | 1 imagem por vez | 10 MB        | Uma de cada vez   |
-| **ShortPixel**    | 100/mês no total | 10 MB        | $4.99/mês         |
+| Ferramenta        | Limite grátis    | Tamanho máx. | Como te pegam         |
+| ----------------- | ---------------- | ------------ | --------------------- |
+| **TinyPNG**       | 20 por rodada    | 5 MB         | Pro a $25/ano         |
+| **iLoveIMG**      | 15 por rodada    | Varia        | Assinatura de $4/mês  |
+| **Optimizilla**   | 20 imagens       | 10 MB        | Upgrade Pro           |
+| **Compressor.io** | Uma de cada vez  | 10 MB        | Só uma por vez        |
+| **ShortPixel**    | 100 por mês      | 10 MB        | $4.99/mês             |
 
-Esses limites existem por um motivo: a compressão acontece nos servidores deles. Cada imagem que você envia custa tempo de CPU e banda. Mais imagens = mais custo = eles precisam do seu dinheiro.
+O esquema é sempre o mesmo: você manda suas imagens pro site deles, eles processam lá e devolvem. Quanto mais imagem, mais custa pra eles — e adivinha quem paga?
 
-Faz sentido como negócio. Mas é extremamente frustrante quando você só quer diminuir o tamanho de umas fotos pra um blog e não quer pagar por algo que usa duas vezes por ano.
+Como modelo de negócio, faz sentido. Agora, quando tudo o que você quer é aliviar 50 prints pra um post de blog, largar $25 por algo que você usa duas vezes por ano… é de lascar.
 
-## A solução: comprimir no seu navegador, não num servidor
+## A solução: comprimir na própria página, sem mandar nada pra lugar nenhum
 
-O que a maioria das pessoas não sabe: **navegadores modernos são capazes de comprimir imagens localmente.** Os mesmos algoritmos que o TinyPNG roda nos servidores (MozJPEG, OxiPNG) podem funcionar direto no seu navegador via WebAssembly.
+Pouca gente sabe disso, mas **dá pra comprimir imagem direto na página que você tá com aberta — sem fazer upload pra canto nenhum.**
 
-É exatamente isso que o [PixelSwift](/pt/) faz. Em vez de enviar suas imagens para um servidor remoto, ele traz o motor de compressão para o seu navegador.
+É exatamente assim que o [PixelSwift](/pt/) funciona. Abre a página, taca as imagens lá dentro, e a compressão rola direto no seu computador. Só isso.
 
-O que isso significa:
+Na prática, o que muda:
 
-- **Sem servidor = sem custo de servidor = sem motivo pra te limitar**
-- 20 imagens? Claro. 100? Pode mandar. 200? Sem problema
-- Cada arquivo pode ter até **50 MB** (no TinyPNG grátis é 5MB)
-- Sem cadastro, sem login, sem emails de "você usou 80% da sua cota mensal"
+- **Sem limite de quantidade** — 20, 100, 200 imagens, o quanto quiser
+- Cada arquivo pode ter até **50 MB** (tenta isso no TinyPNG grátis pra ver)
+- Zero cadastro, zero login, zero email de "você usou 80% da sua cota"
+- **Bem mais rápido** — não tem aquela espera de upload e download
 
-## Passo a passo: comprimir um lote grande
+## Passo a passo: comprimir 100+ imagens de uma tacada
 
-### 1. Abra o compressor
+### 1. Abra a página
 
-Vá até o [PixelSwift Compressor de Imagens](/pt/compress-image). Sem tela de login, sem banner de cookies ocupando metade da página.
+Vai até o [Compressor de Imagens PixelSwift](/pt/compress-image). Sem tela de login, sem criar conta — é abrir e usar.
 
-### 2. Arraste suas imagens
+### 2. Jogue as imagens
 
-Selecione ou arraste todas as suas imagens pra zona de upload. JPG, PNG, WebP, AVIF — tudo compatível. Eu costumo dar Ctrl+A na pasta.
+Seleciona ou arrasta tudo pra zona de drop. JPG, PNG, WebP, AVIF — vale tudo. Eu geralmente dou um Ctrl+A na pasta e arrasto o bolo inteiro.
 
-**A compressão começa na hora.** Sem barra de progresso de upload, sem espera. É rápido porque suas imagens ficam no seu aparelho.
+**Soltou? Já tá comprimindo.** Sem barra de upload, sem espera — em poucos segundos você já vê o resultado.
 
 ### 3. Ajuste a qualidade
 
-A configuração padrão (80%) funciona bem na maioria dos casos. Precisa de arquivos menores? Baixe pra 60-70%. Portfólio ou impressão? Mantenha em 85-90%.
+O padrão de 80% resolve na maioria dos casos. Quer arquivos menores? Desce pra 60-70%. Portfólio ou impressão? Mantém em 85-90%.
 
-Você verá uma prévia em tempo real com slider antes/depois pra julgar a qualidade.
+Tem um **slider de antes e depois** pra você bater o olho e confirmar que tá bom antes de baixar.
 
-### 4. Baixe
+### 4. Baixe tudo
 
-Clique em baixar. Vários arquivos? Vem num ZIP. Pronto.
+Clica em baixar. Se tiver mais de um arquivo, vem tudo num ZIP automático. Pronto, resolvido.
 
-As 87 fotos de produtos levaram uns 45 segundos. Comparado com 5 rodadas de 20 no TinyPNG (mais re-baixar cada lote), economizei quase 10 minutos.
+Minhas 87 fotos de produto? Uns 45 segundos. Compara com cinco rodadas de 20 no TinyPNG — fora o re-download de cada lote — que comeria uns 10 minutos fácil.
 
-## Como fica a qualidade?
+## E a qualidade? Vamos ser honestos
 
-Pergunta justa. Testei com 30 imagens — 10 fotos, 10 capturas de tela, 10 gráficos:
+Trocar de ferramenta sem saber se a qualidade presta não rola. Então botei os dois pra brigar com 30 imagens de teste (10 fotos, 10 captura de tela, 10 artes):
 
-| Métrica                     | TinyPNG (servidor)   | PixelSwift (navegador)   | Diferença         |
-| --------------------------- | -------------------- | ------------------------ | ----------------- |
-| **Redução JPEG média**      | 68%                  | 65%                      | TinyPNG ganha ~3% |
-| **Redução PNG média**       | 72%                  | 70%                      | TinyPNG ganha ~2% |
-| **Limite de lote**          | 20                   | Sem limite               | PixelSwift ganha  |
-| **Tamanho máx.**            | 5 MB (grátis)        | 50 MB                    | PixelSwift ganha  |
-| **Velocidade (30 imagens)** | ~25s                 | ~8s                      | PixelSwift ganha  |
-| **Privacidade**             | Arquivos no servidor | Arquivos no seu aparelho | PixelSwift ganha  |
+| O quê                         | TinyPNG        | PixelSwift           | Veredito          |
+| ----------------------------- | -------------- | -------------------- | ----------------- |
+| **Redução JPEG média**        | 68%            | 65%                  | TinyPNG ganha ~3% |
+| **Redução PNG média**         | 72%            | 70%                  | TinyPNG ganha ~2% |
+| **Limite por rodada**         | 20             | Sem limite           | PixelSwift        |
+| **Tamanho máx.**              | 5 MB (grátis)  | 50 MB                | PixelSwift        |
+| **Velocidade (30 imagens)**   | ~25s           | ~8s                  | PixelSwift        |
+| **Privacidade**               | Precisa upload | Imagens ficam no PC  | PixelSwift        |
 
-A compressão do TinyPNG é ~2-3% melhor em redução de tamanho. Verdade, não vou esconder. Mas a menos que você esteja otimizando um CDN com milhões de requisições diárias, essa diferença não faz diferença. O que importa: **posso aumentar ou diminuir o tamanho das minhas 87 fotos sem dividir em rodadas?**
+Vou ser sincero: o TinyPNG tira 2-3% a mais no tamanho do arquivo. Mas na real, essa diferença é invisível a olho nu. O que importa de verdade: **consigo passar minhas 87 fotos de uma vez sem ficar nesse pinga-pinga de 20 em 20?**
 
-## E o WebP e AVIF?
+## Suporte a WebP e AVIF
 
-Em suporte de formatos, o PixelSwift leva vantagem.
+TinyPNG colocou WebP faz pouco tempo. AVIF? Nem pensar na versão grátis.
 
-TinyPNG adicionou WebP recentemente, mas o foco ainda é JPEG e PNG. AVIF? Não disponível na versão gratuita.
+PixelSwift dá conta dos quatro formatos principais:
 
-PixelSwift suporta nativamente os quatro formatos principais:
+- **JPG** compressão
+- **PNG** compressão
+- **WebP** compressão
+- **Converter pra AVIF** (pelo [conversor](/pt/converter) — AVIF é metade do tamanho de um JPEG)
 
-- **JPG → JPG** (compressão MozJPEG)
-- **PNG → PNG** (otimização OxiPNG)
-- **WebP → WebP** (codificação WebP nativa)
-- **Qualquer formato → AVIF** (pelo [conversor](/pt/converter))
+Se você tá otimizando seu site, o AVIF é disparado o formato com melhor compressão hoje. Vale a pena testar.
 
-## Cenários práticos
+## Quando isso salva o dia
 
-### Fotos de produtos para e-commerce
+### Fotos de produtos pra loja
 
-150 fotos de produto, cada JPEG com 8-12 MB em 4000×3000. Precisa comprimir e talvez redimensionar pra 1200px de largura.
+150 fotos de produto, cada uma com 8-12 MB. Precisa comprimir e talvez redimensionar pra 1200px de largura.
 
-Com TinyPNG: 8 rodadas. Arquivos acima de 5 MB são rejeitados.
-Com PixelSwift: arrasta tudo, qualidade 80%, [redimensiona](/pt/resize-image) pra 1200px, baixa o ZIP. Cinco minutos.
+No TinyPNG: 8 rodadas de upload. Passou de 5 MB? Barrado.
+No PixelSwift: arrasta tudo, qualidade 80%, [redimensiona](/pt/resize-image) pra 1200px, baixa o ZIP. Cinco minutinhos.
 
-### Capturas de tela para blog
+### Prints pro blog
 
-30 screenshots anotados, cada PNG com 2-4 MB. Precisa otimizar antes de publicar.
+30 capturas de tela, cada PNG com 2-4 MB. Precisa emagrecer o total antes de publicar.
 
-TinyPNG faz em dois lotes. PixelSwift faz em um, com prévia de qualidade em tempo real.
+TinyPNG resolve em dois lotes. PixelSwift resolve em um — e ainda tem preview de qualidade em tempo real, coisa que o TinyPNG grátis não tem.
+
+### Conteúdo pra redes sociais
+
+Seu time produz 50+ imagens por semana. Tamanhos variados, formatos variados. Tudo precisa comprimir antes de postar.
+
+Com ferramenta que tem limite de lote, isso vira uma novela. Sem limite? É coisa de 2 minutos.
+
+## Seus arquivos não saem do seu PC
+
+No TinyPNG, suas imagens vão pro site deles. Na maioria das vezes, tranquilo.
+
+Mas e se você tá comprimindo:
+
+- **Documentos sigilosos** de clientes com prints?
+- **Imagens médicas**?
+- **Fotos de crachá** de funcionários?
+- **Contratos** com dados sensíveis?
+
+No PixelSwift, nada sai da sua máquina. Ponto. Fecha a aba e não fica nenhum rastro.
+
+Pra foto de churrasco, tanto faz. Pra trampo com informação sensível, essa tranquilidade vale ouro.
 
 ## Perguntas frequentes
 
-### A qualidade de compressão é boa o suficiente?
+### A qualidade é tão boa quanto TinyPNG?
 
-Sim. A qualidade é praticamente idêntica ao TinyPNG — 2-3% de diferença no tamanho, imperceptível visualmente.
+Praticamente igual. 2-3% de diferença no tamanho — impossível de notar a olho nu.
 
 ### Funciona offline?
 
-Após o carregamento inicial da página, sim. Dá pra comprimir mesmo sem internet.
+Sim. Depois que a página carrega uma vez, dá pra comprimir até se cair a internet.
 
-### Qual é o limite real?
+### Quantas imagens dá pra fazer de uma vez?
 
-Não tem limite fixo de número de imagens. O limite prático depende da RAM do seu aparelho. Um notebook típico lida com 50-100 imagens tranquilamente.
+Sem limite fixo. Um notebook normal aguenta 50-100 imagens numa boa. Se for muita coisa, vai mandando em pacotes de 50.
 
-### Por que é grátis? Qual a pegadinha?
+### É grátis mesmo? Cadê a pegadinha?
 
-Nenhuma. É grátis — sem marcas d'água, sem cadastro, sem período de teste.
+Não tem pegadinha. É grátis de verdade — sem marca d'água, sem cadastro, sem teste que expira de fininho.
 
-## Pare de perder tempo com limites de lote
+### Posso usar em projetos comerciais?
 
-Da próxima vez que você esbarrar numa parede de "máximo de 20 imagens" ou erro de "arquivo muito grande", lembre-se: você não precisa aceitar isso. Existem ferramentas melhores.
+Pode sim. Sem atribuição, sem marca d'água, sem frescura de licença.
 
-Seu navegador dá conta. [Experimente →](/pt/compress-image)
+## Chega de ficar fazendo malabarismo de 20 em 20
+
+Na próxima vez que pintar um "máximo 20 imagens" ou "arquivo grande demais", lembra: você não precisa aturar isso.
+
+Abre o PixelSwift. Joga. Comprime. Baixa. Simples assim. [Experimenta aí →](/pt/compress-image)

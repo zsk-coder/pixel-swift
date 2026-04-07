@@ -31,14 +31,14 @@
       "start": "Get Started",
       "learn": "Learn more",
       "title": "Ready to Process Your Images?",
-      "desc": "Open your browser and get started — no downloads or sign-ups needed.",
+      "desc": "Open the page and get started — no downloads or sign-ups needed.",
       "button": "Get Started"
     },
     "why": {
       "fast": "Lightning Fast",
       "fastDesc": "Supports JPG, PNG, WebP, and AVIF formats, processed instantly in milliseconds — no upload or download wait.",
       "secure": "Fully Private",
-      "secureDesc": "Your files stay on your device. All processing happens locally in the browser — nothing is sent to any server.",
+      "secureDesc": "Your files stay on your device. Nothing is uploaded anywhere.",
       "free": "Completely Free",
       "freeDesc": "All features fully available — no watermarks, unlimited use, no registration required.",
       "batch": "Batch Processing",
@@ -55,33 +55,33 @@
     "tech": {
       "title": "Powered by Industry-Leading Technology",
       "subtitle": "Built on battle-tested open-source engines — the same technology trusted by Mozilla and the Rust community.",
-      "wasmDesc": "Native-speed processing directly in your browser",
+      "wasmDesc": "Open and go — blazing fast processing",
       "mozjpegDesc": "Mozilla's advanced JPEG encoder for optimal compression",
       "oxipngDesc": "Rust-powered PNG optimizer for lossless reduction",
       "zeroTransfer": "Zero Data Transfer",
-      "zeroTransferDesc": "Your files never leave your browser — fully offline-capable"
+      "zeroTransferDesc": "Your files are never uploaded anywhere — works offline too"
     },
     "faq": {
       "title": "Frequently Asked Questions",
       "q1": "What image formats are supported?",
       "a1": "PixelSwift supports JPG, PNG, WebP, and AVIF formats for conversion, compression, and resizing.",
-      "q2": "Are my images uploaded to a server?",
-      "a2": "No. All processing happens locally in your browser. Your images never leave your device.",
+      "q2": "Will compression reduce image quality?",
+      "a2": "Barely noticeable. With the default settings, file size drops by over 60% while looking virtually identical. You can use the side-by-side preview to check before downloading.",
       "q3": "Is there a file size limit?",
       "a3": "Each file can be up to 50MB. You can process up to 20 images at once.",
       "q4": "Is PixelSwift really free? Are there any hidden costs?",
       "a4": "Yes, PixelSwift is 100% free with no hidden costs, no watermarks, and no usage limits. All features are fully available without registration or payment.",
-      "q5": "Do I need to install any software or browser extension?",
-      "a5": "No. PixelSwift runs entirely in your web browser. Just open the website and start processing — no downloads, no installations, no plugins needed.",
+      "q5": "Do I need to install any software?",
+      "a5": "No. Just open the PixelSwift website and start — no downloads, no installations, no plugins needed.",
       "q6": "Can I use PixelSwift on my phone or tablet?",
-      "a6": "Yes. PixelSwift is fully responsive and works on all devices — iPhone, iPad, Android phones and tablets. The full functionality is available on mobile browsers.",
+      "a6": "Yes. PixelSwift works on all devices — iPhone, iPad, Android phones and tablets. Full functionality on mobile.",
       "q7": "How is my data kept safe?",
-      "a7": "Your files never leave your device. Everything is processed right here in your browser — nothing is uploaded to any server. It's like editing on your own computer, but in a web page."
+      "a7": "Your files never leave your device — nothing is uploaded anywhere. Close the tab and there's zero trace."
     }
   },
   "blog": {
     "title": "Blog",
-    "subtitle": "Free online tutorials for image compression, format conversion, and resizing. Supports JPG, PNG, WebP, AVIF — processed directly in your browser.",
+    "subtitle": "Free online tutorials for image compression, format conversion, and resizing. Supports JPG, PNG, WebP, AVIF.",
     "featured": "Featured",
     "readMore": "Read more",
     "allCategories": "All",
@@ -114,7 +114,7 @@
   },
   "converter": {
     "title": "Universal Image Converter",
-    "subtitle": "Convert any image format to JPG, PNG, WebP, or AVIF. Fast, free, and processed entirely in your browser.",
+    "subtitle": "Convert any image format to JPG, PNG, WebP, or AVIF. Fast, free, no sign-up required.",
     "subtitleMobile": "Convert your images in seconds.",
     "uploadHint": "Supports JPG, PNG, WEBP, BMP, GIF, TIFF, AVIF and more · Max 50MB · Batch upload available",
     "settingsTitle": "Conversion Settings",
@@ -196,7 +196,7 @@
       "q5": "Can I compress images for email attachments?",
       "a5": "Yes! Most email providers limit attachments to 25MB. Use PixelSwift to compress your images to a smaller size — set quality to 70-80% to reduce photos significantly while keeping them looking great in emails.",
       "q6": "Is PixelSwift better than TinyPNG for compression?",
-      "a6": "Both produce excellent results. The key difference: TinyPNG uploads your files to their server for processing, while PixelSwift processes everything locally in your browser. If privacy matters to you, PixelSwift is the better choice since your images never leave your device."
+      "a6": "Both produce excellent results. The key difference: TinyPNG's free tier limits you to 500 images per month, while PixelSwift has zero limits — unlimited compression, 100% free, no sign-up required, and you can batch process up to 20 images at once."
     }
   },
   "resizer": {
@@ -327,7 +327,7 @@
   "seo": {
     "home": {
       "title": "PixelSwift — Free Online Image Converter, Compressor & Resizer",
-      "description": "Convert, compress & resize images free online. 100% browser-based, no uploads, no sign-ups. Try it now!"
+      "description": "Convert, compress & resize images free online. No sign-ups, just open and go. Try it now!"
     },
     "compressor": {
       "title": "Compress Images Online Free — Reduce Size up to 90%",
@@ -347,7 +347,7 @@
     },
     "privacy": {
       "title": "Privacy Policy",
-      "description": "PixelSwift privacy policy. All image processing happens locally in your browser. We never upload or store your files."
+      "description": "PixelSwift privacy policy. Your images always stay on your device. We never store your files."
     },
     "contact": {
       "title": "Contact Us",
@@ -359,12 +359,12 @@
     }
   },
   "schema": {
-    "siteDescription": "Free online image converter, compressor, and resizer. No upload needed — process images directly in your browser.",
+    "siteDescription": "Free online image converter, compressor, and resizer. No sign-ups needed — just open and go.",
     "compressor": {
       "featureList": "Compress JPEG, PNG, WebP and AVIF images, adjustable quality, real-time preview comparison, batch compression, up to 90% size reduction"
     },
     "converter": {
-      "featureList": "Convert any image format (BMP, GIF, TIFF, etc.) to JPG, PNG, WebP, or AVIF, batch conversion, no upload needed, 100% browser-based"
+      "featureList": "Convert any image format (BMP, GIF, TIFF, etc.) to JPG, PNG, WebP, or AVIF, batch conversion, no upload needed, 100% free"
     },
     "resizer": {
       "featureList": "Resize images by pixel or percentage, rotate and flip, aspect ratio presets, real-time preview, no upload needed"
