@@ -4,7 +4,7 @@
 
 // File upload limits
 export const MAX_FILE_SIZE = 50 * 1024 * 1024; // 50MB
-export const MAX_FILE_COUNT = 20;
+export const MAX_FILE_COUNT = 100;
 
 // Supported input formats
 export const INPUT_FORMATS = [
