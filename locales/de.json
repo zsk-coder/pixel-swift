@@ -42,7 +42,7 @@
       "free": "Komplett kostenlos",
       "freeDesc": "Alle Funktionen verfügbar — keine Wasserzeichen, unbegrenzte Nutzung, keine Registrierung erforderlich.",
       "batch": "Stapelverarbeitung",
-      "batchDesc": "Bis zu 20 Bilder auf einmal verarbeiten, je bis zu 50 MB — große Mengen mit Leichtigkeit bewältigen."
+      "batchDesc": "Bis zu 100 Bilder auf einmal verarbeiten, je bis zu 50 MB — große Mengen mit Leichtigkeit bewältigen."
     },
     "stats": {
       "title": "Weltweites Nutzervertrauen",
@@ -68,7 +68,7 @@
       "q2": "Wird die Bildqualität durch Komprimierung schlechter?",
       "a2": "Kaum merkbar. Mit den Standardeinstellungen schrumpft die Dateigröße um über 60 %, sieht aber praktisch gleich aus. Mit der Vorher-Nachher-Vorschau können Sie das Ergebnis vor dem Download prüfen.",
       "q3": "Gibt es eine Dateigrößenbeschränkung?",
-      "a3": "Jede Datei kann bis zu 50 MB groß sein. Sie können bis zu 20 Bilder gleichzeitig verarbeiten.",
+      "a3": "Jede Datei kann bis zu 50 MB groß sein. Sie können bis zu 100 Bilder gleichzeitig verarbeiten.",
       "q4": "Ist PixelSwift wirklich kostenlos? Gibt es versteckte Kosten?",
       "a4": "Ja, PixelSwift ist 100% kostenlos ohne versteckte Kosten, ohne Wasserzeichen und ohne Nutzungsbeschränkungen. Alle Funktionen sind ohne Registrierung oder Zahlung verfügbar.",
       "q5": "Muss ich etwas installieren?",
@@ -117,7 +117,7 @@
       "q4": "Welches ist das beste Bildformat für Websites?",
       "a4": "Für Websites ist WebP oder AVIF die beste Wahl — kleinste Dateien, gute Qualität und unterstützt transparente Hintergründe. Für sehr alte Browser verwenden Sie JPG. Für perfekt scharfe Bilder mit Transparenz verwenden Sie PNG.",
       "q5": "Kann ich mehrere Bilder gleichzeitig konvertieren?",
-      "a5": "Ja! PixelSwift unterstützt die Stapelkonvertierung von bis zu 20 Bildern gleichzeitig. Ziehen Sie einfach alle Dateien per Drag & Drop und wählen Sie das Ausgabeformat.",
+      "a5": "Ja! PixelSwift unterstützt die Stapelkonvertierung von bis zu 100 Bildern gleichzeitig. Ziehen Sie einfach alle Dateien per Drag & Drop und wählen Sie das Ausgabeformat.",
       "q6": "Wie konvertiere ich Bilder unter Beibehaltung der Transparenz?",
       "a6": "Um die Transparenz beizubehalten, konvertieren Sie in das PNG-, WebP- oder AVIF-Format — alle drei unterstützen transparente Hintergründe. JPG unterstützt keine Transparenz und ersetzt transparente Bereiche durch Weiß."
     }
@@ -171,7 +171,7 @@
       "q5": "Kann ich Bilder für E-Mail-Anhänge komprimieren?",
       "a5": "Ja! Die meisten E-Mail-Anbieter begrenzen Anhänge auf 25MB. Stellen Sie die Qualität auf 70-80% ein, um Fotos deutlich zu verkleinern.",
       "q6": "Ist PixelSwift besser als TinyPNG?",
-      "a6": "Beide liefern hervorragende Ergebnisse. Der Hauptunterschied: Die kostenlose Version von TinyPNG begrenzt auf 500 Bilder pro Monat, während PixelSwift keinerlei Limits hat — unbegrenzte Komprimierung, 100% kostenlos, keine Registrierung nötig, und bis zu 20 Bilder gleichzeitig per Stapelverarbeitung."
+      "a6": "Beide liefern hervorragende Ergebnisse. Der Hauptunterschied: Die kostenlose Version von TinyPNG begrenzt auf 500 Bilder pro Monat, während PixelSwift keinerlei Limits hat — unbegrenzte Komprimierung, 100% kostenlos, keine Registrierung nötig, und bis zu 100 Bilder gleichzeitig per Stapelverarbeitung."
     }
   },
   "resizer": {

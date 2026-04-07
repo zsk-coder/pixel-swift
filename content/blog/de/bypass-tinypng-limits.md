@@ -1,5 +1,5 @@
 ---
-title: "TinyPNGs 20-Bilder-Limit umgehen: So komprimierst du 100+ Bilder auf einmal — kostenlos"
+title: "TinyPNGs 20-Bilder-Limit umgehen: So komprimierst du 100 Bilder auf einmal — kostenlos"
 description: "Genervt vom 20-Bilder-Limit und der 5-MB-Grenze bei TinyPNG? So umgehst du die Einschränkungen und komprimierst unbegrenzt Bilder — kostenlos, ohne Upload, ohne Registrierung."
 category: "tutorials"
 author: "PixelSwift Team"
@@ -9,7 +9,7 @@ cover: "/images/blog/bypass-tinypng-limits.webp"
 featured: true
 ---
 
-Letzte Woche musste ich 87 Produktfotos für den Onlineshop eines Kunden komprimieren. Ab damit in TinyPNG. 20 Stück geschafft — dann plötzlich: **„Du hast dein Limit erreicht. Upgrade auf Pro für 25 $/Jahr."**
+Letzte Woche musste ich 87 Produktfotos für den Onlineshop eines Kunden komprimieren. Ab damit in TinyPNG. 20 Stück geschafft — dann plötzlich: **„Du hast dein Limit erreicht. Upgrade auf Pro."**
 
 Also nochmal 20 reingeworfen. Und nochmal 20. Nach vier Runden Ziehen-Runterladen-Wiederholen hatte ich die Nase voll und hab was Besseres gesucht.
 
@@ -19,13 +19,13 @@ Falls dir das bekannt vorkommt — das Limit bei 20 Bildern, die 5-MB-Grenze, da
 
 Das Spiel kennt nicht nur TinyPNG. Praktisch jeder „kostenlose" Bildkomprimierer zieht die gleiche Nummer ab:
 
-| Tool              | Gratis-Limit        | Max. Dateigröße | Wie sie kassieren  |
-| ----------------- | ------------------- | --------------- | ------------------ |
-| **TinyPNG**       | 20 Bilder pro Batch | 5 MB            | Pro für 25 $/Jahr  |
-| **iLoveIMG**      | 15 Bilder pro Batch | Unterschiedlich | Abo für 4 $/Monat  |
-| **Optimizilla**   | 20 Bilder           | 10 MB           | Pro-Upgrade        |
-| **Compressor.io** | 1 Bild auf einmal   | 10 MB           | Nur einzeln möglich |
-| **ShortPixel**    | 100 pro Monat       | 10 MB           | 4,99 $/Monat       |
+| Tool              | Gratis-Limit        | Max. Dateigröße | Wie sie kassieren     |
+| ----------------- | ------------------- | --------------- | --------------------- |
+| **TinyPNG**       | 20 Bilder pro Batch | 5 MB            | Kostenpflichtiges Pro |
+| **iLoveIMG**      | 15 Bilder pro Batch | Unterschiedlich | Abo für 4 $/Monat     |
+| **Optimizilla**   | 20 Bilder           | 10 MB           | Pro-Upgrade           |
+| **Compressor.io** | 1 Bild auf einmal   | 10 MB           | Nur einzeln möglich   |
+| **ShortPixel**    | 100 pro Monat       | 10 MB           | 4,99 $/Monat          |
 
 Der Grund ist simpel: Du lädst deine Bilder auf deren Seite hoch, die verarbeiten alles und schicken's zurück. Je mehr Bilder, desto teurer wird's für die — also zahlst am Ende du.
 
@@ -44,7 +44,7 @@ Was heißt das konkret?
 - Null Registrierung, null Login, null nervige „Du hast schon 80 % deines Kontingents verbraucht"-Mails
 - **Deutlich schneller** — kein Hochladen, kein Runterladen, kein Warten
 
-## Schritt für Schritt: 100+ Bilder auf einen Schlag komprimieren
+## Schritt für Schritt: 100 Bilder auf einen Schlag komprimieren
 
 ### 1. Seite öffnen
 
@@ -76,7 +76,7 @@ Berechtigte Frage — wer umsteigt, will wissen, ob die Qualität stimmt. Ich ha
 | ------------------------------- | ---------------- | ------------------------- | ------------------- |
 | **JPEG-Reduktion Ø**            | 68 %             | 65 %                      | TinyPNG ~3 % besser |
 | **PNG-Reduktion Ø**             | 72 %             | 70 %                      | TinyPNG ~2 % besser |
-| **Batch-Limit**                 | 20               | Unbegrenzt                | PixelSwift          |
+| **Batch-Limit**                 | 20               | 100                       | PixelSwift          |
 | **Max. Dateigröße**             | 5 MB (kostenlos) | 50 MB                     | PixelSwift          |
 | **Geschwindigkeit (30 Bilder)** | ~25 Sek.         | ~8 Sek.                   | PixelSwift          |
 | **Datenschutz**                 | Upload nötig     | Bilder bleiben auf dem PC | PixelSwift          |

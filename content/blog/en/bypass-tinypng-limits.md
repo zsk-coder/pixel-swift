@@ -1,5 +1,5 @@
 ---
-title: "How to Bypass TinyPNG's 20-Image Limit and Compress 100+ Photos for Free"
+title: "How to Bypass TinyPNG's 20-Image Limit and Compress 100 Photos for Free"
 description: "Tired of TinyPNG's 20-image batch limit and 5MB file cap? Here's how to bypass those limits and compress unlimited images for free — no uploads, no sign-ups, no paywalls."
 category: "tutorials"
 author: "PixelSwift Team"
@@ -9,7 +9,7 @@ cover: "/images/blog/bypass-tinypng-limits.webp"
 featured: true
 ---
 
-Last week I had to compress 87 product photos for a client's Shopify store. Dragged them into TinyPNG. Got through 20. Then the popup: **"You've reached your limit. Upgrade to Pro for $25/year."**
+Last week I had to compress 87 product photos for a client's Shopify store. Dragged them into TinyPNG. Got through 20. Then the popup: **"You've reached your limit. Upgrade to Pro."**
 
 So I dragged 20 more. And 20 more after that. After the fourth round of drag-drop-download-repeat, I snapped and went looking for something better.
 
@@ -21,7 +21,7 @@ It's not just TinyPNG. Pretty much every "free" image compressor out there runs 
 
 | Tool              | Free Limit        | File Size Cap | How They Get You      |
 | ----------------- | ----------------- | ------------- | --------------------- |
-| **TinyPNG**       | 20 images/batch   | 5 MB          | $25/year Pro          |
+| **TinyPNG**       | 20 images/batch   | 5 MB          | Paid Pro upgrade      |
 | **iLoveIMG**      | 15 images/batch   | Varies        | $4/month subscription |
 | **Optimizilla**   | 20 images         | 10 MB         | Pro upgrade           |
 | **Compressor.io** | 1 image at a time | 10 MB         | One-by-one only       |
@@ -29,7 +29,7 @@ It's not just TinyPNG. Pretty much every "free" image compressor out there runs 
 
 They all work the same way: you upload your images to their site, they crunch the numbers on their end, then send your files back. More images means more cost for them — so naturally, they put up a paywall.
 
-Fair enough. But when all you want to do is squash 50 screenshots for a blog post, shelling out $25 for something you'll use twice a year feels like a ripoff.
+Fair enough. But when all you want to do is squash 50 screenshots for a blog post, paying for a subscription you'll use twice a year feels like a ripoff.
 
 ## The Fix: A Tool That Just Lets You Get It Done
 
@@ -44,7 +44,7 @@ Here's what that means in practice:
 - Zero sign-up, zero login, zero "you've hit 80% of your monthly quota" guilt-trip emails
 - **Way faster** — no upload/download bottleneck slowing you down
 
-## How It Works: Compressing 100+ Images in One Shot
+## How It Works: Compressing 100 Images in One Shot
 
 ### 1. Open the Compressor
 
@@ -72,16 +72,16 @@ My 87 product photos? About 45 seconds flat. Compare that to five rounds of 20 o
 
 Switching tools is a leap of faith, so let's look at the numbers. I ran a head-to-head with 30 test images — 10 photos, 10 screenshots, 10 graphics:
 
-| Metric                  | TinyPNG        | PixelSwift              | Verdict             |
-| ----------------------- | -------------- | ----------------------- | ------------------- |
-| **Avg. JPEG reduction** | 68%            | 65%                     | TinyPNG by ~3%      |
-| **Avg. PNG reduction**  | 72%            | 70%                     | TinyPNG by ~2%      |
-| **Batch limit**         | 20             | Unlimited               | PixelSwift          |
-| **Max file size**       | 5 MB (free)    | 50 MB                   | PixelSwift          |
-| **Speed (30 images)**   | ~25s           | ~8s                     | PixelSwift          |
-| **Privacy**             | Requires upload | Images stay on your PC | PixelSwift          |
+| Metric                  | TinyPNG         | PixelSwift             | Verdict        |
+| ----------------------- | --------------- | ---------------------- | -------------- |
+| **Avg. JPEG reduction** | 68%             | 65%                    | TinyPNG by ~3% |
+| **Avg. PNG reduction**  | 72%             | 70%                    | TinyPNG by ~2% |
+| **Batch limit**         | 20              | 100                    | PixelSwift     |
+| **Max file size**       | 5 MB (free)     | 50 MB                  | PixelSwift     |
+| **Speed (30 images)**   | ~25s            | ~8s                    | PixelSwift     |
+| **Privacy**             | Requires upload | Images stay on your PC | PixelSwift     |
 
-I'll level with you: TinyPNG edges out by 2-3% on raw compression. But unless you're shaving bytes off a CDN serving millions of daily requests, that difference is invisible to the naked eye. What *actually* matters: **can I blast through 87 images without playing the batch-limit shuffle?**
+I'll level with you: TinyPNG edges out by 2-3% on raw compression. But unless you're shaving bytes off a CDN serving millions of daily requests, that difference is invisible to the naked eye. What _actually_ matters: **can I blast through 87 images without playing the batch-limit shuffle?**
 
 ## WebP and AVIF Support
 

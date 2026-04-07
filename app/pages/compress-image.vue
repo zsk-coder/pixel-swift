@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FileItem } from "~/components/common/FileList.vue";
+import { runWithConcurrency } from "~/utils/concurrency";
 
 const { t } = useI18n();
 
@@ -198,6 +199,8 @@ function onFilesAdded(newFiles: File[]) {
   // Add files to the list — push synchronously so the 100ms deferred
   // mode check in afterAllFilesAdded sees the correct fileItems.length.
   // Data URL previews are generated asynchronously and filled in afterward.
+  const tasks: (() => Promise<void>)[] = [];
+
   newFiles.forEach((file) => {
     const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     rawFiles.value.push(file);
@@ -211,14 +214,16 @@ function onFilesAdded(newFiles: File[]) {
     };
     fileItems.value.push(item);
 
-    // Fill in preview asynchronously (non-blocking)
-    // Must look up from the reactive array — `item` is the raw object,
-    // not the Vue reactive proxy created after .push().
-    blobToDataUrl(file).then((dataUrl) => {
+    // Queue up the preview generation task
+    tasks.push(async () => {
+      const dataUrl = await blobToDataUrl(file);
       const reactiveItem = fileItems.value.find((f) => f.id === id);
       if (reactiveItem) reactiveItem.preview = dataUrl;
     });
   });
+
+  // Run preview generation in background with max 3 concurrent
+  runWithConcurrency(tasks, 3).catch(console.error);
 
   // Defer mode decision — wait for all on-change events to finish
   if (pendingModeCheck) clearTimeout(pendingModeCheck);

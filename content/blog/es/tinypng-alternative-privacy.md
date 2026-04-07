@@ -17,7 +17,7 @@ Pero si lo has usado lo suficiente, sabes que TinyPNG tiene limitaciones frustra
 
 La calidad de compresión de TinyPNG está bien, pero su versión gratuita puede ser un dolor de cabeza para usuarios frecuentes:
 
-- **Solo 500 compresiones gratis al mes** — después hay que pagar. La versión Pro empieza en $25/año.
+- **Solo 500 compresiones gratis al mes** — después hay que pagar para pasar a la versión Pro.
 - **Máximo 5 MB por archivo** — imágenes un poco más grandes no se pueden procesar.
 - **Sin conversión de formato** — ¿quieres convertir PNG a WebP? Imposible, necesitas otra herramienta.
 - **Sin redimensionamiento** — ¿necesitas cambiar el tamaño después de comprimir? Otra herramienta más.
@@ -32,25 +32,25 @@ PixelSwift es un compresor de imágenes de nueva generación que resuelve todos 
 - **Completamente gratis, uso ilimitado** — sin límite de 500/mes, comprime todo lo que quieras.
 - **Sin necesidad de registro** — abre la web y empieza a usarla.
 - **Hasta 50 MB por archivo** — 10 veces más que la versión gratuita de TinyPNG.
-- **Procesamiento por lotes** — comprime hasta 20 imágenes a la vez.
+- **Procesamiento por lotes** — comprime hasta 100 imágenes a la vez.
 - **Conversión de formato integrada** — convierte libremente entre JPG, PNG, WebP y AVIF sin salir de la herramienta.
 - **Redimensionamiento integrado** — comprime, convierte y cambia el tamaño, todo en un solo lugar.
 - **Procesamiento rápido** — la mayoría de imágenes se comprimen en menos de 1 segundo.
 
 ## Cara a cara: TinyPNG vs PixelSwift
 
-| Característica              | TinyPNG                          | PixelSwift                        |
-| --------------------------- | -------------------------------- | --------------------------------- |
-| **Cuota gratuita**          | 500 imágenes/mes                 | Ilimitado                         |
-| **Límite de tamaño**        | 5 MB (gratuito)                  | 50 MB                             |
-| **Procesamiento por lotes** | 20 imágenes                     | 20 imágenes                       |
-| **Formatos soportados**     | PNG, JPEG, WebP                  | JPG, PNG, WebP, BMP               |
-| **Conversión de formato**   | No                               | Sí (integrada)                    |
-| **Redimensionamiento**      | No                               | Sí (integrado)                    |
-| **Velocidad (10 MB)**       | 3-8 s (depende de la red)       | 1-3 s                             |
-| **Modo offline**            | No                               | Sí                                |
-| **Requiere registro**       | Para API sí                      | No, en absoluto                   |
-| **Precio**                  | Gratuito (limitado) / $25+/año   | 100 % gratuito                    |
+| Característica              | TinyPNG                           | PixelSwift          |
+| --------------------------- | --------------------------------- | ------------------- |
+| **Cuota gratuita**          | 500 imágenes/mes                  | Ilimitado           |
+| **Límite de tamaño**        | 5 MB (gratuito)                   | 50 MB               |
+| **Procesamiento por lotes** | 20 imágenes                       | 100 imágenes        |
+| **Formatos soportados**     | PNG, JPEG, WebP                   | JPG, PNG, WebP, BMP |
+| **Conversión de formato**   | No                                | Sí (integrada)      |
+| **Redimensionamiento**      | No                                | Sí (integrado)      |
+| **Velocidad (10 MB)**       | 3-8 s (depende de la red)         | 1-3 s               |
+| **Modo offline**            | No                                | Sí                  |
+| **Requiere registro**       | Para API sí                       | No, en absoluto     |
+| **Precio**                  | Gratuito (limitado) / Pro de pago | 100 % gratuito      |
 
 ### Comparativa de calidad de compresión
 
@@ -68,7 +68,7 @@ La diferencia en ratio de compresión es mínima — normalmente un 2-3 %. Pero 
 
 ### 1. Vendedores online
 
-Procesan cientos de fotos de producto cada semana, necesitan compresión rápida y tamaños uniformes. El procesamiento por lotes de PixelSwift maneja hasta 20 imágenes simultáneamente, y la [herramienta de redimensionamiento integrada](/es/resize-image) estandariza dimensiones para Amazon, eBay y otras plataformas.
+Procesan cientos de fotos de producto cada semana, necesitan compresión rápida y tamaños uniformes. El procesamiento por lotes de PixelSwift maneja hasta 100 imágenes simultáneamente, y la [herramienta de redimensionamiento integrada](/es/resize-image) estandariza dimensiones para Amazon, eBay y otras plataformas.
 
 ### 2. Diseñadores y equipos de marketing
 

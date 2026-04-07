@@ -3,6 +3,7 @@
  *
  * Manages file upload state, validation, and previews.
  */
+import { runWithConcurrency } from "~/utils/concurrency";
 
 export interface UploadFile {
   id: string;
@@ -24,12 +25,8 @@ export interface UploadConfig {
 
 const DEFAULT_CONFIG: UploadConfig = {
   maxFileSize: 50 * 1024 * 1024, // 50MB
-  maxFileCount: 20,
-  acceptFormats: [
-    "image/jpeg",
-    "image/png",
-    "image/webp",
-  ],
+  maxFileCount: 100,
+  acceptFormats: ["image/jpeg", "image/png", "image/webp"],
 };
 
 export function useFileUpload(config: Partial<UploadConfig> = {}) {
@@ -39,6 +36,7 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
   async function addFiles(rawFiles: File[]): Promise<void> {
     const remaining = finalConfig.maxFileCount - files.value.length;
     const toAdd = rawFiles.slice(0, remaining);
+    const tasks: (() => Promise<void>)[] = [];
 
     for (const file of toAdd) {
       const validation = validateFile(file);
@@ -47,18 +45,26 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
         continue;
       }
 
-      const preview = await blobToDataUrl(file);
+      const id = generateId();
       files.value.push({
-        id: generateId(),
+        id,
         file,
         name: file.name,
         size: file.size,
         format: getExtension(file.name),
-        preview,
+        preview: "",
         status: "pending",
         progress: 0,
       });
+
+      tasks.push(async () => {
+        const preview = await blobToDataUrl(file);
+        const item = files.value.find((f) => f.id === id);
+        if (item) item.preview = preview;
+      });
     }
+
+    runWithConcurrency(tasks, 3).catch(console.error);
   }
 
   function validateFile(file: File): { valid: boolean; error?: string } {
@@ -71,12 +77,7 @@ export function useFileUpload(config: Partial<UploadConfig> = {}) {
 
     // Check by extension
     const ext = getExtension(file.name).toLowerCase();
-    const validExtensions = [
-      "jpg",
-      "jpeg",
-      "png",
-      "webp",
-    ];
+    const validExtensions = ["jpg", "jpeg", "png", "webp"];
     if (!validExtensions.includes(ext)) {
       return { valid: false, error: `Unsupported format: ${ext}` };
     }

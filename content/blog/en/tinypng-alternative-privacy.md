@@ -17,7 +17,7 @@ But if you've used it enough, you know TinyPNG comes with some frustrating limit
 
 TinyPNG's compression quality is solid, but its free tier can be a headache for power users:
 
-- **Only 500 free compressions per month** — after that, you need to pay. Pro starts at $25/year.
+- **Only 500 free compressions per month** — after that, you need to pay for a Pro upgrade.
 - **5 MB max file size** — slightly larger images can't be processed at all.
 - **No format conversion** — want to convert PNG to WebP? Not possible, you'll need another tool.
 - **No resizing** — need to change dimensions after compressing? Yet another tool.
@@ -32,25 +32,25 @@ PixelSwift is a next-generation online image compressor that solves all of TinyP
 - **Completely free, unlimited usage** — no 500/month cap, compress as many as you want.
 - **No sign-up required** — open the page and start using it instantly.
 - **50 MB max file size** — 10x TinyPNG's free tier.
-- **Batch processing** — compress up to 20 images at once.
+- **Batch processing** — compress up to 100 images at once.
 - **Built-in format conversion** — convert freely between JPG, PNG, WebP, and AVIF without needing another tool.
 - **Built-in resizing** — compress, convert, and resize all in one place.
 - **Fast processing** — most images are compressed in under 1 second.
 
 ## Head-to-Head: TinyPNG vs PixelSwift
 
-| Feature                | TinyPNG                      | PixelSwift               |
-| ---------------------- | ---------------------------- | ------------------------ |
-| **Free Quota**         | 500 images/month             | Unlimited                |
-| **File Size Limit**    | 5 MB (free)                  | 50 MB                    |
-| **Batch Processing**   | 20 images                    | 20 images                |
-| **Supported Formats**  | PNG, JPEG, WebP              | JPG, PNG, WebP, BMP      |
-| **Format Conversion**  | No                           | Yes (built-in)           |
-| **Image Resizing**     | No                           | Yes (built-in)           |
-| **Speed (10 MB file)** | 3-8s (depends on network)    | 1-3s                     |
-| **Offline Capable**    | No                           | Yes                      |
-| **Sign-up Required**   | API requires it              | Not at all               |
-| **Cost**               | Free (limited) / $25+/yr Pro | 100% Free                |
+| Feature                | TinyPNG                   | PixelSwift          |
+| ---------------------- | ------------------------- | ------------------- |
+| **Free Quota**         | 500 images/month          | Unlimited           |
+| **File Size Limit**    | 5 MB (free)               | 50 MB               |
+| **Batch Processing**   | 20 images                 | 100 images          |
+| **Supported Formats**  | PNG, JPEG, WebP           | JPG, PNG, WebP, BMP |
+| **Format Conversion**  | No                        | Yes (built-in)      |
+| **Image Resizing**     | No                        | Yes (built-in)      |
+| **Speed (10 MB file)** | 3-8s (depends on network) | 1-3s                |
+| **Offline Capable**    | No                        | Yes                 |
+| **Sign-up Required**   | API requires it           | Not at all          |
+| **Cost**               | Free (limited) / Paid Pro | 100% Free           |
 
 ### Compression Quality Comparison
 
@@ -68,7 +68,7 @@ The difference in compression ratio is marginal — typically just 2-3%. But Pix
 
 ### 1. E-Commerce Sellers
 
-Processing hundreds of product photos weekly, needing fast compression and uniform sizing. PixelSwift's batch processing handles up to 20 images at once, and the [built-in resizer](/resize-image) standardizes dimensions for Amazon, eBay, Shopify, and other platforms.
+Processing hundreds of product photos weekly, needing fast compression and uniform sizing. PixelSwift's batch processing handles up to 100 images at once, and the [built-in resizer](/resize-image) standardizes dimensions for Amazon, eBay, Shopify, and other platforms.
 
 ### 2. Designers and Marketers
 

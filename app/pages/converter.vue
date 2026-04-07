@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { FileItem as BaseFileItem } from "~/components/common/FileList.vue";
+import { runWithConcurrency } from "~/utils/concurrency";
 
 interface FileItem extends BaseFileItem {
   outputFormat?: string;
@@ -98,20 +99,30 @@ function formatSize(bytes: number): string {
   return `${(bytes / (1024 * 1024)).toFixed(1)}MB`;
 }
 
-async function onFilesAdded(newFiles: File[]) {
+function onFilesAdded(newFiles: File[]) {
+  const tasks: (() => Promise<void>)[] = [];
+
   for (const file of newFiles) {
     const id = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
     rawFiles.value.push(file);
-    const preview = await blobToDataUrl(file);
+
     fileItems.value.push({
       id,
       name: file.name,
       originalSize: file.size,
       status: "pending",
       progress: 0,
-      preview,
+      preview: "",
+    });
+
+    tasks.push(async () => {
+      const dataUrl = await blobToDataUrl(file);
+      const reactiveItem = fileItems.value.find((f) => f.id === id);
+      if (reactiveItem) reactiveItem.preview = dataUrl;
     });
   }
+
+  runWithConcurrency(tasks, 3).catch(console.error);
 }
 
 async function onProcess() {

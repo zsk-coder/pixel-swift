@@ -1,6 +1,6 @@
 ---
-title: "Comment contourner la limite de 20 images de TinyPNG et compresser 100+ photos gratuitement"
-description: "Marre de la limite de 20 images de TinyPNG et du plafond de 5 Mo ? Voici comment contourner ces restrictions et compresser 100+ photos sans limites — gratuit, sans upload, sans inscription."
+title: "Comment contourner la limite de 20 images de TinyPNG et compresser 100 photos gratuitement"
+description: "Marre de la limite de 20 images de TinyPNG et du plafond de 5 Mo ? Voici comment contourner ces restrictions et compresser 100 photos sans limites — gratuit, sans upload, sans inscription."
 category: "tutorials"
 author: "PixelSwift Team"
 date: "2026-04-02"
@@ -9,7 +9,7 @@ cover: "/images/blog/bypass-tinypng-limits.webp"
 featured: true
 ---
 
-La semaine dernière, je devais compresser 87 photos de produits pour la boutique en ligne d'un client. J'ai tout balancé dans TinyPNG. 20 images traitées, et bam : **« Vous avez atteint votre limite. Passez à Pro pour 25 $/an. »**
+La semaine dernière, je devais compresser 87 photos de produits pour la boutique en ligne d'un client. J'ai tout balancé dans TinyPNG. 20 images traitées, et bam : **« Vous avez atteint votre limite. Passez à Pro. »**
 
 Bon, j'en reglisse 20 de plus. Puis encore 20. Au bout de quatre allers-retours, j'en avais ras le bol — je suis parti chercher autre chose.
 
@@ -19,12 +19,12 @@ Si vous aussi vous avez vécu ça — la limite de 20 images par lot, le plafond
 
 C'est pas que TinyPNG. Quasiment tous les compresseurs d'images « gratuits » jouent le même petit jeu :
 
-| Outil             | Limite gratuite      | Taille max. | Comment ils vous coincent |
-| ----------------- | -------------------- | ----------- | ------------------------- |
-| **TinyPNG**       | 20 images par lot    | 5 Mo        | Pro à 25 $/an             |
-| **iLoveIMG**      | 15 images par lot    | Variable    | Abo à 4 $/mois            |
-| **Optimizilla**   | 20 images            | 10 Mo       | Upgrade Pro               |
-| **Compressor.io** | 1 image à la fois    | 10 Mo       | Une par une, point barre  |
+| Outil             | Limite gratuite       | Taille max. | Comment ils vous coincent |
+| ----------------- | --------------------- | ----------- | ------------------------- |
+| **TinyPNG**       | 20 images par lot     | 5 Mo        | Pro payant                |
+| **iLoveIMG**      | 15 images par lot     | Variable    | Abo à 4 $/mois            |
+| **Optimizilla**   | 20 images             | 10 Mo       | Upgrade Pro               |
+| **Compressor.io** | 1 image à la fois     | 10 Mo       | Une par une, point barre  |
 | **ShortPixel**    | 100 par mois au total | 10 Mo       | 4,99 $/mois               |
 
 Le principe est toujours le même : vous envoyez vos images sur leur site, ils les traitent de leur côté, puis vous les renvoient. Plus d'images = plus ça leur coûte = et devinez qui paye.
@@ -44,7 +44,7 @@ Concrètement, ça change quoi ?
 - Zéro inscription, zéro login, zéro mails « vous avez utilisé 80 % de votre quota »
 - **Beaucoup plus rapide** — pas de temps perdu en upload et téléchargement
 
-## Mode d'emploi : compresser 100+ images d'un coup
+## Mode d'emploi : compresser 100 images d'un coup
 
 ### 1. Ouvrir la page
 
@@ -72,14 +72,14 @@ Mes 87 photos de produits ? Environ 45 secondes chrono. À comparer avec cinq al
 
 Question légitime — pas question de changer d'outil pour se retrouver avec de la bouillie de pixels. J'ai fait passer 30 images de test dans les deux outils (10 photos, 10 captures d'écran, 10 visuels graphiques) :
 
-| Critère                 | TinyPNG       | PixelSwift                | Verdict            |
-| ----------------------- | ------------- | ------------------------- | ------------------ |
-| **Réduction JPEG moy.** | 68 %          | 65 %                      | TinyPNG +3 %       |
-| **Réduction PNG moy.**  | 72 %          | 70 %                      | TinyPNG +2 %       |
-| **Limite par lot**      | 20            | Illimitée                 | PixelSwift         |
-| **Taille max. fichier** | 5 Mo (gratuit)| 50 Mo                     | PixelSwift         |
-| **Vitesse (30 images)** | ~25 s         | ~8 s                      | PixelSwift         |
-| **Confidentialité**     | Upload requis | Les images restent sur le PC | PixelSwift      |
+| Critère                 | TinyPNG        | PixelSwift                   | Verdict      |
+| ----------------------- | -------------- | ---------------------------- | ------------ |
+| **Réduction JPEG moy.** | 68 %           | 65 %                         | TinyPNG +3 % |
+| **Réduction PNG moy.**  | 72 %           | 70 %                         | TinyPNG +2 % |
+| **Limite par lot**      | 20             | 100                          | PixelSwift   |
+| **Taille max. fichier** | 5 Mo (gratuit) | 50 Mo                        | PixelSwift   |
+| **Vitesse (30 images)** | ~25 s          | ~8 s                         | PixelSwift   |
+| **Confidentialité**     | Upload requis  | Les images restent sur le PC | PixelSwift   |
 
 Je vais être honnête : TinyPNG fait 2-3 % mieux en taille brute. Mais soyons sérieux — à l'œil nu, la différence est invisible. Ce qui compte vraiment : **est-ce que je peux envoyer mes 87 photos d'une traite sans m'arracher les cheveux avec des lots ?**
 
