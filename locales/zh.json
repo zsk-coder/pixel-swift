@@ -145,6 +145,28 @@
       "a5": "可以！PixelSwift 支持一次批量转换最多 100 张图片。只需拖放所有文件，选择输出格式，系统会同时处理。",
       "q6": "如何在转换时保留透明背景？",
       "a6": "要保留透明度，请转换为 PNG、WebP 或 AVIF 格式——三者都支持透明背景。JPG 不支持透明，会将透明区域替换为白色背景。"
+    },
+    "guide": {
+      "stepsTitle": "3 步完成图片格式转换",
+      "step1Title": "添加图片",
+      "step1Desc": "拖放文件或点击浏览，支持 JPG、PNG、BMP、GIF、TIFF、AVIF、WebP，一次最多 100 张。",
+      "step2Title": "选择目标格式",
+      "step2Desc": "照片选 JPG，透明图选 PNG，网页用 WebP 最省空间，追求极致压缩选 AVIF。",
+      "step3Title": "立即下载",
+      "step3Desc": "点击处理后逐个下载或一键打包为 ZIP 文件，几秒钟搞定。",
+      "casesTitle": "什么时候需要转换图片格式",
+      "case1Icon": "language",
+      "case1Title": "优化网站加载",
+      "case1Desc": "把 PNG、BMP 转成 WebP 或 AVIF，让网站加载更快。文件越小，用户体验越好，Google 排名也越高。",
+      "case2Icon": "palette",
+      "case2Title": "保留透明背景",
+      "case2Desc": "需要透明背景？转换为 PNG、WebP 或 AVIF。适合 Logo、产品抠图和设计素材。",
+      "case3Icon": "share",
+      "case3Title": "方便社交分享",
+      "case3Desc": "把 iPhone 的 HEIC 照片转成 JPG，在微信、微博、小红书等平台都能正常发送和显示。",
+      "case4Icon": "print",
+      "case4Title": "准备打印文件",
+      "case4Desc": "把网络图片转成高画质 JPG 或 PNG 用于打印。确保传单、海报、名片打印出来清晰锐利。"
     }
   },
   "compressor": {
@@ -197,6 +219,28 @@
       "a5": "当然可以！大多数邮箱附件限制为 25MB。使用 PixelSwift 将图片质量设为 70-80% 即可大幅减小照片体积，同时在邮件中依然清晰。",
       "q6": "PixelSwift 和 TinyPNG 相比哪个更好？",
       "a6": "两者压缩效果都很出色。关键区别：TinyPNG 免费版每月限制 500 张图片，而 PixelSwift 完全没有限制——无限量压缩、100% 免费、无需注册，还能一次批量处理 100 张图片。"
+    },
+    "guide": {
+      "stepsTitle": "3 步完成图片压缩",
+      "step1Title": "添加图片",
+      "step1Desc": "拖放文件或点击浏览，支持 JPG、PNG、WebP、AVIF，一次可压缩 100 张图片。",
+      "step2Title": "选择压缩级别",
+      "step2Desc": "拖动质量滑块，或选择预设：推荐压缩（缩小 60%）、极致压缩（缩小 80%）、接近无损等。",
+      "step3Title": "下载优化后的图片",
+      "step3Desc": "查看压缩前后对比效果，逐个下载或一键打包下载 ZIP。",
+      "casesTitle": "图片压缩的常见使用场景",
+      "case1Icon": "language",
+      "case1Title": "加速网站加载",
+      "case1Desc": "图片体积缩小高达 90%，页面加载更快。网站速度越快，Google 排名越高，访客停留时间越长。",
+      "case2Icon": "mail",
+      "case2Title": "压缩邮件附件",
+      "case2Desc": "压缩照片以符合邮件大小限制（Gmail、Outlook 限制 25MB）。发送清晰图片，不再被退信。",
+      "case3Icon": "smartphone",
+      "case3Title": "释放手机空间",
+      "case3Desc": "批量压缩手机相册，释放几个 GB 的存储空间。保留所有照片，只需原来几分之一的空间。",
+      "case4Icon": "shopping_cart",
+      "case4Title": "优化商品图片",
+      "case4Desc": "为淘宝、京东、拼多多优化商品图。加载更快的商品页 = 更多转化 = 更满意的顾客。"
     }
   },
   "resizer": {
@@ -244,6 +288,28 @@
       "a5": "可以。启用\"锁定宽高比\"功能（默认开启）——当您修改宽度时，高度会自动按比例调整，防止任何拉伸或压缩变形。",
       "q6": "打印用什么图片分辨率（DPI）？",
       "a6": "打印照片时，图片需要足够大——大约每英寸需要 300 像素。例如打印标准 4×6 英寸照片，至少需要 1200×1800 像素的图片。用于屏幕和网站展示的话，较小的尺寸就够了。"
+    },
+    "guide": {
+      "stepsTitle": "3 步完成图片尺寸调整",
+      "step1Title": "上传图片",
+      "step1Desc": "拖放文件或点击选择，支持 JPG、PNG、WebP、AVIF，单文件最大 50MB。",
+      "step2Title": "设置尺寸",
+      "step2Desc": "输入精确像素值、使用百分比缩放，或选择预设（如 1:1 正方形、16:9 宽屏）。",
+      "step3Title": "下载调整后的图片",
+      "step3Desc": "点击下载即可保存。下载前还可以旋转或翻转图片。",
+      "casesTitle": "适配每个平台的完美尺寸",
+      "case1Icon": "photo_camera",
+      "case1Title": "小红书 & 抖音",
+      "case1Desc": "帖子用 1080×1080，视频封面用 1080×1920。每次上传都是最佳尺寸，不再被平台裁切。",
+      "case2Icon": "monitor",
+      "case2Title": "网站和博客头图",
+      "case2Desc": "将首屏大图和横幅调整到网站要求的精确尺寸。告别拉伸模糊的图片。",
+      "case3Icon": "badge",
+      "case3Title": "证件照和护照照片",
+      "case3Desc": "按照护照、签证要求调整照片尺寸。设置精确的像素值，满足各类证件要求。",
+      "case4Icon": "storefront",
+      "case4Title": "电商商品图",
+      "case4Desc": "按平台标准调整商品图——淘宝（800×800）、京东（800×800）、拼多多。统一尺寸更显专业。"
     }
   },
   "common": {

@@ -1643,6 +1643,9 @@ const { isFetching: isFetchingExtensionImage } = useExtensionImage(
         </div>
       </template>
 
+      <!-- Guide Section (SEO content) -->
+      <ToolGuide i18n-prefix="compressor.guide" :steps="3" :cases="4" />
+
       <!-- FAQ Section -->
       <ToolFaq i18n-prefix="compressor.faq" :count="6" />
     </div>
