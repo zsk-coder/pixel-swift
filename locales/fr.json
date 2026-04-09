@@ -120,6 +120,28 @@
       "a5": "Oui ! PixelSwift supporte la conversion par lots jusqu'à 100 images. Glissez-déposez tous vos fichiers et sélectionnez le format de sortie.",
       "q6": "Comment convertir des images en gardant la transparence ?",
       "a6": "Pour garder la transparence, convertissez en format PNG, WebP ou AVIF — tous les trois supportent les fonds transparents. JPG ne supporte pas la transparence."
+    },
+    "guide": {
+      "stepsTitle": "Comment convertir des images en 3 étapes",
+      "step1Title": "Ajoutez vos images",
+      "step1Desc": "Glissez-déposez vos fichiers ou cliquez pour parcourir. Compatible JPG, PNG, BMP, GIF, TIFF, AVIF et WebP — jusqu'à 100 fichiers.",
+      "step2Title": "Choisissez le format de sortie",
+      "step2Desc": "Sélectionnez votre format cible : JPG pour les photos, PNG pour les graphiques transparents, WebP pour le web ou AVIF pour une compression maximale.",
+      "step3Title": "Téléchargez instantanément",
+      "step3Desc": "Cliquez sur Traiter et téléchargez vos images converties individuellement ou en fichier ZIP.",
+      "casesTitle": "Quand convertir les formats d'image",
+      "case1Icon": "language",
+      "case1Title": "Optimiser pour les sites web",
+      "case1Desc": "Convertissez PNG et BMP en WebP ou AVIF pour accélérer votre site web. Des fichiers plus légers signifient une meilleure expérience utilisateur et un meilleur classement Google.",
+      "case2Icon": "palette",
+      "case2Title": "Conserver la transparence",
+      "case2Desc": "Besoin d'un fond transparent ? Convertissez en PNG, WebP ou AVIF. Parfait pour les logos, les photos de produits détourées et les overlays.",
+      "case3Icon": "share",
+      "case3Title": "Partager sur les réseaux sociaux",
+      "case3Desc": "Convertissez les photos HEIC de votre iPhone en JPG pour qu'elles fonctionnent partout — Instagram, Facebook, Twitter, email et plus.",
+      "case4Icon": "print",
+      "case4Title": "Préparer pour l'impression",
+      "case4Desc": "Convertissez des images web en JPG ou PNG haute qualité pour l'impression. Des flyers, affiches et cartes de visite nets et professionnels."
     }
   },
   "compressor": {
@@ -172,6 +194,28 @@
       "a5": "Oui ! La plupart des fournisseurs email limitent les pièces jointes à 25 Mo. Réglez la qualité à 70-80% pour réduire significativement les photos.",
       "q6": "PixelSwift est-il meilleur que TinyPNG ?",
       "a6": "Les deux produisent d'excellents résultats. La différence clé : la version gratuite de TinyPNG est limitée à 500 images par mois, tandis que PixelSwift n'a aucune limite — compression illimitée, 100% gratuit, sans inscription, et vous pouvez traiter jusqu'à 100 images à la fois par lots."
+    },
+    "guide": {
+      "stepsTitle": "Comment compresser des images en 3 étapes",
+      "step1Title": "Ajoutez vos images",
+      "step1Desc": "Glissez-déposez vos fichiers ou cliquez pour parcourir. Compatible JPG, PNG, WebP et AVIF — compressez jusqu'à 100 images à la fois.",
+      "step2Title": "Réglez le niveau de qualité",
+      "step2Desc": "Utilisez le curseur ou choisissez un préréglage : Recommandé (60% plus petit), Maximum (80% plus petit) ou Quasi sans perte.",
+      "step3Title": "Téléchargez les fichiers optimisés",
+      "step3Desc": "Comparez l'avant et l'après, puis téléchargez un par un ou tous en ZIP.",
+      "casesTitle": "Utilisations populaires de la compression d'images",
+      "case1Icon": "language",
+      "case1Title": "Accélérer votre site web",
+      "case1Desc": "Réduisez la taille des images jusqu'à 90% pour des pages qui chargent plus vite. Des pages plus rapides sont mieux classées sur Google et retiennent les visiteurs plus longtemps.",
+      "case2Icon": "mail",
+      "case2Title": "Réduire les pièces jointes email",
+      "case2Desc": "Compressez vos photos pour respecter les limites de taille (25 Mo sur Gmail, Outlook). Envoyez des images de qualité sans rejet.",
+      "case3Icon": "smartphone",
+      "case3Title": "Libérer l'espace du téléphone",
+      "case3Desc": "Compressez votre galerie photo pour libérer des gigaoctets de stockage. Gardez toutes vos photos en utilisant une fraction de l'espace.",
+      "case4Icon": "shopping_cart",
+      "case4Title": "Optimiser les photos produits",
+      "case4Desc": "Compressez les images produits pour les boutiques en ligne. Des pages produits plus rapides signifient plus de ventes et des clients satisfaits."
     }
   },
   "resizer": {
@@ -219,6 +263,28 @@
       "a5": "Oui. Activez \"Verrouiller les proportions\" (activé par défaut) — lorsque vous modifiez la largeur, la hauteur s'ajuste automatiquement.",
       "q6": "Quelle résolution d'image (DPI) utiliser pour l'impression ?",
       "a6": "Pour imprimer des photos, votre image doit être assez grande — environ 300 pixels par pouce d'impression. Par exemple, pour une photo standard 4×6 pouces, il faut au moins une image de 1200×1800 pixels."
+    },
+    "guide": {
+      "stepsTitle": "Comment redimensionner des images en 3 étapes",
+      "step1Title": "Téléchargez votre image",
+      "step1Desc": "Glissez-déposez votre fichier ou cliquez pour sélectionner. Compatible JPG, PNG, WebP et AVIF jusqu'à 50 Mo.",
+      "step2Title": "Définissez les dimensions",
+      "step2Desc": "Entrez des valeurs exactes en pixels, utilisez le redimensionnement en pourcentage ou choisissez un préréglage comme 1:1 Carré ou 16:9 Panoramique.",
+      "step3Title": "Téléchargez l'image redimensionnée",
+      "step3Desc": "Cliquez sur Télécharger et votre image est sauvegardée instantanément. Vous pouvez la pivoter ou la retourner avant.",
+      "casesTitle": "Tailles parfaites pour chaque plateforme",
+      "case1Icon": "photo_camera",
+      "case1Title": "Instagram et TikTok",
+      "case1Desc": "1080×1080 pour les publications, 1080×1920 pour les Stories et Reels. Des uploads parfaits au pixel près à chaque fois.",
+      "case2Icon": "monitor",
+      "case2Title": "En-têtes de site et blog",
+      "case2Desc": "Ajustez les images hero et bannières aux dimensions exactes de votre site. Évitez les images étirées ou floues.",
+      "case3Icon": "badge",
+      "case3Title": "Photos d'identité et passeport",
+      "case3Desc": "Ajustez les photos aux exigences de passeport ou visa. Des dimensions en pixels précises pour les documents officiels.",
+      "case4Icon": "storefront",
+      "case4Title": "Annonces e-commerce",
+      "case4Desc": "Ajustez les photos produits aux standards des marketplaces : Amazon (2000×2000), eBay (1600×1600). Des tailles uniformes pour un aspect professionnel."
     }
   },
   "common": {

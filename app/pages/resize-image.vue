@@ -1066,6 +1066,9 @@ const { isFetching: isFetchingExtensionImage } =
         </div>
       </template>
 
+      <!-- Guide Section (SEO content) -->
+      <ToolGuide i18n-prefix="resizer.guide" :steps="3" :cases="4" />
+
       <!-- FAQ Section -->
       <ToolFaq i18n-prefix="resizer.faq" :count="6" />
     </div>

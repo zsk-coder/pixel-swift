@@ -120,6 +120,28 @@
       "a5": "Sim! O PixelSwift suporta conversão em lote de até 100 imagens. Arraste e solte todos os arquivos e selecione o formato de saída.",
       "q6": "Como converter imagens mantendo a transparência?",
       "a6": "Para manter a transparência, converta para formato PNG, WebP ou AVIF — os três suportam fundos transparentes. JPG não suporta transparência."
+    },
+    "guide": {
+      "stepsTitle": "Como converter imagens em 3 passos",
+      "step1Title": "Adicione suas imagens",
+      "step1Desc": "Arraste e solte arquivos ou clique para navegar. Suporta JPG, PNG, BMP, GIF, TIFF, AVIF e WebP — até 100 arquivos.",
+      "step2Title": "Escolha o formato de saída",
+      "step2Desc": "Selecione seu formato alvo: JPG para fotos, PNG para gráficos com transparência, WebP para web ou AVIF para compressão máxima.",
+      "step3Title": "Baixe instantaneamente",
+      "step3Desc": "Clique em Processar e baixe suas imagens convertidas individualmente ou como arquivo ZIP.",
+      "casesTitle": "Quando converter formatos de imagem",
+      "case1Icon": "language",
+      "case1Title": "Otimizar para sites",
+      "case1Desc": "Converta PNG e BMP para WebP ou AVIF para carregar seu site mais rápido. Arquivos menores significam melhor experiência e melhor ranking no Google.",
+      "case2Icon": "palette",
+      "case2Title": "Manter transparência",
+      "case2Desc": "Precisa de fundo transparente? Converta para PNG, WebP ou AVIF. Perfeito para logos, fotos recortadas de produtos e overlays de design.",
+      "case3Icon": "share",
+      "case3Title": "Compartilhar nas redes sociais",
+      "case3Desc": "Converta fotos HEIC do iPhone para JPG para funcionarem em qualquer lugar — Instagram, Facebook, Twitter, email e mais.",
+      "case4Icon": "print",
+      "case4Title": "Preparar para impressão",
+      "case4Desc": "Converta imagens da web para JPG ou PNG de alta qualidade para impressão. Folhetos, pôsteres e cartões de visita nítidos e profissionais."
     }
   },
   "compressor": {
@@ -172,6 +194,28 @@
       "a5": "Sim! A maioria dos provedores de e-mail limita anexos a 25MB. Configure a qualidade em 70-80% para reduzir as fotos significativamente.",
       "q6": "O PixelSwift é melhor que o TinyPNG?",
       "a6": "Ambos produzem excelentes resultados. A diferença chave: a versão gratuita do TinyPNG limita a 500 imagens por mês, enquanto o PixelSwift não tem limite nenhum — compressão ilimitada, 100% grátis, sem cadastro, e você pode processar até 100 imagens de uma vez em lote."
+    },
+    "guide": {
+      "stepsTitle": "Como comprimir imagens em 3 passos",
+      "step1Title": "Adicione suas imagens",
+      "step1Desc": "Arraste e solte arquivos ou clique para navegar. Suporta JPG, PNG, WebP e AVIF — comprima até 100 imagens de uma vez.",
+      "step2Title": "Ajuste o nível de qualidade",
+      "step2Desc": "Use o controle deslizante ou escolha um predefinido: Recomendado (60% menor), Máximo (80% menor) ou Quase sem perda.",
+      "step3Title": "Baixe arquivos otimizados",
+      "step3Desc": "Compare o antes e depois, então baixe um por um ou todos como ZIP.",
+      "casesTitle": "Usos populares da compressão de imagens",
+      "case1Icon": "language",
+      "case1Title": "Acelerar seu site",
+      "case1Desc": "Reduza o tamanho das imagens em até 90% para páginas que carregam mais rápido. Páginas mais rápidas ranqueiam melhor no Google e retêm mais visitantes.",
+      "case2Icon": "mail",
+      "case2Title": "Reduzir anexos de email",
+      "case2Desc": "Comprima fotos para caber nos limites de tamanho do email (25MB no Gmail, Outlook). Envie imagens de qualidade sem rejeição.",
+      "case3Icon": "smartphone",
+      "case3Title": "Liberar espaço do celular",
+      "case3Desc": "Comprima sua galeria do celular para liberar gigabytes de armazenamento. Mantenha todas as fotos usando uma fração do espaço.",
+      "case4Icon": "shopping_cart",
+      "case4Title": "Otimizar fotos de produtos",
+      "case4Desc": "Comprima imagens de produtos para lojas online. Páginas de produtos mais rápidas significam mais vendas e clientes mais satisfeitos."
     }
   },
   "resizer": {
@@ -219,6 +263,28 @@
       "a5": "Sim. Ative \"Bloquear proporção\" (ativado por padrão) — quando você altera a largura, a altura se ajusta automaticamente.",
       "q6": "Qual resolução de imagem (DPI) devo usar para impressão?",
       "a6": "Para imprimir fotos, sua imagem precisa ser grande o suficiente — cerca de 300 pixels por polegada de impressão. Por exemplo, para uma foto padrão de 4×6 polegadas, você precisa de pelo menos uma imagem de 1200×1800 pixels."
+    },
+    "guide": {
+      "stepsTitle": "Como redimensionar imagens em 3 passos",
+      "step1Title": "Faça upload da sua imagem",
+      "step1Desc": "Arraste e solte seu arquivo ou clique para selecionar. Suporta JPG, PNG, WebP e AVIF até 50MB.",
+      "step2Title": "Defina as dimensões",
+      "step2Desc": "Digite valores exatos em pixels, use escala percentual ou escolha um predefinido como 1:1 Quadrado ou 16:9 Widescreen.",
+      "step3Title": "Baixe a imagem redimensionada",
+      "step3Desc": "Clique em Baixar e sua imagem é salva instantaneamente. Gire ou espelhe antes de baixar, se necessário.",
+      "casesTitle": "Tamanhos perfeitos para cada plataforma",
+      "case1Icon": "photo_camera",
+      "case1Title": "Instagram e TikTok",
+      "case1Desc": "1080×1080 para posts do feed, 1080×1920 para Stories e Reels. Uploads com pixels perfeitos todas as vezes.",
+      "case2Icon": "monitor",
+      "case2Title": "Cabeçalhos de site e blog",
+      "case2Desc": "Ajuste imagens hero e banners para as dimensões exatas do seu site. Evite imagens esticadas ou borradas.",
+      "case3Icon": "badge",
+      "case3Title": "Fotos de identidade e passaporte",
+      "case3Desc": "Ajuste fotos às exigências de passaporte ou visto. Defina dimensões precisas em pixels para documentos oficiais.",
+      "case4Icon": "storefront",
+      "case4Title": "Anúncios de e-commerce",
+      "case4Desc": "Ajuste fotos de produtos aos padrões do marketplace: Amazon (2000×2000), eBay (1600×1600). Tamanhos consistentes transmitem profissionalismo."
     }
   },
   "common": {

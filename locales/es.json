@@ -120,6 +120,28 @@
       "a5": "¡Sí! PixelSwift soporta conversión por lotes de hasta 100 imágenes a la vez. Simplemente arrastre y suelte todos sus archivos y seleccione el formato de salida.",
       "q6": "¿Cómo convierto imágenes manteniendo la transparencia?",
       "a6": "Para mantener la transparencia, convierta a formato PNG, WebP o AVIF — los tres soportan fondos transparentes. JPG no soporta transparencia y reemplazará las áreas transparentes con fondo blanco."
+    },
+    "guide": {
+      "stepsTitle": "Cómo convertir imágenes en 3 pasos",
+      "step1Title": "Añade tus imágenes",
+      "step1Desc": "Arrastra y suelta archivos o haz clic para explorar. Compatible con JPG, PNG, BMP, GIF, TIFF, AVIF y WebP — hasta 100 archivos.",
+      "step2Title": "Elige el formato de salida",
+      "step2Desc": "Selecciona tu formato objetivo: JPG para fotos, PNG para gráficos con transparencia, WebP para la web o AVIF para máxima compresión.",
+      "step3Title": "Descarga al instante",
+      "step3Desc": "Haz clic en Procesar y descarga tus imágenes convertidas individualmente o como archivo ZIP.",
+      "casesTitle": "Cuándo convertir formatos de imagen",
+      "case1Icon": "language",
+      "case1Title": "Optimizar para sitios web",
+      "case1Desc": "Convierte PNG y BMP a WebP o AVIF para que tu sitio web cargue más rápido. Archivos más pequeños significan mejor experiencia y mejor posicionamiento en Google.",
+      "case2Icon": "palette",
+      "case2Title": "Mantener la transparencia",
+      "case2Desc": "¿Necesitas fondo transparente? Convierte a PNG, WebP o AVIF. Perfecto para logos, fotos de productos recortadas y diseños.",
+      "case3Icon": "share",
+      "case3Title": "Compartir en redes sociales",
+      "case3Desc": "Convierte fotos HEIC de tu iPhone a JPG para que funcionen en todas partes — Instagram, Facebook, Twitter, email y más.",
+      "case4Icon": "print",
+      "case4Title": "Preparar para impresión",
+      "case4Desc": "Convierte imágenes web a JPG o PNG de alta calidad para impresión. Folletos, pósters y tarjetas de visita nítidos y profesionales."
     }
   },
   "compressor": {
@@ -172,6 +194,28 @@
       "a5": "¡Sí! La mayoría de proveedores de correo limitan los adjuntos a 25MB. Use PixelSwift con calidad al 70-80% para reducir las fotos significativamente.",
       "q6": "¿Es PixelSwift mejor que TinyPNG para comprimir?",
       "a6": "Ambos producen excelentes resultados. La diferencia clave: la versión gratuita de TinyPNG te limita a 500 imágenes al mes, mientras que PixelSwift no tiene límites — compresión ilimitada, 100% gratis, sin registro, y puedes procesar hasta 100 imágenes a la vez por lotes."
+    },
+    "guide": {
+      "stepsTitle": "Cómo comprimir imágenes en 3 pasos",
+      "step1Title": "Añade tus imágenes",
+      "step1Desc": "Arrastra y suelta archivos o haz clic para explorar. Compatible con JPG, PNG, WebP y AVIF — comprime hasta 100 imágenes a la vez.",
+      "step2Title": "Ajusta el nivel de calidad",
+      "step2Desc": "Usa el control deslizante o elige un preajuste: Recomendado (60% más pequeño), Máximo (80% más pequeño) o Casi sin pérdida.",
+      "step3Title": "Descarga archivos optimizados",
+      "step3Desc": "Compara el antes y después, luego descarga uno por uno o todos como ZIP.",
+      "casesTitle": "Usos populares de la compresión de imágenes",
+      "case1Icon": "language",
+      "case1Title": "Acelerar tu sitio web",
+      "case1Desc": "Reduce el tamaño de las imágenes hasta un 90% para que las páginas carguen más rápido. Páginas más rápidas posicionan mejor en Google y retienen más visitantes.",
+      "case2Icon": "mail",
+      "case2Title": "Reducir adjuntos de email",
+      "case2Desc": "Comprime fotos para cumplir los límites de tamaño del correo (25MB en Gmail, Outlook). Envía imágenes de calidad sin rechazos.",
+      "case3Icon": "smartphone",
+      "case3Title": "Liberar espacio del móvil",
+      "case3Desc": "Comprime tu galería del móvil para liberar gigabytes de almacenamiento. Conserva todas tus fotos usando una fracción del espacio.",
+      "case4Icon": "shopping_cart",
+      "case4Title": "Optimizar fotos de productos",
+      "case4Desc": "Comprime imágenes de productos para tiendas online. Páginas de productos más rápidas significan más ventas y clientes más satisfechos."
     }
   },
   "resizer": {
@@ -219,6 +263,28 @@
       "a5": "Sí. Active \"Bloquear proporción\" (activado por defecto) — cuando cambie el ancho, la altura se ajusta automáticamente para mantener las proporciones originales.",
       "q6": "¿Qué resolución de imagen (DPI) debo usar para imprimir?",
       "a6": "Para imprimir fotos, su imagen necesita ser lo suficientemente grande — aproximadamente 300 píxeles por pulgada de impresión. Por ejemplo, para imprimir una foto estándar de 4×6 pulgadas, necesita al menos una imagen de 1200×1800 píxeles."
+    },
+    "guide": {
+      "stepsTitle": "Cómo redimensionar imágenes en 3 pasos",
+      "step1Title": "Sube tu imagen",
+      "step1Desc": "Arrastra y suelta tu archivo o haz clic para seleccionarlo. Compatible con JPG, PNG, WebP y AVIF hasta 50MB.",
+      "step2Title": "Establece las dimensiones",
+      "step2Desc": "Introduce valores exactos en píxeles, usa escalado porcentual o elige un preajuste como 1:1 Cuadrado o 16:9 Panorámico.",
+      "step3Title": "Descarga la imagen redimensionada",
+      "step3Desc": "Haz clic en Descargar y tu imagen redimensionada se guarda al instante. Rótala o voltéala antes si lo necesitas.",
+      "casesTitle": "Tamaños perfectos para cada plataforma",
+      "case1Icon": "photo_camera",
+      "case1Title": "Instagram y TikTok",
+      "case1Desc": "1080×1080 para publicaciones del feed, 1080×1920 para Stories y Reels. Subidas con píxeles perfectos cada vez.",
+      "case2Icon": "monitor",
+      "case2Title": "Cabeceras de web y blog",
+      "case2Desc": "Ajusta imágenes hero y banners a las dimensiones exactas que tu sitio requiere. Evita imágenes estiradas o borrosas.",
+      "case3Icon": "badge",
+      "case3Title": "Fotos de identidad y pasaporte",
+      "case3Desc": "Ajusta fotos a los requisitos exactos de pasaporte o visa. Dimensiones precisas en píxeles para documentos oficiales.",
+      "case4Icon": "storefront",
+      "case4Title": "Listados de e-commerce",
+      "case4Desc": "Ajusta fotos de productos a estándares del marketplace: Amazon (2000×2000), eBay (1600×1600). Tamaños consistentes lucen profesionales."
     }
   },
   "common": {

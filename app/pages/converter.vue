@@ -672,6 +672,11 @@ const { isFetching: isFetchingExtensionImage } =
           </div>
         </div>
       </div>
+      <!-- Guide Section (SEO content) -->
+      <ToolGuide i18n-prefix="converter.guide" :steps="3" :cases="4" />
+
+      <!-- FAQ Section -->
+      <ToolFaq i18n-prefix="converter.faq" :count="6" />
     </div>
 
     <!-- Mobile: fixed bottom bar -->
@@ -700,8 +705,5 @@ const { isFetching: isFetchingExtensionImage } =
         }}
       </ElButton>
     </div>
-
-    <!-- FAQ Section -->
-    <ToolFaq i18n-prefix="converter.faq" :count="6" />
   </div>
 </template>

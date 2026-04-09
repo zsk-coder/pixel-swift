@@ -145,6 +145,28 @@
       "a5": "Yes! PixelSwift supports batch conversion of up to 100 images at once. Simply drag and drop all your files, select the output format, and they'll be processed simultaneously.",
       "q6": "How do I convert images while keeping transparency?",
       "a6": "To keep transparency, convert to PNG, WebP, or AVIF format — all three support transparent backgrounds. JPG does not support transparency and will replace transparent areas with a white background."
+    },
+    "guide": {
+      "stepsTitle": "How to Convert Images in 3 Steps",
+      "step1Title": "Add Your Images",
+      "step1Desc": "Drag and drop files or click to browse. Supports JPG, PNG, BMP, GIF, TIFF, AVIF, and WebP — up to 100 files at once.",
+      "step2Title": "Choose Output Format",
+      "step2Desc": "Pick your target format: JPG for photos, PNG for graphics with transparency, WebP for the web, or AVIF for maximum compression.",
+      "step3Title": "Download Instantly",
+      "step3Desc": "Click Process and download your converted images individually or as a ZIP file. Done in seconds.",
+      "casesTitle": "When to Convert Image Formats",
+      "case1Icon": "language",
+      "case1Title": "Optimize for Websites",
+      "case1Desc": "Convert PNG and BMP to WebP or AVIF to make your website load faster. Smaller files mean better user experience and higher Google rankings.",
+      "case2Icon": "palette",
+      "case2Title": "Keep Transparency",
+      "case2Desc": "Need a transparent background? Convert to PNG, WebP, or AVIF. Perfect for logos, product photos with cutouts, and design overlays.",
+      "case3Icon": "share",
+      "case3Title": "Share on Social Media",
+      "case3Desc": "Convert HEIC photos from your iPhone to JPG so they work everywhere — Instagram, Facebook, Twitter, email, and more.",
+      "case4Icon": "print",
+      "case4Title": "Prepare for Print",
+      "case4Desc": "Convert web images to high-quality JPG or PNG for printing. Ensure your flyers, posters, and business cards look sharp and professional."
     }
   },
   "compressor": {
@@ -197,6 +219,28 @@
       "a5": "Yes! Most email providers limit attachments to 25MB. Use PixelSwift to compress your images to a smaller size — set quality to 70-80% to reduce photos significantly while keeping them looking great in emails.",
       "q6": "Is PixelSwift better than TinyPNG for compression?",
       "a6": "Both produce excellent results. The key difference: TinyPNG's free tier limits you to 500 images per month, while PixelSwift has zero limits — unlimited compression, 100% free, no sign-up required, and you can batch process up to 100 images at once."
+    },
+    "guide": {
+      "stepsTitle": "How to Compress Images in 3 Steps",
+      "step1Title": "Add Your Images",
+      "step1Desc": "Drag and drop files or click to browse. Supports JPG, PNG, WebP, and AVIF — compress up to 100 images at once.",
+      "step2Title": "Set Quality Level",
+      "step2Desc": "Use the slider or choose a preset: Recommended (60% smaller), Maximum (80% smaller), or Near Lossless for subtle reduction.",
+      "step3Title": "Download Optimized Files",
+      "step3Desc": "Preview the before-and-after comparison, then download one by one or all at once as a ZIP.",
+      "casesTitle": "Popular Uses for Image Compression",
+      "case1Icon": "language",
+      "case1Title": "Speed Up Your Website",
+      "case1Desc": "Reduce image sizes by up to 90% to make pages load faster. Faster pages rank higher on Google and keep visitors engaged longer.",
+      "case2Icon": "mail",
+      "case2Title": "Shrink for Email Attachments",
+      "case2Desc": "Compress photos to fit email size limits (25MB for Gmail, Outlook). Send high-quality images without bounced emails.",
+      "case3Icon": "smartphone",
+      "case3Title": "Save Phone Storage",
+      "case3Desc": "Bulk compress your phone gallery to free up gigabytes of storage. Keep all your photos while using a fraction of the space.",
+      "case4Icon": "shopping_cart",
+      "case4Title": "Optimize Product Photos",
+      "case4Desc": "Compress product images for Shopify, Amazon, or Etsy. Faster-loading product pages mean more sales and happier customers."
     }
   },
   "resizer": {
@@ -244,6 +288,28 @@
       "a5": "Yes. Enable 'Lock Aspect Ratio' (on by default) — when you change the width, the height adjusts automatically to maintain the original proportions. This prevents any stretching or squishing.",
       "q6": "What image resolution (DPI) should I use for printing?",
       "a6": "For printing photos, your image needs to be large enough — about 300 pixels per inch of print. For example, to print a standard 4×6 inch photo, you need at least a 1200×1800 pixel image. For screens and websites, smaller sizes work fine."
+    },
+    "guide": {
+      "stepsTitle": "How to Resize Images in 3 Steps",
+      "step1Title": "Upload Your Image",
+      "step1Desc": "Drag and drop your file or click to select one. Supports JPG, PNG, WebP, and AVIF up to 50MB.",
+      "step2Title": "Set Dimensions",
+      "step2Desc": "Enter exact pixel values, use percentage scaling, or pick a preset like 1:1 Square or 16:9 Widescreen.",
+      "step3Title": "Download Resized Image",
+      "step3Desc": "Click Download and your resized image is saved instantly. Rotate or flip it before downloading if needed.",
+      "casesTitle": "Perfect Sizes for Every Platform",
+      "case1Icon": "photo_camera",
+      "case1Title": "Instagram & TikTok",
+      "case1Desc": "Resize to 1080×1080 for feed posts, 1080×1920 for Stories and Reels. Get pixel-perfect uploads every time.",
+      "case2Icon": "monitor",
+      "case2Title": "Website & Blog Headers",
+      "case2Desc": "Resize hero images and banners to the exact dimensions your site requires. Avoid stretched or blurry images.",
+      "case3Icon": "badge",
+      "case3Title": "ID & Passport Photos",
+      "case3Desc": "Resize photos to exact passport or visa requirements. Set precise pixel dimensions for official documents.",
+      "case4Icon": "storefront",
+      "case4Title": "E-commerce Listings",
+      "case4Desc": "Resize product photos to marketplace standards — Amazon (2000×2000), eBay (1600×1600), Shopify. Consistent sizing looks professional."
     }
   },
   "common": {
