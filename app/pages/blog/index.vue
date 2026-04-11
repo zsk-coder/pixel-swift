@@ -73,24 +73,8 @@ const activeCategory = ref("allCategories");
 
 const filteredPosts = computed(() => {
   const posts = allPosts.value || [];
-  // Only exclude featured post from grid when featured section is visible
-  const basePosts = showFeatured.value
-    ? posts.filter((p: any) => !p.featured)
-    : posts;
-  if (activeCategory.value === "allCategories") return basePosts;
-  return basePosts.filter((p: any) => p.category === activeCategory.value);
-});
-
-// ── Featured post ──
-const featuredPost = computed(() => {
-  const posts = allPosts.value || [];
-  return posts.find((p: any) => p.featured) || null;
-});
-
-// Only show featured section when there are enough articles (>= 6)
-const showFeatured = computed(() => {
-  const posts = allPosts.value || [];
-  return !!featuredPost.value && posts.length >= 6;
+  if (activeCategory.value === "allCategories") return posts;
+  return posts.filter((p: any) => p.category === activeCategory.value);
 });
 
 // ── Pagination ──
@@ -147,84 +131,7 @@ function getAuthorInitials(name: string) {
 
     <!-- ═══ MAIN CONTENT ═══ -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-      <!-- ── Featured Article ── -->
-      <!-- Exactly matching design: flex flex-col lg:flex-row, min-h-[400px] -->
-      <article
-        v-if="showFeatured && featuredPost"
-        class="relative bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl overflow-hidden shadow-sm mb-4 featured-card group transition-all hover:shadow-lg"
-      >
-        <!-- Image with FEATURED badge overlay on mobile -->
-        <div class="featured-card__image overflow-hidden relative">
-          <img
-            :alt="featuredPost.title"
-            :src="featuredPost.cover"
-            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-          <!-- Badge overlay on image (mobile only) -->
-          <span
-            class="featured-badge-overlay absolute top-3 left-3 bg-primary text-white text-[10px] font-black px-2.5 py-1 rounded-full tracking-wider uppercase shadow-sm"
-          >
-            {{ t("blog.featured") }}
-          </span>
-        </div>
-        <!-- Content -->
-        <div class="featured-card__content flex flex-col">
-          <!-- Desktop-only badge (hidden on mobile since it's on the image) -->
-          <span
-            class="featured-badge hidden sm:inline-flex px-3 py-1 rounded-full text-xs font-bold bg-primary text-white mb-4 uppercase tracking-wider shadow-sm"
-          >
-            {{ t("blog.featured") }}
-          </span>
 
-          <h2
-            class="text-xl sm:text-3xl font-bold text-slate-900 dark:text-white leading-tight group-hover:text-primary transition-colors"
-          >
-            {{ featuredPost.title }}
-          </h2>
-          <p
-            class="text-slate-600 dark:text-slate-300 line-clamp-2 sm:line-clamp-3 text-sm sm:text-lg leading-relaxed"
-          >
-            {{ featuredPost.description }}
-          </p>
-          <!-- Author row: hidden on mobile per mobile design -->
-          <div class="hidden sm:flex items-center gap-4 mt-8 mb-8">
-            <div
-              class="w-12 h-12 rounded-full overflow-hidden bg-white dark:bg-slate-800 flex items-center justify-center ring-2 ring-white dark:ring-slate-800 shadow-sm"
-            >
-              <img
-                src="/images/logo.png"
-                alt="PixelSwift"
-                class="w-full h-full object-cover"
-              />
-            </div>
-            <div>
-              <p class="text-base font-semibold text-slate-900 dark:text-white">
-                {{ featuredPost.author }}
-              </p>
-              <p class="text-sm text-slate-500 dark:text-slate-400">
-                {{ featuredPost.date }}
-              </p>
-            </div>
-          </div>
-          <!-- CTA: mt-2 pt-4 border-t on mobile matching design, inline on desktop -->
-          <div
-            class="mt-2 pt-4 border-t border-slate-100 dark:border-slate-800 sm:border-0 sm:mt-0 sm:pt-0"
-          >
-            <NuxtLink
-              :to="localePath(`/blog/${getSlug(featuredPost)}`)"
-              class="inline-flex items-center text-primary font-bold text-sm sm:font-semibold sm:text-lg hover:gap-2 transition-all"
-              :aria-label="t('blog.readMore') + ': ' + featuredPost.title"
-            >
-              {{ t("blog.readMore") }}
-              <span
-                class="material-symbols-outlined ml-1 text-[18px] sm:text-xl"
-                aria-hidden="true"
-                >arrow_forward</span
-              >
-            </NuxtLink>
-          </div>
-        </div>
-      </article>
 
       <!-- ── Category Filter Pills ── -->
       <!-- Matching design: no border on inactive pills -->
@@ -352,75 +259,7 @@ function getAuthorInitials(name: string) {
   }
 }
 
-/* ── Featured card layout ── */
-.featured-card {
-  display: flex;
-  flex-direction: column;
-}
-.featured-card__image {
-  aspect-ratio: 16 / 9;
-  max-height: 200px;
-}
-.featured-card__content {
-  padding: 1.25rem;
-  gap: 0.5rem;
-}
-/* Hide overlay badge on desktop, show inline badge instead */
-.featured-badge-overlay {
-  display: block;
-}
 
-@media (min-width: 640px) {
-  .featured-badge-overlay {
-    display: none;
-  }
-}
-
-@media (min-width: 1024px) {
-  .featured-card {
-    flex-direction: row;
-    min-height: 400px;
-  }
-  .featured-card__image {
-    width: 50%;
-    aspect-ratio: auto;
-    max-height: none;
-  }
-  .featured-card__content {
-    width: 50%;
-    padding: 3rem 2.5rem;
-    gap: 0;
-    justify-content: center;
-  }
-}
-
-/* ── Most Popular grid (3 columns on md+) ── */
-.popular-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2rem;
-}
-
-@media (min-width: 768px) {
-  .popular-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* ── Featured badge (force fit-content width) ── */
-.featured-badge {
-  width: fit-content;
-  align-self: flex-start;
-}
-
-/* ── Popular post thumbnails (fixed 96px square to prevent large images from expanding) ── */
-.popular-thumb {
-  width: 96px;
-  height: 96px;
-  min-width: 96px;
-  min-height: 96px;
-  flex-shrink: 0;
-}
 
 /* ── Article card image: 140px fixed on mobile, aspect-video on sm+ ── */
 .card-image {
