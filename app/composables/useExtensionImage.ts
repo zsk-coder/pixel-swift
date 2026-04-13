@@ -10,7 +10,6 @@ export function useExtensionImage(
   options?: { onStart?: () => void; onEnd?: () => void },
 ) {
   const route = useRoute();
-  const router = useRouter();
   const isFetching = ref(false);
 
   onMounted(async () => {
@@ -44,10 +43,15 @@ export function useExtensionImage(
       const file = new File([blob], filename, { type: blob.type });
       onFilesAdded([file]);
 
-      // Clean up the URL so F5 doesn't re-trigger
-      const query = { ...route.query };
-      delete query.url;
-      router.replace({ query });
+      // Clean up the URL without triggering a client-side navigation,
+      // otherwise the current tool page can be remounted and lose in-memory state.
+      const cleanedUrl = new URL(window.location.href);
+      cleanedUrl.searchParams.delete("url");
+      window.history.replaceState(
+        window.history.state,
+        "",
+        `${cleanedUrl.pathname}${cleanedUrl.search}${cleanedUrl.hash}`,
+      );
     } catch (error) {
       console.error("Extension integration error:", error);
     } finally {
