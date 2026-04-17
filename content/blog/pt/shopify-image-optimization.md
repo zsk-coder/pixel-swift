@@ -40,7 +40,7 @@ Quando você tira o peso da imagem antes de enviá-la para o painel de controle,
 - **Tema limpo:** Nada de ficar injetando sujeira de app de terceiros na sua loja.
 - **Controle total da qualidade:** Quem aprova se a foto está devidamente nítida é você mesmo, antes do seu cliente ver.
 
-## PixelSwift: A solução 100% gratuita
+## PixelSwift: A solução completamente gratuita
 
 Fique tranquilo, não estamos falando de instalar programas gigantes da Adobe no seu computador. O [PixelSwift](/pt) foi feito exatamente para que donos de lojas possam tirar o peso das imagens em três cliques, sem dor de cabeça e sem mensalidade.
 

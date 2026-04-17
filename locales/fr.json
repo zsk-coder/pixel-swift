@@ -7,7 +7,7 @@
   },
   "home": {
     "title": "Compresseur, convertisseur et redimensionneur d'images en ligne gratuit",
-    "subtitle": "Compatible JPG, PNG, WebP et AVIF, jusqu'à 50 Mo par fichier. 100 % gratuit — sans inscription, sans installation.",
+    "subtitle": "Compatible JPG, PNG, WebP et AVIF, jusqu'à 50 Mo par fichier. Gratuit — sans inscription, sans installation.",
     "compressor": {
       "title": "Compresseur d'images",
       "desc": "Réduisez la taille jusqu'à 90 % tout en gardant une qualité cristalline.",
@@ -40,7 +40,7 @@
       "secure": "Entièrement privé",
       "secureDesc": "Vos fichiers restent sur votre appareil. Rien n'est envoyé nulle part.",
       "free": "Entièrement gratuit",
-      "freeDesc": "Toutes les fonctionnalités disponibles — sans filigrane, utilisation illimitée, sans inscription.",
+      "freeDesc": "Compression, conversion et redimensionnement d'images entièrement gratuits — sans filigrane, utilisation illimitée, sans inscription.",
       "batch": "Traitement par lot",
       "batchDesc": "Traitez jusqu'à 100 images à la fois, jusqu'à 50 Mo chacune — gérez de gros volumes en toute simplicité."
     },
@@ -50,7 +50,8 @@
       "processed": "Images traitées",
       "compression": "Compression max.",
       "rating": "Note des utilisateurs",
-      "free": "Gratuit"
+      "free": "Gratuit",
+      "batch": "Lot en une fois"
     },
     "tech": {
       "title": "Propulsé par une technologie de pointe",
@@ -70,7 +71,7 @@
       "q3": "Y a-t-il une limite de taille de fichier ?",
       "a3": "Chaque fichier peut aller jusqu'à 50 Mo. Vous pouvez traiter jusqu'à 100 images à la fois.",
       "q4": "PixelSwift est-il vraiment gratuit ? Y a-t-il des coûts cachés ?",
-      "a4": "Oui, PixelSwift est 100% gratuit sans coûts cachés, sans filigrane et sans limites d'utilisation. Toutes les fonctionnalités sont disponibles sans inscription ni paiement.",
+      "a4": "Oui, la compression, la conversion et le redimensionnement d'images sur PixelSwift sont entièrement gratuits, sans coûts cachés, sans filigrane et sans limites d'utilisation. Aucune inscription nécessaire.",
       "q5": "Faut-il installer quelque chose ?",
       "a5": "Non. Ouvrez simplement le site PixelSwift et c'est parti — aucun téléchargement, aucune installation, aucun plugin.",
       "q6": "Puis-je utiliser PixelSwift sur mon téléphone ou ma tablette ?",
@@ -193,7 +194,7 @@
       "q5": "Puis-je compresser des images pour les pièces jointes email ?",
       "a5": "Oui ! La plupart des fournisseurs email limitent les pièces jointes à 25 Mo. Réglez la qualité à 70-80% pour réduire significativement les photos.",
       "q6": "PixelSwift est-il meilleur que TinyPNG ?",
-      "a6": "Les deux produisent d'excellents résultats. La différence clé : la version gratuite de TinyPNG est limitée à 500 images par mois, tandis que PixelSwift n'a aucune limite — compression illimitée, 100% gratuit, sans inscription, et vous pouvez traiter jusqu'à 100 images à la fois par lots."
+      "a6": "Les deux produisent d'excellents résultats. La différence clé : la version gratuite de TinyPNG est limitée à 500 images par mois, tandis que PixelSwift n'a aucune limite — compression illimitée, gratuit, sans inscription, et vous pouvez traiter jusqu'à 100 images à la fois par lots."
     },
     "guide": {
       "stepsTitle": "Comment compresser des images en 3 étapes",
@@ -405,7 +406,7 @@
       "featureList": "Compresser des images JPEG, PNG, WebP et AVIF, qualité ajustable, comparaison en temps réel, compression par lots, réduction jusqu'à 90%"
     },
     "converter": {
-      "featureList": "Convertir tout format d'image (BMP, GIF, TIFF, AVIF, etc.) en JPG, PNG ou WebP, conversion par lot, sans upload, 100% gratuit"
+      "featureList": "Convertir tout format d'image (BMP, GIF, TIFF, AVIF, etc.) en JPG, PNG ou WebP, conversion par lot, sans upload, gratuit"
     },
     "resizer": {
       "featureList": "Redimensionner des images par pixels ou pourcentage, rotation et retournement, préréglages de proportions, aperçu en temps réel, aucun envoi nécessaire"

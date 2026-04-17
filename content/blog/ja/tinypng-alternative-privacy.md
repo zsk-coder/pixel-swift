@@ -1,6 +1,6 @@
 ---
 title: "TinyPNG代替ツール：本当に無料で無制限の画像圧縮ツール"
-description: "TinyPNGは月500枚まで？PixelSwiftは100%無料、無制限、登録不要。フォーマット変換とバッチ処理も内蔵。"
+description: "TinyPNGは月500枚まで？PixelSwiftは完全無料、無制限、登録不要。フォーマット変換とバッチ処理も内蔵。"
 category: "optimization"
 author: "PixelSwift Team"
 date: "2026-03-17"

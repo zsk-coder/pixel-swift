@@ -1,6 +1,6 @@
 ---
 title: "Alternative à TinyPNG : un compresseur d'images vraiment gratuit et illimité"
-description: "TinyPNG vous limite à 500 images par mois ? PixelSwift est 100% gratuit, illimité, sans inscription, avec conversion de format et traitement par lots intégrés."
+description: "TinyPNG vous limite à 500 images par mois ? PixelSwift est entièrement gratuit, illimité, sans inscription, avec conversion de format et traitement par lots intégrés."
 category: "optimization"
 author: "PixelSwift Team"
 date: "2026-03-17"

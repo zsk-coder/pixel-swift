@@ -7,7 +7,7 @@
   },
   "home": {
     "title": "Compressor, conversor e redimensionador de imagens online grátis",
-    "subtitle": "Compatível com JPG, PNG, WebP e AVIF, até 50 MB por arquivo. 100% grátis — sem cadastro, sem instalação.",
+    "subtitle": "Compatível com JPG, PNG, WebP e AVIF, até 50 MB por arquivo. Grátis — sem cadastro, sem instalação.",
     "compressor": {
       "title": "Compressor de imagens",
       "desc": "Reduza o tamanho em até 90% mantendo a qualidade impecável.",
@@ -40,7 +40,7 @@
       "secure": "Totalmente privado",
       "secureDesc": "Seus arquivos ficam no seu dispositivo. Não são enviados pra lugar nenhum.",
       "free": "Completamente grátis",
-      "freeDesc": "Todas as funcionalidades disponíveis — sem marca d'água, uso ilimitado, sem cadastro.",
+      "freeDesc": "Compressão, conversão e redimensionamento de imagens totalmenete grátis — sem marca d'água, uso ilimitado, sem cadastro.",
       "batch": "Processamento em lote",
       "batchDesc": "Processe até 100 imagens de uma vez, até 50 MB cada — lide com grandes volumes com facilidade."
     },
@@ -50,7 +50,8 @@
       "processed": "Imagens processadas",
       "compression": "Compressão máx.",
       "rating": "Avaliação dos usuários",
-      "free": "Grátis"
+      "free": "Grátis",
+      "batch": "Lote de uma vez"
     },
     "tech": {
       "title": "Impulsionado por tecnologia líder do setor",
@@ -70,7 +71,7 @@
       "q3": "Há limite de tamanho de arquivo?",
       "a3": "Cada arquivo pode ter até 50 MB. Você pode processar até 100 imagens de uma vez.",
       "q4": "O PixelSwift é realmente grátis? Há custos ocultos?",
-      "a4": "Sim, o PixelSwift é 100% grátis sem custos ocultos, sem marca d'água e sem limites de uso. Todas as funcionalidades estão disponíveis sem cadastro ou pagamento.",
+      "a4": "Sim, a compressão, conversão e redimensionamento de imagens no PixelSwift são completamente grátis, sem custos ocultos, sem marca d'água e sem limites de uso. Não precisa se cadastrar.",
       "q5": "Preciso instalar algo?",
       "a5": "Não. Basta abrir o site do PixelSwift e começar — sem downloads, sem instalações, sem plugins.",
       "q6": "Posso usar o PixelSwift no celular ou tablet?",
@@ -193,7 +194,7 @@
       "q5": "Posso comprimir imagens para anexos de e-mail?",
       "a5": "Sim! A maioria dos provedores de e-mail limita anexos a 25MB. Configure a qualidade em 70-80% para reduzir as fotos significativamente.",
       "q6": "O PixelSwift é melhor que o TinyPNG?",
-      "a6": "Ambos produzem excelentes resultados. A diferença chave: a versão gratuita do TinyPNG limita a 500 imagens por mês, enquanto o PixelSwift não tem limite nenhum — compressão ilimitada, 100% grátis, sem cadastro, e você pode processar até 100 imagens de uma vez em lote."
+      "a6": "Ambos produzem excelentes resultados. A diferença chave: a versão gratuita do TinyPNG limita a 500 imagens por mês, enquanto o PixelSwift não tem limite nenhum — compressão ilimitada, grátis, sem cadastro, e você pode processar até 100 imagens de uma vez em lote."
     },
     "guide": {
       "stepsTitle": "Como comprimir imagens em 3 passos",
@@ -405,7 +406,7 @@
       "featureList": "Comprimir imagens JPEG, PNG, WebP e AVIF, qualidade ajustável, comparação em tempo real, compressão em lote, redução de até 90%"
     },
     "converter": {
-      "featureList": "Converta qualquer formato (BMP, GIF, TIFF, AVIF, etc.) para JPG, PNG ou WebP, conversão em lote, sem upload, 100% grátis"
+      "featureList": "Converta qualquer formato (BMP, GIF, TIFF, AVIF, etc.) para JPG, PNG ou WebP, conversão em lote, sem upload, grátis"
     },
     "resizer": {
       "featureList": "Redimensionar imagens por pixels ou porcentagem, rotacionar e espelhar, presets de proporção, visualização em tempo real, sem upload necessário"

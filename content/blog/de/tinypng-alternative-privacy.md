@@ -1,6 +1,6 @@
 ---
 title: "TinyPNG-Alternative: Ein wirklich kostenloses & unbegrenztes Bildkomprimierungstool"
-description: "TinyPNG begrenzt auf 500 Bilder pro Monat? PixelSwift ist 100% kostenlos, unbegrenzt, ohne Registrierung, mit integrierter Formatkonvertierung und Stapelverarbeitung."
+description: "TinyPNG begrenzt auf 500 Bilder pro Monat? PixelSwift ist komplett kostenlos, unbegrenzt, ohne Registrierung, mit integrierter Formatkonvertierung und Stapelverarbeitung."
 category: "optimization"
 author: "PixelSwift Team"
 date: "2026-03-17"

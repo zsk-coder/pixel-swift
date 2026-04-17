@@ -3,23 +3,57 @@ const { t } = useI18n();
 const localePath = useLocalePath();
 
 // ── Trust Stats ──
-const statsData: Array<{ target: number; start: number; format: boolean; suffix: string; labelKey: string; decimal?: number }> = [
-  { target: 20000, start: 14000, format: true, suffix: "+", labelKey: "home.stats.processed" },
-  { target: 90, start: 60, format: false, suffix: "%", labelKey: "home.stats.compression" },
-  { target: 4.8, start: 3.0, format: false, suffix: "/5", labelKey: "home.stats.rating", decimal: 1 },
-  { target: 100, start: 70, format: false, suffix: "%", labelKey: "home.stats.free" },
+const statsData: Array<{
+  target: number;
+  start: number;
+  format: boolean;
+  suffix: string;
+  labelKey: string;
+  decimal?: number;
+}> = [
+  {
+    target: 20000,
+    start: 14000,
+    format: true,
+    suffix: "+",
+    labelKey: "home.stats.processed",
+  },
+  {
+    target: 90,
+    start: 60,
+    format: false,
+    suffix: "%",
+    labelKey: "home.stats.compression",
+  },
+  {
+    target: 4.8,
+    start: 3.0,
+    format: false,
+    suffix: "/5",
+    labelKey: "home.stats.rating",
+    decimal: 1,
+  },
+  {
+    target: 100,
+    start: 60,
+    format: false,
+    suffix: "",
+    labelKey: "home.stats.batch",
+  },
 ];
 
 const stats = computed(() =>
   statsData.map((s) => ({
     ...s,
     label: t(s.labelKey),
-  }))
+  })),
 );
 
 // ── Count-up animation ──
 const statsRef = ref<HTMLElement | null>(null);
-const displayValues = ref(statsData.map((s) => s.format ? formatNumber(s.start) : String(s.start)));
+const displayValues = ref(
+  statsData.map((s) => (s.format ? formatNumber(s.start) : String(s.start))),
+);
 const hasAnimated = ref(false);
 
 function formatNumber(n: number) {
@@ -39,10 +73,15 @@ function animateCountUp() {
     const ease = 1 - Math.pow(1 - progress, 4);
 
     statsData.forEach((s, i) => {
-      const current = s.decimal != null
-        ? parseFloat((s.start + (s.target - s.start) * ease).toFixed(s.decimal!))
-        : Math.floor(s.start + (s.target - s.start) * ease);
-      displayValues.value[i] = s.format ? formatNumber(current) : String(current);
+      const current =
+        s.decimal != null
+          ? parseFloat(
+              (s.start + (s.target - s.start) * ease).toFixed(s.decimal!),
+            )
+          : Math.floor(s.start + (s.target - s.start) * ease);
+      displayValues.value[i] = s.format
+        ? formatNumber(current)
+        : String(current);
     });
 
     if (progress < 1) {
@@ -61,11 +100,10 @@ onMounted(() => {
         observer.disconnect();
       }
     },
-    { threshold: 0.3 }
+    { threshold: 0.3 },
   );
   observer.observe(statsRef.value);
 });
-
 
 // ── SEO: title + description + OG tags ──
 useHead({
@@ -254,11 +292,13 @@ const whyItems = computed(() => [
     <section class="py-16 sm:py-24 bg-slate-50 dark:bg-slate-900/50">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div class="mx-auto max-w-2xl text-center mb-12 sm:mb-16">
-          <h2 class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl">
-            {{ t('home.stats.title') }}
+          <h2
+            class="text-3xl font-bold tracking-tight text-slate-900 dark:text-white sm:text-4xl"
+          >
+            {{ t("home.stats.title") }}
           </h2>
           <p class="mt-4 text-lg leading-8 text-slate-600 dark:text-slate-400">
-            {{ t('home.stats.subtitle') }}
+            {{ t("home.stats.subtitle") }}
           </p>
         </div>
         <div
@@ -273,12 +313,17 @@ const whyItems = computed(() => [
               :key="stat.label"
               :class="[
                 'flex flex-col items-center text-center py-12 px-4',
-                idx < 2 ? 'border-b lg:border-b-0 border-slate-100 dark:border-slate-700/60' : ''
+                idx < 2
+                  ? 'border-b lg:border-b-0 border-slate-100 dark:border-slate-700/60'
+                  : '',
               ]"
             >
               <span
                 class="text-3xl sm:text-[2.5rem] font-extrabold text-slate-900 dark:text-white"
-                >{{ displayValues[idx] }}<span class="text-xl sm:text-2xl font-bold">{{ stat.suffix }}</span></span
+                >{{ displayValues[idx]
+                }}<span class="text-xl sm:text-2xl font-bold">{{
+                  stat.suffix
+                }}</span></span
               >
               <span
                 class="mt-3 text-xs sm:text-sm text-slate-500 dark:text-slate-400"
@@ -363,12 +408,9 @@ const whyItems = computed(() => [
       </div>
     </section>
 
-
-
     <!-- FAQ Section -->
     <section class="pt-6 pb-12 sm:py-24 bg-white dark:bg-slate-900">
       <ToolFaq i18n-prefix="home.faq" :count="7" />
     </section>
-
   </div>
 </template>

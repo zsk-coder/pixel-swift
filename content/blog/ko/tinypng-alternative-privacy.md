@@ -1,6 +1,6 @@
 ---
 title: "TinyPNG 대안: 진정으로 무료이고 무제한인 이미지 압축 도구"
-description: "TinyPNG는 월 500장 제한? PixelSwift는 100% 무료, 무제한, 가입 불필요, 형식 변환과 일괄 처리 내장."
+description: "TinyPNG는 월 500장 제한? PixelSwift는 완전히 무료, 무제한, 가입 불필요, 형식 변환과 일괄 처리 내장."
 category: "optimization"
 author: "PixelSwift Team"
 date: "2026-03-17"
@@ -50,7 +50,7 @@ PixelSwift는 차세대 이미지 압축 도구로, TinyPNG의 모든 문제를 
 | **속도 (10MB 파일)** | 3-8초 (네트워크에 따라 다름) | 1-3초               |
 | **오프라인 지원**    | 불가                         | 가능                |
 | **가입 필요 여부**   | API는 필요                   | 전혀 불필요         |
-| **가격**             | 무료 (제한) / 유료 Pro       | 100% 무료           |
+| **가격**             | 무료 (제한) / 유료 Pro       | 무료                |
 
 ### 압축 품질 비교
 
