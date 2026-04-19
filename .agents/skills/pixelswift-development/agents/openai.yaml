@@ -1,0 +1,7 @@
+interface:
+  display_name: "PixelSwift 开发规范"
+  short_description: "PixelSwift 仓库开发规范：架构、i18n、样式、Element Plus、中文注释与验证顺序"
+  default_prompt: "使用 $pixelswift-development 在 PixelSwift 仓库中实施改动，并遵循项目架构、i18n、UI 与验证规则。"
+
+policy:
+  allow_implicit_invocation: true

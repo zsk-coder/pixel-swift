@@ -325,6 +325,38 @@
     "pending": "Waiting",
     "fetchingExtension": "Receiving image from browser..."
   },
+  "auth": {
+    "login": {
+      "badge": "3 free AI planning experiences",
+      "backHome": "Back to home",
+      "title": "Sign in to continue",
+      "description": "Sign in with Google to continue using Workflow Copilot.",
+      "google": "Continue with Google",
+      "helper": "No credit card required",
+      "secondaryHelper": "Secure Google authentication",
+      "pageTitle": "Sign in | PixelSwift",
+      "configError": "Supabase is not configured yet. Add your environment variables to enable sign-in.",
+      "authError": "Google sign-in could not be started. Please try again."
+    },
+    "menu": {
+      "signIn": "Sign in",
+      "account": "Account",
+      "free": "Free",
+      "pro": "Pro",
+      "trialLeft": "{used} of {total} free AI experiences left",
+      "upgrade": "Upgrade to Pro",
+      "signOut": "Sign out",
+      "emailLabel": "Signed in as"
+    },
+    "callback": {
+      "title": "Finishing sign-in",
+      "description": "We are preparing your account and free trial status.",
+      "failed": "We could not finish your sign-in. Please try again.",
+      "unavailable": "Supabase is not configured yet. Add the required environment variables to enable sign-in.",
+      "retry": "Try Google sign-in again",
+      "home": "Return home"
+    }
+  },
   "errors": {
     "processFailed": "Processing failed. Please refresh the page and try again.",
     "maxFilesExceeded": "Maximum {count} files allowed. Only the first {count} will be processed.",

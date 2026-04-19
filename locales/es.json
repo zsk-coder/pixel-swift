@@ -436,5 +436,37 @@
       "moreArticlesDesc": "Amplía tus conocimientos con nuestras últimas publicaciones.",
       "viewAll": "Ver todo"
     }
+  },
+  "auth": {
+    "login": {
+      "badge": "3 experiencias gratuitas de planificación con IA",
+      "backHome": "Volver al inicio",
+      "title": "Inicia sesión para continuar",
+      "description": "Inicia sesión con Google para seguir usando Workflow Copilot.",
+      "google": "Continuar con Google",
+      "helper": "No se requiere tarjeta de crédito",
+      "secondaryHelper": "Autenticación segura con Google",
+      "pageTitle": "Iniciar sesión | PixelSwift",
+      "configError": "Supabase aún no está configurado. Añade tus variables de entorno para habilitar el inicio de sesión.",
+      "authError": "No se pudo iniciar el acceso con Google. Vuelve a intentarlo."
+    },
+    "menu": {
+      "signIn": "Iniciar sesión",
+      "account": "Cuenta",
+      "free": "Gratis",
+      "pro": "Pro",
+      "trialLeft": "Quedan {used} de {total} experiencias gratuitas de IA",
+      "upgrade": "Actualizar a Pro",
+      "signOut": "Cerrar sesión",
+      "emailLabel": "Sesión iniciada como"
+    },
+    "callback": {
+      "title": "Finalizando el acceso",
+      "description": "Estamos preparando tu cuenta y el estado de tu prueba gratuita.",
+      "failed": "No pudimos completar el inicio de sesión. Vuelve a intentarlo.",
+      "unavailable": "Supabase aún no está configurado. Añade las variables de entorno necesarias para habilitar el inicio de sesión.",
+      "retry": "Volver a intentar con Google",
+      "home": "Volver al inicio"
+    }
   }
 }

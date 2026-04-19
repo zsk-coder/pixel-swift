@@ -436,5 +436,37 @@
       "moreArticlesDesc": "Amplie seus conhecimentos com nossos artigos mais recentes.",
       "viewAll": "Ver tudo"
     }
+  },
+  "auth": {
+    "login": {
+      "badge": "3 experiências gratuitas de planejamento com IA",
+      "backHome": "Voltar para o início",
+      "title": "Faça login para continuar",
+      "description": "Faça login com Google para continuar usando o Workflow Copilot.",
+      "google": "Continuar com Google",
+      "helper": "Sem necessidade de cartão de crédito",
+      "secondaryHelper": "Autenticação segura com Google",
+      "pageTitle": "Entrar | PixelSwift",
+      "configError": "O Supabase ainda não está configurado. Adicione suas variáveis de ambiente para habilitar o login.",
+      "authError": "Não foi possível iniciar o login com Google. Tente novamente."
+    },
+    "menu": {
+      "signIn": "Entrar",
+      "account": "Conta",
+      "free": "Grátis",
+      "pro": "Pro",
+      "trialLeft": "Restam {used} de {total} experiências gratuitas de IA",
+      "upgrade": "Fazer upgrade para Pro",
+      "signOut": "Sair",
+      "emailLabel": "Conectado como"
+    },
+    "callback": {
+      "title": "Concluindo o login",
+      "description": "Estamos preparando sua conta e o status da sua experiência gratuita.",
+      "failed": "Não foi possível concluir seu login. Tente novamente.",
+      "unavailable": "O Supabase ainda não está configurado. Adicione primeiro as variáveis de ambiente necessárias para habilitar o login.",
+      "retry": "Tentar novamente com Google",
+      "home": "Voltar para o início"
+    }
   }
 }

@@ -436,5 +436,37 @@
       "moreArticlesDesc": "最新のインサイトで知識を広げましょう。",
       "viewAll": "すべての記事を見る"
     }
+  },
+  "auth": {
+    "login": {
+      "badge": "AI プランニングを 3 回無料で体験",
+      "backHome": "ホームに戻る",
+      "title": "ログインして続行",
+      "description": "Google でログインして Workflow Copilot を引き続き利用します。",
+      "google": "Google で続行",
+      "helper": "クレジットカードは不要です",
+      "secondaryHelper": "安全な Google 認証",
+      "pageTitle": "ログイン | PixelSwift",
+      "configError": "Supabase がまだ設定されていません。サインインを有効にするには環境変数を追加してください。",
+      "authError": "Google サインインを開始できませんでした。もう一度お試しください。"
+    },
+    "menu": {
+      "signIn": "ログイン",
+      "account": "アカウント",
+      "free": "無料",
+      "pro": "Pro",
+      "trialLeft": "無料 AI 体験は {total} 回中あと {used} 回です",
+      "upgrade": "Pro にアップグレード",
+      "signOut": "ログアウト",
+      "emailLabel": "現在のログインアカウント"
+    },
+    "callback": {
+      "title": "サインインを完了しています",
+      "description": "アカウントと無料トライアルの状態を準備しています。",
+      "failed": "サインインを完了できませんでした。もう一度お試しください。",
+      "unavailable": "Supabase はまだ設定されていません。サインインを有効にするには必要な環境変数を追加してください。",
+      "retry": "Google サインインを再試行",
+      "home": "ホームに戻る"
+    }
   }
 }

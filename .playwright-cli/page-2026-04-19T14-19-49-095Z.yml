@@ -1,0 +1,34 @@
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e5]:
+      - link "PixelSwift" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=e8]: auto_fix
+        - generic [ref=e9]: PixelSwift
+      - link "Back to home" [ref=e10] [cursor=pointer]:
+        - /url: /
+  - main [ref=e11]:
+    - generic [ref=e13]:
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - generic [ref=e17]: auto_awesome
+          - generic [ref=e18]: 3 free AI planning experiences
+        - generic [ref=e19]:
+          - heading "Sign in to continue" [level=2] [ref=e20]
+          - paragraph [ref=e21]: Continue with Workflow Copilot and unlock 3 free AI planning experiences.
+        - generic [ref=e22]:
+          - button "Continue with Google" [disabled] [ref=e23]:
+            - img [ref=e24]
+            - generic [ref=e29]: Continue with Google
+          - generic [ref=e31]:
+            - generic [ref=e32]: lock
+            - generic [ref=e33]: Secure Google authentication
+      - paragraph [ref=e34]: Supabase is not configured yet. Add your environment variables to enable sign-in.
+  - contentinfo [ref=e35]:
+    - generic [ref=e36]:
+      - paragraph [ref=e37]: © 2026 PixelSwift. All rights reserved.
+      - navigation [ref=e38]:
+        - link "Terms of Use" [ref=e39] [cursor=pointer]:
+          - /url: /terms
+        - link "Privacy Policy" [ref=e40] [cursor=pointer]:
+          - /url: /privacy

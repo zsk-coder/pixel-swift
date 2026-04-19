@@ -436,5 +436,37 @@
       "moreArticlesDesc": "Erweitern Sie Ihr Wissen mit unseren neuesten Beiträgen.",
       "viewAll": "Alle Beiträge"
     }
+  },
+  "auth": {
+    "login": {
+      "badge": "3 kostenlose KI-Planungserlebnisse",
+      "backHome": "Zur Startseite",
+      "title": "Anmelden und fortfahren",
+      "description": "Melden Sie sich mit Google an, um Workflow Copilot weiter zu nutzen.",
+      "google": "Mit Google fortfahren",
+      "helper": "Keine Kreditkarte erforderlich",
+      "secondaryHelper": "Sichere Google-Anmeldung",
+      "pageTitle": "Anmelden | PixelSwift",
+      "configError": "Supabase ist noch nicht konfiguriert. Fügen Sie zuerst Ihre Umgebungsvariablen hinzu, um die Anmeldung zu aktivieren.",
+      "authError": "Die Google-Anmeldung konnte nicht gestartet werden. Bitte versuchen Sie es erneut."
+    },
+    "menu": {
+      "signIn": "Anmelden",
+      "account": "Konto",
+      "free": "Kostenlos",
+      "pro": "Pro",
+      "trialLeft": "{used} von {total} kostenlosen KI-Erlebnissen übrig",
+      "upgrade": "Auf Pro upgraden",
+      "signOut": "Abmelden",
+      "emailLabel": "Angemeldet als"
+    },
+    "callback": {
+      "title": "Anmeldung wird abgeschlossen",
+      "description": "Wir bereiten gerade Ihr Konto und Ihren kostenlosen Teststatus vor.",
+      "failed": "Die Anmeldung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.",
+      "unavailable": "Supabase ist noch nicht konfiguriert. Fügen Sie zuerst die erforderlichen Umgebungsvariablen hinzu, um die Anmeldung zu aktivieren.",
+      "retry": "Google-Anmeldung erneut versuchen",
+      "home": "Zur Startseite"
+    }
   }
 }

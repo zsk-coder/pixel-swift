@@ -436,5 +436,37 @@
       "moreArticlesDesc": "Élargissez vos connaissances avec nos derniers articles.",
       "viewAll": "Voir tout"
     }
+  },
+  "auth": {
+    "login": {
+      "badge": "3 expériences gratuites de planification IA",
+      "backHome": "Retour à l'accueil",
+      "title": "Connectez-vous pour continuer",
+      "description": "Connectez-vous avec Google pour continuer à utiliser Workflow Copilot.",
+      "google": "Continuer avec Google",
+      "helper": "Aucune carte bancaire requise",
+      "secondaryHelper": "Authentification Google sécurisée",
+      "pageTitle": "Connexion | PixelSwift",
+      "configError": "Supabase n'est pas encore configuré. Ajoutez vos variables d'environnement pour activer la connexion.",
+      "authError": "La connexion Google n'a pas pu être démarrée. Veuillez réessayer."
+    },
+    "menu": {
+      "signIn": "Se connecter",
+      "account": "Compte",
+      "free": "Gratuit",
+      "pro": "Pro",
+      "trialLeft": "Il reste {used} expériences IA gratuites sur {total}",
+      "upgrade": "Passer à Pro",
+      "signOut": "Se déconnecter",
+      "emailLabel": "Connecté en tant que"
+    },
+    "callback": {
+      "title": "Connexion en cours",
+      "description": "Nous préparons votre compte et le statut de votre essai gratuit.",
+      "failed": "Nous n'avons pas pu terminer votre connexion. Veuillez réessayer.",
+      "unavailable": "Supabase n'est pas encore configuré. Ajoutez d'abord les variables d'environnement requises pour activer la connexion.",
+      "retry": "Réessayer avec Google",
+      "home": "Retour à l'accueil"
+    }
   }
 }

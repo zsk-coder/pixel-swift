@@ -1,647 +1,921 @@
-# ⚙️ PixelSwift Smart Check — 技术规格文档
+# ⚙️ PixelSwift Workflow Copilot — 技术规格文档
 
-> **版本**: v4.0 AI-First  
-> **最后更新**: 2026-04-17  
-> **对应 PRD**: smart-check-prd.md
-
----
-
-## 1. 架构总览
-
-### 设计哲学：沙漏模型
-
-```
-        ┌─────────────┐
-        │  用户拖入图片 │   ← 宽口：零摩擦
-        └──────┬──────┘
-               ↓
-    ┌──────────────────┐
-    │  浏览器特征提取    │   ← 沙漏窄腰：50ms 提取特征
-    │  (纯数据层)       │      不做任何判断
-    │  输出 Feature JSON │
-    └──────────┬───────┘
-               ↓
-    ┌──────────────────┐
-    │  LangChain Agent  │   ← 大脑：所有智能在此
-    │  + RAG 知识库     │      分析、判断、建议、编排
-    │  + Function Call  │      流式输出诊断报告
-    └──────────┬───────┘
-               ↓
-    ┌──────────────────┐
-    │  浏览器本地修复    │   ← 执行层：WASM 压缩/resize/转换
-    │  (复用现有引擎)    │      图片始终不离开浏览器
-    └──────────┬───────┘
-               ↓
-        ┌─────────────┐
-        │  ZIP 一键下载 │   ← 宽口：满意离开
-        └─────────────┘
-```
-
-### 系统架构图
-
-```
-┌─ 前端(Nuxt 3) ──────────────────────────────────────┐
-│                                                       │
-│  pages/smart-check.vue                                │
-│  ├── PlatformSelector.vue                             │
-│  ├── ImageDropZone.vue                                │
-│  ├── AIReportPanel.vue    ← Streaming 流式输出面板    │
-│  ├── FixPlanPanel.vue     ← 修复方案 + 一键执行       │
-│  └── LoginModal.vue       ← Google One-tap            │
-│                                                       │
-│  composables/                                         │
-│  ├── useFeatureExtract.ts  ← Worker 提取特征 JSON     │
-│  ├── useSmartCheckAI.ts    ← Vercel AI SDK useChat    │
-│  └── useAutoFixer.ts       ← 解析 AI 指令执行修复     │
-│                                                       │
-│  workers/                                             │
-│  └── feature-extract.worker.ts                        │
-│                                                       │
-└───────────────────── ↕ HTTP/SSE ──────────────────────┘
-
-┌─ 后端(Nuxt Server Routes) ────────────────────────────┐
-│                                                       │
-│  server/api/smart-check.post.ts  ← 主入口 API        │
-│                                                       │
-│  server/lib/                                          │
-│  ├── agent.ts        ← LangChain ReAct Agent          │
-│  ├── tools.ts        ← 4 个 Function Calling Tools    │
-│  ├── rag.ts          ← Supabase pgvector 检索         │
-│  ├── prompts.ts      ← System Prompt                  │
-│  └── guardrails.ts   ← 参数断言防呆层                │
-│                                                       │
-│  server/middleware/                                    │
-│  └── auth.ts         ← Supabase 鉴权 + 配额          │
-│                                                       │
-└───────────────────────────────────────────────────────┘
-
-┌─ 基础设施 ────────────────────────────────────────────┐
-│  Supabase:  Auth + pgvector + Database                │
-│  LLM:      gpt-4o-mini (首选) / DeepSeek (备选)      │
-│  部署:     Cloudflare Pages + Nuxt Nitro              │
-└───────────────────────────────────────────────────────┘
-```
+> **版本**: v1.0  
+> **最后更新**: 2026-04-19  
+> **对应 PRD**: `smart-check-prd.md`  
+> **对应设计规格**: `smart-check-design-spec.md`  
+> **文档说明**: 保留 `smart-check-tech-spec.md` 文件名以延续现有链路，但技术主线已升级为 `Workflow Copilot`。
 
 ---
 
-## 2. 技术栈
+## 1. 技术目标
 
-### 已有（直接复用）
+Workflow Copilot 的技术目标不是做一个聊天接口，而是构建一个 **单轮目标输入 -> AI 结构化规划 -> 本地执行 -> 导出结果** 的完整系统。
 
-```
-Nuxt 3 + Vue 3 + TypeScript         ← 框架
-Web Workers + Transferable Objects   ← 并发处理
-WASM (MozJPEG / UPNG / WebP编码器)  ← 图像压缩/转换
-Canvas API                           ← 图像操作
-vite-plugin-wasm                     ← WASM 打包
-jszip                                ← ZIP 打包
-@vite-pwa/nuxt                       ← PWA 离线
-@nuxtjs/i18n (8 语言)                ← 国际化
-Cloudflare Pages                     ← 部署
-```
+系统必须满足：
 
-### 新增
-
-```
-@langchain/core                      ← Agent 编排框架
-@langchain/openai                    ← LLM Provider
-@langchain/community                 ← DeepSeek 等备选 Provider
-ai (Vercel AI SDK)                   ← Streaming UI
-@nuxtjs/supabase                     ← Auth + Database
-Supabase pgvector                    ← RAG 向量检索
-zod                                  ← Function Calling 参数校验
-exif-js                              ← EXIF 解析（~10KB）
-```
+- 用户只输入一句目标
+- 服务端 AI 返回严格结构化的 `ProcessPlan`
+- 前端只执行白名单动作
+- 处理优先在浏览器本地完成
+- 登录后才允许调用 AI
+- 每个账号只有 3 次免费完整体验
+- 免费额度用尽后必须进入订阅路径
 
 ---
 
-## 3. 数据结构
+## 2. 架构总览
 
-### ImageFeatures（特征提取结果）
+### 2.1 总体架构
+
+```text
+┌────────────────────────────────────────────────────────────┐
+│                        Client (Nuxt)                       │
+│                                                            │
+│  Upload Images                                             │
+│  Input Goal                                                │
+│  Review AI Plan                                            │
+│  Execute Local Pipeline                                    │
+│  Download ZIP / CSV                                        │
+└───────────────────────┬────────────────────────────────────┘
+                        │ HTTPS
+                        ▼
+┌────────────────────────────────────────────────────────────┐
+│                     Server API (Nitro)                     │
+│                                                            │
+│  Auth / Trial Check                                        │
+│  Build Planning Context                                    │
+│  LangChain Planning Flow                                   │
+│  Schema Validation                                         │
+│  Return ProcessPlan JSON                                   │
+└───────────────────────┬────────────────────────────────────┘
+                        │
+                        ▼
+┌────────────────────────────────────────────────────────────┐
+│                     AI Orchestration                       │
+│                                                            │
+│  LangChain                                                 │
+│  RAG Context Retrieval                                     │
+│  Structured Output                                         │
+│  Goal -> Plan Conversion                                   │
+└───────────────────────┬────────────────────────────────────┘
+                        │
+                        ▼
+┌────────────────────────────────────────────────────────────┐
+│                  Existing Processing Engine                │
+│                                                            │
+│  convert / compress / resize / download / zip             │
+│  Worker / OffscreenCanvas / WASM                          │
+└────────────────────────────────────────────────────────────┘
+```
+
+### 2.2 核心分层
+
+| 层级 | 责任 |
+| --- | --- |
+| `UI Layer` | 上传、目标输入、计划预览、进度展示、导出 |
+| `Planning API Layer` | 鉴权、额度检查、拼装规划上下文、调用 LangChain |
+| `AI Planning Layer` | 理解目标、检索知识、生成结构化计划 |
+| `Execution Layer` | 将 `ProcessPlan` 映射为本地图片处理动作 |
+| `Persistence Layer` | 用户、免费额度、订阅状态、计划历史 |
+
+---
+
+## 3. 现有能力复用策略
+
+### 3.1 直接复用
+
+当前 PixelSwift 已有能力：
+
+- 图片上传
+- 压缩
+- 格式转换
+- 尺寸调整
+- 批量处理
+- ZIP 下载
+- Worker / OffscreenCanvas / WASM
+
+Workflow Copilot 不重写这些能力，而是在其上增加：
+
+- 目标输入
+- AI 规划
+- 计划预览
+- 订阅拦截
+- 历史记录（后续）
+
+### 3.2 新能力增加位置
+
+| 新能力 | 建议位置 |
+| --- | --- |
+| `ProcessPlan` 生成 | `server/lib/copilot/planner.ts` |
+| RAG 检索 | `server/lib/copilot/rag.ts` |
+| Prompt 构造 | `server/lib/copilot/prompts.ts` |
+| Plan 校验 | `server/lib/copilot/validators.ts` |
+| 免费额度校验 | `server/lib/billing/trial.ts` |
+| 前端计划执行器 | `app/composables/useWorkflowExecution.ts` |
+
+---
+
+## 4. 技术栈
+
+### 4.1 现有栈
+
+```text
+Nuxt 3 / Vue 3 / TypeScript
+Web Workers / OffscreenCanvas
+WASM image encoders
+JSZip
+Element Plus
+i18n
+```
+
+### 4.2 新增推荐依赖
+
+```text
+@langchain/core
+@langchain/openai
+@langchain/community
+zod
+@nuxtjs/supabase
+ai (可选，仅当需要流式展示规划过程时)
+```
+
+### 4.3 后端基础设施
+
+推荐继续使用：
+
+- Supabase Auth：Google 登录
+- Supabase Postgres：用户试用额度、订阅状态、历史计划
+- 可选 pgvector：后续 RAG 检索
+
+---
+
+## 5. 核心流程
+
+### 5.1 主流程
+
+```text
+用户上传图片
+  -> 前端提取批次摘要
+  -> 用户输入目标
+  -> 点击 Generate AI Plan
+  -> 检查登录
+  -> 检查试用额度 / 订阅状态
+  -> 服务端构建 PlanningContext
+  -> LangChain 生成 ProcessPlan
+  -> 服务端校验 ProcessPlan
+  -> 前端展示计划
+  -> 用户确认执行
+  -> 前端逐步执行本地处理
+  -> 生成导出文件
+```
+
+### 5.2 免费体验扣减时机
+
+必须在以下条件同时满足时扣减 1 次：
+
+- 用户已登录
+- AI 成功返回合法 `ProcessPlan`
+
+不在以下情况扣减：
+
+- 用户未点生成计划
+- 计划生成失败
+- 计划 schema 校验失败
+- 用户登录失败
+
+---
+
+## 6. 前端模块设计
+
+## 6.1 页面结构
+
+建议页面路径：
+
+- `app/pages/workflow-copilot/index.vue`
+
+页面核心组件：
+
+```text
+WorkflowCopilotPage
+├── HeroSection
+├── AccountStatusMenu
+├── ImageUploadZone
+├── BatchSummaryCard
+├── GoalInputBar
+├── QuickTaskChips
+├── LoginModal
+├── PlanSummaryCard
+├── PlanStepList
+├── PlanAdjustPanel
+├── ExecutionProgressPanel
+├── ResultDownloadPanel
+└── UpgradeModal
+```
+
+## 6.2 关键 composables
+
+### `useWorkflowCopilot.ts`
+
+职责：
+
+- 管理输入目标
+- 请求生成计划
+- 管理计划状态
+- 管理计划错误和额度错误
+
+接口建议：
 
 ```typescript
-interface ImageFeatures {
-  id: string; // 前端 nanoid 生成
-  fileName: string;
-  fileSize: number; // bytes
-  width: number;
-  height: number;
-  format: "jpeg" | "png" | "webp" | "gif" | "bmp" | "tiff" | "avif";
-  hasAlpha: boolean; // 透明通道
-  dpi: number | null;
-  colorSpace: string | null;
-  hasExif: boolean;
-  hasGps: boolean;
-  blurScore: number; // 0-100, 拉普拉斯方差归一化, 越高越模糊
-  bgWhiteness: number; // 0-1, 四边缘像素白色占比
-  dominantColor: string; // 主色调 hex
+interface UseWorkflowCopilot {
+  goal: Ref<string>
+  status: Ref<CopilotStatus>
+  plan: Ref<ProcessPlan | null>
+  error: Ref<string | null>
+  generatePlan: (payload: GeneratePlanInput) => Promise<void>
+  resetPlan: () => void
 }
 ```
 
-### FixAction（AI 返回的修复指令）
+### `useWorkflowExecution.ts`
+
+职责：
+
+- 将 `ProcessPlan.steps` 映射为现有处理能力
+- 管理执行进度
+- 记录每个文件的执行状态
+
+接口建议：
 
 ```typescript
-interface FixAction {
-  action: "compress" | "resize" | "convert" | "strip_exif";
-  imageId: string;
-  params: CompressParams | ResizeParams | ConvertParams | {};
-  status: "pending" | "running" | "done" | "failed";
+interface UseWorkflowExecution {
+  executionStatus: Ref<ExecutionStatus>
+  fileProgress: Ref<FileExecutionState[]>
+  runPlan: (plan: ProcessPlan, files: UploadFile[]) => Promise<ExecutionResult>
+  cancelRun: () => void
 }
+```
 
-interface CompressParams {
-  maxSizeKB: number; // 50 ~ 10240
-  quality?: number; // 0.1 ~ 1.0
-}
+### `useTrialQuota.ts`
 
-interface ResizeParams {
-  width: number; // 100 ~ 8000
-  height: number; // 100 ~ 8000
-  mode?: "contain" | "cover" | "fill";
-}
+职责：
 
-interface ConvertParams {
-  format: "jpeg" | "png" | "webp";
-  reason?: string;
+- 读取当前用户剩余免费次数
+- 判断是否需要显示升级弹窗
+
+### `useAccountStatus.ts`
+
+职责：
+
+- 管理当前登录用户基本资料
+- 管理计划类型与剩余免费次数展示
+- 为顶部账号菜单提供展示数据
+
+接口建议：
+
+```typescript
+interface UseAccountStatus {
+  user: Ref<AuthUser | null>
+  planType: Ref<"free" | "pro" | null>
+  remainingTrialCount: Ref<number | null>
+  signOut: () => Promise<void>
+  refreshStatus: () => Promise<void>
 }
 ```
 
 ---
 
-## 4. 浏览器端特征提取
+## 7. 数据模型
 
-### Worker 实现
+## 7.1 图片批次摘要 `BatchSummary`
 
-特征提取在 Web Worker 中执行，不阻塞 UI。
-
-**模糊检测算法（拉普拉斯方差）：**
-
-1. Canvas 加载图片 → 缩放到 512×512（降低计算量）
-2. 灰度化
-3. 3×3 拉普拉斯核卷积：`[0,-1,0], [-1,4,-1], [0,-1,0]`
-4. 计算卷积结果方差 → 归一化到 0-100
-5. 阈值：> 30 判定为"可能模糊"
-
-**背景纯白度检测：**
-
-1. 提取四边各 5% 宽度的像素带
-2. 统计 RGB 三通道均 > 250 的像素占比
-3. 占比 > 0.95 → 判定为"纯白背景"
-
-**批量处理策略：**
-
-- 并发 Worker 数：`Math.min(4, navigator.hardwareConcurrency)`
-- 队列 FIFO
-- 每张图处理完立即释放 Canvas / ArrayBuffer
-- Transferable Objects 零拷贝传输
-
----
-
-## 5. LangChain Agent
-
-### Agent 定义
+前端不会把原图直接发给规划模型，而是先整理为摘要：
 
 ```typescript
-// server/lib/agent.ts
-import { ChatOpenAI } from "@langchain/openai";
-import { createReactAgent } from "@langchain/langgraph/prebuilt";
-import { tools } from "./tools";
-import { buildSystemPrompt } from "./prompts";
-import { retrievePlatformRules } from "./rag";
+interface BatchSummary {
+  fileCount: number
+  totalSizeBytes: number
+  formats: string[]
+  images: ImageDescriptor[]
+}
 
-export async function createSmartCheckAgent(platform: string) {
-  const platformRules = await retrievePlatformRules(platform);
-  const systemPrompt = buildSystemPrompt(platform, platformRules);
-
-  const llm = new ChatOpenAI({
-    model: "gpt-4o-mini",
-    temperature: 0,
-    streaming: true,
-  });
-
-  return createReactAgent({
-    llm,
-    tools,
-    messageModifier: systemPrompt,
-  });
+interface ImageDescriptor {
+  id: string
+  fileName: string
+  width: number
+  height: number
+  sizeBytes: number
+  format: string
+  hasAlpha?: boolean
 }
 ```
 
-### Function Calling Tools
-
-4 个工具，均带 Zod Schema 参数校验（防呆层）：
+## 7.2 目标输入 `GoalInput`
 
 ```typescript
-// server/lib/tools.ts
-import { tool } from "@langchain/core/tools";
-import { z } from "zod";
+interface GoalInput {
+  text: string
+  locale: string
+  source: "manual" | "preset_chip"
+  presetKey?: string
+}
+```
 
-export const compressTool = tool(
-  async ({ imageId, targetSizeKB, quality }) => {
-    return JSON.stringify({
-      action: "compress",
-      imageId,
-      params: {
-        maxSizeKB: Math.max(50, Math.min(targetSizeKB, 10240)),
-        quality: quality ?? 0.85,
-      },
-    });
-  },
-  {
-    name: "compress_image",
-    description: "压缩图片到目标大小。用于文件超过平台限制或优化加载速度。",
-    schema: z.object({
-      imageId: z.string().describe("图片唯一标识"),
-      targetSizeKB: z.number().min(50).max(10240).describe("目标大小(KB)"),
-      quality: z.number().min(0.1).max(1.0).optional().describe("压缩质量"),
+## 7.3 规划上下文 `PlanningContext`
+
+这是服务端传给 LangChain 的核心上下文：
+
+```typescript
+interface PlanningContext {
+  goal: GoalInput
+  batch: BatchSummary
+  templates: TaskTemplate[]
+  retrievedKnowledge: RetrievedKnowledge[]
+  limits: PlanLimits
+}
+
+interface PlanLimits {
+  maxFilesPerBatch: number
+  allowedActions: PlanAction[]
+  allowedFormats: string[]
+  allowAltTextGeneration: boolean
+}
+```
+
+## 7.4 计划输出 `ProcessPlan`
+
+这是本系统最核心的 schema，必须稳定且可校验：
+
+```typescript
+type PlanAction =
+  | "resize"
+  | "compress"
+  | "convert_format"
+  | "rename_files"
+  | "generate_alt_text"
+  | "strip_metadata"
+
+interface ProcessPlan {
+  taskSummary: string
+  taskType: string
+  confidence: number
+  scene: string
+  steps: PlanStep[]
+  risks: PlanRisk[]
+  exportPlan: ExportPlan
+}
+
+interface PlanStep {
+  id: string
+  action: PlanAction
+  enabled: boolean
+  reason: string
+  params: Record<string, unknown>
+}
+
+interface PlanRisk {
+  type: string
+  message: string
+  severity: "info" | "warning"
+}
+
+interface ExportPlan {
+  zipName: string
+  includeMetadataCsv: boolean
+  filenamePattern?: string
+}
+```
+
+## 7.5 执行结果 `ExecutionResult`
+
+```typescript
+interface ExecutionResult {
+  successCount: number
+  failureCount: number
+  totalSavedBytes: number
+  generatedFiles: ProcessedAsset[]
+  metadataRows?: MetadataRow[]
+}
+```
+
+---
+
+## 8. LangChain 规划层
+
+## 8.1 LangChain 的角色
+
+LangChain 在该产品中负责：
+
+- 任务理解
+- 任务分类
+- 场景知识检索
+- 结构化计划生成
+- 理由和风险说明
+
+LangChain 不负责：
+
+- 图片二进制处理
+- 真实压缩、转换、缩放
+- ZIP 导出
+
+## 8.2 推荐规划链路
+
+### Step 1：任务理解
+
+输入：
+
+- 用户自然语言目标
+- 图片批次摘要
+
+输出：
+
+- 场景判断
+- 任务类型
+- 关键词提取
+
+### Step 2：RAG 检索
+
+按任务类型检索知识片段，例如：
+
+- Shopify product images
+- Amazon listing images
+- Blog image performance
+- SEO image metadata
+
+### Step 3：计划生成
+
+将：
+
+- 用户目标
+- 图片摘要
+- 检索结果
+- 平台限制
+
+输入到结构化输出 prompt 中，生成合法 `ProcessPlan`
+
+### Step 4：Schema 校验
+
+服务端必须再次验证：
+
+- `action` 必须在白名单中
+- `confidence` 必须在 `0~1`
+- `params` 必须符合具体 action 的约束
+- 不允许出现未定义的步骤
+
+---
+
+## 9. RAG 设计
+
+## 9.1 RAG 的用途
+
+RAG 不用于聊天问答，而用于让规划更接近场景知识。
+
+例如：
+
+- Shopify 商品图推荐尺寸和格式
+- Amazon 主图/辅图基础要求
+- 博客配图与页面性能建议
+- SEO 与 alt text 建议
+
+## 9.2 知识组织方式
+
+推荐按场景切分知识片段：
+
+```typescript
+interface RetrievedKnowledge {
+  id: string
+  scene: string
+  source: string
+  title: string
+  content: string
+}
+```
+
+场景标签示例：
+
+- `shopify_product`
+- `amazon_listing`
+- `blog_image`
+- `seo_metadata`
+
+## 9.3 MVP RAG 方案
+
+MVP 不一定要一开始上 pgvector，也可以先用：
+
+- 本地结构化知识 JSON
+- 关键词路由 + 场景过滤
+
+如果要把 LangChain / RAG 明确写进简历，建议直接落一版：
+
+- Supabase pgvector
+- 场景 metadata 过滤
+- top-k 检索
+
+---
+
+## 10. Prompt 设计
+
+## 10.1 Prompt 目标
+
+Prompt 必须逼模型做一件事：
+
+> 将用户目标变成可执行的白名单动作计划，而不是输出散乱建议。
+
+## 10.2 System Prompt 核心约束
+
+必须明确告诉模型：
+
+- 你不是聊天助手
+- 你是图片工作流规划器
+- 你只能输出 `ProcessPlan`
+- 你不能输出未定义 action
+- 你不能假设系统支持不存在的能力
+- 你必须给每一步一个清晰理由
+- 你必须输出潜在风险
+
+## 10.3 示例 Prompt 结构
+
+```typescript
+export function buildPlannerPrompt(context: PlanningContext) {
+  return `
+You are PixelSwift Workflow Copilot.
+
+Your job is to convert a user's image-processing goal into a valid ProcessPlan JSON.
+
+Rules:
+- Only use allowed actions.
+- Do not output natural-language paragraphs outside JSON.
+- Prefer minimal, effective plans.
+- Respect batch limits.
+- Include reasons and risks.
+
+User goal:
+${context.goal.text}
+
+Batch summary:
+${JSON.stringify(context.batch, null, 2)}
+
+Allowed actions:
+${JSON.stringify(context.limits.allowedActions)}
+
+Knowledge:
+${context.retrievedKnowledge.map((k) => k.content).join("\n\n")}
+`;
+}
+```
+
+---
+
+## 11. Schema 校验与 Guardrails
+
+## 11.1 Zod Schema
+
+服务端必须对 `ProcessPlan` 做强校验。
+
+```typescript
+const planStepSchema = z.object({
+  id: z.string(),
+  action: z.enum([
+    "resize",
+    "compress",
+    "convert_format",
+    "rename_files",
+    "generate_alt_text",
+    "strip_metadata",
+  ]),
+  enabled: z.boolean(),
+  reason: z.string().min(1),
+  params: z.record(z.unknown()),
+})
+
+const processPlanSchema = z.object({
+  taskSummary: z.string(),
+  taskType: z.string(),
+  confidence: z.number().min(0).max(1),
+  scene: z.string(),
+  steps: z.array(planStepSchema),
+  risks: z.array(
+    z.object({
+      type: z.string(),
+      message: z.string(),
+      severity: z.enum(["info", "warning"]),
     }),
-  },
-);
-
-export const resizeTool = tool(
-  async ({ imageId, width, height, mode }) => {
-    return JSON.stringify({
-      action: "resize",
-      imageId,
-      params: {
-        width: Math.max(100, Math.min(width, 8000)),
-        height: Math.max(100, Math.min(height, 8000)),
-        mode: mode ?? "contain",
-      },
-    });
-  },
-  {
-    name: "resize_image",
-    description: "调整图片尺寸到平台要求。",
-    schema: z.object({
-      imageId: z.string(),
-      width: z.number().min(100).max(8000),
-      height: z.number().min(100).max(8000),
-      mode: z.enum(["contain", "cover", "fill"]).optional(),
-    }),
-  },
-);
-
-export const convertTool = tool(
-  async ({ imageId, targetFormat, reason }) => {
-    return JSON.stringify({
-      action: "convert",
-      imageId,
-      params: { format: targetFormat, reason },
-    });
-  },
-  {
-    name: "convert_format",
-    description: "转换图片格式。用于平台不支持当前格式，或有更优选择时。",
-    schema: z.object({
-      imageId: z.string(),
-      targetFormat: z.enum(["jpeg", "png", "webp"]),
-      reason: z.string().optional(),
-    }),
-  },
-);
-
-export const stripExifTool = tool(
-  async ({ imageId }) => {
-    return JSON.stringify({
-      action: "strip_exif",
-      imageId,
-      params: {},
-    });
-  },
-  {
-    name: "strip_exif_data",
-    description: "清除 EXIF 元数据（GPS/设备信息），保护用户隐私。",
-    schema: z.object({
-      imageId: z.string(),
-    }),
-  },
-);
-
-export const tools = [compressTool, resizeTool, convertTool, stripExifTool];
+  ),
+  exportPlan: z.object({
+    zipName: z.string(),
+    includeMetadataCsv: z.boolean(),
+    filenamePattern: z.string().optional(),
+  }),
+})
 ```
 
-### System Prompt
+## 11.2 Action 级参数校验
+
+不同 action 必须有二次参数校验：
+
+### `resize`
+
+- width / height 允许范围
+- mode 是否在支持列表中
+
+### `compress`
+
+- quality 范围 `1~100` 或 `0~1`
+- targetMaxKB 不能小于底线
+
+### `convert_format`
+
+- 目标格式必须受支持
+
+### `generate_alt_text`
+
+- language 必须在系统支持语言列表内
+
+---
+
+## 12. API 设计
+
+## 12.1 生成计划接口
+
+### `POST /api/workflow-copilot/plan`
+
+请求体：
 
 ```typescript
-// server/lib/prompts.ts
-export function buildSystemPrompt(platform: string, ragRules: string) {
-  return `你是 PixelSwift Smart Check AI，专业的电商产品图合规审计专家。
+interface GeneratePlanRequest {
+  goal: GoalInput
+  batch: BatchSummary
+}
+```
 
-## 角色
-分析用户上传的产品图片特征数据，根据 ${platform} 平台的图片规范，
-逐张诊断问题并给出修复建议。
+响应：
 
-## 平台合规规则（来自知识库）
-${ragRules}
+```typescript
+interface GeneratePlanResponse {
+  remainingTrialCount: number
+  plan: ProcessPlan
+}
+```
 
-## 工作流程
-1. 接收图片特征 JSON 数组
-2. 逐张对比平台规则
-3. 不合规项调用对应修复工具 (compress/resize/convert/strip_exif)
-4. 无法自动修复的（如白底问题）给出文字建议
-5. 输出完整诊断报告
+错误：
 
-## 输出格式
-对每张图片：
-- 文件名 + 基本信息
-- 每个检查项的通过/不通过
-- 不通过项：原因 + 建议 + 调用修复工具
-- 语气专业友好
+- `401` 未登录
+- `402` 需要订阅
+- `422` 计划生成失败 / schema 不合法
+- `429` 频率限制
 
-## 安全边界
-- 只能看到数字特征，看不到原图
-- resize: 100px ~ 8000px
-- compress: 50KB ~ 10MB
-- 参数超界使用边界值并说明
-- 不要编造规则，严格依据知识库`;
+## 12.2 查询额度接口
+
+### `GET /api/workflow-copilot/quota`
+
+返回：
+
+```typescript
+interface TrialQuotaResponse {
+  isAuthenticated: boolean
+  remainingTrialCount: number
+  hasSubscription: boolean
 }
 ```
 
 ---
 
-## 6. RAG 知识库
+## 13. 登录、试用与订阅实现
 
-### 存储方案
+## 13.1 登录
 
-```
-数据库:     Supabase pgvector
-嵌入模型:   text-embedding-3-small (OpenAI)
-分片策略:   按 平台 + 规则类型 分 chunk（不做 PDF 自动切片）
-Metadata:   { platform, rule_type, last_updated, source }
-检索策略:   Metadata 过滤(platform) → 语义相似度 Top 6
-```
+MVP 使用：
 
-### 检索实现
+- Supabase Auth
+- Google Provider
 
-```typescript
-// server/lib/rag.ts
-import { SupabaseVectorStore } from "@langchain/community/vectorstores/supabase";
-import { OpenAIEmbeddings } from "@langchain/openai";
-import { createClient } from "@supabase/supabase-js";
+## 13.2 免费体验计数
 
-const supabase = createClient(
-  process.env.SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_KEY!,
-);
+推荐数据库字段：
 
-const vectorStore = new SupabaseVectorStore(
-  new OpenAIEmbeddings({ model: "text-embedding-3-small" }),
-  {
-    client: supabase,
-    tableName: "platform_rules",
-    queryName: "match_platform_rules",
-  },
-);
-
-export async function retrievePlatformRules(platform: string): Promise<string> {
-  const results = await vectorStore.similaritySearch(
-    `${platform} product image requirements specifications`,
-    6,
-    { platform },
-  );
-  return results.map((doc) => doc.pageContent).join("\n\n");
-}
+```sql
+users
+- id
+- email
+- plan_type
+- trial_total default 3
+- trial_used default 0
+- trial_remaining computed or synced
 ```
 
-### 知识库数据示例
+扣减逻辑：
 
-```markdown
-## Amazon 主图规范 (Main Image)
+- 成功返回合法 `ProcessPlan` 后 `trial_used + 1`
 
-- 格式：JPEG, PNG, GIF, TIFF
-- 最小尺寸：1000×1000 像素（推荐 2000×2000）
-- 最大文件大小：10MB
-- 背景：纯白 (RGB 255,255,255)
-- 产品占比：≥ 85%
-- 禁止元素：水印、Logo、促销文字、边框
+## 13.3 订阅状态
 
-## Shopify 产品图最佳实践
+推荐字段：
 
-- 推荐尺寸：2048×2048（正方形最佳）
-- 最大文件大小：20MB
-- 格式：JPEG 或 PNG
-- 建议统一宽高比
+```sql
+subscriptions
+- user_id
+- status
+- current_period_end
+- provider
 ```
+
+MVP 可以先只做状态占位，不一定接入完整支付，也可以：
+
+- 第一版文档完整
+- 实装时先做订阅占位弹窗
+
+如果用户要求“继续使用就需要订阅付费”，那技术上应预留：
+
+- `plan_type: free | pro`
+- `hasSubscription: boolean`
+
+## 13.4 轻量账号面板而非个人中心
+
+MVP 阶段不实现独立个人中心页面，只实现顶部账号状态入口。
+
+该入口必须能读取并展示：
+
+- 用户头像
+- 邮箱
+- `plan_type`
+- `remainingTrialCount`
+- 升级入口
+- 退出登录
+
+推荐实现形态：
+
+- 顶部 `AccountStatusMenu` 下拉菜单
+- 或轻量 `AccountDrawer`
+
+当前阶段明确不做：
+
+- 独立 `/account` 页面
+- 账单历史页
+- 用户偏好设置页
+- 团队成员管理页
 
 ---
 
-## 7. API 主入口
+## 14. 前端执行映射
 
-```typescript
-// server/api/smart-check.post.ts
-import { createSmartCheckAgent } from "../lib/agent";
-import { LangChainAdapter } from "ai";
-import { serverSupabaseUser } from "#supabase/server";
+## 14.1 映射策略
 
-export default defineEventHandler(async (event) => {
-  // 1. 鉴权
-  const user = await serverSupabaseUser(event);
-  if (!user) throw createError({ statusCode: 401, message: "请先登录" });
+前端执行器必须将每个 `PlanStep.action` 映射到现有能力：
 
-  // 2. 配额
-  const quota = await checkDailyQuota(user.id);
-  if (quota.remaining <= 0) {
-    throw createError({
-      statusCode: 429,
-      message: `今日额度已用完 (${quota.used}/${quota.limit})`,
-    });
-  }
+| action | 映射能力 |
+| --- | --- |
+| `resize` | `useImageProcessor.processImage(... action=resize)` |
+| `compress` | `useImageProcessor.processImage(... action=compress)` |
+| `convert_format` | `useImageProcessor.processImage(... action=convert)` |
+| `rename_files` | `useDownload.generateFileName` 或新增命名工具 |
+| `generate_alt_text` | 生成 metadata 行，不改二进制 |
+| `strip_metadata` | 在输出时移除 EXIF / GPS |
 
-  // 3. 解析
-  const { platform, images } = await readBody(event);
+## 14.2 执行顺序
 
-  // 4. Agent 分析
-  const agent = await createSmartCheckAgent(platform);
-  const stream = await agent.stream({
-    messages: [
-      {
-        role: "user",
-        content: `分析 ${images.length} 张产品图。平台：${platform}\n\n${JSON.stringify(images, null, 2)}`,
-      },
-    ],
-  });
+推荐默认顺序：
 
-  // 5. 扣减配额
-  await deductQuota(user.id);
+1. `resize`
+2. `convert_format`
+3. `compress`
+4. `strip_metadata`
+5. `rename_files`
+6. `generate_alt_text`
 
-  // 6. 流式返回
-  return LangChainAdapter.toDataStreamResponse(stream);
-});
-```
+这样能减少中间状态复杂度。
 
 ---
 
-## 8. 前端 Streaming 集成
+## 15. 错误处理
 
-```typescript
-// composables/useSmartCheckAI.ts
-import { useChat } from "@ai-sdk/vue";
+## 15.1 计划阶段错误
 
-export function useSmartCheckAI() {
-  const fixPlan = ref<FixAction[]>([]);
-  const analysisComplete = ref(false);
+| 错误 | 处理 |
+| --- | --- |
+| 未登录 | 弹登录框 |
+| 试用已用完 | 弹升级弹窗 |
+| 模型超时 | 提示“Plan generation timed out” |
+| Schema 无效 | 记录日志 + 给用户通用错误 |
 
-  const { messages, append, isLoading, error } = useChat({
-    api: "/api/smart-check",
+## 15.2 执行阶段错误
 
-    onToolCall({ toolCall }) {
-      fixPlan.value.push({
-        action: toolCall.toolName,
-        params: JSON.parse(toolCall.args),
-        status: "pending",
-      });
-    },
-
-    onFinish() {
-      analysisComplete.value = true;
-    },
-
-    onError(err) {
-      if (err.message.includes("401")) showLoginModal.value = true;
-      else if (err.message.includes("429")) showQuotaExhausted.value = true;
-    },
-  });
-
-  async function analyze(platform: string, features: ImageFeatures[]) {
-    fixPlan.value = [];
-    analysisComplete.value = false;
-    await append({
-      role: "user",
-      content: JSON.stringify({ platform, images: features }),
-    });
-  }
-
-  async function executeFixPlan() {
-    for (const fix of fixPlan.value) {
-      fix.status = "running";
-      await executeLocalFix(fix); // 调用现有 WASM compress/resize/convert
-      fix.status = "done";
-    }
-  }
-
-  return {
-    messages,
-    analyze,
-    fixPlan,
-    executeFixPlan,
-    isLoading,
-    analysisComplete,
-  };
-}
-```
+| 错误 | 处理 |
+| --- | --- |
+| 单图执行失败 | 标记单图失败，不影响整批继续 |
+| 浏览器内存压力过大 | 中断并提示拆分批次 |
+| ZIP 失败 | 允许重新导出 |
 
 ---
 
-## 9. 目录结构（新增/修改部分）
+## 16. 目录结构建议
 
-```
+```text
 app/
 ├── pages/
-│   └── smart-check/
-│       ├── index.vue              # 主工具页
-│       ├── amazon.vue             # SEO 着陆页
-│       ├── shopify.vue
-│       ├── etsy.vue
-│       └── ebay.vue
-├── components/smart-check/
-│   ├── PlatformSelector.vue
-│   ├── ImageDropZone.vue
-│   ├── ImageGrid.vue
-│   ├── AIReportPanel.vue
-│   ├── ReportItem.vue
-│   ├── FixPlanList.vue
-│   ├── FixProgress.vue
-│   ├── DownloadPanel.vue
-│   └── LoginModal.vue
+│   └── workflow-copilot/
+│       └── index.vue
+├── components/workflow-copilot/
+│   ├── HeroSection.vue
+│   ├── AccountStatusMenu.vue
+│   ├── ImageUploadZone.vue
+│   ├── BatchSummaryCard.vue
+│   ├── GoalInputBar.vue
+│   ├── QuickTaskChips.vue
+│   ├── LoginModal.vue
+│   ├── PlanSummaryCard.vue
+│   ├── PlanStepList.vue
+│   ├── PlanAdjustPanel.vue
+│   ├── ExecutionProgressPanel.vue
+│   ├── ResultDownloadPanel.vue
+│   └── UpgradeModal.vue
 ├── composables/
-│   ├── useFeatureExtract.ts
-│   ├── useSmartCheckAI.ts
-│   └── useAutoFixer.ts
-└── workers/
-    └── feature-extract.worker.ts
+│   ├── useWorkflowCopilot.ts
+│   ├── useWorkflowExecution.ts
+│   ├── useTrialQuota.ts
+│   └── useAccountStatus.ts
+└── types/
+    └── workflow-copilot.ts
 
 server/
-├── api/
-│   └── smart-check.post.ts
-├── lib/
-│   ├── agent.ts
-│   ├── tools.ts
-│   ├── rag.ts
+├── api/workflow-copilot/
+│   ├── plan.post.ts
+│   └── quota.get.ts
+├── lib/copilot/
+│   ├── planner.ts
 │   ├── prompts.ts
-│   └── guardrails.ts
-└── middleware/
-    └── auth.ts
+│   ├── rag.ts
+│   ├── templates.ts
+│   └── validators.ts
+└── lib/billing/
+    └── trial.ts
 ```
 
 ---
 
-## 10. 成本估算
+## 17. 非功能要求
 
-### 单次 AI 分析 Token 消耗
+## 17.1 性能
 
-```
-System Prompt:     ~300 tokens
-RAG Context:       ~500 tokens
-Feature JSON:      ~200 tokens (20张图)
-Agent 推理+输出:   ~600 tokens
-总计:              ~1,600 tokens
-```
+- 计划生成目标：`< 5s`
+- 首屏加载：`< 3s`
+- 批量执行优先复用现有性能策略
 
-### 月成本
+## 17.2 安全
 
-| 项目                    | 成本        |
-| ----------------------- | ----------- |
-| gpt-4o-mini（500次/天） | ~$15-30/月  |
-| Supabase Free Tier      | $0          |
-| Cloudflare Pages        | $0          |
-| Embedding（一次性入库） | ~$0.5       |
-| **月总成本**            | **~$15-30** |
+- AI 规划阶段默认不上传原图
+- 前后端都必须限制 action 白名单
+- 免费次数扣减必须服务端执行
 
----
+## 17.3 可观测性
 
-## 11. 参数安全边界（Guardrails）
+建议埋点：
 
-```typescript
-// server/lib/guardrails.ts
-export function validateFixAction(action: any): boolean {
-  switch (action.action) {
-    case "resize":
-      return (
-        action.params.width >= 100 &&
-        action.params.width <= 8000 &&
-        action.params.height >= 100 &&
-        action.params.height <= 8000
-      );
-    case "compress":
-      return action.params.maxSizeKB >= 50 && action.params.maxSizeKB <= 10240;
-    case "convert":
-      return ["jpeg", "png", "webp"].includes(action.params.format);
-    case "strip_exif":
-      return true;
-    default:
-      return false;
-  }
-}
-```
-
-前端在接收 Agent 返回的 Tool Call 结果后，**必须再做一层校验**，不合法的指令直接丢弃并提示"AI 参数异常，跳过该修复"。
+- 上传图片
+- 输入目标
+- 点击生成计划
+- 登录成功
+- 计划生成成功
+- 计划确认执行
+- 导出完成
+- 点击升级
 
 ---
 
-## 12. 简历技术栈
+## 18. 简历表述建议
 
+技术上这条线可以这样总结：
+
+```text
+Built an AI workflow planner for batch image processing.
+Used LangChain + structured output + RAG to convert natural-language goals
+into executable image-processing pipelines, then mapped the plans to a
+browser-side processing engine (resize / compress / convert / export).
 ```
-Smart Check — AI 电商产品图合规审计引擎
-技术栈：Nuxt 3 / LangChain.js / LangGraph / RAG / Supabase pgvector /
-       Function Calling / Vercel AI SDK / Web Workers / WASM
 
-• LangChain ReAct Agent 驱动合规审计，4 个 Function Calling Tool 自主编排修复
+中文可表述为：
 
-• "特征 JSON" 隐私架构：仅发送数字参数（不传原图），Token 成本降低 95%
-
-• Supabase pgvector RAG：Metadata 过滤 + 语义检索
-
-• Vercel AI SDK SSE 流式诊断报告
-
-• 程序化 SEO：4 平台 × 8 语言 = 32 着陆页
+```text
+构建面向图片处理场景的 AI Workflow Copilot，
+通过 LangChain、RAG 和结构化输出将自然语言目标转为可执行工作流，
+并映射到浏览器端图片处理引擎完成批量执行与导出。
 ```
+
+---
+
+## 19. 最终技术结论
+
+这套方案的关键不是“让 AI 给建议”，而是：
+
+> **让 AI 成为参数配置之前的决策层，把用户目标转成可执行计划。**
+
+技术上必须坚持两个边界：
+
+- AI 负责规划，不负责实际图片二进制处理
+- 前端负责执行，不信任任何未校验的 AI 输出
+
+只要这两个边界守住，Workflow Copilot 就能同时做到：
+
+- AI 足够核心
+- 成本可控
+- 执行稳定
+- 与现有 PixelSwift 能力高度复用

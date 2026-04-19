@@ -1,8 +1,12 @@
 <script setup lang="ts">
+import { buildLoginUrl } from "~/utils/authRedirect";
+
 const { t, locale, locales, setLocale } = useI18n();
 const localePath = useLocalePath();
 const colorMode = useColorMode();
+const route = useRoute();
 const isMobileMenuOpen = ref(false);
+const { user } = useAccountStatus();
 
 const isDark = computed(() => colorMode.value === "dark");
 
@@ -71,6 +75,11 @@ const availableLocales = computed(() =>
 function selectLocale(code: string) {
   setLocale(code);
 }
+
+const authLoginUrl = computed(() => buildLoginUrl(route.fullPath));
+const authCopy = computed(() => ({
+  signIn: t("auth.menu.signIn"),
+}));
 </script>
 
 <template>
@@ -121,6 +130,16 @@ function selectLocale(code: string) {
 
       <!-- Actions (right) -->
       <div class="flex items-center gap-3">
+        <NuxtLink
+          v-if="!user"
+          :to="authLoginUrl"
+          class="hidden sm:inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800"
+        >
+          {{ authCopy.signIn }}
+        </NuxtLink>
+
+        <AccountStatusMenu v-else />
+
         <!-- Language -->
         <ElDropdown trigger="click" @command="selectLocale">
           <button
@@ -190,6 +209,15 @@ function selectLocale(code: string) {
         class="md:hidden fixed left-0 right-0 top-16 z-50 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-xl"
       >
         <nav class="flex flex-col p-4 gap-1">
+          <NuxtLink
+            v-if="!user"
+            :to="authLoginUrl"
+            class="px-4 py-3 rounded-lg text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            @click="closeMobileMenu"
+          >
+            {{ authCopy.signIn }}
+          </NuxtLink>
+
           <NuxtLink
             v-for="item in navItems"
             :key="item.to"

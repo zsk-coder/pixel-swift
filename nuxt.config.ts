@@ -1,8 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import wasm from "vite-plugin-wasm";
 import topLevelAwait from "vite-plugin-top-level-await";
+import {
+  FALLBACK_SUPABASE_KEY,
+  FALLBACK_SUPABASE_URL,
+} from "./shared/utils/supabaseAuth";
 
 const SITE_URL = "https://pixelswift.site";
+const SUPABASE_AUTH_ENABLED = Boolean(
+  process.env.NUXT_PUBLIC_SUPABASE_URL && process.env.NUXT_PUBLIC_SUPABASE_KEY,
+);
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -28,14 +35,25 @@ export default defineNuxtConfig({
 
   // ── 公开运行时配置（组件中使用 useRuntimeConfig().public.siteUrl）──
   runtimeConfig: {
+    supabase: {
+      serviceKey: process.env.NUXT_SUPABASE_SERVICE_KEY || "",
+    },
     public: {
       siteUrl: SITE_URL,
+      auth: {
+        enabled: SUPABASE_AUTH_ENABLED,
+      },
+      supabase: {
+        url: process.env.NUXT_PUBLIC_SUPABASE_URL || FALLBACK_SUPABASE_URL,
+        key: process.env.NUXT_PUBLIC_SUPABASE_KEY || FALLBACK_SUPABASE_KEY,
+      },
     },
   },
 
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/i18n",
+    "@nuxtjs/supabase",
     "@nuxtjs/sitemap",
     "@nuxtjs/color-mode",
     "nuxt-schema-org",
@@ -163,12 +181,17 @@ export default defineNuxtConfig({
     ],
     langDir: "../locales",
     defaultLocale: "en",
+    fallbackLocale: "en",
     strategy: "prefix_except_default",
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_lang",
       redirectOn: "root",
     },
+  },
+
+  supabase: {
+    redirect: false,
   },
 
   // ── Color Mode ──
