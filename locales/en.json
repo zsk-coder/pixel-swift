@@ -332,7 +332,7 @@
       "badge": "3 free AI planning experiences",
       "backHome": "Back to home",
       "title": "Welcome back",
-      "description": "Sign in to unlock 3 free AI planning experiences with Workflow Copilot.",
+      "description": "Sign in to continue with Workflow Copilot.",
       "google": "Continue with Google",
       "helper": "No credit card required",
       "secondaryHelper": "Secure Google authentication",
@@ -351,8 +351,8 @@
       "emailLabel": "Signed in as"
     },
     "callback": {
-      "title": "Finishing sign-in",
-      "description": "We are preparing your account and free trial status.",
+      "title": "Signing you in",
+      "description": "We're signing you in and getting your workspace ready.",
       "failed": "We could not finish your sign-in. Please try again.",
       "unavailable": "Supabase is not configured yet. Add the required environment variables to enable sign-in.",
       "retry": "Try Google sign-in again",

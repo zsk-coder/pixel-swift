@@ -6,14 +6,14 @@ import { createError, type H3Event } from "h3";
 
 import {
   createAuthUnavailableQuotaPayload,
-  createDefaultEntitlement,
+  createMissingEntitlementQuotaPayload,
   createUnauthenticatedQuotaPayload,
   toQuotaPayload,
   type UserEntitlementRow,
 } from "../../lib/billing/trial";
 import { isSupabaseServiceEnabled } from "~~/shared/utils/supabaseAuth";
 
-async function getOrCreateEntitlement(event: H3Event, userId: string) {
+async function getEntitlement(event: H3Event, userId: string) {
   const supabase = serverSupabaseServiceRole(event);
   const existingResult = await supabase
     .from("user_entitlements")
@@ -34,24 +34,8 @@ async function getOrCreateEntitlement(event: H3Event, userId: string) {
     return existingResult.data;
   }
 
-  console.log("[DEBUG] Creating default entitlement for user:", userId);
-  const defaultEntitlement = createDefaultEntitlement(userId);
-  const insertResult = await supabase
-    .from("user_entitlements")
-    .insert(defaultEntitlement)
-    .select("user_id, plan_type, trial_total, trial_used, subscription_status")
-    .single<UserEntitlementRow>();
-
-  if (insertResult.error) {
-    console.error("[DEBUG] insertResult error:", insertResult.error);
-    throw createError({
-      statusCode: 500,
-      statusMessage: `Failed to initialize user entitlements: ${insertResult.error.message}`,
-    });
-  }
-
-  console.log("[DEBUG] Successfully created entitlement for user:", userId);
-  return insertResult.data;
+  console.log("[DEBUG] No entitlement record found for user:", userId);
+  return null;
 }
 
 export default defineEventHandler(async (event) => {
@@ -84,7 +68,11 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const entitlement = await getOrCreateEntitlement(event, userId);
+  const entitlement = await getEntitlement(event, userId);
+
+  if (!entitlement) {
+    return createMissingEntitlementQuotaPayload();
+  }
 
   return toQuotaPayload(entitlement);
 });

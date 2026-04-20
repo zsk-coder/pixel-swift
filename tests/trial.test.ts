@@ -1,9 +1,13 @@
+import { existsSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
+
 import { describe, expect, it } from "vitest";
 
 import {
   DEFAULT_TRIAL_TOTAL,
   createAuthUnavailableQuotaPayload,
   createDefaultEntitlement,
+  createMissingEntitlementQuotaPayload,
   createUnauthenticatedQuotaPayload,
   toQuotaPayload,
 } from "../server/lib/billing/trial";
@@ -81,5 +85,70 @@ describe("fallback quota payloads", () => {
       trialTotal: 0,
       trialUsed: 0,
     });
+  });
+
+  it("returns a locked authenticated payload when entitlements are missing", () => {
+    expect(createMissingEntitlementQuotaPayload()).toEqual({
+      authAvailable: true,
+      authenticated: true,
+      canGenerate: false,
+      isLocked: true,
+      planType: "free",
+      subscriptionStatus: "inactive",
+      trialRemaining: 0,
+      trialTotal: 0,
+      trialUsed: 0,
+    });
+  });
+});
+
+describe("database signup bootstrap", () => {
+  it("defines a migration that initializes entitlements when auth users are created", () => {
+    const migrationPath = resolve(
+      "supabase/migrations/20260420_init_user_entitlements_on_signup.sql",
+    );
+
+    expect(existsSync(migrationPath)).toBe(true);
+
+    const source = readFileSync(migrationPath, "utf8");
+    expect(source).toContain("create or replace function public.handle_new_user_entitlements()");
+    expect(source).toContain("insert into public.user_entitlements");
+    expect(source).toContain("on conflict (user_id) do nothing");
+    expect(source).toContain("after insert on auth.users");
+    expect(source).toContain("create trigger on_auth_user_created_init_entitlements");
+  });
+});
+
+describe("quota access behavior", () => {
+  it("does not recreate entitlements when a record is missing", () => {
+    const source = readFileSync(
+      resolve("server/api/workflow-copilot/quota.get.ts"),
+      "utf8",
+    );
+
+    expect(source).not.toContain("createDefaultEntitlement");
+    expect(source).not.toContain(".insert(defaultEntitlement)");
+    expect(source).toContain("createMissingEntitlementQuotaPayload");
+  });
+
+  it("renders quota totals from live data instead of a hard-coded fallback", () => {
+    const source = readFileSync(
+      resolve("app/components/auth/AccountStatusMenu.vue"),
+      "utf8",
+    );
+
+    expect(source).not.toContain("trialTotal || 3");
+  });
+
+  it("refreshes quota when the account dropdown opens", () => {
+    const source = readFileSync(
+      resolve("app/components/auth/AccountStatusMenu.vue"),
+      "utf8",
+    );
+
+    expect(source).toContain("refreshStatus");
+    expect(source).toContain("@visible-change=\"handleVisibilityChange\"");
+    expect(source).toContain("if (!visible) {");
+    expect(source).toContain("await refreshStatus()");
   });
 });

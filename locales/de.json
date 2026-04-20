@@ -443,8 +443,8 @@
       "heroSubtitle": "Laden Sie Bilder hoch, beschreiben Sie Ihr Ziel und lassen Sie die KI den Rest erledigen.",
       "badge": "3 kostenlose KI-Planungserlebnisse",
       "backHome": "Zur Startseite",
-      "title": "Willkommen zur\u00fcck",
-      "description": "Melden Sie sich an, um 3 kostenlose KI-Planungserlebnisse freizuschalten.",
+      "title": "Willkommen zurück",
+      "description": "Melden Sie sich an, um mit Workflow Copilot fortzufahren.",
       "google": "Mit Google fortfahren",
       "helper": "Keine Kreditkarte erforderlich",
       "secondaryHelper": "Sichere Google-Anmeldung",
@@ -463,8 +463,8 @@
       "emailLabel": "Angemeldet als"
     },
     "callback": {
-      "title": "Anmeldung wird abgeschlossen",
-      "description": "Wir bereiten gerade Ihr Konto und Ihren kostenlosen Teststatus vor.",
+      "title": "Anmeldung läuft",
+      "description": "Wir melden Sie an und bereiten Ihren Arbeitsbereich vor.",
       "failed": "Die Anmeldung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut.",
       "unavailable": "Supabase ist noch nicht konfiguriert. Fügen Sie zuerst die erforderlichen Umgebungsvariablen hinzu, um die Anmeldung zu aktivieren.",
       "retry": "Google-Anmeldung erneut versuchen",

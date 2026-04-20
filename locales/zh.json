@@ -329,34 +329,34 @@
     "login": {
       "heroTitle": "让 AI 为你生成图片处理工作流。",
       "heroSubtitle": "上传图片，描述你的目标，剩下的交给 AI。体验视觉自动化的未来。",
-      "badge": "3 \u6b21\u514d\u8d39 AI \u89c4\u5212\u4f53\u9a8c",
-      "backHome": "\u8fd4\u56de\u9996\u9875",
-      "title": "\u6b22\u8fce\u56de\u6765",
-      "description": "登录即可解锁 3 次免费 AI 规划体验。",
-      "google": "\u4f7f\u7528 Google \u7ee7\u7eed",
-      "helper": "\u65e0\u9700\u4fe1\u7528\u5361",
-      "secondaryHelper": "\u5b89\u5168\u7684 Google \u767b\u5f55\u4f53\u9a8c",
-      "pageTitle": "\u767b\u5f55 | PixelSwift",
-      "configError": "Supabase \u8fd8\u672a\u914d\u7f6e\uff0c\u8bf7\u5148\u586b\u5199\u73af\u5883\u53d8\u91cf\u540e\u518d\u542f\u7528\u767b\u5f55\u3002",
-      "authError": "\u65e0\u6cd5\u542f\u52a8 Google \u767b\u5f55\uff0c\u8bf7\u7a0d\u540e\u91cd\u8bd5\u3002"
+      "badge": "3 次免费 AI 规划体验",
+      "backHome": "返回首页",
+      "title": "欢迎回来",
+      "description": "登录以继续使用 Workflow Copilot。",
+      "google": "使用 Google 继续",
+      "helper": "无需信用卡",
+      "secondaryHelper": "安全的 Google 登录体验",
+      "pageTitle": "登录 | PixelSwift",
+      "configError": "Supabase 还未配置，请先填写环境变量后再启用登录。",
+      "authError": "无法启动 Google 登录，请稍后重试。"
     },
     "menu": {
-      "signIn": "\u767b\u5f55",
-      "account": "\u8d26\u53f7",
-      "free": "\u514d\u8d39",
+      "signIn": "登录",
+      "account": "账号",
+      "free": "免费",
       "pro": "Pro",
-      "trialLeft": "\u5269\u4f59 {used} / {total} \u6b21\u514d\u8d39 AI \u4f53\u9a8c",
-      "upgrade": "\u5347\u7ea7\u5230 Pro",
-      "signOut": "\u9000\u51fa\u767b\u5f55",
-      "emailLabel": "\u5f53\u524d\u767b\u5f55\u8d26\u53f7"
+      "trialLeft": "剩余 {used} / {total} 次免费 AI 体验",
+      "upgrade": "升级到 Pro",
+      "signOut": "退出登录",
+      "emailLabel": "当前登录账号"
     },
     "callback": {
-      "title": "\u6b63\u5728\u5b8c\u6210\u767b\u5f55",
-      "description": "\u6211\u4eec\u6b63\u5728\u51c6\u5907\u4f60\u7684\u8d26\u53f7\u548c\u514d\u8d39\u4f53\u9a8c\u72b6\u6001\u3002",
-      "failed": "\u65e0\u6cd5\u5b8c\u6210\u767b\u5f55\uff0c\u8bf7\u91cd\u8bd5\u3002",
-      "unavailable": "Supabase \u8fd8\u672a\u914d\u7f6e\uff0c\u8bf7\u5148\u586b\u5199\u5fc5\u9700\u7684\u73af\u5883\u53d8\u91cf\u540e\u518d\u542f\u7528\u767b\u5f55\u3002",
-      "retry": "\u91cd\u65b0\u4f7f\u7528 Google \u767b\u5f55",
-      "home": "\u8fd4\u56de\u9996\u9875"
+      "title": "正在为你登录",
+      "description": "正在为你登录并准备工作台。",
+      "failed": "无法完成登录，请重试。",
+      "unavailable": "Supabase 还未配置，请先填写必需的环境变量后再启用登录。",
+      "retry": "重新使用 Google 登录",
+      "home": "返回首页"
     }
   },
   "errors": {

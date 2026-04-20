@@ -53,8 +53,9 @@ watch(
 </script>
 
 <template>
-  <section class="relative flex w-full flex-col items-center">
+  <section class="flex w-full max-w-sm flex-col items-center">
     <AuthLoginCard
+      :badge-label="t('auth.login.badge')"
       :title="t('auth.login.title')"
       :description="t('auth.login.description')"
       :action-label="t('auth.login.google')"
@@ -64,7 +65,7 @@ watch(
       @google="handleGoogleLogin"
     />
 
-    <div class="absolute top-full mt-4 w-full text-center">
+    <div class="mt-4 text-center">
       <p
         v-if="!isConfigured || errorMessage"
         class="text-sm text-rose-600 dark:text-rose-300"

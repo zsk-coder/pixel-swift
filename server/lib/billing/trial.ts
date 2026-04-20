@@ -61,6 +61,20 @@ export function createAuthUnavailableQuotaPayload(): QuotaPayload {
   };
 }
 
+export function createMissingEntitlementQuotaPayload(): QuotaPayload {
+  return {
+    authAvailable: true,
+    authenticated: true,
+    canGenerate: false,
+    isLocked: true,
+    planType: "free",
+    subscriptionStatus: "inactive",
+    trialRemaining: 0,
+    trialTotal: 0,
+    trialUsed: 0,
+  };
+}
+
 export function toQuotaPayload(
   entitlement: Pick<UserEntitlementRow, "plan_type" | "trial_total" | "trial_used"> &
     Partial<Pick<UserEntitlementRow, "subscription_status">>,

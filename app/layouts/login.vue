@@ -1,52 +1,47 @@
 <template>
-  <!-- 登录页分栏布局：左 55% 品牌区 + 右 45% 表单区 -->
-  <div
-    class="flex h-screen w-full overflow-hidden bg-white text-slate-900 dark:bg-slate-950 dark:text-white"
-  >
-    <!-- 左侧品牌面板（移动端隐藏） -->
-    <aside class="hidden w-[55%] lg:flex">
-      <LoginBrandPanel />
-    </aside>
-
-    <!-- 右侧表单区 -->
-    <div
-      class="relative flex w-full flex-col items-center justify-center p-8 pb-[8vh] sm:p-12 sm:pb-[10vh] lg:w-[45%] lg:p-16 lg:pb-[12vh]"
+  <div class="relative min-h-screen w-full bg-white text-slate-900">
+    <NuxtLink
+      to="/"
+      class="absolute left-6 top-6 inline-flex items-center gap-2 sm:left-8 sm:top-8"
     >
-      <!-- 移动端 Logo（仅小屏可见） -->
-      <div class="absolute left-8 top-8 flex items-center gap-2 lg:hidden">
-        <div
-          class="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-white shadow-sm"
-        >
-          <span
-            class="material-symbols-outlined text-sm"
-            :style="{ fontVariationSettings: '\'FILL\' 1' }"
-            >auto_fix_high</span
-          >
-        </div>
-        <span class="text-xl font-black tracking-tight">PixelSwift</span>
-      </div>
-
-      <!-- 表单插槽 -->
-      <slot />
-
-      <!-- 底部链接 -->
-      <div
-        class="absolute bottom-8 flex gap-4 text-xs font-medium text-slate-400"
+      <span
+        class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-white shadow-sm"
       >
-        <NuxtLink
-          :to="localePath('/privacy')"
-          class="transition-colors hover:text-primary"
+        <span
+          class="material-symbols-outlined text-[20px]"
+          :style="{ fontVariationSettings: '\'FILL\' 1' }"
+          >auto_fix_high</span
         >
-          {{ t("footer.privacy") }}
-        </NuxtLink>
-        <span>·</span>
-        <NuxtLink
-          :to="localePath('/terms')"
-          class="transition-colors hover:text-primary"
-        >
-          {{ t("footer.terms") }}
-        </NuxtLink>
+      </span>
+      <span class="text-lg font-semibold tracking-tight text-slate-950">
+        PixelSwift
+      </span>
+    </NuxtLink>
+
+    <div class="flex min-h-screen w-full items-center justify-center px-6 py-20 sm:px-8">
+      <div
+        class="flex w-full justify-center -translate-y-[8vh] sm:-translate-y-[9vh] lg:-translate-y-[10vh]"
+      >
+        <slot />
       </div>
+    </div>
+
+    <div
+      class="absolute bottom-8 left-1/2 flex -translate-x-1/2 gap-4 text-xs font-medium text-slate-400"
+    >
+      <NuxtLink
+        :to="localePath('/privacy')"
+        class="transition-colors hover:text-primary"
+      >
+        {{ t("footer.privacy") }}
+      </NuxtLink>
+      <span>·</span>
+      <NuxtLink
+        :to="localePath('/terms')"
+        class="transition-colors hover:text-primary"
+      >
+        {{ t("footer.terms") }}
+      </NuxtLink>
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { t } = useI18n();
 const localePath = useLocalePath();
-const { user, avatarUrl, displayName, userInitials, planType, remainingTrialCount, quota, signOut } = useAccountStatus();
+const { user, avatarUrl, displayName, userInitials, planType, remainingTrialCount, quota, refreshStatus, signOut } = useAccountStatus();
 const currentPlanLabel = computed(() => (planType.value === "pro" ? t("auth.menu.pro") : t("auth.menu.free")));
 
 const quotaProgress = computed(() => {
@@ -12,11 +12,19 @@ const quotaProgress = computed(() => {
   return Math.max(0, Math.min(100, (quota.value.trialRemaining / quota.value.trialTotal) * 100));
 });
 
-const quotaLabel = computed(() => t("auth.menu.trialLeft").replace("{used}", String(quota.value.trialRemaining)).replace("{total}", String(quota.value.trialTotal || 3)));
+const quotaLabel = computed(() => t("auth.menu.trialLeft").replace("{used}", String(quota.value.trialRemaining)).replace("{total}", String(quota.value.trialTotal)));
+
+async function handleVisibilityChange(visible: boolean) {
+  if (!visible) {
+    return;
+  }
+
+  await refreshStatus();
+}
 </script>
 
 <template>
-  <ElDropdown trigger="click" placement="bottom-end" :hide-on-click="false">
+  <ElDropdown trigger="click" placement="bottom-end" :hide-on-click="false" @visible-change="handleVisibilityChange">
     <button
       class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-slate-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-slate-600"
       :aria-label="t('auth.menu.account')"
@@ -56,7 +64,7 @@ const quotaLabel = computed(() => t("auth.menu.trialLeft").replace("{used}", Str
             <p class="text-sm font-medium text-slate-700 dark:text-slate-200">
               {{ quotaLabel }}
             </p>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400"> {{ remainingTrialCount }} / {{ quota.trialTotal || 3 }} </span>
+            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400"> {{ remainingTrialCount }} / {{ quota.trialTotal }} </span>
           </div>
           <div class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
             <div class="h-full rounded-full bg-primary transition-[width] duration-300" :style="{ width: `${quotaProgress}%` }" />

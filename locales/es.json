@@ -444,7 +444,7 @@
       "badge": "3 experiencias gratuitas de planificación con IA",
       "backHome": "Volver al inicio",
       "title": "Bienvenido de nuevo",
-      "description": "Inicia sesión para desbloquear 3 experiencias gratuitas de planificación con IA.",
+      "description": "Inicia sesión para continuar con Workflow Copilot.",
       "google": "Continuar con Google",
       "helper": "No se requiere tarjeta de crédito",
       "secondaryHelper": "Autenticación segura con Google",
@@ -463,8 +463,8 @@
       "emailLabel": "Sesión iniciada como"
     },
     "callback": {
-      "title": "Finalizando el acceso",
-      "description": "Estamos preparando tu cuenta y el estado de tu prueba gratuita.",
+      "title": "Iniciando tu sesión",
+      "description": "Te estamos iniciando sesión y preparando tu espacio de trabajo.",
       "failed": "No pudimos completar el inicio de sesión. Vuelve a intentarlo.",
       "unavailable": "Supabase aún no está configurado. Añade las variables de entorno necesarias para habilitar el inicio de sesión.",
       "retry": "Volver a intentar con Google",

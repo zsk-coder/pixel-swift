@@ -444,7 +444,7 @@
       "badge": "AI プランニングを 3 回無料で体験",
       "backHome": "ホームに戻る",
       "title": "おかえりなさい",
-      "description": "ログインして、AI プランニングの無料体験 3 回分を解放しましょう。",
+      "description": "Workflow Copilot を続けるにはログインしてください。",
       "google": "Google で続行",
       "helper": "クレジットカードは不要です",
       "secondaryHelper": "安全な Google 認証",
@@ -463,8 +463,8 @@
       "emailLabel": "現在のログインアカウント"
     },
     "callback": {
-      "title": "サインインを完了しています",
-      "description": "アカウントと無料トライアルの状態を準備しています。",
+      "title": "ログインしています",
+      "description": "ログインを進めながら、ワークスペースを準備しています。",
       "failed": "サインインを完了できませんでした。もう一度お試しください。",
       "unavailable": "Supabase はまだ設定されていません。サインインを有効にするには必要な環境変数を追加してください。",
       "retry": "Google サインインを再試行",

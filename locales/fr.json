@@ -444,7 +444,7 @@
       "badge": "3 expériences gratuites de planification IA",
       "backHome": "Retour à l'accueil",
       "title": "Bon retour",
-      "description": "Connectez-vous pour débloquer 3 expériences gratuites de planification IA.",
+      "description": "Connectez-vous pour continuer avec Workflow Copilot.",
       "google": "Continuer avec Google",
       "helper": "Aucune carte bancaire requise",
       "secondaryHelper": "Authentification Google sécurisée",
@@ -464,7 +464,7 @@
     },
     "callback": {
       "title": "Connexion en cours",
-      "description": "Nous préparons votre compte et le statut de votre essai gratuit.",
+      "description": "Nous vous connectons et préparons votre espace de travail.",
       "failed": "Nous n'avons pas pu terminer votre connexion. Veuillez réessayer.",
       "unavailable": "Supabase n'est pas encore configuré. Ajoutez d'abord les variables d'environnement requises pour activer la connexion.",
       "retry": "Réessayer avec Google",

@@ -444,7 +444,7 @@
       "badge": "3 experiências gratuitas de planejamento com IA",
       "backHome": "Voltar para o início",
       "title": "Bem-vindo de volta",
-      "description": "Faça login para desbloquear 3 experiências gratuitas de planejamento com IA.",
+      "description": "Faça login para continuar com o Workflow Copilot.",
       "google": "Continuar com Google",
       "helper": "Sem necessidade de cartão de crédito",
       "secondaryHelper": "Autenticação segura com Google",
@@ -463,8 +463,8 @@
       "emailLabel": "Conectado como"
     },
     "callback": {
-      "title": "Concluindo o login",
-      "description": "Estamos preparando sua conta e o status da sua experiência gratuita.",
+      "title": "Fazendo seu login",
+      "description": "Estamos conectando você e preparando seu espaço de trabalho.",
       "failed": "Não foi possível concluir seu login. Tente novamente.",
       "unavailable": "O Supabase ainda não está configurado. Adicione primeiro as variáveis de ambiente necessárias para habilitar o login.",
       "retry": "Tentar novamente com Google",
