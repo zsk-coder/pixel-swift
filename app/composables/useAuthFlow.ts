@@ -8,7 +8,11 @@ export function useAuthFlow() {
   const { isConfigured } = useAuthConfig();
 
   function getCurrentReturnTo() {
-    return normalizeReturnTo(route.fullPath);
+    const rawPath = route.fullPath;
+    if (rawPath === "/login" || rawPath.endsWith("/login")) {
+      return "/";
+    }
+    return normalizeReturnTo(rawPath);
   }
 
   function storeReturnTo(returnTo?: string | null) {
@@ -17,7 +21,10 @@ export function useAuthFlow() {
     }
 
     const normalizedReturnTo = normalizeReturnTo(returnTo);
-    window.sessionStorage.setItem(AUTH_RETURN_TO_STORAGE_KEY, normalizedReturnTo);
+    window.sessionStorage.setItem(
+      AUTH_RETURN_TO_STORAGE_KEY,
+      normalizedReturnTo,
+    );
 
     return normalizedReturnTo;
   }
@@ -29,7 +36,9 @@ export function useAuthFlow() {
       return queryReturnTo;
     }
 
-    const storedReturnTo = window.sessionStorage.getItem(AUTH_RETURN_TO_STORAGE_KEY);
+    const storedReturnTo = window.sessionStorage.getItem(
+      AUTH_RETURN_TO_STORAGE_KEY,
+    );
     window.sessionStorage.removeItem(AUTH_RETURN_TO_STORAGE_KEY);
 
     if (queryReturnTo !== "/") {
@@ -50,7 +59,10 @@ export function useAuthFlow() {
 
     const client = useSupabaseClient();
     const normalizedReturnTo = storeReturnTo(returnTo ?? getCurrentReturnTo());
-    const redirectTo = buildAuthCallbackUrl(window.location.origin, normalizedReturnTo);
+    const redirectTo = buildAuthCallbackUrl(
+      window.location.origin,
+      normalizedReturnTo,
+    );
     const { error } = await client.auth.signInWithOAuth({
       provider: "google",
       options: {

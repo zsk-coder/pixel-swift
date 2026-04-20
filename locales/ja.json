@@ -439,10 +439,12 @@
   },
   "auth": {
     "login": {
+      "heroTitle": "画像タスクをAI生成ワークフローに変換。",
+      "heroSubtitle": "画像をアップロードし、目標を説明すれば、AIが残りを処理します。",
       "badge": "AI プランニングを 3 回無料で体験",
       "backHome": "ホームに戻る",
-      "title": "ログインして続行",
-      "description": "Google でログインして Workflow Copilot を引き続き利用します。",
+      "title": "おかえりなさい",
+      "description": "ログインして、AI プランニングの無料体験 3 回分を解放しましょう。",
       "google": "Google で続行",
       "helper": "クレジットカードは不要です",
       "secondaryHelper": "安全な Google 認証",

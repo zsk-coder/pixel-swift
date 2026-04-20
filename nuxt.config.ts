@@ -192,6 +192,11 @@ export default defineNuxtConfig({
 
   supabase: {
     redirect: false,
+    cookieOptions: {
+      maxAge: 60 * 60 * 8,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+    },
   },
 
   // ── Color Mode ──

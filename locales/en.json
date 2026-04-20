@@ -327,10 +327,12 @@
   },
   "auth": {
     "login": {
+      "heroTitle": "Turn image tasks into an AI-generated workflow.",
+      "heroSubtitle": "Upload images, describe your goal, and let AI do the rest. Experience the future of visual automation.",
       "badge": "3 free AI planning experiences",
       "backHome": "Back to home",
-      "title": "Sign in to continue",
-      "description": "Sign in with Google to continue using Workflow Copilot.",
+      "title": "Welcome back",
+      "description": "Sign in to unlock 3 free AI planning experiences with Workflow Copilot.",
       "google": "Continue with Google",
       "helper": "No credit card required",
       "secondaryHelper": "Secure Google authentication",

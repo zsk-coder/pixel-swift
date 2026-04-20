@@ -439,10 +439,12 @@
   },
   "auth": {
     "login": {
+      "heroTitle": "Convierte tareas de imagen en flujos generados por IA.",
+      "heroSubtitle": "Sube imágenes, describe tu objetivo y deja que la IA haga el resto.",
       "badge": "3 experiencias gratuitas de planificación con IA",
       "backHome": "Volver al inicio",
-      "title": "Inicia sesión para continuar",
-      "description": "Inicia sesión con Google para seguir usando Workflow Copilot.",
+      "title": "Bienvenido de nuevo",
+      "description": "Inicia sesión para desbloquear 3 experiencias gratuitas de planificación con IA.",
       "google": "Continuar con Google",
       "helper": "No se requiere tarjeta de crédito",
       "secondaryHelper": "Autenticación segura con Google",

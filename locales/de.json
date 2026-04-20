@@ -439,10 +439,12 @@
   },
   "auth": {
     "login": {
+      "heroTitle": "Verwandeln Sie Bildaufgaben in KI-generierte Workflows.",
+      "heroSubtitle": "Laden Sie Bilder hoch, beschreiben Sie Ihr Ziel und lassen Sie die KI den Rest erledigen.",
       "badge": "3 kostenlose KI-Planungserlebnisse",
       "backHome": "Zur Startseite",
-      "title": "Anmelden und fortfahren",
-      "description": "Melden Sie sich mit Google an, um Workflow Copilot weiter zu nutzen.",
+      "title": "Willkommen zur\u00fcck",
+      "description": "Melden Sie sich an, um 3 kostenlose KI-Planungserlebnisse freizuschalten.",
       "google": "Mit Google fortfahren",
       "helper": "Keine Kreditkarte erforderlich",
       "secondaryHelper": "Sichere Google-Anmeldung",

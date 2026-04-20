@@ -53,22 +53,21 @@ watch(
 </script>
 
 <template>
-  <section class="w-full">
-    <div class="mx-auto w-full max-w-lg">
-      <AuthLoginCard
-        :badge-label="t('auth.login.badge')"
-        :title="t('auth.login.title')"
-        :description="t('auth.login.description')"
-        :action-label="t('auth.login.google')"
-        :secondary-helper-label="t('auth.login.secondaryHelper')"
-        :disabled="!isConfigured"
-        :loading="isSubmitting"
-        @google="handleGoogleLogin"
-      />
+  <section class="relative flex w-full flex-col items-center">
+    <AuthLoginCard
+      :title="t('auth.login.title')"
+      :description="t('auth.login.description')"
+      :action-label="t('auth.login.google')"
+      :secondary-helper-label="t('auth.login.secondaryHelper')"
+      :disabled="!isConfigured"
+      :loading="isSubmitting"
+      @google="handleGoogleLogin"
+    />
 
+    <div class="absolute top-full mt-4 w-full text-center">
       <p
         v-if="!isConfigured || errorMessage"
-        class="mt-4 text-center text-sm text-rose-600 dark:text-rose-300"
+        class="text-sm text-rose-600 dark:text-rose-300"
       >
         {{ errorMessage || t("auth.login.configError") }}
       </p>
