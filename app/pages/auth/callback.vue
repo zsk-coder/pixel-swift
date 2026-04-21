@@ -68,42 +68,35 @@ async function waitForAuthenticatedUser() {
  * 页面挂载时立刻触发鉴定程序
  */
 onMounted(async () => {
-  // try {
-  //   if (!isConfigured.value) {
-  //     throw new Error(t("auth.callback.unavailable"));
-  //   }
-  //   // 1. 开始轮询等待，确保第三方登录确为成功
-  //   const authenticatedUser = await waitForAuthenticatedUser();
-  //   if (!authenticatedUser) {
-  //     throw new Error(t("auth.callback.failed")); // 超时或拿不到状态抛异常显示错误牌
-  //   }
-  //   // 2. 数据新鲜度同步：强制调接口或读缓存更新配额余量
-  //   await refreshStatus();
-  //   // 3. 计算用户究竟要回到哪去
-  //   // 有两种可能：一是 Google Redirection 时的 URL 里存的 query
-  //   // 二是如果没携带，查一查我们一开始自己保存在 LocalStorage 里的痕迹
-  //   const target = consumeReturnTo(
-  //     typeof route.query.returnTo === "string" ? route.query.returnTo : null,
-  //   );
-  //   // 4. 洗衣机净化路径后完美着陆，并擦除回退记录 (`replace: true`) 不留历史记录
-  //   await navigateTo(normalizeReturnTo(target), { replace: true });
-  // } catch (error) {
-  //   errorMessage.value =
-  //     error instanceof Error ? error.message : t("auth.callback.failed");
-  // } finally {
-  //   isLoading.value = false;
-  // }
+  try {
+    if (!isConfigured.value) {
+      throw new Error(t("auth.callback.unavailable"));
+    }
+    // 1. 开始轮询等待，确保第三方登录确为成功
+    const authenticatedUser = await waitForAuthenticatedUser();
+    if (!authenticatedUser) {
+      throw new Error(t("auth.callback.failed")); // 超时或拿不到状态抛异常显示错误牌
+    }
+    // 2. 数据新鲜度同步：强制调接口或读缓存更新配额余量
+    await refreshStatus();
+    // 3. 计算用户究竟要回到哪去
+    // 有两种可能：一是 Google Redirection 时的 URL 里存的 query
+    // 二是如果没携带，查一查我们一开始自己保存在 LocalStorage 里的痕迹
+    const target = consumeReturnTo(typeof route.query.returnTo === "string" ? route.query.returnTo : null);
+    // 4. 洗衣机净化路径后完美着陆，并擦除回退记录 (`replace: true`) 不留历史记录
+    await navigateTo(normalizeReturnTo(target), { replace: true });
+  } catch (error) {
+    errorMessage.value = error instanceof Error ? error.message : t("auth.callback.failed");
+  } finally {
+    isLoading.value = false;
+  }
 });
 </script>
 
 <template>
   <section class="mx-auto flex w-full justify-center px-4 sm:px-6 lg:px-8">
-    <div
-      class="w-full max-w-lg rounded-[28px] bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900"
-    >
-      <div
-        class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary-50 text-primary dark:bg-primary/10 dark:text-primary-100"
-      >
+    <div class="w-full max-w-lg rounded-[28px] bg-white p-8 text-center dark:border-slate-700 dark:bg-slate-900">
+      <div class="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-primary-50 text-primary dark:bg-primary/10 dark:text-primary-100">
         <!-- Unified Element Plus Icon Wrapper -->
         <el-icon :size="25" :class="{ 'is-loading': isLoading }">
           <Loading v-if="isLoading" />
@@ -112,23 +105,15 @@ onMounted(async () => {
         </el-icon>
       </div>
 
-      <h1
-        class="mt-6 text-2xl font-bold tracking-tight text-slate-950 dark:text-white"
-      >
+      <h1 class="mt-6 text-2xl font-bold tracking-tight text-slate-950 dark:text-white">
         {{ $t("auth.callback.title") }}
       </h1>
       <p class="mt-3 text-sm leading-7 text-slate-600 dark:text-slate-300">
         {{ errorMessage || $t("auth.callback.description") }}
       </p>
 
-      <div
-        v-if="errorMessage"
-        class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center"
-      >
-        <NuxtLink
-          :to="localePath('/login')"
-          class="inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark"
-        >
+      <div v-if="errorMessage" class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-center">
+        <NuxtLink :to="localePath('/login')" class="inline-flex items-center justify-center rounded-2xl bg-primary px-5 py-3 text-sm font-semibold text-white transition hover:bg-primary-dark">
           {{ $t("auth.callback.retry") }}
         </NuxtLink>
         <NuxtLink

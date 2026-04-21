@@ -9,7 +9,7 @@ const {
   planType,
   remainingTrialCount,
   quota,
-  refreshStatus,
+  ensureQuotaFresh,
   signOut,
 } = useAccountStatus();
 const currentPlanLabel = computed(() =>
@@ -45,7 +45,7 @@ async function handleVisibilityChange(visible: boolean) {
     return;
   }
 
-  await refreshStatus();
+  await ensureQuotaFresh(60000);
 }
 </script>
 

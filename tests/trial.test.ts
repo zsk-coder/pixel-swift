@@ -140,15 +140,59 @@ describe("quota access behavior", () => {
     expect(source).not.toContain("trialTotal || 3");
   });
 
-  it("refreshes quota when the account dropdown opens", () => {
+  it("checks quota freshness when the account dropdown opens", () => {
     const source = readFileSync(
       resolve("app/components/auth/AccountStatusMenu.vue"),
       "utf8",
     );
 
-    expect(source).toContain("refreshStatus");
+    expect(source).toContain("ensureQuotaFresh");
     expect(source).toContain("@visible-change=\"handleVisibilityChange\"");
     expect(source).toContain("if (!visible) {");
-    expect(source).toContain("await refreshStatus()");
+    expect(source).toContain("await ensureQuotaFresh(60000)");
+  });
+
+  it("tracks quota freshness metadata in the shared quota composable", () => {
+    const source = readFileSync(
+      resolve("app/composables/useTrialQuota.ts"),
+      "utf8",
+    );
+
+    expect(source).toContain("lastFetchedAt");
+    expect(source).toContain("ensureQuotaFresh");
+    expect(source).toContain("lastFetchedAt.value = null");
+  });
+
+  it("reuses in-flight quota refresh requests instead of duplicating them", () => {
+    const source = readFileSync(
+      resolve("app/composables/useTrialQuota.ts"),
+      "utf8",
+    );
+
+    expect(source).toContain("refreshPromise");
+    expect(source).toContain("if (refreshPromise)");
+    expect(source).toContain("refreshPromise = request");
+  });
+
+  it("registers account status auth watchers only once", () => {
+    const source = readFileSync(
+      resolve("app/composables/useAccountStatus.ts"),
+      "utf8",
+    );
+
+    expect(source).toContain("watchRegistered");
+    expect(source).toContain("if (import.meta.client && !watchRegistered.value)");
+  });
+
+  it("refreshes quota on initial mount when an authenticated session already exists", () => {
+    const source = readFileSync(
+      resolve("app/composables/useAccountStatus.ts"),
+      "utf8",
+    );
+
+    expect(source).toContain("lastFetchedAt");
+    expect(source).toContain("onMounted(async () => {");
+    expect(source).toContain("if (user.value && !lastFetchedAt.value)");
+    expect(source).toContain("await refreshQuota()");
   });
 });
