@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { t, locale, locales, setLocale } = useI18n();
 const localePath = useLocalePath();
+const switchLocalePath = useSwitchLocalePath();
 const colorMode = useColorMode();
 const isMobileMenuOpen = ref(false);
 
@@ -90,7 +91,9 @@ function selectLocale(code: string) {
           <div
             class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white"
           >
-            <span aria-hidden="true" class="material-symbols-outlined text-[20px]"
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[20px]"
               >auto_fix</span
             >
           </div>
@@ -101,12 +104,12 @@ function selectLocale(code: string) {
         </NuxtLink>
 
         <!-- Divider -->
-        <div class="hidden md:block w-px h-5 bg-slate-200 dark:bg-slate-700 mx-6" />
+        <div
+          class="hidden md:block w-px h-5 bg-slate-200 dark:bg-slate-700 mx-6"
+        />
 
         <!-- Desktop Nav -->
-        <nav
-          class="hidden md:flex items-center gap-8"
-        >
+        <nav class="hidden md:flex items-center gap-8">
           <NuxtLink
             v-for="item in navItems"
             :key="item.to"
@@ -139,9 +142,14 @@ function selectLocale(code: string) {
                 v-for="loc in availableLocales"
                 :key="loc.code"
                 :command="loc.code"
-                :class="locale === loc.code ? 'is-active' : ''"
+                :class="[locale === loc.code ? 'is-active' : '', '!px-0 !py-0']"
               >
-                {{ loc.name }}
+                <NuxtLink
+                  :to="switchLocalePath(loc.code as any)"
+                  class="w-full h-full px-4 py-1.5 flex items-center outline-none hover:no-underline text-inherit"
+                >
+                  {{ loc.name }}
+                </NuxtLink>
               </ElDropdownItem>
             </ElDropdownMenu>
           </template>
