@@ -26,7 +26,11 @@ const DEFAULT_TRIAL_QUOTA: TrialQuota = {
 
 export function useTrialQuota() {
   const { isConfigured } = useAuthConfig();
-  const quota = useState<TrialQuota>("trial-quota", () => ({ ...DEFAULT_TRIAL_QUOTA }));
+  // Capture cookies during SSR setup so they can be forwarded to internal $fetch calls
+  const ssrHeaders = useRequestHeaders(["cookie"]);
+  const quota = useState<TrialQuota>("trial-quota", () => ({
+    ...DEFAULT_TRIAL_QUOTA,
+  }));
   const pending = useState<boolean>("trial-quota-pending", () => false);
   const errorMessage = useState<string | null>("trial-quota-error", () => null);
 
@@ -40,7 +44,12 @@ export function useTrialQuota() {
     pending.value = true;
 
     try {
-      quota.value = await $fetch<TrialQuota>("/api/workflow-copilot/quota");
+      quota.value = await $fetch<TrialQuota>("/api/workflow-copilot/quota", {
+        headers: import.meta.server
+          ? (ssrHeaders as Record<string, string>)
+          : undefined,
+        credentials: "include",
+      });
       errorMessage.value = null;
       return quota.value;
     } catch (error) {

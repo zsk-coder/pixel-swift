@@ -36,7 +36,7 @@ const { t } = useI18n();
       <h1 class="text-[3.5rem] leading-[1.15] font-black tracking-tight mb-10">
         {{ t("auth.login.heroTitle") }}
       </h1>
-      <p class="text-xl leading-relaxed font-medium max-w-xl text-blue-100">
+      <p class="text-xl leading-relaxed font-medium max-w-xl text-primary-100">
         {{ t("auth.login.heroSubtitle") }}
       </p>
     </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="relative min-h-screen w-full bg-white text-slate-900">
     <NuxtLink
-      to="/"
+      :to="localePath('/')"
       class="absolute left-6 top-6 inline-flex items-center gap-2 sm:left-8 sm:top-8"
     >
       <span
@@ -18,9 +18,11 @@
       </span>
     </NuxtLink>
 
-    <div class="flex min-h-screen w-full items-center justify-center px-6 py-20 sm:px-8">
+    <div
+      class="flex min-h-screen w-full items-center justify-center px-6 py-20 sm:px-8"
+    >
       <div
-        class="flex w-full justify-center -translate-y-[8vh] sm:-translate-y-[9vh] lg:-translate-y-[10vh]"
+        class="flex w-full justify-center -translate-y-[4vh] sm:-translate-y-[5vh] lg:-translate-y-[6vh]"
       >
         <slot />
       </div>

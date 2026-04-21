@@ -460,7 +460,9 @@
       "trialLeft": "{used} von {total} kostenlosen KI-Erlebnissen übrig",
       "upgrade": "Auf Pro upgraden",
       "signOut": "Abmelden",
-      "emailLabel": "Angemeldet als"
+      "emailLabel": "Angemeldet als",
+      "currentPlan": "Aktueller Plan",
+      "settings": "Kontoeinstellungen"
     },
     "callback": {
       "title": "Anmeldung läuft",

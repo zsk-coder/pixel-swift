@@ -348,7 +348,9 @@
       "trialLeft": "{used} of {total} free AI experiences left",
       "upgrade": "Upgrade to Pro",
       "signOut": "Sign out",
-      "emailLabel": "Signed in as"
+      "emailLabel": "Signed in as",
+      "currentPlan": "Current Plan",
+      "settings": "Account Settings"
     },
     "callback": {
       "title": "Signing you in",

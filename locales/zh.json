@@ -348,7 +348,9 @@
       "trialLeft": "剩余 {used} / {total} 次免费 AI 体验",
       "upgrade": "升级到 Pro",
       "signOut": "退出登录",
-      "emailLabel": "当前登录账号"
+      "emailLabel": "当前登录账号",
+      "currentPlan": "当前套餐",
+      "settings": "账号设置"
     },
     "callback": {
       "title": "正在为你登录",

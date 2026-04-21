@@ -239,7 +239,7 @@ const whyItems = computed(() => [
           <div class="mt-10 flex items-center justify-center gap-x-6">
             <NuxtLink
               :to="localePath('/compress-image')"
-              class="rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-300 hover:scale-105"
+              class="rounded-lg bg-primary px-6 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-primary-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-all duration-300 hover:scale-105"
             >
               {{ t("home.cta.start") }}
             </NuxtLink>
@@ -356,7 +356,7 @@ const whyItems = computed(() => [
             class="group relative flex flex-col items-center p-8 bg-white dark:bg-slate-800 rounded-xl shadow-sm hover:shadow-xl hover:-translate-y-1 border border-slate-200 dark:border-slate-700 transition-all duration-300"
           >
             <div
-              class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/30 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300"
+              class="mb-6 flex h-16 w-16 items-center justify-center rounded-full bg-primary-50 dark:bg-primary/30 text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300"
             >
               <span
                 aria-hidden="true"

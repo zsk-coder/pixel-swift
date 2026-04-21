@@ -460,7 +460,9 @@
       "trialLeft": "Quedan {used} de {total} experiencias gratuitas de IA",
       "upgrade": "Actualizar a Pro",
       "signOut": "Cerrar sesión",
-      "emailLabel": "Sesión iniciada como"
+      "emailLabel": "Sesión iniciada como",
+      "currentPlan": "Plan actual",
+      "settings": "Configuración de cuenta"
     },
     "callback": {
       "title": "Iniciando tu sesión",

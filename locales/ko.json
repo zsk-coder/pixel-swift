@@ -460,7 +460,9 @@
       "trialLeft": "무료 AI 체험 {total}회 중 {used}회 남음",
       "upgrade": "Pro로 업그레이드",
       "signOut": "로그아웃",
-      "emailLabel": "현재 로그인한 계정"
+      "emailLabel": "현재 로그인한 계정",
+      "currentPlan": "현재 플랜",
+      "settings": "계정 설정"
     },
     "callback": {
       "title": "로그인 중입니다",

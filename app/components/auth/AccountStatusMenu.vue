@@ -1,18 +1,44 @@
 <script setup lang="ts">
 const { t } = useI18n();
 const localePath = useLocalePath();
-const { user, avatarUrl, displayName, userInitials, planType, remainingTrialCount, quota, refreshStatus, signOut } = useAccountStatus();
-const currentPlanLabel = computed(() => (planType.value === "pro" ? t("auth.menu.pro") : t("auth.menu.free")));
+const {
+  user,
+  avatarUrl,
+  displayName,
+  userInitials,
+  planType,
+  remainingTrialCount,
+  quota,
+  refreshStatus,
+  signOut,
+} = useAccountStatus();
+const currentPlanLabel = computed(() =>
+  planType.value === "pro" ? t("auth.menu.pro") : t("auth.menu.free"),
+);
+
+// 头像加载失败时回退显示用户名首字母
+const avatarBroken = ref(false);
+const showAvatar = computed(() => avatarUrl.value && !avatarBroken.value);
+function handleAvatarError() {
+  avatarBroken.value = true;
+}
 
 const quotaProgress = computed(() => {
   if (!quota.value.trialTotal) {
     return 0;
   }
 
-  return Math.max(0, Math.min(100, (quota.value.trialRemaining / quota.value.trialTotal) * 100));
+  return Math.max(
+    0,
+    Math.min(100, (quota.value.trialRemaining / quota.value.trialTotal) * 100),
+  );
 });
 
-const quotaLabel = computed(() => t("auth.menu.trialLeft").replace("{used}", String(quota.value.trialRemaining)).replace("{total}", String(quota.value.trialTotal)));
+const quotaLabel = computed(() =>
+  t("auth.menu.trialLeft")
+    .replace("{used}", String(quota.value.trialRemaining))
+    .replace("{total}", String(quota.value.trialTotal)),
+);
 
 async function handleVisibilityChange(visible: boolean) {
   if (!visible) {
@@ -24,67 +50,135 @@ async function handleVisibilityChange(visible: boolean) {
 </script>
 
 <template>
-  <ElDropdown trigger="click" placement="bottom-end" :hide-on-click="false" @visible-change="handleVisibilityChange">
+  <ElDropdown
+    trigger="click"
+    placement="bottom"
+    :hide-on-click="false"
+    @visible-change="handleVisibilityChange"
+  >
+    <!-- 触发按钮：头像圆形按钮 -->
     <button
-      class="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-slate-300 hover:shadow-md dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:hover:border-slate-600"
+      class="flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border border-slate-200/50 transition-all hover:ring-2 hover:ring-primary-100 focus:outline-none focus:ring-2 focus:ring-primary dark:border-slate-700/50 dark:hover:ring-primary/20"
       :aria-label="t('auth.menu.account')"
     >
-      <img v-if="avatarUrl" :src="avatarUrl" :alt="displayName" class="h-full w-full object-cover" />
-      <span v-else class="text-sm font-semibold">{{ userInitials }}</span>
+      <img
+        v-if="showAvatar"
+        :src="avatarUrl"
+        :alt="displayName"
+        referrerpolicy="no-referrer"
+        class="h-full w-full object-cover"
+        @error="handleAvatarError"
+      />
+      <span
+        v-else
+        class="flex h-full w-full items-center justify-center bg-primary-50 text-xs font-semibold text-primary dark:bg-primary/10 dark:text-primary-100"
+        >{{ userInitials }}</span
+      >
     </button>
 
     <template #dropdown>
-      <div class="w-[320px] overflow-hidden rounded-3xl border border-slate-200/80 bg-white p-4 shadow-[0_18px_48px_rgba(15,23,42,0.16)] dark:border-slate-700 dark:bg-slate-900">
-        <div class="flex items-start gap-3">
-          <div class="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-blue-50 text-primary dark:bg-blue-500/10 dark:text-blue-200">
-            <img v-if="avatarUrl" :src="avatarUrl" :alt="displayName" class="h-full w-full object-cover" />
-            <span v-else class="text-sm font-semibold">{{ userInitials }}</span>
-          </div>
-
-          <div class="min-w-0 flex-1">
-            <div class="flex items-center gap-2">
-              <p class="truncate text-sm font-semibold text-slate-900 dark:text-white">
-                {{ displayName }}
-              </p>
-              <span class="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-[11px] font-semibold uppercase tracking-wide text-blue-700 dark:bg-blue-500/10 dark:text-blue-200">
-                {{ currentPlanLabel }}
-              </span>
+      <div
+        class="w-72 overflow-hidden rounded-xl bg-white shadow-[0_8px_30px_rgb(0,0,0,0.12)] dark:bg-slate-900"
+      >
+        <!-- 用户信息区域 -->
+        <div class="bg-slate-50/50 p-4 dark:bg-slate-800/50">
+          <div class="flex items-center gap-3">
+            <div
+              class="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full"
+            >
+              <img
+                v-if="showAvatar"
+                :src="avatarUrl"
+                :alt="displayName"
+                referrerpolicy="no-referrer"
+                class="h-full w-full object-cover"
+                @error="handleAvatarError"
+              />
+              <span
+                v-else
+                class="flex h-full w-full items-center justify-center rounded-full bg-primary-50 text-sm font-semibold text-primary dark:bg-primary/10 dark:text-primary-100"
+                >{{ userInitials }}</span
+              >
             </div>
-            <p class="mt-1 text-xs text-slate-500 dark:text-slate-400">
-              {{ t("auth.menu.emailLabel") }}
-            </p>
-            <p class="truncate text-sm text-slate-600 dark:text-slate-300">
-              {{ user?.email }}
-            </p>
+            <div class="flex min-w-0 flex-col">
+              <span
+                class="truncate text-sm font-bold text-slate-900 dark:text-white"
+                >{{ displayName }}</span
+              >
+              <span
+                class="w-40 truncate text-xs text-slate-500 dark:text-slate-400"
+                >{{ user?.email }}</span
+              >
+            </div>
           </div>
         </div>
 
-        <div class="mt-4 rounded-2xl bg-slate-50 px-4 py-3 dark:bg-slate-800/80">
-          <div class="flex items-center justify-between gap-3">
-            <p class="text-sm font-medium text-slate-700 dark:text-slate-200">
-              {{ quotaLabel }}
-            </p>
-            <span class="text-xs font-semibold text-slate-500 dark:text-slate-400"> {{ remainingTrialCount }} / {{ quota.trialTotal }} </span>
+        <!-- 套餐状态区域 -->
+        <div class="border-t border-slate-200/50 p-4 dark:border-slate-700/50">
+          <!-- Current Plan 行 -->
+          <div class="mb-3 flex items-center justify-between">
+            <span
+              class="text-sm font-medium text-slate-900 dark:text-slate-200"
+              >{{ t("auth.menu.currentPlan") }}</span
+            >
+            <span
+              class="rounded-full bg-slate-200 px-2 py-0.5 text-xs font-bold text-slate-600 dark:bg-slate-700 dark:text-slate-300"
+              >{{ currentPlanLabel }}</span
+            >
           </div>
-          <div class="mt-3 h-2 rounded-full bg-slate-200 dark:bg-slate-700">
-            <div class="h-full rounded-full bg-primary transition-[width] duration-300" :style="{ width: `${quotaProgress}%` }" />
+
+          <!-- 配额指示卡片 -->
+          <div
+            class="mb-4 rounded-lg border border-primary-100/50 bg-primary-50/30 p-3 dark:border-primary/20 dark:bg-primary/5"
+          >
+            <div class="flex items-start gap-2">
+              <div class="flex flex-col">
+                <span class="text-sm font-bold text-slate-900 dark:text-white"
+                  >{{ remainingTrialCount }} / {{ quota.trialTotal }}</span
+                >
+                <span class="text-xs text-slate-500 dark:text-slate-400">{{
+                  quotaLabel
+                }}</span>
+              </div>
+            </div>
+            <!-- 进度条 -->
+            <div
+              class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700"
+            >
+              <div
+                class="h-1.5 rounded-full bg-primary transition-[width] duration-300"
+                :style="{ width: `${quotaProgress}%` }"
+              />
+            </div>
           </div>
+
+          <!-- Upgrade CTA 按钮 -->
+          <NuxtLink
+            :to="localePath('/contact')"
+            class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-transform hover:scale-[1.02] hover:bg-primary-dark active:scale-95"
+          >
+            {{ t("auth.menu.upgrade") }}
+          </NuxtLink>
         </div>
 
-        <NuxtLink
-          :to="localePath('/contact')"
-          class="mt-4 inline-flex w-full items-center justify-center rounded-2xl bg-primary px-4 py-3 text-sm font-semibold text-white transition hover:bg-blue-700"
-        >
-          {{ t("auth.menu.upgrade") }}
-        </NuxtLink>
-
-        <button
-          type="button"
-          class="mt-3 inline-flex w-full items-center justify-center rounded-2xl border border-slate-200 px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800"
-          @click="signOut"
-        >
-          {{ t("auth.menu.signOut") }}
-        </button>
+        <!-- 底部链接区域 -->
+        <div class="border-t border-slate-200/50 p-2 dark:border-slate-700/50">
+          <NuxtLink
+            :to="localePath('/contact')"
+            class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
+          >
+            <span class="material-symbols-outlined text-lg">settings</span>
+            {{ t("auth.menu.settings") }}
+          </NuxtLink>
+          <button
+            type="button"
+            class="mt-1 flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-500 transition-colors hover:bg-red-50/50 dark:text-red-400 dark:hover:bg-red-500/10"
+            @click="signOut"
+          >
+            <span class="material-symbols-outlined text-lg">logout</span>
+            {{ t("auth.menu.signOut") }}
+          </button>
+        </div>
       </div>
     </template>
   </ElDropdown>

@@ -525,7 +525,7 @@ const { isFetching: isFetchingExtensionImage } =
             <!-- Progress bar at bottom for processing -->
             <template v-if="file.status === 'processing'">
               <div
-                class="absolute bottom-0 left-0 h-1 bg-blue-100 dark:bg-blue-900/30 w-full"
+                class="absolute bottom-0 left-0 h-1 bg-primary-100 dark:bg-primary/30 w-full"
               >
                 <div class="h-full bg-primary animate-pulse w-2/3" />
               </div>

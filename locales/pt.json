@@ -460,7 +460,9 @@
       "trialLeft": "Restam {used} de {total} experiências gratuitas de IA",
       "upgrade": "Fazer upgrade para Pro",
       "signOut": "Sair",
-      "emailLabel": "Conectado como"
+      "emailLabel": "Conectado como",
+      "currentPlan": "Plano atual",
+      "settings": "Configurações da conta"
     },
     "callback": {
       "title": "Fazendo seu login",

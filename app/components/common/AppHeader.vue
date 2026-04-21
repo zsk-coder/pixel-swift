@@ -76,7 +76,10 @@ function selectLocale(code: string) {
   setLocale(code);
 }
 
-const authLoginUrl = computed(() => buildLoginUrl(route.fullPath));
+const authLoginUrl = computed(() => {
+  const url = buildLoginUrl(route.fullPath);
+  return localePath(url);
+});
 const authCopy = computed(() => ({
   signIn: t("auth.menu.signIn"),
 }));
@@ -99,7 +102,9 @@ const authCopy = computed(() => ({
           <div
             class="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-white"
           >
-            <span aria-hidden="true" class="material-symbols-outlined text-[20px]"
+            <span
+              aria-hidden="true"
+              class="material-symbols-outlined text-[20px]"
               >auto_fix</span
             >
           </div>
@@ -110,12 +115,12 @@ const authCopy = computed(() => ({
         </NuxtLink>
 
         <!-- Divider -->
-        <div class="hidden md:block w-px h-5 bg-slate-200 dark:bg-slate-700 mx-6" />
+        <div
+          class="hidden md:block w-px h-5 bg-slate-200 dark:bg-slate-700 mx-6"
+        />
 
         <!-- Desktop Nav -->
-        <nav
-          class="hidden md:flex items-center gap-8"
-        >
+        <nav class="hidden md:flex items-center gap-8">
           <NuxtLink
             v-for="item in navItems"
             :key="item.to"
@@ -130,16 +135,6 @@ const authCopy = computed(() => ({
 
       <!-- Actions (right) -->
       <div class="flex items-center gap-3">
-        <NuxtLink
-          v-if="!user"
-          :to="authLoginUrl"
-          class="hidden sm:inline-flex items-center justify-center rounded-xl border border-slate-200 bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm transition hover:border-slate-300 hover:bg-slate-50 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800"
-        >
-          {{ authCopy.signIn }}
-        </NuxtLink>
-
-        <AccountStatusMenu v-else />
-
         <!-- Language -->
         <ElDropdown trigger="click" @command="selectLocale">
           <button
@@ -178,6 +173,14 @@ const authCopy = computed(() => ({
             >{{ isDark ? "light_mode" : "dark_mode" }}</span
           >
         </button>
+
+        <NuxtLink v-if="!user" :to="authLoginUrl" class="hidden sm:inline-flex">
+          <ElButton type="primary" class="!rounded-lg">
+            {{ authCopy.signIn }}
+          </ElButton>
+        </NuxtLink>
+
+        <AccountStatusMenu v-else />
 
         <!-- Mobile Hamburger -->
         <button

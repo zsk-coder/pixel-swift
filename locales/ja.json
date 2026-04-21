@@ -460,7 +460,9 @@
       "trialLeft": "無料 AI 体験は {total} 回中あと {used} 回です",
       "upgrade": "Pro にアップグレード",
       "signOut": "ログアウト",
-      "emailLabel": "現在のログインアカウント"
+      "emailLabel": "現在のログインアカウント",
+      "currentPlan": "現在のプラン",
+      "settings": "アカウント設定"
     },
     "callback": {
       "title": "ログインしています",

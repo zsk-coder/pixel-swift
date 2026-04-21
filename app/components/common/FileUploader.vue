@@ -215,7 +215,7 @@ onUnmounted(() => {
     <!-- Select Images Button (web only) -->
     <div class="hidden md:flex justify-center mt-4 md:mt-6">
       <span
-        class="inline-flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white font-semibold hover:bg-blue-700 transition-colors shadow-sm cursor-pointer"
+        class="inline-flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white font-semibold hover:bg-primary-dark transition-colors shadow-sm cursor-pointer"
       >
         <span aria-hidden="true" class="material-symbols-outlined text-lg"
           >add_photo_alternate</span

@@ -460,7 +460,9 @@
       "trialLeft": "Il reste {used} expériences IA gratuites sur {total}",
       "upgrade": "Passer à Pro",
       "signOut": "Se déconnecter",
-      "emailLabel": "Connecté en tant que"
+      "emailLabel": "Connecté en tant que",
+      "currentPlan": "Plan actuel",
+      "settings": "Paramètres du compte"
     },
     "callback": {
       "title": "Connexion en cours",
