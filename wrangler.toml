@@ -1,0 +1,14 @@
+# Cloudflare Pages 部署配置
+# 此文件用于 wrangler pages dev / deploy 命令
+
+name = "pixelswift"
+
+# ── Node.js 兼容性 ──
+# LangChain / LangGraph 依赖 Node.js 原生模块（crypto, events, buffer, async_hooks 等）
+# 必须开启 nodejs_compat 才能在 CF Workers v8 环境中正常运行
+compatibility_flags = ["nodejs_compat"]
+compatibility_date = "2025-07-15"
+
+[vars]
+# 环境变量在 CF Dashboard > Settings > Environment Variables 中配置
+# 不在此文件中存放敏感信息（API Key 等）

@@ -13,6 +13,7 @@ import {
   type UserEntitlementRow,
 } from "../../lib/billing/trial";
 import { isSupabaseServiceEnabled } from "~~/shared/utils/supabaseAuth";
+import { ok } from "../../utils/response";
 
 /**
  * 从数据库 user_entitlements 表中获取用户的套餐和配额数据
@@ -54,7 +55,7 @@ export default defineEventHandler(async (event) => {
 
   // 1. 检查环境变量中是否配置了 Supabase (未配置时认为 Auth 服务不可用)
   if (!isSupabaseServiceEnabled(runtimeConfig)) {
-    return createAuthUnavailableQuotaPayload();
+    return ok(createAuthUnavailableQuotaPayload());
   }
 
   let user: JwtPayload | null = null;
@@ -71,7 +72,7 @@ export default defineEventHandler(async (event) => {
 
   // 3. 用户未登录：返回带标识的“未鉴权”空配额对象
   if (!userId) {
-    return createUnauthenticatedQuotaPayload();
+    return ok(createUnauthenticatedQuotaPayload());
   }
 
   // 4. 用户已登录：在数据库中查寻其详细的会员权益记录
@@ -79,9 +80,9 @@ export default defineEventHandler(async (event) => {
 
   // 5. 如果用户存在但关联的 rights 行未生成（例如初次注册时触发器延迟或者其他异常情况）
   if (!entitlement) {
-    return createMissingEntitlementQuotaPayload();
+    return ok(createMissingEntitlementQuotaPayload());
   }
 
   // 6. 返回正常转换的前端可用对象
-  return toQuotaPayload(entitlement);
+  return ok(toQuotaPayload(entitlement));
 });

@@ -24,6 +24,7 @@ export default defineNuxtConfig({
     host: "0.0.0.0",
   },
   // ── Cloudflare Pages 部署 ──
+  // Node.js 兼容性配置见 wrangler.toml（LangChain 依赖 nodejs_compat）
   nitro: {
     preset: "cloudflare-pages",
   },
@@ -37,6 +38,12 @@ export default defineNuxtConfig({
   runtimeConfig: {
     supabase: {
       serviceKey: process.env.NUXT_SUPABASE_SERVICE_KEY || "",
+    },
+    // DeepSeek AI 规划服务配置（仅服务端可见）
+    deepseek: {
+      apiKey: process.env.NUXT_DEEPSEEK_API_KEY || "",
+      baseUrl: process.env.NUXT_DEEPSEEK_BASE_URL || "https://api.deepseek.com",
+      model: process.env.NUXT_DEEPSEEK_MODEL || "deepseek-chat",
     },
     public: {
       siteUrl: SITE_URL,
