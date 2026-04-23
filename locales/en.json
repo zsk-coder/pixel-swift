@@ -459,6 +459,54 @@
     "blog": {
       "title": "PixelSwift Blog — Image Compression, Conversion & Optimization Tips",
       "description": "Free tutorials on image compression, format conversion, and resizing. Learn to optimize JPG, PNG, WebP & AVIF for web and email."
+    },
+    "copilot": {
+      "title": "Workflow Copilot — AI-Powered Image Processing Pipeline | PixelSwift",
+      "description": "Upload images and describe your goal. PixelSwift AI builds a multi-step processing pipeline automatically. Free AI planning experiences included."
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "Turn image tasks into an",
+      "titleHighlight": "AI-generated workflow.",
+      "desc": "Upload your visual assets and describe what you need done. PixelSwift automatically builds a multi-step processing pipeline tailored to your exact requirements."
+    },
+    "assets": {
+      "title": "Input Assets",
+      "addMore": "Add More",
+      "uploaded": "{count} images uploaded",
+      "totalSize": "{size} total size",
+      "ready": "Ready",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "Processing Intent",
+      "desc": "Describe what you want to achieve with these assets. Our AI will build the workflow automatically.",
+      "label": "Natural Language Goal",
+      "placeholder": "e.g., Remove backgrounds and resize to 1080x1080..."
+    },
+    "suggestions": {
+      "title": "Suggested Enhancements",
+      "removeBg": "Remove BG",
+      "square": "Square 1:1",
+      "autoBalance": "Auto-Balance"
+    },
+    "generate": "Generate AI Plan",
+    "generateHint": "Generates a visual node graph for your review. No credits consumed yet.",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "Complete",
+      "errorLabel": "Error",
+      "retry": "Retry",
+      "planConfidence": "AI Confidence: {score}",
+      "waiting": "Waiting for execution..."
     }
   },
   "schema": {
@@ -471,6 +519,21 @@
     },
     "resizer": {
       "featureList": "Resize images by pixel or percentage, rotate and flip, aspect ratio presets, real-time preview, no upload needed"
+    }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNKNOWN_ERROR": "An unknown error occurred."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
     }
   }
 }

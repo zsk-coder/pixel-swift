@@ -2,16 +2,15 @@ import {
   serverSupabaseServiceRole,
   serverSupabaseUser,
 } from "#supabase/server";
-import { type H3Event } from "h3";
+import { type H3Event, createEventStream } from "h3";
 import type { JwtPayload } from "@supabase/supabase-js";
 
 import { isSupabaseServiceEnabled } from "~~/shared/utils/supabaseAuth";
 import { ok, fail } from "../../utils/response";
 import { ApiCode } from "~~/shared/types/api";
 import { generatePlanRequestSchema } from "../../lib/copilot/schemas";
-import { runCopilotGraph } from "../../lib/copilot/graph";
+import { streamCopilotGraph } from "../../lib/copilot/graph";
 import type { UserEntitlementRow } from "../../lib/billing/trial";
-import type { GeneratePlanResponse } from "~~/shared/types/workflow-copilot";
 
 // ────────────────────────────────────────────────────────
 // POST /api/workflow-copilot/plan
@@ -74,7 +73,7 @@ export default defineEventHandler(async (event) => {
 
   // ── 1. 环境检查：Supabase 服务是否可用 ──
   if (!isSupabaseServiceEnabled(runtimeConfig)) {
-    return fail(ApiCode.SERVER_ERROR, "AI 服务尚未配置，请联系管理员");
+    return fail(ApiCode.SERVER_ERROR, "SERVER_ERROR.AI_NOT_CONFIGURED");
   }
 
   // ── 2. 身份验证：从 Auth 中间件注入的 context 或直接解析 ──
@@ -87,13 +86,13 @@ export default defineEventHandler(async (event) => {
 
   const userId: string = user?.sub || user?.id || "";
   if (!userId) {
-    return fail(ApiCode.UNAUTHORIZED, "请先登录后再使用 AI 规划功能");
+    return fail(ApiCode.UNAUTHORIZED, "UNAUTHORIZED.LOGIN_REQUIRED");
   }
 
   // ── 3. 配额检查 ──
   const entitlement = await getEntitlement(event, userId);
   if (!entitlement) {
-    return fail(ApiCode.SERVER_ERROR, "用户配额数据异常，请稍后重试");
+    return fail(ApiCode.SERVER_ERROR, "SERVER_ERROR.QUOTA_DATA_ERROR");
   }
 
   const trialRemaining = Math.max(
@@ -103,10 +102,7 @@ export default defineEventHandler(async (event) => {
   const canGenerate = entitlement.plan_type === "pro" || trialRemaining > 0;
 
   if (!canGenerate) {
-    return fail(
-      ApiCode.QUOTA_EXHAUSTED,
-      "免费体验次数已用完，请升级 Pro 继续使用",
-    );
+    return fail(ApiCode.QUOTA_EXHAUSTED, "QUOTA_EXHAUSTED.UPGRADE_REQUIRED");
   }
 
   // ── 4. 校验请求体 ──
@@ -114,10 +110,8 @@ export default defineEventHandler(async (event) => {
   const parseResult = generatePlanRequestSchema.safeParse(body);
 
   if (!parseResult.success) {
-    const issues = parseResult.error.issues
-      .map((i) => `${i.path.join(".")}: ${i.message}`)
-      .join("; ");
-    return fail(ApiCode.SERVER_ERROR, `请求参数不合法: ${issues}`);
+    console.error("[Copilot Validator]", parseResult.error.issues);
+    return fail(ApiCode.SERVER_ERROR, "SERVER_ERROR.INVALID_PARAMS");
   }
 
   const { goal, batch } = parseResult.data;
@@ -131,39 +125,54 @@ export default defineEventHandler(async (event) => {
   };
 
   if (!deepseekConfig.apiKey) {
-    return fail(ApiCode.SERVER_ERROR, "AI 服务配置不完整，请联系管理员");
+    return fail(ApiCode.SERVER_ERROR, "SERVER_ERROR.AI_NOT_CONFIGURED");
   }
 
-  // ── 6. 运行 LangGraph Copilot 流程 ──
-  // 编排：Planner Chain → Reviewer Chain → 条件回环（最多 1 轮自我修正）
-  try {
-    const result = await runCopilotGraph(goal, batch, deepseekConfig);
+  // ── 6. 运行 LangGraph Copilot 流程 (SSE 模式) ──
+  const eventStream = createEventStream(event);
 
-    console.info(
-      `[Copilot] LangGraph 完成 — 尝试次数: ${result.attempts}, 审计摘要: ${result.reviewSummary}`,
-    );
+  // Background execution for streaming
+  (async () => {
+    try {
+      const stream = streamCopilotGraph(goal, batch, deepseekConfig);
 
-    // ── 7. 计划生成成功，扣减免费次数（仅 free 用户扣减） ──
-    if (entitlement.plan_type === "free") {
-      await deductTrialUsage(event, userId);
+      for await (const chunk of stream) {
+        eventStream.push({
+          event: "message",
+          data: JSON.stringify({ type: "progress", chunk }),
+        });
+      }
+
+      // ── 7. 计划生成成功，扣减免费次数（仅 free 用户扣减） ──
+      if (entitlement.plan_type === "free") {
+        await deductTrialUsage(event, userId);
+      }
+
+      // ── 8. 返回成功结束标记 ──
+      const remainingTrialCount =
+        entitlement.plan_type === "pro"
+          ? trialRemaining
+          : Math.max(0, trialRemaining - 1);
+
+      eventStream.push({
+        event: "message",
+        data: JSON.stringify({
+          type: "complete",
+          remainingTrialCount,
+        }),
+      });
+    } catch (err) {
+      console.error("[Copilot] LangGraph 规划失败:", err);
+      // Prefer wrapping any unexpected internal Node errors as a standard unavailable key
+      const message = "SERVER_ERROR.AI_UNAVAILABLE";
+      eventStream.push({
+        event: "error",
+        data: JSON.stringify({ message }),
+      });
+    } finally {
+      eventStream.close();
     }
+  })();
 
-    // ── 8. 返回成功响应 ──
-    const remainingTrialCount =
-      entitlement.plan_type === "pro"
-        ? trialRemaining
-        : Math.max(0, trialRemaining - 1);
-
-    const responseData: GeneratePlanResponse = {
-      plan: result.plan,
-      remainingTrialCount,
-    };
-
-    return ok(responseData);
-  } catch (err) {
-    console.error("[Copilot] LangGraph 规划失败:", err);
-    const message =
-      err instanceof Error ? err.message : "AI 规划服务暂时不可用";
-    return fail(ApiCode.SERVER_ERROR, message);
-  }
+  return eventStream.send();
 });

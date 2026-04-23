@@ -398,6 +398,10 @@
     "blog": {
       "title": "PixelSwift Blog – Bilder komprimieren, Formate konvertieren und mehr",
       "description": "Tutorials zum Komprimieren, Konvertieren und Skalieren von Bildern. Tipps für JPG, PNG, WebP und AVIF — kostenlos und ohne Upload."
+    },
+    "copilot": {
+      "title": "Workflow Copilot — KI-gestützte Bildverarbeitungs-Pipeline | PixelSwift",
+      "description": "Laden Sie Bilder hoch und beschreiben Sie Ihr Ziel. PixelSwift KI erstellt automatisch eine mehrstufige Verarbeitungspipeline."
     }
   },
   "schema": {
@@ -471,6 +475,65 @@
       "unavailable": "Supabase ist noch nicht konfiguriert. Fügen Sie zuerst die erforderlichen Umgebungsvariablen hinzu, um die Anmeldung zu aktivieren.",
       "retry": "Google-Anmeldung erneut versuchen",
       "home": "Zur Startseite"
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "Verwandeln Sie Bildaufgaben in einen",
+      "titleHighlight": "KI-generierten Workflow.",
+      "desc": "Laden Sie Ihre visuellen Assets hoch und beschreiben Sie, was Sie benötigen. PixelSwift erstellt automatisch eine mehrstufige Verarbeitungspipeline, die auf Ihre Anforderungen zugeschnitten ist."
+    },
+    "assets": {
+      "title": "Eingabe-Assets",
+      "addMore": "Mehr hinzufügen",
+      "uploaded": "{count} Bilder hochgeladen",
+      "totalSize": "{size} Gesamtgröße",
+      "ready": "Bereit",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "Verarbeitungsabsicht",
+      "desc": "Beschreiben Sie, was Sie mit diesen Assets erreichen möchten. Unsere KI erstellt den Workflow automatisch.",
+      "label": "Natürlichsprachliches Ziel",
+      "placeholder": "z.B. Hintergründe entfernen und auf 1080x1080 skalieren..."
+    },
+    "suggestions": {
+      "title": "Vorgeschlagene Verbesserungen",
+      "removeBg": "Hintergrund entfernen",
+      "square": "Quadrat 1:1",
+      "autoBalance": "Auto-Balance"
+    },
+    "generate": "KI-Plan generieren",
+    "generateHint": "Erstellt einen visuellen Knotengraph zur Überprüfung. Noch keine Credits verbraucht.",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "Abgeschlossen",
+      "errorLabel": "Fehler",
+      "retry": "Wiederholen",
+      "planConfidence": "KI-Konfidenz: {score}",
+      "waiting": "Warten auf Ausführung..."
+    }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNKNOWN_ERROR": "An unknown error occurred."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
     }
   }
 }

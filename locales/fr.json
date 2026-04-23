@@ -398,6 +398,10 @@
     "blog": {
       "title": "Blog PixelSwift – Compresser des photos en ligne, formats d'image et plus",
       "description": "Tutoriels pour compresser des photos en ligne gratuitement, convertir des formats d'image et redimensionner vos photos. Guides pour JPG, PNG, WebP et AVIF."
+    },
+    "copilot": {
+      "title": "Workflow Copilot — Pipeline de Traitement d'Images par IA | PixelSwift",
+      "description": "Téléchargez des images et décrivez votre objectif. L'IA PixelSwift construit automatiquement un pipeline de traitement multi-étapes."
     }
   },
   "schema": {
@@ -471,6 +475,65 @@
       "unavailable": "Supabase n'est pas encore configuré. Ajoutez d'abord les variables d'environnement requises pour activer la connexion.",
       "retry": "Réessayer avec Google",
       "home": "Retour à l'accueil"
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "Transformez vos tâches image en un",
+      "titleHighlight": "workflow généré par IA.",
+      "desc": "Téléchargez vos ressources visuelles et décrivez vos besoins. PixelSwift construit automatiquement un pipeline de traitement multi-étapes adapté à vos exigences exactes."
+    },
+    "assets": {
+      "title": "Ressources d'Entrée",
+      "addMore": "Ajouter Plus",
+      "uploaded": "{count} images téléchargées",
+      "totalSize": "{size} taille totale",
+      "ready": "Prêt",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "Intention de Traitement",
+      "desc": "Décrivez ce que vous souhaitez réaliser avec ces ressources. Notre IA construira le workflow automatiquement.",
+      "label": "Objectif en Langage Naturel",
+      "placeholder": "ex., Supprimer les arrière-plans et redimensionner à 1080x1080..."
+    },
+    "suggestions": {
+      "title": "Améliorations Suggérées",
+      "removeBg": "Supprimer Fond",
+      "square": "Carré 1:1",
+      "autoBalance": "Auto-Balance"
+    },
+    "generate": "Générer le Plan IA",
+    "generateHint": "Génère un graphe de nœuds visuel pour votre révision. Aucun crédit consommé pour l'instant.",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "Terminé",
+      "errorLabel": "Erreur",
+      "retry": "Réessayer",
+      "planConfidence": "Confiance IA : {score}",
+      "waiting": "En attente d'exécution..."
+    }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNKNOWN_ERROR": "An unknown error occurred."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
     }
   }
 }

@@ -398,6 +398,10 @@
     "blog": {
       "title": "PixelSwiftブログ – 画像圧縮・フォーマット変換・最適化のヒント",
       "description": "画像圧縮、フォーマット変換、リサイズの無料チュートリアル。JPG、PNG、WebP、AVIFをブラウザで最適化する方法を解説。"
+    },
+    "copilot": {
+      "title": "Workflow Copilot — AI画像処理パイプライン | PixelSwift",
+      "description": "画像をアップロードし目標を説明するだけ。PixelSwift AIが多段階処理パイプラインを自動構築。"
     }
   },
   "schema": {
@@ -471,6 +475,65 @@
       "unavailable": "Supabase はまだ設定されていません。サインインを有効にするには必要な環境変数を追加してください。",
       "retry": "Google サインインを再試行",
       "home": "ホームに戻る"
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "画像タスクを",
+      "titleHighlight": "AI生成ワークフローに変換。",
+      "desc": "ビジュアルアセットをアップロードし、必要な処理を説明してください。PixelSwiftがお客様の要件に合わせた多段階処理パイプラインを自動構築します。"
+    },
+    "assets": {
+      "title": "入力アセット",
+      "addMore": "追加",
+      "uploaded": "{count}枚の画像がアップロード済み",
+      "totalSize": "合計サイズ {size}",
+      "ready": "準備完了",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "処理インテント",
+      "desc": "これらのアセットで達成したいことを説明してください。AIが自動的にワークフローを構築します。",
+      "label": "自然言語ゴール",
+      "placeholder": "例：背景を削除して1080x1080にリサイズ..."
+    },
+    "suggestions": {
+      "title": "おすすめの強化",
+      "removeBg": "背景除去",
+      "square": "正方形 1:1",
+      "autoBalance": "自動バランス"
+    },
+    "generate": "AIプランを生成",
+    "generateHint": "レビュー用のビジュアルノードグラフを生成します。クレジットはまだ消費されません。",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "完了",
+      "errorLabel": "エラー",
+      "retry": "再試行",
+      "planConfidence": "AI 信頼度: {score}",
+      "waiting": "実行待機中..."
+    }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNKNOWN_ERROR": "An unknown error occurred."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
     }
   }
 }

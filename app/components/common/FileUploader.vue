@@ -234,13 +234,22 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Override el-upload drag zone styles to match our design */
+.file-uploader {
+  height: 100%;
+}
 .file-uploader :deep(.el-upload) {
   width: 100%;
+  height: 100%;
 }
 
 .file-uploader :deep(.el-upload-dragger) {
   width: 100%;
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 2px dashed rgba(37, 99, 235, 0.3);
   border-radius: 1rem;
   background: white;

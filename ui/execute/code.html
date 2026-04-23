@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>PixelSwift Workflow Copilot - Configure Plan</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#e2e8f0",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f8fafc",
+                        "secondary-fixed-dim": "#cbd5e1",
+                        "primary-fixed-dim": "#bfdbfe",
+                        "secondary": "#475569",
+                        "on-primary-container": "#1e40af",
+                        "tertiary-container": "#ede9fe",
+                        "on-tertiary-container": "#5b21b6",
+                        "on-secondary-fixed": "#0f172a",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-bright": "#ffffff",
+                        "error": "#ef4444",
+                        "secondary-container": "#f1f5f9",
+                        "on-primary-fixed": "#1e3a8a",
+                        "surface-tint": "#2463eb",
+                        "on-error-container": "#991b1b",
+                        "primary-container": "#dbeafe",
+                        "on-primary-fixed-variant": "#1d4ed8",
+                        "primary": "#2463eb",
+                        "tertiary": "#7c3aed",
+                        "surface-dim": "#f8fafc",
+                        "on-primary": "#ffffff",
+                        "tertiary-fixed-dim": "#ddd6fe",
+                        "outline": "#94a3b8",
+                        "tertiary-fixed": "#ede9fe",
+                        "inverse-surface": "#1e293b",
+                        "surface-container-highest": "#cbd5e1",
+                        "surface-container": "#f1f5f9",
+                        "on-surface": "#0f172a",
+                        "on-error": "#ffffff",
+                        "on-tertiary-fixed-variant": "#6d28d9",
+                        "on-tertiary-fixed": "#2e1065",
+                        "error-container": "#fee2e2",
+                        "inverse-primary": "#93c5fd",
+                        "on-secondary": "#ffffff",
+                        "on-background": "#0f172a",
+                        "inverse-on-surface": "#f8fafc",
+                        "surface-variant": "#f1f5f9",
+                        "secondary-fixed": "#e2e8f0",
+                        "primary-fixed": "#dbeafe",
+                        "outline-variant": "#e2e8f0",
+                        "surface": "#ffffff",
+                        "background": "#ffffff",
+                        "on-secondary-fixed-variant": "#334155",
+                        "on-surface-variant": "#475569",
+                        "on-secondary-container": "#334155"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {},
+                    "fontFamily": {
+                        "headline": ["Inter"],
+                        "body": ["Inter"],
+                        "label": ["Inter"],
+                        "display": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        /* Tonal layering utilities */
+        .layer-surface { background-color: theme('colors.surface'); }
+        .layer-container-low { background-color: theme('colors.surface-container-low'); }
+        .layer-container { background-color: theme('colors.surface-container'); }
+        .layer-container-high { background-color: theme('colors.surface-container-high'); }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+<!-- Ambient Background Gradient (Lumina Velocity Rule) -->
+<div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+<div class="absolute -top-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-primary-container opacity-20 blur-[120px]"></div>
+<div class="absolute top-[40%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-tertiary-container opacity-20 blur-[100px]"></div>
+</div>
+<!-- TopNavBar (Shared Component) -->
+<nav class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md font-['Inter'] antialiased text-slate-900 dark:text-slate-50 full-width top-0 sticky z-50 border-b border-slate-200/50 dark:border-slate-800/50 shadow-sm">
+<div class="flex items-center justify-between w-full px-6 py-3 max-w-[1920px] mx-auto">
+<!-- Logo & Left Actions -->
+<div class="flex items-center gap-8">
+<div class="text-xl font-black tracking-tighter text-blue-600 dark:text-blue-500">
+                    PixelSwift
+                </div>
+<!-- Search (on_left configuration) -->
+<div class="hidden md:flex relative items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400" style="font-variation-settings: 'FILL' 0;">search</span>
+<input class="pl-10 pr-4 py-2 bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none w-64 transition-all duration-200" placeholder="Search workflows..." type="text"/>
+</div>
+</div>
+<!-- Main Navigation -->
+<ul class="hidden md:flex items-center gap-6">
+<li><a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Dashboard</a></li>
+<li><a class="text-blue-600 dark:text-blue-400 font-bold border-b-2 border-blue-600 dark:border-blue-400 pb-1" href="#">Automations</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Queue</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Library</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-slate-100 transition-colors" href="#">Templates</a></li>
+</ul>
+<!-- Trailing Actions -->
+<div class="flex items-center gap-4">
+<button class="hidden lg:flex items-center gap-2 text-sm font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200 px-3 py-2">
+<span class="material-symbols-outlined text-lg" style="font-variation-settings: 'FILL' 0;">hourglass_top</span>
+                    Processing Queue
+                </button>
+<button class="text-blue-600 dark:text-blue-500 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-all duration-200 px-4 py-2 active:scale-95 transform transition-transform duration-150">
+                    New Workflow
+                </button>
+<button class="w-8 h-8 rounded-full bg-slate-200 overflow-hidden hover:opacity-80 transition-opacity active:scale-95 transform transition-transform duration-150 border border-slate-300">
+<img alt="User profile photo" class="w-full h-full object-cover" data-alt="Close up portrait of a professional man with short dark hair smiling warmly, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBglckeSquFKRlytogCPwyfGB2YUvItqHHz-vrgY9GvhTRnxyekrU3TTXS6-Zkljx1LNgul_w-3KiVOleSTOf2aZt_te6gH-2xP9mDTpVfFNahd5PKzzpaNIvnZeVOAjF-YJJzTzL1DR9n6717HI4fLTq7S1ORM1ZiyV7QASwkC3Ie9TFIIko_e83JXQxSRX8tmL-ICi2LwzPN0QAhlgHm30QSIkBSFxQXZBWAjgu62FYhVVHSbqzPs2suJu-vbhNTEi-Qp8gKJHH4"/>
+</button>
+</div>
+</div>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-grow relative z-10 w-full max-w-5xl mx-auto px-6 py-12 lg:py-16">
+<!-- Hero Section -->
+<div class="w-full max-w-4xl mx-auto flex flex-col items-center text-center mb-10 space-y-6 animate-[fadeIn_0.3s_ease-out]">
+<h1 class="text-[60px] font-black tracking-[-0.05em] leading-[1.1] text-on-surface">
+                Turn image tasks into an <br/>
+<span class="text-primary bg-clip-text text-transparent bg-gradient-to-r from-primary to-tertiary">AI-generated workflow.</span>
+</h1>
+<p class="text-lg font-normal text-on-surface-variant max-w-2xl leading-[1.5]">
+                Upload your visual assets and describe what you need done. PixelSwift automatically builds a multi-step processing pipeline tailored to your exact requirements.
+            </p>
+</div>
+<!-- Extracted Execution Components -->
+<div class="w-full space-y-8 animate-[fadeIn_0.4s_ease-out]">
+<div class="flex justify-center mb-4">
+<p class="font-body text-on-surface-variant text-sm italic border-l-2 border-outline-variant pl-3">🎯 Objective applied: "Prepare these images for Shopify..."</p>
+</div>
+<section class="bg-surface rounded-xl shadow-sm border border-outline-variant/50 p-6 sm:p-8 hover:-translate-y-1 hover:shadow-lg transition-all duration-300">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-primary-container text-on-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined" data-icon="settings_b_roll">settings_b_roll</span>
+</div>
+<div>
+<h2 class="font-headline font-bold text-xl text-on-surface">Processing Workflow</h2>
+<p class="font-body text-sm text-on-surface-variant">Batch image optimization and conversion</p>
+</div>
+</div>
+</div>
+<div class="w-full h-3 bg-surface-container-high rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full relative" style="width: 100%;">
+<div class="absolute top-0 right-0 bottom-0 left-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.15)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem] opacity-50"></div>
+</div>
+</div>
+</section>
+<section class="space-y-4">
+<div class="bg-surface rounded-xl shadow-sm border border-outline-variant/50 overflow-hidden group hover:shadow-md transition-shadow">
+<div class="p-4 sm:px-6 flex items-center justify-between cursor-pointer bg-surface-container-low/50 hover:bg-surface-container transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm" data-icon="check">check</span>
+</div>
+<span class="font-label font-medium text-on-surface">AI Pipeline Generated: Smart Resize, Format Conversion, Compress</span>
+</div>
+<button class="text-primary font-label text-sm hover:underline flex items-center gap-1">
+                        View Details
+                        <span class="material-symbols-outlined text-sm" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</div>
+<div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden font-mono text-sm min-h-[480px] flex flex-col">
+<div class="flex items-center justify-between p-4 border-b border-slate-200 bg-slate-50">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400 text-sm" data-icon="terminal">terminal</span>
+<span class="font-label text-slate-700">Execution Core (Detailed)</span>
+</div>
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+<div class="w-3 h-3 rounded-full bg-amber-500/80"></div>
+<div class="w-3 h-3 rounded-full bg-green-500/80"></div>
+</div>
+</div>
+<div class="p-6 space-y-3 text-slate-700 flex-1 overflow-y-auto">
+<div class="flex items-start gap-3 opacity-60">
+<span class="text-slate-500 shrink-0">[14:02:01]</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm shrink-0 mt-0.5" data-icon="check_circle">check_circle</span>
+<p>Initializing AI context window... <span class="text-slate-500">(0.2s)</span></p>
+</div>
+<div class="flex items-start gap-3 opacity-60">
+<span class="text-slate-500 shrink-0">[14:02:01]</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm shrink-0 mt-0.5" data-icon="check_circle">check_circle</span>
+<p>Analyzing 12 images in batch queue... <span class="text-slate-500">(1.4s)</span></p>
+</div>
+<div class="flex items-start gap-3 opacity-60">
+<span class="text-slate-500 shrink-0">[14:02:03]</span>
+<span class="material-symbols-outlined text-emerald-500 text-sm shrink-0 mt-0.5" data-icon="check_circle">check_circle</span>
+<p>Drafting optimal resize steps based on content... <span class="text-slate-500">(0.8s)</span></p>
+</div>
+<div class="flex items-start gap-3 text-blue-800 bg-blue-50/80 -mx-6 px-6 py-2 border-l-2 border-blue-400 shadow-[inset_2px_0_10px_rgba(59,130,246,0.1)]">
+<span class="text-blue-500 shrink-0">[14:02:04]</span>
+<span class="material-symbols-outlined text-blue-600 text-sm shrink-0 mt-0.5 animate-spin" data-icon="sync">sync</span>
+<p>Executing format conversion to WEBP and applying smart compression...</p>
+</div>
+<div class="flex items-start gap-3 opacity-40">
+<span class="text-slate-500 shrink-0">[PENDING]</span>
+<span class="material-symbols-outlined text-slate-500 text-sm shrink-0 mt-0.5" data-icon="schedule">schedule</span>
+<p>Finalizing outputs and updating metadata registry</p>
+</div>
+</div>
+</div>
+<div class="flex justify-end pt-4">
+<button class="mr-4 border border-outline hover:bg-surface-container transition-colors text-on-surface px-8 py-3 rounded-lg font-label font-medium transition-transform active:scale-95 flex items-center gap-2 text-base">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;">add</span>
+    New Workflow
+</button><button class="bg-primary hover:bg-primary/90 text-on-primary px-8 py-3 rounded-lg font-label font-medium transition-transform active:scale-95 flex items-center gap-2 shadow-md text-base">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" x2="12" y1="15" y2="3"></line></svg>
+        Download All Results (.zip)
+    </button>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="bg-slate-50 dark:bg-slate-950 font-['Inter'] text-sm tracking-normal full-width py-12 border-t border-slate-200 dark:border-slate-800 flat no shadows mt-auto relative z-10">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<!-- Brand & Copyright -->
+<div class="flex items-center gap-2">
+<span class="font-bold text-slate-900 dark:text-slate-100">PixelSwift</span>
+<span class="text-slate-500 dark:text-slate-400">© 2024 PixelSwift Workflow Copilot. All rights reserved.</span>
+</div>
+<!-- Links -->
+<ul class="flex flex-wrap justify-center gap-6">
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-all cursor-pointer hover:opacity-80" href="#">Documentation</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-all cursor-pointer hover:opacity-80" href="#">API Reference</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-all cursor-pointer hover:opacity-80" href="#">Status</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-all cursor-pointer hover:opacity-80" href="#">Privacy Policy</a></li>
+<li><a class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-all cursor-pointer hover:opacity-80" href="#">Terms of Service</a></li>
+</ul>
+</div>
+</footer>
+</body></html>

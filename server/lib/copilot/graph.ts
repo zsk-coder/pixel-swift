@@ -224,3 +224,30 @@ export async function runCopilotGraph(
     attempts: result.attempts,
   };
 }
+
+/**
+ * 流式运行完整的 LangGraph Copilot 流程
+ * 通过 SSE 将每个节点的执行状态下发给客户端，以展示真实进度
+ */
+export async function* streamCopilotGraph(
+  goal: GoalInput,
+  batch: BatchSummary,
+  config: DeepSeekConfig,
+) {
+  const graph = getCopilotGraph();
+
+  const stream = await graph.stream({
+    goal,
+    batch,
+    config,
+    plan: null,
+    review: null,
+    attempts: 0,
+    finalPlan: null,
+    reviewSummary: "",
+  });
+
+  for await (const chunk of stream) {
+    yield chunk;
+  }
+}
