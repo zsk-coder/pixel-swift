@@ -6,8 +6,7 @@
  */
 import type { LogEntry } from "~/composables/useWorkflowCopilot";
 
-const { t } = useI18n();
-const { locale } = useI18n();
+const { t, locale } = useI18n();
 
 const props = defineProps<{
   intent?: string;

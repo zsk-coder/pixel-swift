@@ -3,6 +3,7 @@ import { ChatDeepSeek } from "@langchain/deepseek";
 import type { ProcessPlan } from "~~/shared/types/workflow-copilot";
 import { reviewerPrompt, buildReviewMessage } from "./prompts";
 import type { DeepSeekConfig } from "./planner";
+import { createReviewerModel } from "./planner";
 
 // ────────────────────────────────────────────────────────
 // Plan Reviewer 审计模块
@@ -46,16 +47,8 @@ export async function reviewPlan(
   plan: ProcessPlan,
   config: DeepSeekConfig,
 ): Promise<PlanReviewResult> {
-  // 构建审计模型（独立实例，可以用不同的温度策略）
-  const reviewModel = new ChatDeepSeek({
-    apiKey: config.apiKey,
-    model: config.model,
-    configuration: {
-      baseURL: `${config.baseUrl}/v1`,
-    },
-    temperature: 0.1, // 审计需要更加严谨，极低温度
-    maxTokens: 2048,
-  });
+  // 复用缓存的审计专用模型实例（温度 0.1，更严谨）
+  const reviewModel = createReviewerModel(config);
 
   // 绑定结构化输出：审计结果 Schema
   const structuredReviewer = reviewModel.withStructuredOutput(

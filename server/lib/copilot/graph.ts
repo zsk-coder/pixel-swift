@@ -165,11 +165,11 @@ function buildCopilotGraph() {
   return graph.compile();
 }
 
-// 编译后的状态图（单例复用）
+// 编译后的状态图（单例复用，开发环境每次重建以适配 HMR）
 let _compiledGraph: ReturnType<typeof buildCopilotGraph> | null = null;
 
 function getCopilotGraph() {
-  if (!_compiledGraph) {
+  if (!_compiledGraph || import.meta.dev) {
     _compiledGraph = buildCopilotGraph();
   }
   return _compiledGraph;

@@ -134,18 +134,24 @@ export function buildUserMessage(
   }
 
   // 批次统计摘要
-  const batchInfo = {
+  const sampleImages = batch.images.slice(0, 20).map((img) => ({
+    fileName: img.fileName,
+    dimensions: `${img.width}x${img.height}`,
+    sizeMB: (img.sizeBytes / (1024 * 1024)).toFixed(2),
+    format: img.format,
+    hasAlpha: img.hasAlpha ?? false,
+  }));
+  const batchInfo: Record<string, unknown> = {
     fileCount: batch.fileCount,
     totalSizeMB: (batch.totalSizeBytes / (1024 * 1024)).toFixed(2),
     formats: batch.formats,
-    // 只取前 20 张的摘要，避免 token 爆炸
-    sampleImages: batch.images.slice(0, 20).map((img) => ({
-      fileName: img.fileName,
-      dimensions: `${img.width}x${img.height}`,
-      sizeMB: (img.sizeBytes / (1024 * 1024)).toFixed(2),
-      format: img.format,
-      hasAlpha: img.hasAlpha ?? false,
-    })),
+    sampleImages,
+    // 标注截断信息，让 AI 知道样本不完整
+    ...(batch.images.length > 20 && {
+      truncated: true,
+      totalImageCount: batch.images.length,
+      shownImageCount: 20,
+    }),
   };
   parts.push(`## Image Batch Summary\n${JSON.stringify(batchInfo, null, 2)}`);
 

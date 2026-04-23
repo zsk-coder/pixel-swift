@@ -6,7 +6,15 @@
  */
 import type { ProcessPlan } from "~~/shared/types/workflow-copilot";
 
-definePageMeta({ layout: false });
+definePageMeta({
+  layout: false,
+  middleware: defineNuxtRouteMiddleware(() => {
+    // 仅允许开发环境访问，生产环境重定向到首页
+    if (!import.meta.dev) {
+      return navigateTo("/workflow-copilot");
+    }
+  }),
+});
 useHead({ title: "Copilot Demo (Dev Only)" });
 
 const { $api } = useNuxtApp();

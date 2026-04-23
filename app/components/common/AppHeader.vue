@@ -62,6 +62,7 @@ const navItems = computed(() => [
   { label: t("nav.compressor"), to: localePath("/compress-image") },
   { label: t("nav.converter"), to: localePath("/converter") },
   { label: t("nav.resizer"), to: localePath("/resize-image") },
+  { label: t("nav.copilot"), to: localePath("/workflow-copilot"), isNew: true },
   { label: t("nav.blog"), to: localePath("/blog") },
 ]);
 
@@ -125,10 +126,28 @@ const authCopy = computed(() => ({
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="text-sm font-medium text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary transition-colors"
+            class="text-sm font-medium transition-colors relative flex items-center gap-1"
+            :class="[
+              item.isNew
+                ? 'text-primary dark:text-primary hover:text-primary-dark dark:hover:text-primary-100'
+                : 'text-slate-500 hover:text-primary dark:text-slate-400 dark:hover:text-primary',
+            ]"
             active-class="!text-primary"
           >
+            <!-- AI 图标（仅 isNew 项） -->
+            <span
+              v-if="item.isNew"
+              class="material-symbols-outlined text-[16px]"
+              style="font-variation-settings: 'FILL' 1"
+              >auto_awesome</span
+            >
             {{ item.label }}
+            <!-- NEW 角标 -->
+            <span
+              v-if="item.isNew"
+              class="copilot-new-badge"
+              >NEW</span
+            >
           </NuxtLink>
         </nav>
       </div>
@@ -225,10 +244,21 @@ const authCopy = computed(() => ({
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
-            class="px-4 py-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            class="px-4 py-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-2"
             @click="closeMobileMenu"
           >
+            <span
+              v-if="item.isNew"
+              class="material-symbols-outlined text-[16px] text-primary"
+              style="font-variation-settings: 'FILL' 1"
+              >auto_awesome</span
+            >
             {{ item.label }}
+            <span
+              v-if="item.isNew"
+              class="copilot-new-badge-mobile"
+              >NEW</span
+            >
           </NuxtLink>
         </nav>
       </div>
@@ -255,5 +285,50 @@ const authCopy = computed(() => ({
 .slide-leave-to {
   transform: translateY(-8px);
   opacity: 0;
+}
+
+/* AI Copilot NEW 角标 — 桌面端（右上角绝对定位） */
+.copilot-new-badge {
+  position: absolute;
+  top: -12px;
+  right: -15px;
+  transform: translateX(calc(100% + 10px));
+  padding: 1px 4px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  color: white;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  animation: badge-pulse 2s ease-in-out infinite;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+/* AI Copilot NEW 角标 — 移动端（内联流式） */
+.copilot-new-badge-mobile {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 14px;
+  letter-spacing: 0.04em;
+  border-radius: 4px;
+  color: white;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  vertical-align: middle;
+}
+
+@keyframes badge-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.05);
+  }
 }
 </style>

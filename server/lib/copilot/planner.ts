@@ -20,12 +20,23 @@ export interface DeepSeekConfig {
   model: string;
 }
 
+// ── 模型实例缓存（按 config 指纹复用，避免每次请求重建） ──
+const _modelCache = new Map<string, ChatDeepSeek>();
+
+function getConfigFingerprint(config: DeepSeekConfig): string {
+  return `${config.apiKey}::${config.model}::${config.baseUrl}`;
+}
+
 /**
- * 创建 LangChain ChatDeepSeek 模型实例
+ * 创建或复用 LangChain ChatDeepSeek 模型实例
  * 配置低温度保证输出稳定性，合理的 maxTokens 防止 JSON 被截断
  */
 export function createChatModel(config: DeepSeekConfig): ChatDeepSeek {
-  return new ChatDeepSeek({
+  const key = getConfigFingerprint(config);
+  const cached = _modelCache.get(key);
+  if (cached) return cached;
+
+  const model = new ChatDeepSeek({
     apiKey: config.apiKey,
     model: config.model,
     configuration: {
@@ -34,6 +45,35 @@ export function createChatModel(config: DeepSeekConfig): ChatDeepSeek {
     temperature: 0.3, // 低温度保证输出稳定性
     maxTokens: 4096, // 防止 JSON 截断
   });
+
+  _modelCache.set(key, model);
+  return model;
+}
+
+// ── 审计模型缓存（独立温度配置） ──
+const _reviewerModelCache = new Map<string, ChatDeepSeek>();
+
+/**
+ * 创建或复用审计专用 ChatDeepSeek 模型实例
+ * 使用极低温度 (0.1) 保证审计更严谨，maxTokens 较小
+ */
+export function createReviewerModel(config: DeepSeekConfig): ChatDeepSeek {
+  const key = getConfigFingerprint(config);
+  const cached = _reviewerModelCache.get(key);
+  if (cached) return cached;
+
+  const model = new ChatDeepSeek({
+    apiKey: config.apiKey,
+    model: config.model,
+    configuration: {
+      baseURL: `${config.baseUrl}/v1`,
+    },
+    temperature: 0.1, // 审计需要更加严谨，极低温度
+    maxTokens: 2048,
+  });
+
+  _reviewerModelCache.set(key, model);
+  return model;
 }
 
 /**

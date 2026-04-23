@@ -3,7 +3,8 @@
     "compressor": "图片压缩",
     "converter": "格式转换",
     "resizer": "调整大小",
-    "blog": "博客"
+    "blog": "博客",
+    "copilot": "AI 助手"
   },
   "home": {
     "title": "免费在线图片压缩、转换、调整大小工具",

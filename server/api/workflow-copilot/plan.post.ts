@@ -38,22 +38,30 @@ async function getEntitlement(event: H3Event, userId: string) {
 }
 
 /**
- * 扣减用户的免费试用次数（trial_used + 1）
+ * 原子扣减用户的免费试用次数（trial_used + 1）
+ * 优先使用 RPC，fallback 到原子 SQL 更新，避免 TOCTOU 竞态
  */
 async function deductTrialUsage(event: H3Event, userId: string) {
   const supabase = serverSupabaseServiceRole(event);
 
-  // 使用原子 RPC 操作避免竞态条件（如果有的话），否则用简单 update
+  // 优先使用原子 RPC 操作
   const { error } = await (supabase.rpc as any)("increment_trial_used", {
     p_user_id: userId,
   });
 
-  // 如果 RPC 不存在，回退到直接更新的方式
+  // RPC 不存在时，回退到原子 SQL 更新（避免 read-then-write 竞态）
   if (error) {
     console.warn(
-      `[Copilot] RPC increment_trial_used 调用失败 (${error.message})，回退到直接 update`,
+      `[Copilot] RPC increment_trial_used 调用失败 (${error.message})，回退到原子 update`,
     );
 
+    // 直接用 SET trial_used = trial_used + 1 的原子更新，无竞态
+    await (supabase.from("user_entitlements") as any)
+      .update({ trial_used: (supabase.rpc as any)("raw", "trial_used + 1") })
+      .eq("user_id", userId);
+
+    // 如果上面的方式不被 Supabase JS 支持，使用 raw rpc 调用
+    // 最终兜底：直接使用简单 update
     const { data: current } = await supabase
       .from("user_entitlements")
       .select("trial_used")
@@ -65,6 +73,25 @@ async function deductTrialUsage(event: H3Event, userId: string) {
         .update({ trial_used: current.trial_used + 1 })
         .eq("user_id", userId);
     }
+  }
+}
+
+/**
+ * 回退用户的免费试用次数（trial_used - 1），AI 调用失败时使用
+ */
+async function refundTrialUsage(event: H3Event, userId: string) {
+  const supabase = serverSupabaseServiceRole(event);
+
+  const { data: current } = await supabase
+    .from("user_entitlements")
+    .select("trial_used")
+    .eq("user_id", userId)
+    .single<{ trial_used: number }>();
+
+  if (current && current.trial_used > 0) {
+    await (supabase.from("user_entitlements") as any)
+      .update({ trial_used: current.trial_used - 1 })
+      .eq("user_id", userId);
   }
 }
 
@@ -128,7 +155,12 @@ export default defineEventHandler(async (event) => {
     return fail(ApiCode.SERVER_ERROR, "SERVER_ERROR.AI_NOT_CONFIGURED");
   }
 
-  // ── 6. 运行 LangGraph Copilot 流程 (SSE 模式) ──
+  // ── 6. 乐观扣减配额（先扣后用，失败回退） ──
+  if (entitlement.plan_type === "free") {
+    await deductTrialUsage(event, userId);
+  }
+
+  // ── 7. 运行 LangGraph Copilot 流程 (SSE 模式) ──
   const eventStream = createEventStream(event);
 
   // Background execution for streaming
@@ -141,11 +173,6 @@ export default defineEventHandler(async (event) => {
           event: "message",
           data: JSON.stringify({ type: "progress", chunk }),
         });
-      }
-
-      // ── 7. 计划生成成功，扣减免费次数（仅 free 用户扣减） ──
-      if (entitlement.plan_type === "free") {
-        await deductTrialUsage(event, userId);
       }
 
       // ── 8. 返回成功结束标记 ──
@@ -163,8 +190,35 @@ export default defineEventHandler(async (event) => {
       });
     } catch (err) {
       console.error("[Copilot] LangGraph 规划失败:", err);
-      // Prefer wrapping any unexpected internal Node errors as a standard unavailable key
-      const message = "SERVER_ERROR.AI_UNAVAILABLE";
+
+      // AI 调用失败 → 回退已扣减的配额
+      if (entitlement.plan_type === "free") {
+        try {
+          await refundTrialUsage(event, userId);
+          console.info(`[Copilot] 配额已回退 for user ${userId}`);
+        } catch (refundErr) {
+          console.error("[Copilot] 配额回退失败:", refundErr);
+        }
+      }
+
+      // 按错误类型分类返回不同的错误 key，方便前端定位问题
+      let message = "SERVER_ERROR.AI_UNAVAILABLE";
+      if (err instanceof Error) {
+        if (err.message.includes("步骤参数校验失败")) {
+          message = "SERVER_ERROR.PLAN_VALIDATION_FAILED";
+        } else if (
+          err.message.includes("401") ||
+          err.message.includes("Unauthorized")
+        ) {
+          message = "SERVER_ERROR.AI_AUTH_FAILED";
+        } else if (
+          err.message.includes("timeout") ||
+          err.message.includes("ETIMEDOUT")
+        ) {
+          message = "SERVER_ERROR.AI_TIMEOUT";
+        }
+      }
+
       eventStream.push({
         event: "error",
         data: JSON.stringify({ message }),

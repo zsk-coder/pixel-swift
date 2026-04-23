@@ -3,7 +3,8 @@
     "compressor": "Compressor",
     "converter": "Converter",
     "resizer": "Resize",
-    "blog": "Blog"
+    "blog": "Blog",
+    "copilot": "AI Copilot"
   },
   "home": {
     "title": "Free Online Image Compressor, Converter & Resizer",

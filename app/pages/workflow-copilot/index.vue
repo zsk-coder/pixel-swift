@@ -96,7 +96,6 @@ const suggestions = computed(() => [
 
 // 点击建议标签，将文本追加到输入框
 function appendSuggestion(label: string) {
-  const current = goalText.value.trim();
   goalText.value += (goalText.value ? ", " : "") + label;
 }
 
@@ -110,7 +109,7 @@ function handleGenerate() {
 </script>
 
 <template>
-  <div class="relative min-h-screen overflow-x-hidden">
+  <div class="relative min-h-[70vh] overflow-x-hidden">
     <!-- ── 背景渐变光晕 ── -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
       <div
