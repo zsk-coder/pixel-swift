@@ -4,7 +4,7 @@
     "converter": "Convertisseur",
     "resizer": "Redimensionner",
     "blog": "Blog",
-    "copilot": "Copilote IA"
+    "copilot": "Assistant IA"
   },
   "home": {
     "title": "Compresseur, convertisseur et redimensionneur d'images en ligne gratuit",
@@ -401,8 +401,8 @@
       "description": "Tutoriels pour compresser des photos en ligne gratuitement, convertir des formats d'image et redimensionner vos photos. Guides pour JPG, PNG, WebP et AVIF."
     },
     "copilot": {
-      "title": "Workflow Copilot — Pipeline de Traitement d'Images par IA | PixelSwift",
-      "description": "Téléchargez des images et décrivez votre objectif. L'IA PixelSwift construit automatiquement un pipeline de traitement multi-étapes."
+      "title": "Assistant IA — Pipeline d'optimisation d'images propulsé par l'IA | PixelSwift",
+      "description": "Uploadez des images et décrivez votre objectif d'optimisation. L'IA construit automatiquement un pipeline de compression, conversion et redimensionnement. Essai gratuit inclus."
     }
   },
   "schema": {
@@ -444,8 +444,8 @@
   },
   "auth": {
     "login": {
-      "heroTitle": "Transformez vos tâches d'image en workflows générés par l'IA.",
-      "heroSubtitle": "Téléchargez des images, décrivez votre objectif et laissez l'IA faire le reste.",
+      "heroTitle": "L'IA orchestre vos flux de compression, conversion et redimensionnement.",
+      "heroSubtitle": "Uploadez des images, décrivez votre objectif d'optimisation, et l'IA assemble les meilleures étapes de traitement. Une façon plus intelligente d'optimiser vos images par lots.",
       "badge": "3 expériences gratuites de planification IA",
       "backHome": "Retour à l'accueil",
       "title": "Bon retour",
@@ -480,9 +480,9 @@
   },
   "copilot": {
     "hero": {
-      "title": "Transformez vos tâches image en un",
+      "title": "Transformez l'optimisation d'images en un",
       "titleHighlight": "workflow généré par IA.",
-      "desc": "Téléchargez vos ressources visuelles et décrivez vos besoins. PixelSwift construit automatiquement un pipeline de traitement multi-étapes adapté à vos exigences exactes."
+      "desc": "Uploadez vos ressources visuelles et décrivez vos besoins d'optimisation. PixelSwift combine intelligemment conversion de format, compression et redimensionnement pour construire un pipeline de traitement par lots."
     },
     "assets": {
       "title": "Ressources d'Entrée",
@@ -494,15 +494,16 @@
     },
     "intent": {
       "title": "Intention de Traitement",
-      "desc": "Décrivez ce que vous souhaitez réaliser avec ces ressources. Notre IA construira le workflow automatiquement.",
+      "desc": "Dites à l'IA comment vous souhaitez optimiser et convertir ces fichiers. Nous générerons automatiquement les étapes de traitement.",
       "label": "Objectif en Langage Naturel",
-      "placeholder": "ex., Supprimer les arrière-plans et redimensionner à 1080x1080..."
+      "placeholder": "ex., Redimensionner à 800px de large, convertir en WebP et compresser légèrement..."
     },
     "suggestions": {
       "title": "Améliorations Suggérées",
-      "removeBg": "Supprimer Fond",
-      "square": "Carré 1:1",
-      "autoBalance": "Auto-Balance"
+      "compressWeb": "Compresser pour le Web",
+      "convertWebp": "Convertir en WebP",
+      "resize800": "Redimensionner à 800px",
+      "stripMeta": "Supprimer Métadonnées"
     },
     "generate": "Générer le Plan IA",
     "generateHint": "Génère un graphe de nœuds visuel pour votre révision. Aucun crédit consommé pour l'instant.",
@@ -519,7 +520,17 @@
       "errorLabel": "Erreur",
       "retry": "Réessayer",
       "planConfidence": "Confiance IA : {score}",
-      "waiting": "En attente d'exécution..."
+      "waiting": "En attente d'exécution...",
+      "unsupportedNotice": "Avis",
+      "logs": {
+        "analyzing": "Analyse de {count} images en cours...",
+        "aiPlanning": "L'IA génère le pipeline de traitement optimal...",
+        "aiGenerating": "L'IA génère le workflow optimal",
+        "attempt": "Tentative {n}",
+        "aiReviewing": "Assurance qualité IA : vérification de la conformité du plan généré...",
+        "allDone": "Terminé ! {count} fichiers prêts à télécharger.",
+        "errorPrefix": "Erreur : {message}"
+      }
     }
   },
   "apiEvents": {
@@ -527,8 +538,9 @@
       "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
       "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
       "INVALID_PARAMS": "Invalid request parameters.",
-      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
-      "UNKNOWN_ERROR": "An unknown error occurred."
+      "AI_UNAVAILABLE": "Le service de planification IA est temporairement indisponible.",
+      "UNSUPPORTED_OPERATION": "L'opération demandée n'est pas prise en charge.",
+      "UNKNOWN_ERROR": "Une erreur inconnue s'est produite."
     },
     "UNAUTHORIZED": {
       "LOGIN_REQUIRED": "Please log in before using the AI planning feature."

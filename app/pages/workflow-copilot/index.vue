@@ -10,6 +10,8 @@ import ExecutionCore from "~/components/copilot/ExecutionCore.vue";
 import { useFileDialog } from "@vueuse/core";
 
 const { t } = useI18n();
+const localePath = useLocalePath();
+const user = useSupabaseUser();
 
 // ── SEO ──
 useHead({ title: t("seo.copilot.title") });
@@ -75,22 +77,22 @@ const totalSizeStr = computed(() => {
   return (bytes / (1024 * 1024)).toFixed(1) + " MB";
 });
 
-// ── 目标文本（简短默认值） ──
-const goalText = ref("Prepare for Shopify");
+// ── 目标文本 ──
+const goalText = ref("");
 
-// ── 建议标签组 ──
+// ── 建议标签组（仅展示当前已支持的能力） ──
 const suggestions = computed(() => [
   {
-    icon: "layers_clear",
-    label: t("copilot.suggestions.removeBg"),
+    icon: "compress",
+    label: t("copilot.suggestions.compressWeb"),
+  },
+  {
+    icon: "swap_horiz",
+    label: t("copilot.suggestions.convertWebp"),
   },
   {
     icon: "aspect_ratio",
-    label: t("copilot.suggestions.square"),
-  },
-  {
-    icon: "contrast",
-    label: t("copilot.suggestions.autoBalance"),
+    label: t("copilot.suggestions.resize800"),
   },
 ]);
 
@@ -103,8 +105,19 @@ function appendSuggestion(label: string) {
 const isExecuting = ref(false);
 
 function handleGenerate() {
-  if (!hasFiles.value) return; // Optional check
+  if (!hasFiles.value) return;
+  // 未登录用户跳转登录页，登录后自动回跳
+  if (!user.value) {
+    navigateTo(localePath("/login?returnTo=/workflow-copilot"));
+    return;
+  }
   isExecuting.value = true;
+}
+
+function handleReset() {
+  isExecuting.value = false;
+  handleClearFiles();
+  goalText.value = "";
 }
 </script>
 
@@ -192,15 +205,6 @@ function handleGenerate() {
                   </h2>
                   <div class="flex gap-3">
                     <button
-                      @click="handleClearFiles"
-                      class="text-sm font-medium text-text-secondary dark:text-slate-400 hover:text-red-500 transition-colors flex items-center gap-1"
-                    >
-                      <span class="material-symbols-outlined text-[18px]"
-                        >delete</span
-                      >
-                      Clear
-                    </button>
-                    <button
                       @click="openFileDialog()"
                       class="text-sm font-medium text-primary hover:text-primary-dark transition-colors flex items-center gap-1"
                     >
@@ -208,6 +212,15 @@ function handleGenerate() {
                         >add</span
                       >
                       {{ t("copilot.assets.addMore") }}
+                    </button>
+                    <button
+                      @click="handleClearFiles"
+                      class="text-sm font-medium text-text-secondary dark:text-slate-400 hover:text-red-500 transition-colors flex items-center gap-1"
+                    >
+                      <span class="material-symbols-outlined text-[18px]"
+                        >delete</span
+                      >
+                      Clear
                     </button>
                   </div>
                 </div>
@@ -379,7 +392,7 @@ function handleGenerate() {
                   ]"
                 >
                   <span
-                    class="material-symbols-outlined text-[20px] group-hover:rotate-12 transition-transform"
+                    class="material-symbols-outlined text-[20px]"
                     style="font-variation-settings: &quot;FILL&quot; 1"
                     >account_tree</span
                   >
@@ -400,7 +413,7 @@ function handleGenerate() {
           v-else
           :intent="goalText"
           :files="uploadedFiles"
-          @reset="isExecuting = false"
+          @reset="handleReset"
         />
       </transition>
     </main>

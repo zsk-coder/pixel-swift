@@ -328,8 +328,8 @@
   },
   "auth": {
     "login": {
-      "heroTitle": "让 AI 为你生成图片处理工作流。",
-      "heroSubtitle": "上传图片，描述你的目标，剩下的交给 AI。体验视觉自动化的未来。",
+      "heroTitle": "让 AI 智能编排压缩、转换与缩放工作流。",
+      "heroSubtitle": "上传图片，描述你的优化目标，AI 自动组合最佳处理步骤。体验批量图片优化的全新方式。",
       "badge": "3 次免费 AI 规划体验",
       "backHome": "返回首页",
       "title": "欢迎回来",
@@ -462,15 +462,15 @@
       "description": "专业的图片优化、压缩和网页性能技巧与教程。学习如何优化图片以提升网站加载速度。"
     },
     "copilot": {
-      "title": "Workflow Copilot — AI 驱动的图片处理流水线 | PixelSwift",
-      "description": "上传图片并描述你的目标，PixelSwift AI 自动构建多步处理流水线。包含免费 AI 规划体验。"
+      "title": "AI 助手 — AI 驱动的图片优化流水线 | PixelSwift",
+      "description": "上传图片并描述优化目标，AI 自动编排压缩、格式转换与尺寸调整流水线。包含免费体验。"
     }
   },
   "copilot": {
     "hero": {
-      "title": "将图片任务变成",
+      "title": "将图片优化变成",
       "titleHighlight": "AI 生成的工作流。",
-      "desc": "上传你的视觉素材并描述你的需求。PixelSwift 将根据你的具体要求自动构建多步处理流水线。"
+      "desc": "上传视觉素材并描述你的优化需求。PixelSwift 将智能组合格式转换、图片压缩与尺寸调整，自动构建批处理流水线。"
     },
     "assets": {
       "title": "输入素材",
@@ -482,15 +482,16 @@
     },
     "intent": {
       "title": "处理意图",
-      "desc": "描述你想对这些素材实现的效果。我们的 AI 将自动构建工作流。",
+      "desc": "告诉 AI 你希望如何优化和转换这批文件，我们将自动生成对应的处理步骤。",
       "label": "自然语言目标",
-      "placeholder": "例如：去除背景并调整到 1080x1080..."
+      "placeholder": "例如：将图片缩放至 800px 宽，转换为 WebP 格式并进行轻度压缩..."
     },
     "suggestions": {
       "title": "推荐增强",
-      "removeBg": "去除背景",
-      "square": "正方形 1:1",
-      "autoBalance": "自动平衡"
+      "compressWeb": "压缩优化",
+      "convertWebp": "转换为 WebP",
+      "resize800": "缩放至 800px",
+      "stripMeta": "清除元数据"
     },
     "generate": "生成 AI 计划",
     "generateHint": "生成可视化节点图供你审查，尚不消耗额度。",
@@ -507,7 +508,17 @@
       "errorLabel": "出错",
       "retry": "重试",
       "planConfidence": "AI 置信度: {score}",
-      "waiting": "等待执行..."
+      "waiting": "等待执行...",
+      "unsupportedNotice": "提示",
+      "logs": {
+        "analyzing": "正在分析 {count} 张图片...",
+        "aiPlanning": "AI 正在生成最优处理方案...",
+        "aiGenerating": "AI 正在生成最优工作流",
+        "attempt": "第 {n} 次尝试",
+        "aiReviewing": "AI 质量审核: 正在检查生成方案的合规性...",
+        "allDone": "全部完成！{count} 个文件已就绪，可下载。",
+        "errorPrefix": "错误: {message}"
+      }
     }
   },
   "schema": {
@@ -528,6 +539,7 @@
       "QUOTA_DATA_ERROR": "用户配额数据异常，请稍后重试",
       "INVALID_PARAMS": "请求参数不合法",
       "AI_UNAVAILABLE": "AI规划服务暂时不可用",
+      "UNSUPPORTED_OPERATION": "暂不支持该处理操作",
       "UNKNOWN_ERROR": "发生了未知错误"
     },
     "UNAUTHORIZED": {

@@ -5,14 +5,7 @@
 
 // ── 白名单动作类型 ──
 // 前端执行器和 AI 规划器都只允许使用这些动作
-export const PLAN_ACTIONS = [
-  "resize",
-  "compress",
-  "convert_format",
-  "rename_files",
-  "generate_alt_text",
-  "strip_metadata",
-] as const;
+export const PLAN_ACTIONS = ["resize", "compress", "convert_format"] as const;
 
 export type PlanAction = (typeof PLAN_ACTIONS)[number];
 

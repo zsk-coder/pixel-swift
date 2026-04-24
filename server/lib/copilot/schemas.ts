@@ -34,11 +34,11 @@ export const exportPlanSchema = z.object({
 
 // 完整的处理计划（AI 输出的核心结构）
 export const processPlanSchema = z.object({
-  taskSummary: z.string().min(1),
-  taskType: z.string().min(1),
+  taskSummary: z.string(),
+  taskType: z.string(),
   confidence: z.number().min(0).max(1),
-  scene: z.string().min(1),
-  steps: z.array(planStepSchema).min(1),
+  scene: z.string(),
+  steps: z.array(planStepSchema), // 允许空数组：全部操作不支持时 AI 返回 steps=[]
   risks: z.array(planRiskSchema),
   exportPlan: exportPlanSchema,
 });
@@ -96,17 +96,11 @@ const convertFormatParamsSchema = z.object({
   targetFormat: z.enum(["webp", "jpeg", "png", "avif"]),
 });
 
-// generate_alt_text 参数约束
-const generateAltTextParamsSchema = z.object({
-  language: z.string().min(2).max(10),
-});
-
 // action -> params schema 映射表
 const actionParamsSchemas: Partial<Record<string, z.ZodType>> = {
   resize: resizeParamsSchema,
   compress: compressParamsSchema,
   convert_format: convertFormatParamsSchema,
-  generate_alt_text: generateAltTextParamsSchema,
 };
 
 /**
@@ -124,7 +118,7 @@ export function validateStepParams(
 
   for (const step of plan.steps) {
     const schema = actionParamsSchemas[step.action];
-    if (!schema) continue; // rename_files / strip_metadata 暂无强约束
+    if (!schema) continue;
 
     const result = schema.safeParse(step.params);
     if (!result.success) {

@@ -23,7 +23,7 @@ import { ApiCode } from "~~/shared/types/api";
 // ── 日志条目类型 ──
 export interface LogEntry {
   timestamp: string; // "HH:mm:ss"
-  status: "done" | "running" | "pending" | "error";
+  status: "done" | "running" | "pending" | "error" | "warning";
   message: string;
   duration?: string; // "(0.8s)"
 }
@@ -35,7 +35,8 @@ export type CopilotPhase =
   | "planning"
   | "executing"
   | "done"
-  | "error";
+  | "error"
+  | "unsupported";
 
 // ── 结果文件 ──
 export interface ResultFile {
@@ -67,7 +68,10 @@ async function extractDescriptor(
   // 只对可能有透明度的格式做像素级检测
   if (["png", "webp", "avif"].includes(ext)) {
     try {
-      const canvas = new OffscreenCanvas(Math.min(width, 64), Math.min(height, 64));
+      const canvas = new OffscreenCanvas(
+        Math.min(width, 64),
+        Math.min(height, 64),
+      );
       const ctx = canvas.getContext("2d");
       if (ctx) {
         ctx.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
@@ -107,8 +111,14 @@ function mapStepToProcessOptions(step: PlanStep) {
   switch (step.action) {
     case "resize": {
       // clamp 尺寸到合理范围 [1, 10000]
-      const w = typeof p.width === "number" ? Math.max(1, Math.min(10000, Math.round(p.width))) : undefined;
-      const h = typeof p.height === "number" ? Math.max(1, Math.min(10000, Math.round(p.height))) : undefined;
+      const w =
+        typeof p.width === "number"
+          ? Math.max(1, Math.min(10000, Math.round(p.width)))
+          : undefined;
+      const h =
+        typeof p.height === "number"
+          ? Math.max(1, Math.min(10000, Math.round(p.height)))
+          : undefined;
       return {
         action: "resize" as const,
         width: w,
@@ -164,11 +174,6 @@ function buildOutputFileName(
     case "convert_format": {
       const fmt = (p.targetFormat as string) || "webp";
       return `${baseName}.${fmt}`;
-    }
-    case "rename_files": {
-      const pattern = (p.pattern as string) || "{name}-optimized";
-      const ext = originalName.split(".").pop() || "jpg";
-      return pattern.replace("{name}", baseName) + `.${ext}`;
     }
     default:
       return originalName;
@@ -309,20 +314,17 @@ export function useWorkflowCopilot() {
               }
               const attemptsStr =
                 chunk.planner.attempts > 1
-                  ? ` (Attempt ${chunk.planner.attempts})`
+                  ? ` (${t("copilot.execution.logs.attempt", { n: chunk.planner.attempts })})`
                   : "";
               addLog(
                 "running",
-                `AI generating optimal workflow${attemptsStr}...`,
+                `${t("copilot.execution.logs.aiGenerating")}${attemptsStr}...`,
               );
             } else if (chunk.reviewer) {
               if (logs.value[logs.value.length - 1]?.status === "running") {
                 updateLastLog("done", "");
               }
-              addLog(
-                "running",
-                `AI Quality Assurance: Reviewing generated plan for compliance...`,
-              );
+              addLog("running", t("copilot.execution.logs.aiReviewing"));
             } else if (chunk.output && "finalPlan" in chunk.output) {
               finalPlan = chunk.output.finalPlan;
             }
@@ -402,7 +404,10 @@ export function useWorkflowCopilot() {
             const currentIdx = idx++;
             running++;
             fn(items[currentIdx]!, currentIdx)
-              .then(() => { running--; next(); })
+              .then(() => {
+                running--;
+                next();
+              })
               .catch(reject);
           }
         }
@@ -415,7 +420,9 @@ export function useWorkflowCopilot() {
       const opts = mapStepToProcessOptions(step)!;
       addLog("running", `${step.reason}...`);
 
-      const nextBlobs: { blob: Blob; name: string }[] = new Array(currentBlobs.length);
+      const nextBlobs: { blob: Blob; name: string }[] = new Array(
+        currentBlobs.length,
+      );
       const stepStart = performance.now();
 
       await processWithConcurrency(currentBlobs, async (item, i) => {
@@ -446,13 +453,6 @@ export function useWorkflowCopilot() {
       const stepStart = performance.now();
       addLog("running", `${step.reason}...`);
 
-      if (step.action === "rename_files") {
-        currentBlobs = currentBlobs.map((f) => ({
-          blob: f.blob,
-          name: buildOutputFileName(f.name, step),
-        }));
-      }
-      // generate_alt_text / strip_metadata 在 Phase1 只记录日志
       completed++;
       progress.value = Math.round((completed / totalWork) * 100);
 
@@ -475,7 +475,10 @@ export function useWorkflowCopilot() {
 
     try {
       // ── 阶段 1: 特征提取 ──
-      addLog("running", `Analyzing ${files.length} images in batch queue...`);
+      addLog(
+        "running",
+        t("copilot.execution.logs.analyzing", { count: files.length }),
+      );
       const extractStart = performance.now();
       const batch = await extractBatch(files);
       const extractDuration = (
@@ -486,7 +489,7 @@ export function useWorkflowCopilot() {
 
       // ── 阶段 2: AI 规划 ──
       phase.value = "planning";
-      addLog("running", "AI generating optimal processing pipeline...");
+      addLog("running", t("copilot.execution.logs.aiPlanning"));
       const planStart = performance.now();
 
       const goalInput: GoalInput = {
@@ -507,6 +510,21 @@ export function useWorkflowCopilot() {
         `Plan: ${aiPlan.taskSummary} (${aiPlan.steps.length} steps, confidence: ${(aiPlan.confidence * 100).toFixed(0)}%)`,
       );
 
+      // ── 空步骤防护：AI 返回 steps=[] 说明全部操作不支持 ──
+      if (aiPlan.steps.length === 0) {
+        const riskMsg = aiPlan.risks.map((r) => r.message).join("; ");
+        const fallbackMsg = t
+          ? t("apiEvents.SERVER_ERROR.UNSUPPORTED_OPERATION")
+          : "Unsupported operation";
+        errorMessage.value = riskMsg || fallbackMsg;
+
+        // 优雅退出，进入 warning/unsupported 阶段而不是抛出红屏错误
+        addLog("warning", errorMessage.value);
+        phase.value = "unsupported";
+        progress.value = 100;
+        return;
+      }
+
       // ── 阶段 3: 浏览器端执行 ──
       phase.value = "executing";
       const results = await executePlan(files, aiPlan);
@@ -515,14 +533,24 @@ export function useWorkflowCopilot() {
       resultFiles.value = results;
       progress.value = 100;
       phase.value = "done";
-      addLog("done", `All done! ${results.length} files ready for download.`);
+      addLog(
+        "done",
+        t("copilot.execution.logs.allDone", { count: results.length }),
+      );
     } catch (err) {
       phase.value = "error";
       const key =
         err instanceof Error ? err.message : "SERVER_ERROR.UNKNOWN_ERROR";
-      const translatedMsg = key.includes(".") ? t(`apiEvents.${key}`) : key;
+
+      // 判断是否是标准的内建错误 Key（以大写字母和下划线组成的固定格式开头）
+      const isI18nKey = /^[A-Z_]+\.[A-Z_]+$/.test(key);
+      const translatedMsg = isI18nKey ? t(`apiEvents.${key}`) : key;
+
       errorMessage.value = translatedMsg;
-      addLog("error", `Error: ${translatedMsg}`);
+      addLog(
+        "error",
+        t("copilot.execution.logs.errorPrefix", { message: translatedMsg }),
+      );
     }
   }
 

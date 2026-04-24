@@ -106,9 +106,10 @@ export async function generateProcessPlan(
   const chatModel = createChatModel(config);
 
   // 使用 withStructuredOutput 将 Zod Schema 绑定到模型输出
-  // LangChain 会自动通过 JSON Mode + Schema 描述来约束 AI 输出
+  // DeepSeek v4 不支持 function calling (tool_choice)，需使用 JSON Mode
   const structuredModel = chatModel.withStructuredOutput(processPlanSchema, {
     name: "ProcessPlan",
+    method: "jsonMode",
   });
 
   // 构建完整的 Chain：Prompt Template → Structured Model

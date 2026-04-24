@@ -95,6 +95,20 @@ async function reviewerNode(
     };
   }
 
+  // 空步骤计划（用户请求了不支持的操作）→ 自动通过，无需审计
+  // 计划本身已包含 risk 警告，前端会展示给用户
+  if (state.plan.steps.length === 0) {
+    console.info("[LangGraph] 空步骤计划，跳过审计直接通过");
+    return {
+      review: {
+        approved: true,
+        overallScore: 100,
+        issues: [],
+        summary: "Empty-step plan auto-approved (unsupported operations)",
+      },
+    };
+  }
+
   console.info("[LangGraph] Reviewer 节点执行中...");
 
   const review = await reviewPlan(state.goal.text, state.plan, state.config);

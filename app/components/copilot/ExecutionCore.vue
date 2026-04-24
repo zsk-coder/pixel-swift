@@ -79,6 +79,8 @@ function getLogIcon(status: LogEntry["status"]) {
       return "schedule";
     case "error":
       return "error";
+    case "warning":
+      return "info";
   }
 }
 
@@ -92,6 +94,8 @@ function getLogIconClass(status: LogEntry["status"]) {
       return "text-text-secondary dark:text-slate-500";
     case "error":
       return "text-red-500";
+    case "warning":
+      return "text-warning";
   }
 }
 
@@ -101,6 +105,9 @@ function getLogRowClass(status: LogEntry["status"]) {
   }
   if (status === "error") {
     return "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 -mx-6 px-6 py-2 border-l-2 border-red-400";
+  }
+  if (status === "warning") {
+    return "text-warning dark:text-warning bg-warning/5 dark:bg-warning/20 -mx-6 px-6 py-2 border-l-2 border-warning/50";
   }
   return "opacity-60";
 }
@@ -171,6 +178,13 @@ const progressWidth = computed(() => {
             {{ t("copilot.execution.errorLabel") }}
           </span>
           <span
+            v-else-if="phase === 'unsupported'"
+            class="text-sm font-medium text-warning flex items-center gap-1"
+          >
+            <span class="material-symbols-outlined text-[16px]">info</span>
+            {{ t("copilot.execution.unsupportedNotice", "Notice") }}
+          </span>
+          <span
             v-else
             class="text-sm font-medium text-primary flex items-center gap-1"
           >
@@ -189,7 +203,11 @@ const progressWidth = computed(() => {
         <div
           class="h-full rounded-full relative transition-all duration-500 ease-out"
           :class="[
-            phase === 'error' ? 'bg-red-500' : 'bg-primary',
+            phase === 'error'
+              ? 'bg-red-500'
+              : phase === 'unsupported'
+                ? 'bg-warning'
+                : 'bg-primary',
             isIndeterminate
               ? 'animate-[indeterminate_1.5s_ease-in-out_infinite]'
               : '',
@@ -197,7 +215,9 @@ const progressWidth = computed(() => {
           :style="{ width: progressWidth }"
         >
           <div
-            v-if="phase !== 'error' && phase !== 'done'"
+            v-if="
+              phase !== 'error' && phase !== 'unsupported' && phase !== 'done'
+            "
             class="absolute top-0 right-0 bottom-0 left-0 bg-[linear-gradient(45deg,rgba(255,255,255,0.15)_25%,transparent_25%,transparent_50%,rgba(255,255,255,0.15)_50%,rgba(255,255,255,0.15)_75%,transparent_75%,transparent)] bg-[length:1rem_1rem] opacity-50"
           />
         </div>
@@ -218,9 +238,16 @@ const progressWidth = computed(() => {
             class="flex items-center gap-4 text-text-primary dark:text-white"
           >
             <div
-              class="w-8 h-8 rounded-full bg-success/10 text-success flex items-center justify-center"
+              class="w-8 h-8 rounded-full flex items-center justify-center"
+              :class="
+                phase === 'unsupported'
+                  ? 'bg-warning/10 text-warning'
+                  : 'bg-success/10 text-success'
+              "
             >
-              <span class="material-symbols-outlined text-sm">check</span>
+              <span class="material-symbols-outlined text-sm">{{
+                phase === "unsupported" ? "info" : "check"
+              }}</span>
             </div>
             <span class="font-medium text-sm">
               <strong class="mr-1.5"
@@ -317,37 +344,42 @@ const progressWidth = computed(() => {
 
       <!-- 操作按钮 -->
       <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4">
-        <!-- 错误重试 -->
-        <button
-          v-if="phase === 'error'"
+        <!-- 错误/不支持 重试 -->
+        <el-button
+          v-if="phase === 'error' || phase === 'unsupported'"
+          :type="phase === 'error' ? 'danger' : 'warning'"
+          size="large"
+          plain
           @click="handleRetry"
-          class="border border-red-300 dark:border-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 text-red-600 dark:text-red-400 px-5 py-2.5 rounded-lg text-sm font-medium transition-all active:scale-95 flex items-center justify-center gap-1.5"
         >
-          <span class="material-symbols-outlined text-[18px]">refresh</span>
+          <span class="material-symbols-outlined text-[18px] mr-1"
+            >refresh</span
+          >
           {{ t("copilot.execution.retry") }}
-        </button>
+        </el-button>
 
-        <button
+        <el-button
+          size="large"
           @click="handleNewWorkflow"
-          class="border border-surface-border dark:border-dark-border hover:bg-slate-50 dark:hover:bg-slate-800 text-text-primary dark:text-white px-5 py-2.5 rounded-lg text-sm font-medium transition-all active:scale-95 flex items-center justify-center gap-1.5"
+          :disabled="
+            phase !== 'done' && phase !== 'error' && phase !== 'unsupported'
+          "
         >
-          <span class="material-symbols-outlined text-[18px]">add</span>
+          <span class="material-symbols-outlined text-[18px] mr-1">add</span>
           {{ t("copilot.execution.newWorkflow") }}
-        </button>
+        </el-button>
 
-        <button
+        <el-button
+          type="primary"
+          size="large"
           @click="handleDownload"
           :disabled="phase !== 'done' || resultFiles.length === 0"
-          :class="[
-            'px-5 py-2.5 rounded-lg text-sm font-medium transition-all active:scale-95 flex items-center justify-center gap-1.5 shadow-low',
-            phase === 'done' && resultFiles.length > 0
-              ? 'bg-primary hover:bg-primary-dark text-white'
-              : 'bg-primary/50 text-white/70 cursor-not-allowed',
-          ]"
         >
-          <span class="material-symbols-outlined text-[18px]">download</span>
+          <span class="material-symbols-outlined text-[18px] mr-1"
+            >download</span
+          >
           {{ t("copilot.execution.downloadAll") }}
-        </button>
+        </el-button>
       </div>
     </section>
   </div>

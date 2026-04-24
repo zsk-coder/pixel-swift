@@ -4,7 +4,7 @@
     "converter": "Converter",
     "resizer": "Resize",
     "blog": "Blog",
-    "copilot": "AI Copilot"
+    "copilot": "AI Assistant"
   },
   "home": {
     "title": "Free Online Image Compressor, Converter & Resizer",
@@ -328,8 +328,8 @@
   },
   "auth": {
     "login": {
-      "heroTitle": "Turn image tasks into an AI-generated workflow.",
-      "heroSubtitle": "Upload images, describe your goal, and let AI do the rest. Experience the future of visual automation.",
+      "heroTitle": "Let AI orchestrate your compress, convert & resize workflow.",
+      "heroSubtitle": "Upload images, describe your optimization goal, and AI assembles the best processing steps. A smarter way to batch-optimize images.",
       "badge": "3 free AI planning experiences",
       "backHome": "Back to home",
       "title": "Welcome back",
@@ -462,15 +462,15 @@
       "description": "Free tutorials on image compression, format conversion, and resizing. Learn to optimize JPG, PNG, WebP & AVIF for web and email."
     },
     "copilot": {
-      "title": "Workflow Copilot — AI-Powered Image Processing Pipeline | PixelSwift",
-      "description": "Upload images and describe your goal. PixelSwift AI builds a multi-step processing pipeline automatically. Free AI planning experiences included."
+      "title": "AI Assistant — AI-Powered Image Optimization Pipeline | PixelSwift",
+      "description": "Upload images and describe your optimization goal. AI auto-builds a pipeline for compression, format conversion, and resizing. Free trial included."
     }
   },
   "copilot": {
     "hero": {
-      "title": "Turn image tasks into an",
+      "title": "Turn image optimization into an",
       "titleHighlight": "AI-generated workflow.",
-      "desc": "Upload your visual assets and describe what you need done. PixelSwift automatically builds a multi-step processing pipeline tailored to your exact requirements."
+      "desc": "Upload your visual assets and describe your optimization needs. PixelSwift intelligently combines format conversion, compression, and resizing to build a batch processing pipeline."
     },
     "assets": {
       "title": "Input Assets",
@@ -482,15 +482,16 @@
     },
     "intent": {
       "title": "Processing Intent",
-      "desc": "Describe what you want to achieve with these assets. Our AI will build the workflow automatically.",
+      "desc": "Tell the AI how you'd like to optimize and convert these files. We'll auto-generate the processing steps.",
       "label": "Natural Language Goal",
-      "placeholder": "e.g., Remove backgrounds and resize to 1080x1080..."
+      "placeholder": "e.g., Resize to 800px wide, convert to WebP, and lightly compress..."
     },
     "suggestions": {
       "title": "Suggested Enhancements",
-      "removeBg": "Remove BG",
-      "square": "Square 1:1",
-      "autoBalance": "Auto-Balance"
+      "compressWeb": "Compress for Web",
+      "convertWebp": "Convert to WebP",
+      "resize800": "Resize to 800px",
+      "stripMeta": "Strip Metadata"
     },
     "generate": "Generate AI Plan",
     "generateHint": "Generates a visual node graph for your review. No credits consumed yet.",
@@ -507,7 +508,17 @@
       "errorLabel": "Error",
       "retry": "Retry",
       "planConfidence": "AI Confidence: {score}",
-      "waiting": "Waiting for execution..."
+      "waiting": "Waiting for execution...",
+      "unsupportedNotice": "Notice",
+      "logs": {
+        "analyzing": "Analyzing {count} images in batch queue...",
+        "aiPlanning": "AI generating optimal processing pipeline...",
+        "aiGenerating": "AI generating optimal workflow",
+        "attempt": "Attempt {n}",
+        "aiReviewing": "AI Quality Assurance: Reviewing generated plan for compliance...",
+        "allDone": "All done! {count} files ready for download.",
+        "errorPrefix": "Error: {message}"
+      }
     }
   },
   "schema": {
@@ -528,6 +539,7 @@
       "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
       "INVALID_PARAMS": "Invalid request parameters.",
       "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNSUPPORTED_OPERATION": "The requested operation is not supported.",
       "UNKNOWN_ERROR": "An unknown error occurred."
     },
     "UNAUTHORIZED": {

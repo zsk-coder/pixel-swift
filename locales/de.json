@@ -4,7 +4,7 @@
     "converter": "Konverter",
     "resizer": "Größe ändern",
     "blog": "Blog",
-    "copilot": "KI-Copilot"
+    "copilot": "KI-Assistent"
   },
   "home": {
     "title": "Kostenloser Online-Bildkompressor, Konverter & Größenänderer",
@@ -401,8 +401,8 @@
       "description": "Tutorials zum Komprimieren, Konvertieren und Skalieren von Bildern. Tipps für JPG, PNG, WebP und AVIF — kostenlos und ohne Upload."
     },
     "copilot": {
-      "title": "Workflow Copilot — KI-gestützte Bildverarbeitungs-Pipeline | PixelSwift",
-      "description": "Laden Sie Bilder hoch und beschreiben Sie Ihr Ziel. PixelSwift KI erstellt automatisch eine mehrstufige Verarbeitungspipeline."
+      "title": "KI-Assistent — KI-gestützte Bildoptimierungs-Pipeline | PixelSwift",
+      "description": "Laden Sie Bilder hoch und beschreiben Sie Ihr Optimierungsziel. KI erstellt automatisch eine Pipeline für Komprimierung, Formatkonvertierung und Größenanpassung. Kostenlose Testversion inklusive."
     }
   },
   "schema": {
@@ -444,8 +444,8 @@
   },
   "auth": {
     "login": {
-      "heroTitle": "Verwandeln Sie Bildaufgaben in KI-generierte Workflows.",
-      "heroSubtitle": "Laden Sie Bilder hoch, beschreiben Sie Ihr Ziel und lassen Sie die KI den Rest erledigen.",
+      "heroTitle": "KI orchestriert Ihre Komprimierungs-, Konvertierungs- und Skalierungs-Workflows.",
+      "heroSubtitle": "Laden Sie Bilder hoch, beschreiben Sie Ihr Optimierungsziel, und die KI stellt die besten Verarbeitungsschritte zusammen. Eine smartere Art, Bilder im Stapel zu optimieren.",
       "badge": "3 kostenlose KI-Planungserlebnisse",
       "backHome": "Zur Startseite",
       "title": "Willkommen zurück",
@@ -480,9 +480,9 @@
   },
   "copilot": {
     "hero": {
-      "title": "Verwandeln Sie Bildaufgaben in einen",
+      "title": "Verwandeln Sie Bildoptimierung in einen",
       "titleHighlight": "KI-generierten Workflow.",
-      "desc": "Laden Sie Ihre visuellen Assets hoch und beschreiben Sie, was Sie benötigen. PixelSwift erstellt automatisch eine mehrstufige Verarbeitungspipeline, die auf Ihre Anforderungen zugeschnitten ist."
+      "desc": "Laden Sie Ihre visuellen Assets hoch und beschreiben Sie Ihre Optimierungsanforderungen. PixelSwift kombiniert intelligent Formatkonvertierung, Komprimierung und Größenanpassung zu einer Stapelverarbeitungs-Pipeline."
     },
     "assets": {
       "title": "Eingabe-Assets",
@@ -494,15 +494,16 @@
     },
     "intent": {
       "title": "Verarbeitungsabsicht",
-      "desc": "Beschreiben Sie, was Sie mit diesen Assets erreichen möchten. Unsere KI erstellt den Workflow automatisch.",
+      "desc": "Teilen Sie der KI mit, wie Sie diese Dateien optimieren und konvertieren möchten. Wir generieren die Verarbeitungsschritte automatisch.",
       "label": "Natürlichsprachliches Ziel",
-      "placeholder": "z.B. Hintergründe entfernen und auf 1080x1080 skalieren..."
+      "placeholder": "z.B. Bilder auf 800px Breite skalieren, in WebP konvertieren und leicht komprimieren..."
     },
     "suggestions": {
       "title": "Vorgeschlagene Verbesserungen",
-      "removeBg": "Hintergrund entfernen",
-      "square": "Quadrat 1:1",
-      "autoBalance": "Auto-Balance"
+      "compressWeb": "Für Web komprimieren",
+      "convertWebp": "In WebP konvertieren",
+      "resize800": "Auf 800px skalieren",
+      "stripMeta": "Metadaten entfernen"
     },
     "generate": "KI-Plan generieren",
     "generateHint": "Erstellt einen visuellen Knotengraph zur Überprüfung. Noch keine Credits verbraucht.",
@@ -519,7 +520,17 @@
       "errorLabel": "Fehler",
       "retry": "Wiederholen",
       "planConfidence": "KI-Konfidenz: {score}",
-      "waiting": "Warten auf Ausführung..."
+      "waiting": "Warten auf Ausführung...",
+      "unsupportedNotice": "Hinweis",
+      "logs": {
+        "analyzing": "{count} Bilder werden analysiert...",
+        "aiPlanning": "KI generiert die optimale Verarbeitungspipeline...",
+        "aiGenerating": "KI generiert den optimalen Workflow",
+        "attempt": "Versuch {n}",
+        "aiReviewing": "KI-Qualitätssicherung: Überprüfung des generierten Plans...",
+        "allDone": "Fertig! {count} Dateien zum Download bereit.",
+        "errorPrefix": "Fehler: {message}"
+      }
     }
   },
   "apiEvents": {
@@ -527,8 +538,9 @@
       "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
       "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
       "INVALID_PARAMS": "Invalid request parameters.",
-      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
-      "UNKNOWN_ERROR": "An unknown error occurred."
+      "AI_UNAVAILABLE": "Der KI-Planungsdienst ist vorübergehend nicht verfügbar.",
+      "UNSUPPORTED_OPERATION": "Der angeforderte Vorgang wird nicht unterstützt.",
+      "UNKNOWN_ERROR": "Ein unbekannter Fehler ist aufgetreten."
     },
     "UNAUTHORIZED": {
       "LOGIN_REQUIRED": "Please log in before using the AI planning feature."

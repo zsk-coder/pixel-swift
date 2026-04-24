@@ -50,10 +50,10 @@ export async function reviewPlan(
   // 复用缓存的审计专用模型实例（温度 0.1，更严谨）
   const reviewModel = createReviewerModel(config);
 
-  // 绑定结构化输出：审计结果 Schema
+  // 绑定结构化输出：审计结果 Schema（使用 JSON Mode，DeepSeek v4 不支持 tool_choice）
   const structuredReviewer = reviewModel.withStructuredOutput(
     planReviewResultSchema,
-    { name: "PlanReviewResult" },
+    { name: "PlanReviewResult", method: "jsonMode" },
   );
 
   // 构建审计 Chain
