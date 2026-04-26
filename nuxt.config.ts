@@ -45,6 +45,13 @@ export default defineNuxtConfig({
       baseUrl: process.env.NUXT_DEEPSEEK_BASE_URL || "https://api.deepseek.com",
       model: process.env.NUXT_DEEPSEEK_MODEL || "deepseek-v4-flash",
     },
+    // LemonSqueezy 支付（仅服务端可见）
+    lemonSqueezy: {
+      apiKey: process.env.LEMONSQUEEZY_API_KEY || "",
+      webhookSecret: process.env.LEMONSQUEEZY_WEBHOOK_SECRET || "",
+      storeId: process.env.LEMONSQUEEZY_STORE_ID || "",
+      variantId: process.env.LEMONSQUEEZY_VARIANT_ID || "",
+    },
     public: {
       siteUrl: SITE_URL,
       auth: {

@@ -156,9 +156,8 @@ export default defineEventHandler(async (event) => {
   }
 
   // ── 6. 乐观扣减配额（先扣后用，失败回退） ──
-  if (entitlement.plan_type === "free") {
-    await deductTrialUsage(event, userId);
-  }
+  // 无论 free 还是 pro 都有有限配额，都需要扣减
+  await deductTrialUsage(event, userId);
 
   // ── 7. 运行 LangGraph Copilot 流程 (SSE 模式) ──
   const eventStream = createEventStream(event);
@@ -176,10 +175,8 @@ export default defineEventHandler(async (event) => {
       }
 
       // ── 8. 返回成功结束标记 ──
-      const remainingTrialCount =
-        entitlement.plan_type === "pro"
-          ? trialRemaining
-          : Math.max(0, trialRemaining - 1);
+      // 所有用户都已扣减 1 次
+      const remainingTrialCount = Math.max(0, trialRemaining - 1);
 
       eventStream.push({
         event: "message",
@@ -192,13 +189,11 @@ export default defineEventHandler(async (event) => {
       console.error("[Copilot] LangGraph 规划失败:", err);
 
       // AI 调用失败 → 回退已扣减的配额
-      if (entitlement.plan_type === "free") {
-        try {
-          await refundTrialUsage(event, userId);
-          console.info(`[Copilot] 配额已回退 for user ${userId}`);
-        } catch (refundErr) {
-          console.error("[Copilot] 配额回退失败:", refundErr);
-        }
+      try {
+        await refundTrialUsage(event, userId);
+        console.info(`[Copilot] 配额已回退 for user ${userId}`);
+      } catch (refundErr) {
+        console.error("[Copilot] 配额回退失败:", refundErr);
       }
 
       // 按错误类型分类返回不同的错误 key，方便前端定位问题

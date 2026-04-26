@@ -333,7 +333,7 @@
       "badge": "3 次免费 AI 规划体验",
       "backHome": "返回首页",
       "title": "欢迎回来",
-      "description": "登录以继续使用 Workflow Copilot。",
+      "description": "登录即可开始使用",
       "google": "使用 Google 继续",
       "helper": "无需信用卡",
       "secondaryHelper": "安全的 Google 登录体验",
@@ -346,7 +346,7 @@
       "account": "账号",
       "free": "免费",
       "pro": "Pro",
-      "trialLeft": "剩余 {used} / {total} 次免费 AI 体验",
+      "trialLeft": "剩余可用额度",
       "upgrade": "升级到 Pro",
       "signOut": "退出登录",
       "emailLabel": "当前登录账号",
@@ -481,9 +481,9 @@
       "more": "+{count}"
     },
     "intent": {
-      "title": "处理意图",
-      "desc": "告诉 AI 你希望如何优化和转换这批文件，我们将自动生成对应的处理步骤。",
-      "label": "自然语言目标",
+      "title": "你想怎么处理？",
+      "desc": "描述你的图片处理需求，AI 会自动完成。",
+      "label": "处理目标",
       "placeholder": "例如：将图片缩放至 800px 宽，转换为 WebP 格式并进行轻度压缩..."
     },
     "suggestions": {
@@ -493,8 +493,8 @@
       "resize800": "缩放至 800px",
       "stripMeta": "清除元数据"
     },
-    "generate": "生成 AI 计划",
-    "generateHint": "生成可视化节点图供你审查，尚不消耗额度。",
+    "generate": "开始智能处理",
+    "generateHint": "将立即开始处理，消耗 1 次额度。",
     "execution": {
       "objectiveApplied": "🎯 目标设定：\"{intent}\"",
       "processingWorkflow": "处理工作流正在执行",
@@ -548,5 +548,46 @@
     "QUOTA_EXHAUSTED": {
       "UPGRADE_REQUIRED": "免费体验次数已用完，请升级Pro继续使用"
     }
+  },
+  "pricing": {
+    "title": "选择适合你的方案",
+    "subtitle": "图片压缩、格式转换、尺寸调整永久免费。升级 Pro 解锁 AI 助手，自动完成批量处理。",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ 永久免费",
+      "desc": "基础图片处理工具箱，完全免费。",
+      "features": {
+        "compress": "图片压缩 — 无限次",
+        "convert": "格式转换 — 无限次",
+        "resize": "图片缩放 — 无限次",
+        "batch": "批量处理 — 最多 100 张",
+        "size": "单文件最大 50MB",
+        "copilot": "AI 助手 — 3 次体验"
+      },
+      "notIncluded": {
+        "support": "优先技术支持"
+      },
+      "cta": "开始使用"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ 月",
+      "periodDesc": "(or $19/年)",
+      "desc": "释放 AI 潜力，自动化繁琐流程。",
+      "features": {
+        "everything": "Free 的全部功能",
+        "copilot": "AI 助手 — 100 次 / 月",
+        "nl": "自然语言驱动 AI 处理",
+        "pipeline": "AI 自动构建处理流水线",
+        "support": "优先邮件技术支持"
+      },
+      "cta": "立即升级"
+    },
+    "trust": "所有方案均支持随时取消 · 不满意随时退款 · 由 LemonSqueezy 安全处理支付",
+    "successTitle": "欢迎加入 Pro！",
+    "successDesc": "您的订阅已生效，尽情体验 AI 助理的强大功能吧！"
   }
 }

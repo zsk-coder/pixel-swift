@@ -77,7 +77,8 @@ const totalSizeStr = computed(() => {
   return (bytes / (1024 * 1024)).toFixed(1) + " MB";
 });
 
-// ── 目标文本 ──
+// ── 目标文本（限制 500 字符，控制 token 消耗） ──
+const GOAL_MAX_LEN = 500;
 const goalText = ref("");
 
 // ── 建议标签组（仅展示当前已支持的能力） ──
@@ -103,9 +104,11 @@ function appendSuggestion(label: string) {
 
 // ── Execution State ──
 const isExecuting = ref(false);
+// 必须同时有文件和自然语言描述才允许生成计划
+const canGenerate = computed(() => hasFiles.value && goalText.value.trim().length > 0);
 
 function handleGenerate() {
-  if (!hasFiles.value) return;
+  if (!canGenerate.value) return;
   // 未登录用户跳转登录页，登录后自动回跳
   if (!user.value) {
     navigateTo(localePath("/login?returnTo=/workflow-copilot"));
@@ -338,17 +341,31 @@ function handleReset() {
                 <textarea
                   id="copilot-intent-input"
                   v-model="goalText"
+                  :maxlength="GOAL_MAX_LEN"
                   style="outline: none"
-                  class="w-full rounded-xl bg-white dark:bg-slate-800 border-2 border-primary/50 px-4 py-4 text-base text-text-primary dark:text-white font-medium focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 resize-none transition-all duration-200 placeholder:text-slate-400"
+                  class="w-full rounded-xl bg-white dark:bg-slate-800 border-2 border-primary/50 px-4 py-4 pb-8 text-base text-text-primary dark:text-white font-medium focus:outline-none focus:border-primary focus:ring-4 focus:ring-primary/10 resize-none transition-all duration-200 placeholder:text-slate-400"
                   :placeholder="t('copilot.intent.placeholder')"
                   rows="4"
                 />
-                <!-- AI Sparkle 图标 -->
+                <!-- 底部栏：字符计数 + AI Sparkle -->
                 <div
-                  class="absolute bottom-3 right-3 flex items-center gap-1 text-primary animate-pulse"
+                  class="absolute bottom-3 right-3 flex items-center gap-2"
                 >
                   <span
-                    class="material-symbols-outlined text-[18px]"
+                    v-if="goalText.length > 0"
+                    :class="[
+                      'text-[11px] font-medium tabular-nums transition-colors',
+                      goalText.length >= GOAL_MAX_LEN
+                        ? 'text-red-500'
+                        : goalText.length >= GOAL_MAX_LEN * 0.8
+                          ? 'text-amber-500'
+                          : 'text-slate-400',
+                    ]"
+                  >
+                    {{ goalText.length }}/{{ GOAL_MAX_LEN }}
+                  </span>
+                  <span
+                    class="material-symbols-outlined text-[18px] text-primary animate-pulse"
                     style="font-variation-settings: &quot;FILL&quot; 1"
                     >auto_awesome</span
                   >
@@ -383,10 +400,10 @@ function handleReset() {
               >
                 <button
                   @click="handleGenerate"
-                  :disabled="!hasFiles"
+                  :disabled="!canGenerate"
                   :class="[
                     'w-full text-white rounded-xl px-6 py-3 font-bold text-base flex justify-center items-center gap-2 transition-all duration-300 shadow-[0_8px_16px_rgba(37,99,235,0.2)] group',
-                    hasFiles
+                    canGenerate
                       ? 'bg-primary hover:bg-primary-dark hover:scale-[1.02] active:scale-95'
                       : 'bg-primary/50 cursor-not-allowed opacity-70',
                   ]"

@@ -7,6 +7,7 @@
 import type { LogEntry } from "~/composables/useWorkflowCopilot";
 
 const { t, locale } = useI18n();
+const localePath = useLocalePath();
 
 const props = defineProps<{
   intent?: string;
@@ -99,27 +100,11 @@ function getLogIconClass(status: LogEntry["status"]) {
   }
 }
 
-function getLogRowClass(status: LogEntry["status"]) {
-  if (status === "running") {
-    return "text-primary dark:text-primary-100 bg-primary/5 dark:bg-primary/20 -mx-6 px-6 py-2 border-l-2 border-primary/50";
-  }
-  if (status === "error") {
-    return "text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 -mx-6 px-6 py-2 border-l-2 border-red-400";
-  }
-  if (status === "warning") {
-    return "text-warning dark:text-warning bg-warning/5 dark:bg-warning/20 -mx-6 px-6 py-2 border-l-2 border-warning/50";
-  }
-  return "opacity-60";
-}
 
-// ── 进度条动画控制 ──
-const isIndeterminate = computed(
-  () => phase.value === "planning" || phase.value === "extracting",
-);
-const progressWidth = computed(() => {
-  if (isIndeterminate.value) return "100%";
-  return `${progress.value}%`;
-});
+
+
+// ── 进度条控制 ──
+const progressWidth = computed(() => `${progress.value}%`);
 </script>
 
 <template>
@@ -208,9 +193,6 @@ const progressWidth = computed(() => {
               : phase === 'unsupported'
                 ? 'bg-warning'
                 : 'bg-primary',
-            isIndeterminate
-              ? 'animate-[indeterminate_1.5s_ease-in-out_infinite]'
-              : '',
           ]"
           :style="{ width: progressWidth }"
         >
@@ -266,87 +248,109 @@ const progressWidth = computed(() => {
         </div>
       </div>
 
-      <!-- 执行日志终端 -->
+      <!-- 执行步骤列表 -->
       <div
-        class="bg-white dark:bg-[#0f172a] rounded-card shadow-low border border-surface-border dark:border-dark-border overflow-hidden font-mono text-sm min-h-[480px] flex flex-col"
+        class="bg-surface dark:bg-dark-card rounded-card shadow-low border border-surface-border/50 dark:border-dark-border/50 overflow-hidden min-h-[320px] flex flex-col"
       >
-        <!-- 终端头部 -->
+        <!-- 头部 -->
         <div
-          class="flex items-center justify-between p-4 border-b border-surface-border dark:border-dark-border bg-slate-50 dark:bg-slate-900"
+          class="flex items-center justify-between px-6 py-4 border-b border-surface-border/50 dark:border-dark-border/50"
         >
-          <div class="flex items-center gap-2">
+          <div class="flex items-center gap-2.5">
             <span
-              class="material-symbols-outlined text-text-secondary dark:text-slate-400 text-sm"
-              >terminal</span
+              class="material-symbols-outlined text-primary text-[20px]"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >checklist</span
             >
-            <span class="font-medium text-text-secondary dark:text-slate-300">
+            <span class="font-semibold text-sm text-text-primary dark:text-white">
               {{ t("copilot.execution.executionCore") }}
             </span>
           </div>
-          <!-- macOS 风格窗口按钮 -->
-          <div class="flex gap-1.5">
-            <div class="w-3 h-3 rounded-full bg-red-400" />
-            <div class="w-3 h-3 rounded-full bg-amber-400" />
-            <div class="w-3 h-3 rounded-full bg-emerald-400" />
-          </div>
+          <!-- 步骤计数器 -->
+          <span
+            v-if="logs.length > 0"
+            class="text-xs font-medium text-text-secondary dark:text-slate-400 tabular-nums"
+          >
+            {{ logs.filter((l) => l.status === 'done').length }}/{{ logs.length }}
+          </span>
         </div>
 
-        <!-- 日志内容 -->
+        <!-- 步骤内容 -->
         <div
           ref="logContainer"
-          class="p-6 space-y-3 text-text-primary dark:text-slate-300 flex-1 overflow-y-auto"
+          class="px-6 py-4 flex-1 overflow-y-auto"
         >
           <!-- 空状态 -->
           <div
             v-if="logs.length === 0"
-            class="flex items-center justify-center h-full opacity-30"
+            class="flex flex-col items-center justify-center h-full gap-3 opacity-40"
           >
-            <span class="material-symbols-outlined text-4xl mr-3"
-              >terminal</span
+            <span
+              class="material-symbols-outlined text-3xl"
+              style="font-variation-settings: &quot;FILL&quot; 1"
+              >hourglass_empty</span
             >
-            <span class="text-lg">{{ t("copilot.execution.waiting") }}</span>
+            <span class="text-sm text-text-secondary dark:text-slate-400">{{ t("copilot.execution.waiting") }}</span>
           </div>
 
-          <!-- 动态日志条目 -->
-          <div
-            v-for="(log, idx) in logs"
-            :key="idx"
-            class="flex items-start gap-3"
-            :class="getLogRowClass(log.status)"
-          >
-            <span
-              class="shrink-0"
-              :class="
-                log.status === 'running'
-                  ? 'text-primary/80 dark:text-primary'
-                  : 'text-text-secondary dark:text-slate-500'
-              "
-              >[{{
-                log.status === "pending" ? "PENDING" : log.timestamp
-              }}]</span
+          <!-- 步骤列表 -->
+          <div class="space-y-1">
+            <div
+              v-for="(log, idx) in logs"
+              :key="idx"
+              :class="[
+                'flex items-center gap-3 px-1 py-2.5 rounded-lg text-sm transition-all duration-300',
+              ]"
             >
-            <span
-              class="material-symbols-outlined text-sm shrink-0 mt-0.5"
-              :class="getLogIconClass(log.status)"
-              >{{ getLogIcon(log.status) }}</span
-            >
-            <p>
-              {{ log.message }}
+              <!-- 状态图标 -->
+              <span
+                class="material-symbols-outlined text-[18px] shrink-0"
+                :class="getLogIconClass(log.status)"
+                :style="log.status === 'done' ? 'font-variation-settings: \'FILL\' 1' : ''"
+                >{{ getLogIcon(log.status) }}</span
+              >
+              <!-- 消息文本 -->
+              <span
+                :class="[
+                  'flex-1',
+                  log.status === 'running'
+                    ? 'text-primary dark:text-primary-100 font-medium'
+                    : log.status === 'error'
+                      ? 'text-red-600 dark:text-red-400'
+                      : log.status === 'warning'
+                        ? 'text-amber-700 dark:text-amber-400'
+                        : 'text-text-secondary dark:text-slate-400',
+                ]"
+              >
+                {{ log.message }}
+              </span>
+              <!-- 耗时徽章 -->
               <span
                 v-if="log.duration"
-                class="text-text-secondary dark:text-slate-500"
-                >{{ log.duration }}</span
+                class="text-[11px] font-medium text-text-secondary/60 dark:text-slate-500 tabular-nums shrink-0"
               >
-            </p>
+                {{ log.duration }}
+              </span>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- 操作按钮 -->
       <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4">
+        <!-- 配合配额耗尽显示升级按钮 -->
+        <NuxtLink
+          v-if="phase === 'error' && errorMessage === t('apiEvents.QUOTA_EXHAUSTED.UPGRADE_REQUIRED')"
+          :to="localePath('/pricing')"
+          class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white transition-transform hover:scale-[1.02] hover:bg-primary-dark active:scale-95"
+        >
+          <span class="material-symbols-outlined text-[18px]">verified</span>
+          {{ t('pricing.pro.cta') }}
+        </NuxtLink>
+
         <!-- 错误/不支持 重试 -->
         <el-button
-          v-if="phase === 'error' || phase === 'unsupported'"
+          v-else-if="phase === 'error' || phase === 'unsupported'"
           :type="phase === 'error' ? 'danger' : 'warning'"
           size="large"
           plain

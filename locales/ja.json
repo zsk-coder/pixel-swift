@@ -449,7 +449,7 @@
       "badge": "AI プランニングを 3 回無料で体験",
       "backHome": "ホームに戻る",
       "title": "おかえりなさい",
-      "description": "Workflow Copilot を続けるにはログインしてください。",
+      "description": "ログインして始めましょう",
       "google": "Google で続行",
       "helper": "クレジットカードは不要です",
       "secondaryHelper": "安全な Google 認証",
@@ -462,7 +462,7 @@
       "account": "アカウント",
       "free": "無料",
       "pro": "Pro",
-      "trialLeft": "無料 AI 体験は {total} 回中あと {used} 回です",
+      "trialLeft": "残りAIクォータ",
       "upgrade": "Pro にアップグレード",
       "signOut": "ログアウト",
       "emailLabel": "現在のログインアカウント",
@@ -493,9 +493,9 @@
       "more": "+{count}"
     },
     "intent": {
-      "title": "処理インテント",
-      "desc": "これらのファイルをどのように最適化・変換したいかAIに伝えてください。対応する処理ステップを自動生成します。",
-      "label": "自然言語ゴール",
+      "title": "どう処理しますか？",
+      "desc": "画像の処理方法を入力してください。AIが自動で処理します。",
+      "label": "処理目標",
       "placeholder": "例：画像を800px幅にリサイズし、WebPに変換して軽く圧縮..."
     },
     "suggestions": {
@@ -505,8 +505,8 @@
       "resize800": "800pxにリサイズ",
       "stripMeta": "メタデータ削除"
     },
-    "generate": "AIプランを生成",
-    "generateHint": "レビュー用のビジュアルノードグラフを生成します。クレジットはまだ消費されません。",
+    "generate": "AI処理を開始",
+    "generateHint": "直ちに実行し、1クォータを消費します。",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -548,5 +548,46 @@
     "QUOTA_EXHAUSTED": {
       "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
     }
+  },
+  "pricing": {
+    "title": "Choose your plan",
+    "subtitle": "画像圧縮、フォーマット変換、リサイズは永久無料。Pro にアップグレードして AI アシスタントによる自動バッチ処理を解放しましょう。",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ Free Forever",
+      "desc": "Basic image processing toolkit, completely free.",
+      "features": {
+        "compress": "Image Compression — Unlimited",
+        "convert": "Format Conversion — Unlimited",
+        "resize": "Image Resizing — Unlimited",
+        "batch": "Batch Processing — Up to 100 images",
+        "size": "Max File Size — 50MB",
+        "copilot": "AI アシスタント — 3回お試し"
+      },
+      "notIncluded": {
+        "support": "Priority Tech Support"
+      },
+      "cta": "Start Using"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ month",
+      "periodDesc": "(or $19/year)",
+      "desc": "Unleash AI potential to automate tedious workflows.",
+      "features": {
+        "everything": "Everything in Free",
+        "copilot": "AI アシスタント — 100回 / 月",
+        "nl": "Natural Language Driven AI",
+        "pipeline": "Auto-build AI pipelines",
+        "support": "Priority Email Support"
+      },
+      "cta": "Upgrade Now"
+    },
+    "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
+    "successTitle": "Proへようこそ！",
+    "successDesc": "サブスクリプションが有効になりました。Pro機能をお楽しみください！"
   }
 }

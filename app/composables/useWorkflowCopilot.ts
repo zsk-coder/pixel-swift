@@ -22,7 +22,6 @@ import { ApiCode } from "~~/shared/types/api";
 
 // ── 日志条目类型 ──
 export interface LogEntry {
-  timestamp: string; // "HH:mm:ss"
   status: "done" | "running" | "pending" | "error" | "warning";
   message: string;
   duration?: string; // "(0.8s)"
@@ -44,13 +43,7 @@ export interface ResultFile {
   name: string;
 }
 
-// ── 时间戳格式化工具 ──
-function nowTimestamp(): string {
-  const d = new Date();
-  return [d.getHours(), d.getMinutes(), d.getSeconds()]
-    .map((n) => String(n).padStart(2, "0"))
-    .join(":");
-}
+
 
 // ── 从 File 提取图片特征 ──
 async function extractDescriptor(
@@ -187,6 +180,7 @@ export function useWorkflowCopilot() {
   const { processImage } = useImageProcessor();
   const { downloadAsZip } = useDownload();
   const { t } = useI18n();
+  const { refreshQuota } = useTrialQuota();
 
   // ── 响应式状态 ──
   const phase = ref<CopilotPhase>("idle");
@@ -203,7 +197,6 @@ export function useWorkflowCopilot() {
     duration?: string,
   ) {
     logs.value.push({
-      timestamp: nowTimestamp(),
       status,
       message,
       duration,
@@ -307,6 +300,8 @@ export function useWorkflowCopilot() {
           const payload = JSON.parse(dataStr);
           if (payload.type === "progress") {
             const chunk = payload.chunk;
+            // 规划阶段进度：10% → 40%，每收到一个 SSE 事件就往前推一点
+            progress.value = Math.min(40, progress.value + 3);
             if (chunk.planner) {
               // 如果当前正在 running 的日志是 "Analyzing..."，完成它
               if (logs.value[logs.value.length - 1]?.status === "running") {
@@ -440,7 +435,8 @@ export function useWorkflowCopilot() {
         }
 
         completed++;
-        progress.value = Math.round((completed / totalWork) * 100);
+        // 执行阶段进度映射到 40% → 100%
+        progress.value = 40 + Math.round((completed / totalWork) * 60);
       });
 
       const stepDuration = ((performance.now() - stepStart) / 1000).toFixed(1);
@@ -454,7 +450,7 @@ export function useWorkflowCopilot() {
       addLog("running", `${step.reason}...`);
 
       completed++;
-      progress.value = Math.round((completed / totalWork) * 100);
+      progress.value = 40 + Math.round((completed / totalWork) * 60);
 
       const stepDuration = ((performance.now() - stepStart) / 1000).toFixed(1);
       updateLastLog("done", `(${stepDuration}s)`);
@@ -475,6 +471,7 @@ export function useWorkflowCopilot() {
 
     try {
       // ── 阶段 1: 特征提取 ──
+      progress.value = 5; // 提取开始，先给 5%
       addLog(
         "running",
         t("copilot.execution.logs.analyzing", { count: files.length }),
@@ -486,6 +483,7 @@ export function useWorkflowCopilot() {
         1000
       ).toFixed(1);
       updateLastLog("done", `(${extractDuration}s)`);
+      progress.value = 10; // 提取完成，推到 10%
 
       // ── 阶段 2: AI 规划 ──
       phase.value = "planning";
@@ -533,6 +531,8 @@ export function useWorkflowCopilot() {
       resultFiles.value = results;
       progress.value = 100;
       phase.value = "done";
+      // 强制刷新本地配额缓存，让头像菜单立刻显示最新的剩余次数
+      refreshQuota();
       addLog(
         "done",
         t("copilot.execution.logs.allDone", { count: results.length }),

@@ -1,6 +1,9 @@
 // 默认每个新注册用户赠送的免费试用配额次数（用于处理某些 AI 高级功能）
 export const DEFAULT_TRIAL_TOTAL = 3;
 
+// Pro 用户每月配额上限
+export const PRO_MONTHLY_QUOTA = 100;
+
 // 定义用户的会员计划层级
 export type PlanType = "free" | "pro";
 // 定义会员的实际订阅活跃状态（例如，可能用户是 "pro" 但因为扣费失败暂时变为 "inactive"）
@@ -118,8 +121,11 @@ export function toQuotaPayload(
   const planType = entitlement.plan_type;
   const subscriptionStatus = entitlement.subscription_status ?? "inactive";
 
-  // 核心鉴权逻辑：只要他是 Pro 会员，或者剩余试用次数大于0，就可以被允许调用 API
-  const canGenerate = planType === "pro" || trialRemaining > 0;
+  // 核心鉴权逻辑：
+  // Pro 用户（订阅激活）：检查月度配额剩余（trial_total=100, trial_used 逐次递增）
+  // Free 用户：检查免费试用次数
+  const isPro = planType === "pro" && subscriptionStatus === "active";
+  const canGenerate = isPro ? trialRemaining > 0 : trialRemaining > 0;
 
   return {
     authAvailable: true,

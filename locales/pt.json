@@ -449,7 +449,7 @@
       "badge": "3 experiências gratuitas de planejamento com IA",
       "backHome": "Voltar para o início",
       "title": "Bem-vindo de volta",
-      "description": "Faça login para continuar com o Workflow Copilot.",
+      "description": "Faça login para começar",
       "google": "Continuar com Google",
       "helper": "Sem necessidade de cartão de crédito",
       "secondaryHelper": "Autenticação segura com Google",
@@ -462,7 +462,7 @@
       "account": "Conta",
       "free": "Grátis",
       "pro": "Pro",
-      "trialLeft": "Restam {used} de {total} experiências gratuitas de IA",
+      "trialLeft": "Cota de IA restante",
       "upgrade": "Fazer upgrade para Pro",
       "signOut": "Sair",
       "emailLabel": "Conectado como",
@@ -493,9 +493,9 @@
       "more": "+{count}"
     },
     "intent": {
-      "title": "Intenção de Processamento",
-      "desc": "Diga à IA como deseja otimizar e converter esses arquivos. Geraremos as etapas de processamento automaticamente.",
-      "label": "Objetivo em Linguagem Natural",
+      "title": "O que você precisa?",
+      "desc": "Descreva como deseja processar suas imagens. A IA cuida do resto.",
+      "label": "Seu Objetivo",
       "placeholder": "ex., Redimensionar para 800px de largura, converter para WebP e comprimir levemente..."
     },
     "suggestions": {
@@ -505,8 +505,8 @@
       "resize800": "Redimensionar para 800px",
       "stripMeta": "Remover Metadados"
     },
-    "generate": "Gerar Plano IA",
-    "generateHint": "Gera um gráfico de nós visual para sua revisão. Nenhum crédito consumido ainda.",
+    "generate": "Iniciar Processamento com IA",
+    "generateHint": "Executa imediatamente e consome 1 cota.",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -548,5 +548,46 @@
     "QUOTA_EXHAUSTED": {
       "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
     }
+  },
+  "pricing": {
+    "title": "Choose your plan",
+    "subtitle": "Compressão, conversão de formato e redimensionamento de imagens são gratuitos para sempre. Atualize para Pro para desbloquear o Assistente IA para processamento em lote automatizado.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ Free Forever",
+      "desc": "Basic image processing toolkit, completely free.",
+      "features": {
+        "compress": "Image Compression — Unlimited",
+        "convert": "Format Conversion — Unlimited",
+        "resize": "Image Resizing — Unlimited",
+        "batch": "Batch Processing — Up to 100 images",
+        "size": "Max File Size — 50MB",
+        "copilot": "Assistente IA — 3 testes"
+      },
+      "notIncluded": {
+        "support": "Priority Tech Support"
+      },
+      "cta": "Start Using"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ month",
+      "periodDesc": "(or $19/year)",
+      "desc": "Unleash AI potential to automate tedious workflows.",
+      "features": {
+        "everything": "Everything in Free",
+        "copilot": "Assistente IA — 100 / mês",
+        "nl": "Natural Language Driven AI",
+        "pipeline": "Auto-build AI pipelines",
+        "support": "Priority Email Support"
+      },
+      "cta": "Upgrade Now"
+    },
+    "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
+    "successTitle": "Bem-vindo ao Pro!",
+    "successDesc": "Sua assinatura está ativa. Aproveite seus recursos Pro!"
   }
 }

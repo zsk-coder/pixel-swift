@@ -290,7 +290,7 @@ const authCopy = computed(() => ({
 /* AI Copilot NEW 角标 — 桌面端（右上角绝对定位） */
 .copilot-new-badge {
   position: absolute;
-  top: -12px;
+  top: -13px;
   right: -15px;
   transform: translateX(calc(100% + 10px));
   padding: 1px 4px;

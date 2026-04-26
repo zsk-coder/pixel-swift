@@ -47,10 +47,17 @@ async function handleVisibilityChange(visible: boolean) {
 
   await ensureQuotaFresh(60000);
 }
+
+// 点击升级按钮时先关闭下拉菜单再跳转
+const dropdownRef = ref();
+function handleUpgradeClick() {
+  dropdownRef.value?.handleClose?.();
+}
 </script>
 
 <template>
   <ElDropdown
+    ref="dropdownRef"
     trigger="click"
     placement="bottom"
     :hide-on-click="false"
@@ -154,8 +161,9 @@ async function handleVisibilityChange(visible: boolean) {
 
           <!-- Upgrade CTA 按钮 -->
           <NuxtLink
-            :to="localePath('/contact')"
+            :to="localePath('/pricing')"
             class="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-white transition-transform hover:scale-[1.02] hover:bg-primary-dark active:scale-95"
+            @click="handleUpgradeClick"
           >
             {{ t("auth.menu.upgrade") }}
           </NuxtLink>
@@ -163,13 +171,7 @@ async function handleVisibilityChange(visible: boolean) {
 
         <!-- 底部链接区域 -->
         <div class="border-t border-slate-200/50 p-2 dark:border-slate-700/50">
-          <NuxtLink
-            :to="localePath('/contact')"
-            class="flex items-center gap-3 rounded-lg px-3 py-2 text-sm text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-white"
-          >
-            <span class="material-symbols-outlined text-lg">settings</span>
-            {{ t("auth.menu.settings") }}
-          </NuxtLink>
+
           <button
             type="button"
             class="mt-1 flex w-full items-center gap-3 rounded-lg px-3 py-2 text-sm text-red-500 transition-colors hover:bg-red-50/50 dark:text-red-400 dark:hover:bg-red-500/10"
