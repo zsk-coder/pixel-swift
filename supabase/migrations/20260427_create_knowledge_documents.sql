@@ -18,11 +18,11 @@ create table if not exists public.knowledge_documents (
   created_at  timestamptz not null default timezone('utc'::text, now())
 );
 
--- 3. 创建向量相似度索引 (余弦距离，IVFFlat)
--- lists 参数根据数据量调整：初始阶段数据少，lists=5 足够
+-- 3. 创建向量相似度索引 (余弦距离，HNSW)
+-- HNSW 优于 IVFFlat：无需在数据插入后 REINDEX，动态增删改查均可正常工作
 create index if not exists idx_knowledge_documents_embedding
   on public.knowledge_documents
-  using ivfflat (embedding vector_cosine_ops) with (lists = 5);
+  using hnsw (embedding vector_cosine_ops);
 
 -- 4. 创建 RPC 函数：供 LangChain SupabaseVectorStore 调用
 -- 按余弦相似度检索 Top-K 知识片段

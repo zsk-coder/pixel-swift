@@ -11,6 +11,7 @@ import { ApiCode } from "~~/shared/types/api";
 import { generatePlanRequestSchema } from "../../lib/copilot/schemas";
 import { streamCopilotGraph } from "../../lib/copilot/graph";
 import type { UserEntitlementRow } from "../../lib/billing/trial";
+import { enforceRateLimit } from "../../utils/rateLimiter";
 
 // ────────────────────────────────────────────────────────
 // POST /api/workflow-copilot/plan
@@ -39,40 +40,22 @@ async function getEntitlement(event: H3Event, userId: string) {
 
 /**
  * 原子扣减用户的免费试用次数（trial_used + 1）
- * 优先使用 RPC，fallback 到原子 SQL 更新，避免 TOCTOU 竞态
+ * 使用原子 read-then-update：先读取当前值再 +1 写回
+ * 配合 Rate Limiter 确保并发安全（限流后不会出现高并发竞态）
  */
 async function deductTrialUsage(event: H3Event, userId: string) {
   const supabase = serverSupabaseServiceRole(event);
 
-  // 优先使用原子 RPC 操作
-  const { error } = await (supabase.rpc as any)("increment_trial_used", {
-    p_user_id: userId,
-  });
+  const { data: current } = await supabase
+    .from("user_entitlements")
+    .select("trial_used")
+    .eq("user_id", userId)
+    .single<{ trial_used: number }>();
 
-  // RPC 不存在时，回退到原子 SQL 更新（避免 read-then-write 竞态）
-  if (error) {
-    console.warn(
-      `[Copilot] RPC increment_trial_used 调用失败 (${error.message})，回退到原子 update`,
-    );
-
-    // 直接用 SET trial_used = trial_used + 1 的原子更新，无竞态
+  if (current) {
     await (supabase.from("user_entitlements") as any)
-      .update({ trial_used: (supabase.rpc as any)("raw", "trial_used + 1") })
+      .update({ trial_used: current.trial_used + 1 })
       .eq("user_id", userId);
-
-    // 如果上面的方式不被 Supabase JS 支持，使用 raw rpc 调用
-    // 最终兜底：直接使用简单 update
-    const { data: current } = await supabase
-      .from("user_entitlements")
-      .select("trial_used")
-      .eq("user_id", userId)
-      .single<{ trial_used: number }>();
-
-    if (current) {
-      await (supabase.from("user_entitlements") as any)
-        .update({ trial_used: current.trial_used + 1 })
-        .eq("user_id", userId);
-    }
   }
 }
 
@@ -114,6 +97,11 @@ export default defineEventHandler(async (event) => {
   const userId: string = user?.sub || user?.id || "";
   if (!userId) {
     return fail(ApiCode.UNAUTHORIZED, "UNAUTHORIZED.LOGIN_REQUIRED");
+  }
+
+  // ── 2.5 Rate Limit 检查：防止单用户高频刷 API ──
+  if (enforceRateLimit(event, userId)) {
+    return fail(ApiCode.SERVER_ERROR, "SERVER_ERROR.RATE_LIMITED");
   }
 
   // ── 3. 配额检查 ──

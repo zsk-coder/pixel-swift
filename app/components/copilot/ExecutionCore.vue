@@ -111,7 +111,7 @@ const progressWidth = computed(() => `${progress.value}%`);
     <!-- 目标文本 -->
     <div class="flex justify-center mb-2 lg:mb-4">
       <p
-        class="text-text-secondary dark:text-slate-400 text-xs lg:text-sm italic border-l-2 border-surface-border dark:border-dark-border pl-3"
+        class="text-text-secondary dark:text-slate-400 text-xs lg:text-sm italic"
       >
         {{ t("copilot.execution.objectiveApplied", { intent: intentText }) }}
       </p>

@@ -35,11 +35,7 @@ Your job is to rewrite the query to better match platform-specific image process
 4. Add specific technical terms that knowledge documents likely contain
 5. Keep the rewritten query concise (1-2 sentences max)
 
-## Output Format
-{{
-  "rewrittenQuery": "the improved query text",
-  "reasoning": "why the original query needed rewriting"
-}}`,
+You must respond in json format with two fields: "rewrittenQuery" (the improved query text) and "reasoning" (why the original query needed rewriting).`,
   ],
   [
     "human",

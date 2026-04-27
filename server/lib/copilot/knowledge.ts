@@ -64,7 +64,7 @@ export async function retrieveKnowledgeByVector(
   );
 
   console.info(
-    `[Knowledge] 向量检索 Top-${maxResults}: ${resultsWithScore.map(([, s]) => s.toFixed(3)).join(", ")} → 阈值 ${scoreThreshold} 过滤后保留 ${filtered.length} 条`,
+    `[Knowledge] 查询: "${queryText}" → ${resultsWithScore.length} 条候选, 阈值 ${scoreThreshold} 保留 ${filtered.length} 条`,
   );
 
   // 映射为 RetrievedKnowledge[] 格式，保持接口兼容

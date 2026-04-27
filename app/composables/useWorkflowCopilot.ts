@@ -15,9 +15,7 @@ import type {
   GoalInput,
   ProcessPlan,
   PlanStep,
-  GeneratePlanResponse,
 } from "~~/shared/types/workflow-copilot";
-import type { ApiResponse } from "~~/shared/types/api";
 import { ApiCode } from "~~/shared/types/api";
 
 // ── 日志条目类型 ──
@@ -189,7 +187,6 @@ export function useWorkflowCopilot() {
   const resultFiles = ref<ResultFile[]>([]);
 
   // ── 定时器 ──
-  let thinkingTimer: ReturnType<typeof setInterval> | null = null;
   let progressTimer: ReturnType<typeof setInterval> | null = null;
 
   // ── 日志工具方法 ──
@@ -198,11 +195,7 @@ export function useWorkflowCopilot() {
     message: string,
     duration?: string,
   ) {
-    logs.value.push({
-      status,
-      message,
-      duration,
-    });
+    logs.value.push({ status, message, duration });
   }
 
   // 更新最后一条日志的状态
@@ -219,9 +212,60 @@ export function useWorkflowCopilot() {
     }
   }
 
+  // 完成最后一条 running 日志
+  function completeLastRunning() {
+    if (logs.value[logs.value.length - 1]?.status === "running") {
+      updateLastLog("done", "");
+    }
+  }
+
+  // planning 阶段安全网：确保始终有一条 running 日志
+  // 不新增条目，而是把最后一条 done 日志改回 running，避免产生重复条目
+  function ensureLastLogRunning() {
+    if (
+      phase.value === "planning" &&
+      logs.value.length > 0 &&
+      logs.value[logs.value.length - 1]?.status !== "running"
+    ) {
+      const last = logs.value[logs.value.length - 1]!;
+      last.status = "running";
+      last.duration = undefined;
+    }
+  }
+
+  // ── 统一的假进度条工具 ──
+  // ease-out 曲线：前快后慢，从 from% 缓慢爬到 to%
+  function startProgressTimer(from: number, to: number, durationMs: number) {
+    if (progressTimer) {
+      clearInterval(progressTimer);
+      progressTimer = null;
+    }
+    const tickInterval = 500;
+    const totalTicks = durationMs / tickInterval;
+    let tick = 0;
+    progressTimer = setInterval(() => {
+      tick++;
+      if (phase.value !== "planning" || tick >= totalTicks) {
+        if (progressTimer) {
+          clearInterval(progressTimer);
+          progressTimer = null;
+        }
+        return;
+      }
+      const ratio = 1 - Math.pow(1 - tick / totalTicks, 2);
+      progress.value = Math.round(from + (to - from) * ratio);
+    }, tickInterval);
+  }
+
+  function stopProgressTimer() {
+    if (progressTimer) {
+      clearInterval(progressTimer);
+      progressTimer = null;
+    }
+  }
+
   // ── 1. 图片特征提取（并行化） ──
   async function extractBatch(files: File[]): Promise<BatchSummary> {
-    // 并行提取所有图片特征，显著提升大批量图片的处理速度
     const descriptors = await Promise.all(
       files.map((file, i) => extractDescriptor(file, i)),
     );
@@ -237,7 +281,7 @@ export function useWorkflowCopilot() {
     };
   }
 
-  // ── SSE 事件解析工具函数 ──
+  // ── SSE 事件解析 ──
   function parseSSEPart(part: string) {
     if (!part.trim()) return;
     const lines = part.split("\n");
@@ -252,6 +296,81 @@ export function useWorkflowCopilot() {
     return { eventType, dataStr };
   }
 
+  // ── SSE 节点处理器（从 handleSSEEvent 拆分出来，提升可读性） ──
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function onRetrieve(data: any) {
+    const meta = data.lastNodeMeta;
+    if (meta?.knowledgeCount > 0) {
+      completeLastRunning();
+      addLog(
+        "done",
+        t("copilot.execution.logs.knowledgeMatched", {
+          count: meta.knowledgeCount,
+          titles: (meta.knowledgeTitles as string[]).join(", "),
+        }),
+      );
+      // 填补 gradeKnowledge LLM 评估的空白期
+      addLog("running", t("copilot.execution.logs.knowledgeRelevant"));
+    }
+    progress.value = Math.min(12, progress.value + 4);
+
+    // 启动假进度条：从当前值缓慢爬到 ~35%，覆盖 retrieve → planner 整段空白
+    if (!progressTimer) {
+      startProgressTimer(progress.value, 35, 12000);
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function onGradeKnowledge(data: any) {
+    const meta = data.lastNodeMeta;
+    completeLastRunning();
+
+    if (meta?.relevant) {
+      progress.value = Math.min(progress.value + 3, 35);
+    }
+
+    // 追加固定的 "AI 规划中..." 日志，填补后续 planner LLM 调用的空白期（去重）
+    const aiPlanningMsg = t("copilot.execution.logs.aiPlanning");
+    const lastLog = logs.value[logs.value.length - 1];
+    if (!lastLog || lastLog.message !== aiPlanningMsg) {
+      addLog("running", aiPlanningMsg);
+    } else if (lastLog.status !== "running") {
+      lastLog.status = "running";
+    }
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function onPlanner(data: any) {
+    stopProgressTimer();
+
+    const attemptsStr =
+      data.attempts > 1
+        ? ` (${t("copilot.execution.logs.attempt", { n: data.attempts })})`
+        : "";
+    // 将 aiPlanning 的 running 日志直接更新为完成态（复用同一条，避免蹦出新条目）
+    updateLastLog(
+      "done",
+      "",
+      `${t("copilot.execution.logs.aiGenerating")}${attemptsStr}`,
+    );
+    progress.value = Math.min(35, progress.value + 8);
+    // 填补 reviewer LLM 调用的空白期
+    addLog("running", t("copilot.execution.logs.aiReviewing"));
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function onReviewer(data: any) {
+    completeLastRunning();
+
+    // 如果审核未通过，插入打回日志
+    if (data.review?.approved === false) {
+      addLog("done", t("copilot.execution.logs.reviewFailed"));
+      addLog("running", t("copilot.execution.logs.aiPlanningRetry"));
+    }
+    progress.value = Math.min(38, progress.value + 4);
+  }
+
   // ── 2. 调用 Plan API ──
   async function fetchPlan(
     goalInput: GoalInput,
@@ -259,9 +378,7 @@ export function useWorkflowCopilot() {
   ): Promise<ProcessPlan> {
     const response = await fetch("/api/workflow-copilot/plan", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ goal: goalInput, batch }),
     });
 
@@ -286,7 +403,7 @@ export function useWorkflowCopilot() {
     let buffer = "";
     let finalPlan: ProcessPlan | null = null;
 
-    // 处理单个 SSE 事件的回调
+    // 处理单个 SSE 事件
     function handleSSEEvent(eventType: string, dataStr: string) {
       if (eventType === "error") {
         let msg = "SERVER_ERROR.AI_UNAVAILABLE";
@@ -303,186 +420,16 @@ export function useWorkflowCopilot() {
           if (payload.type === "progress") {
             const chunk = payload.chunk;
 
-            // ── CRAG 检索阶段：retrieve 节点 ──
-            if (chunk.retrieve) {
-              const meta = chunk.retrieve.lastNodeMeta;
-              if (meta?.knowledgeCount > 0) {
-                // 更新 "正在检索..." 为完成状态
-                if (logs.value[logs.value.length - 1]?.status === "running") {
-                  updateLastLog("done", "");
-                }
-                addLog(
-                  "done",
-                  t("copilot.execution.logs.knowledgeMatched", {
-                    count: meta.knowledgeCount,
-                    titles: (meta.knowledgeTitles as string[]).join(", "),
-                  }),
-                );
-                // 立即追加 running 日志，填补 gradeKnowledge LLM 评估的空白期
-                addLog(
-                  "running",
-                  t("copilot.execution.logs.knowledgeRelevant"),
-                );
-              } else {
-                // 知识库未命中时，也立即启动等待动画，避免停在 retrieving 日志上
-                // 不做任何日志更新，直接进入下方的 thinkingTimer 启动逻辑
-              }
-              progress.value = Math.min(12, progress.value + 4);
-
-              // 立即启动思考文案轮播 + 假进度推进，填补 retrieve → gradeKnowledge 的空白期
-              if (!thinkingTimer) {
-                let stepIdx = 0;
-                const rotateText = () => {
-                  if (
-                    phase.value !== "planning" ||
-                    logs.value[logs.value.length - 1]?.status !== "running"
-                  ) {
-                    if (thinkingTimer) {
-                      clearInterval(thinkingTimer);
-                      thinkingTimer = null;
-                    }
-                    return;
-                  }
-                  const text = t(
-                    `copilot.execution.logs.thinkingSteps.${stepIdx % 3}`,
-                  );
-                  updateLastLog("running", undefined, text);
-                  stepIdx++;
-                };
-                // 2 秒后开始第一次文案轮换（给 knowledgeRelevant 留一点展示时间）
-                // 之后每 1.5 秒更新一次
-                thinkingTimer = setTimeout(() => {
-                  rotateText();
-                  thinkingTimer = setInterval(rotateText, 1500);
-                }, 2000) as unknown as ReturnType<typeof setInterval>;
-              }
-
-              // 启动假进度条平滑推进：从当前值缓慢爬到 ~35%，让用户感知到持续活动
-              if (!progressTimer) {
-                const startProgress = progress.value;
-                const targetProgress = 35;
-                const totalDuration = 12000; // 12 秒覆盖 retrieve → planner 整段空白
-                const tickInterval = 500;
-                const totalTicks = totalDuration / tickInterval;
-                let tick = 0;
-                progressTimer = setInterval(() => {
-                  tick++;
-                  if (phase.value !== "planning" || tick >= totalTicks) {
-                    if (progressTimer) {
-                      clearInterval(progressTimer);
-                      progressTimer = null;
-                    }
-                    return;
-                  }
-                  // ease-out 曲线：前快后慢
-                  const ratio = 1 - Math.pow(1 - tick / totalTicks, 2);
-                  progress.value = Math.round(
-                    startProgress + (targetProgress - startProgress) * ratio,
-                  );
-                }, tickInterval);
-              }
-            }
-
-            // ── CRAG 评估阶段：gradeKnowledge 节点 ──
-            if (chunk.gradeKnowledge) {
-              const meta = chunk.gradeKnowledge.lastNodeMeta;
-
-              // 无论结果如何，完成上一环节的日志（可能是 knowledgeRelevant, 也可能是 0 匹配时的 retrieving）
-              if (logs.value[logs.value.length - 1]?.status === "running") {
-                updateLastLog("done", "");
-              }
-
-              if (meta?.relevant) {
-                progress.value = Math.min(progress.value + 3, 35);
-              }
-
-              // 统一追加 "AI 规划中..." 日志，填补后续 planner 或 rewriteQuery LLM 调用的空白期
-              const aiPlanningMsg = t("copilot.execution.logs.aiPlanning");
-              if (
-                logs.value[logs.value.length - 1]?.message !== aiPlanningMsg
-              ) {
-                addLog("running", aiPlanningMsg);
-              }
-
-              // 当 gradeKnowledge 瞬间返回（0 知识无 LLM 调用）时，
-              // retrieve 阶段启动的 thinkingTimer 已经被上面的 updateLastLog("done") 杀死了。
-              // 必须在新的 running 日志上重新启动文案轮播
-              if (!thinkingTimer) {
-                let stepIdx = 0;
-                const rotateText = () => {
-                  if (
-                    phase.value !== "planning" ||
-                    logs.value[logs.value.length - 1]?.status !== "running"
-                  ) {
-                    if (thinkingTimer) {
-                      clearInterval(thinkingTimer);
-                      thinkingTimer = null;
-                    }
-                    return;
-                  }
-                  const text = t(
-                    `copilot.execution.logs.thinkingSteps.${stepIdx % 3}`,
-                  );
-                  updateLastLog("running", undefined, text);
-                  stepIdx++;
-                };
-                // 2 秒后开始轮播（给 aiPlanning 文案留展示时间）
-                thinkingTimer = setTimeout(() => {
-                  rotateText();
-                  thinkingTimer = setInterval(rotateText, 1500);
-                }, 2000) as unknown as ReturnType<typeof setInterval>;
-              }
-            }
-
-            // ── 规划阶段：planner 节点 ──
-            // chunk.planner 到达时，planner 节点已执行完毕
-            if (chunk.planner) {
-              if (thinkingTimer) {
-                clearInterval(thinkingTimer);
-                thinkingTimer = null;
-              }
-              if (progressTimer) {
-                clearInterval(progressTimer);
-                progressTimer = null;
-              }
-              // 先把上一条 running 日志标记为完成
-              if (logs.value[logs.value.length - 1]?.status === "running") {
-                updateLastLog("done", "");
-              }
-              // planner 已完成 → 展示方案摘要（done 状态）
-              const attemptsStr =
-                chunk.planner.attempts > 1
-                  ? ` (${t("copilot.execution.logs.attempt", { n: chunk.planner.attempts })})`
-                  : "";
-              addLog(
-                "done",
-                `${t("copilot.execution.logs.aiGenerating")}${attemptsStr}`,
-              );
-              progress.value = Math.min(30, progress.value + 5);
-              // 立即追加 running 的审核日志，填补 reviewer LLM 调用的空白期
-              addLog("running", t("copilot.execution.logs.aiReviewing"));
-              progress.value = Math.min(35, progress.value + 3);
-            } else if (chunk.reviewer) {
-              // reviewer 已完成 → 把当前 running 的审核日志标记为 done
-              if (logs.value[logs.value.length - 1]?.status === "running") {
-                updateLastLog("done", "");
-              }
-
-              // 【新增逻辑】如果审核未通过，在此处插入打回日志
-              if (
-                chunk.reviewer.review &&
-                chunk.reviewer.review.approved === false
-              ) {
-                addLog("done", t("copilot.execution.logs.reviewFailed"));
-                addLog("running", t("copilot.execution.logs.aiPlanningRetry"));
-              }
-
-              progress.value = Math.min(38, progress.value + 4);
-            } else if (chunk.output && "finalPlan" in chunk.output) {
+            // 按节点类型分发到独立处理器
+            if (chunk.retrieve) onRetrieve(chunk.retrieve);
+            if (chunk.gradeKnowledge) onGradeKnowledge(chunk.gradeKnowledge);
+            if (chunk.planner) onPlanner(chunk.planner);
+            else if (chunk.reviewer) onReviewer(chunk.reviewer);
+            else if (chunk.output && "finalPlan" in chunk.output)
               finalPlan = chunk.output.finalPlan;
-            }
-          } else if (payload.type === "complete") {
-            // stream complete signals quota deductions etc
+
+            // 安全网：planning 阶段每个事件处理后，确保始终有一条 running 日志
+            ensureLastLogRunning();
           }
         } catch (e) {
           console.error("[Copilot SSE] Parse error:", e);
@@ -490,10 +437,10 @@ export function useWorkflowCopilot() {
       }
     }
 
+    // 读取 SSE 流
     while (true) {
       const { value, done } = await reader.read();
       if (done) {
-        // 处理 buffer 中剩余的最后一个事件，避免尾部数据丢失
         if (buffer.trim()) {
           const parsed = parseSSEPart(buffer);
           if (parsed) handleSSEEvent(parsed.eventType, parsed.dataStr);
@@ -519,12 +466,9 @@ export function useWorkflowCopilot() {
 
   // ── 3. 浏览器端执行计划（并行处理，并发上限 4） ──
   async function executePlan(files: File[], processPlan: ProcessPlan) {
-    // 收集需要在浏览器端处理图像的步骤
     const imageSteps = processPlan.steps.filter(
       (s) => s.enabled && mapStepToProcessOptions(s) !== null,
     );
-
-    // 收集非图像处理步骤（rename 等）
     const metaSteps = processPlan.steps.filter(
       (s) => s.enabled && mapStepToProcessOptions(s) === null,
     );
@@ -532,14 +476,13 @@ export function useWorkflowCopilot() {
     const totalWork = imageSteps.length * files.length + metaSteps.length;
     let completed = 0;
 
-    // 当前的文件数据：初始为用户上传的原始文件
-    // 每个步骤可能产生新的 Blob，链式传递给下一个步骤
+    // 当前的文件数据：每个步骤产生新的 Blob，链式传递给下一个步骤
     let currentBlobs: { blob: Blob; name: string }[] = files.map((f) => ({
       blob: f,
       name: f.name,
     }));
 
-    // 并发控制工具：限制同时处理数量避免内存尖峰
+    // 并发控制：限制同时处理数量避免内存尖峰
     const CONCURRENCY = 4;
     async function processWithConcurrency<T>(
       items: T[],
@@ -589,7 +532,7 @@ export function useWorkflowCopilot() {
         } catch (err) {
           // 单张失败不阻断整批
           console.warn(`[Copilot] 处理失败: ${name}`, err);
-          nextBlobs[i] = { blob, name }; // 保留原始版本
+          nextBlobs[i] = { blob, name };
         }
 
         completed++;
@@ -602,16 +545,11 @@ export function useWorkflowCopilot() {
       currentBlobs = nextBlobs;
     }
 
-    // 处理元数据步骤（rename_files 等）
+    // 元数据步骤（rename_files 等）：无实际图像处理，直接标记完成
     for (const step of metaSteps) {
-      const stepStart = performance.now();
-      addLog("running", `${step.reason}...`);
-
+      addLog("done", `${step.reason}`);
       completed++;
       progress.value = 40 + Math.round((completed / totalWork) * 60);
-
-      const stepDuration = ((performance.now() - stepStart) / 1000).toFixed(1);
-      updateLastLog("done", `(${stepDuration}s)`);
     }
 
     return currentBlobs;
@@ -620,14 +558,7 @@ export function useWorkflowCopilot() {
   // ── 主入口：运行完整流程 ──
   async function run(files: File[], goalText: string, locale: string) {
     // 重置状态
-    if (thinkingTimer) {
-      clearInterval(thinkingTimer);
-      thinkingTimer = null;
-    }
-    if (progressTimer) {
-      clearInterval(progressTimer);
-      progressTimer = null;
-    }
+    stopProgressTimer();
     phase.value = "extracting";
     plan.value = null;
     logs.value = [];
@@ -637,28 +568,22 @@ export function useWorkflowCopilot() {
 
     try {
       // ── 阶段 1: 特征提取 ──
-      progress.value = 5; // 提取开始，先给 5%
+      progress.value = 5;
       addLog(
         "running",
         t("copilot.execution.logs.analyzing", { count: files.length }),
       );
-      const extractStart = performance.now();
       const batch = await extractBatch(files);
-      const extractDuration = (
-        (performance.now() - extractStart) /
-        1000
-      ).toFixed(1);
-      updateLastLog("done", `(${extractDuration}s)`);
-      progress.value = 5; // 提取完成
+      updateLastLog("done");
 
       // ── 阶段 2: AI 规划 ──
       phase.value = "planning";
-      // 先推送一条检索日志，比 aiPlanning 的泛化描述更具体
       addLog(
         "running",
         t("copilot.execution.logs.retrieving", { query: goalText }),
       );
-      const planStart = performance.now();
+      // 假进度条：从 5% 缓慢爬到 ~15%，填补 HTTP → 首个 SSE 到达之间的空白
+      startProgressTimer(5, 15, 8000);
 
       const goalInput: GoalInput = {
         text: goalText,
@@ -669,20 +594,15 @@ export function useWorkflowCopilot() {
       const aiPlan = await fetchPlan(goalInput, batch);
       plan.value = aiPlan;
 
-      const planDuration = ((performance.now() - planStart) / 1000).toFixed(1);
-      // 完成最后一条 running 日志
-      if (logs.value[logs.value.length - 1]?.status === "running") {
-        updateLastLog("done", "");
-      }
+      completeLastRunning();
 
-      // 记录计划摘要（国际化，不再硬编码英文）
+      // 记录计划摘要
       addLog(
         "done",
         t("copilot.execution.logs.planSummary", {
           summary: aiPlan.taskSummary,
           steps: aiPlan.steps.length,
         }),
-        `(${planDuration}s)`,
       );
 
       // ── 空步骤防护：AI 返回 steps=[] 说明全部操作不支持 ──
@@ -693,7 +613,6 @@ export function useWorkflowCopilot() {
           : "Unsupported operation";
         errorMessage.value = riskMsg || fallbackMsg;
 
-        // 优雅退出，进入 warning/unsupported 阶段而不是抛出红屏错误
         addLog("warning", errorMessage.value);
         phase.value = "unsupported";
         progress.value = 100;
@@ -708,7 +627,6 @@ export function useWorkflowCopilot() {
       resultFiles.value = results;
       progress.value = 100;
       phase.value = "done";
-      // 强制刷新本地配额缓存，让头像菜单立刻显示最新的剩余次数
       refreshQuota();
       addLog(
         "done",
@@ -744,14 +662,7 @@ export function useWorkflowCopilot() {
 
   // ── 重置 ──
   function reset() {
-    if (thinkingTimer) {
-      clearInterval(thinkingTimer);
-      thinkingTimer = null;
-    }
-    if (progressTimer) {
-      clearInterval(progressTimer);
-      progressTimer = null;
-    }
+    stopProgressTimer();
     phase.value = "idle";
     plan.value = null;
     logs.value = [];
