@@ -45,6 +45,13 @@ export default defineNuxtConfig({
       baseUrl: process.env.NUXT_DEEPSEEK_BASE_URL || "https://api.deepseek.com",
       model: process.env.NUXT_DEEPSEEK_MODEL || "deepseek-v4-flash",
     },
+    // OpenAI Embedding 配置（Corrective RAG 向量检索用，仅服务端可见）
+    openai: {
+      apiKey: process.env.NUXT_OPENAI_API_KEY || "",
+      baseUrl: process.env.NUXT_OPENAI_BASE_URL || "https://api.openai.com/v1",
+      embeddingModel:
+        process.env.NUXT_OPENAI_EMBEDDING_MODEL || "text-embedding-3-small",
+    },
     // LemonSqueezy 支付（仅服务端可见）
     lemonSqueezy: {
       apiKey: process.env.LEMONSQUEEZY_API_KEY || "",

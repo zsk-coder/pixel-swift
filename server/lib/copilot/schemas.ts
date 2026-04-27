@@ -79,16 +79,19 @@ export const generatePlanRequestSchema = z.object({
 // 确保各 action 的 params 在合理范围内
 
 // resize 参数约束
-const resizeParamsSchema = z.object({
-  width: z.number().int().min(1).max(10000),
-  height: z.number().int().min(1).max(10000),
-  mode: z.enum(["fit", "fill", "exact"]).optional(),
-});
+const resizeParamsSchema = z
+  .object({
+    width: z.number().int().min(1).max(10000).optional(),
+    height: z.number().int().min(1).max(10000).optional(),
+    mode: z.enum(["fit", "fill", "exact"]).optional(),
+  })
+  .refine((data) => data.width || data.height, {
+    message: "Resize action requires at least width or height",
+  });
 
 // compress 参数约束
 const compressParamsSchema = z.object({
   quality: z.number().min(1).max(100),
-  targetMaxKB: z.number().min(10).optional(),
 });
 
 // convert_format 参数约束

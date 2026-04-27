@@ -100,9 +100,6 @@ function getLogIconClass(status: LogEntry["status"]) {
   }
 }
 
-
-
-
 // ── 进度条控制 ──
 const progressWidth = computed(() => `${progress.value}%`);
 </script>
@@ -262,7 +259,9 @@ const progressWidth = computed(() => `${progress.value}%`);
               style="font-variation-settings: &quot;FILL&quot; 1"
               >checklist</span
             >
-            <span class="font-semibold text-sm text-text-primary dark:text-white">
+            <span
+              class="font-semibold text-sm text-text-primary dark:text-white"
+            >
               {{ t("copilot.execution.executionCore") }}
             </span>
           </div>
@@ -271,15 +270,14 @@ const progressWidth = computed(() => `${progress.value}%`);
             v-if="logs.length > 0"
             class="text-xs font-medium text-text-secondary dark:text-slate-400 tabular-nums"
           >
-            {{ logs.filter((l) => l.status === 'done').length }}/{{ logs.length }}
+            {{ logs.filter((l) => l.status === "done").length }}/{{
+              logs.length
+            }}
           </span>
         </div>
 
         <!-- 步骤内容 -->
-        <div
-          ref="logContainer"
-          class="px-6 py-4 flex-1 overflow-y-auto"
-        >
+        <div ref="logContainer" class="px-6 py-4 flex-1 overflow-y-auto">
           <!-- 空状态 -->
           <div
             v-if="logs.length === 0"
@@ -290,7 +288,9 @@ const progressWidth = computed(() => `${progress.value}%`);
               style="font-variation-settings: &quot;FILL&quot; 1"
               >hourglass_empty</span
             >
-            <span class="text-sm text-text-secondary dark:text-slate-400">{{ t("copilot.execution.waiting") }}</span>
+            <span class="text-sm text-text-secondary dark:text-slate-400">{{
+              t("copilot.execution.waiting")
+            }}</span>
           </div>
 
           <!-- 步骤列表 -->
@@ -306,7 +306,11 @@ const progressWidth = computed(() => `${progress.value}%`);
               <span
                 class="material-symbols-outlined text-[18px] shrink-0"
                 :class="getLogIconClass(log.status)"
-                :style="log.status === 'done' ? 'font-variation-settings: \'FILL\' 1' : ''"
+                :style="
+                  log.status === 'done'
+                    ? 'font-variation-settings: \'FILL\' 1'
+                    : ''
+                "
                 >{{ getLogIcon(log.status) }}</span
               >
               <!-- 消息文本 -->
@@ -340,12 +344,15 @@ const progressWidth = computed(() => `${progress.value}%`);
       <div class="flex flex-col sm:flex-row justify-end gap-3 pt-4">
         <!-- 配合配额耗尽显示升级按钮 -->
         <NuxtLink
-          v-if="phase === 'error' && errorMessage === t('apiEvents.QUOTA_EXHAUSTED.UPGRADE_REQUIRED')"
+          v-if="
+            phase === 'error' &&
+            errorMessage === t('apiEvents.QUOTA_EXHAUSTED.UPGRADE_REQUIRED')
+          "
           :to="localePath('/pricing')"
           class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white transition-transform hover:scale-[1.02] hover:bg-primary-dark active:scale-95"
         >
           <span class="material-symbols-outlined text-[18px]">verified</span>
-          {{ t('pricing.pro.cta') }}
+          {{ t("pricing.pro.cta") }}
         </NuxtLink>
 
         <!-- 错误/不支持 重试 -->

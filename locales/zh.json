@@ -512,12 +512,23 @@
       "unsupportedNotice": "提示",
       "logs": {
         "analyzing": "正在分析 {count} 张图片...",
+        "retrieving": "正在分析「{query}」相关的处理规范...",
+        "knowledgeMatched": "已匹配 {count} 条知识: {titles}",
+        "knowledgeRelevant": "知识库已命中 — 正在结合上下文生成方案",
         "aiPlanning": "AI 正在生成最优处理方案...",
         "aiGenerating": "AI 正在生成最优工作流",
         "attempt": "第 {n} 次尝试",
+        "reviewFailed": "AI 质量审核未通过",
+        "aiPlanningRetry": "AI 正在重新修编方案...",
         "aiReviewing": "AI 质量审核: 正在检查生成方案的合规性...",
+        "planSummary": "方案: {summary} ({steps} 个步骤)",
         "allDone": "全部完成！{count} 个文件已就绪，可下载。",
-        "errorPrefix": "错误: {message}"
+        "errorPrefix": "错误: {message}",
+        "thinkingSteps": [
+          "正在解析转换参数约束...",
+          "正在推演核心工作流...",
+          "正在装配引擎节点..."
+        ]
       }
     }
   },

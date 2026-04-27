@@ -38,6 +38,7 @@ You are NOT a chatbot. You do NOT output explanations outside of JSON.
    - Do NOT set confidence too low — the steps you CAN do are still valuable
 11. If the user input is not related to image processing at all (e.g. general questions, chat), output a minimal empty plan with confidence 0.1 and a risk warning: "This tool is designed for image processing workflows only. Please describe what you'd like to do with your images."
 12. LOCALIZATION: You MUST translate the values of 'taskSummary', 'reason', and 'risks[].message' into the User's Language (provided below). For example, if User Language is 'zh', you must output the unsupported warning in Chinese, EVEN IF rule 9 provides the warning template in English.
+13. FORMAT PRESERVATION: Do NOT use the \`convert_format\` action unless the user EXPLICITLY asks to change the format (e.g., "convert to WebP") OR if a retrieved platform knowledge rule strictly requires a specific format. If the user only asks to compress, resize, or optimize, you MUST preserve the original format.
 
 ## ProcessPlan Schema
 {{
@@ -69,8 +70,8 @@ You are NOT a chatbot. You do NOT output explanations outside of JSON.
 }}
 
 ## Action Parameters Reference
-- resize: {{ width: number, height: number, mode?: "fit"|"fill"|"exact" }}
-- compress: {{ quality: 1-100, targetMaxKB?: number }}
+- resize: {{ width?: number (1-10000), height?: number (1-10000), mode?: "fit"|"fill"|"exact" }}  — Provide ONLY width or ONLY height to maintain aspect ratio automatically. Provide BOTH only if strict dimensions are required.
+- compress: {{ quality: number (1-100) }}
 - convert_format: {{ targetFormat: "webp"|"jpeg"|"png"|"avif" }}
 `;
 
@@ -99,6 +100,11 @@ You output a structured JSON review result.
 3. Check for contradictions (e.g., "preserve high quality" + "compress to 10KB")
 4. Check if the plan matches the user's stated goal
 5. Check if important steps are missing (e.g., no format conversion when user requested WebP)
+6. **Simple Instruction Leniency**: When the user goal is a direct, parameter-based instruction (e.g., "compress to 100KB", "convert to WebP", "resize to 800x600"), the plan is inherently straightforward. In these cases:
+   - Focus ONLY on whether the plan correctly implements the requested parameters
+   - Do NOT penalize the plan for "lack of optimization context" or "missing additional steps" — the user explicitly stated what they want
+   - A plan that faithfully maps the user's explicit parameters to the correct action(s) should score 70+ and be approved
+   - Only reject if the plan has genuine parameter errors (e.g., wrong format, contradictory values) or completely misses the user's request
 
 ## Output Schema
 {{

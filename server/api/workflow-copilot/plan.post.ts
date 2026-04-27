@@ -159,13 +159,37 @@ export default defineEventHandler(async (event) => {
   // 无论 free 还是 pro 都有有限配额，都需要扣减
   await deductTrialUsage(event, userId);
 
-  // ── 7. 运行 LangGraph Copilot 流程 (SSE 模式) ──
+  // ── 7. 构建 Corrective RAG 所需的 Embedding 配置 ──
+  const openaiConfig = (runtimeConfig as any).openai;
+  const embeddingConfig = openaiConfig?.apiKey
+    ? {
+        apiKey: openaiConfig.apiKey,
+        baseUrl: openaiConfig.baseUrl || undefined,
+        model: openaiConfig.embeddingModel || undefined,
+      }
+    : null;
+
+  // 获取 Supabase service client（用于向量检索，绕过 RLS）
+  let supabaseClient = null;
+  try {
+    supabaseClient = serverSupabaseServiceRole(event);
+  } catch {
+    // Supabase 不可用时 embeddingConfig 为 null，retrieve 节点会自动 fallback 到关键词匹配
+  }
+
+  // ── 8. 运行 LangGraph Copilot 流程 (SSE 模式) ──
   const eventStream = createEventStream(event);
 
   // Background execution for streaming
   (async () => {
     try {
-      const stream = streamCopilotGraph(goal, batch, deepseekConfig);
+      const stream = streamCopilotGraph(
+        goal,
+        batch,
+        deepseekConfig,
+        embeddingConfig,
+        supabaseClient,
+      );
 
       for await (const chunk of stream) {
         eventStream.push({

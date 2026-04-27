@@ -524,12 +524,21 @@
       "unsupportedNotice": "通知",
       "logs": {
         "analyzing": "{count}枚の画像を分析中...",
+        "retrieving": "「{query}」に関する処理仕様を分析中...",
+        "knowledgeMatched": "{count}件のナレッジが一致: {titles}",
+        "knowledgeRelevant": "ナレッジベースが一致 — コンテキストを活用してプランを生成中",
         "aiPlanning": "AIが最適な処理パイプラインを生成中...",
         "aiGenerating": "AIが最適なワークフローを生成中",
         "attempt": "{n}回目の試行",
         "aiReviewing": "AI品質保証: 生成されたプランのコンプライアンスを確認中...",
+        "planSummary": "パイプライン: {summary} ({steps}ステップ)",
         "allDone": "完了！{count}個のファイルがダウンロード可能です。",
-        "errorPrefix": "エラー: {message}"
+        "errorPrefix": "エラー: {message}",
+        "thinkingSteps": [
+          "変換制約を解析中...",
+          "コアワークフローを推論中...",
+          "エンジンノードを組み立て中..."
+        ]
       }
     }
   },

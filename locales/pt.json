@@ -524,12 +524,21 @@
       "unsupportedNotice": "Aviso",
       "logs": {
         "analyzing": "Analisando {count} imagens...",
+        "retrieving": "Analisando normas de processamento para \"{query}\"...",
+        "knowledgeMatched": "{count} conhecimentos correspondentes: {titles}",
+        "knowledgeRelevant": "Base de conhecimento correspondente — gerando plano com contexto",
         "aiPlanning": "IA gerando o pipeline de processamento ideal...",
         "aiGenerating": "IA gerando o fluxo de trabalho ideal",
         "attempt": "Tentativa {n}",
         "aiReviewing": "Garantia de qualidade IA: revisando a conformidade do plano gerado...",
+        "planSummary": "Pipeline: {summary} ({steps} passos)",
         "allDone": "Concluído! {count} arquivos prontos para download.",
-        "errorPrefix": "Erro: {message}"
+        "errorPrefix": "Erro: {message}",
+        "thinkingSteps": [
+          "Analisando restrições de conversão...",
+          "Deduzindo fluxo de trabalho...",
+          "Montando os nós do motor..."
+        ]
       }
     }
   },

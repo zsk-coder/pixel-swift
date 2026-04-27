@@ -3,7 +3,7 @@ import {
   buildUserMessage,
   buildReviewMessage,
 } from "../server/lib/copilot/prompts";
-import { retrieveKnowledge } from "../server/lib/copilot/knowledge";
+import { retrieveKnowledgeByKeyword } from "../server/lib/copilot/knowledge";
 import { PLAN_ACTIONS } from "../shared/types/workflow-copilot";
 import type { GoalInput, BatchSummary } from "../shared/types/workflow-copilot";
 
@@ -83,36 +83,41 @@ describe("buildReviewMessage", () => {
   });
 });
 
-// ── 知识检索测试 ──
+// ── 知识检索测试（关键词 Fallback） ──
 
-describe("retrieveKnowledge", () => {
+describe("retrieveKnowledgeByKeyword", () => {
   it("retrieves shopify knowledge for shopify-related goals", () => {
-    const results = retrieveKnowledge("prepare images for shopify store");
+    const results = retrieveKnowledgeByKeyword(
+      "prepare images for shopify store",
+    );
     expect(results.some((r) => r.scene === "shopify")).toBe(true);
   });
 
   it("retrieves amazon knowledge for amazon-related goals", () => {
-    const results = retrieveKnowledge("prepare amazon listing images");
+    const results = retrieveKnowledgeByKeyword("prepare amazon listing images");
     expect(results.some((r) => r.scene === "amazon")).toBe(true);
   });
 
   it("retrieves blog knowledge for blog-related goals", () => {
-    const results = retrieveKnowledge("compress blog post images");
+    const results = retrieveKnowledgeByKeyword("compress blog post images");
     expect(results.some((r) => r.scene === "blog")).toBe(true);
   });
 
   it("retrieves general knowledge when no specific scene matches", () => {
-    const results = retrieveKnowledge("make these look nice");
+    const results = retrieveKnowledgeByKeyword("make these look nice");
     expect(results.some((r) => r.scene === "general")).toBe(true);
   });
 
   it("retrieves chinese keyword matches", () => {
-    const results = retrieveKnowledge("优化博客配图");
+    const results = retrieveKnowledgeByKeyword("优化博客配图");
     expect(results.some((r) => r.scene === "blog")).toBe(true);
   });
 
   it("respects maxResults limit", () => {
-    const results = retrieveKnowledge("shopify amazon blog seo optimize", 2);
+    const results = retrieveKnowledgeByKeyword(
+      "shopify amazon blog seo optimize",
+      2,
+    );
     expect(results.length).toBeLessThanOrEqual(2);
   });
 });
@@ -149,5 +154,37 @@ describe("LangChain prompt templates", () => {
     expect(messages.length).toBe(2);
     expect(messages[0].content).toContain("plan quality auditor");
     expect(messages[1].content).toContain("review this plan");
+  });
+});
+
+// ── CRAG 节点测试（Schema 验证） ──
+
+describe("CRAG schemas", () => {
+  it("gradeResultSchema validates correct input", async () => {
+    const { gradeResultSchema } =
+      await import("../server/lib/copilot/retrieval-grader");
+    const valid = {
+      relevant: true,
+      confidence: 0.85,
+      reason: "Knowledge matches the user goal",
+    };
+    expect(gradeResultSchema.safeParse(valid).success).toBe(true);
+  });
+
+  it("gradeResultSchema rejects invalid confidence", async () => {
+    const { gradeResultSchema } =
+      await import("../server/lib/copilot/retrieval-grader");
+    const invalid = { relevant: true, confidence: 1.5, reason: "test" };
+    expect(gradeResultSchema.safeParse(invalid).success).toBe(false);
+  });
+
+  it("rewriteResultSchema validates correct input", async () => {
+    const { rewriteResultSchema } =
+      await import("../server/lib/copilot/query-rewriter");
+    const valid = {
+      rewrittenQuery: "optimize product images for Shopify",
+      reasoning: "Translated Chinese terms to English",
+    };
+    expect(rewriteResultSchema.safeParse(valid).success).toBe(true);
   });
 });

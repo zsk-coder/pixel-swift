@@ -6,7 +6,7 @@ import type {
 } from "~~/shared/types/workflow-copilot";
 import { processPlanSchema, validateStepParams } from "./schemas";
 import { plannerPrompt, buildUserMessage } from "./prompts";
-import { retrieveKnowledge } from "./knowledge";
+import type { RetrievedKnowledge } from "./knowledge";
 
 // ────────────────────────────────────────────────────────
 // LangChain Chain 驱动的核心规划器
@@ -80,29 +80,30 @@ export function createReviewerModel(config: DeepSeekConfig): ChatDeepSeek {
  * 调用 LangChain Chain 生成图片处理计划
  *
  * 完整流程：
- * 1. 检索相关场景知识（本地关键词匹配）
+ * 1. 接收预检索的场景知识（由 LangGraph retrieve 节点提供）
  * 2. 通过 ChatPromptTemplate 构建提示词
  * 3. ChatDeepSeek.withStructuredOutput(zodSchema) 生成结构化输出
  * 4. Action 级二次参数校验
- * 5. 校验失败时最多重试 1 次
+ *
+ * 注意：知识检索已由 LangGraph 状态图中的 retrieve + gradeKnowledge 节点完成，
+ * Planner 只负责「拿到知识 → 生成计划」，不再自己检索。
  *
  * @param goal 用户的自然语言目标
  * @param batch 图片批次摘要
  * @param config DeepSeek API 配置
+ * @param knowledge 预检索的场景知识片段（来自 CRAG 检索管道）
  * @returns 校验通过的 ProcessPlan
  */
 export async function generateProcessPlan(
   goal: GoalInput,
   batch: BatchSummary,
   config: DeepSeekConfig,
+  knowledge: RetrievedKnowledge[] = [],
 ): Promise<ProcessPlan> {
-  // 1. 检索相关场景知识
-  const knowledge = retrieveKnowledge(goal.text);
-
-  // 2. 构建 User Message
+  // 1. 构建 User Message（知识已由 retrieve 节点准备好）
   const userMessage = buildUserMessage(goal, batch, knowledge);
 
-  // 3. 创建 LangChain Chain：Prompt → ChatModel → 结构化输出
+  // 2. 创建 LangChain Chain：Prompt → ChatModel → 结构化输出
   const chatModel = createChatModel(config);
 
   // 使用 withStructuredOutput 将 Zod Schema 绑定到模型输出
@@ -121,7 +122,7 @@ export async function generateProcessPlan(
     userMessage,
   });
 
-  // 4. Action 级二次参数校验（LangChain 的 withStructuredOutput 不包含这层业务校验）
+  // 3. Action 级二次参数校验（LangChain 的 withStructuredOutput 不包含这层业务校验）
   const paramErrors = validateStepParams(plan);
   if (paramErrors.length > 0) {
     const details = paramErrors

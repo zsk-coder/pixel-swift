@@ -524,12 +524,21 @@
       "unsupportedNotice": "Hinweis",
       "logs": {
         "analyzing": "{count} Bilder werden analysiert...",
+        "retrieving": "Analysiere Verarbeitungsrichtlinien für \"{query}\"...",
+        "knowledgeMatched": "{count} Wissenseinträge gefunden: {titles}",
+        "knowledgeRelevant": "Wissensdatenbank übereinstimmend — Plan wird mit Kontext generiert",
         "aiPlanning": "KI generiert die optimale Verarbeitungspipeline...",
         "aiGenerating": "KI generiert den optimalen Workflow",
         "attempt": "Versuch {n}",
         "aiReviewing": "KI-Qualitätssicherung: Überprüfung des generierten Plans...",
+        "planSummary": "Pipeline: {summary} ({steps} Schritte)",
         "allDone": "Fertig! {count} Dateien zum Download bereit.",
-        "errorPrefix": "Fehler: {message}"
+        "errorPrefix": "Fehler: {message}",
+        "thinkingSteps": [
+          "Konvertierungsbeschränkungen analysieren...",
+          "Kern-Workflow ableiten...",
+          "Motorenknoten zusammensetzen..."
+        ]
       }
     }
   },

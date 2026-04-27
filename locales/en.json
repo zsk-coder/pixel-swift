@@ -512,12 +512,23 @@
       "unsupportedNotice": "Notice",
       "logs": {
         "analyzing": "Analyzing {count} images in batch queue...",
+        "retrieving": "Searching best practices for \"{query}\"...",
+        "knowledgeMatched": "Matched {count} knowledge: {titles}",
+        "knowledgeRelevant": "Knowledge base matched — generating plan with context",
         "aiPlanning": "AI generating optimal processing pipeline...",
         "aiGenerating": "AI generating optimal workflow",
         "attempt": "Attempt {n}",
+        "reviewFailed": "AI quality review failed",
+        "aiPlanningRetry": "AI is correcting plan based on review feedback...",
         "aiReviewing": "AI Quality Assurance: Reviewing generated plan for compliance...",
+        "planSummary": "Pipeline: {summary} ({steps} steps)",
         "allDone": "All done! {count} files ready for download.",
-        "errorPrefix": "Error: {message}"
+        "errorPrefix": "Error: {message}",
+        "thinkingSteps": [
+          "Parsing conversion constraints...",
+          "Deducing core workflow...",
+          "Assembling engine nodes..."
+        ]
       }
     }
   },

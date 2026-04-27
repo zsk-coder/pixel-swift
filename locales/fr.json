@@ -524,12 +524,21 @@
       "unsupportedNotice": "Avis",
       "logs": {
         "analyzing": "Analyse de {count} images en cours...",
+        "retrieving": "Analyse des spécifications de traitement pour \"{query}\"...",
+        "knowledgeMatched": "{count} connaissances correspondantes : {titles}",
+        "knowledgeRelevant": "Base de connaissances correspondante — génération du plan avec contexte",
         "aiPlanning": "L'IA génère le pipeline de traitement optimal...",
         "aiGenerating": "L'IA génère le workflow optimal",
         "attempt": "Tentative {n}",
         "aiReviewing": "Assurance qualité IA : vérification de la conformité du plan généré...",
+        "planSummary": "Pipeline : {summary} ({steps} étapes)",
         "allDone": "Terminé ! {count} fichiers prêts à télécharger.",
-        "errorPrefix": "Erreur : {message}"
+        "errorPrefix": "Erreur : {message}",
+        "thinkingSteps": [
+          "Analyse des contraintes de conversion...",
+          "Déduction du flux de travail...",
+          "Assemblage des nœuds du moteur..."
+        ]
       }
     }
   },
