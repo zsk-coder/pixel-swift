@@ -403,7 +403,35 @@ export function useWorkflowCopilot() {
               ) {
                 addLog("running", aiPlanningMsg);
               }
-              // thinkingTimer 和 progressTimer 已在 retrieve 阶段启动，这里无需重复启动
+
+              // 当 gradeKnowledge 瞬间返回（0 知识无 LLM 调用）时，
+              // retrieve 阶段启动的 thinkingTimer 已经被上面的 updateLastLog("done") 杀死了。
+              // 必须在新的 running 日志上重新启动文案轮播
+              if (!thinkingTimer) {
+                let stepIdx = 0;
+                const rotateText = () => {
+                  if (
+                    phase.value !== "planning" ||
+                    logs.value[logs.value.length - 1]?.status !== "running"
+                  ) {
+                    if (thinkingTimer) {
+                      clearInterval(thinkingTimer);
+                      thinkingTimer = null;
+                    }
+                    return;
+                  }
+                  const text = t(
+                    `copilot.execution.logs.thinkingSteps.${stepIdx % 3}`,
+                  );
+                  updateLastLog("running", undefined, text);
+                  stepIdx++;
+                };
+                // 2 秒后开始轮播（给 aiPlanning 文案留展示时间）
+                thinkingTimer = setTimeout(() => {
+                  rotateText();
+                  thinkingTimer = setInterval(rotateText, 1500);
+                }, 2000) as unknown as ReturnType<typeof setInterval>;
+              }
             }
 
             // ── 规划阶段：planner 节点 ──
