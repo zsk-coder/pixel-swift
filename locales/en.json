@@ -603,6 +603,10 @@
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Welcome to Pro!",
     "successDesc": "Your subscription is active. Enjoy your Pro features!",
+    "pendingTitle": "Confirming your subscription…",
+    "pendingDesc": "Please wait while we verify your payment.",
+    "timeoutTitle": "Subscription verification pending",
+    "timeoutDesc": "It may take a few minutes. Please refresh this page shortly, or contact support if the issue persists.",
     "processing": "Processing...",
     "upgradeError": "Upgrade failed. Please try again.",
     "manageError": "Failed to open subscription portal. Please try again."

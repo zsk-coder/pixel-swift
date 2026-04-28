@@ -601,6 +601,10 @@
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Bem-vindo ao Pro!",
     "successDesc": "Sua assinatura está ativa. Aproveite seus recursos Pro!",
+    "pendingTitle": "Confirmando sua assinatura…",
+    "pendingDesc": "Estamos verificando seu pagamento. Por favor, aguarde.",
+    "timeoutTitle": "Verificação de assinatura pendente",
+    "timeoutDesc": "A verificação pode levar alguns minutos. Atualize a página em breve ou entre em contato com o suporte se o problema persistir.",
     "processing": "Processando…",
     "upgradeError": "Falha ao atualizar. Por favor, tente novamente.",
     "manageError": "Não foi possível abrir o portal de assinatura. Por favor, tente novamente."

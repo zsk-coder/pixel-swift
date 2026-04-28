@@ -601,6 +601,10 @@
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Bienvenue dans Pro !",
     "successDesc": "Votre abonnement est actif. Profitez des fonctionnalités Pro !",
+    "pendingTitle": "Confirmation de l'abonnement en cours…",
+    "pendingDesc": "Nous vérifions votre paiement. Veuillez patienter.",
+    "timeoutTitle": "Vérification de l'abonnement en attente",
+    "timeoutDesc": "La vérification peut prendre quelques minutes. Veuillez rafraîchir la page dans un instant ou contacter le support si le problème persiste.",
     "processing": "Traitement en cours…",
     "upgradeError": "Échec de la mise à niveau. Veuillez réessayer.",
     "manageError": "Impossible d'ouvrir le portail d'abonnement. Veuillez réessayer."

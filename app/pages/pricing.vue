@@ -21,41 +21,94 @@ const managingSubscription = ref(false);
 const route = useRoute();
 const showSuccess = computed(() => route.query.success === "true");
 
-// 支付成功横幅的显示控制
-const successDismissed = ref(false);
-const showSuccessBanner = computed(
-  () => showSuccess.value && !successDismissed.value,
-);
+const CHECKOUT_FLAG_KEY = "ls_checkout_initiated";
+// checkout 标记有效期 30 分钟（防止用户点了升级但没付款，过了很久再手动拼 URL）
+const CHECKOUT_FLAG_MAX_AGE_MS = 30 * 60 * 1000;
+
+/**
+ * 校验 sessionStorage 中的 checkout 标记是否存在且未过期。
+ * 消费后立即删除标记，防止刷新页面重复触发。
+ */
+function consumeCheckoutFlag(): boolean {
+  try {
+    const raw = sessionStorage.getItem(CHECKOUT_FLAG_KEY);
+    if (!raw) return false;
+    sessionStorage.removeItem(CHECKOUT_FLAG_KEY);
+    const ts = Number(raw);
+    // 标记存在但无法解析为时间戳，视为无效
+    if (Number.isNaN(ts)) return false;
+    // 标记已过期（超过 30 分钟）
+    if (Date.now() - ts > CHECKOUT_FLAG_MAX_AGE_MS) return false;
+    return true;
+  } catch {
+    // sessionStorage 不可用（隐私模式等极端情况），容错放行
+    return false;
+  }
+}
 
 const { refreshStatus } = useAccountStatus();
 let pollInterval: ReturnType<typeof setInterval>;
+// 持久化 pending 提示的引用，需要在确认后手动关闭
+let pendingMsgClose: (() => void) | null = null;
 
-// 取消挂载时清除轮询
+// 取消挂载时清除轮询与未关闭的 pending 提示
 onUnmounted(() => {
   if (pollInterval) clearInterval(pollInterval);
+  if (pendingMsgClose) pendingMsgClose();
 });
 
-// 挂载后处理横幅自动消失与 Webhook 延迟的静默轮询
+// 挂载后通过轮询确认 Webhook 是否已入库
 onMounted(() => {
-  if (showSuccess.value) {
-    // 8 秒后自动关闭横幅
-    setTimeout(() => {
-      successDismissed.value = true;
-    }, 8000);
+  if (!showSuccess.value) return;
 
-    // 解决支付由于 Webhook 延迟尚未入库导致的按钮未切换问题
-    // 启动静默轮询：如果当前仍未变成 Pro，每隔 1.5 秒去服务器拿一次状态，最多尝试 10 轮
-    if (!isPro.value) {
-      let attempts = 0;
-      pollInterval = setInterval(async () => {
-        attempts++;
-        await refreshStatus();
-        if (isPro.value || attempts >= 10) {
-          clearInterval(pollInterval);
-        }
-      }, 1500);
-    }
+  const hasCheckoutFlag = consumeCheckoutFlag();
+
+  // 边界情况兜底：用户确实已经是 Pro（Webhook 快速入库 / 浏览器崩溃后重启导致标记丢失），
+  // 无论标记是否存在，都弹成功通知。
+  if (isPro.value) {
+    ElNotification.success({
+      title: t("pricing.successTitle") || "Welcome to Pro!",
+      message: t("pricing.successDesc") || "Your subscription is active. Enjoy your Pro features!",
+      duration: 5000,
+    });
+    return;
   }
+
+  // 既没有 checkout 标记、也不是 Pro → 用户是手动拼的 URL，忽略
+  if (!hasCheckoutFlag) return;
+
+  // 显示「确认中」持久提示
+  const msgInstance = ElNotification.info({
+    title: t("pricing.pendingTitle") || "Confirming your subscription…",
+    message: t("pricing.pendingDesc") || "Please wait while we verify your payment.",
+    duration: 0, // 不自动关闭
+    showClose: false,
+  });
+  pendingMsgClose = () => msgInstance.close();
+
+  // 启动轮询：每 1.5 秒拉一次服务端状态，最多 10 轮（共 15s）
+  let attempts = 0;
+  pollInterval = setInterval(async () => {
+    attempts++;
+    await refreshStatus();
+    if (isPro.value) {
+      clearInterval(pollInterval);
+      if (pendingMsgClose) { pendingMsgClose(); pendingMsgClose = null; }
+      ElNotification.success({
+        title: t("pricing.successTitle") || "Welcome to Pro!",
+        message: t("pricing.successDesc") || "Your subscription is active. Enjoy your Pro features!",
+        duration: 5000,
+      });
+    } else if (attempts >= 10) {
+      clearInterval(pollInterval);
+      if (pendingMsgClose) { pendingMsgClose(); pendingMsgClose = null; }
+      ElNotification.warning({
+        title: t("pricing.timeoutTitle") || "Subscription verification pending",
+        message: t("pricing.timeoutDesc") || "It may take a few minutes. Please refresh this page shortly, or contact support if the issue persists.",
+        duration: 0, // 不自动消失，让用户自己关
+      });
+    }
+  }, 1500);
 });
 
 // 点击 "立即升级" → 创建 Checkout Session → 跳转 LemonSqueezy
@@ -66,6 +119,8 @@ async function handleUpgrade() {
       method: "POST",
       body: { locale: locale.value },
     });
+    // 写入 checkout 标记（带时间戳），用于回跳后校验
+    try { sessionStorage.setItem(CHECKOUT_FLAG_KEY, String(Date.now())); } catch { /* 容错 */ }
     // 跳转到 LemonSqueezy 收银台
     window.location.href = url;
   } catch (err: any) {
@@ -108,47 +163,6 @@ async function handleManageSubscription() {
   <main
     class="flex-grow py-12 lg:py-16 px-6 md:px-12 max-w-7xl mx-auto w-full relative"
   >
-    <!-- 🎉 支付成功横幅 -->
-    <Transition name="slide-fade">
-      <div
-        v-if="showSuccessBanner"
-        class="mb-10 relative overflow-hidden rounded-2xl bg-gradient-to-r from-emerald-500 via-green-500 to-teal-500 p-6 text-white shadow-lg shadow-green-500/25"
-      >
-        <div class="flex items-center justify-between gap-4">
-          <div class="flex items-center gap-4">
-            <span
-              class="material-symbols-outlined text-4xl animate-bounce"
-              style="font-variation-settings: &quot;FILL&quot; 1"
-              >celebration</span
-            >
-            <div>
-              <h3 class="font-sans font-bold text-lg">
-                🎉 {{ t("pricing.successTitle") || "Welcome to Pro!" }}
-              </h3>
-              <p class="font-sans text-sm text-white/90 mt-1">
-                {{
-                  t("pricing.successDesc") ||
-                  "Your subscription is active. Enjoy unlimited AI Copilot access!"
-                }}
-              </p>
-            </div>
-          </div>
-          <button
-            class="text-white/70 hover:text-white transition-colors"
-            @click="successDismissed = true"
-          >
-            <span class="material-symbols-outlined">close</span>
-          </button>
-        </div>
-        <!-- 装饰性背景圆圈 -->
-        <div
-          class="absolute -right-6 -top-6 w-24 h-24 bg-white/10 rounded-full"
-        ></div>
-        <div
-          class="absolute -right-2 -bottom-8 w-32 h-32 bg-white/5 rounded-full"
-        ></div>
-      </div>
-    </Transition>
 
     <!-- Ambient Background Glow -->
     <div
@@ -441,19 +455,4 @@ async function handleManageSubscription() {
   </main>
 </template>
 
-<style scoped>
-.slide-fade-enter-active {
-  transition: all 0.4s ease-out;
-}
-.slide-fade-leave-active {
-  transition: all 0.3s ease-in;
-}
-.slide-fade-enter-from {
-  transform: translateY(-20px);
-  opacity: 0;
-}
-.slide-fade-leave-to {
-  transform: translateY(-10px);
-  opacity: 0;
-}
-</style>
+

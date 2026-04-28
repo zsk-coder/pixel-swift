@@ -601,6 +601,10 @@
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Pro에 오신 것을 환영합니다!",
     "successDesc": "구독이 활성화되었습니다. Pro 기능을 즐기세요!",
+    "pendingTitle": "구독 확인 중…",
+    "pendingDesc": "결제를 확인하고 있습니다. 잠시만 기다려 주세요.",
+    "timeoutTitle": "구독 확인 대기 중",
+    "timeoutDesc": "확인에 몇 분이 걸릴 수 있습니다. 잠시 후 페이지를 새로고침하거나, 문제가 계속되면 고객 지원에 문의하세요.",
     "processing": "처리 중…",
     "upgradeError": "업그레이드에 실패했습니다. 다시 시도해 주세요.",
     "manageError": "구독 관리 페이지를 열 수 없습니다. 다시 시도해 주세요."

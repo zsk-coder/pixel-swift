@@ -603,6 +603,10 @@
     "trust": "所有方案均支持随时取消 · 不满意随时退款 · 由 LemonSqueezy 安全处理支付",
     "successTitle": "欢迎加入 Pro！",
     "successDesc": "您的订阅已生效，尽情体验 AI 助理的强大功能吧！",
+    "pendingTitle": "正在确认订阅…",
+    "pendingDesc": "正在验证您的付款，请稍候。",
+    "timeoutTitle": "订阅确认中",
+    "timeoutDesc": "确认可能需要几分钟时间。请稍后刷新页面，如持续未生效请联系客服。",
     "processing": "处理中…",
     "upgradeError": "升级失败，请重试。",
     "manageError": "无法打开订阅管理页面，请重试。"

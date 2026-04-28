@@ -601,6 +601,10 @@
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Proへようこそ！",
     "successDesc": "サブスクリプションが有効になりました。Pro機能をお楽しみください！",
+    "pendingTitle": "サブスクリプションを確認中…",
+    "pendingDesc": "お支払いを確認しています。しばらくお待ちください。",
+    "timeoutTitle": "サブスクリプションの確認待ち",
+    "timeoutDesc": "確認に数分かかる場合があります。しばらくしてからページを更新してください。問題が続く場合はサポートにお問い合わせください。",
     "processing": "処理中…",
     "upgradeError": "アップグレードに失敗しました。もう一度お試しください。",
     "manageError": "サブスクリプション管理ページを開けませんでした。もう一度お試しください。"
