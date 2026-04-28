@@ -1,11 +1,11 @@
-import { ChatPromptTemplate } from "@langchain/core/prompts";
 import { PLAN_ACTIONS } from "~~/shared/types/workflow-copilot";
 import type { BatchSummary, GoalInput } from "~~/shared/types/workflow-copilot";
 import type { RetrievedKnowledge } from "./knowledge";
 
 // ────────────────────────────────────────────────────────
 // LangChain Prompt 模板
-// 使用 ChatPromptTemplate 替代手动字符串拼接
+// 使用动态 import 延迟加载 ChatPromptTemplate，
+// 避免在 Cloudflare Workers 全局作用域触发 LangChain 初始化副作用
 // ────────────────────────────────────────────────────────
 
 /**
@@ -76,15 +76,6 @@ You are NOT a chatbot. You do NOT output explanations outside of JSON.
 `;
 
 /**
- * 构建 LangChain ChatPromptTemplate
- * 使用模板变量替代手动字符串拼接，更规范、可测试
- */
-export const plannerPrompt = ChatPromptTemplate.fromMessages([
-  ["system", SYSTEM_PROMPT_CONTENT],
-  ["human", "{userMessage}"],
-]);
-
-/**
  * Plan Reviewer 的 System Prompt
  * 让第二个 AI 审计第一个 AI 生成的计划
  */
@@ -125,10 +116,43 @@ If approved is false, you MUST provide at least one issue with severity "error".
 If there are no issues at all, set approved to true and return an empty issues array.
 `;
 
-export const reviewerPrompt = ChatPromptTemplate.fromMessages([
-  ["system", REVIEWER_SYSTEM_PROMPT],
-  ["human", "{reviewMessage}"],
-]);
+// ── 延迟初始化的 Prompt 模板缓存 ──
+// 避免在模块加载时执行 ChatPromptTemplate.fromMessages()，
+// 这会触发 LangChain 内部的初始化副作用，违反 CF Workers 全局作用域限制
+let _plannerPrompt: unknown = null;
+let _reviewerPrompt: unknown = null;
+
+/**
+ * 延迟获取 Planner Prompt 模板（首次调用时创建）
+ */
+export async function getPlannerPrompt() {
+  if (!_plannerPrompt) {
+    const { ChatPromptTemplate } = await import("@langchain/core/prompts");
+    _plannerPrompt = ChatPromptTemplate.fromMessages([
+      ["system", SYSTEM_PROMPT_CONTENT],
+      ["human", "{userMessage}"],
+    ]);
+  }
+  return _plannerPrompt as Awaited<
+    ReturnType<typeof import("@langchain/core/prompts")>
+  >["ChatPromptTemplate"] extends new (...args: any[]) => infer R
+    ? R
+    : never;
+}
+
+/**
+ * 延迟获取 Reviewer Prompt 模板（首次调用时创建）
+ */
+export async function getReviewerPrompt() {
+  if (!_reviewerPrompt) {
+    const { ChatPromptTemplate } = await import("@langchain/core/prompts");
+    _reviewerPrompt = ChatPromptTemplate.fromMessages([
+      ["system", REVIEWER_SYSTEM_PROMPT],
+      ["human", "{reviewMessage}"],
+    ]);
+  }
+  return _reviewerPrompt as any;
+}
 
 /**
  * 构建 User Message 字符串

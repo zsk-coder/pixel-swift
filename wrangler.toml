@@ -2,6 +2,7 @@
 # 此文件用于 wrangler pages dev / deploy 命令
 
 name = "pixelswift"
+pages_build_output_dir = "dist"
 
 # ── Node.js 兼容性 ──
 # LangChain / LangGraph 依赖 Node.js 原生模块（crypto, events, buffer, async_hooks 等）

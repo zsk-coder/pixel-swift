@@ -1,16 +1,15 @@
-import { ChatDeepSeek } from "@langchain/deepseek";
 import type {
   BatchSummary,
   GoalInput,
   ProcessPlan,
 } from "~~/shared/types/workflow-copilot";
 import { processPlanSchema, validateStepParams } from "./schemas";
-import { plannerPrompt, buildUserMessage } from "./prompts";
+import { getPlannerPrompt, buildUserMessage } from "./prompts";
 import type { RetrievedKnowledge } from "./knowledge";
 
 // ────────────────────────────────────────────────────────
 // LangChain Chain 驱动的核心规划器
-// 使用 ChatDeepSeek + withStructuredOutput 实现类型安全的 AI 规划
+// 使用动态 import 延迟加载 ChatDeepSeek，兼容 CF Workers
 // ────────────────────────────────────────────────────────
 
 // DeepSeek API 运行时配置接口
@@ -21,7 +20,7 @@ export interface DeepSeekConfig {
 }
 
 // ── 模型实例缓存（按 config 指纹复用，避免每次请求重建） ──
-const _modelCache = new Map<string, ChatDeepSeek>();
+const _modelCache = new Map<string, unknown>();
 
 function getConfigFingerprint(config: DeepSeekConfig): string {
   return `${config.apiKey}::${config.model}::${config.baseUrl}`;
@@ -29,13 +28,14 @@ function getConfigFingerprint(config: DeepSeekConfig): string {
 
 /**
  * 创建或复用 LangChain ChatDeepSeek 模型实例
- * 配置低温度保证输出稳定性，合理的 maxTokens 防止 JSON 被截断
+ * 使用动态 import 延迟加载，避免全局作用域副作用
  */
-export function createChatModel(config: DeepSeekConfig): ChatDeepSeek {
+export async function createChatModel(config: DeepSeekConfig) {
   const key = getConfigFingerprint(config);
   const cached = _modelCache.get(key);
-  if (cached) return cached;
+  if (cached) return cached as any;
 
+  const { ChatDeepSeek } = await import("@langchain/deepseek");
   const model = new ChatDeepSeek({
     apiKey: config.apiKey,
     model: config.model,
@@ -51,17 +51,18 @@ export function createChatModel(config: DeepSeekConfig): ChatDeepSeek {
 }
 
 // ── 审计模型缓存（独立温度配置） ──
-const _reviewerModelCache = new Map<string, ChatDeepSeek>();
+const _reviewerModelCache = new Map<string, unknown>();
 
 /**
  * 创建或复用审计专用 ChatDeepSeek 模型实例
  * 使用极低温度 (0.1) 保证审计更严谨，maxTokens 较小
  */
-export function createReviewerModel(config: DeepSeekConfig): ChatDeepSeek {
+export async function createReviewerModel(config: DeepSeekConfig) {
   const key = getConfigFingerprint(config);
   const cached = _reviewerModelCache.get(key);
-  if (cached) return cached;
+  if (cached) return cached as any;
 
+  const { ChatDeepSeek } = await import("@langchain/deepseek");
   const model = new ChatDeepSeek({
     apiKey: config.apiKey,
     model: config.model,
@@ -84,15 +85,6 @@ export function createReviewerModel(config: DeepSeekConfig): ChatDeepSeek {
  * 2. 通过 ChatPromptTemplate 构建提示词
  * 3. ChatDeepSeek.withStructuredOutput(zodSchema) 生成结构化输出
  * 4. Action 级二次参数校验
- *
- * 注意：知识检索已由 LangGraph 状态图中的 retrieve + gradeKnowledge 节点完成，
- * Planner 只负责「拿到知识 → 生成计划」，不再自己检索。
- *
- * @param goal 用户的自然语言目标
- * @param batch 图片批次摘要
- * @param config DeepSeek API 配置
- * @param knowledge 预检索的场景知识片段（来自 CRAG 检索管道）
- * @returns 校验通过的 ProcessPlan
  */
 export async function generateProcessPlan(
   goal: GoalInput,
@@ -104,25 +96,24 @@ export async function generateProcessPlan(
   const userMessage = buildUserMessage(goal, batch, knowledge);
 
   // 2. 创建 LangChain Chain：Prompt → ChatModel → 结构化输出
-  const chatModel = createChatModel(config);
+  const chatModel = await createChatModel(config);
 
   // 使用 withStructuredOutput 将 Zod Schema 绑定到模型输出
-  // DeepSeek v4 不支持 function calling (tool_choice)，需使用 JSON Mode
   const structuredModel = chatModel.withStructuredOutput(processPlanSchema, {
     name: "ProcessPlan",
     method: "jsonMode",
   });
 
   // 构建完整的 Chain：Prompt Template → Structured Model
+  const plannerPrompt = await getPlannerPrompt();
   const plannerChain = plannerPrompt.pipe(structuredModel);
 
-  // 调用 Chain 生成计划（LangChain 自动完成 Prompt 渲染 → API 调用 → Schema 校验）
-  // 注意：不在此处重试，重试逻辑由外层 LangGraph 状态图统一编排
+  // 调用 Chain 生成计划
   const plan = await plannerChain.invoke({
     userMessage,
   });
 
-  // 3. Action 级二次参数校验（LangChain 的 withStructuredOutput 不包含这层业务校验）
+  // 3. Action 级二次参数校验
   const paramErrors = validateStepParams(plan);
   if (paramErrors.length > 0) {
     const details = paramErrors

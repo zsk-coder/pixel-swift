@@ -1,6 +1,4 @@
 import { z } from "zod";
-import { ChatPromptTemplate } from "@langchain/core/prompts";
-import type { ChatDeepSeek } from "@langchain/deepseek";
 
 // ────────────────────────────────────────────────────────
 // Retrieval Grader（检索相关性评估器）
@@ -19,12 +17,16 @@ export const gradeResultSchema = z.object({
 
 export type GradeResult = z.infer<typeof gradeResultSchema>;
 
-// ── Grader Prompt ──
-// 系统角色：相关性评估员，判断检索结果是否对规划有帮助
-const graderPrompt = ChatPromptTemplate.fromMessages([
-  [
-    "system",
-    `You are a relevance grader for an image processing knowledge base.
+// ── Grader Prompt 模板（延迟初始化，避免 CF Workers 全局作用域副作用） ──
+let _graderPrompt: unknown = null;
+
+async function getGraderPrompt() {
+  if (!_graderPrompt) {
+    const { ChatPromptTemplate } = await import("@langchain/core/prompts");
+    _graderPrompt = ChatPromptTemplate.fromMessages([
+      [
+        "system",
+        `You are a relevance grader for an image processing knowledge base.
 Your job is to assess whether the retrieved knowledge documents are relevant to the user's image processing goal.
 
 ## Grading Criteria
@@ -39,18 +41,21 @@ You MUST output a single JSON object:
   "confidence": 0.0-1.0,
   "reason": "one-line explanation"
 }}`,
-  ],
-  [
-    "human",
-    `## User's Image Processing Goal
+      ],
+      [
+        "human",
+        `## User's Image Processing Goal
 {goal}
 
 ## Retrieved Knowledge
 {knowledge}
 
 Assess the relevance of this knowledge to the user's goal:`,
-  ],
-]);
+      ],
+    ]);
+  }
+  return _graderPrompt as any;
+}
 
 /**
  * 评估检索到的知识片段是否与用户目标相关
@@ -63,13 +68,14 @@ Assess the relevance of this knowledge to the user's goal:`,
 export async function gradeRetrievedKnowledge(
   goalText: string,
   knowledgeContent: string,
-  model: ChatDeepSeek,
+  model: any,
 ): Promise<GradeResult> {
   const structuredModel = model.withStructuredOutput(gradeResultSchema, {
     name: "GradeResult",
     method: "jsonMode",
   });
 
+  const graderPrompt = await getGraderPrompt();
   const chain = graderPrompt.pipe(structuredModel);
 
   try {

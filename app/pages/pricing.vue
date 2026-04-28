@@ -27,12 +27,34 @@ const showSuccessBanner = computed(
   () => showSuccess.value && !successDismissed.value,
 );
 
-// 8 秒后自动关闭横幅
+const { refreshStatus } = useAccountStatus();
+let pollInterval: ReturnType<typeof setInterval>;
+
+// 取消挂载时清除轮询
+onUnmounted(() => {
+  if (pollInterval) clearInterval(pollInterval);
+});
+
+// 挂载后处理横幅自动消失与 Webhook 延迟的静默轮询
 onMounted(() => {
   if (showSuccess.value) {
+    // 8 秒后自动关闭横幅
     setTimeout(() => {
       successDismissed.value = true;
     }, 8000);
+
+    // 解决支付由于 Webhook 延迟尚未入库导致的按钮未切换问题
+    // 启动静默轮询：如果当前仍未变成 Pro，每隔 1.5 秒去服务器拿一次状态，最多尝试 10 轮
+    if (!isPro.value) {
+      let attempts = 0;
+      pollInterval = setInterval(async () => {
+        attempts++;
+        await refreshStatus();
+        if (isPro.value || attempts >= 10) {
+          clearInterval(pollInterval);
+        }
+      }, 1500);
+    }
   }
 });
 

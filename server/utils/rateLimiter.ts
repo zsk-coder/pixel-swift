@@ -18,17 +18,20 @@ interface RateBucket {
 // userId → windowKey → bucket
 const store = new Map<string, Map<string, RateBucket>>();
 
-// 定期清理过期的桶（每 5 分钟）
+// 触发惰性清理的时间戳（避免每次请求都遍历，降低开销）
+let lastCleanupTime = Date.now();
 const CLEANUP_INTERVAL = 5 * 60 * 1000;
-setInterval(() => {
-  const now = Date.now();
+
+function lazyCleanup(now: number) {
+  if (now - lastCleanupTime < CLEANUP_INTERVAL) return;
+  lastCleanupTime = now;
   for (const [userId, buckets] of store) {
     for (const [key, bucket] of buckets) {
       if (now > bucket.resetAt) buckets.delete(key);
     }
     if (buckets.size === 0) store.delete(userId);
   }
-}, CLEANUP_INTERVAL);
+}
 
 interface RateWindow {
   /** 窗口标识，如 "minute" / "hour" */
@@ -59,6 +62,7 @@ export function checkRateLimit(
   windows: RateWindow[],
 ): RateLimitResult {
   const now = Date.now();
+  lazyCleanup(now);
 
   if (!store.has(userId)) {
     store.set(userId, new Map());
@@ -116,7 +120,11 @@ export function enforceRateLimit(
   const result = checkRateLimit(userId, windows);
   if (!result.allowed) {
     setResponseStatus(event, 429);
-    setResponseHeader(event, "Retry-After", `${Math.ceil((result.retryAfterMs || 60000) / 1000)}`);
+    setResponseHeader(
+      event,
+      "Retry-After",
+      `${Math.ceil((result.retryAfterMs || 60000) / 1000)}`,
+    );
     return true;
   }
   return false;
