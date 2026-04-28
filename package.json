@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "build": "nuxt build",
+    "build": "NODE_OPTIONS=--max-old-space-size=4096 nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -34,7 +34,6 @@
     "upng-js": "^2.1.0",
     "vue": "^3.5.27",
     "vue-router": "^4.6.4",
-    "wrangler": "^4.74.0",
     "zod": "^4.3.6"
   },
   "devDependencies": {
@@ -47,6 +46,8 @@
     "sass": "^1.97.3",
     "vite-plugin-top-level-await": "^1.6.0",
     "vite-plugin-wasm": "^3.5.0",
-    "vitest": "^4.1.4"
+    "vitest": "^4.1.4",
+    "wrangler": "^4.74.0",
+    "better-sqlite3": "^12.6.2"
   }
 }

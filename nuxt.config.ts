@@ -27,6 +27,10 @@ export default defineNuxtConfig({
   // Node.js 兼容性配置见 wrangler.toml（LangChain 依赖 nodejs_compat）
   nitro: {
     preset: "cloudflare-pages",
+    minify: false, // 跳过 minify 加快构建，gzip 后体积差异极小
+    externals: {
+      external: ["better-sqlite3"],
+    },
   },
 
   // ── 站点 URL（sitemap 和 SEO 需要） ──
