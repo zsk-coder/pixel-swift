@@ -4,7 +4,8 @@
     "converter": "Konverter",
     "resizer": "Größe ändern",
     "blog": "Blog",
-    "copilot": "KI-Assistent"
+    "copilot": "KI-Assistent",
+    "pricing": "Preise"
   },
   "home": {
     "title": "Kostenloser Online-Bildkompressor, Konverter & Größenänderer",
@@ -506,7 +507,7 @@
       "stripMeta": "Metadaten entfernen"
     },
     "generate": "KI-Verarbeitung starten",
-    "generateHint": "Startet sofort und verbraucht 1 Kontingent.",
+    "generateHint": "Klicken zum Starten · Verbraucht 1 AI-Credit",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -593,10 +594,15 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now"
+      "cta": "Upgrade Now",
+      "manageSubscription": "Abo verwalten",
+      "manageSubscriptionDesc": "Zahlungsmethode ändern, Rechnungen ansehen oder kündigen"
     },
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Willkommen bei Pro!",
-    "successDesc": "Dein Abonnement ist aktiv. Genieße deine Pro-Funktionen!"
+    "successDesc": "Dein Abonnement ist aktiv. Genieße deine Pro-Funktionen!",
+    "processing": "Wird verarbeitet…",
+    "upgradeError": "Upgrade fehlgeschlagen. Bitte versuche es erneut.",
+    "manageError": "Das Abo-Portal konnte nicht geöffnet werden. Bitte versuche es erneut."
   }
 }

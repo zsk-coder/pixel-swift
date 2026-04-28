@@ -4,7 +4,7 @@
  * 返回 checkout URL，前端跳转过去完成支付
  */
 import { serverSupabaseUser } from "#supabase/server";
-import { createError, type H3Event } from "h3";
+import { createError, readBody, type H3Event } from "h3";
 
 export default defineEventHandler(async (event: H3Event) => {
   const config = useRuntimeConfig(event);
@@ -33,12 +33,31 @@ export default defineEventHandler(async (event: H3Event) => {
     throw createError({ statusCode: 401, statusMessage: "Unauthorized" });
   }
 
-  // 根据环境决定回跳地址：开发环境用请求来源，生产环境用 siteUrl
-  const origin = getHeader(event, "origin") || getHeader(event, "referer");
-  const redirectBase =
-    process.dev && origin
-      ? origin.replace(/\/$/, "")
-      : config.public.siteUrl;
+  // 动态获取当前请求的来源主机，实现自适应跳回（本地 localhost、CF Pages 预览分支、生产正式域名）
+  const requestUrlHeader =
+    getHeader(event, "referer") || getHeader(event, "origin");
+  const hostHeader = getHeader(event, "host");
+  const protocol = getHeader(event, "x-forwarded-proto") || "https";
+
+  let redirectBase = config.public.siteUrl;
+  if (requestUrlHeader) {
+    try {
+      const urlObj = new URL(requestUrlHeader);
+      redirectBase = `${urlObj.protocol}//${urlObj.host}`;
+    } catch {
+      // 解析失败则静默回退
+    }
+  } else if (hostHeader) {
+    const isLocalhost =
+      hostHeader.includes("localhost") || hostHeader.includes("127.0.0.1");
+    const scheme = isLocalhost ? "http" : protocol;
+    redirectBase = `${scheme}://${hostHeader}`;
+  }
+
+  // 读取前端传来的 locale，拼接语言前缀（默认 en 不加前缀）
+  const body = await readBody(event).catch(() => ({}));
+  const locale = body?.locale || "en";
+  const localePrefix = locale === "en" ? "" : `/${locale}`;
 
   // 调用 LemonSqueezy API 创建 Checkout
   const response = await $fetch<{ data: { attributes: { url: string } } }>(
@@ -61,9 +80,9 @@ export default defineEventHandler(async (event: H3Event) => {
                 user_id: userId,
               },
             },
-            // 支付完成后重定向回 pricing 页面
+            // 支付完成后重定向回 pricing 页面（带语言前缀）
             product_options: {
-              redirect_url: `${redirectBase}/pricing?success=true`,
+              redirect_url: `${redirectBase}${localePrefix}/pricing?success=true`,
             },
           },
           relationships: {

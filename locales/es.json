@@ -4,7 +4,8 @@
     "converter": "Convertidor",
     "resizer": "Redimensionar",
     "blog": "Blog",
-    "copilot": "Asistente IA"
+    "copilot": "Asistente IA",
+    "pricing": "Precios"
   },
   "home": {
     "title": "Compresor, convertidor y redimensionador de imágenes en línea gratis",
@@ -506,7 +507,7 @@
       "stripMeta": "Eliminar Metadatos"
     },
     "generate": "Iniciar Procesamiento con IA",
-    "generateHint": "Se ejecuta de inmediato y consume 1 cuota.",
+    "generateHint": "Haz clic para iniciar · Usa 1 crédito AI",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -593,10 +594,15 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now"
+      "cta": "Upgrade Now",
+      "manageSubscription": "Gestionar suscripción",
+      "manageSubscriptionDesc": "Cambiar método de pago, ver facturas o cancelar"
     },
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "¡Bienvenido a Pro!",
-    "successDesc": "Tu suscripción está activa. ¡Disfruta de las funciones Pro!"
+    "successDesc": "Tu suscripción está activa. ¡Disfruta de las funciones Pro!",
+    "processing": "Procesando…",
+    "upgradeError": "Error al actualizar. Por favor, inténtalo de nuevo.",
+    "manageError": "No se pudo abrir el portal de suscripción. Por favor, inténtalo de nuevo."
   }
 }

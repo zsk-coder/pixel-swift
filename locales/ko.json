@@ -4,7 +4,8 @@
     "converter": "변환기",
     "resizer": "크기 조정",
     "blog": "블로그",
-    "copilot": "AI 어시스턴트"
+    "copilot": "AI 어시스턴트",
+    "pricing": "요금제"
   },
   "home": {
     "title": "무료 온라인 이미지 압축, 변환 & 크기 조정 도구",
@@ -506,7 +507,7 @@
       "stripMeta": "메타데이터 제거"
     },
     "generate": "AI 처리 시작",
-    "generateHint": "즉시 실행되며 1 할당량을 소비합니다.",
+    "generateHint": "클릭하면 바로 시작 · AI 크레딧 1회 사용",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -593,10 +594,15 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now"
+      "cta": "Upgrade Now",
+      "manageSubscription": "구독 관리",
+      "manageSubscriptionDesc": "결제 수단 변경, 청구서 확인 또는 구독 취소"
     },
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Pro에 오신 것을 환영합니다!",
-    "successDesc": "구독이 활성화되었습니다. Pro 기능을 즐기세요!"
+    "successDesc": "구독이 활성화되었습니다. Pro 기능을 즐기세요!",
+    "processing": "처리 중…",
+    "upgradeError": "업그레이드에 실패했습니다. 다시 시도해 주세요.",
+    "manageError": "구독 관리 페이지를 열 수 없습니다. 다시 시도해 주세요."
   }
 }

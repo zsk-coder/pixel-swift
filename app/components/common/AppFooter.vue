@@ -79,6 +79,14 @@ const currentYear = new Date().getFullYear();
                     {{ t("nav.blog") }}
                   </NuxtLink>
                 </li>
+                <li>
+                  <NuxtLink
+                    :to="localePath('/pricing')"
+                    class="text-sm leading-6 text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors"
+                  >
+                    {{ t("nav.pricing") }}
+                  </NuxtLink>
+                </li>
               </ul>
             </div>
           </div>

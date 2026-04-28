@@ -4,7 +4,8 @@
     "converter": "変換",
     "resizer": "リサイズ",
     "blog": "ブログ",
-    "copilot": "AI アシスタント"
+    "copilot": "AI アシスタント",
+    "pricing": "料金プラン"
   },
   "home": {
     "title": "無料オンライン画像圧縮・変換・リサイズツール",
@@ -506,7 +507,7 @@
       "stripMeta": "メタデータ削除"
     },
     "generate": "AI処理を開始",
-    "generateHint": "直ちに実行し、1クォータを消費します。",
+    "generateHint": "クリックで処理開始 · AI クレジット 1 回分を使用",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -593,10 +594,15 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now"
+      "cta": "Upgrade Now",
+      "manageSubscription": "サブスクリプション管理",
+      "manageSubscriptionDesc": "お支払い方法の変更、請求書の確認、またはキャンセル"
     },
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Proへようこそ！",
-    "successDesc": "サブスクリプションが有効になりました。Pro機能をお楽しみください！"
+    "successDesc": "サブスクリプションが有効になりました。Pro機能をお楽しみください！",
+    "processing": "処理中…",
+    "upgradeError": "アップグレードに失敗しました。もう一度お試しください。",
+    "manageError": "サブスクリプション管理ページを開けませんでした。もう一度お試しください。"
   }
 }

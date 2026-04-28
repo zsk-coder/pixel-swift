@@ -4,7 +4,8 @@
     "converter": "Convertisseur",
     "resizer": "Redimensionner",
     "blog": "Blog",
-    "copilot": "Assistant IA"
+    "copilot": "Assistant IA",
+    "pricing": "Tarifs"
   },
   "home": {
     "title": "Compresseur, convertisseur et redimensionneur d'images en ligne gratuit",
@@ -506,7 +507,7 @@
       "stripMeta": "Supprimer Métadonnées"
     },
     "generate": "Démarrer le Traitement IA",
-    "generateHint": "S'exécute immédiatement et consomme 1 quota.",
+    "generateHint": "Cliquez pour lancer · Utilise 1 crédit AI",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -593,10 +594,15 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now"
+      "cta": "Upgrade Now",
+      "manageSubscription": "Gérer l'abonnement",
+      "manageSubscriptionDesc": "Modifier le moyen de paiement, consulter les factures ou annuler"
     },
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Bienvenue dans Pro !",
-    "successDesc": "Votre abonnement est actif. Profitez des fonctionnalités Pro !"
+    "successDesc": "Votre abonnement est actif. Profitez des fonctionnalités Pro !",
+    "processing": "Traitement en cours…",
+    "upgradeError": "Échec de la mise à niveau. Veuillez réessayer.",
+    "manageError": "Impossible d'ouvrir le portail d'abonnement. Veuillez réessayer."
   }
 }

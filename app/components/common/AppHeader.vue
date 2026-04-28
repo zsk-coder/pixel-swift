@@ -64,6 +64,7 @@ const navItems = computed(() => [
   { label: t("nav.resizer"), to: localePath("/resize-image") },
   { label: t("nav.copilot"), to: localePath("/workflow-copilot"), isNew: true },
   { label: t("nav.blog"), to: localePath("/blog") },
+  { label: t("nav.pricing"), to: localePath("/pricing") },
 ]);
 
 const availableLocales = computed(() =>
@@ -138,16 +139,12 @@ const authCopy = computed(() => ({
             <span
               v-if="item.isNew"
               class="material-symbols-outlined text-[16px]"
-              style="font-variation-settings: 'FILL' 1"
+              style="font-variation-settings: &quot;FILL&quot; 1"
               >auto_awesome</span
             >
             {{ item.label }}
             <!-- NEW 角标 -->
-            <span
-              v-if="item.isNew"
-              class="copilot-new-badge"
-              >NEW</span
-            >
+            <span v-if="item.isNew" class="copilot-new-badge">NEW</span>
           </NuxtLink>
         </nav>
       </div>
@@ -250,15 +247,11 @@ const authCopy = computed(() => ({
             <span
               v-if="item.isNew"
               class="material-symbols-outlined text-[16px] text-primary"
-              style="font-variation-settings: 'FILL' 1"
+              style="font-variation-settings: &quot;FILL&quot; 1"
               >auto_awesome</span
             >
             {{ item.label }}
-            <span
-              v-if="item.isNew"
-              class="copilot-new-badge-mobile"
-              >NEW</span
-            >
+            <span v-if="item.isNew" class="copilot-new-badge-mobile">NEW</span>
           </NuxtLink>
         </nav>
       </div>
@@ -322,7 +315,8 @@ const authCopy = computed(() => ({
 }
 
 @keyframes badge-pulse {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
     transform: scale(1);
   }

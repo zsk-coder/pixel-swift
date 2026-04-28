@@ -177,6 +177,8 @@ export default defineEventHandler(async (event: H3Event) => {
             plan_type: "pro",
             subscription_status: "active",
             current_period_end: renewsAt,
+            // 兜底机制：即使 subscription_created 失败/丢失，只要这里是 active，就补齐 Pro 配额
+            trial_total: 100,
           })
           .eq("user_id", userId);
       } else if (status === "expired" || status === "cancelled") {

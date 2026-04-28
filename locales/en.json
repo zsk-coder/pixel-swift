@@ -4,7 +4,8 @@
     "converter": "Converter",
     "resizer": "Resize",
     "blog": "Blog",
-    "copilot": "AI Assistant"
+    "copilot": "AI Assistant",
+    "pricing": "Pricing"
   },
   "home": {
     "title": "Free Online Image Compressor, Converter & Resizer",
@@ -494,7 +495,7 @@
       "stripMeta": "Strip Metadata"
     },
     "generate": "Start AI Processing",
-    "generateHint": "Executes immediately and consumes 1 quota.",
+    "generateHint": "Click to start · Uses 1 AI credit",
     "execution": {
       "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
       "processingWorkflow": "Processing Workflow",
@@ -595,10 +596,15 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now"
+      "cta": "Upgrade Now",
+      "manageSubscription": "Manage Subscription",
+      "manageSubscriptionDesc": "Change payment method, view invoices, or cancel"
     },
     "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
     "successTitle": "Welcome to Pro!",
-    "successDesc": "Your subscription is active. Enjoy your Pro features!"
+    "successDesc": "Your subscription is active. Enjoy your Pro features!",
+    "processing": "Processing...",
+    "upgradeError": "Upgrade failed. Please try again.",
+    "manageError": "Failed to open subscription portal. Please try again."
   }
 }
