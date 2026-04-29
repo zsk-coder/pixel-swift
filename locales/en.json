@@ -372,7 +372,8 @@
     "copyright": "© {year} PixelSwift. All rights reserved.",
     "privacy": "Privacy Policy",
     "terms": "Terms of Use",
-    "contact": "Contact Us"
+    "contact": "Contact Us",
+    "refund": "Refund Policy"
   },
   "legal": {
     "privacy": {
@@ -427,6 +428,32 @@
       "emailTitle": "Email",
       "copy": "Copy",
       "copied": "Copied!"
+    },
+    "refund": {
+      "title": "Refund Policy",
+      "lastUpdated": "Last updated: {date}",
+      "overviewTitle": "Overview",
+      "overviewText": "PixelSwift is committed to customer satisfaction. This policy outlines the terms and conditions for refunds on our paid subscription plans.",
+      "freeTitle": "Free Features",
+      "freeText": "PixelSwift offers core image processing features (compression, conversion, resizing) completely free of charge with no account required. Since no payment is involved, no refund applies to free features.",
+      "proTitle": "Pro Subscription Refunds",
+      "proText": "If you are not satisfied with your PixelSwift Pro subscription, you may request a full refund under the following conditions:",
+      "proItem1": "Refund requests must be made within 7 days of the initial purchase date",
+      "proItem2": "Each account is eligible for one refund only",
+      "proItem3": "Refunds are processed to the original payment method",
+      "howTitle": "How to Request a Refund",
+      "howText": "To request a refund, please contact us via email with the following information:",
+      "howItem1": "Your account email address",
+      "howItem2": "Date of purchase",
+      "howItem3": "Reason for the refund request (optional, but helps us improve)",
+      "timeTitle": "Processing Time",
+      "timeText": "Refund requests are typically processed within 5-10 business days. You will receive an email confirmation once the refund has been processed. The actual time for the refund to appear in your account may vary depending on your payment provider.",
+      "exceptionsTitle": "Exceptions",
+      "exceptionsText": "Refunds may not be granted in the following cases:",
+      "exceptionsItem1": "The refund request is made more than 7 days after the purchase date",
+      "exceptionsItem2": "The account has been previously refunded",
+      "contactTitle": "Contact Us",
+      "contactText": "For refund requests or questions about this policy, please contact us at: "
     }
   },
   "seo": {
@@ -465,6 +492,10 @@
     "copilot": {
       "title": "AI Assistant — AI-Powered Image Optimization Pipeline | PixelSwift",
       "description": "Upload images and describe your optimization goal. AI auto-builds a pipeline for compression, format conversion, and resizing. Free trial included."
+    },
+    "refund": {
+      "title": "Refund Policy - PixelSwift",
+      "description": "PixelSwift refund policy. Request a full refund within 7 days of your Pro subscription purchase if not satisfied."
     }
   },
   "copilot": {

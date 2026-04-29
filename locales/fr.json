@@ -311,7 +311,8 @@
     "copyright": "© {year} PixelSwift. Tous droits réservés.",
     "privacy": "Politique de confidentialité",
     "terms": "Conditions d'utilisation",
-    "contact": "Nous contacter"
+    "contact": "Nous contacter",
+    "refund": "Remboursement"
   },
   "legal": {
     "privacy": {
@@ -366,6 +367,32 @@
       "emailTitle": "E-mail",
       "copy": "Copier",
       "copied": "Copié !"
+    },
+    "refund": {
+      "title": "Politique de Remboursement",
+      "lastUpdated": "Dernière mise à jour : {date}",
+      "overviewTitle": "Aperçu",
+      "overviewText": "PixelSwift s'engage à satisfaire ses clients. Cette politique décrit les conditions de remboursement de nos plans d'abonnement payants.",
+      "freeTitle": "Fonctionnalités Gratuites",
+      "freeText": "PixelSwift propose des fonctionnalités de base de traitement d'images (compression, conversion, redimensionnement) entièrement gratuites et sans inscription. Aucun paiement n'étant impliqué, aucune politique de remboursement ne s'applique aux fonctionnalités gratuites.",
+      "proTitle": "Remboursements Abonnement Pro",
+      "proText": "Si vous n'êtes pas satisfait de votre abonnement PixelSwift Pro, vous pouvez demander un remboursement complet dans les conditions suivantes :",
+      "proItem1": "La demande de remboursement doit être faite dans les 7 jours suivant la date d'achat initial",
+      "proItem2": "Chaque compte n'a droit qu'à un seul remboursement",
+      "proItem3": "Les remboursements sont effectués sur le moyen de paiement original",
+      "howTitle": "Comment Demander un Remboursement",
+      "howText": "Pour demander un remboursement, veuillez nous contacter par e-mail avec les informations suivantes :",
+      "howItem1": "Votre adresse e-mail de compte",
+      "howItem2": "Date d'achat",
+      "howItem3": "Raison de la demande de remboursement (facultatif, mais nous aide à nous améliorer)",
+      "timeTitle": "Délai de Traitement",
+      "timeText": "Les demandes de remboursement sont généralement traitées dans un délai de 5 à 10 jours ouvrables. Vous recevrez un e-mail de confirmation une fois le remboursement effectué. Le délai réel pour que le remboursement apparaisse sur votre compte peut varier selon votre fournisseur de paiement.",
+      "exceptionsTitle": "Exceptions",
+      "exceptionsText": "Les remboursements peuvent ne pas être accordés dans les cas suivants :",
+      "exceptionsItem1": "La demande de remboursement est faite plus de 7 jours après la date d'achat",
+      "exceptionsItem2": "Le compte a déjà bénéficié d'un remboursement",
+      "contactTitle": "Nous Contacter",
+      "contactText": "Pour les demandes de remboursement ou les questions sur cette politique, contactez-nous à : "
     }
   },
   "seo": {
@@ -404,6 +431,10 @@
     "copilot": {
       "title": "Assistant IA — Pipeline d'optimisation d'images propulsé par l'IA | PixelSwift",
       "description": "Uploadez des images et décrivez votre objectif d'optimisation. L'IA construit automatiquement un pipeline de compression, conversion et redimensionnement. Essai gratuit inclus."
+    },
+    "refund": {
+      "title": "Politique de Remboursement - PixelSwift",
+      "description": "Politique de remboursement de PixelSwift. Demandez un remboursement complet dans les 7 jours suivant l'achat de votre abonnement Pro."
     }
   },
   "schema": {

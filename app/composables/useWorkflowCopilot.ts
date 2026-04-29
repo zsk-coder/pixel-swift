@@ -296,24 +296,26 @@ export function useWorkflowCopilot() {
     return { eventType, dataStr };
   }
 
-  // ── SSE 节点处理器（从 handleSSEEvent 拆分出来，提升可读性） ──
+  // ── 暂存检索元数据：onRetrieve 静默存储，onGradeKnowledge 评估后才决定展示 ──
+  // 主流 RAG 产品做法：检索 + 评估是原子操作，只展示最终确认相关的结果
+  let _pendingRetrieveMeta: { knowledgeCount: number; knowledgeTitles: string[] } | null = null;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   function onRetrieve(data: any) {
     const meta = data.lastNodeMeta;
+
+    // 静默存储检索元数据，不立即展示给用户
     if (meta?.knowledgeCount > 0) {
-      completeLastRunning();
-      addLog(
-        "done",
-        t("copilot.execution.logs.knowledgeMatched", {
-          count: meta.knowledgeCount,
-          titles: (meta.knowledgeTitles as string[]).join(", "),
-        }),
-      );
-      // 填补 gradeKnowledge LLM 评估的空白期
-      addLog("running", t("copilot.execution.logs.knowledgeRelevant"));
+      _pendingRetrieveMeta = {
+        knowledgeCount: meta.knowledgeCount,
+        knowledgeTitles: meta.knowledgeTitles as string[],
+      };
+    } else {
+      _pendingRetrieveMeta = null;
     }
-    progress.value = Math.min(12, progress.value + 4);
+
+    // 单调递增保护：假进度条可能已超过 12%，不能往回拽
+    progress.value = Math.max(progress.value, Math.min(12, progress.value + 4));
 
     // 启动假进度条：从当前值缓慢爬到 ~35%，覆盖 retrieve → planner 整段空白
     if (!progressTimer) {
@@ -326,9 +328,25 @@ export function useWorkflowCopilot() {
     const meta = data.lastNodeMeta;
     completeLastRunning();
 
-    if (meta?.relevant) {
-      progress.value = Math.min(progress.value + 3, 35);
+    if (meta?.relevant && _pendingRetrieveMeta) {
+      // Grader 确认相关：此时才展示匹配结果
+      addLog(
+        "done",
+        t("copilot.execution.logs.knowledgeMatched", {
+          count: _pendingRetrieveMeta.knowledgeCount,
+          titles: _pendingRetrieveMeta.knowledgeTitles.join(", "),
+        }),
+      );
+      addLog("done", t("copilot.execution.logs.knowledgeRelevant"));
+
+      // 单调递增保护
+      const next = Math.min(progress.value + 3, 35);
+      progress.value = Math.max(progress.value, next);
     }
+    // 不相关 → 什么都不展示，静默跳过，直接进入 AI 规划
+
+    // 清空暂存
+    _pendingRetrieveMeta = null;
 
     // 追加固定的 "AI 规划中..." 日志，填补后续 planner LLM 调用的空白期（去重）
     const aiPlanningMsg = t("copilot.execution.logs.aiPlanning");
@@ -354,7 +372,8 @@ export function useWorkflowCopilot() {
       "",
       `${t("copilot.execution.logs.aiGenerating")}${attemptsStr}`,
     );
-    progress.value = Math.min(35, progress.value + 8);
+    // 单调递增保护：假进度条可能已把值推到 30%+，stopProgressTimer 后不能跳回
+    progress.value = Math.max(progress.value, Math.min(35, progress.value + 8));
     // 填补 reviewer LLM 调用的空白期
     addLog("running", t("copilot.execution.logs.aiReviewing"));
   }
@@ -368,7 +387,8 @@ export function useWorkflowCopilot() {
       addLog("done", t("copilot.execution.logs.reviewFailed"));
       addLog("running", t("copilot.execution.logs.aiPlanningRetry"));
     }
-    progress.value = Math.min(38, progress.value + 4);
+    // 单调递增保护
+    progress.value = Math.max(progress.value, Math.min(38, progress.value + 4));
   }
 
   // ── 2. 调用 Plan API ──

@@ -111,6 +111,14 @@ const currentYear = new Date().getFullYear();
                     {{ t("footer.terms") }}
                   </NuxtLink>
                 </li>
+                <li>
+                  <NuxtLink
+                    :to="localePath('/refund')"
+                    class="text-sm leading-6 text-slate-600 hover:text-primary dark:text-slate-400 dark:hover:text-white transition-colors"
+                  >
+                    {{ t("footer.refund") }}
+                  </NuxtLink>
+                </li>
               </ul>
             </div>
             <!-- Support -->

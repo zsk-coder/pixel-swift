@@ -311,7 +311,8 @@
     "copyright": "© {year} PixelSwift. Todos los derechos reservados.",
     "privacy": "Política de privacidad",
     "terms": "Términos de uso",
-    "contact": "Contacto"
+    "contact": "Contacto",
+    "refund": "Política de Reembolso"
   },
   "legal": {
     "privacy": {
@@ -366,6 +367,32 @@
       "emailTitle": "Correo electrónico",
       "copy": "Copiar",
       "copied": "¡Copiado!"
+    },
+    "refund": {
+      "title": "Política de Reembolso",
+      "lastUpdated": "Última actualización: {date}",
+      "overviewTitle": "Descripción General",
+      "overviewText": "PixelSwift se compromete con la satisfacción del cliente. Esta política describe los términos y condiciones de reembolso para nuestros planes de suscripción de pago.",
+      "freeTitle": "Funciones Gratuitas",
+      "freeText": "PixelSwift ofrece funciones básicas de procesamiento de imágenes (compresión, conversión, redimensionamiento) de forma completamente gratuita y sin necesidad de registro. Al no implicar ningún pago, no se aplica política de reembolso a las funciones gratuitas.",
+      "proTitle": "Reembolsos de Suscripción Pro",
+      "proText": "Si no estás satisfecho con tu suscripción PixelSwift Pro, puedes solicitar un reembolso completo bajo las siguientes condiciones:",
+      "proItem1": "La solicitud de reembolso debe realizarse dentro de los 7 días posteriores a la fecha de compra inicial",
+      "proItem2": "Cada cuenta tiene derecho a un único reembolso",
+      "proItem3": "Los reembolsos se procesan al método de pago original",
+      "howTitle": "Cómo Solicitar un Reembolso",
+      "howText": "Para solicitar un reembolso, contáctanos por correo electrónico con la siguiente información:",
+      "howItem1": "Tu dirección de correo electrónico de la cuenta",
+      "howItem2": "Fecha de compra",
+      "howItem3": "Motivo de la solicitud de reembolso (opcional, pero nos ayuda a mejorar)",
+      "timeTitle": "Tiempo de Procesamiento",
+      "timeText": "Las solicitudes de reembolso se procesan generalmente en un plazo de 5 a 10 días hábiles. Recibirás una confirmación por correo electrónico una vez procesado el reembolso. El tiempo real para que el reembolso aparezca en tu cuenta puede variar según tu proveedor de pago.",
+      "exceptionsTitle": "Excepciones",
+      "exceptionsText": "Los reembolsos podrían no concederse en los siguientes casos:",
+      "exceptionsItem1": "La solicitud de reembolso se realiza más de 7 días después de la fecha de compra",
+      "exceptionsItem2": "La cuenta ya ha recibido un reembolso anteriormente",
+      "contactTitle": "Contáctenos",
+      "contactText": "Para solicitudes de reembolso o preguntas sobre esta política, contáctanos en: "
     }
   },
   "seo": {
@@ -404,6 +431,10 @@
     "copilot": {
       "title": "Asistente IA — Pipeline de optimización de imágenes impulsado por IA | PixelSwift",
       "description": "Sube imágenes y describe tu objetivo de optimización. La IA construye automáticamente un pipeline de compresión, conversión de formato y redimensión. Prueba gratuita incluida."
+    },
+    "refund": {
+      "title": "Política de Reembolso - PixelSwift",
+      "description": "Política de reembolso de PixelSwift. Solicita un reembolso completo dentro de los 7 días posteriores a la compra de tu suscripción Pro."
     }
   },
   "schema": {

@@ -311,7 +311,8 @@
     "copyright": "© {year} PixelSwift. Alle Rechte vorbehalten.",
     "privacy": "Datenschutz",
     "terms": "Nutzungsbedingungen",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "refund": "Rückerstattung"
   },
   "legal": {
     "privacy": {
@@ -366,6 +367,32 @@
       "emailTitle": "E-Mail",
       "copy": "Kopieren",
       "copied": "Kopiert!"
+    },
+    "refund": {
+      "title": "Rückerstattungsrichtlinie",
+      "lastUpdated": "Zuletzt aktualisiert: {date}",
+      "overviewTitle": "Überblick",
+      "overviewText": "PixelSwift setzt sich für die Zufriedenheit unserer Kunden ein. Diese Richtlinie beschreibt die Bedingungen für Rückerstattungen unserer kostenpflichtigen Abonnementpläne.",
+      "freeTitle": "Kostenlose Funktionen",
+      "freeText": "PixelSwift bietet grundlegende Bildverarbeitungsfunktionen (Komprimierung, Konvertierung, Größenänderung) völlig kostenlos und ohne Registrierung an. Da keine Zahlung erfolgt, gilt für kostenlose Funktionen keine Rückerstattungsrichtlinie.",
+      "proTitle": "Pro-Abonnement Rückerstattungen",
+      "proText": "Wenn Sie mit Ihrem PixelSwift Pro-Abonnement nicht zufrieden sind, können Sie unter folgenden Bedingungen eine vollständige Rückerstattung beantragen:",
+      "proItem1": "Der Rückerstattungsantrag muss innerhalb von 7 Tagen nach dem Kaufdatum gestellt werden",
+      "proItem2": "Jedes Konto hat Anspruch auf eine einmalige Rückerstattung",
+      "proItem3": "Rückerstattungen werden über die ursprüngliche Zahlungsmethode abgewickelt",
+      "howTitle": "So beantragen Sie eine Rückerstattung",
+      "howText": "Um eine Rückerstattung zu beantragen, kontaktieren Sie uns bitte per E-Mail mit folgenden Informationen:",
+      "howItem1": "Ihre Konto-E-Mail-Adresse",
+      "howItem2": "Kaufdatum",
+      "howItem3": "Grund für den Rückerstattungsantrag (optional, hilft uns aber bei der Verbesserung)",
+      "timeTitle": "Bearbeitungszeit",
+      "timeText": "Rückerstattungsanträge werden in der Regel innerhalb von 5-10 Werktagen bearbeitet. Sie erhalten eine Bestätigungs-E-Mail, sobald die Rückerstattung verarbeitet wurde. Die tatsächliche Gutschrift auf Ihrem Konto kann je nach Zahlungsanbieter variieren.",
+      "exceptionsTitle": "Ausnahmen",
+      "exceptionsText": "Rückerstattungen können in folgenden Fällen nicht gewährt werden:",
+      "exceptionsItem1": "Der Rückerstattungsantrag wird mehr als 7 Tage nach dem Kaufdatum gestellt",
+      "exceptionsItem2": "Das Konto hat bereits eine Rückerstattung erhalten",
+      "contactTitle": "Kontakt",
+      "contactText": "Für Rückerstattungsanträge oder Fragen zu dieser Richtlinie kontaktieren Sie uns unter: "
     }
   },
   "seo": {
@@ -404,6 +431,10 @@
     "copilot": {
       "title": "KI-Assistent — KI-gestützte Bildoptimierungs-Pipeline | PixelSwift",
       "description": "Laden Sie Bilder hoch und beschreiben Sie Ihr Optimierungsziel. KI erstellt automatisch eine Pipeline für Komprimierung, Formatkonvertierung und Größenanpassung. Kostenlose Testversion inklusive."
+    },
+    "refund": {
+      "title": "Rückerstattungsrichtlinie - PixelSwift",
+      "description": "PixelSwift Rückerstattungsrichtlinie. Fordern Sie innerhalb von 7 Tagen nach dem Kauf Ihres Pro-Abonnements eine vollständige Rückerstattung an."
     }
   },
   "schema": {

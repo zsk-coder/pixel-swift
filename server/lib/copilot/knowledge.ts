@@ -23,7 +23,7 @@ export async function retrieveKnowledgeByVector(
   embeddingConfig: EmbeddingConfig,
   supabaseClient: SupabaseClient,
   maxResults = 5,
-  scoreThreshold = 0.5,
+  scoreThreshold = 0.58, // BGE-M3 余弦相似度分布偏低，0.6 即为强匹配；0.58 平衡召回与精度
 ): Promise<RetrievedKnowledge[]> {
   const embeddings = await createEmbeddingModel(embeddingConfig);
 
@@ -47,7 +47,10 @@ export async function retrieveKnowledgeByVector(
   );
 
   console.info(
-    `[Knowledge] 查询: "${queryText}" → ${resultsWithScore.length} 条候选, 阈值 ${scoreThreshold} 保留 ${filtered.length} 条`,
+    `[Knowledge] 查询: "${queryText}" → ${resultsWithScore.length} 条候选, 阈值 ${scoreThreshold} 保留 ${filtered.length} 条` +
+      (filtered.length > 0
+        ? ` (最高分: ${resultsWithScore[0]?.[1]?.toFixed(3)})`
+        : ` (最高分: ${resultsWithScore[0]?.[1]?.toFixed(3) ?? 'N/A'})`),
   );
 
   return filtered.map(([doc]) => ({

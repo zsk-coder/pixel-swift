@@ -154,16 +154,25 @@ async function plannerNode(
     `[LangGraph] Planner 节点执行中... (第 ${state.attempts + 1} 次)`,
   );
 
+  // 修复：如果知识库被 Grader 判定为不相关（或者多次重试均失败后降级过来），
+  // 强行拦截，避免给 Planner 喂入脏数据。
+  const effectiveKnowledge = state.knowledgeRelevant ? state.knowledge : [];
+  
+  if (!state.knowledgeRelevant && state.knowledge.length > 0) {
+    console.info("[LangGraph] 知识片段被判定为不相关，拦截脏数据，不传入 Planner");
+  }
+
   const plan = await generateProcessPlan(
     state.goal,
     state.batch,
     state.config,
-    state.knowledge,
+    effectiveKnowledge,
   );
 
   return {
     plan,
     attempts: state.attempts + 1,
+    knowledge: effectiveKnowledge, // 同时更新状态树，确保前端 UI 流式响应时不显示垃圾匹配项
   };
 }
 

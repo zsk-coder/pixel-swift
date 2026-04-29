@@ -372,7 +372,8 @@
     "copyright": "© {year} PixelSwift. 保留所有权利。",
     "privacy": "隐私政策",
     "terms": "使用条款",
-    "contact": "联系我们"
+    "contact": "联系我们",
+    "refund": "退款政策"
   },
   "legal": {
     "privacy": {
@@ -427,6 +428,32 @@
       "emailTitle": "电子邮箱",
       "copy": "复制",
       "copied": "已复制!"
+    },
+    "refund": {
+      "title": "退款政策",
+      "lastUpdated": "最后更新：{date}",
+      "overviewTitle": "概述",
+      "overviewText": "PixelSwift 致力于客户满意度。本政策概述了付费订阅计划的退款条款和条件。",
+      "freeTitle": "免费功能",
+      "freeText": "PixelSwift 提供完全免费的核心图片处理功能（压缩、转换、缩放），无需注册账户。由于不涉及付款，免费功能不适用退款政策。",
+      "proTitle": "Pro 订阅退款",
+      "proText": "如果您对 PixelSwift Pro 订阅不满意，可以在以下条件下申请全额退款：",
+      "proItem1": "退款申请必须在购买之日起 7 天内提出",
+      "proItem2": "每个账户仅有一次退款机会",
+      "proItem3": "退款将退回至原支付方式",
+      "howTitle": "如何申请退款",
+      "howText": "请通过电子邮件联系我们，并提供以下信息：",
+      "howItem1": "您的账户邮箱地址",
+      "howItem2": "购买日期",
+      "howItem3": "退款原因（可选，但有助于我们改进）",
+      "timeTitle": "处理时间",
+      "timeText": "退款申请通常在 5-10 个工作日内处理完成。退款处理完毕后，您将收到确认邮件。退款实际到账时间可能因支付方式不同而有所差异。",
+      "exceptionsTitle": "例外情况",
+      "exceptionsText": "以下情况可能无法获得退款：",
+      "exceptionsItem1": "退款申请超过购买之日起 7 天",
+      "exceptionsItem2": "该账户此前已获得过退款",
+      "contactTitle": "联系我们",
+      "contactText": "如需申请退款或咨询本政策相关问题，请联系我们："
     }
   },
   "seo": {
@@ -465,6 +492,10 @@
     "copilot": {
       "title": "AI 助手 — AI 驱动的图片优化流水线 | PixelSwift",
       "description": "上传图片并描述优化目标，AI 自动编排压缩、格式转换与尺寸调整流水线。包含免费体验。"
+    },
+    "refund": {
+      "title": "退款政策 - PixelSwift",
+      "description": "PixelSwift 退款政策。Pro 订阅购买后 7 天内不满意可申请全额退款。"
     }
   },
   "copilot": {

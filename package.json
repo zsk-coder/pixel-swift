@@ -9,7 +9,7 @@
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
     "test": "vitest run",
-    "deploy": "npm run build && wrangler pages deploy dist --project-name=pixel-swift --branch=master --commit-dirty=true",
+    "deploy": "cross-env NODE_OPTIONS=--max-old-space-size=4096 nuxt build --dotenv .env.production && wrangler pages deploy dist --project-name=pixel-swift --branch=master --commit-dirty=true",
     "deploy:dev": "npm run build && wrangler pages deploy dist --project-name=pixel-swift --branch=dev --commit-dirty=true"
   },
   "dependencies": {
