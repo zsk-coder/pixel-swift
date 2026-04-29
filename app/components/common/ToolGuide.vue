@@ -77,7 +77,7 @@ const caseItems = computed(() =>
           class="flex gap-4 p-5 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm hover:shadow-md transition-shadow"
         >
           <div
-            class="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-50 dark:bg-blue-900/30 text-primary flex items-center justify-center"
+            class="flex-shrink-0 w-10 h-10 rounded-lg bg-primary-50 dark:bg-primary/30 text-primary flex items-center justify-center"
           >
             <span
               aria-hidden="true"

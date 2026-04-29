@@ -877,7 +877,7 @@ const { isFetching: isFetchingExtensionImage } = useExtensionImage(
                 {{ t("compressor.quality") }}
               </label>
               <span
-                class="text-sm font-bold text-primary bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded"
+                class="text-sm font-bold text-primary bg-primary-50 dark:bg-primary/30 px-2 py-0.5 rounded"
                 >{{ quality }}%</span
               >
             </div>
@@ -915,7 +915,7 @@ const { isFetching: isFetchingExtensionImage } = useExtensionImage(
                 class="flex flex-col items-start p-3 rounded-xl border-2 transition-all text-left relative overflow-hidden"
                 :class="[
                   activePreset === preset.value
-                    ? 'border-primary bg-blue-50 dark:bg-blue-900/20'
+                    ? 'border-primary bg-primary-50 dark:bg-primary/20'
                     : 'border-transparent bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700',
                 ]"
                 @click="selectPreset(preset.value)"
@@ -1061,7 +1061,7 @@ const { isFetching: isFetchingExtensionImage } = useExtensionImage(
                   {{ t("compressor.quality") }}
                 </label>
                 <span
-                  class="text-sm font-bold text-primary bg-blue-50 dark:bg-blue-900/30 px-2 py-0.5 rounded"
+                  class="text-sm font-bold text-primary bg-primary-50 dark:bg-primary/30 px-2 py-0.5 rounded"
                   >{{ quality }}%</span
                 >
               </div>
@@ -1136,7 +1136,7 @@ const { isFetching: isFetchingExtensionImage } = useExtensionImage(
                   class="flex flex-col items-start p-3 rounded-xl border-2 transition-all text-left relative overflow-hidden"
                   :class="[
                     activePreset === preset.value
-                      ? 'border-primary bg-blue-50 dark:bg-blue-900/20'
+                      ? 'border-primary bg-primary-50 dark:bg-primary/20'
                       : 'border-transparent bg-slate-50 dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700',
                   ]"
                   @click="selectPreset(preset.value)"
@@ -1359,7 +1359,7 @@ const { isFetching: isFetchingExtensionImage } = useExtensionImage(
             >
               <template v-if="file.status === 'processing'">
                 <div
-                  class="absolute bottom-0 left-0 h-1 bg-blue-100 dark:bg-blue-900/30 w-full"
+                  class="absolute bottom-0 left-0 h-1 bg-primary-100 dark:bg-primary/30 w-full"
                 >
                   <div class="h-full bg-primary animate-pulse w-2/3" />
                 </div>

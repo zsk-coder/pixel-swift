@@ -101,6 +101,17 @@ export function useImageProcessor() {
 
         worker.addEventListener("message", handler);
 
+        // Derive original format if outputFormat is implicitly undefined (e.g. for compress/resize actions)
+        const ext = file.name.split(".").pop()?.toLowerCase() || "";
+        const originalFormat = ["jpg", "jpeg", "png", "webp", "avif"].includes(
+          ext,
+        )
+          ? ext === "jpeg"
+            ? "jpg"
+            : ext
+          : "jpg";
+        const finalOutputFormat = options.outputFormat || originalFormat;
+
         // Transfer the buffer to the worker (zero-copy)
         worker.postMessage(
           {
@@ -108,7 +119,7 @@ export function useImageProcessor() {
             action: options.action,
             buffer,
             options: {
-              outputFormat: options.outputFormat,
+              outputFormat: finalOutputFormat,
               quality: options.quality,
               width: options.width,
               height: options.height,

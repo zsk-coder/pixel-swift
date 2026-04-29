@@ -994,7 +994,7 @@ const { isFetching: isFetchingExtensionImage } =
                   class="px-3 py-1.5 rounded-full border text-sm font-medium transition-colors"
                   :class="[
                     selectedPreset === preset.value
-                      ? 'border-primary bg-blue-50 dark:bg-blue-900/20 text-primary'
+                      ? 'border-primary bg-primary-50 dark:bg-primary/20 text-primary'
                       : 'border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700',
                   ]"
                   @click="applyPreset(preset.value)"

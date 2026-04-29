@@ -3,7 +3,9 @@
     "compressor": "압축기",
     "converter": "변환기",
     "resizer": "크기 조정",
-    "blog": "블로그"
+    "blog": "블로그",
+    "copilot": "AI 어시스턴트",
+    "pricing": "요금제"
   },
   "home": {
     "title": "무료 온라인 이미지 압축, 변환 & 크기 조정 도구",
@@ -398,6 +400,10 @@
     "blog": {
       "title": "PixelSwift 블로그 – 이미지 압축, 포맷 변환, 최적화 팁",
       "description": "이미지 압축, 포맷 변환, 크기 조정을 위한 무료 튜토리얼. JPG, PNG, WebP, AVIF를 브라우저에서 최적화하는 방법을 안내합니다."
+    },
+    "copilot": {
+      "title": "AI 어시스턴트 — AI 기반 이미지 최적화 파이프라인 | PixelSwift",
+      "description": "이미지를 업로드하고 최적화 목표를 설명하세요. AI가 압축, 형식 변환, 크기 조정 파이프라인을 자동으로 구축합니다. 무료 체험 포함."
     }
   },
   "schema": {
@@ -436,5 +442,171 @@
       "moreArticlesDesc": "최신 인사이트로 지식을 넓혀보세요.",
       "viewAll": "전체 보기"
     }
+  },
+  "auth": {
+    "login": {
+      "heroTitle": "AI가 압축, 변환, 크기 조정 워크플로를 스마트하게 편성합니다.",
+      "heroSubtitle": "이미지를 업로드하고 최적화 목표를 설명하면 AI가 최적의 처리 단계를 자동으로 조합합니다. 일괄 이미지 최적화의 새로운 방법을 경험하세요.",
+      "badge": "무료 AI 계획 체험 3회",
+      "backHome": "홈으로 돌아가기",
+      "title": "다시 오신 것을 환영합니다",
+      "description": "로그인하여 시작하세요",
+      "google": "Google로 계속하기",
+      "helper": "신용카드 필요 없음",
+      "secondaryHelper": "안전한 Google 인증",
+      "pageTitle": "로그인 | PixelSwift",
+      "configError": "Supabase가 아직 구성되지 않았습니다. 로그인 기능을 사용하려면 환경 변수를 추가하세요.",
+      "authError": "Google 로그인을 시작할 수 없습니다. 다시 시도해 주세요."
+    },
+    "menu": {
+      "signIn": "로그인",
+      "account": "계정",
+      "free": "무료",
+      "pro": "Pro",
+      "trialLeft": "남은 AI 할당량",
+      "upgrade": "Pro로 업그레이드",
+      "signOut": "로그아웃",
+      "emailLabel": "현재 로그인한 계정",
+      "currentPlan": "현재 플랜",
+      "settings": "계정 설정"
+    },
+    "callback": {
+      "title": "로그인 중입니다",
+      "description": "로그인을 진행하며 작업 공간을 준비하고 있습니다.",
+      "failed": "로그인을 완료하지 못했습니다. 다시 시도해 주세요.",
+      "unavailable": "Supabase가 아직 구성되지 않았습니다. 로그인 기능을 사용하려면 필요한 환경 변수를 먼저 추가하세요.",
+      "retry": "Google 로그인 다시 시도",
+      "home": "홈으로 돌아가기"
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "이미지 최적화를",
+      "titleHighlight": "AI 생성 워크플로우로 전환.",
+      "desc": "시각 자산을 업로드하고 최적화 요구사항을 설명하세요. PixelSwift가 형식 변환, 압축, 크기 조정을 스마트하게 조합하여 일괄 처리 파이프라인을 자동으로 구축합니다."
+    },
+    "assets": {
+      "title": "입력 자산",
+      "addMore": "더 추가",
+      "uploaded": "{count}개 이미지 업로드됨",
+      "totalSize": "총 크기 {size}",
+      "ready": "준비 완료",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "어떻게 처리할까요?",
+      "desc": "이미지 처리 방법을 설명하세요. AI가 나머지를 처리합니다.",
+      "label": "처리 목표",
+      "placeholder": "예: 이미지를 800px 너비로 조정하고 WebP로 변환한 후 가볍게 압축..."
+    },
+    "suggestions": {
+      "title": "추천 향상",
+      "compressWeb": "웹용 압축",
+      "convertWebp": "WebP로 변환",
+      "resize800": "800px로 조정",
+      "stripMeta": "메타데이터 제거"
+    },
+    "generate": "AI 처리 시작",
+    "generateHint": "클릭하면 바로 시작 · AI 크레딧 1회 사용",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "완료",
+      "errorLabel": "오류",
+      "retry": "재시도",
+      "planConfidence": "AI 신뢰도: {score}",
+      "waiting": "실행 대기 중...",
+      "unsupportedNotice": "알림",
+      "logs": {
+        "analyzing": "{count}장의 이미지를 분석 중...",
+        "retrieving": "\"{query}\" 관련 처리 사양 분석 중...",
+        "knowledgeMatched": "{count}개 지식 일치: {titles}",
+        "knowledgeRelevant": "지식 베이스 일치 — 컨텍스트와 함께 계획 생성 중",
+        "aiPlanning": "AI가 최적 처리 파이프라인을 생성 중...",
+        "aiGenerating": "AI가 최적 워크플로를 생성 중",
+        "attempt": "{n}번째 시도",
+        "aiReviewing": "AI 품질 보증: 생성된 계획의 적합성 검토 중...",
+        "planSummary": "파이프라인: {summary} ({steps}단계)",
+        "allDone": "완료! {count}개 파일을 다운로드할 수 있습니다.",
+        "errorPrefix": "오류: {message}",
+        "thinkingSteps": [
+          "변환 매개변수 제약 분석 중...",
+          "핵심 워크플로우 추론 중...",
+          "엔진 노드 조립 중..."
+        ]
+      }
+    }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNSUPPORTED_OPERATION": "요청하신 작업은 지원되지 않습니다.",
+      "UNKNOWN_ERROR": "An unknown error occurred."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
+    }
+  },
+  "pricing": {
+    "title": "Choose your plan",
+    "subtitle": "이미지 압축, 형식 변환, 크기 조정은 영원히 무료입니다. Pro로 업그레이드하여 AI 어시스턴트의 자동 일괄 처리를 잠금 해제하세요.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ Free Forever",
+      "desc": "Basic image processing toolkit, completely free.",
+      "features": {
+        "compress": "Image Compression — Unlimited",
+        "convert": "Format Conversion — Unlimited",
+        "resize": "Image Resizing — Unlimited",
+        "batch": "Batch Processing — Up to 100 images",
+        "size": "Max File Size — 50MB",
+        "copilot": "AI 어시스턴트 — 3회 체험"
+      },
+      "notIncluded": {
+        "support": "Priority Tech Support"
+      },
+      "cta": "Start Using"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ month",
+      "periodDesc": "(or $19/year)",
+      "desc": "Unleash AI potential to automate tedious workflows.",
+      "features": {
+        "everything": "Everything in Free",
+        "copilot": "AI 어시스턴트 — 100회 / 월",
+        "nl": "Natural Language Driven AI",
+        "pipeline": "Auto-build AI pipelines",
+        "support": "Priority Email Support"
+      },
+      "cta": "Get Pro",
+      "manageSubscription": "구독 관리",
+      "manageSubscriptionDesc": "결제 수단 변경, 청구서 확인 또는 구독 취소"
+    },
+    "trust": "모든 플랜은 언제든지 취소 가능 · 만족하지 않으면 전액 환불 · 안전한 결제 처리",
+    "successTitle": "Pro에 오신 것을 환영합니다!",
+    "successDesc": "구독이 활성화되었습니다. Pro 기능을 즐기세요!",
+    "pendingTitle": "구독 확인 중…",
+    "pendingDesc": "결제를 확인하고 있습니다. 잠시만 기다려 주세요.",
+    "timeoutTitle": "구독 확인 대기 중",
+    "timeoutDesc": "확인에 몇 분이 걸릴 수 있습니다. 잠시 후 페이지를 새로고침하거나, 문제가 계속되면 고객 지원에 문의하세요.",
+    "processing": "처리 중…",
+    "upgradeError": "업그레이드에 실패했습니다. 다시 시도해 주세요.",
+    "manageError": "구독 관리 페이지를 열 수 없습니다. 다시 시도해 주세요."
   }
 }

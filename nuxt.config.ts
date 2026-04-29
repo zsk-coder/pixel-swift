@@ -1,8 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import wasm from "vite-plugin-wasm";
 import topLevelAwait from "vite-plugin-top-level-await";
+import {
+  FALLBACK_SUPABASE_KEY,
+  FALLBACK_SUPABASE_URL,
+} from "./shared/utils/supabaseAuth";
 
 const SITE_URL = "https://pixelswift.site";
+const SUPABASE_AUTH_ENABLED = Boolean(
+  process.env.NUXT_PUBLIC_SUPABASE_URL && process.env.NUXT_PUBLIC_SUPABASE_KEY,
+);
 
 export default defineNuxtConfig({
   compatibilityDate: "2025-07-15",
@@ -17,8 +24,12 @@ export default defineNuxtConfig({
     host: "0.0.0.0",
   },
   // ── Cloudflare Pages 部署 ──
+  // Node.js 兼容性配置见 wrangler.toml（LangChain 依赖 nodejs_compat）
   nitro: {
     preset: "cloudflare-pages",
+    externals: {
+      external: ["better-sqlite3"],
+    },
   },
 
   // ── 站点 URL（sitemap 和 SEO 需要） ──
@@ -28,14 +39,45 @@ export default defineNuxtConfig({
 
   // ── 公开运行时配置（组件中使用 useRuntimeConfig().public.siteUrl）──
   runtimeConfig: {
+    supabase: {
+      serviceKey: process.env.NUXT_SUPABASE_SERVICE_KEY || "",
+    },
+    // DeepSeek AI 规划服务配置（仅服务端可见）
+    deepseek: {
+      apiKey: process.env.NUXT_DEEPSEEK_API_KEY || "",
+      baseUrl: process.env.NUXT_DEEPSEEK_BASE_URL || "https://api.deepseek.com",
+      model: process.env.NUXT_DEEPSEEK_MODEL || "deepseek-v4-flash",
+    },
+    // OpenAI Embedding 配置（Corrective RAG 向量检索用，仅服务端可见）
+    openai: {
+      apiKey: process.env.NUXT_OPENAI_API_KEY || "",
+      baseUrl: process.env.NUXT_OPENAI_BASE_URL || "https://api.openai.com/v1",
+      embeddingModel:
+        process.env.NUXT_OPENAI_EMBEDDING_MODEL || "text-embedding-3-small",
+    },
+    // LemonSqueezy 支付（仅服务端可见）
+    lemonSqueezy: {
+      apiKey: process.env.LEMONSQUEEZY_API_KEY || "",
+      webhookSecret: process.env.LEMONSQUEEZY_WEBHOOK_SECRET || "",
+      storeId: process.env.LEMONSQUEEZY_STORE_ID || "",
+      variantId: process.env.LEMONSQUEEZY_VARIANT_ID || "",
+    },
     public: {
       siteUrl: SITE_URL,
+      auth: {
+        enabled: SUPABASE_AUTH_ENABLED,
+      },
+      supabase: {
+        url: process.env.NUXT_PUBLIC_SUPABASE_URL || FALLBACK_SUPABASE_URL,
+        key: process.env.NUXT_PUBLIC_SUPABASE_KEY || FALLBACK_SUPABASE_KEY,
+      },
     },
   },
 
   modules: [
     "@nuxtjs/tailwindcss",
     "@nuxtjs/i18n",
+    "@nuxtjs/supabase",
     "@nuxtjs/sitemap",
     "@nuxtjs/color-mode",
     "nuxt-schema-org",
@@ -163,11 +205,21 @@ export default defineNuxtConfig({
     ],
     langDir: "../locales",
     defaultLocale: "en",
+    fallbackLocale: "en",
     strategy: "prefix_except_default",
     detectBrowserLanguage: {
       useCookie: true,
       cookieKey: "i18n_lang",
       redirectOn: "root",
+    },
+  },
+
+  supabase: {
+    redirect: false,
+    cookieOptions: {
+      maxAge: 60 * 60 * 8,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
     },
   },
 

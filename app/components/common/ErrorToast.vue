@@ -28,7 +28,7 @@ const colorMap = {
   error: "bg-red-50 dark:bg-red-900/20 border-danger text-danger",
   warning: "bg-yellow-50 dark:bg-yellow-900/20 border-warning text-warning",
   success: "bg-green-50 dark:bg-green-900/20 border-success text-success",
-  info: "bg-blue-50 dark:bg-blue-900/20 border-brand text-brand",
+  info: "bg-primary-50 dark:bg-primary/20 border-brand text-brand",
 };
 
 let timer: ReturnType<typeof setTimeout>;

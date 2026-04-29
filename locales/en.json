@@ -3,7 +3,9 @@
     "compressor": "Compressor",
     "converter": "Converter",
     "resizer": "Resize",
-    "blog": "Blog"
+    "blog": "Blog",
+    "copilot": "AI Assistant",
+    "pricing": "Pricing"
   },
   "home": {
     "title": "Free Online Image Compressor, Converter & Resizer",
@@ -325,6 +327,42 @@
     "pending": "Waiting",
     "fetchingExtension": "Receiving image from browser..."
   },
+  "auth": {
+    "login": {
+      "heroTitle": "Let AI orchestrate your compress, convert & resize workflow.",
+      "heroSubtitle": "Upload images, describe your optimization goal, and AI assembles the best processing steps. A smarter way to batch-optimize images.",
+      "badge": "3 free AI planning experiences",
+      "backHome": "Back to home",
+      "title": "Welcome back",
+      "description": "Sign in to get started",
+      "google": "Continue with Google",
+      "helper": "No credit card required",
+      "secondaryHelper": "Secure Google authentication",
+      "pageTitle": "Sign in | PixelSwift",
+      "configError": "Supabase is not configured yet. Add your environment variables to enable sign-in.",
+      "authError": "Google sign-in could not be started. Please try again."
+    },
+    "menu": {
+      "signIn": "Sign in",
+      "account": "Account",
+      "free": "Free",
+      "pro": "Pro",
+      "trialLeft": "Remaining AI Quota",
+      "upgrade": "Upgrade to Pro",
+      "signOut": "Sign out",
+      "emailLabel": "Signed in as",
+      "currentPlan": "Current Plan",
+      "settings": "Account Settings"
+    },
+    "callback": {
+      "title": "Signing you in",
+      "description": "We're signing you in and getting your workspace ready.",
+      "failed": "We could not finish your sign-in. Please try again.",
+      "unavailable": "Supabase is not configured yet. Add the required environment variables to enable sign-in.",
+      "retry": "Try Google sign-in again",
+      "home": "Return home"
+    }
+  },
   "errors": {
     "processFailed": "Processing failed. Please refresh the page and try again.",
     "maxFilesExceeded": "Maximum {count} files allowed. Only the first {count} will be processed.",
@@ -423,6 +461,76 @@
     "blog": {
       "title": "PixelSwift Blog — Image Compression, Conversion & Optimization Tips",
       "description": "Free tutorials on image compression, format conversion, and resizing. Learn to optimize JPG, PNG, WebP & AVIF for web and email."
+    },
+    "copilot": {
+      "title": "AI Assistant — AI-Powered Image Optimization Pipeline | PixelSwift",
+      "description": "Upload images and describe your optimization goal. AI auto-builds a pipeline for compression, format conversion, and resizing. Free trial included."
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "Turn image optimization into an",
+      "titleHighlight": "AI-generated workflow.",
+      "desc": "Upload your visual assets and describe your optimization needs. PixelSwift intelligently combines format conversion, compression, and resizing to build a batch processing pipeline."
+    },
+    "assets": {
+      "title": "Input Assets",
+      "addMore": "Add More",
+      "uploaded": "{count} images uploaded",
+      "totalSize": "{size} total size",
+      "ready": "Ready",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "What do you need?",
+      "desc": "Describe how you want your images processed. The AI will handle the rest.",
+      "label": "Your Goal",
+      "placeholder": "e.g., Resize to 800px wide, convert to WebP, and lightly compress..."
+    },
+    "suggestions": {
+      "title": "Suggested Enhancements",
+      "compressWeb": "Compress for Web",
+      "convertWebp": "Convert to WebP",
+      "resize800": "Resize to 800px",
+      "stripMeta": "Strip Metadata"
+    },
+    "generate": "Start AI Processing",
+    "generateHint": "Click to start · Uses 1 AI credit",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "Complete",
+      "errorLabel": "Error",
+      "retry": "Retry",
+      "planConfidence": "AI Confidence: {score}",
+      "waiting": "Waiting for execution...",
+      "unsupportedNotice": "Notice",
+      "logs": {
+        "analyzing": "Analyzing {count} images in batch queue...",
+        "retrieving": "Searching best practices for \"{query}\"...",
+        "knowledgeMatched": "Matched {count} knowledge: {titles}",
+        "knowledgeRelevant": "Knowledge base matched — generating plan with context",
+        "aiPlanning": "AI generating optimal processing pipeline...",
+        "aiGenerating": "AI generating optimal workflow",
+        "attempt": "Attempt {n}",
+        "reviewFailed": "AI quality review failed",
+        "aiPlanningRetry": "AI is correcting plan based on review feedback...",
+        "aiReviewing": "AI Quality Assurance: Reviewing generated plan for compliance...",
+        "planSummary": "Pipeline: {summary} ({steps} steps)",
+        "allDone": "All done! {count} files ready for download.",
+        "errorPrefix": "Error: {message}",
+        "thinkingSteps": [
+          "Parsing conversion constraints...",
+          "Deducing core workflow...",
+          "Assembling engine nodes..."
+        ]
+      }
     }
   },
   "schema": {
@@ -436,5 +544,71 @@
     "resizer": {
       "featureList": "Resize images by pixel or percentage, rotate and flip, aspect ratio presets, real-time preview, no upload needed"
     }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNSUPPORTED_OPERATION": "The requested operation is not supported.",
+      "UNKNOWN_ERROR": "An unknown error occurred."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
+    }
+  },
+  "pricing": {
+    "title": "Choose your plan",
+    "subtitle": "Image compression, format conversion, and resizing are free forever. Upgrade to Pro to unlock AI Assistant for automated batch processing.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ Free Forever",
+      "desc": "Basic image processing toolkit, completely free.",
+      "features": {
+        "compress": "Image Compression — Unlimited",
+        "convert": "Format Conversion — Unlimited",
+        "resize": "Image Resizing — Unlimited",
+        "batch": "Batch Processing — Up to 100 images",
+        "size": "Max File Size — 50MB",
+        "copilot": "AI Assistant — 3 Trials"
+      },
+      "notIncluded": {
+        "support": "Priority Tech Support"
+      },
+      "cta": "Start Using"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ month",
+      "periodDesc": "(or $19/year)",
+      "desc": "Unleash AI potential to automate tedious workflows.",
+      "features": {
+        "everything": "Everything in Free",
+        "copilot": "AI Assistant — 100 / month",
+        "nl": "Natural Language Driven AI",
+        "pipeline": "Auto-build AI pipelines",
+        "support": "Priority Email Support"
+      },
+      "cta": "Get Pro",
+      "manageSubscription": "Manage Subscription",
+      "manageSubscriptionDesc": "Change payment method, view invoices, or cancel"
+    },
+    "trust": "All plans can be canceled anytime · Full refund if not satisfied · Secure payment processing",
+    "successTitle": "Welcome to Pro!",
+    "successDesc": "Your subscription is active. Enjoy your Pro features!",
+    "pendingTitle": "Confirming your subscription…",
+    "pendingDesc": "Please wait while we verify your payment.",
+    "timeoutTitle": "Subscription verification pending",
+    "timeoutDesc": "It may take a few minutes. Please refresh this page shortly, or contact support if the issue persists.",
+    "processing": "Processing...",
+    "upgradeError": "Upgrade failed. Please try again.",
+    "manageError": "Failed to open subscription portal. Please try again."
   }
 }

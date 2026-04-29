@@ -215,7 +215,7 @@ onUnmounted(() => {
     <!-- Select Images Button (web only) -->
     <div class="hidden md:flex justify-center mt-4 md:mt-6">
       <span
-        class="inline-flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white font-semibold hover:bg-blue-700 transition-colors shadow-sm cursor-pointer"
+        class="inline-flex items-center justify-center gap-2 rounded-lg h-11 px-6 bg-primary text-white font-semibold hover:bg-primary-dark transition-colors shadow-sm cursor-pointer"
       >
         <span aria-hidden="true" class="material-symbols-outlined text-lg"
           >add_photo_alternate</span
@@ -234,13 +234,22 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
-/* Override el-upload drag zone styles to match our design */
+.file-uploader {
+  height: 100%;
+}
 .file-uploader :deep(.el-upload) {
   width: 100%;
+  height: 100%;
 }
 
 .file-uploader :deep(.el-upload-dragger) {
   width: 100%;
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   border: 2px dashed rgba(37, 99, 235, 0.3);
   border-radius: 1rem;
   background: white;

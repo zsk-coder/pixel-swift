@@ -3,7 +3,9 @@
     "compressor": "图片压缩",
     "converter": "格式转换",
     "resizer": "调整大小",
-    "blog": "博客"
+    "blog": "博客",
+    "copilot": "AI 助手",
+    "pricing": "定价"
   },
   "home": {
     "title": "免费在线图片压缩、转换、调整大小工具",
@@ -325,6 +327,42 @@
     "pending": "等待中",
     "fetchingExtension": "正在接收来自扩展的图片..."
   },
+  "auth": {
+    "login": {
+      "heroTitle": "让 AI 智能编排压缩、转换与缩放工作流。",
+      "heroSubtitle": "上传图片，描述你的优化目标，AI 自动组合最佳处理步骤。体验批量图片优化的全新方式。",
+      "badge": "3 次免费 AI 规划体验",
+      "backHome": "返回首页",
+      "title": "欢迎回来",
+      "description": "登录即可开始使用",
+      "google": "使用 Google 继续",
+      "helper": "无需信用卡",
+      "secondaryHelper": "安全的 Google 登录体验",
+      "pageTitle": "登录 | PixelSwift",
+      "configError": "Supabase 还未配置，请先填写环境变量后再启用登录。",
+      "authError": "无法启动 Google 登录，请稍后重试。"
+    },
+    "menu": {
+      "signIn": "登录",
+      "account": "账号",
+      "free": "免费",
+      "pro": "Pro",
+      "trialLeft": "剩余可用额度",
+      "upgrade": "升级到 Pro",
+      "signOut": "退出登录",
+      "emailLabel": "当前登录账号",
+      "currentPlan": "当前套餐",
+      "settings": "账号设置"
+    },
+    "callback": {
+      "title": "正在为你登录",
+      "description": "正在为你登录并准备工作台。",
+      "failed": "无法完成登录，请重试。",
+      "unavailable": "Supabase 还未配置，请先填写必需的环境变量后再启用登录。",
+      "retry": "重新使用 Google 登录",
+      "home": "返回首页"
+    }
+  },
   "errors": {
     "processFailed": "处理失败，请刷新页面重试",
     "maxFilesExceeded": "最多允许 {count} 个文件，仅处理前 {count} 个",
@@ -423,6 +461,76 @@
     "blog": {
       "title": "PixelSwift 博客 – 图片优化技巧与教程",
       "description": "专业的图片优化、压缩和网页性能技巧与教程。学习如何优化图片以提升网站加载速度。"
+    },
+    "copilot": {
+      "title": "AI 助手 — AI 驱动的图片优化流水线 | PixelSwift",
+      "description": "上传图片并描述优化目标，AI 自动编排压缩、格式转换与尺寸调整流水线。包含免费体验。"
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "将图片优化变成",
+      "titleHighlight": "AI 生成的工作流。",
+      "desc": "上传视觉素材并描述你的优化需求。PixelSwift 将智能组合格式转换、图片压缩与尺寸调整，自动构建批处理流水线。"
+    },
+    "assets": {
+      "title": "输入素材",
+      "addMore": "添加更多",
+      "uploaded": "已上传 {count} 张图片",
+      "totalSize": "总大小 {size}",
+      "ready": "就绪",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "你想怎么处理？",
+      "desc": "描述你的图片处理需求，AI 会自动完成。",
+      "label": "处理目标",
+      "placeholder": "例如：将图片缩放至 800px 宽，转换为 WebP 格式并进行轻度压缩..."
+    },
+    "suggestions": {
+      "title": "推荐增强",
+      "compressWeb": "压缩优化",
+      "convertWebp": "转换为 WebP",
+      "resize800": "缩放至 800px",
+      "stripMeta": "清除元数据"
+    },
+    "generate": "开始智能处理",
+    "generateHint": "点击即开始处理 · 使用 1 次 AI 额度",
+    "execution": {
+      "objectiveApplied": "🎯 目标设定：\"{intent}\"",
+      "processingWorkflow": "处理工作流正在执行",
+      "processingDesc": "批量图像优化与多格式转换",
+      "pipelineGenerated": "AI 处理管线已生成",
+      "viewDetails": "查看详情",
+      "executionCore": "执行核心状态 (日志)",
+      "newWorkflow": "新建工作流",
+      "downloadAll": "下载全部结果 (.zip)",
+      "allDone": "处理完成",
+      "errorLabel": "出错",
+      "retry": "重试",
+      "planConfidence": "AI 置信度: {score}",
+      "waiting": "等待执行...",
+      "unsupportedNotice": "提示",
+      "logs": {
+        "analyzing": "正在分析 {count} 张图片...",
+        "retrieving": "正在分析「{query}」相关的处理规范...",
+        "knowledgeMatched": "已匹配 {count} 条知识: {titles}",
+        "knowledgeRelevant": "知识库已命中 — 正在结合上下文生成方案",
+        "aiPlanning": "AI 正在生成最优处理方案...",
+        "aiGenerating": "AI 正在生成最优工作流",
+        "attempt": "第 {n} 次尝试",
+        "reviewFailed": "AI 质量审核未通过",
+        "aiPlanningRetry": "AI 正在重新修编方案...",
+        "aiReviewing": "AI 质量审核: 正在检查生成方案的合规性...",
+        "planSummary": "方案: {summary} ({steps} 个步骤)",
+        "allDone": "全部完成！{count} 个文件已就绪，可下载。",
+        "errorPrefix": "错误: {message}",
+        "thinkingSteps": [
+          "正在解析转换参数约束...",
+          "正在推演核心工作流...",
+          "正在装配引擎节点..."
+        ]
+      }
     }
   },
   "schema": {
@@ -436,5 +544,71 @@
     "resizer": {
       "featureList": "按像素或百分比调整图片大小，旋转翻转，宽高比预设，实时预览，无需上传"
     }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI服务尚未配置，请联系管理员",
+      "QUOTA_DATA_ERROR": "用户配额数据异常，请稍后重试",
+      "INVALID_PARAMS": "请求参数不合法",
+      "AI_UNAVAILABLE": "AI规划服务暂时不可用",
+      "UNSUPPORTED_OPERATION": "暂不支持该处理操作",
+      "UNKNOWN_ERROR": "发生了未知错误"
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "请先登录后再使用AI规划功能"
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "免费体验次数已用完，请升级Pro继续使用"
+    }
+  },
+  "pricing": {
+    "title": "选择适合你的方案",
+    "subtitle": "图片压缩、格式转换、尺寸调整永久免费。升级 Pro 解锁 AI 助手，自动完成批量处理。",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ 永久免费",
+      "desc": "基础图片处理工具箱，完全免费。",
+      "features": {
+        "compress": "图片压缩 — 无限次",
+        "convert": "格式转换 — 无限次",
+        "resize": "图片缩放 — 无限次",
+        "batch": "批量处理 — 最多 100 张",
+        "size": "单文件最大 50MB",
+        "copilot": "AI 助手 — 3 次体验"
+      },
+      "notIncluded": {
+        "support": "优先技术支持"
+      },
+      "cta": "开始使用"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ 月",
+      "periodDesc": "(or $19/年)",
+      "desc": "释放 AI 潜力，自动化繁琐流程。",
+      "features": {
+        "everything": "Free 的全部功能",
+        "copilot": "AI 助手 — 100 次 / 月",
+        "nl": "自然语言驱动 AI 处理",
+        "pipeline": "AI 自动构建处理流水线",
+        "support": "优先邮件技术支持"
+      },
+      "cta": "获取 Pro",
+      "manageSubscription": "管理订阅",
+      "manageSubscriptionDesc": "修改支付方式、查看账单或取消订阅"
+    },
+    "trust": "所有方案均支持随时取消 · 不满意随时退款 · 安全支付保障",
+    "successTitle": "欢迎加入 Pro！",
+    "successDesc": "您的订阅已生效，尽情体验 AI 助理的强大功能吧！",
+    "pendingTitle": "正在确认订阅…",
+    "pendingDesc": "正在验证您的付款，请稍候。",
+    "timeoutTitle": "订阅确认中",
+    "timeoutDesc": "确认可能需要几分钟时间。请稍后刷新页面，如持续未生效请联系客服。",
+    "processing": "处理中…",
+    "upgradeError": "升级失败，请重试。",
+    "manageError": "无法打开订阅管理页面，请重试。"
   }
 }

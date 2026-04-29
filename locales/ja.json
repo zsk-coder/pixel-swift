@@ -3,7 +3,9 @@
     "compressor": "圧縮",
     "converter": "変換",
     "resizer": "リサイズ",
-    "blog": "ブログ"
+    "blog": "ブログ",
+    "copilot": "AI アシスタント",
+    "pricing": "料金プラン"
   },
   "home": {
     "title": "無料オンライン画像圧縮・変換・リサイズツール",
@@ -398,6 +400,10 @@
     "blog": {
       "title": "PixelSwiftブログ – 画像圧縮・フォーマット変換・最適化のヒント",
       "description": "画像圧縮、フォーマット変換、リサイズの無料チュートリアル。JPG、PNG、WebP、AVIFをブラウザで最適化する方法を解説。"
+    },
+    "copilot": {
+      "title": "AI アシスタント — AI駆動の画像最適化パイプライン | PixelSwift",
+      "description": "画像をアップロードして最適化目標を伝えるだけ。AIが圧縮・フォーマット変換・サイズ調整のパイプラインを自動構築。無料体験あり。"
     }
   },
   "schema": {
@@ -436,5 +442,171 @@
       "moreArticlesDesc": "最新のインサイトで知識を広げましょう。",
       "viewAll": "すべての記事を見る"
     }
+  },
+  "auth": {
+    "login": {
+      "heroTitle": "AIが圧縮・変換・リサイズのワークフローをスマートに編成。",
+      "heroSubtitle": "画像をアップロードし、最適化の目標を伝えれば、AIが最適な処理ステップを自動で組み立てます。バッチ画像最適化の新しい方法を体験してください。",
+      "badge": "AI プランニングを 3 回無料で体験",
+      "backHome": "ホームに戻る",
+      "title": "おかえりなさい",
+      "description": "ログインして始めましょう",
+      "google": "Google で続行",
+      "helper": "クレジットカードは不要です",
+      "secondaryHelper": "安全な Google 認証",
+      "pageTitle": "ログイン | PixelSwift",
+      "configError": "Supabase がまだ設定されていません。サインインを有効にするには環境変数を追加してください。",
+      "authError": "Google サインインを開始できませんでした。もう一度お試しください。"
+    },
+    "menu": {
+      "signIn": "ログイン",
+      "account": "アカウント",
+      "free": "無料",
+      "pro": "Pro",
+      "trialLeft": "残りAIクォータ",
+      "upgrade": "Pro にアップグレード",
+      "signOut": "ログアウト",
+      "emailLabel": "現在のログインアカウント",
+      "currentPlan": "現在のプラン",
+      "settings": "アカウント設定"
+    },
+    "callback": {
+      "title": "ログインしています",
+      "description": "ログインを進めながら、ワークスペースを準備しています。",
+      "failed": "サインインを完了できませんでした。もう一度お試しください。",
+      "unavailable": "Supabase はまだ設定されていません。サインインを有効にするには必要な環境変数を追加してください。",
+      "retry": "Google サインインを再試行",
+      "home": "ホームに戻る"
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "画像最適化を",
+      "titleHighlight": "AI生成ワークフローに変換。",
+      "desc": "ビジュアルアセットをアップロードし、最適化のご要望をお伝えください。PixelSwiftがフォーマット変換・圧縮・リサイズをスマートに組み合わせ、バッチ処理パイプラインを自動構築します。"
+    },
+    "assets": {
+      "title": "入力アセット",
+      "addMore": "追加",
+      "uploaded": "{count}枚の画像がアップロード済み",
+      "totalSize": "合計サイズ {size}",
+      "ready": "準備完了",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "どう処理しますか？",
+      "desc": "画像の処理方法を入力してください。AIが自動で処理します。",
+      "label": "処理目標",
+      "placeholder": "例：画像を800px幅にリサイズし、WebPに変換して軽く圧縮..."
+    },
+    "suggestions": {
+      "title": "おすすめの強化",
+      "compressWeb": "Web用に圧縮",
+      "convertWebp": "WebPに変換",
+      "resize800": "800pxにリサイズ",
+      "stripMeta": "メタデータ削除"
+    },
+    "generate": "AI処理を開始",
+    "generateHint": "クリックで処理開始 · AI クレジット 1 回分を使用",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "完了",
+      "errorLabel": "エラー",
+      "retry": "再試行",
+      "planConfidence": "AI 信頼度: {score}",
+      "waiting": "実行待機中...",
+      "unsupportedNotice": "通知",
+      "logs": {
+        "analyzing": "{count}枚の画像を分析中...",
+        "retrieving": "「{query}」に関する処理仕様を分析中...",
+        "knowledgeMatched": "{count}件のナレッジが一致: {titles}",
+        "knowledgeRelevant": "ナレッジベースが一致 — コンテキストを活用してプランを生成中",
+        "aiPlanning": "AIが最適な処理パイプラインを生成中...",
+        "aiGenerating": "AIが最適なワークフローを生成中",
+        "attempt": "{n}回目の試行",
+        "aiReviewing": "AI品質保証: 生成されたプランのコンプライアンスを確認中...",
+        "planSummary": "パイプライン: {summary} ({steps}ステップ)",
+        "allDone": "完了！{count}個のファイルがダウンロード可能です。",
+        "errorPrefix": "エラー: {message}",
+        "thinkingSteps": [
+          "変換制約を解析中...",
+          "コアワークフローを推論中...",
+          "エンジンノードを組み立て中..."
+        ]
+      }
+    }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "The AI planning service is temporarily unavailable.",
+      "UNSUPPORTED_OPERATION": "要求された操作はサポートされていません。",
+      "UNKNOWN_ERROR": "An unknown error occurred."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
+    }
+  },
+  "pricing": {
+    "title": "Choose your plan",
+    "subtitle": "画像圧縮、フォーマット変換、リサイズは永久無料。Pro にアップグレードして AI アシスタントによる自動バッチ処理を解放しましょう。",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ Free Forever",
+      "desc": "Basic image processing toolkit, completely free.",
+      "features": {
+        "compress": "Image Compression — Unlimited",
+        "convert": "Format Conversion — Unlimited",
+        "resize": "Image Resizing — Unlimited",
+        "batch": "Batch Processing — Up to 100 images",
+        "size": "Max File Size — 50MB",
+        "copilot": "AI アシスタント — 3回お試し"
+      },
+      "notIncluded": {
+        "support": "Priority Tech Support"
+      },
+      "cta": "Start Using"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ month",
+      "periodDesc": "(or $19/year)",
+      "desc": "Unleash AI potential to automate tedious workflows.",
+      "features": {
+        "everything": "Everything in Free",
+        "copilot": "AI アシスタント — 100回 / 月",
+        "nl": "Natural Language Driven AI",
+        "pipeline": "Auto-build AI pipelines",
+        "support": "Priority Email Support"
+      },
+      "cta": "Get Pro",
+      "manageSubscription": "サブスクリプション管理",
+      "manageSubscriptionDesc": "お支払い方法の変更、請求書の確認、またはキャンセル"
+    },
+    "trust": "すべてのプランはいつでもキャンセル可能 · ご満足いただけない場合は全額返金 · 安全な決済処理",
+    "successTitle": "Proへようこそ！",
+    "successDesc": "サブスクリプションが有効になりました。Pro機能をお楽しみください！",
+    "pendingTitle": "サブスクリプションを確認中…",
+    "pendingDesc": "お支払いを確認しています。しばらくお待ちください。",
+    "timeoutTitle": "サブスクリプションの確認待ち",
+    "timeoutDesc": "確認に数分かかる場合があります。しばらくしてからページを更新してください。問題が続く場合はサポートにお問い合わせください。",
+    "processing": "処理中…",
+    "upgradeError": "アップグレードに失敗しました。もう一度お試しください。",
+    "manageError": "サブスクリプション管理ページを開けませんでした。もう一度お試しください。"
   }
 }

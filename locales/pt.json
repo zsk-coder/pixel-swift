@@ -3,7 +3,9 @@
     "compressor": "Compressor",
     "converter": "Conversor",
     "resizer": "Redimensionar",
-    "blog": "Blog"
+    "blog": "Blog",
+    "copilot": "Assistente IA",
+    "pricing": "Preços"
   },
   "home": {
     "title": "Compressor, conversor e redimensionador de imagens online grátis",
@@ -398,6 +400,10 @@
     "blog": {
       "title": "Blog PixelSwift – Comprimir fotos online, formatos de imagem e mais",
       "description": "Tutoriais para comprimir fotos online grátis, converter formatos de imagem e redimensionar fotos. Guias passo a passo para JPG, PNG, WebP e AVIF."
+    },
+    "copilot": {
+      "title": "Assistente IA — Pipeline de otimização de imagens com IA | PixelSwift",
+      "description": "Envie imagens e descreva seu objetivo de otimização. A IA constrói automaticamente um pipeline de compressão, conversão de formato e redimensionamento. Teste gratuito incluído."
     }
   },
   "schema": {
@@ -436,5 +442,171 @@
       "moreArticlesDesc": "Amplie seus conhecimentos com nossos artigos mais recentes.",
       "viewAll": "Ver tudo"
     }
+  },
+  "auth": {
+    "login": {
+      "heroTitle": "A IA orquestra seus fluxos de compressão, conversão e redimensionamento.",
+      "heroSubtitle": "Envie imagens, descreva seu objetivo de otimização, e a IA monta as melhores etapas de processamento. Uma forma mais inteligente de otimizar imagens em lote.",
+      "badge": "3 experiências gratuitas de planejamento com IA",
+      "backHome": "Voltar para o início",
+      "title": "Bem-vindo de volta",
+      "description": "Faça login para começar",
+      "google": "Continuar com Google",
+      "helper": "Sem necessidade de cartão de crédito",
+      "secondaryHelper": "Autenticação segura com Google",
+      "pageTitle": "Entrar | PixelSwift",
+      "configError": "O Supabase ainda não está configurado. Adicione suas variáveis de ambiente para habilitar o login.",
+      "authError": "Não foi possível iniciar o login com Google. Tente novamente."
+    },
+    "menu": {
+      "signIn": "Entrar",
+      "account": "Conta",
+      "free": "Grátis",
+      "pro": "Pro",
+      "trialLeft": "Cota de IA restante",
+      "upgrade": "Fazer upgrade para Pro",
+      "signOut": "Sair",
+      "emailLabel": "Conectado como",
+      "currentPlan": "Plano atual",
+      "settings": "Configurações da conta"
+    },
+    "callback": {
+      "title": "Fazendo seu login",
+      "description": "Estamos conectando você e preparando seu espaço de trabalho.",
+      "failed": "Não foi possível concluir seu login. Tente novamente.",
+      "unavailable": "O Supabase ainda não está configurado. Adicione primeiro as variáveis de ambiente necessárias para habilitar o login.",
+      "retry": "Tentar novamente com Google",
+      "home": "Voltar para o início"
+    }
+  },
+  "copilot": {
+    "hero": {
+      "title": "Transforme a otimização de imagens em um",
+      "titleHighlight": "fluxo de trabalho gerado por IA.",
+      "desc": "Faça upload dos seus recursos visuais e descreva suas necessidades de otimização. O PixelSwift combina inteligentemente conversão de formato, compressão e redimensionamento para construir um pipeline de processamento em lote."
+    },
+    "assets": {
+      "title": "Recursos de Entrada",
+      "addMore": "Adicionar Mais",
+      "uploaded": "{count} imagens enviadas",
+      "totalSize": "{size} tamanho total",
+      "ready": "Pronto",
+      "more": "+{count}"
+    },
+    "intent": {
+      "title": "O que você precisa?",
+      "desc": "Descreva como deseja processar suas imagens. A IA cuida do resto.",
+      "label": "Seu Objetivo",
+      "placeholder": "ex., Redimensionar para 800px de largura, converter para WebP e comprimir levemente..."
+    },
+    "suggestions": {
+      "title": "Melhorias Sugeridas",
+      "compressWeb": "Comprimir para Web",
+      "convertWebp": "Converter para WebP",
+      "resize800": "Redimensionar para 800px",
+      "stripMeta": "Remover Metadados"
+    },
+    "generate": "Iniciar Processamento com IA",
+    "generateHint": "Clique para iniciar · Usa 1 crédito AI",
+    "execution": {
+      "objectiveApplied": "🎯 Objective applied: \"{intent}\"",
+      "processingWorkflow": "Processing Workflow",
+      "processingDesc": "Batch image optimization and conversion",
+      "pipelineGenerated": "AI Pipeline Generated",
+      "viewDetails": "View Details",
+      "executionCore": "Execution Core (Detailed)",
+      "newWorkflow": "New Workflow",
+      "downloadAll": "Download All Results (.zip)",
+      "allDone": "Concluído",
+      "errorLabel": "Erro",
+      "retry": "Tentar novamente",
+      "planConfidence": "Confiança da IA: {score}",
+      "waiting": "Aguardando execução...",
+      "unsupportedNotice": "Aviso",
+      "logs": {
+        "analyzing": "Analisando {count} imagens...",
+        "retrieving": "Analisando normas de processamento para \"{query}\"...",
+        "knowledgeMatched": "{count} conhecimentos correspondentes: {titles}",
+        "knowledgeRelevant": "Base de conhecimento correspondente — gerando plano com contexto",
+        "aiPlanning": "IA gerando o pipeline de processamento ideal...",
+        "aiGenerating": "IA gerando o fluxo de trabalho ideal",
+        "attempt": "Tentativa {n}",
+        "aiReviewing": "Garantia de qualidade IA: revisando a conformidade do plano gerado...",
+        "planSummary": "Pipeline: {summary} ({steps} passos)",
+        "allDone": "Concluído! {count} arquivos prontos para download.",
+        "errorPrefix": "Erro: {message}",
+        "thinkingSteps": [
+          "Analisando restrições de conversão...",
+          "Deduzindo fluxo de trabalho...",
+          "Montando os nós do motor..."
+        ]
+      }
+    }
+  },
+  "apiEvents": {
+    "SERVER_ERROR": {
+      "AI_NOT_CONFIGURED": "AI service is not configured. Please contact the administrator.",
+      "QUOTA_DATA_ERROR": "User quota data is abnormal. Please try again later.",
+      "INVALID_PARAMS": "Invalid request parameters.",
+      "AI_UNAVAILABLE": "O serviço de planejamento por IA está temporariamente indisponível.",
+      "UNSUPPORTED_OPERATION": "A operação solicitada não é suportada.",
+      "UNKNOWN_ERROR": "Ocorreu um erro desconhecido."
+    },
+    "UNAUTHORIZED": {
+      "LOGIN_REQUIRED": "Please log in before using the AI planning feature."
+    },
+    "QUOTA_EXHAUSTED": {
+      "UPGRADE_REQUIRED": "Your free trial has been exhausted. Please upgrade to Pro to continue."
+    }
+  },
+  "pricing": {
+    "title": "Choose your plan",
+    "subtitle": "Compressão, conversão de formato e redimensionamento de imagens são gratuitos para sempre. Atualize para Pro para desbloquear o Assistente IA para processamento em lote automatizado.",
+    "free": {
+      "name": "Free",
+      "price": "$0",
+      "period": "/ Free Forever",
+      "desc": "Basic image processing toolkit, completely free.",
+      "features": {
+        "compress": "Image Compression — Unlimited",
+        "convert": "Format Conversion — Unlimited",
+        "resize": "Image Resizing — Unlimited",
+        "batch": "Batch Processing — Up to 100 images",
+        "size": "Max File Size — 50MB",
+        "copilot": "Assistente IA — 3 testes"
+      },
+      "notIncluded": {
+        "support": "Priority Tech Support"
+      },
+      "cta": "Start Using"
+    },
+    "pro": {
+      "badge": "MOST POPULAR",
+      "name": "Pro",
+      "price": "$4",
+      "period": "/ month",
+      "periodDesc": "(or $19/year)",
+      "desc": "Unleash AI potential to automate tedious workflows.",
+      "features": {
+        "everything": "Everything in Free",
+        "copilot": "Assistente IA — 100 / mês",
+        "nl": "Natural Language Driven AI",
+        "pipeline": "Auto-build AI pipelines",
+        "support": "Priority Email Support"
+      },
+      "cta": "Get Pro",
+      "manageSubscription": "Gerenciar assinatura",
+      "manageSubscriptionDesc": "Alterar forma de pagamento, ver faturas ou cancelar"
+    },
+    "trust": "Todos os planos podem ser cancelados a qualquer momento · Reembolso total se não estiver satisfeito · Processamento de pagamento seguro",
+    "successTitle": "Bem-vindo ao Pro!",
+    "successDesc": "Sua assinatura está ativa. Aproveite seus recursos Pro!",
+    "pendingTitle": "Confirmando sua assinatura…",
+    "pendingDesc": "Estamos verificando seu pagamento. Por favor, aguarde.",
+    "timeoutTitle": "Verificação de assinatura pendente",
+    "timeoutDesc": "A verificação pode levar alguns minutos. Atualize a página em breve ou entre em contato com o suporte se o problema persistir.",
+    "processing": "Processando…",
+    "upgradeError": "Falha ao atualizar. Por favor, tente novamente.",
+    "manageError": "Não foi possível abrir o portal de assinatura. Por favor, tente novamente."
   }
 }
