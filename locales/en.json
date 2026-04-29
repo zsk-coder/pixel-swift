@@ -596,11 +596,11 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now",
+      "cta": "Get Pro",
       "manageSubscription": "Manage Subscription",
       "manageSubscriptionDesc": "Change payment method, view invoices, or cancel"
     },
-    "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
+    "trust": "All plans can be canceled anytime · Full refund if not satisfied · Secure payment processing",
     "successTitle": "Welcome to Pro!",
     "successDesc": "Your subscription is active. Enjoy your Pro features!",
     "pendingTitle": "Confirming your subscription…",

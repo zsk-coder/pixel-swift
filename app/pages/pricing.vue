@@ -111,51 +111,14 @@ onMounted(() => {
   }, 1500);
 });
 
-// 点击 "立即升级" → 创建 Checkout Session → 跳转 LemonSqueezy
-async function handleUpgrade() {
-  upgrading.value = true;
-  try {
-    const { url } = await $fetch<{ url: string }>("/api/billing/checkout", {
-      method: "POST",
-      body: { locale: locale.value },
-    });
-    // 写入 checkout 标记（带时间戳），用于回跳后校验
-    try { sessionStorage.setItem(CHECKOUT_FLAG_KEY, String(Date.now())); } catch { /* 容错 */ }
-    // 跳转到 LemonSqueezy 收银台
-    window.location.href = url;
-  } catch (err: any) {
-    // 未登录时跳转登录页
-    if (err?.statusCode === 401) {
-      navigateTo(localePath("/login"));
-      return;
-    }
-    ElMessage.error(
-      t("pricing.upgradeError") || "Upgrade failed. Please try again.",
-    );
-  } finally {
-    upgrading.value = false;
-  }
+// 临时方案：支付平台切换中，点击升级跳转联系页面
+function handleUpgrade() {
+  navigateTo(localePath("/contact"));
 }
 
-// 点击 "管理订阅" → 获取 Customer Portal URL → 跳转 LemonSqueezy 自助管理
-async function handleManageSubscription() {
-  managingSubscription.value = true;
-  try {
-    const { url } = await $fetch<{ url: string }>("/api/billing/portal", {
-      method: "POST",
-    });
-    window.location.href = url;
-  } catch (err: any) {
-    if (err?.statusCode === 401) {
-      navigateTo(localePath("/login"));
-      return;
-    }
-    ElMessage.error(
-      t("pricing.manageError") || "Failed to open subscription portal.",
-    );
-  } finally {
-    managingSubscription.value = false;
-  }
+// 临时方案：支付平台切换中，点击管理订阅跳转联系页面
+function handleManageSubscription() {
+  navigateTo(localePath("/contact"));
 }
 </script>
 

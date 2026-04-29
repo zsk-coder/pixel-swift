@@ -596,11 +596,11 @@
         "pipeline": "AI 自动构建处理流水线",
         "support": "优先邮件技术支持"
       },
-      "cta": "立即升级",
+      "cta": "获取 Pro",
       "manageSubscription": "管理订阅",
       "manageSubscriptionDesc": "修改支付方式、查看账单或取消订阅"
     },
-    "trust": "所有方案均支持随时取消 · 不满意随时退款 · 由 LemonSqueezy 安全处理支付",
+    "trust": "所有方案均支持随时取消 · 不满意随时退款 · 安全支付保障",
     "successTitle": "欢迎加入 Pro！",
     "successDesc": "您的订阅已生效，尽情体验 AI 助理的强大功能吧！",
     "pendingTitle": "正在确认订阅…",

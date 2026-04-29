@@ -594,11 +594,11 @@
         "pipeline": "Auto-build AI pipelines",
         "support": "Priority Email Support"
       },
-      "cta": "Upgrade Now",
+      "cta": "Get Pro",
       "manageSubscription": "サブスクリプション管理",
       "manageSubscriptionDesc": "お支払い方法の変更、請求書の確認、またはキャンセル"
     },
-    "trust": "All plans can be canceled anytime · Full refund if not satisfied · Securely processed by LemonSqueezy",
+    "trust": "すべてのプランはいつでもキャンセル可能 · ご満足いただけない場合は全額返金 · 安全な決済処理",
     "successTitle": "Proへようこそ！",
     "successDesc": "サブスクリプションが有効になりました。Pro機能をお楽しみください！",
     "pendingTitle": "サブスクリプションを確認中…",
