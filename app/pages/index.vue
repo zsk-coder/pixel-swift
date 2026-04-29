@@ -12,8 +12,8 @@ const statsData: Array<{
   decimal?: number;
 }> = [
   {
-    target: 20000,
-    start: 14000,
+    target: 50000,
+    start: 35000,
     format: true,
     suffix: "+",
     labelKey: "home.stats.processed",
