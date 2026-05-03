@@ -111,7 +111,7 @@ function handleGenerate() {
   if (!canGenerate.value) return;
   // 未登录用户跳转登录页，登录后自动回跳
   if (!user.value) {
-    navigateTo(localePath("/login?returnTo=/workflow-copilot"));
+    navigateTo(localePath("/login?returnTo=/ai-workflow"));
     return;
   }
   isExecuting.value = true;

@@ -14,7 +14,7 @@ import type { UserEntitlementRow } from "../../lib/billing/trial";
 import { enforceRateLimit } from "../../utils/rateLimiter";
 
 // ────────────────────────────────────────────────────────
-// POST /api/workflow-copilot/plan
+// POST /api/ai-workflow/plan
 // 核心 AI 规划接口：接收用户目标 + 图片摘要，返回结构化处理计划
 // ────────────────────────────────────────────────────────
 

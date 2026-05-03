@@ -21,6 +21,9 @@ useSchemaOrg([
     description: t("schema.siteDescription"),
   }),
 ]);
+
+// ── SEO 止血：对小语种工具页和功能页自动注入 noindex ──
+useSeoRobots();
 </script>
 
 <template>

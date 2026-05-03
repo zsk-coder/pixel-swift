@@ -81,7 +81,7 @@ export function useTrialQuota() {
         if (import.meta.server) {
           // SSR：直接 $fetch，转发 Cookie，手动解包 ApiResponse
           const res = await $fetch<{ code: number; data?: TrialQuota }>(
-            "/api/workflow-copilot/quota",
+            "/api/ai-workflow/quota",
             {
               headers: ssrHeaders as Record<string, string>,
               credentials: "include",
@@ -91,7 +91,7 @@ export function useTrialQuota() {
         } else {
           // 客户端：使用 $api 插件（自动处理 401 跳转 / 5xx 提示）
           const { $api } = useNuxtApp();
-          const res = await $api<TrialQuota>("/api/workflow-copilot/quota");
+          const res = await $api<TrialQuota>("/api/ai-workflow/quota");
           nextQuota = res.data ?? { ...DEFAULT_TRIAL_QUOTA };
         }
 

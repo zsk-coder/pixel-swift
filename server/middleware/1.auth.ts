@@ -5,7 +5,7 @@ import { isSupabaseServiceEnabled } from "~~/shared/utils/supabaseAuth";
  * 需要强制登录的路由前缀列表
  *
  * 当前仅预留，实际 AI / 写操作接口上线时在此追加。
- * 注意：/api/workflow-copilot/quota 和 /api/workflow-copilot/plan 均使用
+ * 注意：/api/ai-workflow/quota 和 /api/ai-workflow/plan 均使用
  *       fail-safe 设计（未登录返回 200 + 业务 payload），不在此列表中。
  */
 const PROTECTED_PREFIXES: string[] = ["/api/ai/", "/api/user/"];

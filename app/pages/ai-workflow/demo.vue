@@ -11,7 +11,7 @@ definePageMeta({
   middleware: defineNuxtRouteMiddleware(() => {
     // 仅允许开发环境访问，生产环境重定向到首页
     if (!import.meta.dev) {
-      return navigateTo("/workflow-copilot");
+      return navigateTo("/ai-workflow");
     }
   }),
 });
@@ -70,7 +70,7 @@ async function generatePlan() {
 
   try {
     const res = await $api<{ plan: ProcessPlan; remainingTrialCount: number }>(
-      "/api/workflow-copilot/plan",
+      "/api/ai-workflow/plan",
       {
         method: "POST",
         body: {

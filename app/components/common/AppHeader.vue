@@ -63,7 +63,7 @@ const navItems = computed(() => [
   { label: t("nav.compressor"), to: localePath("/compress-image") },
   { label: t("nav.converter"), to: localePath("/converter") },
   { label: t("nav.resizer"), to: localePath("/resize-image") },
-  { label: t("nav.copilot"), to: localePath("/workflow-copilot"), isNew: true },
+  { label: t("nav.copilot"), to: localePath("/ai-workflow"), isNew: true },
   { label: t("nav.pricing"), to: localePath("/pricing") },
   { label: t("nav.blog"), to: localePath("/blog") },
 ]);

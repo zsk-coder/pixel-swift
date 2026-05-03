@@ -8,6 +8,9 @@
 3. `i18n-checklist.md`：处理任何用户可见文案前必读
 4. `verification-flow.md`：实现完成后的验证顺序
 
+## 疑难杂症 (Troubleshooting)
+- `troubleshooting-ssr-d1.md`：记录 @nuxt/content v3 部署到 CF Pages 时出现 SSR 挂起转圈的“死锁”排查与修复方案。
+
 ## 历史资料
 - `.agents/rules/coding-standards.md`
 - `.agents/rules/project.md`

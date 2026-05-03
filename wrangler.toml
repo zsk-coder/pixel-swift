@@ -10,6 +10,13 @@ pages_build_output_dir = "dist"
 compatibility_flags = ["nodejs_compat"]
 compatibility_date = "2025-07-15"
 
+# ── D1 数据库绑定 ──
+# @nuxt/content v3 在 Cloudflare Pages 运行时需要 D1 来查询 markdown 内容
+[[d1_databases]]
+binding = "DB"
+database_name = "pixelswift-content"
+database_id = "6fd97d39-ce7c-481b-bb36-356e473a9973"
+
 [vars]
 # 环境变量在 CF Dashboard > Settings > Environment Variables 中配置
 # 不在此文件中存放敏感信息（API Key 等）

@@ -3,7 +3,7 @@
  *
  * 核心职责：
  *  1. 从 File[] 提取图片特征 → ImageDescriptor[] + BatchSummary
- *  2. 调用 POST /api/workflow-copilot/plan 获取 AI 生成的 ProcessPlan
+ *  2. 调用 POST /api/ai-workflow/plan 获取 AI 生成的 ProcessPlan
  *  3. 在浏览器端逐步执行 plan.steps（resize / compress / convert 等）
  *  4. 维护执行日志 LogEntry[]，供 ExecutionCore 实时渲染
  *  5. 提供批量下载结果能力
@@ -396,7 +396,7 @@ export function useWorkflowCopilot() {
     goalInput: GoalInput,
     batch: BatchSummary,
   ): Promise<ProcessPlan> {
-    const response = await fetch("/api/workflow-copilot/plan", {
+    const response = await fetch("/api/ai-workflow/plan", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ goal: goalInput, batch }),
