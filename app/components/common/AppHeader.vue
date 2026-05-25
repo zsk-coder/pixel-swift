@@ -7,9 +7,15 @@ const switchLocalePath = useSwitchLocalePath();
 const colorMode = useColorMode();
 const route = useRoute();
 const isMobileMenuOpen = ref(false);
+const isMobileLangOpen = ref(false);
 const { user } = useAccountStatus();
 
 const isDark = computed(() => colorMode.value === "dark");
+
+// 主题三态切换：system / light / dark（Vercel 风格）
+function setThemeMode(mode: 'system' | 'light' | 'dark') {
+  colorMode.preference = mode;
+}
 
 async function toggleTheme(event: MouseEvent) {
   // Fallback for browsers that don't support View Transition API
@@ -57,6 +63,18 @@ function toggleMobileMenu() {
 
 function closeMobileMenu() {
   isMobileMenuOpen.value = false;
+  isMobileLangOpen.value = false;
+}
+
+async function onMobileLangChange(event: Event) {
+  const code = (event.target as HTMLSelectElement).value;
+  const path = switchLocalePath(code as any);
+  if (path) {
+    await navigateTo(path);
+  } else {
+    setLocale(code);
+  }
+  closeMobileMenu();
 }
 
 const navItems = computed(() => [
@@ -152,41 +170,43 @@ const authCopy = computed(() => ({
 
       <!-- Actions (right) -->
       <div class="flex items-center gap-3">
-        <!-- Language -->
-        <ElDropdown trigger="click" @command="selectLocale">
-          <button
-            aria-label="Language"
-            class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors"
-          >
-            <span
-              aria-hidden="true"
-              class="material-symbols-outlined text-[20px]"
-              >language</span
+        <!-- Language (desktop only) -->
+        <div class="hidden md:flex items-center">
+          <ElDropdown trigger="click" @command="selectLocale">
+            <button
+              aria-label="Language"
+              class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors"
             >
-          </button>
-          <template #dropdown>
-            <ElDropdownMenu>
-              <ElDropdownItem
-                v-for="loc in availableLocales"
-                :key="loc.code"
-                :command="loc.code"
-                :class="[locale === loc.code ? 'is-active' : '', '!px-0 !py-0']"
+              <span
+                aria-hidden="true"
+                class="material-symbols-outlined text-[20px]"
+                >language</span
               >
-                <NuxtLink
-                  :to="switchLocalePath(loc.code as any)"
-                  class="w-full h-full px-4 py-1.5 flex items-center outline-none hover:no-underline text-inherit"
+            </button>
+            <template #dropdown>
+              <ElDropdownMenu>
+                <ElDropdownItem
+                  v-for="loc in availableLocales"
+                  :key="loc.code"
+                  :command="loc.code"
+                  :class="[locale === loc.code ? 'is-active' : '', '!px-0 !py-0']"
                 >
-                  {{ loc.name }}
-                </NuxtLink>
-              </ElDropdownItem>
-            </ElDropdownMenu>
-          </template>
-        </ElDropdown>
+                  <NuxtLink
+                    :to="switchLocalePath(loc.code as any)"
+                    class="w-full h-full px-4 py-1.5 flex items-center outline-none hover:no-underline text-inherit"
+                  >
+                    {{ loc.name }}
+                  </NuxtLink>
+                </ElDropdownItem>
+              </ElDropdownMenu>
+            </template>
+          </ElDropdown>
+        </div>
 
-        <!-- Theme Toggle -->
+        <!-- Theme Toggle (desktop only) -->
         <button
           aria-label="Toggle Dark Mode"
-          class="flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors"
+          class="hidden md:flex h-9 w-9 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800 transition-colors"
           @click="toggleTheme"
         >
           <span
@@ -196,7 +216,8 @@ const authCopy = computed(() => ({
           >
         </button>
 
-        <NuxtLink v-if="!user" :to="authLoginUrl" class="hidden sm:inline-flex">
+        <!-- Login button (desktop only) -->
+        <NuxtLink v-if="!user" :to="authLoginUrl" class="hidden md:inline-flex">
           <ElButton type="primary" class="!rounded-lg">
             {{ authCopy.signIn }}
           </ElButton>
@@ -204,7 +225,7 @@ const authCopy = computed(() => ({
 
         <AccountStatusMenu v-else />
 
-        <!-- Mobile Hamburger -->
+        <!-- Mobile Hamburger / Close -->
         <button
           class="md:hidden w-10 h-10 flex items-center justify-center rounded-lg"
           aria-label="Menu"
@@ -233,33 +254,90 @@ const authCopy = computed(() => ({
         v-if="isMobileMenuOpen"
         class="md:hidden fixed left-0 right-0 top-16 z-50 border-t border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-xl"
       >
-        <nav class="flex flex-col p-4 gap-1">
+        <div class="flex flex-col p-4 gap-2">
+          <!-- Navigation links -->
+          <nav class="flex flex-col gap-0.5 mt-1">
+            <NuxtLink
+              v-for="item in navItems"
+              :key="item.to"
+              :to="item.to"
+              class="px-2 py-2.5 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors flex items-center justify-between"
+              @click="closeMobileMenu"
+            >
+              <span class="flex items-center gap-2">
+                <span
+                  v-if="item.isNew"
+                  class="material-symbols-outlined text-[16px] text-primary"
+                  style="font-variation-settings: &quot;FILL&quot; 1"
+                  >auto_awesome</span
+                >
+                {{ item.label }}
+                <span v-if="item.isNew" class="copilot-new-badge-mobile">NEW</span>
+              </span>
+            </NuxtLink>
+          </nav>
+
+          <!-- Divider -->
+          <div class="border-t border-slate-200 dark:border-slate-800 my-1 mx-2" />
+
+          <!-- Theme Toggle -->
+          <div class="flex items-center justify-between px-2 py-1">
+            <span class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ t('nav.theme') }}</span>
+            <ClientOnly>
+              <ElSwitch
+                :model-value="isDark"
+                style="--el-switch-on-color: #0f172a; --el-switch-off-color: #cbd5e1;"
+                @change="colorMode.preference = $event ? 'dark' : 'light'"
+              />
+            </ClientOnly>
+          </div>
+
+          <!-- Language selector -->
+          <div class="flex items-center justify-between px-2 py-1">
+            <span class="text-sm font-medium text-slate-600 dark:text-slate-400">{{ t('nav.language') }}</span>
+            <ElDropdown trigger="click" @command="(code) => { selectLocale(code); closeMobileMenu(); }">
+              <span class="text-sm font-medium text-slate-700 dark:text-slate-300 flex items-center gap-1 outline-none cursor-pointer">
+                {{ availableLocales.find(l => l.code === locale)?.name }}
+                <span class="material-symbols-outlined text-[16px] text-slate-500">expand_more</span>
+              </span>
+              <template #dropdown>
+                <ElDropdownMenu>
+                  <ElDropdownItem
+                    v-for="loc in availableLocales"
+                    :key="loc.code"
+                    :command="loc.code"
+                    :class="[locale === loc.code ? 'is-active' : '', '!px-0 !py-0']"
+                  >
+                    <NuxtLink
+                      :to="switchLocalePath(loc.code as any)"
+                      class="w-full h-full px-4 py-1.5 flex items-center outline-none hover:no-underline text-inherit"
+                      @click="closeMobileMenu"
+                    >
+                      {{ loc.name }}
+                    </NuxtLink>
+                  </ElDropdownItem>
+                </ElDropdownMenu>
+              </template>
+            </ElDropdown>
+          </div>
+
+          <!-- Divider before Login -->
+          <div v-if="!user" class="border-t border-slate-200 dark:border-slate-800 my-1 mx-2" />
+
+          <!-- Login CTA (Bottom) -->
           <NuxtLink
             v-if="!user"
             :to="authLoginUrl"
-            class="px-4 py-3 rounded-lg text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors"
+            class="block px-2 mb-1"
             @click="closeMobileMenu"
           >
-            {{ authCopy.signIn }}
-          </NuxtLink>
-
-          <NuxtLink
-            v-for="item in navItems"
-            :key="item.to"
-            :to="item.to"
-            class="px-4 py-3 rounded-lg text-sm font-medium text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-2"
-            @click="closeMobileMenu"
-          >
-            <span
-              v-if="item.isNew"
-              class="material-symbols-outlined text-[16px] text-primary"
-              style="font-variation-settings: &quot;FILL&quot; 1"
-              >auto_awesome</span
+            <button
+              class="w-full py-2.5 rounded-lg text-sm font-semibold text-white bg-primary hover:opacity-90 transition-opacity"
             >
-            {{ item.label }}
-            <span v-if="item.isNew" class="copilot-new-badge-mobile">NEW</span>
+              {{ authCopy.signIn }}
+            </button>
           </NuxtLink>
-        </nav>
+        </div>
       </div>
     </Transition>
   </header>
@@ -284,6 +362,24 @@ const authCopy = computed(() => ({
 .slide-leave-to {
   transform: translateY(-8px);
   opacity: 0;
+}
+
+/* Language chip list collapse */
+.collapse-enter-active,
+.collapse-leave-active {
+  transition: all 200ms ease;
+  overflow: hidden;
+}
+.collapse-enter-from,
+.collapse-leave-to {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0;
+}
+.collapse-enter-to,
+.collapse-leave-from {
+  opacity: 1;
+  max-height: 200px;
 }
 
 /* AI Copilot NEW 角标 — 桌面端（右上角绝对定位） */

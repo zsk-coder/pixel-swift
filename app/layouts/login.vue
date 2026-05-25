@@ -1,5 +1,5 @@
 <template>
-  <div class="relative min-h-screen w-full bg-white text-slate-900">
+  <div class="relative min-h-screen w-full bg-white dark:bg-slate-950 text-slate-900 dark:text-slate-100">
     <NuxtLink
       :to="localePath('/')"
       class="absolute left-6 top-6 inline-flex items-center gap-2 sm:left-8 sm:top-8"
@@ -13,7 +13,7 @@
           >auto_fix_high</span
         >
       </span>
-      <span class="text-lg font-semibold tracking-tight text-slate-950">
+      <span class="text-lg font-semibold tracking-tight text-slate-950 dark:text-white">
         PixelSwift
       </span>
     </NuxtLink>
@@ -33,14 +33,14 @@
     >
       <NuxtLink
         :to="localePath('/privacy')"
-        class="transition-colors hover:text-primary"
+        class="transition-colors hover:text-primary dark:hover:text-primary-400"
       >
         {{ t("footer.privacy") }}
       </NuxtLink>
       <span>·</span>
       <NuxtLink
         :to="localePath('/terms')"
-        class="transition-colors hover:text-primary"
+        class="transition-colors hover:text-primary dark:hover:text-primary-400"
       >
         {{ t("footer.terms") }}
       </NuxtLink>

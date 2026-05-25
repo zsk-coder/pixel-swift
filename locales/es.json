@@ -5,7 +5,9 @@
     "resizer": "Redimensionar",
     "blog": "Blog",
     "copilot": "Asistente IA",
-    "pricing": "Precios"
+    "pricing": "Precios",
+    "theme": "Tema",
+    "language": "Idioma"
   },
   "home": {
     "title": "Compresor, convertidor y redimensionador de imágenes en línea gratis",

@@ -5,7 +5,9 @@
     "resizer": "크기 조정",
     "blog": "블로그",
     "copilot": "AI 어시스턴트",
-    "pricing": "요금제"
+    "pricing": "요금제",
+    "theme": "테마",
+    "language": "언어"
   },
   "home": {
     "title": "무료 온라인 이미지 압축, 변환 & 크기 조정 도구",

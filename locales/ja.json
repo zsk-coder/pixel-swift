@@ -5,7 +5,9 @@
     "resizer": "リサイズ",
     "blog": "ブログ",
     "copilot": "AI アシスタント",
-    "pricing": "料金プラン"
+    "pricing": "料金プラン",
+    "theme": "テーマ",
+    "language": "言語"
   },
   "home": {
     "title": "無料オンライン画像圧縮・変換・リサイズツール",

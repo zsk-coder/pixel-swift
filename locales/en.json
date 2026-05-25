@@ -5,7 +5,9 @@
     "resizer": "Resize",
     "blog": "Blog",
     "copilot": "AI Assistant",
-    "pricing": "Pricing"
+    "pricing": "Pricing",
+    "theme": "Theme",
+    "language": "Language"
   },
   "home": {
     "title": "Free Online Image Compressor, Converter & Resizer",

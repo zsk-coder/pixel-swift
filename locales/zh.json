@@ -5,7 +5,9 @@
     "resizer": "调整大小",
     "blog": "博客",
     "copilot": "AI 助手",
-    "pricing": "定价"
+    "pricing": "定价",
+    "theme": "主题",
+    "language": "语言"
   },
   "home": {
     "title": "免费在线图片压缩、转换、调整大小工具",
