@@ -349,7 +349,7 @@ const progressWidth = computed(() => `${progress.value}%`);
             errorMessage === t('apiEvents.QUOTA_EXHAUSTED.UPGRADE_REQUIRED')
           "
           :to="localePath('/pricing')"
-          class="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white transition-transform hover:scale-[1.02] hover:bg-primary-dark active:scale-95"
+          class="inline-flex w-full sm:w-auto !ml-0 items-center justify-center gap-2 rounded-lg bg-primary px-6 py-2.5 text-sm font-bold text-white transition-transform hover:scale-[1.02] hover:bg-primary-dark active:scale-95"
         >
           <span class="material-symbols-outlined text-[18px]">verified</span>
           {{ t("pricing.pro.cta") }}
@@ -361,6 +361,7 @@ const progressWidth = computed(() => `${progress.value}%`);
           :type="phase === 'error' ? 'danger' : 'warning'"
           size="large"
           plain
+          class="!ml-0 w-full sm:w-auto"
           @click="handleRetry"
         >
           <span class="material-symbols-outlined text-[18px] mr-1"
@@ -371,6 +372,7 @@ const progressWidth = computed(() => `${progress.value}%`);
 
         <el-button
           size="large"
+          class="!ml-0 w-full sm:w-auto"
           @click="handleNewWorkflow"
           :disabled="
             phase !== 'done' && phase !== 'error' && phase !== 'unsupported'
@@ -383,6 +385,7 @@ const progressWidth = computed(() => `${progress.value}%`);
         <el-button
           type="primary"
           size="large"
+          class="!ml-0 w-full sm:w-auto"
           @click="handleDownload"
           :disabled="phase !== 'done' || resultFiles.length === 0"
         >
