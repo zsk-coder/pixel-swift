@@ -129,10 +129,10 @@ function handleReset() {
     <!-- ── 背景渐变光晕 ── -->
     <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
       <div
-        class="absolute -top-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-primary-100 opacity-20 blur-[120px]"
+        class="glow glow--blue absolute -top-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-primary-100 opacity-20 blur-[120px]"
       />
       <div
-        class="absolute top-[40%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-purple-100 opacity-20 blur-[100px]"
+        class="glow glow--purple absolute top-[40%] -left-[10%] w-[50vw] h-[50vw] rounded-full bg-purple-100 opacity-20 blur-[100px]"
       />
     </div>
 
@@ -461,5 +461,23 @@ main > section:first-child {
 }
 .file-uploader :deep(.el-upload-dragger .hidden.md\:flex) {
   display: none !important;
+}
+
+/* 移动端降低光晕 blur 与尺寸，避免 Safari GPU 合成层爆内存导致滚动白屏 */
+@media (max-width: 768px) {
+  .glow {
+    will-change: transform;
+    transform: translateZ(0);
+  }
+  .glow--blue {
+    width: 40vw !important;
+    height: 40vw !important;
+    filter: blur(60px) !important;
+  }
+  .glow--purple {
+    width: 35vw !important;
+    height: 35vw !important;
+    filter: blur(50px) !important;
+  }
 }
 </style>
