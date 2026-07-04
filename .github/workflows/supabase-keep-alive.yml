@@ -2,8 +2,8 @@ name: Supabase Keep Alive
 
 on:
   schedule:
-    # 每 3 天的凌晨 0 点运行一次 (UTC 时间，对应北京时间早上 8 点)
-    - cron: '0 0 */3 * *'
+    # 每天的凌晨 0 点运行一次 (UTC 时间，对应北京时间早上 8 点)
+    - cron: '0 0 * * *'
   workflow_dispatch: # 允许在 GitHub Action 页面手动点击按钮测试运行
 
 jobs:
