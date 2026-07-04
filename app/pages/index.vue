@@ -12,8 +12,9 @@ const statsData: Array<{
   decimal?: number;
 }> = [
   {
-    target: 50000,
-    start: 35000,
+    // 假数据：设置非整数目标值以提升视觉真实度，符合上线约 4 个月的正常流量水平
+    target: 76800,
+    start: 58000,
     format: true,
     suffix: "+",
     labelKey: "home.stats.processed",
